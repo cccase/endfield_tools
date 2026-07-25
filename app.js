@@ -316,13 +316,13 @@ function updateSimulation() {
         // Apply to all party members
         party.forEach(p => {
           const pStats = getCharacterStats(p.id);
-          epState[p.id].current += epBase * (1 + pStats.efficiency);
+          epState[p.id].current += epBase * pStats.efficiency;
         });
 
       }
       else if (s.type === 'combo') {
         // EP Calculation: 10 for the casting character only
-        epState[step.charId].current += 10 * (1 + stats.efficiency);
+        epState[step.charId].current += 10 * stats.efficiency;
       }
       else if (s.type === 'ult') {
         // Ult Cost consumption
