@@ -1,0 +1,37 @@
+@charset "Shift_JIS";
+
+a:link {
+	text-decoration: underline;
+}
+
+a:visited {
+	text-decoration: underline;
+}
+
+div#navigator {
+	display:none;
+}
+
+td.menubar {
+	display:none;
+}
+
+div#menubar {
+	display:none;
+}
+
+div#attach {
+	display:none;
+}
+
+div#toolbar {
+        display:none;
+}
+
+div#related {
+        display:none;
+}
+
+img#logo {
+	display:none;
+}

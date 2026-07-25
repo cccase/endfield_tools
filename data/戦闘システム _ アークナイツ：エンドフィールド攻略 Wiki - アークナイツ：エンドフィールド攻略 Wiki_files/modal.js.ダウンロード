@@ -1,0 +1,85 @@
+// 画像拡張子の判定用正規表現（webp追加）
+var IMAGE_EXT_REGEX = /\.(jpe?g|png|gif|webp)(\?.*)?$/i;
+// 動画拡張子の判定用正規表現（添付動画=WebM/MP4）
+var VIDEO_EXT_REGEX = /\.(webm|mp4)(\?.*)?$/i;
+
+// 画像アップロード機能(R2)の配信ドメイン
+// このドメインへのリンクは、テキストリンクでもモーダルで開く
+var IMG_CDN_PREFIX = 'https://img.wikiru-cdn.com/';
+
+// 1. &ref, &attachref で呼び出された画像
+//    → リンクの中に <img> タグが入っているものだけが対象
+//    （添付ファイル一覧などのテキストリンクは中に<img>が無いので除外される）
+// 1b. 画像添付ボタン由来のリンク（[[添付画像>https://img.wikiru-cdn.com/～]]）
+//    → 中に<img>が無いテキストリンクだが、CDNドメイン直リンクなのでモーダル対象にする
+var allLinks = document.querySelectorAll('a');
+for (var i = 0; i < allLinks.length; i++) {
+    var link = allLinks[i];
+
+    var href = link.getAttribute('href') || '';
+
+    // CDN直リンクかチェック（テキストリンクでも対象）
+    var isCdnImage = href.indexOf(IMG_CDN_PREFIX) === 0;
+
+    // リンクの中に img タグがあるかチェック
+    var innerImg = link.querySelector('img');
+    if (!innerImg && !isCdnImage) continue;
+
+    // パターンA: ?plugin=attach&... で画像を取得しているリンク（&ref, &attachref由来）
+    //   ただし pcmd=upload（添付アップロード画面へのリンク）は画像ではないので除外する
+    // パターンB: 直接画像URLにリンクしているもの（外部画像など）
+    var isAttachImage = href.indexOf('plugin=attach') !== -1
+                        && href.indexOf('pcmd=upload') === -1;
+    var isDirectImage = IMAGE_EXT_REGEX.test(href);
+
+    if (isAttachImage || isDirectImage || isCdnImage) {
+        link.addEventListener('click', showLightbox, false);
+    }
+}
+
+// 2. コメント欄に貼られた画像URL（テキストとして展開された <s> 内のURL）
+var urlImages = document.querySelectorAll('.comment_body s');
+for (var i = 0; i < urlImages.length; i++) {
+    var url = urlImages[i].textContent.trim();
+    if (IMAGE_EXT_REGEX.test(url)) {
+        urlImages[i].style.cursor = 'pointer';
+        urlImages[i].addEventListener('click', function(e) {
+            showLightbox.call({ href: this.textContent.trim() }, e);
+        }, false);
+    }
+}
+
+function showLightbox(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    var overlay = document.createElement('div');
+    overlay.classList.add('lightbox-overlay');
+    document.body.appendChild(overlay);
+
+    if (VIDEO_EXT_REGEX.test(this.href)) {
+        // 動画: 自動再生はせず、ユーザーが再生ボタンを押してから再生
+        var video = document.createElement('video');
+        video.src = this.href;
+        video.controls = true;
+        video.playsInline = true;
+        video.style.maxWidth = '94vw';
+        video.style.maxHeight = '94vh';
+        video.style.background = '#000';
+        overlay.appendChild(video);
+    } else {
+        var img = document.createElement('img');
+        img.src = this.href;
+        overlay.appendChild(img);
+    }
+
+    var closeBtn = document.createElement('span');
+    closeBtn.classList.add('lightbox-close');
+    closeBtn.innerHTML = '&times;';
+    overlay.appendChild(closeBtn);
+
+    overlay.onclick = function(e) {
+        if (e.target === this || e.target === closeBtn) {
+            document.body.removeChild(overlay);
+        }
+    }
+}
