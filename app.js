@@ -10,11 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchCharacters() {
   try {
-    const res = await fetch('./data/characters.json');
+    const res = await fetch('data/characters.json');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     allCharacters = await res.json();
     renderRoster();
   } catch (e) {
     console.error("Failed to load characters", e);
+    const container = document.getElementById('roster-list');
+    if (container) {
+      container.innerHTML = '<div style="color: #ff7675; padding: 10px; border: 1px solid #ff7675; border-radius: 4px; grid-column: 1 / -1;">キャラクターデータの読み込みに失敗しました。<br>ローカルでHTMLファイルを直接（file://）開いている場合、ブラウザのセキュリティ制限によりデータの取得(fetch)がブロックされます。<br>VSCodeのLive Serverなどのローカルサーバーを使用するか、GitHub Pagesにデプロイしてご確認ください。</div>';
+    }
   }
 }
 
