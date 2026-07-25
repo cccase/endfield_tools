@@ -1,0 +1,246 @@
+/* Dark mode game-like UI */
+:root {
+  --bg-main: #121212;
+  --bg-panel: #1e1e1e;
+  --bg-panel-light: #2d2d2d;
+  --accent-orange: #ff9800;
+  --accent-yellow: #ffd54f;
+  --text-main: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --border-color: #444;
+  --skill-normal: #3a86ff;
+  --skill-ult: #ff006e;
+  --cooldown-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background-color: var(--bg-panel);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--accent-orange);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: var(--accent-yellow);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--accent-orange);
+}
+
+/* Character Selection */
+.char-panel {
+  flex: 0 0 auto;
+}
+
+.char-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.char-card {
+  background-color: var(--bg-panel-light);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem;
+  min-width: 150px;
+}
+
+.char-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-item {
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: grab;
+  font-size: 0.85rem;
+  user-select: none;
+  color: white;
+  text-align: center;
+  position: relative;
+  transition: transform 0.1s;
+}
+
+.skill-item:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.skill-normal {
+  background-color: var(--skill-normal);
+}
+
+.skill-ult {
+  background-color: var(--skill-ult);
+}
+
+/* Timeline */
+.timeline-panel {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.controls button {
+  background-color: var(--bg-panel-light);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: var(--accent-orange);
+  color: var(--bg-main);
+}
+
+.timeline-wrapper {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  background-color: var(--bg-panel-light);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.timeline {
+  position: relative;
+  height: 100%;
+  min-height: 200px;
+  width: 3000px; /* 60s * 50px/s */
+}
+
+.timeline-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, var(--border-color) 1px, transparent 1px);
+  background-size: 50px 100%; /* 50px = 1 second */
+  pointer-events: none;
+}
+
+.timeline-cursor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--accent-yellow);
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: none;
+}
+
+.timeline-tracks {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.placed-skill {
+  position: absolute;
+  height: 30px;
+  top: 20px; /* simple fixed track for now */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: white;
+  user-select: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.placed-cooldown {
+  position: absolute;
+  height: 30px;
+  top: 20px;
+  background-color: var(--cooldown-bg);
+  border: 1px dashed var(--border-color);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  pointer-events: none;
+}
+
+/* SP Tracker */
+.sp-panel {
+  flex: 0 0 auto;
+}
+
+.sp-display {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-yellow);
+}
+
+.sp-chart-container {
+  height: 20px;
+  background-color: var(--bg-panel-light);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.sp-bar {
+  height: 100%;
+  background-color: var(--accent-orange);
+  width: 0%;
+  transition: width 0.1s linear;
+}

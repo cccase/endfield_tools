@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アークナイツ：エンドフィールド SPシミュレーター</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Endfield Rotation & SP Simulator</h1>
+  </header>
+
+  <main>
+    <section class="panel char-panel">
+      <h2>Characters & Skills</h2>
+      <div id="char-selection" class="char-container">
+        <!-- JS will populate this -->
+      </div>
+    </section>
+
+    <section class="panel timeline-panel">
+      <div class="timeline-header">
+        <h2>Timeline (60s)</h2>
+        <div class="controls">
+          <button id="btn-play">Play</button>
+          <button id="btn-stop">Stop</button>
+          <button id="btn-clear">Clear</button>
+        </div>
+      </div>
+
+      <div class="timeline-wrapper">
+        <div id="timeline" class="timeline">
+          <div class="timeline-grid">
+            <!-- 60 seconds grid lines -->
+          </div>
+          <div id="cursor" class="timeline-cursor"></div>
+          <div id="timeline-tracks" class="timeline-tracks">
+            <!-- Dropped skills will go here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel sp-panel">
+      <h2>SP Tracker</h2>
+      <div class="sp-display">
+        <span>Current SP: </span>
+        <span id="sp-value">0</span>
+      </div>
+      <div class="sp-chart-container">
+        <div id="sp-bar" class="sp-bar"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

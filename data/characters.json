@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ザイヒ",
+    "name": "ザイヒ",
+    "skills": [
+      {
+        "name": "スキル",
+        "cooldown": 8,
+        "spCost": 0,
+        "spGain": 1
+      },
+      {
+        "name": "必殺技",
+        "cooldown": 20,
+        "spCost": 80,
+        "spGain": 0
+      }
+    ]
+  },
+  {
+    "id": "オクギ",
+    "name": "オクギ",
+    "skills": [
+      {
+        "name": "スキル",
+        "cooldown": 14,
+        "spCost": 0,
+        "spGain": 1
+      },
+      {
+        "name": "スキル",
+        "cooldown": 20,
+        "spCost": 0,
+        "spGain": 1
+      },
+      {
+        "name": "必殺技",
+        "cooldown": 20,
+        "spCost": 100,
+        "spGain": 0
+      }
+    ]
+  },
+  {
+    "id": "ギルベルタ",
+    "name": "ギルベルタ",
+    "skills": [
+      {
+        "name": "スキル",
+        "cooldown": 20,
+        "spCost": 0,
+        "spGain": 1
+      }
+    ]
+  },
+  {
+    "id": "タンタン",
+    "name": "タンタン",
+    "skills": [
+      {
+        "name": "スキル",
+        "cooldown": 30,
+        "spCost": 0,
+        "spGain": 1
+      }
+    ]
+  }
+]
