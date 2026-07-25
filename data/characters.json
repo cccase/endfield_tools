@@ -4,7 +4,13 @@
     "name": "ザイヒ",
     "icon": "image/xaihi.png",
     "baseRefundSP": 0,
-    "potentials": [],
+    "potentials": [
+      {
+        "level": 2,
+        "type": "ult_cost_reduction_percent",
+        "value": 10
+      }
+    ],
     "skills": [
       {
         "id": "skill_zaihi",
@@ -67,7 +73,13 @@
     "name": "ギルベルタ",
     "icon": "image/gilberta.png",
     "baseRefundSP": 0,
-    "potentials": [],
+    "potentials": [
+      {
+        "level": 2,
+        "type": "ult_cost_reduction_percent",
+        "value": 10
+      }
+    ],
     "skills": [
       {
         "id": "skill_gilberta",
@@ -93,7 +105,18 @@
     "name": "タンタン",
     "icon": "image/tangtang.png",
     "baseRefundSP": 0,
-    "potentials": [],
+    "potentials": [
+      {
+        "level": 1,
+        "type": "refund_sp_boost",
+        "value": 5
+      },
+      {
+        "level": 4,
+        "type": "ult_cost_reduction_percent",
+        "value": 15
+      }
+    ],
     "skills": [
       {
         "id": "skill_tangtang",

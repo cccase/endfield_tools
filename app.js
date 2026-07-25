@@ -44,9 +44,15 @@ function addToParty(charData) {
     return; // Already in party
   }
 
+  let defaultEfficiency = 100;
+  if (charData.name === 'タンタン') defaultEfficiency = 107;
+  if (charData.name === 'ギルベルタ') defaultEfficiency = 202.9;
+  if (charData.name === 'オクギ') defaultEfficiency = 153.4;
+  if (charData.name === 'ザイヒ') defaultEfficiency = 133.7;
+
   party.push({
     ...charData,
-    efficiency: 100, // Default 100%
+    efficiency: defaultEfficiency, // Default updated per requirement
     potential: 0     // Default 0凸
   });
 
