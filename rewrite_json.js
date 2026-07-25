@@ -1,0 +1,61 @@
+const fs = require('fs');
+
+const data = [
+  {
+    "id": "ザイヒ",
+    "name": "ザイヒ",
+    "icon": "image/xaihi.png",
+    "baseRefundSP": 0,
+    "potentials": [],
+    "skills": [
+      { "id": "skill_zaihi", "type": "skill", "name": "戦技", "spCost": 100 },
+      { "id": "combo_zaihi", "type": "combo", "name": "連携技" },
+      { "id": "ult_zaihi", "type": "ult", "name": "必殺技", "epCost": 80 }
+    ]
+  },
+  {
+    "id": "オクギ",
+    "name": "オクギ",
+    "icon": "image/okugi.png",
+    "baseRefundSP": 30,
+    "potentials": [
+      { "level": 1, "type": "refund_sp_boost", "value": 10 },
+      { "level": 4, "type": "ult_cost_reduction_percent", "value": 15 }
+    ],
+    "skills": [
+      { "id": "skill_okugi", "type": "skill", "name": "戦技", "spCost": 100 },
+      { "id": "combo_okugi", "type": "combo", "name": "連携技" },
+      { "id": "ult_okugi", "type": "ult", "name": "必殺技", "epCost": 100 }
+    ]
+  },
+  {
+    "id": "ギルベルタ",
+    "name": "ギルベルタ",
+    "icon": "image/gilberta.png",
+    "baseRefundSP": 0,
+    "potentials": [],
+    "skills": [
+      { "id": "skill_gilberta", "type": "skill", "name": "戦技", "spCost": 100 },
+      { "id": "combo_gilberta", "type": "combo", "name": "連携技" },
+      { "id": "ult_gilberta", "type": "ult", "name": "必殺技", "epCost": 90 }
+    ]
+  },
+  {
+    "id": "タンタン",
+    "name": "タンタン",
+    "icon": "image/tangtang.png",
+    "baseRefundSP": 0,
+    "potentials": [],
+    "skills": [
+      { "id": "skill_tangtang", "type": "skill", "name": "戦技", "spCost": 100 },
+      { "id": "combo_tangtang", "type": "combo", "name": "連携技" },
+      { "id": "ult_tangtang", "type": "ult", "name": "必殺技", "epCost": 90 }
+    ]
+  }
+];
+
+// 念のためZaihi, Gilberta, TangtangのUlt EPは適当に埋めているが、
+// Zaihiは元のデータで80だった。Gilberta, Tangtangは仮で90にしておく。
+
+fs.writeFileSync('data/characters.json', JSON.stringify(data, null, 2));
+console.log('JSON regenerated.');

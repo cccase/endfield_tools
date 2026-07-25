@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>アークナイツ：エンドフィールド SPシミュレーター</title>
+  <title>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,44 +12,57 @@
   </header>
 
   <main>
-    <section class="panel char-panel">
-      <h2>キャラクター＆スキル</h2>
-      <div id="char-selection" class="char-container">
-        <!-- JS will populate this -->
+    <!-- キャラクター選択とパーティー編成 -->
+    <section class="panel top-section">
+      <div class="roster-panel">
+        <h2>キャラクターリスト (クリックで編成に追加)</h2>
+        <div id="roster-list" class="roster-container">
+          <!-- サーバーから取得したキャラ一覧 -->
+        </div>
+      </div>
+
+      <div class="party-panel">
+        <h2>パーティー編成 (最大4人)</h2>
+        <div id="party-list" class="party-container">
+          <!-- 選択されたキャラ (効率、凸設定付き) -->
+        </div>
       </div>
     </section>
 
+    <!-- 利用可能なスキル・パネルパレット -->
+    <section class="panel palette-panel">
+      <h2>スキルパレット (ドラッグ＆ドロップでタイムラインへ)</h2>
+      <div id="skill-palette" class="palette-container">
+        <!-- 編成したキャラのスキル、および返還SPパネル -->
+      </div>
+    </section>
+
+    <!-- シーケンス型タイムライン -->
     <section class="panel timeline-panel">
       <div class="timeline-header">
-        <h2>タイムライン (60秒)</h2>
+        <h2>タイムライン (発動順)</h2>
         <div class="controls">
-          <button id="btn-play">再生</button>
-          <button id="btn-stop">停止</button>
-          <button id="btn-clear">クリア</button>
+          <button id="btn-clear-timeline">クリア</button>
         </div>
       </div>
 
-      <div class="timeline-wrapper">
-        <div id="timeline" class="timeline">
-          <div class="timeline-grid">
-            <!-- 60 seconds grid lines -->
-          </div>
-          <div id="cursor" class="timeline-cursor"></div>
-          <div id="timeline-tracks" class="timeline-tracks">
-            <!-- Dropped skills will go here -->
-          </div>
+      <div class="timeline-wrapper" id="timeline-wrapper">
+        <div id="timeline" class="sequence-timeline">
+          <!-- ここにブロックが並ぶ -->
+          <div class="drop-indicator" id="timeline-drop-zone">ここにスキルをドロップ</div>
         </div>
       </div>
     </section>
 
-    <section class="panel sp-panel">
-      <h2>SP（必殺技ゲージ）トラッカー</h2>
-      <div class="sp-display">
-        <span>現在のSP: </span>
-        <span id="sp-value">0</span>
+    <!-- EP/SP 状態表示 -->
+    <section class="panel status-panel">
+      <h2>ステータス (シミュレーション結果)</h2>
+      <div class="status-summary">
+        <div>累積消費SP: <span id="total-sp-spent">0</span></div>
+        <div>現在の返還SPプール: <span id="current-refund-sp">0</span></div>
       </div>
-      <div class="sp-chart-container">
-        <div id="sp-bar" class="sp-bar"></div>
+      <div id="ep-status-list" class="ep-status-container">
+        <!-- 各キャラのEPゲージ -->
       </div>
     </section>
   </main>

@@ -1,318 +1,378 @@
+let allCharacters = [];
+let party = [];
+let timelineSequence = []; // Array of skill objects placed on timeline
+
 document.addEventListener('DOMContentLoaded', () => {
   fetchCharacters();
+  setupTimelineDrop();
+  document.getElementById('btn-clear-timeline').addEventListener('click', clearTimeline);
 });
-
-let charactersData = [];
 
 async function fetchCharacters() {
   try {
-    const response = await fetch('./data/characters.json');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    charactersData = data;
-    renderCharacters(data);
-  } catch (error) {
-    console.error("Failed to load character data:", error);
-    document.getElementById('char-selection').innerHTML = `<p style="color:red">Failed to load data.</p>`;
+    const res = await fetch('./data/characters.json');
+    allCharacters = await res.json();
+    renderRoster();
+  } catch (e) {
+    console.error("Failed to load characters", e);
   }
 }
 
-function renderCharacters(data) {
-  const container = document.getElementById('char-selection');
+function renderRoster() {
+  const container = document.getElementById('roster-list');
+  container.innerHTML = '';
+  allCharacters.forEach(char => {
+    const el = document.createElement('div');
+    el.className = 'roster-char';
+    el.innerHTML = `<img src="${char.icon}" class="char-icon" alt="${char.name}"><span>${char.name}</span>`;
+    el.addEventListener('click', () => addToParty(char));
+    container.appendChild(el);
+  });
+}
+
+function addToParty(charData) {
+  if (party.length >= 4) {
+    alert("パーティーは最大4人までです。");
+    return;
+  }
+  if (party.find(p => p.id === charData.id)) {
+    return; // Already in party
+  }
+
+  party.push({
+    ...charData,
+    efficiency: 100, // Default 100%
+    potential: 0     // Default 0凸
+  });
+
+  renderParty();
+  renderPalette();
+  updateSimulation();
+}
+
+function removeFromParty(index) {
+  party.splice(index, 1);
+  // Also remove their skills from timeline
+  const removedIds = allCharacters.map(c => c.id); // Not needed actually, just filter timeline
+  renderParty();
+  renderPalette();
+
+  // Re-filter timeline (remove skills of characters no longer in party)
+  const currentPartyIds = party.map(p => p.id);
+  timelineSequence = timelineSequence.filter(item => {
+    if (item.type === 'refund') return currentPartyIds.includes(item.charId);
+    return currentPartyIds.includes(item.charId);
+  });
+  renderTimeline();
+}
+
+function renderParty() {
+  const container = document.getElementById('party-list');
   container.innerHTML = '';
 
-  data.forEach(char => {
-    const card = document.createElement('div');
-    card.className = 'char-card';
+  party.forEach((p, index) => {
+    const el = document.createElement('div');
+    el.className = 'party-member';
 
-    // Icon and Name wrapper
-    const header = document.createElement('div');
-    header.className = 'char-header';
-
-    if (char.icon) {
-      const img = document.createElement('img');
-      img.src = char.icon;
-      img.alt = char.name;
-      img.className = 'char-icon';
-      header.appendChild(img);
-    }
-
-    const nameEl = document.createElement('h3');
-    nameEl.textContent = char.name;
-    header.appendChild(nameEl);
-
-    card.appendChild(header);
-
-    const skillsList = document.createElement('div');
-    skillsList.className = 'skills-list';
-
-    if (char.skills && Array.isArray(char.skills)) {
-      char.skills.forEach((skill, index) => {
-        const skillEl = document.createElement('div');
-        const isUlt = skill.name === '必殺技' || skill.spCost > 0;
-        skillEl.className = `skill-item ${isUlt ? 'skill-ult' : 'skill-normal'}`;
-        skillEl.draggable = true;
-
-        let label = `${skill.name} (CT: ${skill.cooldown}s`;
-        if (skill.spCost > 0) label += `, SP: -${skill.spCost}`;
-        if (skill.spGain > 0) label += `, SP: +${skill.spGain}`;
-        label += ')';
-
-        skillEl.textContent = label;
-
-        // Store data for drag and drop
-        const skillData = {
-          charId: char.id,
-          charName: char.name,
-          charIcon: char.icon,
-          skillName: skill.name,
-          cooldown: skill.cooldown,
-          spCost: skill.spCost || 0,
-          spGain: skill.spGain || 0,
-          isUlt: isUlt
-        };
-
-        skillEl.addEventListener('dragstart', (e) => {
-          e.dataTransfer.setData('application/json', JSON.stringify(skillData));
-          e.dataTransfer.effectAllowed = 'copy';
-        });
-
-        skillsList.appendChild(skillEl);
+    // Potentials options
+    let potOptions = `<option value="0">0凸</option>`;
+    if (p.potentials) {
+      p.potentials.forEach(pot => {
+        potOptions += `<option value="${pot.level}">${pot.level}凸</option>`;
       });
     }
 
-    card.appendChild(skillsList);
-    container.appendChild(card);
+    el.innerHTML = `
+      <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
+      <span style="font-weight:bold; width:80px;">${p.name}</span>
+      <div class="settings-group">
+        <label>効率:</label>
+        <input type="number" value="${p.efficiency}" min="0" max="500" step="0.1" style="width:70px;" onchange="updatePartySetting(${index}, 'efficiency', this.value)"> %
+      </div>
+      <div class="settings-group">
+        <label>凸数:</label>
+        <select onchange="updatePartySetting(${index}, 'potential', this.value)">
+          ${potOptions}
+        </select>
+      </div>
+      <button class="remove-btn" onclick="removeFromParty(${index})">×</button>
+    `;
+
+    // Sync select value
+    const select = el.querySelector('select');
+    select.value = p.potential;
+
+    container.appendChild(el);
   });
 }
 
-// --- Timeline Drag & Drop ---
-const pixelsPerSecond = 50;
-let placedSkills = [];
-let nextSkillId = 1;
+window.updatePartySetting = function(index, key, value) {
+  party[index][key] = parseFloat(value);
+  updateSimulation();
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+function renderPalette() {
+  const container = document.getElementById('skill-palette');
+  container.innerHTML = '';
+
+  party.forEach(p => {
+    const group = document.createElement('div');
+    group.className = 'palette-group';
+
+    // Icon header
+    group.innerHTML = `<img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">`;
+
+    // Refund Panel (if applicable)
+    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost'))) {
+      const refundEl = createDraggableBlock({ type: 'refund', charId: p.id, charName: p.name, icon: p.icon }, `返還SP`);
+      refundEl.classList.add('bg-refund');
+      group.appendChild(refundEl);
+    }
+
+    // Skills
+    p.skills.forEach(s => {
+      const skillEl = createDraggableBlock({ type: 'skill', charId: p.id, skillId: s.id, charName: p.name, icon: p.icon, skillData: s }, s.name);
+      if (s.type === 'skill') skillEl.classList.add('bg-skill');
+      if (s.type === 'combo') skillEl.classList.add('bg-combo');
+      if (s.type === 'ult') skillEl.classList.add('bg-ult');
+      group.appendChild(skillEl);
+    });
+
+    container.appendChild(group);
+  });
+}
+
+function createDraggableBlock(data, text) {
+  const el = document.createElement('div');
+  el.className = 'skill-block';
+  el.draggable = true;
+  el.innerHTML = `<img src="${data.icon}"> <span>${text}</span>`;
+
+  el.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('application/json', JSON.stringify(data));
+  });
+  return el;
+}
+
+function setupTimelineDrop() {
   const timeline = document.getElementById('timeline');
-  const tracks = document.getElementById('timeline-tracks');
-
-  timeline.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'copy';
-  });
-
-  timeline.addEventListener('dragenter', (e) => {
-    e.preventDefault();
-  });
-
-  timeline.addEventListener('drop', (e) => {
+  timeline.addEventListener('dragover', e => e.preventDefault());
+  timeline.addEventListener('drop', e => {
     e.preventDefault();
     const dataStr = e.dataTransfer.getData('application/json');
     if (!dataStr) return;
-
     try {
-      const skillData = JSON.parse(dataStr);
-
-      // Calculate drop time based on X coordinate relative to the timeline grid
-      const rect = timeline.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-
-      // Snap to nearest 0.5s or similar if desired, here just use direct calculation
-      let time = Math.max(0, x / pixelsPerSecond);
-
-      placeSkillOnTimeline(skillData, time);
-    } catch(err) {
-      console.error("Drop error:", err);
-    }
+      const data = JSON.parse(dataStr);
+      timelineSequence.push(data);
+      renderTimeline();
+    } catch(err) { console.error(err); }
   });
-});
-
-function placeSkillOnTimeline(skillData, time) {
-  const tracks = document.getElementById('timeline-tracks');
-  const id = nextSkillId++;
-
-  const width = Math.max(20, skillData.cooldown * pixelsPerSecond); // min width for visibility if instant
-
-  // Calculate dynamic vertical offset based on overlap
-  let offsetY = 20;
-  const overlappingSkills = placedSkills.filter(s => {
-    return (time < s.endTime) && ((time + skillData.cooldown) > s.time);
-  });
-  if (overlappingSkills.length > 0) {
-    offsetY = 20 + overlappingSkills.length * 35; // move down to avoid overlap
-  }
-
-  // Create Skill block
-  const skillBlock = document.createElement('div');
-  skillBlock.className = `placed-skill ${skillData.isUlt ? 'skill-ult' : 'skill-normal'}`;
-  skillBlock.style.left = `${time * pixelsPerSecond}px`;
-  skillBlock.style.top = `${offsetY}px`;
-  // We make the skill block itself represent 1 second of action for visual clarity, or a fixed width.
-  const blockWidth = 50;
-  skillBlock.style.width = `${blockWidth}px`;
-
-  if (skillData.charIcon) {
-    const iconImg = document.createElement('img');
-    iconImg.src = skillData.charIcon;
-    iconImg.className = 'placed-skill-icon';
-    skillBlock.appendChild(iconImg);
-  } else {
-    skillBlock.textContent = skillData.charName;
-  }
-
-  skillBlock.title = `${skillData.charName} - ${skillData.skillName}\nTime: ${time.toFixed(1)}s`;
-
-  // Create Cooldown block
-  const cdBlock = document.createElement('div');
-  cdBlock.className = 'placed-cooldown';
-  cdBlock.style.left = `${time * pixelsPerSecond + blockWidth}px`;
-  cdBlock.style.top = `${offsetY}px`;
-  cdBlock.style.width = `${Math.max(0, (skillData.cooldown * pixelsPerSecond) - blockWidth)}px`;
-
-  tracks.appendChild(skillBlock);
-  tracks.appendChild(cdBlock);
-
-  // Save to state
-  placedSkills.push({
-    id,
-    ...skillData,
-    time,
-    endTime: time + skillData.cooldown,
-    element: skillBlock,
-    cdElement: cdBlock
-  });
-
-  // Re-sort by time
-  placedSkills.sort((a, b) => a.time - b.time);
-
-  // Trigger SP Update (to be implemented next)
-  if (typeof updateSP === 'function') {
-    updateSP();
-  }
 }
 
-// --- SP Calculation & Playback Simulation ---
-let isPlaying = false;
-let playbackTime = 0;
-let lastTimestamp = null;
-let animationFrameId = null;
+window.updateTimelineRefund = function(index, value) {
+  timelineSequence[index].customRefund = parseFloat(value) || 0;
+  updateSimulation();
+};
 
-const maxSp = 100; // Define a max SP for visual bar representation
+function renderTimeline() {
+  const timeline = document.getElementById('timeline');
+  timeline.innerHTML = '';
 
-function updateSP() {
-  // Calculates static SP flow across the whole timeline based on placed skills
-  let currentSp = 0;
-
-  for (const skill of placedSkills) {
-    if (skill.spGain > 0) {
-      currentSp += skill.spGain;
-    }
-    if (skill.spCost > 0) {
-      currentSp -= skill.spCost;
-    }
-    // clamp SP between 0 and max (though in-game it might overcap depending on chars, let's keep it simple or allow overflow in text)
-    if (currentSp < 0) currentSp = 0;
+  if (timelineSequence.length === 0) {
+    timeline.innerHTML = `<div class="drop-zone">ここにスキルをドロップ</div>`;
+    updateSimulation();
+    return;
   }
 
-  // We just use this for debugging or general stat. The real-time meter is updated during playback.
-  document.getElementById('sp-value').textContent = currentSp.toString();
+  timelineSequence.forEach((item, index) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'timeline-item';
 
-  const percentage = Math.min(100, Math.max(0, (currentSp / maxSp) * 100));
-  document.getElementById('sp-bar').style.width = `${percentage}%`;
-}
+    const block = document.createElement('div');
+    block.className = 'skill-block';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btnPlay = document.getElementById('btn-play');
-  const btnStop = document.getElementById('btn-stop');
-  const btnClear = document.getElementById('btn-clear');
+    let text = "";
+    if (item.type === 'refund') {
+      block.classList.add('bg-refund');
 
-  btnPlay.addEventListener('click', () => {
-    if (isPlaying) {
-      // Pause
-      isPlaying = false;
-      btnPlay.textContent = '再生';
-      cancelAnimationFrame(animationFrameId);
+      const stats = getCharacterStats(item.charId);
+      const defaultRefund = stats ? stats.refundSP : 0;
+      const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
+
+      text = `返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${index}, this.value)" onclick="event.stopPropagation();">`;
     } else {
-      // Play
-      isPlaying = true;
-      btnPlay.textContent = '一時停止';
-      if (playbackTime >= 60) playbackTime = 0; // reset if at end
-      lastTimestamp = performance.now();
-      animationFrameId = requestAnimationFrame(animationLoop);
+      if (item.skillData.type === 'skill') block.classList.add('bg-skill');
+      if (item.skillData.type === 'combo') block.classList.add('bg-combo');
+      if (item.skillData.type === 'ult') block.classList.add('bg-ult');
+      text = item.skillData.name;
     }
+
+    block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
+
+    const delBtn = document.createElement('div');
+    delBtn.className = 'delete-overlay';
+    delBtn.textContent = '×';
+    delBtn.onclick = () => {
+      timelineSequence.splice(index, 1);
+      renderTimeline();
+    };
+
+    wrap.appendChild(block);
+    wrap.appendChild(delBtn);
+    timeline.appendChild(wrap);
   });
 
-  btnStop.addEventListener('click', () => {
-    isPlaying = false;
-    btnPlay.textContent = '再生';
-    cancelAnimationFrame(animationFrameId);
-    playbackTime = 0;
-    renderPlaybackState();
-  });
+  // Add a small drop zone at the end
+  const dropEnd = document.createElement('div');
+  dropEnd.className = 'drop-zone';
+  dropEnd.style.minWidth = '50px';
+  timeline.appendChild(dropEnd);
 
-  btnClear.addEventListener('click', () => {
-    // Clear all skills
-    placedSkills.forEach(s => {
-      s.element.remove();
-      s.cdElement.remove();
+  updateSimulation();
+}
+
+function clearTimeline() {
+  timelineSequence = [];
+  renderTimeline();
+}
+
+// --- Simulation Logic ---
+
+function getCharacterStats(charId) {
+  const p = party.find(x => x.id === charId);
+  if (!p) return null;
+
+  // Calculate final potentials
+  let refundSpBoost = 0;
+  let ultCostReduction = 0; // percentage
+
+  if (p.potentials) {
+    p.potentials.forEach(pot => {
+      if (p.potential >= pot.level) {
+        if (pot.type === 'refund_sp_boost') refundSpBoost += pot.value;
+        if (pot.type === 'ult_cost_reduction_percent') ultCostReduction += pot.value;
+      }
     });
-    placedSkills = [];
-    playbackTime = 0;
-    updateSP();
-    renderPlaybackState();
-  });
-});
-
-function animationLoop(timestamp) {
-  if (!isPlaying) return;
-
-  const deltaTime = (timestamp - lastTimestamp) / 1000; // in seconds
-  lastTimestamp = timestamp;
-
-  playbackTime += deltaTime;
-
-  if (playbackTime > 60) {
-    playbackTime = 60;
-    isPlaying = false;
-    document.getElementById('btn-play').textContent = '再生';
   }
 
-  renderPlaybackState();
-
-  if (isPlaying) {
-    animationFrameId = requestAnimationFrame(animationLoop);
-  }
+  return {
+    efficiency: p.efficiency / 100, // as multiplier (1.0 = 100%)
+    refundSP: p.baseRefundSP + refundSpBoost,
+    ultCostReduction: ultCostReduction
+  };
 }
 
-function renderPlaybackState() {
-  // Update Cursor
-  const cursor = document.getElementById('cursor');
-  cursor.style.display = 'block';
-  cursor.style.left = `${playbackTime * pixelsPerSecond}px`;
+function updateSimulation() {
+  let totalSpSpent = 0;
+  let currentRefundSpPool = 0;
 
-  // Update SP based on skills triggered UP TO playbackTime
-  let currentSp = 0;
+  // Initialize EP state for party
+  const epState = {};
+  party.forEach(p => {
+    epState[p.id] = { current: 0, warnings: [] };
+  });
 
-  placedSkills.forEach(skill => {
-    // Highlight if active
-    if (playbackTime >= skill.time && playbackTime < skill.time + 1) { // 1 second active window visual
-      skill.element.style.transform = 'scale(1.1)';
-      skill.element.style.zIndex = '20';
-    } else {
-      skill.element.style.transform = 'scale(1)';
-      skill.element.style.zIndex = '1';
+  // Process sequence
+  timelineSequence.forEach((step, index) => {
+    const stats = getCharacterStats(step.charId);
+    if (!stats) return; // Character removed from party but still in timeline somehow
+
+    if (step.type === 'refund') {
+      const refundVal = step.customRefund !== undefined ? step.customRefund : stats.refundSP;
+      currentRefundSpPool += refundVal;
     }
+    else if (step.type === 'skill') {
+      const s = step.skillData;
 
-    // Accumulate SP
-    if (playbackTime >= skill.time) {
-      if (skill.spGain > 0) currentSp += skill.spGain;
-      if (skill.spCost > 0) currentSp -= skill.spCost;
-      if (currentSp < 0) currentSp = 0;
+      if (s.type === 'skill') {
+        // SP Consumption
+        totalSpSpent += s.spCost;
+
+        // EP Calculation
+        // base EP gain is 6.5 for all party members
+        // Calculate penalty if refund SP is used
+        let epBase = 6.5;
+        let consumedRefund = 0;
+
+        if (currentRefundSpPool > 0) {
+          // If we have refund SP, we consume it first up to the skill cost
+          consumedRefund = Math.min(currentRefundSpPool, s.spCost);
+          currentRefundSpPool -= consumedRefund;
+          // Formula: ((s.spCost - consumedRefund) / s.spCost) * 6.5
+          epBase = ((s.spCost - consumedRefund) / s.spCost) * 6.5;
+        }
+
+        // Apply to all party members
+        party.forEach(p => {
+          const pStats = getCharacterStats(p.id);
+          epState[p.id].current += epBase * (1 + pStats.efficiency);
+        });
+
+      }
+      else if (s.type === 'combo') {
+        // EP Calculation: 10 for the casting character only
+        epState[step.charId].current += 10 * (1 + stats.efficiency);
+      }
+      else if (s.type === 'ult') {
+        // Ult Cost consumption
+        let cost = s.epCost;
+        if (stats.ultCostReduction > 0) {
+           cost = cost * (1 - stats.ultCostReduction / 100);
+        }
+
+        if (epState[step.charId].current < cost) {
+           epState[step.charId].warnings.push(`ステップ ${index+1}: EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
+           // For simulation flow, we assume it gets cast anyway, reset to 0 or subtract?
+           // Usually it drains everything. Let's just subtract and floor to 0.
+           epState[step.charId].current = 0;
+        } else {
+           epState[step.charId].current -= cost;
+        }
+      }
     }
   });
 
-  document.getElementById('sp-value').textContent = Math.floor(currentSp).toString();
-  const percentage = Math.min(100, Math.max(0, (currentSp / maxSp) * 100));
-  document.getElementById('sp-bar').style.width = `${percentage}%`;
+  renderStatus(totalSpSpent, currentRefundSpPool, epState);
+}
+
+function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
+  document.getElementById('total-sp-spent').textContent = totalSpSpent;
+  document.getElementById('current-refund-sp').textContent = currentRefundSpPool;
+
+  const container = document.getElementById('ep-status-list');
+  container.innerHTML = '';
+
+  party.forEach(p => {
+    const stats = getCharacterStats(p.id);
+    const state = epState[p.id];
+
+    // Find ult cost for max bar visualization
+    const ultSkill = p.skills.find(s => s.type === 'ult');
+    let maxEp = ultSkill ? ultSkill.epCost : 100;
+    if (ultSkill && stats.ultCostReduction > 0) {
+      maxEp = maxEp * (1 - stats.ultCostReduction / 100);
+    }
+
+    const percentage = Math.min(100, (state.current / maxEp) * 100);
+
+    let warningHtml = '';
+    if (state.warnings.length > 0) {
+      warningHtml = `<div class="ep-warning">${state.warnings.join('<br>')}</div>`;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'ep-row';
+    row.innerHTML = `
+      <div class="ep-info">
+        <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
+        <span>${p.name}</span>
+      </div>
+      <div class="ep-bar-container">
+        <div class="ep-bar" style="width: ${percentage}%;"></div>
+        <div class="ep-text">${state.current.toFixed(1)} / ${maxEp.toFixed(1)}</div>
+      </div>
+      ${warningHtml}
+    `;
+    container.appendChild(row);
+  });
 }
