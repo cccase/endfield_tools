@@ -15,7 +15,8 @@
         "spCost": 80,
         "spGain": 0
       }
-    ]
+    ],
+    "icon": "image/xaihi.png"
   },
   {
     "id": "オクギ",
@@ -39,7 +40,8 @@
         "spCost": 100,
         "spGain": 0
       }
-    ]
+    ],
+    "icon": "image/okugi.png"
   },
   {
     "id": "ギルベルタ",
@@ -51,7 +53,8 @@
         "spCost": 0,
         "spGain": 1
       }
-    ]
+    ],
+    "icon": "image/gilberta.png"
   },
   {
     "id": "タンタン",
@@ -63,6 +66,7 @@
         "spCost": 0,
         "spGain": 1
       }
-    ]
+    ],
+    "icon": "image/tangtang.png"
   }
 ]

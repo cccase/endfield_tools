@@ -27,9 +27,23 @@ function renderCharacters(data) {
     const card = document.createElement('div');
     card.className = 'char-card';
 
+    // Icon and Name wrapper
+    const header = document.createElement('div');
+    header.className = 'char-header';
+
+    if (char.icon) {
+      const img = document.createElement('img');
+      img.src = char.icon;
+      img.alt = char.name;
+      img.className = 'char-icon';
+      header.appendChild(img);
+    }
+
     const nameEl = document.createElement('h3');
     nameEl.textContent = char.name;
-    card.appendChild(nameEl);
+    header.appendChild(nameEl);
+
+    card.appendChild(header);
 
     const skillsList = document.createElement('div');
     skillsList.className = 'skills-list';
@@ -52,6 +66,7 @@ function renderCharacters(data) {
         const skillData = {
           charId: char.id,
           charName: char.name,
+          charIcon: char.icon,
           skillName: skill.name,
           cooldown: skill.cooldown,
           spCost: skill.spCost || 0,
@@ -136,7 +151,16 @@ function placeSkillOnTimeline(skillData, time) {
   // We make the skill block itself represent 1 second of action for visual clarity, or a fixed width.
   const blockWidth = 50;
   skillBlock.style.width = `${blockWidth}px`;
-  skillBlock.textContent = skillData.charName;
+
+  if (skillData.charIcon) {
+    const iconImg = document.createElement('img');
+    iconImg.src = skillData.charIcon;
+    iconImg.className = 'placed-skill-icon';
+    skillBlock.appendChild(iconImg);
+  } else {
+    skillBlock.textContent = skillData.charName;
+  }
+
   skillBlock.title = `${skillData.charName} - ${skillData.skillName}\nTime: ${time.toFixed(1)}s`;
 
   // Create Cooldown block
@@ -207,12 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isPlaying) {
       // Pause
       isPlaying = false;
-      btnPlay.textContent = 'Play';
+      btnPlay.textContent = '再生';
       cancelAnimationFrame(animationFrameId);
     } else {
       // Play
       isPlaying = true;
-      btnPlay.textContent = 'Pause';
+      btnPlay.textContent = '一時停止';
       if (playbackTime >= 60) playbackTime = 0; // reset if at end
       lastTimestamp = performance.now();
       animationFrameId = requestAnimationFrame(animationLoop);
@@ -221,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btnStop.addEventListener('click', () => {
     isPlaying = false;
-    btnPlay.textContent = 'Play';
+    btnPlay.textContent = '再生';
     cancelAnimationFrame(animationFrameId);
     playbackTime = 0;
     renderPlaybackState();
@@ -251,7 +275,7 @@ function animationLoop(timestamp) {
   if (playbackTime > 60) {
     playbackTime = 60;
     isPlaying = false;
-    document.getElementById('btn-play').textContent = 'Play';
+    document.getElementById('btn-play').textContent = '再生';
   }
 
   renderPlaybackState();
