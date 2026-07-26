@@ -3,6 +3,7 @@ let party = [];
 let timelineCycles = [
   []
 ]; // Array of skill objects placed on timeline
+let cycleNames = ['サイクル 1'];
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchCharacters();
@@ -11,12 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-export-url').addEventListener('click', exportUrl);
   document.getElementById('btn-export-image').addEventListener('click', exportImage);
   loadFromUrl();
+  // Ensure initial render
+  if (!window.location.hash) {
+    renderTimeline();
+  }
 });
 
 function exportUrl() {
   const data = {
     party: party,
-    timelineCycles: timelineCycles
+    timelineCycles: timelineCycles,
+    cycleNames: cycleNames
   };
   const jsonStr = JSON.stringify(data);
   const base64 = btoa(encodeURIComponent(jsonStr));
@@ -39,6 +45,7 @@ function loadFromUrl() {
       if (data.party && data.timelineCycles) {
         party = data.party;
         timelineCycles = data.timelineCycles;
+        cycleNames = data.cycleNames || Array.from({length: timelineCycles.length}, (_, i) => 'サイクル ' + (i + 1));
         renderParty();
         renderPalette();
         renderTimeline();
@@ -55,7 +62,35 @@ function exportImage() {
 
   html2canvas(elementToCapture, {
     backgroundColor: '#121212',
-    scale: 2
+    scale: 2,
+    onclone: (clonedDoc) => {
+      // Input elements sometimes shift text or don't render perfectly in html2canvas.
+      // Replacing them with span elements in the cloned document fixes alignment issues.
+      const inputs = clonedDoc.querySelectorAll('input[type="number"], input[type="text"]');
+      inputs.forEach(input => {
+        const span = clonedDoc.createElement('span');
+        span.textContent = input.value;
+        span.style.cssText = window.getComputedStyle(input).cssText;
+        span.style.display = 'inline-block';
+        span.style.boxSizing = 'border-box';
+        // Minor adjustments for visual similarity in canvas
+        span.style.padding = '2px 4px';
+        span.style.lineHeight = 'normal';
+        input.parentNode.replaceChild(span, input);
+      });
+
+      const selects = clonedDoc.querySelectorAll('select');
+      selects.forEach(select => {
+        const span = clonedDoc.createElement('span');
+        const selectedOption = select.options[select.selectedIndex];
+        span.textContent = selectedOption ? selectedOption.text : '';
+        span.style.cssText = window.getComputedStyle(select).cssText;
+        span.style.display = 'inline-block';
+        span.style.boxSizing = 'border-box';
+        span.style.padding = '2px 4px';
+        select.parentNode.replaceChild(span, select);
+      });
+    }
   }).then(canvas => {
     const link = document.createElement('a');
     link.download = 'endfield_timeline.png';
@@ -295,6 +330,11 @@ function createDraggableBlock(data, text) {
   return el;
 }
 
+
+window.updateCycleName = function(cycleIndex, value) {
+  cycleNames[cycleIndex] = value;
+};
+
 window.updateTimelineRefund = function(cycleIndex, index, value) {
   timelineCycles[cycleIndex][index].customRefund = parseFloat(value) || 0;
   updateSimulation();
@@ -319,6 +359,7 @@ function renderTimeline() {
       // Strip reorder flags just in case
       cloned.forEach(i => delete i.isReorder);
       timelineCycles.splice(cycleIndex + 1, 0, cloned);
+      cycleNames.splice(cycleIndex + 1, 0, cycleNames[cycleIndex] + ' (コピー)');
       renderTimeline();
     };
 
@@ -326,9 +367,13 @@ function renderTimeline() {
     delBtn.textContent = '削除';
     delBtn.onclick = () => {
       timelineCycles.splice(cycleIndex, 1);
-      if (timelineCycles.length === 0) timelineCycles = [
-        []
-      ];
+      cycleNames.splice(cycleIndex, 1);
+      if (timelineCycles.length === 0) {
+        timelineCycles = [
+          []
+        ];
+        cycleNames = ['サイクル 1'];
+      }
       renderTimeline();
     };
 
@@ -443,10 +488,7 @@ function renderTimeline() {
                for (let i = absIndex - 1; i >= 0; i--) {
                   const pastItem = flat[i];
                   if (pastItem.type === 'skill' && pastItem.charId === 'タンタン' && pastItem.skillData.type === 'combo') {
-                      recentCombos++;
-                  } else if (pastItem.type === 'skill' && pastItem.charId === 'タンタン' && pastItem.skillData.type === 'skill') {
-                      break; // stop at last skill
-                  } else if (pastItem.type === 'refund' && pastItem.charId === 'タンタン') {
+                      recentCombos++;                  } else if (pastItem.type === 'refund' && pastItem.charId === 'タンタン') {
                       break; // stop at last refund
                   }
                }
@@ -457,7 +499,9 @@ function renderTimeline() {
           }
 
           const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
-          text = `返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${cycleIndex}, ${index}, this.value)" onclick="event.stopPropagation();">`;
+          const pObj = party.find(x => x.id === item.charId);
+          const iconHtml = pObj ? `<img src="${pObj.icon}" style="width:20px; height:20px; border-radius:50%; object-fit:cover; margin-right:4px;">` : '';
+          text = `${iconHtml}返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${cycleIndex}, ${index}, this.value)" onclick="event.stopPropagation();">`;
           block.innerHTML = text;
         } else if (item.type === 'separator') {
           block.classList.add('bg-separator');
@@ -492,7 +536,15 @@ function renderTimeline() {
     const statsDiv = document.createElement('div');
     statsDiv.className = 'cycle-stats';
     statsDiv.id = `cycle-stats-${cycleIndex}`;
-    statsDiv.innerHTML = `<div>消費SP: <span class="sp-spent">0</span></div><div>返還SP: <span class="sp-refund">0</span></div>`;
+
+    // Header for cycle stats includes editable name
+    statsDiv.innerHTML = `
+      <div style="display:flex; align-items:center; gap:10px; margin-right:auto;">
+         <input type="text" class="cycle-name-input" value="${(cycleNames[cycleIndex] || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')}" onchange="updateCycleName(${cycleIndex}, this.value)" placeholder="サイクル名" style="background:#2c2c2c; color:#fff; border:1px solid #444; border-radius:4px; padding:4px 8px; font-weight:bold; width:150px;">
+      </div>
+      <div>消費SP: <span class="sp-spent">0</span></div>
+      <div>返還SP: <span class="sp-refund">0</span></div>
+    `;
 
     const timelineContainer = document.createElement('div');
     timelineContainer.style.display = 'flex';
@@ -513,6 +565,7 @@ function renderTimeline() {
   addBtn.textContent = '＋ サイクルを追加';
   addBtn.onclick = () => {
     timelineCycles.push([]);
+    cycleNames.push('サイクル ' + timelineCycles.length);
     renderTimeline();
   };
   wrapper.appendChild(addBtn);
@@ -526,6 +579,7 @@ function clearTimeline() {
   timelineCycles = [
     []
   ];
+  cycleNames = ['サイクル 1'];
   renderTimeline();
 }
 
@@ -613,18 +667,8 @@ function updateSimulation() {
         const s = step.skillData;
 
         if (s.type === 'skill') {
-          // Tangtang custom logic for refund on skill use
-          if (step.charId === 'タンタン') {
-            const p = party.find(x => x.id === 'タンタン');
-            if (p) {
-              let refundPerCombo = p.potential >= 1 ? 25 : 20;
-              let activeCombos = Math.min(2, tangtangComboCount);
-              const autoRefund = activeCombos * refundPerCombo;
-              currentRefundSpPool += autoRefund;
-              cycleRefundSp += autoRefund;
-            }
-            tangtangComboCount = 0;
-          }
+          // Removed Tangtang auto-refund. Now requires explicit refund block.
+          // tangtangComboCount does NOT reset here.
 
           totalSpSpent += s.spCost;
           cycleSpSpent += s.spCost;

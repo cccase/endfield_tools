@@ -146,6 +146,7 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .cycle-stats {
   display: flex;
   gap: 15px;
+  align-items: center;
   font-size: 12px;
   color: #a0a0a0;
   margin-left: 5px;
