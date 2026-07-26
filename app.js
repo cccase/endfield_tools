@@ -104,15 +104,28 @@ function addToParty(charData) {
   }
 
   let defaultEfficiency = 100;
-  if (charData.name === 'タンタン') defaultEfficiency = 107;
-  if (charData.name === 'ギルベルタ') defaultEfficiency = 202.9;
-  if (charData.name === 'オクギ') defaultEfficiency = 153.4;
-  if (charData.name === 'ザイヒ') defaultEfficiency = 133.7;
+  let defaultPotential = 0;
+
+  if (charData.name === 'タンタン') {
+     defaultEfficiency = 107;
+     defaultPotential = 1;
+  }
+  if (charData.name === 'ギルベルタ') {
+     defaultEfficiency = 202.9;
+  }
+  if (charData.name === 'オクギ') {
+     defaultEfficiency = 153.4;
+     defaultPotential = 1;
+  }
+  if (charData.name === 'ザイヒ') {
+     defaultEfficiency = 133.7;
+     defaultPotential = 4;
+  }
 
   party.push({
     ...charData,
-    efficiency: defaultEfficiency, // Default updated per requirement
-    potential: 0 // Default 0凸
+    efficiency: defaultEfficiency,
+    potential: defaultPotential
   });
 
   renderParty();
@@ -194,18 +207,6 @@ function renderPalette() {
     // Icon header
     group.innerHTML = `<img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">`;
 
-    // Refund Panel (if applicable)
-    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost')) || p.name === 'タンタン') {
-      const refundEl = createDraggableBlock({
-        type: 'refund',
-        charId: p.id,
-        charName: p.name,
-        icon: p.icon
-      }, `返還SP`);
-      refundEl.classList.add('bg-refund');
-      group.appendChild(refundEl);
-    }
-
     // Skills
     p.skills.forEach(s => {
       const skillEl = createDraggableBlock({
@@ -221,6 +222,18 @@ function renderPalette() {
       if (s.type === 'ult') skillEl.classList.add('bg-ult');
       group.appendChild(skillEl);
     });
+
+    // Refund Panel (if applicable) - Moved to far right
+    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost')) || p.name === 'タンタン') {
+      const refundEl = createDraggableBlock({
+        type: 'refund',
+        charId: p.id,
+        charName: p.name,
+        icon: p.icon
+      }, `返還SP`);
+      refundEl.classList.add('bg-refund');
+      group.appendChild(refundEl);
+    }
 
     container.appendChild(group);
   });
@@ -476,8 +489,22 @@ function renderTimeline() {
       timeline.appendChild(dropEnd);
     }
 
+    const statsDiv = document.createElement('div');
+    statsDiv.className = 'cycle-stats';
+    statsDiv.id = `cycle-stats-${cycleIndex}`;
+    statsDiv.innerHTML = `<div>消費SP: <span class="sp-spent">0</span></div><div>返還SP: <span class="sp-refund">0</span></div>`;
+
+    const timelineContainer = document.createElement('div');
+    timelineContainer.style.display = 'flex';
+    timelineContainer.style.flexDirection = 'column';
+    timelineContainer.style.gap = '5px';
+    timelineContainer.style.flexGrow = '1';
+
+    timelineContainer.appendChild(statsDiv);
+    timelineContainer.appendChild(timeline);
+
     cycleWrap.appendChild(controls);
-    cycleWrap.appendChild(timeline);
+    cycleWrap.appendChild(timelineContainer);
     wrapper.appendChild(cycleWrap);
   });
 
@@ -558,84 +585,99 @@ function updateSimulation() {
     };
   });
 
-  // Process sequence (flatten cycles for simulation)
-  const flatSequence = timelineCycles.flat();
-  flatSequence.forEach((step, index) => {
-    const stats = getCharacterStats(step.charId);
-    if (step.type === 'separator') return;
-    if (step.type !== 'refund' && !stats) return;
+  // Process sequence cycle by cycle
+  timelineCycles.forEach((cycle, cycleIndex) => {
+    let cycleSpSpent = 0;
+    let cycleRefundSp = 0;
 
-    if (step.type === 'refund') {
-      let baseVal = stats ? stats.refundSP : 0;
-      if (step.charId === 'タンタン') {
-        const p = party.find(x => x.id === 'タンタン');
-        if (p) {
-          let recentCombos = Math.min(2, tangtangComboCount);
-          let refundPerCombo = p.potential >= 1 ? 25 : 20;
-          baseVal = recentCombos * refundPerCombo;
-          tangtangComboCount = 0; // consumed by the explicit refund block
-        }
-      }
-      const refundVal = step.customRefund !== undefined ? step.customRefund : baseVal;
-      currentRefundSpPool += refundVal;
-    } else if (step.type === 'skill') {
-      const s = step.skillData;
+    cycle.forEach((step, index) => {
+      const stats = getCharacterStats(step.charId);
+      if (step.type === 'separator') return;
+      if (step.type !== 'refund' && !stats) return;
 
-      if (s.type === 'skill') {
-        // Tangtang custom logic for refund on skill use
+      if (step.type === 'refund') {
+        let baseVal = stats ? stats.refundSP : 0;
         if (step.charId === 'タンタン') {
           const p = party.find(x => x.id === 'タンタン');
           if (p) {
+            let recentCombos = Math.min(2, tangtangComboCount);
             let refundPerCombo = p.potential >= 1 ? 25 : 20;
-            let activeCombos = Math.min(2, tangtangComboCount);
-            currentRefundSpPool += activeCombos * refundPerCombo;
+            baseVal = recentCombos * refundPerCombo;
+            tangtangComboCount = 0; // consumed by the explicit refund block
           }
-          tangtangComboCount = 0;
         }
+        const refundVal = step.customRefund !== undefined ? step.customRefund : baseVal;
+        currentRefundSpPool += refundVal;
+        cycleRefundSp += refundVal;
+      } else if (step.type === 'skill') {
+        const s = step.skillData;
 
-        totalSpSpent += s.spCost;
-        let epBase = 6.5;
-        let consumedRefund = 0;
-
-        if (currentRefundSpPool > 0) {
-          consumedRefund = Math.min(currentRefundSpPool, s.spCost);
-          currentRefundSpPool -= consumedRefund;
-          epBase = ((s.spCost - consumedRefund) / s.spCost) * 6.5;
-        }
-
-        party.forEach(p => {
-          const pStats = getCharacterStats(p.id);
-          const gain = epBase * pStats.efficiency;
-          epState[p.id].current += gain;
-          if (!epState[p.id].hasCastUlt) {
-            epState[p.id].epGainedBeforeFirstUlt += gain;
-            epState[p.id].baseEpGainedBeforeFirstUlt += epBase;
+        if (s.type === 'skill') {
+          // Tangtang custom logic for refund on skill use
+          if (step.charId === 'タンタン') {
+            const p = party.find(x => x.id === 'タンタン');
+            if (p) {
+              let refundPerCombo = p.potential >= 1 ? 25 : 20;
+              let activeCombos = Math.min(2, tangtangComboCount);
+              const autoRefund = activeCombos * refundPerCombo;
+              currentRefundSpPool += autoRefund;
+              cycleRefundSp += autoRefund;
+            }
+            tangtangComboCount = 0;
           }
-        });
 
-      } else if (s.type === 'combo') {
-        if (step.charId === 'タンタン') {
-          tangtangComboCount++;
-        }
-        const gain = 10 * stats.efficiency;
-        epState[step.charId].current += gain;
-        if (!epState[step.charId].hasCastUlt) {
-            epState[step.charId].epGainedBeforeFirstUlt += gain;
-            epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
-        }
-      } else if (s.type === 'ult') {
-        let cost = s.epCost;
-        if (stats.ultCostReduction > 0) {
-          cost = cost * (1 - stats.ultCostReduction / 100);
-        }
+          totalSpSpent += s.spCost;
+          cycleSpSpent += s.spCost;
+          let epBase = 6.5;
+          let consumedRefund = 0;
 
-        if (epState[step.charId].current < cost) {
-          epState[step.charId].warnings.push(`発動時 EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
+          if (currentRefundSpPool > 0) {
+            consumedRefund = Math.min(currentRefundSpPool, s.spCost);
+            currentRefundSpPool -= consumedRefund;
+            epBase = ((s.spCost - consumedRefund) / s.spCost) * 6.5;
+          }
+
+          party.forEach(p => {
+            const pStats = getCharacterStats(p.id);
+            const gain = epBase * pStats.efficiency;
+            epState[p.id].current += gain;
+            if (!epState[p.id].hasCastUlt) {
+              epState[p.id].epGainedBeforeFirstUlt += gain;
+              epState[p.id].baseEpGainedBeforeFirstUlt += epBase;
+            }
+          });
+
+        } else if (s.type === 'combo') {
+          if (step.charId === 'タンタン') {
+            tangtangComboCount++;
+          }
+          const gain = 10 * stats.efficiency;
+          epState[step.charId].current += gain;
+          if (!epState[step.charId].hasCastUlt) {
+              epState[step.charId].epGainedBeforeFirstUlt += gain;
+              epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
+          }
+        } else if (s.type === 'ult') {
+          let cost = s.epCost;
+          if (stats.ultCostReduction > 0) {
+            cost = cost * (1 - stats.ultCostReduction / 100);
+          }
+
+          if (epState[step.charId].current < cost) {
+            epState[step.charId].warnings.push(`発動時 EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
+          }
+          epState[step.charId].current = 0;
+          epState[step.charId].ultCount += 1;
+          epState[step.charId].hasCastUlt = true;
         }
-        epState[step.charId].current = 0;
-        epState[step.charId].ultCount += 1;
-        epState[step.charId].hasCastUlt = true;
       }
+    });
+
+    // Update cycle stats UI
+    const cycleStatsDiv = document.getElementById(`cycle-stats-${cycleIndex}`);
+    if (cycleStatsDiv) {
+        cycleStatsDiv.querySelector('.sp-spent').textContent = cycleSpSpent;
+        cycleStatsDiv.querySelector('.sp-refund').textContent = cycleRefundSp;
     }
   });
 
@@ -677,51 +719,19 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
         </div>
         <div style="display: flex; flex-direction: column; align-items: flex-end;">
             <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
-            ${state.hasCastUlt ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要初期EP: ${Math.max(0, state.firstUltCost - state.epGainedBeforeFirstUlt).toFixed(1)}</span>` : ''}
+            ${state.hasCastUlt ? (state.baseEpGainedBeforeFirstUlt > 0 ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: ${((state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100).toFixed(1)}%</span>` : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 計算不可</span>`) : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 必殺未発動</span>`}
         </div>
       </div>
       <div class="ep-bar-container">
         <div class="ep-bar" style="width: ${percentage}%;"></div>
-        <div class="ep-text">${state.current.toFixed(1)} / ${maxEp.toFixed(1)}</div>
+        <div class="ep-text">${state.current.toFixed(1)} / ${maxEp.toFixed(1)} (${percentage.toFixed(1)}%)</div>
       </div>
       ${warningHtml}
     `;
     container.appendChild(row);
   });
 
-  const analysisContainer = document.getElementById('efficiency-analysis-list');
-  if (analysisContainer) {
-    analysisContainer.innerHTML = '';
-    party.forEach(p => {
-      const state = epState[p.id];
-      const row = document.createElement('div');
-      row.className = 'analysis-row';
 
-      let reqEffText = "必殺未発動";
-      let resClass = "";
-
-      if (state.hasCastUlt) {
-        if (state.baseEpGainedBeforeFirstUlt > 0) {
-           let requiredEfficiency = (state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100;
-           reqEffText = `${requiredEfficiency.toFixed(1)}%`;
-        } else {
-           reqEffText = "計算不可 (基礎獲得EPが0)";
-           resClass = "not-possible";
-        }
-      }
-
-      row.innerHTML = `
-        <div class="analysis-info">
-          <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
-          <span>${p.name}</span>
-        </div>
-        <div class="analysis-result ${resClass}">
-          ${reqEffText}
-        </div>
-      `;
-      analysisContainer.appendChild(row);
-    });
-  }
 }
 window.renderTimeline = renderTimeline;
 
