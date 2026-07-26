@@ -763,7 +763,7 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
         </div>
         <div style="display: flex; flex-direction: column; align-items: flex-end;">
             <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
-            ${state.hasCastUlt ? (state.baseEpGainedBeforeFirstUlt > 0 ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: ${((state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100).toFixed(1)}%</span>` : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 計算不可</span>`) : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 必殺未発動</span>`}
+            ${state.baseEpGainedBeforeFirstUlt > 0 ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: ${((state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100).toFixed(1)}%</span>` : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 計算不可</span>`}
         </div>
       </div>
       <div class="ep-bar-container">
