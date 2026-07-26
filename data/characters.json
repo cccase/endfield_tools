@@ -6,7 +6,7 @@
     "baseRefundSP": 0,
     "potentials": [
       {
-        "level": 2,
+        "level": 4,
         "type": "ult_cost_reduction_percent",
         "value": 10
       }
@@ -75,7 +75,7 @@
     "baseRefundSP": 0,
     "potentials": [
       {
-        "level": 2,
+        "level": 4,
         "type": "ult_cost_reduction_percent",
         "value": 10
       }
@@ -106,11 +106,6 @@
     "icon": "image/tangtang.png",
     "baseRefundSP": 0,
     "potentials": [
-      {
-        "level": 1,
-        "type": "refund_sp_boost",
-        "value": 5
-      },
       {
         "level": 4,
         "type": "ult_cost_reduction_percent",

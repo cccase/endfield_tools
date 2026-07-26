@@ -1,12 +1,71 @@
 let allCharacters = [];
 let party = [];
-let timelineSequence = []; // Array of skill objects placed on timeline
+let timelineCycles = [
+  []
+]; // Array of skill objects placed on timeline
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchCharacters();
-  setupTimelineDrop();
+
   document.getElementById('btn-clear-timeline').addEventListener('click', clearTimeline);
+  document.getElementById('btn-export-url').addEventListener('click', exportUrl);
+  document.getElementById('btn-export-image').addEventListener('click', exportImage);
+  loadFromUrl();
 });
+
+function exportUrl() {
+  const data = {
+    party: party,
+    timelineCycles: timelineCycles
+  };
+  const jsonStr = JSON.stringify(data);
+  const base64 = btoa(encodeURIComponent(jsonStr));
+  const newUrl = window.location.origin + window.location.pathname + "#" + base64;
+
+  navigator.clipboard.writeText(newUrl).then(() => {
+    alert("URLをクリップボードにコピーしました！");
+  }).catch(err => {
+    console.error(err);
+    alert("URLのコピーに失敗しました。");
+  });
+}
+
+function loadFromUrl() {
+  if (window.location.hash) {
+    try {
+      const base64 = window.location.hash.substring(1);
+      const jsonStr = decodeURIComponent(atob(base64));
+      const data = JSON.parse(jsonStr);
+      if (data.party && data.timelineCycles) {
+        party = data.party;
+        timelineCycles = data.timelineCycles;
+        renderParty();
+        renderPalette();
+        renderTimeline();
+      }
+    } catch (err) {
+      console.error("Failed to load state from URL", err);
+    }
+  }
+}
+
+function exportImage() {
+  const elementToCapture = document.querySelector('main');
+  if (!elementToCapture) return;
+
+  html2canvas(elementToCapture, {
+    backgroundColor: '#121212',
+    scale: 2
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'endfield_timeline.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }).catch(err => {
+    console.error("Image generation failed", err);
+    alert("画像の生成に失敗しました。");
+  });
+}
 
 async function fetchCharacters() {
   try {
@@ -53,7 +112,7 @@ function addToParty(charData) {
   party.push({
     ...charData,
     efficiency: defaultEfficiency, // Default updated per requirement
-    potential: 0     // Default 0凸
+    potential: 0 // Default 0凸
   });
 
   renderParty();
@@ -70,9 +129,12 @@ function removeFromParty(index) {
 
   // Re-filter timeline (remove skills of characters no longer in party)
   const currentPartyIds = party.map(p => p.id);
-  timelineSequence = timelineSequence.filter(item => {
-    if (item.type === 'refund') return currentPartyIds.includes(item.charId);
-    return currentPartyIds.includes(item.charId);
+  timelineCycles = timelineCycles.map(cycle => {
+    return cycle.filter(item => {
+      if (item.type === 'separator') return true;
+      if (item.type === 'refund' && !item.charId) return true; // Keep generic refund
+      return currentPartyIds.includes(item.charId);
+    });
   });
   renderTimeline();
 }
@@ -116,7 +178,6 @@ function renderParty() {
     container.appendChild(el);
   });
 }
-
 window.updatePartySetting = function(index, key, value) {
   party[index][key] = parseFloat(value);
   updateSimulation();
@@ -135,14 +196,26 @@ function renderPalette() {
 
     // Refund Panel (if applicable)
     if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost'))) {
-      const refundEl = createDraggableBlock({ type: 'refund', charId: p.id, charName: p.name, icon: p.icon }, `返還SP`);
+      const refundEl = createDraggableBlock({
+        type: 'refund',
+        charId: p.id,
+        charName: p.name,
+        icon: p.icon
+      }, `返還SP`);
       refundEl.classList.add('bg-refund');
       group.appendChild(refundEl);
     }
 
     // Skills
     p.skills.forEach(s => {
-      const skillEl = createDraggableBlock({ type: 'skill', charId: p.id, skillId: s.id, charName: p.name, icon: p.icon, skillData: s }, s.name);
+      const skillEl = createDraggableBlock({
+        type: 'skill',
+        charId: p.id,
+        skillId: s.id,
+        charName: p.name,
+        icon: p.icon,
+        skillData: s
+      }, s.name);
       if (s.type === 'skill') skillEl.classList.add('bg-skill');
       if (s.type === 'combo') skillEl.classList.add('bg-combo');
       if (s.type === 'ult') skillEl.classList.add('bg-ult');
@@ -151,7 +224,41 @@ function renderPalette() {
 
     container.appendChild(group);
   });
+
+  const globalGroup = document.createElement('div');
+  globalGroup.className = 'palette-group';
+
+  const refundData = {
+    type: 'refund'
+  };
+  const refundBlock = document.createElement('div');
+  refundBlock.className = 'skill-block bg-refund';
+  refundBlock.draggable = true;
+  refundBlock.innerHTML = `<span>返還SP (任意)</span>`;
+  refundBlock.addEventListener('dragstart', e => e.dataTransfer.setData('application/json', JSON.stringify(refundData)));
+  refundBlock.addEventListener('click', () => {
+    timelineCycles[timelineCycles.length - 1].push(refundData);
+    renderTimeline();
+  });
+  globalGroup.appendChild(refundBlock);
+
+  const sepData = {
+    type: 'separator'
+  };
+  const separatorBlock = document.createElement('div');
+  separatorBlock.className = 'skill-block bg-separator-palette';
+  separatorBlock.draggable = true;
+  separatorBlock.innerHTML = `<span>待機 (仕切り)</span>`;
+  separatorBlock.addEventListener('dragstart', e => e.dataTransfer.setData('application/json', JSON.stringify(sepData)));
+  separatorBlock.addEventListener('click', () => {
+    timelineCycles[timelineCycles.length - 1].push(sepData);
+    renderTimeline();
+  });
+  globalGroup.appendChild(separatorBlock);
+
+  container.appendChild(globalGroup);
 }
+
 
 function createDraggableBlock(data, text) {
   const el = document.createElement('div');
@@ -167,7 +274,7 @@ function createDraggableBlock(data, text) {
   el.addEventListener('click', () => {
     // Only add if it's from the palette (doesn't have an index yet)
     if (data.index === undefined) {
-      timelineSequence.push(JSON.parse(JSON.stringify(data)));
+      timelineCycles[timelineCycles.length - 1].push(JSON.parse(JSON.stringify(data)));
       renderTimeline();
     }
   });
@@ -175,151 +282,194 @@ function createDraggableBlock(data, text) {
   return el;
 }
 
-function setupTimelineDrop() {
-  const timeline = document.getElementById('timeline');
-  timeline.addEventListener('dragover', e => {
-    e.preventDefault();
-    // Highlight drop target if we are dragging over a timeline item
-    const draggingElement = document.querySelector('.dragging');
-    if (!draggingElement) return;
-    const afterElement = getDragAfterElement(timeline, e.clientX);
-    if (afterElement == null) {
-      timeline.appendChild(draggingElement);
-    } else {
-      timeline.insertBefore(draggingElement, afterElement);
-    }
-  });
-
-  timeline.addEventListener('drop', e => {
-    e.preventDefault();
-    const dataStr = e.dataTransfer.getData('application/json');
-    if (!dataStr) return;
-    try {
-      const data = JSON.parse(dataStr);
-      // Check if this is a reorder drop
-      if (data.isReorder) {
-        // Handled by dragend listener to sync DOM order with state
-        return;
-      }
-
-      // New item from palette
-      // Insert at the position where the drop occurred
-      const afterElement = getDragAfterElement(timeline, e.clientX);
-      let insertIndex = timelineSequence.length;
-      if (afterElement) {
-        insertIndex = parseInt(afterElement.getAttribute('data-index'));
-      }
-
-      timelineSequence.splice(insertIndex, 0, data);
-      renderTimeline();
-    } catch(err) { console.error(err); }
-  });
-}
-
-function getDragAfterElement(container, x) {
-  const draggableElements = [...container.querySelectorAll('.timeline-item:not(.dragging)')];
-
-  return draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = x - box.left - box.width / 2;
-    if (offset < 0 && offset > closest.offset) {
-      return { offset: offset, element: child };
-    } else {
-      return closest;
-    }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-window.updateTimelineRefund = function(index, value) {
-  timelineSequence[index].customRefund = parseFloat(value) || 0;
+window.updateTimelineRefund = function(cycleIndex, index, value) {
+  timelineCycles[cycleIndex][index].customRefund = parseFloat(value) || 0;
   updateSimulation();
 };
 
 function renderTimeline() {
-  const timeline = document.getElementById('timeline');
-  timeline.innerHTML = '';
+  const wrapper = document.getElementById('timeline-wrapper');
+  wrapper.innerHTML = '';
 
-  if (timelineSequence.length === 0) {
-    timeline.innerHTML = `<div class="drop-zone">ここにスキルをドロップ</div>`;
-    updateSimulation();
-    return;
-  }
+  timelineCycles.forEach((cycle, cycleIndex) => {
+    const cycleWrap = document.createElement('div');
+    cycleWrap.className = 'cycle-wrapper';
 
-  timelineSequence.forEach((item, index) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'timeline-item';
-    wrap.setAttribute('data-index', index);
-    wrap.draggable = true;
+    // Controls
+    const controls = document.createElement('div');
+    controls.className = 'cycle-controls';
 
-    wrap.addEventListener('dragstart', e => {
-      wrap.classList.add('dragging');
-      // Encode that this is a reorder
-      const data = JSON.parse(JSON.stringify(item));
-      data.isReorder = true;
-      data.originalIndex = index;
-      e.dataTransfer.setData('application/json', JSON.stringify(data));
-      // Required for Firefox drop effect
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    wrap.addEventListener('dragend', () => {
-      wrap.classList.remove('dragging');
-      // Sync DOM order back to state array
-      const timelineNodes = document.querySelectorAll('.timeline-item');
-      const newSequence = [];
-      timelineNodes.forEach(node => {
-        const oldIndex = parseInt(node.getAttribute('data-index'));
-        newSequence.push(timelineSequence[oldIndex]);
-      });
-      timelineSequence = newSequence;
-      renderTimeline();
-    });
-
-    const block = document.createElement('div');
-    block.className = 'skill-block';
-
-    let text = "";
-    if (item.type === 'refund') {
-      block.classList.add('bg-refund');
-
-      const stats = getCharacterStats(item.charId);
-      const defaultRefund = stats ? stats.refundSP : 0;
-      const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
-
-      text = `返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${index}, this.value)" onclick="event.stopPropagation();">`;
-    } else {
-      if (item.skillData.type === 'skill') block.classList.add('bg-skill');
-      if (item.skillData.type === 'combo') block.classList.add('bg-combo');
-      if (item.skillData.type === 'ult') block.classList.add('bg-ult');
-      text = item.skillData.name;
-    }
-
-    block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
-
-    const delBtn = document.createElement('div');
-    delBtn.className = 'delete-overlay';
-    delBtn.textContent = '×';
-    delBtn.onclick = () => {
-      timelineSequence.splice(index, 1);
+    const cloneBtn = document.createElement('button');
+    cloneBtn.textContent = '複製';
+    cloneBtn.onclick = () => {
+      const cloned = JSON.parse(JSON.stringify(timelineCycles[cycleIndex]));
+      // Strip reorder flags just in case
+      cloned.forEach(i => delete i.isReorder);
+      timelineCycles.splice(cycleIndex + 1, 0, cloned);
       renderTimeline();
     };
 
-    wrap.appendChild(block);
-    wrap.appendChild(delBtn);
-    timeline.appendChild(wrap);
+    const delBtn = document.createElement('button');
+    delBtn.textContent = '削除';
+    delBtn.onclick = () => {
+      timelineCycles.splice(cycleIndex, 1);
+      if (timelineCycles.length === 0) timelineCycles = [
+        []
+      ];
+      renderTimeline();
+    };
+
+    controls.appendChild(cloneBtn);
+    controls.appendChild(delBtn);
+
+    const timeline = document.createElement('div');
+    timeline.className = 'sequence-timeline';
+    timeline.setAttribute('data-cycle-index', cycleIndex);
+
+    // Drop setup for the timeline
+    timeline.addEventListener('dragover', e => {
+      e.preventDefault();
+      const draggingElement = document.querySelector('.dragging');
+      if (!draggingElement) return;
+      const afterElement = getDragAfterElement(timeline, e.clientX);
+      if (afterElement == null) {
+        timeline.appendChild(draggingElement);
+      } else {
+        timeline.insertBefore(draggingElement, afterElement);
+      }
+    });
+
+    timeline.addEventListener('drop', e => {
+      e.preventDefault();
+      const dataStr = e.dataTransfer.getData('application/json');
+      if (!dataStr) return;
+      try {
+        const data = JSON.parse(dataStr);
+        if (data.isReorder) {
+          // Handled by dragend
+          return;
+        }
+
+        const afterElement = getDragAfterElement(timeline, e.clientX);
+        let insertIndex = cycle.length;
+        if (afterElement) {
+          insertIndex = parseInt(afterElement.getAttribute('data-index'));
+        }
+
+        timelineCycles[cycleIndex].splice(insertIndex, 0, data);
+        renderTimeline();
+      } catch (err) {
+        console.error(err);
+      }
+    });
+
+    if (cycle.length === 0) {
+      timeline.innerHTML = `<div class="drop-zone">ここにスキルをドロップ</div>`;
+    } else {
+      cycle.forEach((item, index) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'timeline-item';
+        wrap.setAttribute('data-cycle', cycleIndex);
+        wrap.setAttribute('data-index', index);
+        wrap.draggable = true;
+
+        wrap.addEventListener('dragstart', e => {
+          wrap.classList.add('dragging');
+          const data = JSON.parse(JSON.stringify(item));
+          data.isReorder = true;
+          data.sourceCycle = cycleIndex;
+          data.sourceIndex = index;
+          e.dataTransfer.setData('application/json', JSON.stringify(data));
+          e.dataTransfer.effectAllowed = 'move';
+        });
+
+        wrap.addEventListener('dragend', () => {
+          wrap.classList.remove('dragging');
+
+          // Rebuild all cycles from DOM
+          const newCycles = [];
+          const cycleNodes = document.querySelectorAll('.sequence-timeline');
+          cycleNodes.forEach(node => {
+            const items = [];
+            const itemNodes = node.querySelectorAll('.timeline-item');
+            itemNodes.forEach(itemNode => {
+              const oldCycle = parseInt(itemNode.getAttribute('data-cycle'));
+              const oldIndex = parseInt(itemNode.getAttribute('data-index'));
+              items.push(timelineCycles[oldCycle][oldIndex]);
+            });
+            newCycles.push(items);
+          });
+          timelineCycles = newCycles;
+          if (timelineCycles.length === 0) timelineCycles = [
+            []
+          ];
+          renderTimeline();
+        });
+
+        const block = document.createElement('div');
+        block.className = 'skill-block';
+        let text = "";
+
+        if (item.type === 'refund') {
+          block.classList.add('bg-refund');
+          const stats = getCharacterStats(item.charId);
+          const defaultRefund = stats ? stats.refundSP : 0;
+          const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
+          text = `返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${cycleIndex}, ${index}, this.value)" onclick="event.stopPropagation();">`;
+          block.innerHTML = text;
+        } else if (item.type === 'separator') {
+          block.classList.add('bg-separator');
+          block.innerHTML = `<span></span>`;
+        } else {
+          if (item.skillData.type === 'skill') block.classList.add('bg-skill');
+          if (item.skillData.type === 'combo') block.classList.add('bg-combo');
+          if (item.skillData.type === 'ult') block.classList.add('bg-ult');
+          text = item.skillData.name;
+          block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
+        }
+
+        const delBtn = document.createElement('div');
+        delBtn.className = 'delete-overlay';
+        delBtn.textContent = '×';
+        delBtn.onclick = () => {
+          timelineCycles[cycleIndex].splice(index, 1);
+          renderTimeline();
+        };
+
+        wrap.appendChild(block);
+        wrap.appendChild(delBtn);
+        timeline.appendChild(wrap);
+      });
+
+      const dropEnd = document.createElement('div');
+      dropEnd.className = 'drop-zone';
+      dropEnd.style.minWidth = '50px';
+      timeline.appendChild(dropEnd);
+    }
+
+    cycleWrap.appendChild(controls);
+    cycleWrap.appendChild(timeline);
+    wrapper.appendChild(cycleWrap);
   });
 
-  // Add a small drop zone at the end
-  const dropEnd = document.createElement('div');
-  dropEnd.className = 'drop-zone';
-  dropEnd.style.minWidth = '50px';
-  timeline.appendChild(dropEnd);
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-cycle-btn';
+  addBtn.textContent = '＋ サイクルを追加';
+  addBtn.onclick = () => {
+    timelineCycles.push([]);
+    renderTimeline();
+  };
+  wrapper.appendChild(addBtn);
 
   updateSimulation();
 }
 
+
+
 function clearTimeline() {
-  timelineSequence = [];
+  timelineCycles = [
+    []
+  ];
   renderTimeline();
 }
 
@@ -352,6 +502,7 @@ function getCharacterStats(charId) {
 function updateSimulation() {
   let totalSpSpent = 0;
   let currentRefundSpPool = 0;
+  let tangtangComboCount = 0;
 
   // Check if start max charge is checked
   const startMaxChargeCheckbox = document.getElementById('start-max-charge');
@@ -370,64 +521,74 @@ function updateSimulation() {
     epState[p.id] = {
       current: startMaxCharge ? maxEp : 0,
       warnings: [],
-      ultCount: 0
+      ultCount: 0,
+      firstUltCost: maxEp,
+      epGainedBeforeFirstUlt: 0,
+      hasCastUlt: false
     };
   });
 
-  // Process sequence
-  timelineSequence.forEach((step, index) => {
+  // Process sequence (flatten cycles for simulation)
+  const flatSequence = timelineCycles.flat();
+  flatSequence.forEach((step, index) => {
     const stats = getCharacterStats(step.charId);
-    if (!stats) return; // Character removed from party but still in timeline somehow
+    if (step.type === 'separator') return;
+    if (step.type !== 'refund' && !stats) return;
 
     if (step.type === 'refund') {
-      const refundVal = step.customRefund !== undefined ? step.customRefund : stats.refundSP;
+      const refundVal = step.customRefund !== undefined ? step.customRefund : (stats ? stats.refundSP : 0);
       currentRefundSpPool += refundVal;
-    }
-    else if (step.type === 'skill') {
+    } else if (step.type === 'skill') {
       const s = step.skillData;
 
       if (s.type === 'skill') {
-        // SP Consumption
-        totalSpSpent += s.spCost;
+        // Tangtang custom logic for refund on skill use
+        if (step.charId === 'タンタン') {
+          const p = party.find(x => x.id === 'タンタン');
+          if (p) {
+            let refundPerCombo = p.potential >= 1 ? 25 : 20;
+            let activeCombos = Math.min(2, tangtangComboCount);
+            currentRefundSpPool += activeCombos * refundPerCombo;
+          }
+          tangtangComboCount = 0;
+        }
 
-        // EP Calculation
-        // base EP gain is 6.5 for all party members
-        // Calculate penalty if refund SP is used
+        totalSpSpent += s.spCost;
         let epBase = 6.5;
         let consumedRefund = 0;
 
         if (currentRefundSpPool > 0) {
-          // If we have refund SP, we consume it first up to the skill cost
           consumedRefund = Math.min(currentRefundSpPool, s.spCost);
           currentRefundSpPool -= consumedRefund;
-          // Formula: ((s.spCost - consumedRefund) / s.spCost) * 6.5
           epBase = ((s.spCost - consumedRefund) / s.spCost) * 6.5;
         }
 
-        // Apply to all party members
         party.forEach(p => {
           const pStats = getCharacterStats(p.id);
-          epState[p.id].current += epBase * pStats.efficiency;
+          const gain = epBase * pStats.efficiency;
+          epState[p.id].current += gain;
+          if (!epState[p.id].hasCastUlt) epState[p.id].epGainedBeforeFirstUlt += gain;
         });
 
-      }
-      else if (s.type === 'combo') {
-        // EP Calculation: 10 for the casting character only
-        epState[step.charId].current += 10 * stats.efficiency;
-      }
-      else if (s.type === 'ult') {
-        // Ult Cost consumption
+      } else if (s.type === 'combo') {
+        if (step.charId === 'タンタン') {
+          tangtangComboCount++;
+        }
+        const gain = 10 * stats.efficiency;
+        epState[step.charId].current += gain;
+        if (!epState[step.charId].hasCastUlt) epState[step.charId].epGainedBeforeFirstUlt += gain;
+      } else if (s.type === 'ult') {
         let cost = s.epCost;
         if (stats.ultCostReduction > 0) {
-           cost = cost * (1 - stats.ultCostReduction / 100);
+          cost = cost * (1 - stats.ultCostReduction / 100);
         }
 
         if (epState[step.charId].current < cost) {
-           epState[step.charId].warnings.push(`ステップ ${index+1}: EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
+          epState[step.charId].warnings.push(`発動時 EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
         }
-        // Always reset to 0 upon using ult
         epState[step.charId].current = 0;
         epState[step.charId].ultCount += 1;
+        epState[step.charId].hasCastUlt = true;
       }
     }
   });
@@ -468,7 +629,10 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
           <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
           <span>${p.name}</span>
         </div>
-        <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
+            ${state.hasCastUlt ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要初期EP: ${Math.max(0, state.firstUltCost - state.epGainedBeforeFirstUlt).toFixed(1)}</span>` : ''}
+        </div>
       </div>
       <div class="ep-bar-container">
         <div class="ep-bar" style="width: ${percentage}%;"></div>
@@ -478,4 +642,23 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
     `;
     container.appendChild(row);
   });
+}
+window.renderTimeline = renderTimeline;
+
+function getDragAfterElement(container, x) {
+  const draggableElements = [...container.querySelectorAll('.timeline-item:not(.dragging)')];
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = x - box.left - box.width / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return {
+        offset: offset,
+        element: child
+      };
+    } else {
+      return closest;
+    }
+  }, {
+    offset: Number.NEGATIVE_INFINITY
+  }).element;
 }
