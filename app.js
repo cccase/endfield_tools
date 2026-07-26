@@ -195,7 +195,7 @@ function renderPalette() {
     group.innerHTML = `<img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">`;
 
     // Refund Panel (if applicable)
-    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost'))) {
+    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost')) || p.name === 'タンタン') {
       const refundEl = createDraggableBlock({
         type: 'refund',
         charId: p.id,
@@ -413,7 +413,36 @@ function renderTimeline() {
         if (item.type === 'refund') {
           block.classList.add('bg-refund');
           const stats = getCharacterStats(item.charId);
-          const defaultRefund = stats ? stats.refundSP : 0;
+          let defaultRefund = stats ? stats.refundSP : 0;
+
+          // Tangtang dynamic refund based on combos BEFORE this refund block
+          if (item.charId === 'タンタン') {
+            const p = party.find(x => x.id === 'タンタン');
+            if (p) {
+               // We need to count combos in the flattened sequence up to this point
+               const flat = timelineCycles.flat();
+               // find absolute index of this item
+               let absIndex = 0;
+               for (let i = 0; i < cycleIndex; i++) absIndex += timelineCycles[i].length;
+               absIndex += index;
+
+               let recentCombos = 0;
+               for (let i = absIndex - 1; i >= 0; i--) {
+                  const pastItem = flat[i];
+                  if (pastItem.type === 'skill' && pastItem.charId === 'タンタン' && pastItem.skillData.type === 'combo') {
+                      recentCombos++;
+                  } else if (pastItem.type === 'skill' && pastItem.charId === 'タンタン' && pastItem.skillData.type === 'skill') {
+                      break; // stop at last skill
+                  } else if (pastItem.type === 'refund' && pastItem.charId === 'タンタン') {
+                      break; // stop at last refund
+                  }
+               }
+               recentCombos = Math.min(2, recentCombos);
+               let refundPerCombo = p.potential >= 1 ? 25 : 20;
+               defaultRefund = recentCombos * refundPerCombo;
+            }
+          }
+
           const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
           text = `返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${cycleIndex}, ${index}, this.value)" onclick="event.stopPropagation();">`;
           block.innerHTML = text;
@@ -536,7 +565,17 @@ function updateSimulation() {
     if (step.type !== 'refund' && !stats) return;
 
     if (step.type === 'refund') {
-      const refundVal = step.customRefund !== undefined ? step.customRefund : (stats ? stats.refundSP : 0);
+      let baseVal = stats ? stats.refundSP : 0;
+      if (step.charId === 'タンタン') {
+        const p = party.find(x => x.id === 'タンタン');
+        if (p) {
+          let recentCombos = Math.min(2, tangtangComboCount);
+          let refundPerCombo = p.potential >= 1 ? 25 : 20;
+          baseVal = recentCombos * refundPerCombo;
+          tangtangComboCount = 0; // consumed by the explicit refund block
+        }
+      }
+      const refundVal = step.customRefund !== undefined ? step.customRefund : baseVal;
       currentRefundSpPool += refundVal;
     } else if (step.type === 'skill') {
       const s = step.skillData;
