@@ -448,7 +448,7 @@ function renderTimeline() {
           block.innerHTML = text;
         } else if (item.type === 'separator') {
           block.classList.add('bg-separator');
-          block.innerHTML = `<span></span>`;
+
         } else {
           if (item.skillData.type === 'skill') block.classList.add('bg-skill');
           if (item.skillData.type === 'combo') block.classList.add('bg-combo');
@@ -553,6 +553,7 @@ function updateSimulation() {
       ultCount: 0,
       firstUltCost: maxEp,
       epGainedBeforeFirstUlt: 0,
+      baseEpGainedBeforeFirstUlt: 0,
       hasCastUlt: false
     };
   });
@@ -606,7 +607,10 @@ function updateSimulation() {
           const pStats = getCharacterStats(p.id);
           const gain = epBase * pStats.efficiency;
           epState[p.id].current += gain;
-          if (!epState[p.id].hasCastUlt) epState[p.id].epGainedBeforeFirstUlt += gain;
+          if (!epState[p.id].hasCastUlt) {
+            epState[p.id].epGainedBeforeFirstUlt += gain;
+            epState[p.id].baseEpGainedBeforeFirstUlt += epBase;
+          }
         });
 
       } else if (s.type === 'combo') {
@@ -615,7 +619,10 @@ function updateSimulation() {
         }
         const gain = 10 * stats.efficiency;
         epState[step.charId].current += gain;
-        if (!epState[step.charId].hasCastUlt) epState[step.charId].epGainedBeforeFirstUlt += gain;
+        if (!epState[step.charId].hasCastUlt) {
+            epState[step.charId].epGainedBeforeFirstUlt += gain;
+            epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
+        }
       } else if (s.type === 'ult') {
         let cost = s.epCost;
         if (stats.ultCostReduction > 0) {
@@ -681,6 +688,40 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
     `;
     container.appendChild(row);
   });
+
+  const analysisContainer = document.getElementById('efficiency-analysis-list');
+  if (analysisContainer) {
+    analysisContainer.innerHTML = '';
+    party.forEach(p => {
+      const state = epState[p.id];
+      const row = document.createElement('div');
+      row.className = 'analysis-row';
+
+      let reqEffText = "必殺未発動";
+      let resClass = "";
+
+      if (state.hasCastUlt) {
+        if (state.baseEpGainedBeforeFirstUlt > 0) {
+           let requiredEfficiency = (state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100;
+           reqEffText = `${requiredEfficiency.toFixed(1)}%`;
+        } else {
+           reqEffText = "計算不可 (基礎獲得EPが0)";
+           resClass = "not-possible";
+        }
+      }
+
+      row.innerHTML = `
+        <div class="analysis-info">
+          <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
+          <span>${p.name}</span>
+        </div>
+        <div class="analysis-result ${resClass}">
+          ${reqEffText}
+        </div>
+      `;
+      analysisContainer.appendChild(row);
+    });
+  }
 }
 window.renderTimeline = renderTimeline;
 
