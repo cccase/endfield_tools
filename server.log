@@ -1,0 +1,8 @@
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /data/characters.json HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /image/okugi.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /image/xaihi.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /image/gilberta.png HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jul/2026 01:40:18] "GET /image/tangtang.png HTTP/1.1" 200 -

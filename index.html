@@ -56,7 +56,13 @@
 
     <!-- EP/SP 状態表示 -->
     <section class="panel status-panel">
-      <h2>ステータス (シミュレーション結果)</h2>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>必殺チャージ</h2>
+        <label style="color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 5px;">
+          <input type="checkbox" id="start-max-charge" onchange="updateSimulation()">
+          開始時チャージマックス
+        </label>
+      </div>
       <div class="status-summary">
         <div>累積消費SP: <span id="total-sp-spent">0</span></div>
         <div>現在の返還SPプール: <span id="current-refund-sp">0</span></div>

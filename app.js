@@ -162,22 +162,72 @@ function createDraggableBlock(data, text) {
   el.addEventListener('dragstart', e => {
     e.dataTransfer.setData('application/json', JSON.stringify(data));
   });
+
+  // Also allow click-to-add
+  el.addEventListener('click', () => {
+    // Only add if it's from the palette (doesn't have an index yet)
+    if (data.index === undefined) {
+      timelineSequence.push(JSON.parse(JSON.stringify(data)));
+      renderTimeline();
+    }
+  });
+
   return el;
 }
 
 function setupTimelineDrop() {
   const timeline = document.getElementById('timeline');
-  timeline.addEventListener('dragover', e => e.preventDefault());
+  timeline.addEventListener('dragover', e => {
+    e.preventDefault();
+    // Highlight drop target if we are dragging over a timeline item
+    const draggingElement = document.querySelector('.dragging');
+    if (!draggingElement) return;
+    const afterElement = getDragAfterElement(timeline, e.clientX);
+    if (afterElement == null) {
+      timeline.appendChild(draggingElement);
+    } else {
+      timeline.insertBefore(draggingElement, afterElement);
+    }
+  });
+
   timeline.addEventListener('drop', e => {
     e.preventDefault();
     const dataStr = e.dataTransfer.getData('application/json');
     if (!dataStr) return;
     try {
       const data = JSON.parse(dataStr);
-      timelineSequence.push(data);
+      // Check if this is a reorder drop
+      if (data.isReorder) {
+        // Handled by dragend listener to sync DOM order with state
+        return;
+      }
+
+      // New item from palette
+      // Insert at the position where the drop occurred
+      const afterElement = getDragAfterElement(timeline, e.clientX);
+      let insertIndex = timelineSequence.length;
+      if (afterElement) {
+        insertIndex = parseInt(afterElement.getAttribute('data-index'));
+      }
+
+      timelineSequence.splice(insertIndex, 0, data);
       renderTimeline();
     } catch(err) { console.error(err); }
   });
+}
+
+function getDragAfterElement(container, x) {
+  const draggableElements = [...container.querySelectorAll('.timeline-item:not(.dragging)')];
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = x - box.left - box.width / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 window.updateTimelineRefund = function(index, value) {
@@ -198,6 +248,32 @@ function renderTimeline() {
   timelineSequence.forEach((item, index) => {
     const wrap = document.createElement('div');
     wrap.className = 'timeline-item';
+    wrap.setAttribute('data-index', index);
+    wrap.draggable = true;
+
+    wrap.addEventListener('dragstart', e => {
+      wrap.classList.add('dragging');
+      // Encode that this is a reorder
+      const data = JSON.parse(JSON.stringify(item));
+      data.isReorder = true;
+      data.originalIndex = index;
+      e.dataTransfer.setData('application/json', JSON.stringify(data));
+      // Required for Firefox drop effect
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    wrap.addEventListener('dragend', () => {
+      wrap.classList.remove('dragging');
+      // Sync DOM order back to state array
+      const timelineNodes = document.querySelectorAll('.timeline-item');
+      const newSequence = [];
+      timelineNodes.forEach(node => {
+        const oldIndex = parseInt(node.getAttribute('data-index'));
+        newSequence.push(timelineSequence[oldIndex]);
+      });
+      timelineSequence = newSequence;
+      renderTimeline();
+    });
 
     const block = document.createElement('div');
     block.className = 'skill-block';
@@ -277,10 +353,25 @@ function updateSimulation() {
   let totalSpSpent = 0;
   let currentRefundSpPool = 0;
 
+  // Check if start max charge is checked
+  const startMaxChargeCheckbox = document.getElementById('start-max-charge');
+  const startMaxCharge = startMaxChargeCheckbox ? startMaxChargeCheckbox.checked : false;
+
   // Initialize EP state for party
   const epState = {};
   party.forEach(p => {
-    epState[p.id] = { current: 0, warnings: [] };
+    const stats = getCharacterStats(p.id);
+    const ultSkill = p.skills.find(s => s.type === 'ult');
+    let maxEp = ultSkill ? ultSkill.epCost : 100;
+    if (ultSkill && stats.ultCostReduction > 0) {
+      maxEp = maxEp * (1 - stats.ultCostReduction / 100);
+    }
+
+    epState[p.id] = {
+      current: startMaxCharge ? maxEp : 0,
+      warnings: [],
+      ultCount: 0
+    };
   });
 
   // Process sequence
@@ -333,12 +424,10 @@ function updateSimulation() {
 
         if (epState[step.charId].current < cost) {
            epState[step.charId].warnings.push(`ステップ ${index+1}: EP不足 (必要: ${cost.toFixed(1)}, 現在: ${epState[step.charId].current.toFixed(1)})`);
-           // For simulation flow, we assume it gets cast anyway, reset to 0 or subtract?
-           // Usually it drains everything. Let's just subtract and floor to 0.
-           epState[step.charId].current = 0;
-        } else {
-           epState[step.charId].current -= cost;
         }
+        // Always reset to 0 upon using ult
+        epState[step.charId].current = 0;
+        epState[step.charId].ultCount += 1;
       }
     }
   });
@@ -375,8 +464,11 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
     row.className = 'ep-row';
     row.innerHTML = `
       <div class="ep-info">
-        <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
-        <span>${p.name}</span>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
+          <span>${p.name}</span>
+        </div>
+        <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
       </div>
       <div class="ep-bar-container">
         <div class="ep-bar" style="width: ${percentage}%;"></div>
