@@ -20,3 +20,7 @@
 ## 動作環境
 ビルドツール（WebpackやVite等）は使用しておらず、純粋な HTML / CSS / Vanilla JavaScript で構築されています。
 GitHub Pages などでそのままホスティングして利用することができます。ローカル環境で実行する場合は、CORSの制限を回避するためにローカルサーバー（VSCodeのLive Serverなど）経由で開くことを推奨します。
+
+## URL
+- https://cccase.github.io/endfield_tools/
+- https://cccase.github.io/endfield_tools/mock_mobile/index.html
