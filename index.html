@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</h1>
+  </header>
+
+  <main>
+    <!-- キャラクター選択とパーティー編成 -->
+    <section class="panel top-section">
+      <div class="roster-panel">
+        <h2>キャラクターリスト (クリックで編成に追加)</h2>
+        <div id="roster-list" class="roster-container">
+          <!-- サーバーから取得したキャラ一覧 -->
+        </div>
+      </div>
+
+      <div class="party-panel">
+        <h2>パーティー編成 (最大4人)</h2>
+        <div id="party-list" class="party-container">
+          <!-- 選択されたキャラ (効率、凸設定付き) -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 利用可能なスキル・パネルパレット -->
+    <section class="panel palette-panel">
+      <h2>スキルパレット (ドラッグ＆ドロップでタイムラインへ)</h2>
+      <div id="skill-palette" class="palette-container">
+        <!-- 編成したキャラのスキル、および返還SPパネル -->
+      </div>
+    </section>
+
+    <!-- シーケンス型タイムライン -->
+    <section class="panel timeline-panel">
+      <div class="timeline-header">
+        <h2>タイムライン (発動順)</h2>
+        <div class="controls">
+          <button id="btn-export-url">URLをコピー</button>
+          <button id="btn-export-image">画像として保存</button>
+          <button id="btn-clear-timeline">クリア</button>
+        </div>
+      </div>
+
+      <div class="timeline-wrapper" id="timeline-wrapper">
+        <div id="timeline" class="sequence-timeline">
+          <!-- ここにブロックが並ぶ -->
+          <div class="drop-indicator" id="timeline-drop-zone">ここにスキルをドロップ</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EP/SP 状態表示 -->
+    <section class="panel status-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>必殺チャージ</h2>
+        <label style="color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 5px;">
+          <input type="checkbox" id="start-max-charge" onchange="updateSimulation()">
+          開始時チャージマックス
+        </label>
+      </div>
+      <div class="status-summary">
+        <div>累積消費SP: <span id="total-sp-spent">0</span></div>
+        <div>現在の返還SPプール: <span id="current-refund-sp">0</span></div>
+      </div>
+      <div id="ep-status-list" class="ep-status-container">
+        <!-- 各キャラのEPゲージ -->
+      </div>
+    </section>
+
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
