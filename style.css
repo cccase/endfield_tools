@@ -29,8 +29,6 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .bg-skill { background-color: #0984e3; color: #fff; }
 .bg-combo { background-color: #6c5ce7; color: #fff; }
 .bg-ult { background-color: #e84393; color: #fff; }
-.bg-ult2 { background-color: #fd79a8; color: #fff; }
-.bg-ult-cancel { background-color: #b2bec3; color: #333; }
 .timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .timeline-header button { background-color: #333; color: #fff; border: 1px solid #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
 .timeline-header button:hover { background-color: #444; }
