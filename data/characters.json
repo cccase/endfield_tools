@@ -65,6 +65,12 @@
         "type": "ult",
         "name": "必殺技",
         "epCost": 100
+      },
+      {
+        "id": "ult2_okugi",
+        "type": "ult2",
+        "name": "必殺技2",
+        "epCost": 0
       }
     ]
   },
@@ -134,6 +140,12 @@
         "type": "ult",
         "name": "必殺技",
         "epCost": 90
+      },
+      {
+        "id": "ult_cancel_tangtang",
+        "type": "ult_cancel",
+        "name": "必殺キャンセル",
+        "spCost": 0
       }
     ]
   }

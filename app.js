@@ -255,6 +255,8 @@ function renderPalette() {
       if (s.type === 'skill') skillEl.classList.add('bg-skill');
       if (s.type === 'combo') skillEl.classList.add('bg-combo');
       if (s.type === 'ult') skillEl.classList.add('bg-ult');
+      if (s.type === 'ult2') skillEl.classList.add('bg-ult2');
+      if (s.type === 'ult_cancel') skillEl.classList.add('bg-ult-cancel');
       group.appendChild(skillEl);
     });
 
@@ -510,6 +512,8 @@ function renderTimeline() {
           if (item.skillData.type === 'skill') block.classList.add('bg-skill');
           if (item.skillData.type === 'combo') block.classList.add('bg-combo');
           if (item.skillData.type === 'ult') block.classList.add('bg-ult');
+          if (item.skillData.type === 'ult2') block.classList.add('bg-ult2');
+          if (item.skillData.type === 'ult_cancel') block.classList.add('bg-ult-cancel');
           text = item.skillData.name;
           block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
         }
@@ -613,6 +617,7 @@ function updateSimulation() {
   let totalSpSpent = 0;
   let currentRefundSpPool = 0;
   let tangtangComboCount = 0;
+  let totalSkillCasts = 0;
 
   // Check if start max charge is checked
   const startMaxChargeCheckbox = document.getElementById('start-max-charge');
@@ -635,7 +640,9 @@ function updateSimulation() {
       firstUltCost: maxEp,
       epGainedBeforeFirstUlt: 0,
       baseEpGainedBeforeFirstUlt: 0,
-      hasCastUlt: false
+      hasCastUlt: false,
+      epLock: false,
+      comboCount: 0
     };
   });
 
@@ -674,20 +681,25 @@ function updateSimulation() {
           cycleSpSpent += s.spCost;
           let epBase = 6.5;
           let consumedRefund = 0;
+          let skillCastValue = 1;
 
           if (currentRefundSpPool > 0) {
             consumedRefund = Math.min(currentRefundSpPool, s.spCost);
             currentRefundSpPool -= consumedRefund;
             epBase = ((s.spCost - consumedRefund) / s.spCost) * 6.5;
+            skillCastValue = ((s.spCost - consumedRefund) / s.spCost);
           }
+          totalSkillCasts += skillCastValue;
 
           party.forEach(p => {
             const pStats = getCharacterStats(p.id);
             const gain = epBase * pStats.efficiency;
-            epState[p.id].current += gain;
-            if (!epState[p.id].hasCastUlt) {
-              epState[p.id].epGainedBeforeFirstUlt += gain;
-              epState[p.id].baseEpGainedBeforeFirstUlt += epBase;
+            if (!epState[p.id].epLock) {
+              epState[p.id].current += gain;
+              if (!epState[p.id].hasCastUlt) {
+                epState[p.id].epGainedBeforeFirstUlt += gain;
+                epState[p.id].baseEpGainedBeforeFirstUlt += epBase;
+              }
             }
           });
 
@@ -696,10 +708,13 @@ function updateSimulation() {
             tangtangComboCount++;
           }
           const gain = 10 * stats.efficiency;
-          epState[step.charId].current += gain;
-          if (!epState[step.charId].hasCastUlt) {
-              epState[step.charId].epGainedBeforeFirstUlt += gain;
-              epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
+          epState[step.charId].comboCount += 1;
+          if (!epState[step.charId].epLock) {
+            epState[step.charId].current += gain;
+            if (!epState[step.charId].hasCastUlt) {
+                epState[step.charId].epGainedBeforeFirstUlt += gain;
+                epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
+            }
           }
         } else if (s.type === 'ult') {
           let cost = s.epCost;
@@ -713,6 +728,16 @@ function updateSimulation() {
           epState[step.charId].current = 0;
           epState[step.charId].ultCount += 1;
           epState[step.charId].hasCastUlt = true;
+
+          if (step.charId === 'オクギ') {
+            epState[step.charId].epLock = true;
+          }
+        } else if (s.type === 'ult2') {
+          if (step.charId === 'オクギ') {
+            epState[step.charId].epLock = false;
+          }
+        } else if (s.type === 'ult_cancel') {
+          // just a timeline marker
         }
       }
     });
@@ -725,12 +750,14 @@ function updateSimulation() {
     }
   });
 
-  renderStatus(totalSpSpent, currentRefundSpPool, epState);
+  renderStatus(totalSpSpent, currentRefundSpPool, epState, totalSkillCasts);
 }
 
-function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
+function renderStatus(totalSpSpent, currentRefundSpPool, epState, totalSkillCasts) {
   document.getElementById('total-sp-spent').textContent = totalSpSpent;
   document.getElementById('current-refund-sp').textContent = currentRefundSpPool;
+  const totalSkillCastsEl = document.getElementById('total-skill-casts');
+  if (totalSkillCastsEl) totalSkillCastsEl.textContent = totalSkillCasts.toFixed(2);
 
   const container = document.getElementById('ep-status-list');
   container.innerHTML = '';
@@ -762,7 +789,7 @@ function renderStatus(totalSpSpent, currentRefundSpPool, epState) {
           <span>${p.name}</span>
         </div>
         <div style="display: flex; flex-direction: column; align-items: flex-end;">
-            <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回</span>
+            <span style="color: #f39c12; font-size: 14px;">必殺発動回数: ${state.ultCount}回 / 連携技: ${state.comboCount}回</span>
             ${state.baseEpGainedBeforeFirstUlt > 0 ? `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: ${((state.firstUltCost / state.baseEpGainedBeforeFirstUlt) * 100).toFixed(1)}%</span>` : `<span style="color: #a0a0a0; font-size: 12px;">最低必要チャージ効率: 計算不可</span>`}
         </div>
       </div>
