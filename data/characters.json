@@ -148,5 +148,63 @@
         "spCost": 0
       }
     ]
+  },
+  {
+    "id": "char_su",
+    "name": "スー",
+    "icon": "image/default.svg",
+    "baseRefundSP": 0,
+    "potentials": [],
+    "skills": [
+      {
+        "id": "skill1_su",
+        "type": "skill",
+        "name": "戦技1",
+        "spCost": 0
+      },
+      {
+        "id": "skill2_su",
+        "type": "skill2",
+        "name": "戦技2",
+        "spCost": 15
+      },
+      {
+        "id": "combo_su",
+        "type": "combo",
+        "name": "連携技"
+      },
+      {
+        "id": "ult_su",
+        "type": "ult",
+        "name": "必殺技",
+        "epCost": 100
+      }
+    ]
+  },
+  {
+    "id": "char_lino",
+    "name": "リーノ",
+    "icon": "image/default.svg",
+    "baseRefundSP": 10,
+    "potentials": [],
+    "skills": [
+      {
+        "id": "skill_lino",
+        "type": "skill",
+        "name": "戦技",
+        "spCost": 25
+      },
+      {
+        "id": "combo_lino",
+        "type": "combo",
+        "name": "連携技"
+      },
+      {
+        "id": "ult_lino",
+        "type": "ult",
+        "name": "必殺技",
+        "epCost": 100
+      }
+    ]
   }
 ]
