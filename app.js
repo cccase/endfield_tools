@@ -261,7 +261,7 @@ function renderPalette() {
     });
 
     // Refund Panel (if applicable) - Moved to far right
-    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost')) || p.name === 'タンタン') {
+    if (p.baseRefundSP > 0 || (p.potentials && p.potentials.some(pot => pot.type === 'refund_sp_boost')) || p.name === 'タンタン' || p.name === 'リーノ') {
       const refundEl = createDraggableBlock({
         type: 'refund',
         charId: p.id,
@@ -496,7 +496,27 @@ function renderTimeline() {
                }
                recentCombos = Math.min(2, recentCombos);
                let refundPerCombo = p.potential >= 1 ? 25 : 20;
-               defaultRefund = recentCombos * refundPerCombo;
+               defaultRefund = (recentCombos * refundPerCombo) + p.baseRefundSP;
+            }
+          } else if (item.charId === 'char_lino') {
+            const p = party.find(x => x.id === 'char_lino');
+            if (p) {
+               const flat = timelineCycles.flat();
+               let absIndex = 0;
+               for (let i = 0; i < cycleIndex; i++) absIndex += timelineCycles[i].length;
+               absIndex += index;
+
+               let recentCombos = 0;
+               for (let i = absIndex - 1; i >= 0; i--) {
+                  const pastItem = flat[i];
+                  if ((pastItem.type === 'skill' || pastItem.type === 'combo') && pastItem.charId === 'char_lino' && pastItem.skillData && pastItem.skillData.type === 'combo') {
+                      recentCombos++;
+                  } else if (pastItem.type === 'refund' && pastItem.charId === 'char_lino') {
+                      break;
+                  }
+               }
+               let refundPerCombo = 20;
+               defaultRefund = (recentCombos * refundPerCombo) + p.baseRefundSP;
             }
           }
 
@@ -618,6 +638,8 @@ function updateSimulation() {
   let currentRefundSpPool = 0;
   let tangtangComboCount = 0;
   let totalSkillCasts = 0;
+  let suSkill1CastCount = 0;
+  let linoComboCount = 0;
 
   // Check if start max charge is checked
   const startMaxChargeCheckbox = document.getElementById('start-max-charge');
@@ -658,22 +680,42 @@ function updateSimulation() {
 
       if (step.type === 'refund') {
         let baseVal = stats ? stats.refundSP : 0;
-        if (step.charId === 'タンタン') {
-          const p = party.find(x => x.id === 'タンタン');
+        if (step.charId === 'タンタン' || step.charId === 'char_lino') {
+          const p = party.find(x => x.id === step.charId);
           if (p) {
-            let recentCombos = Math.min(2, tangtangComboCount);
-            let refundPerCombo = p.potential >= 1 ? 25 : 20;
-            baseVal = recentCombos * refundPerCombo;
-            tangtangComboCount = 0; // consumed by the explicit refund block
+            if (p.name === 'タンタン') {
+              let recentCombos = Math.min(2, tangtangComboCount);
+              let refundPerCombo = p.potential >= 1 ? 25 : 20;
+              baseVal = (recentCombos * refundPerCombo) + p.baseRefundSP;
+              tangtangComboCount = 0;
+            } else if (p.name === 'リーノ') {
+              let recentCombos = linoComboCount;
+              let refundPerCombo = 20;
+              baseVal = (recentCombos * refundPerCombo) + p.baseRefundSP;
+              linoComboCount = 0;
+            } else {
+               baseVal = p.baseRefundSP;
+            }
           }
         }
         const refundVal = step.customRefund !== undefined ? step.customRefund : baseVal;
         currentRefundSpPool += refundVal;
         cycleRefundSp += refundVal;
-      } else if (step.type === 'skill') {
-        const s = step.skillData;
+      } else if (step.type === 'skill' || step.type === 'skill2' || step.type === 'skill_2') {
+        const s = step.skillData || {};
 
-        if (s.type === 'skill') {
+        if (s.name === '戦技1' && step.charId === 'char_su') {
+            suSkill1CastCount++;
+        }
+        if (s.name === '戦技2' && step.charId === 'char_su') {
+            if (suSkill1CastCount <= 0) {
+                 epState[step.charId].warnings.push('戦技2は戦技1の後に発動可能');
+            } else {
+                 suSkill1CastCount--;
+            }
+        }
+
+        if (s.type === 'skill' || s.type === 'skill2' || s.type === 'skill_2') {
           // Removed Tangtang auto-refund. Now requires explicit refund block.
           // tangtangComboCount does NOT reset here.
 
@@ -703,9 +745,11 @@ function updateSimulation() {
             }
           });
 
-        } else if (s.type === 'combo') {
+        } else if (s.type === 'combo' || (step.skillData && step.skillData.type === 'combo')) {
           if (step.charId === 'タンタン') {
             tangtangComboCount++;
+          } else if (step.charId === 'char_lino' || step.charName === 'リーノ') {
+            linoComboCount++;
           }
           const gain = 10 * stats.efficiency;
           epState[step.charId].comboCount += 1;
@@ -716,8 +760,9 @@ function updateSimulation() {
                 epState[step.charId].baseEpGainedBeforeFirstUlt += 10;
             }
           }
-        } else if (s.type === 'ult') {
-          let cost = s.epCost;
+        } else if (step.type === 'ult' || (step.skillData && step.skillData.type === 'ult')) {
+          const s = step.skillData || {};
+          let cost = s.epCost || 0;
           if (stats.ultCostReduction > 0) {
             cost = cost * (1 - stats.ultCostReduction / 100);
           }
@@ -732,11 +777,11 @@ function updateSimulation() {
           if (step.charId === 'オクギ') {
             epState[step.charId].epLock = true;
           }
-        } else if (s.type === 'ult2') {
+        } else if (step.type === 'ult2' || (step.skillData && step.skillData.type === 'ult2')) {
           if (step.charId === 'オクギ') {
             epState[step.charId].epLock = false;
           }
-        } else if (s.type === 'ult_cancel') {
+        } else if (step.type === 'ult_cancel' || (step.skillData && step.skillData.type === 'ult_cancel')) {
           // just a timeline marker
         }
       }
@@ -823,3 +868,7 @@ function getDragAfterElement(container, x) {
     offset: Number.NEGATIVE_INFINITY
   }).element;
 }
+
+
+
+window.timelineCycles = timelineCycles;
