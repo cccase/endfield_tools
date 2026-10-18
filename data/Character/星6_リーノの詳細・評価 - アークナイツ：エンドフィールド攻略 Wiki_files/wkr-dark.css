@@ -1,0 +1,1574 @@
+@charset "UTF-8";
+/* ============================================================================
+   wikiru.jp  ダークテーマ  wkr-dark.css
+   ver 1.7  最終決定版（2026-09-02 地の判定を実描画ベースに）
+
+   担当デザイナー : sugimoto
+   担当エンジニア : osada
+   承認           : shimamura
+
+   --------------------------------------------------------------------------
+   改訂履歴
+     0.1  7/08  sugimoto  初稿。配色案3種を作成し社内レビューへ
+     0.2  7/15  osada     配色案Bを実装。既存CSSを直接書き換える方式
+     0.3  7/17  osada     ↑却下。ライト側に影響が出るため方式変更
+                          上書き専用ファイルとして作り直し
+     0.4  7/22  sugimoto  レビュー指摘：罫線が見えない／th と td が判別できない
+     0.5  7/24  osada     暗い側は明度差を大きく取らないと沈むことが判明
+                          罫線・見出しセルの数値を全面的に見直し
+     0.6  8/07  sugimoto  背景が黒すぎるとの指摘。#16181D → #22262E へ
+     0.7  8/13  osada     プラグイン側の <style> が白背景前提で残っていた
+                          search3 / raty / votex / filtertable を追加対応
+     0.8  8/20  sugimoto  編集アイコンがダークで潰れるため専用画像を用意
+     0.9  8/26  sugimoto  最終レビュー。コントラスト全項目を再測定
+     1.0  9/02  ---       社内承認。本番反映
+
+   --------------------------------------------------------------------------
+   方針（0.3 の会議で決定）
+
+     既存の pukiwiki.css / 180wiki-sp.css には手を入れない。
+     このファイルは全ルールが :root[data-theme="dark"] で始まるため、
+     ダークOFFのときは1行も効かない。ライト側の見た目は変わらない。
+     問題が出たら link を1行外せば完全に元通りになる。
+
+     PC用スキンとSP用スキン、両方をこの1ファイルで扱う。
+
+   読み込み位置
+     必ず pukiwiki.css / 180wiki-sp.css より「後ろ」に置くこと。
+     前に置くと詳細度勝負で負ける箇所が出る。
+
+   --------------------------------------------------------------------------
+   注意
+
+     本文には利用者が書いた BGCOLOR() / COLOR() / &color(); が大量に
+     埋まっている。触り方はセクション11に集約してあるので、
+     ページ側を書き換える案が出たら必ずそちらを先に読むこと。
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. カラーパレット定義
+   ここだけ触れば全体の色味が変わる。個別の値を直接いじらないこと。
+   0.6 で背景を上げた際、ここを直しただけでは追随しない直値が47色残っていた。
+   同じことをやると後で必ず探し回るので、新規追加時は必ず変数を使うこと。
+   ============================================================================ */
+:root[data-theme="dark"] {
+
+  /* --- 背景の階層（奥→手前） --- */
+  --wkr-bg:          #22262e;  /* ページ全体の背景 */
+  --wkr-surface:     #292e3a;  /* テーブルのデータセル(td)、カードなど */
+  --wkr-surface-2:   #33405b;  /* 見出しセル(th)。
+                                  ライトは #EEEEEE と #EEF5FF の彩度差で th/td を
+                                  見分けさせている（明度差はわずか2.2しかない）。
+                                  暗い側でも同じ手を使うため青みを入れてある。 */
+  --wkr-surface-3:   #47587a;  /* thead/tfoot の見出し、ボタンなど */
+  --wkr-grid:        #808da3;  /* 罫線。0.4 のレビューで「見えない」との指摘あり。
+                                  ライトと同じ数値差では暗い側だと足りない。
+                                  比較検討した控えめな案 #7A89A3 は却下。 */
+
+  /* --- 線 --- */
+  --wkr-border:#596378;
+  --wkr-border-soft: #3a4150;
+
+  /* --- 文字 --- */
+  --wkr-text:        #dfe3e8;  /* 本文 */
+  --wkr-text-dim:    #a4acb8;  /* 補助テキスト（更新日時など） */
+  --wkr-text-faint:  #8f98a5;  /* さらに弱い文字 */
+
+  /* --- リンク --- */
+  --wkr-link:        #8cc4f7;
+  --wkr-link-visit:  #c9b1f7;
+  --wkr-link-hover-bg: #314763;
+
+  /* --- 見出しのアクセント（ライトの #DDEEFF に相当） --- */
+  --wkr-accent-bg:   #3c5882;  /* 見出し帯。ライトの #DDEEFF に対応。
+                                  0.5 時点では暗すぎて沈むとの指摘あり、引き上げ済み。 */
+  --wkr-accent-line: #76a5d5;
+
+  /* --- SPヘッダーのグラデーション（ライトの #6CF→#36C に相当） --- */
+  --wkr-header-a:    #25669a;
+  --wkr-header-b:    #1c4975;
+
+  /* --- 状態色 --- */
+  --wkr-new:         #ff8f85;  /* new1（赤） */
+  --wkr-new5:        #7fd99a;  /* new5（緑） */
+  /* 未作成ページの印。不透明色にすると、利用者が #style で置いた明るい地の上に
+     暗い塊が乗って「マスク」に見える。半透明にしておけば地が何であれ
+     同じ濃さの色被せになるので、暗い地でも明るい地でも成立する。 */
+  --wkr-noexists:    rgba(240,214,122,0.14);
+
+  /* --- フォーム --- */
+  --wkr-input-bg:    #2f3540;
+  --wkr-input-border:#545d70;
+
+  /* これを入れておくとスクロールバーとセレクトボックスがOS任せで暗くなる。
+     入れ忘れると入力欄だけ白いままになるので消さないこと。 */
+  color-scheme: dark;
+}
+
+
+/* ============================================================================
+   2. ベース（body / リンク / 見出し / 引用 / 罫線）
+   ここは全ページに効くので変更時は影響範囲が広い。要注意。
+   ============================================================================ */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] td {
+  color: var(--wkr-text);
+  background-color:var(--wkr-bg);
+}
+
+:root[data-theme="dark"] a:link    { color: var(--wkr-link); }
+:root[data-theme="dark"] a:visited { color: var(--wkr-link-visit); }
+/* ホバー時の反転。
+   ライト側の a:hover は詳細度(0,0,1)しか無く、プラグインのボタン類には負ける。
+   こちらは :root[data-theme] が付く分だけ強くなるので、そのまま書くと
+   自前の地を持つボタンの背景まで奪ってしまう。
+   実際「コメントを書く」ボタンで、地だけ暗くなり文字が元の濃い青のまま残って
+   読めなくなった。地を持つ要素（data-wkr-bg 付き）は対象から外す。 */
+:root[data-theme="dark"] a:active,
+:root[data-theme="dark"] a:hover   { color: #9bcdf7; }
+:root[data-theme="dark"] a:active:not([data-wkr-bg]),
+:root[data-theme="dark"] a:hover:not([data-wkr-bg]) {
+  background-color:var(--wkr-link-hover-bg);
+}
+
+/* h1/h2/h5/h6 は塗りつぶし見出し */
+/* sugimoto 案：単色だと平板に見えるので浅くグラデを入れる。
+   SPのMenuBar見出しと同じ強さにしたら本文より目立つと指摘が出たため、
+   振れ幅は約1/2に抑えてある。ここを広げるとページがうるさくなる。 */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h5,
+:root[data-theme="dark"] h6 {
+  color: #eaeef4;
+  background-color:var(--wkr-accent-bg);
+  background-image:linear-gradient(
+      color-mix(in oklab, var(--wkr-accent-bg), white 9%),
+      color-mix(in oklab, var(--wkr-accent-bg), black 11%));
+}
+/* h3/h4 は罫線見出し */
+:root[data-theme="dark"] h3 {
+  background-color:transparent;
+  color: var(--wkr-text);
+  border-bottom-color:var(--wkr-accent-line);
+  border-top-color:var(--wkr-accent-bg);
+  border-left-color:var(--wkr-accent-line);
+  border-right-color:var(--wkr-accent-bg);
+}
+:root[data-theme="dark"] h4 {
+  background-color:transparent;
+  color: var(--wkr-text);
+  border-left-color:var(--wkr-accent-line);
+}
+:root[data-theme="dark"] h1.title,
+:root[data-theme="dark"] h1.title a { background-color:transparent; background-image:none; }
+
+/* 行頭スペースの整形済みブロック(pre)
+   ライト側をよく見ると、中身(#F0F8FF)と外側(白)はほぼ同じ明るさで、
+   #888899 の枠だけでブロックの形を見せている。枠が全部の仕事をしている。
+   最初これを見落として枠を暗くしたら「箱に見えない」と差し戻された。
+   枠は明るく、太さは一様に。 */
+:root[data-theme="dark"] pre {
+  color: var(--wkr-text);
+  background-color:#2e3746;
+  border:1px solid #76839a;
+  border-radius: 3px;
+}
+/* 元CSSは上左を暗く下右を明るくして凹んで見せているが、暗背景だと凹凸が
+   まったく読み取れない。下右をほんの少し明るくして名残だけ残す。 */
+:root[data-theme="dark"] pre {
+  border-bottom-color:#8590a5;
+  border-right-color:#8590a5;
+}
+
+/* blockquote は元CSS(PC)だと margin-left しか付いておらず、
+   暗背景では引用範囲が分からない。左にバーを足して領域を示す。
+
+   ※ 除外条件を外さないこと。
+     PukiWiki は #cssbox のようなブロックプラグインの出力を、素の
+     <blockquote>（class も style も無い）で包んで返してくることがある。
+     見た目は「箱」なのに中身は引用扱い、という状態になる。
+     そこにバーや背景が乗ると、箱の左端に縦線が1本入る。
+
+     引用記法(>)なら中身は <p>。プラグインの箱なら <div> や <table>。
+     直下の子で見分けるのが一番確実だった。 */
+:root[data-theme="dark"] blockquote:not([style]):not([class]):not(:has(> div, > table)) {
+  border-left:3px solid var(--wkr-accent-line);
+  border-radius: 0 3px 3px 0;
+}
+
+:root[data-theme="dark"] blockquote:not([style]):not([class]):not(:has(> div, > table)) {
+  background-color:#2c3544;
+  color: var(--wkr-text);
+}
+
+:root[data-theme="dark"] hr,
+:root[data-theme="dark"] hr.full_hr,
+:root[data-theme="dark"] hr.note_hr,
+:root[data-theme="dark"] hr.short_line { border-color:var(--wkr-border); }
+
+:root[data-theme="dark"] span.noexists {
+  background-color:var(--wkr-noexists);
+  border-radius: 2px;
+  /* color は指定しない。地の明暗に応じた文字色が親から降りてくるのに任せる */
+}
+/* 未作成ページリンクの色は「まだ無いページ」という意味を持つ表示なので、
+   地の明暗でリンク色を決める仕組み（data-wkr-a）より優先させる必要がある。
+
+   表のセルや #style の枠の中にあると、その地に合わせた通常のリンク色
+   （明るい青）が当たってしまい、既存ページへのリンクと見分けが付かなくなる。
+   実際に表内でこれが起きたため、地の明暗にかかわらず琥珀系で通すようにした。
+   明るい地に乗る場合だけ、同じ色相のまま濃い琥珀へ振る。
+
+   ※ 2つめの [class] は詳細度を1つ上げるためだけに付けている。
+     span.noexists は必ず class を持つので条件としては常に真。
+     これが無いと、枠を基準に子孫リンクを塗る汎用ルールに負ける。 */
+:root[data-theme="dark"] span.noexists a,
+:root[data-theme="dark"] :is(#body, #menubar, #note) span.noexists[class] a,
+:root[data-theme="dark"] :is(#body, #menubar, #note) span.noexists a[data-wkr-a] {
+  color: #f0d67a !important;
+}
+:root[data-theme="dark"] :is(#body, #menubar, #note) span.noexists a[data-wkr-a="light"] {
+  color: #7a5c00 !important;
+}
+
+:root[data-theme="dark"] .super_index,
+:root[data-theme="dark"] a.note_super { color: #ff9d95; }
+
+:root[data-theme="dark"] span.new1 { color: var(--wkr-new); }
+:root[data-theme="dark"] span.new5 { color: var(--wkr-new5); }
+
+:root[data-theme="dark"] .plugin-tooltip { border-bottom-color:var(--wkr-text-faint); }
+
+
+/* ============================================================================
+   3. テーブル（PukiWikiの表組み）
+   ゲームwikiは表が主役。ここの見え方でダークの評価が決まると考えてよい。
+   ステータス表は「~」の見出し行が表の途中に何度も出てくる書き方が多いので、
+   th と td の判別は特に効く。
+   ============================================================================ */
+:root[data-theme="dark"] .style_table  { background-color:var(--wkr-grid); }
+:root[data-theme="dark"] .style_td     { background-color:var(--wkr-surface);   color: var(--wkr-text); }
+:root[data-theme="dark"] .style_th     { background-color:var(--wkr-surface-2); color: #eef1f5; }
+:root[data-theme="dark"] thead td.style_td,
+:root[data-theme="dark"] tfoot td.style_td { background-color:var(--wkr-surface-3); }
+:root[data-theme="dark"] thead th.style_th,
+:root[data-theme="dark"] tfoot th.style_th { background-color:#536691; }
+
+
+/* ============================================================================
+   4. スキンの外枠（PC版：pukiwiki.skin.php）
+   ============================================================================ */
+:root[data-theme="dark"] div#header,
+:root[data-theme="dark"] div#navigator,
+:root[data-theme="dark"] div#footer,
+:root[data-theme="dark"] div#related,
+:root[data-theme="dark"] div#lastmodified { color: var(--wkr-text-dim); }
+
+:root[data-theme="dark"] div#menubar { color: var(--wkr-text); }
+
+:root[data-theme="dark"] div#preview { background-color:#273443; color: var(--wkr-text); }
+
+:root[data-theme="dark"] #page-top a       { background:#485162; color: var(--wkr-text); }
+:root[data-theme="dark"] #page-top a:hover { background:#5b667a; }
+
+/* サイドメニューのアコーディオン */
+:root[data-theme="dark"] .glossymenu p a,
+:root[data-theme="dark"] .submenuheader p a { color: var(--wkr-text); }
+
+/* 目次（contentsx） */
+:root[data-theme="dark"] div#body .toc {
+  background:var(--wkr-surface);
+  border:1px solid var(--wkr-border-soft);
+  border-radius: 4px;
+}
+
+/* コメント行の区切り線 */
+:root[data-theme="dark"] ul.list1 > li.pcmt { border-top-color:var(--wkr-border); }
+
+
+/* ============================================================================
+   5. スキンの外枠（SP版：180wiki-sp.skin.php）
+   SPはPCと構造が違う。片方だけ直して終わりにしないこと。
+   ============================================================================ */
+/* SPスキンのヘッダーだけが青いグラデーションを持つ。PCスキンの div#header は
+   ライトでも背景無しなので、#header-search-input（SP専用）の存在を条件にして
+   SPスキンのときだけ効くようにする */
+:root[data-theme="dark"] #header:has(#header-search-input) {
+  background-color:var(--wkr-header-b);
+  background:linear-gradient(var(--wkr-header-a), var(--wkr-header-b));
+}
+:root[data-theme="dark"] #header-search-input {
+  background-color:var(--wkr-input-bg);
+  border-color:var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] #header-search-input::placeholder { color: var(--wkr-text-faint); }
+:root[data-theme="dark"] #logo-link { background:rgba(255,255,255,0.10); }
+
+:root[data-theme="dark"] #toppage-wikiname {
+  color: var(--wkr-text);
+  border-bottom-color:var(--wkr-accent-line);
+}
+:root[data-theme="dark"] #content h1.title    { background-color:transparent; }
+:root[data-theme="dark"] #content h1.title a  { color: var(--wkr-text); }
+:root[data-theme="dark"] #lastmodified        { color: var(--wkr-text-dim); }
+
+/* ハンバーガーメニュー本体 */
+:root[data-theme="dark"] #pop-menu .modal_window,
+:root[data-theme="dark"] .modal_window {
+  background-color:var(--wkr-bg);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] #menu-footer      { background-color:var(--wkr-bg); }
+:root[data-theme="dark"] #close-btn span   { color: var(--wkr-text); }
+
+/* --- ハンバーガーメニュー（ドロワー）の中身 -----------------------------------
+   SP用CSSはドロワーの背景を3枚重ねで作っている。
+     .modal_window / #menubar / #menu-footer
+   0.7 の時点で #menubar を見落としており、
+   「上だけ黒くて下が白い」という報告を受けた。3枚とも必ず指定すること。 */
+:root[data-theme="dark"] #menubar {
+  background:var(--wkr-bg);
+  color: var(--wkr-text);
+}
+/* ここは #pop-menu を必ず付けること。
+   メニュー内 h2 に青いグラデが付くのは SP用CSS だけで、
+   PC側の #menubar h2 は通常の h2 と同じ #DDEEFF が乗る。
+   スコープ無しで書いてPCのメニュー見出しだけ色が違う、という不具合を出した。 */
+:root[data-theme="dark"] #pop-menu #menubar h2 {
+  background:linear-gradient(var(--wkr-header-a), var(--wkr-header-b));
+  color: #eef2f7;
+}
+:root[data-theme="dark"] #menubar h3,
+:root[data-theme="dark"] #menubar h4,
+:root[data-theme="dark"] #menubar h5,
+:root[data-theme="dark"] #menubar h6 { color: var(--wkr-text); }
+
+:root[data-theme="dark"] #close-btn { background-color:#327bb2; }
+
+/* Google翻訳ウィジェットは向こう側が白いUIを描くのでこちらでは色を変えられない。
+   コンテナの余白だけ整えて、浮きを目立たなくするのが限界。 */
+:root[data-theme="dark"] #google_translate_element {
+  background:transparent;
+  padding: 2px 0;
+}
+
+/* 検索中オーバーレイ */
+:root[data-theme="dark"] #search-loading-overlay { background:rgba(0,0,0,.62); }
+
+/* foldプラグインのアイコン */
+:root[data-theme="dark"] .fold-icon-wrapper:hover { background-color:var(--wkr-surface-2); }
+
+/* ============================================================================
+   個別プラグインの追加対応（0.7 で追加）
+   search3 / raty / votex / filtertable
+
+   プラグインは <style> をページに直接吐くものが多く、外部CSSの一括置換では
+   拾えない。0.6 までここが白いまま残っていて報告を受けた。
+
+   なお <style> を注入しているプラグインは全部で29個ある。
+   ここで対応済みなのは pcomment / card / tab を含めて7個。
+   残りは実機で見つかり次第、このセクションに足していくこと。
+   ============================================================================ */
+
+/* --- search3.inc.php ---------------------------------------------------------
+   このプラグインはCSSをBase64にしてJSで挿し込んでいる。
+   （PukiWikiのハイライト処理に壊されるのを避けるためとのこと）
+   読み方が特殊なだけで、詳細度では普通に勝てる。
+
+   ヘルプ枠だけ別扱い。<details> の style 属性に直接 background が
+   書かれているのでセレクタでは勝てない。ここだけ !important。 */
+
+:root[data-theme="dark"] details.search-help {
+  background:var(--wkr-surface) !important;
+  border-color:var(--wkr-border) !important;
+  color: var(--wkr-text);
+  border-radius: 4px;
+}
+:root[data-theme="dark"] details.search-help summary { color: var(--wkr-text); }
+:root[data-theme="dark"] details.search-help small,
+:root[data-theme="dark"] details.search-help li  { color: var(--wkr-text-dim); }
+
+/* 検索結果カード */
+:root[data-theme="dark"] .search3-result-list > li {
+  background:var(--wkr-surface);
+  border:1px solid var(--wkr-border);
+  box-shadow:0 1px 2px rgba(0,0,0,.35);
+}
+:root[data-theme="dark"] .search3-result-list > li.search3-ad,
+:root[data-theme="dark"] .search3-result-list > li.search3-ad-loader {
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+:root[data-theme="dark"] .search3-result-list > li .search3-excerpt { color: #b9c1cc; }
+:root[data-theme="dark"] .search3-result-list > li .search3-meta    { color: var(--wkr-text-faint); }
+
+/* 件数サマリ・打ち切り通知 */
+:root[data-theme="dark"] .search3-summary {
+  background:#263b56;
+  border-left-color:#4a90e2;
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .search3-summary strong      { color: #7fb8f5; }
+:root[data-theme="dark"] .search3-summary-note        { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .search3-truncated-notice {
+  background:#453723;
+  border-left-color:#d99a3a;
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .search3-truncated-notice strong  { color: #f0b86e; }
+:root[data-theme="dark"] .search3-truncated-example        { color: var(--wkr-text-dim); }
+
+/* 経過日数バッジ。元は淡色の地に濃い文字なので、地と文字を入れ替える */
+:root[data-theme="dark"] .search3-result-list .search3-days.fresh    { background:#244c31; color: #7fd99a; }
+:root[data-theme="dark"] .search3-result-list .search3-days.recent   { background:#283e65; color: #8cbcf5; }
+:root[data-theme="dark"] .search3-result-list .search3-days.normal   { background:#39404a; color: #b0b8c4; }
+:root[data-theme="dark"] .search3-result-list .search3-days.old      { background:#4c3e22; color: #e8bf7a; }
+:root[data-theme="dark"] .search3-result-list .search3-days.very-old { background:#562d2a; color: #f09a94; }
+
+
+/* --- raty.inc.php ------------------------------------------------------------ */
+:root[data-theme="dark"] .raty-plugin {
+  background:var(--wkr-surface);
+  border-color:var(--wkr-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .raty-label       { color: var(--wkr-text); }
+:root[data-theme="dark"] .raty-info        { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .raty-sep,
+:root[data-theme="dark"] .raty-total,
+:root[data-theme="dark"] .raty-voted-msg   { color: var(--wkr-text-faint); }
+:root[data-theme="dark"] .raty-guide       { color: var(--wkr-text-faint); }
+/* 未点灯の星。#ddd のままだと明るすぎて点灯済みと区別が付かない。
+
+   ※ :not(.full) を外さないこと。
+     外すとプラグイン側の .raty-star.full より詳細度が上になってしまい、
+     投票しても星に色が付かなくなる。0.8 で一度これをやって報告を受けた。 */
+:root[data-theme="dark"] .raty-star:not(.full),
+:root[data-theme="dark"] .raty-star-display:not(.full),
+:root[data-theme="dark"] .raty-star.empty,
+:root[data-theme="dark"] .raty-star-display.empty,
+:root[data-theme="dark"] .raty-star.partial,
+:root[data-theme="dark"] .raty-star-display.partial { color: #4a515c; }
+/* 点灯済みは明示的に書き直して確実に勝たせておく */
+:root[data-theme="dark"] .raty-star.full,
+:root[data-theme="dark"] .raty-star-display.full,
+:root[data-theme="dark"] .raty-star.partial::before,
+:root[data-theme="dark"] .raty-star-display.partial::before { color: #f5a623; }
+/* raty はホバーや再描画のたびにJSが style 属性へ直接色を書き込む。
+   インラインstyleにはセレクタでは勝てないので !important が要るが、
+   全部に効かせると点灯側まで潰れる。#ddd が入っているものだけ拾うこと。 */
+:root[data-theme="dark"] .raty-stars span[style*="#ddd" i],
+:root[data-theme="dark"] .raty-stars-static span[style*="#ddd" i],
+:root[data-theme="dark"] .raty-star[style*="#ddd" i],
+:root[data-theme="dark"] .raty-star-display[style*="#ddd" i] { color: #4a515c !important; }
+:root[data-theme="dark"] .raty-toggle              { color: var(--wkr-text-faint); }
+:root[data-theme="dark"] .raty-toggle:hover        { color: var(--wkr-text); background:var(--wkr-surface-3); }
+:root[data-theme="dark"] .raty-bar-label           { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .raty-bar-track           { background:#414959; }
+:root[data-theme="dark"] .raty-bar-count           { color: var(--wkr-text-faint); }
+:root[data-theme="dark"] .raty-confirm-dialog {
+  background:var(--wkr-surface-2);
+  box-shadow:0 4px 22px rgba(0,0,0,.6);
+}
+:root[data-theme="dark"] .raty-confirm-text        { color: var(--wkr-text); }
+:root[data-theme="dark"] .raty-confirm-cancel      { background:var(--wkr-surface-3); color: var(--wkr-text); }
+
+
+/* --- votex.inc.php -----------------------------------------------------------
+   これは最初からCSS変数で組まれていたので変数を差し替えるだけで済んだ。
+   他のプラグインもこの作りにしておいてくれると楽。
+
+   prefers-color-scheme の自動切替も入っているが、あれはOS設定に連動する仕組みで
+   うちのトグルとは無関係。OSがライトの人がダークにしても効かないので、
+   こちらで明示的に上書きしている。 */
+:root[data-theme="dark"] .votex-modern,
+:root[data-theme="dark"] .votex-inline {
+  --votex-bg:         #1c2028;
+  --votex-border:#4a5364;
+  --votex-text:       #dfe3e8;
+  --votex-text-light: #a4acb8;
+  --votex-bar-bg:     #333a46;
+  --votex-shadow:     0 1px 3px rgba(0,0,0,.5);
+  --votex-bar-fill:   linear-gradient(90deg, #7c7ff5, #a06ef0);
+}
+/* --votex-primary が「ボタンの地色」と「投票率の文字色」で使い回されている。
+   地色は白文字を乗せるので暗いままが正しく、文字は明るくしないと読めない。
+   要求が逆なので、変数ごと変えると片方が壊れる。文字側だけ切り離すこと。 */
+:root[data-theme="dark"] .votex-modern .votex-rate,
+:root[data-theme="dark"] .votex-inline .votex-rate { color: #9d9ff7; }
+
+
+/* --- filtertable.inc.php -----------------------------------------------------
+   Bootstrap風の .btn / .btn-default をそのまま抱えていて白ボタン固定。
+   選択状態が !important 付きで書かれているので、こちらも !important で返す。 */
+:root[data-theme="dark"] .btn-default {
+  color: var(--wkr-text);
+  background-color:var(--wkr-surface-2);
+  border-color:var(--wkr-input-border);
+}
+:root[data-theme="dark"] .btn-default:hover { background-color:#475777; }
+:root[data-theme="dark"] li.btn.cardSelectOption.selected {
+  color: #eaf1f9 !important;
+  background-color:#456b9f !important;
+  border-color:#6cb2f0 !important;
+  box-shadow:inset 0 2px 5px rgba(0,0,0,.45);
+}
+
+/* フィルタ表本体 */
+:root[data-theme="dark"] .wikitable {
+  background-color:var(--wkr-surface);
+  border-color:var(--wkr-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .wikitable > tr > th,
+:root[data-theme="dark"] .wikitable > tr > td,
+:root[data-theme="dark"] .wikitable > * > tr > th,
+:root[data-theme="dark"] .wikitable > * > tr > td { border-color:var(--wkr-border); }
+:root[data-theme="dark"] .wikitable > tr > th,
+:root[data-theme="dark"] .wikitable > * > tr > th { background-color:var(--wkr-surface-2); }
+:root[data-theme="dark"] .flex-border > .flex-box { border-color:var(--wkr-border); }
+
+/* トラッカーのツールバー */
+:root[data-theme="dark"] .ft-toolbar { border-top-color:var(--wkr-border); }
+:root[data-theme="dark"] .ft-count   { background:#283e65; color: #8cbcf5; }
+:root[data-theme="dark"] .ft-btn {
+  background:var(--wkr-surface-2);
+  border-color:var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .ft-btn.on  { background:#456b9f; }
+:root[data-theme="dark"] .ft-reset   { color: #ff9d95; border-color:#b2645d; }
+:root[data-theme="dark"] .ft-mark    { color: #7fd99a; border-color:#3f7a55; }
+:root[data-theme="dark"] .ft-modal   { background:var(--wkr-surface-2); }
+:root[data-theme="dark"] .ft-modal .mt { color: var(--wkr-text); }
+:root[data-theme="dark"] .ft-modal .md { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .ft-share {
+  background:var(--wkr-surface);
+  border-color:var(--wkr-border);
+}
+:root[data-theme="dark"] .ft-share input {
+  background:var(--wkr-input-bg);
+  border-color:var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .ft-share .msg  { color: #7fd99a; }
+:root[data-theme="dark"] .ft-share .note { color: var(--wkr-text-faint); }
+/* 閲覧バナー（成功=緑／警告=橙） */
+:root[data-theme="dark"] .ft-vb-ok        { background:#244c31; border-color:#3f7a55; }
+:root[data-theme="dark"] .ft-vb-ok .ft-vb-msg  { color: #8ee0a8; }
+:root[data-theme="dark"] .ft-vb-warn      { background:#453723; border-color:#a9762e; }
+:root[data-theme="dark"] .ft-vb-warn .ft-vb-msg { color: #f0b86e; }
+
+/* --- datatable.inc.php（simple-datatables / CDN読み込み） ----------------------
+   ライブラリのソートボタンは <button class="datatable-sorter"> で出力される。
+   セクション6の汎用ボタン指定がそのまま乗ってしまい、見出しの上に
+   塗り潰しの箱が並んでしまう。ライトでは透明なので、まずこれを打ち消す。
+
+   矢印そのものは ::before / ::after のボーダーで三角形を作る作りで、
+   色は黒・不透明度0.2/0.6。暗背景では見えないため色と濃さを入れ替える。 */
+:root[data-theme="dark"] button.datatable-sorter,
+:root[data-theme="dark"] .datatable-sorter {
+  background: none;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+}
+:root[data-theme="dark"] .datatable-sorter::before { border-top-color: #e8ecf1; opacity: .45; }
+:root[data-theme="dark"] .datatable-sorter::after  { border-bottom-color: #e8ecf1; opacity: .45; }
+:root[data-theme="dark"] .datatable-ascending  .datatable-sorter::after,
+:root[data-theme="dark"] .datatable-descending .datatable-sorter::before { opacity: 1; }
+
+/* 表本体と枠まわり */
+:root[data-theme="dark"] .datatable-wrapper,
+:root[data-theme="dark"] .datatable-container { background: transparent; color: var(--wkr-text); }
+:root[data-theme="dark"] .datatable-table > thead > tr > th,
+:root[data-theme="dark"] .datatable-table > thead > tr > td {
+  background-color: var(--wkr-surface-2);
+  color: #eef1f5;
+  border-bottom-color: var(--wkr-grid);
+}
+:root[data-theme="dark"] .datatable-table > tbody > tr > td { border-bottom-color: var(--wkr-border); }
+:root[data-theme="dark"] .datatable-table > tbody > tr:hover > td { background-color: var(--wkr-surface); }
+:root[data-theme="dark"] .datatable-empty { color: var(--wkr-text-dim); }
+
+/* 上下のツールバー（件数セレクタ・検索欄・ページ送り） */
+:root[data-theme="dark"] .datatable-top,
+:root[data-theme="dark"] .datatable-bottom,
+:root[data-theme="dark"] .datatable-info { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .datatable-input,
+:root[data-theme="dark"] .datatable-selector {
+  background-color: var(--wkr-input-bg);
+  border: 1px solid var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .datatable-pagination-list-item-link {
+  background-color: var(--wkr-surface-2);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .datatable-pagination-list-item-link:hover { background-color: var(--wkr-surface-3); }
+:root[data-theme="dark"] .datatable-pagination-list-item.datatable-active .datatable-pagination-list-item-link {
+  background-color: #3a5a86;
+  color: #eaf1f9;
+}
+:root[data-theme="dark"] .datatable-pagination-list-item.datatable-disabled .datatable-pagination-list-item-link {
+  color: var(--wkr-text-faint);
+}
+
+/* --- X（旧Twitter）の埋め込み -------------------------------------------------
+   twitter_widget_mono.inc.php / twitter_widget.inc.php は
+   blockquote に data-theme を持っており、"dark" を渡せば X 側が
+   ダーク配色で描画してくれる。色の指定はこちらからはできない。
+   値は PHP 側で Cookie を見て切り替える（各プラグインの修正版を参照）。
+   ここでは、描画されるまでの間に出る白い枠だけ目立たなくしておく。 */
+:root[data-theme="dark"] blockquote.twitter-tweet {
+  background: transparent;
+  border: 0;
+  color: var(--wkr-text-dim);
+}
+:root[data-theme="dark"] blockquote.twitter-tweet a { color: var(--wkr-link); }
+
+/* 描画後の四隅に残る白について。
+   X側は iframe の中で角丸の箱を描くが、iframe そのものの地は白のまま。
+   角丸の外側＝四隅だけ、その白がページの上に見えてしまう。
+   中身は別ドメインなので色は変えられないが、iframe 自体を角丸にすれば
+   はみ出た部分ごと切り取れる。Chromium で切り抜きが効くことを確認済み。
+   半径はX側の箱に合わせて 12px（実測で約10〜12px）。 */
+/* --- 広告枠 -------------------------------------------------------------------
+   AdSense が広告を返さなかったとき、Google は枠を畳むか空白を残すかのどちらか。
+   ビューポート内の枠はレイアウトがずれるため畳まれず、サイズを保った空白になる。
+   その空白が白く見えると、暗いページの真ん中に白い四角が残る。
+
+   1) 枠そのものの地は透過にして、ページの背景が透けるようにする
+      （広告そのものは iframe の中で描かれるので、配信された広告の見た目は変わらない）
+   2) 未配信と分かっている枠は畳む
+      data-ad-status="unfilled" はGoogleが公式に案内している判定方法
+
+   ※ 管理画面で「空の広告スペースを埋める」を有効にしている場合、
+     最適化された枠は data-ad-status が "unfill-optimized" になり 2) は効かない。
+   ※ 最初から非表示にするのはGoogleが非推奨としているため、
+     ここでは「未配信と判明した後」だけを対象にしている。 */
+:root[data-theme="dark"] ins.adsbygoogle,
+:root[data-theme="dark"] .adsbygoogle,
+:root[data-theme="dark"] ins.adsbygoogle > iframe {
+  background-color: transparent !important;
+}
+:root[data-theme="dark"] ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
+:root[data-theme="dark"] iframe.twitter-tweet-rendered,
+:root[data-theme="dark"] iframe.twitter-timeline-rendered,
+:root[data-theme="dark"] .twitter-tweet-rendered > iframe,
+:root[data-theme="dark"] .twitter-timeline-rendered > iframe {
+  border-radius: 12px;
+}
+
+
+
+
+/* スクロールボタン */
+:root[data-theme="dark"] .upBtn,
+:root[data-theme="dark"] .downBtn,
+:root[data-theme="dark"] #scrollUpBtn,
+:root[data-theme="dark"] #scrollDownBtn {
+  background-color:rgba(58,65,79,0.85);
+  color: var(--wkr-text);
+}
+
+/* 検索ローディング */
+/* 元が #search-loading-overlay .search-loading-card とID付き。
+   クラスだけで書いたら効かなかった。ID込みで書くこと。 */
+:root[data-theme="dark"] #search-loading-overlay .search-loading-card,
+:root[data-theme="dark"] .search-loading-card {
+  background:var(--wkr-surface-2);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .search-loading-keyword { color: var(--wkr-link); }
+
+/* --- modalAnimation.js が動的に注入するUI ------------------------------------
+   このJSは実行時に <style> を挿し込むので、うちのCSSより後に読まれる。
+   ただし :root[data-theme="dark"] 付きのこちらが詳細度で勝つので問題なし。
+
+   取っ手 .js-drawer が rgba(0,0,0,0.2) 指定。
+   「黒を20%乗せる」なので白背景なら #CCCCCC で見えるが、
+   暗背景では背景とほぼ同化して取っ手が消える。
+   同じ効果を白の半透明で作り直した。
+
+   ※ ngid.js が .js-drawer を width:0 で意図的に隠しているので、
+     ここで position や width を書かないこと。隠したものが復活する。 */
+:root[data-theme="dark"] .js-drawer {
+  background-color:rgba(255,255,255,0.34);
+}
+:root[data-theme="dark"] .js-drawer:hover,
+:root[data-theme="dark"] .js-listcontainer:hover .js-drawer {
+  background-color:rgba(255,255,255,0.52);
+}
+
+/* NGリスト本体は元から rgba(0,0,0,0.8) の暗いパネル。
+   ただ暗背景だと輪郭が消えるので、縁と影だけ足す */
+:root[data-theme="dark"] .js-listcontainer {
+  background-color:rgba(20,23,29,0.94);
+  border-left:1px solid var(--wkr-border);
+  box-shadow:-6px 0 18px rgba(0,0,0,.5);
+}
+
+/* NG設定のポップアップは白地なので、文字色だけ固定しておく */
+:root[data-theme="dark"] .js-abonelinkmenu    { background-color:rgba(240,243,247,0.96); border-color:#9aa3ad; }
+:root[data-theme="dark"] .js-abonelinkmenu li a { color: #23272e; }
+
+/* NGワード入力欄 */
+/* --- pcomment の「コメントを書く」ボタン ---------------------------------------
+   ライトでは淡い青地に濃い青文字のボタン。暗い側では地と文字を入れ替える。
+   自前で暗い地を持たせておけば、JSの「明るい地」走査の対象からも外れる。 */
+:root[data-theme="dark"] .pcmt-jump a {
+  background: #26405f !important;
+  color: #cfe2f7 !important;
+  border-left-color: #6cb2f0 !important;
+}
+:root[data-theme="dark"] .pcmt-jump a:hover {
+  background: #31527a !important;
+  color: #eaf3fc !important;
+}
+
+/* --- NGIDの右クリックメニュー（modalAnimation.js） -----------------------------
+   白い小メニューなので文字は濃いまま。
+   ただしホバー時、汎用の a:hover が暗い地を敷いてしまい、
+   濃い文字が乗って読めなくなっていた。地と文字を明示しておく。 */
+:root[data-theme="dark"] .js-abonelinkmenu li a:hover {
+  background-color: #dfe3ea !important;
+  color: #16191f !important;
+}
+
+:root[data-theme="dark"] .js-ngwordtext {
+  background:rgba(0,0,0,0.45);
+  color: #fff;
+  border:1px solid var(--wkr-input-border);
+}
+
+
+
+/* ============================================================================
+   6. フォーム部品（編集画面・コメント欄・検索）
+   ============================================================================ */
+:root[data-theme="dark"] input[type="text"],
+:root[data-theme="dark"] input[type="search"],
+:root[data-theme="dark"] input[type="password"],
+:root[data-theme="dark"] input[type="email"],
+:root[data-theme="dark"] input[type="url"],
+:root[data-theme="dark"] input[type="number"],
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select {
+  background-color:var(--wkr-input-bg);
+  border:1px solid var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder { color: var(--wkr-text-faint); }
+
+:root[data-theme="dark"] input[type="submit"],
+:root[data-theme="dark"] input[type="button"],
+:root[data-theme="dark"] input[type="reset"],
+:root[data-theme="dark"] button {
+  background-color:var(--wkr-surface-3);
+  border:1px solid var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] input[type="submit"]:hover,
+:root[data-theme="dark"] button:hover { background-color:#4a5466; }
+
+/* 差分表示 */
+:root[data-theme="dark"] span.diff_added   { background-color:#265e36; color: #cfeed8; }
+:root[data-theme="dark"] span.diff_removed { background-color:#732e3e; color: #f6d3d9; }
+
+/* --- 構文ハイライトエディタ（CodeMirror / secedit・edit 共通） -----------------
+   secedit.inc.php と lib/html.php が同じ <style> をそれぞれ吐いている。
+   二重管理になっているので、片方だけ直すとズレる。いずれ共通化したい。
+   （osada：0.9 時点では時間が取れず。次回改修で切り出す）
+
+   白背景前提で組まれているため、そのままだと
+     ・チェックボックス横のラベル(#333)とバージョン表記(#666)が沈む
+     ・エディタ本体が白いままページから浮く
+     ・カーソルが黒なので暗背景で完全に見えない
+   の3点が出る。PHPは触らずここで上書きする。
+
+   構文の色は色相と彩度を保ったまま明度だけ上げる方式で揃えた。
+   1色ずつ手で選ぶと一貫性が崩れるため。赤は赤、青は青のまま残っている。 */
+
+/* 切り替えUI。0.9 レビューで指摘された箇所 */
+:root[data-theme="dark"] .highlight-toggle-wrapper label   { color: var(--wkr-text); }
+:root[data-theme="dark"] .highlight-toggle-wrapper .version { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .highlight-toggle-wrapper a        { color: var(--wkr-link); }
+:root[data-theme="dark"] .highlight-toggle-wrapper a:hover  { color: #9bcdf7; }
+:root[data-theme="dark"] .highlight-toggle-wrapper input[type="checkbox"] { accent-color: #4a7fb5; }
+/* 読み込み失敗時のフォールバック表示（インラインstyleで color:#999 が入る） */
+:root[data-theme="dark"] .highlight-toggle-wrapper span[style*="color:#999"] { color: var(--wkr-text-dim) !important; }
+
+/* エディタ本体 */
+:root[data-theme="dark"] .CodeMirror {
+  background:#282e39;
+  color: var(--wkr-text);
+  border:1px solid var(--wkr-input-border);
+}
+:root[data-theme="dark"] .CodeMirror-gutters {
+  background:#303745;
+  border-right:1px solid var(--wkr-border);
+}
+:root[data-theme="dark"] .CodeMirror-linenumber { color: #7b8492; }
+:root[data-theme="dark"] .CodeMirror-cursor     { border-left:1px solid #e8ecf1; }
+:root[data-theme="dark"] .CodeMirror-selected,
+:root[data-theme="dark"] .CodeMirror-line::selection,
+:root[data-theme="dark"] .CodeMirror-line > span::selection { background:#3f5072; }
+:root[data-theme="dark"] .CodeMirror-activeline-background  { background:#303849; }
+:root[data-theme="dark"] .CodeMirror-matchingbracket        { color: #7fd99a !important; }
+
+/* 構文の色（元の色 → 暗背景用に持ち上げた色） */
+:root[data-theme="dark"] .cm-pukiwiki-heading-marker        { color: #e16969; }   /* #c62828 */
+:root[data-theme="dark"] .cm-pukiwiki-link-bracket          { color: #1c8eff; }   /* #0066cc */
+:root[data-theme="dark"] .cm-pukiwiki-link-target           { color: #8080ff; }   /* #0000ff */
+:root[data-theme="dark"] .cm-pukiwiki-url                   { color: #8080ff; }   /* #0000ff */
+:root[data-theme="dark"] .cm-pukiwiki-bold-marker           { color: #e76b0c; }   /* #b45309 */
+:root[data-theme="dark"] .cm-pukiwiki-italic-marker         { color: #e76b0c; }   /* #b45309 */
+:root[data-theme="dark"] .cm-pukiwiki-strike-marker         { color: #9e9e9e; }   /* #9e9e9e */
+:root[data-theme="dark"] .cm-pukiwiki-plugin-name           { color: #cb65dd; }   /* #9c27b0 */
+:root[data-theme="dark"] .cm-pukiwiki-plugin-paren          { color: #cb65dd; }   /* #9c27b0 */
+:root[data-theme="dark"] .cm-pukiwiki-plugin-args           { color: #ae8577; }   /* #795548 */
+:root[data-theme="dark"] .cm-pukiwiki-plugin-brace          { color: #cb65dd; }   /* #9c27b0 */
+:root[data-theme="dark"] .cm-pukiwiki-plugin-semi           { color: #cb65dd; }   /* #9c27b0 */
+:root[data-theme="dark"] .cm-pukiwiki-comment               { color: #9e9e9e; }   /* #9e9e9e */
+:root[data-theme="dark"] .cm-pukiwiki-table-separator       { color: #099bbe; }   /* #0891b2 */
+:root[data-theme="dark"] .cm-pukiwiki-table-modifier        { color: #e66666; }   /* #dc2626 */
+:root[data-theme="dark"] .cm-pukiwiki-list-marker           { color: #fa5800; }   /* #e65100 */
+:root[data-theme="dark"] .cm-pukiwiki-definition-marker     { color: #ae8477; }   /* #5d4037 */
+:root[data-theme="dark"] .cm-pukiwiki-hr                    { color: #8e8e8e; }   /* #757575 */
+
+:root[data-theme="dark"] .cm-pukiwiki-preformatted { background:#373f54; color: #dfe3e8; }
+
+/* 検索・置換バー */
+:root[data-theme="dark"] .cm-search-bar {
+  background:#303745;
+  border:1px solid var(--wkr-input-border);
+  border-bottom:none;
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .cm-search-row  { background:#2c425f; border-left-color:#4a90d9; }
+:root[data-theme="dark"] .cm-replace-row { background:#4c3d25; border-left-color:#d99a3a; }
+:root[data-theme="dark"] .cm-search-row .row-label  { color: #8cc2f0; }
+:root[data-theme="dark"] .cm-replace-row .row-label { color: #f0b86e; }
+:root[data-theme="dark"] .cm-replace-row .replace-label { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .cm-search-bar input[type="text"] {
+  background:var(--wkr-input-bg);
+  border:1px solid var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .cm-search-bar input[type="text"]:focus { border-color:var(--wkr-link); }
+:root[data-theme="dark"] .cm-search-count           { color: var(--wkr-text-dim); }
+:root[data-theme="dark"] .cm-search-count.no-match  { color: #ff9d95; }
+:root[data-theme="dark"] .cm-search-bar button {
+  background:var(--wkr-surface-3);
+  border:1px solid var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .cm-search-bar button:active { background:#596578; }
+:root[data-theme="dark"] .cm-replace-row .replace-btn {
+  background:#4c3d25; border-color:#a9762e; color: #f0b86e;
+}
+:root[data-theme="dark"] .cm-replace-row .replace-btn:hover     { background:#5d492b; }
+:root[data-theme="dark"] .cm-replace-row .replace-all-btn       { background:#b5762a; border-color:#a76b24; color: #fff; }
+:root[data-theme="dark"] .cm-replace-row .replace-all-btn:hover { background:#a76b24; }
+
+/* ヒット箇所の塗りは明るいままなので文字だけ濃く固定 */
+:root[data-theme="dark"] .cm-search-match,
+:root[data-theme="dark"] .cm-search-match-current { color: #15171c !important; }
+
+:root[data-theme="dark"] .CodeMirror-dialog {
+  background:var(--wkr-surface-2);
+  color: var(--wkr-text);
+  border-color:var(--wkr-border);
+}
+
+
+
+/* 検索ヒットのハイライト（word0〜word9）は元から読めるので触らない */
+
+
+/* ============================================================================
+   7. カレンダー・投票などの標準プラグイン
+   ============================================================================ */
+:root[data-theme="dark"] .style_calendar     { background-color:var(--wkr-grid); }
+:root[data-theme="dark"] .style_td_caltop,
+:root[data-theme="dark"] .style_td_blank,
+:root[data-theme="dark"] .style_td_day       { background-color:var(--wkr-surface); }
+:root[data-theme="dark"] .style_td_week      { background-color:var(--wkr-surface-3); }
+:root[data-theme="dark"] .style_td_today     { background-color:#5b522d; }
+:root[data-theme="dark"] .style_td_sat       { background-color:#274567; }
+:root[data-theme="dark"] .style_td_sun       { background-color:#60323f; }
+
+:root[data-theme="dark"] td.vote_label { background-color:#60323f; }
+:root[data-theme="dark"] td.vote_td1   { background-color:var(--wkr-surface-2); }
+:root[data-theme="dark"] td.vote_td2   { background-color:var(--wkr-surface); }
+
+
+/* ============================================================================
+   8. card.inc.php
+   ============================================================================ */
+:root[data-theme="dark"] .card-item {
+  border-color:rgba(255,255,255,0.14);
+  background-color:var(--wkr-surface);
+}
+:root[data-theme="dark"] .card-item:hover { box-shadow:0 5px 14px -4px rgba(0,0,0,0.8); }
+:root[data-theme="dark"] a.card-overwrap  { color: var(--wkr-text); }
+
+/* --- tab.inc.php（jQuery UI タブ） -------------------------------------------
+   <style> をページに直接吐く上に、jQuery UI 1.9.2 の base テーマを
+   CDN からも読んでいる。両方とも白背景前提。
+
+     .ui-tabs-panel { background:#fff }
+     .ui-tabs       { color: #333 }
+     .ui-tabs-panel a:hover { background-color:#CCDDEE }
+
+   最後のやつが特に危険で、ホバーした瞬間に文字が消える。
+
+   パネルは暗い色を指定するのではなく transparent にすること。
+   ライトだとこの #fff はページ背景と同色で境目が無い。
+   つまり元の意図は「白く塗る」ではなく「地の色のまま」だったので、
+   透明にするのが本来の見え方になる。
+
+   jQuery UI base の .ui-widget-content / .ui-state-* も
+   プラグイン側のリセットを擦り抜けてくることがあるので併せて潰してある。 */
+
+:root[data-theme="dark"] .ui-tabs { color: var(--wkr-text); }
+
+/* タブバー */
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav {
+  border-bottom:1px solid var(--wkr-border);
+}
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li a,
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li a:link,
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li a:visited {
+  color: var(--wkr-text-dim);
+  background:none;
+}
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li a:hover {
+  color: var(--wkr-text);
+  background:none;
+}
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li.ui-tabs-active a:link,
+:root[data-theme="dark"] .ui-tabs .ui-tabs-nav li.ui-tabs-active a:visited {
+  color: #6cb2f0;
+  border-bottom-color:#6cb2f0;
+  background:none;
+}
+
+/* パネル（中身） */
+:root[data-theme="dark"] .ui-tabs .ui-tabs-panel {
+  background:transparent;
+  color: var(--wkr-text);
+  border-bottom:1px solid var(--wkr-border);
+}
+:root[data-theme="dark"] .ui-tabs-panel .style_table { background-color:var(--wkr-grid); }
+
+/* パネル内のリンク。元は #215dc6 と #639 で、暗背景では 2.9:1 / 2.1:1 しかない */
+:root[data-theme="dark"] .ui-tabs-panel a:link    { color: var(--wkr-link); background-color:transparent; }
+:root[data-theme="dark"] .ui-tabs-panel a:visited { color: var(--wkr-link-visit); background-color:transparent; }
+:root[data-theme="dark"] .ui-tabs-panel a:hover,
+:root[data-theme="dark"] .ui-tabs-panel a:active  {
+  color: #9bcdf7;
+  background-color:var(--wkr-link-hover-bg);
+}
+
+/* jQuery UI base テーマ（CDN）の白基調を打ち消す */
+:root[data-theme="dark"] .ui-widget-content {
+  background:transparent;
+  color: var(--wkr-text);
+  border-color:var(--wkr-border);
+}
+:root[data-theme="dark"] .ui-widget-header {
+  background:var(--wkr-surface-2);
+  color: var(--wkr-text);
+  border-color:var(--wkr-border);
+}
+:root[data-theme="dark"] .ui-state-default,
+:root[data-theme="dark"] .ui-widget-content .ui-state-default,
+:root[data-theme="dark"] .ui-state-hover,
+:root[data-theme="dark"] .ui-state-active,
+:root[data-theme="dark"] .ui-state-focus {
+  background:none;
+  border-color:transparent;
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .ui-widget-content a { color: var(--wkr-link); }
+
+
+
+/* ============================================================================
+   9. pcomment.inc.php（コメント欄）
+   プラグイン内の <style> は後から読まれるため !important が必要な箇所がある
+   ============================================================================ */
+:root[data-theme="dark"] .pcmt-name,
+:root[data-theme="dark"] .pcmt-msg,
+:root[data-theme="dark"] .pcomment-textarea {
+  background-color:var(--wkr-input-bg) !important;
+  border-color:var(--wkr-input-border) !important;
+  color: var(--wkr-text) !important;
+}
+:root[data-theme="dark"] .pcmt-emoji-picker,
+:root[data-theme="dark"] .pcmt-color-picker,
+:root[data-theme="dark"] .pcmt-size-picker,
+:root[data-theme="dark"] .pcmt-terms-box {
+  background:var(--wkr-surface-2) !important;
+  border-color:var(--wkr-border) !important;
+  color: var(--wkr-text) !important;
+}
+:root[data-theme="dark"] .pcmt-tb-btn {
+  background:var(--wkr-surface-3) !important;
+  border-color:var(--wkr-input-border) !important;
+  color: var(--wkr-text) !important;
+}
+:root[data-theme="dark"] .pcmt-tb-btn:hover  { background:#4a5466 !important; }
+:root[data-theme="dark"] .pcmt-tb-btn.active { background:#2c5276 !important; border-color:var(--wkr-link) !important; color: #9bcdf7 !important; }
+:root[data-theme="dark"] .pcmt-ep-close,
+:root[data-theme="dark"] .pcmt-cp-close,
+:root[data-theme="dark"] .pcmt-sp-close {
+  background:var(--wkr-surface-3) !important;
+  color: var(--wkr-text) !important;
+}
+:root[data-theme="dark"] .pcmt-ep-cat:hover,
+:root[data-theme="dark"] .pcmt-ep-item:hover { background:var(--wkr-surface-3) !important; }
+:root[data-theme="dark"] .pcmt-ep-cat.active { background:#2c5276 !important; }
+/* --- pcrt.php（リアルタイム新着コメント） -------------------------------------
+   新着行は @keyframes pcrtGlow で光らせる作りで、最後は
+     rgba(255,241,204,.85)  ＝ 淡いクリーム色
+   のまま残り続ける（animation の both で終了色が保持される）。
+
+   ライトでは黒い本文が乗るので成立するが、暗い側では本文が明るい色なので
+   明るいクリームの上に明るい文字が乗って完全に読めなくなる。実測1.16:1。
+
+   さらに厄介なのは、この行が後から届くこと。
+   wkr-theme.js の走査は読み込み時に1回走るだけなので、
+   あとから挿入される新着行には印が付かない。JSでは追えないためCSSで解く。
+
+   keyframes は名前で切り替えられるので、暗い側用の一式を別名で用意し、
+   animation-name だけ差し替える。光り方（時間・膨らみ）は元のまま。 */
+/* 色は不透明で指定すること。半透明にすると、返信が入れ子になったときに
+   親の地の上へ子の地が重なり、階層が深いほど明るく積み上がってしまう。
+   ライト側が半透明でも破綻しないのは、指定色 rgba(255,241,204,.85) が
+   白にきわめて近く、白の上に何度重ねても値がほとんど動かないため。
+   暗い側は地との差が大きいので同じ書き方は通用しない。
+
+   濃さは「光っている間も本文が読めること」を条件に決めてある。
+   peak 4.57:1 / 静止 5.50:1。
+   ここを上げると光は目立つが、光っている1.9秒だけ文字が読めなくなる。 */
+@keyframes wkrPcrtGlow {
+  0%   { background: rgba(128,95,21,0);  box-shadow: 0 0 0 0   rgba(255,193,7,0); }
+  8%   { background: rgb(128,95,21);     box-shadow: 0 0 0 5px rgba(255,193,7,.42); }
+  45%  { background: rgb(128,95,21);     box-shadow: 0 0 0 5px rgba(255,193,7,.34); }
+  100% { background: rgb(108,85,34);     box-shadow: 0 0 0 0   rgba(255,213,79,0); }
+}
+:root[data-theme="dark"] li.pcrt-new { animation-name: wkrPcrtGlow; }
+
+/* 「新着◯件」ボタンと通知の類。いずれも白基調 */
+:root[data-theme="dark"] .pcrt-btn {
+  background: var(--wkr-surface-2);
+  border-color: var(--wkr-input-border);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .pcrt-btn:hover { background: var(--wkr-surface-3); border-color: #6c7a92; }
+:root[data-theme="dark"] .pcrt-note {
+  background: #33291a;
+  border-color: #7a5f2a;
+  color: #e8d5b0;
+}
+:root[data-theme="dark"] .pcrt-note button {
+  background: var(--wkr-surface-3);
+  border-color: #7a5f2a;
+  color: #e8d5b0;
+}
+:root[data-theme="dark"] .pcrt-note button:hover { background: #4a3a22; }
+:root[data-theme="dark"] .pcrt-note-sub { color: #c0a377; }
+
+/* 画面上部に浮かぶ通知 */
+:root[data-theme="dark"] .pcrt-float {
+  background: rgba(47,53,64,.97);
+  border-color: #5a6478;
+  color: var(--wkr-text);
+  box-shadow: 0 3px 12px rgba(0,0,0,.5);
+}
+:root[data-theme="dark"] .pcrt-float:hover { background: #3a4152; border-color: #79839a; }
+:root[data-theme="dark"] .pcrt-sending { color: var(--wkr-text-faint); }
+
+/* 投稿エラーの注意書き */
+:root[data-theme="dark"] .pcrt-perr {
+  background: #3a2e1c;
+  border-color: #a9762e;
+  color: #f0c98a;
+}
+:root[data-theme="dark"] .pcrt-perr-sub { color: #d4a862; }
+:root[data-theme="dark"] .pcrt-perr button {
+  background: var(--wkr-surface-3);
+  border-color: #a9762e;
+  color: #f0c98a;
+}
+
+:root[data-theme="dark"] .pcmt-cp-title,
+:root[data-theme="dark"] .pcmt-sp-title,
+:root[data-theme="dark"] .pcmt-ep-recent-title { color: var(--wkr-text) !important; }
+
+
+/* ============================================================================
+   10. アイコン画像の見え方補正
+   image/ のアイコンは一通り明るさを測ったが、大半は中間の明るさで
+   暗背景でもそのまま見えた。個別対応が要ったものだけここに置く。
+   ============================================================================ */
+:root[data-theme="dark"] .sort-arrow.descending,
+:root[data-theme="dark"] .sort-arrow.ascending { filter: brightness(2.4); }
+
+/* --- 編集アイコン（paraedit.png / guiedit.png） --------------------------------
+   どちらも白背景前提の絵で、輪郭に濃い線が入っている。
+   暗背景だとその輪郭が消えて、特に9pxのparaeditはほぼ何か分からない。
+
+   0.8 で filter で明るくする案と白い台座を敷く案を出したが、
+   前者は色が濁る、後者はダサいということで両方却下。
+   sugimoto にダーク専用の画像を描き起こしてもらった。
+
+     image/paraedit-dark.png  18x18（9px表示・2倍解像度）
+     image/guiedit-dark.png   40x40（20px表示・2倍解像度）
+
+   スマホの高精細画面で効かせるため、表示サイズの2倍で作ってある。
+   PHP側は変更なし。content で差し替えるだけ。
+   url() は このCSSファイルの位置(skin/)からの相対で解決される。 */
+:root[data-theme="dark"] img[src$="paraedit.png"] {
+  content: url("../image/paraedit-dark.png");
+}
+:root[data-theme="dark"] img[src$="guiedit.png"] {
+  content: url("../image/guiedit-dark.png");
+}
+/* 差し替えた画像はホバーで少しだけ強調する */
+:root[data-theme="dark"] a:hover img[src$="paraedit.png"],
+:root[data-theme="dark"] a:hover img[src$="guiedit.png"] {
+  filter: brightness(1.18);
+}
+
+/* 検索ヒットのハイライト（strong.word0〜4）
+   蛍光色の地に本文の明るい文字が乗って読めなくなる。文字だけ濃く固定。 */
+:root[data-theme="dark"] strong.word0,
+:root[data-theme="dark"] strong.word1,
+:root[data-theme="dark"] strong.word2,
+:root[data-theme="dark"] strong.word3,
+:root[data-theme="dark"] strong.word4,
+:root[data-theme="dark"] strong.word5,
+:root[data-theme="dark"] strong.word6,
+:root[data-theme="dark"] strong.word7,
+:root[data-theme="dark"] strong.word8,
+:root[data-theme="dark"] strong.word9 { color: #15171c !important; }
+
+/* image/ のアイコンは一通り明るさを確認したが、大半が中間の明るさで
+   暗背景でもそのまま見えた。差し替えが要ったのは編集アイコン2つだけ。
+   メニューの箇条書き(180mt-arrow.gif)も薄いグレーなのでそのままでよい。 */
+
+
+/* 見づらいアイコンが見つかったらここに追加していく */
+
+
+/* ============================================================================
+   11. 利用者が本文に書いた色指定への互換レイヤー
+   ----------------------------------------------------------------------------
+   ここが本件で一番揉んだ箇所。触る前に必ず全部読むこと。
+
+   編集更新の蓄積で、本文には BGCOLOR() / COLOR() / &color(); が大量に
+   埋まっている。すべて白背景に映えることを前提に書かれているので、
+   何もしないと「黒背景に黒文字」「白背景に白文字」が一斉に発生する。
+
+   0.2 の時点では「ページ側を一括置換する」案が出たが、
+   対象が膨大なうえ利用者の意図した色分けを壊すため却下。
+   ページの中身は1文字も触らず、CSSの属性セレクタで判定する方式に決定した。
+
+   場合分けは4つ：
+
+     A-1  明るい背景色だけが指定されている
+          → 背景はその色のまま残し、文字だけ濃い色に固定。
+            利用者がつけた色分けの意味を壊さない。
+
+     A-2  暗い背景色だけが指定されている
+          → 逆に文字を明るい色に固定。
+
+     B    文字色だけが指定されていて、それが暗い色
+          → 明るい同系色に置き換える。色相は保つので
+            「赤＝注意」といった意味は伝わったまま残る。
+
+     C    背景色と文字色の両方が指定されている
+          → 何もしない。
+            利用者が両方を管理していて、ライトで成立していた組み合わせは
+            ダークでもそのまま成立するため。
+
+   ■ 判定のしくみ（ここを勘違いすると全部おかしくなる）
+   「文字色が単独で指定されているか」は
+       style属性が color: で始まる ／ "; color:" を含む
+   で見ている。単純に "color:" を探すと background-color: の一部に
+   引っかかって誤爆する。
+
+   ■ 3桁と6桁は別物
+   属性セレクタは文字列一致なので #00f と #0000ff は一致しない。
+   両方書いてある。色を追加するときは必ず両方入れること。
+
+   ■ 適用範囲
+   本文(#body)・メニュー(#menubar)・注釈(#note) のみ。
+   ヘッダーやツールバーなど自前で配色しているUIには触れない。
+   ============================================================================ */
+
+/* ---- A-1：明るい背景色のみが指定されている要素 → 文字を濃く ---------------- */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  [style*="background-color:" i]:not(
+    [style^="color:" i], [style*="; color:" i], [style*=";color:" i],
+    [style*="background-color:black" i],
+    [style*="background-color:#000" i],
+    [style*="background-color:#111" i],
+    [style*="background-color:#222" i],
+    [style*="background-color:#333" i],
+    [style*="background-color:#444" i],
+    [style*="background-color:#555" i],
+    [style*="background-color:navy" i],
+    [style*="background-color:darkblue" i],
+    [style*="background-color:midnightblue" i],
+    [style*="background-color:maroon" i],
+    [style*="background-color:darkred" i],
+    [style*="background-color:purple" i],
+    [style*="background-color:indigo" i],
+    [style*="background-color:darkslategray" i],
+    [style*="background-color:#0000" i],
+    [style*="background-color:#00008b" i],
+    [style*="background-color:#191970" i],
+    [style*="background-color:#800000" i],
+    [style*="background-color:#8b0000" i],
+    [style*="background-color:#800080" i],
+    [style*="background-color:#4b0082" i],
+    [style*="background-color:#2f4f4f" i]
+  ) {
+  color: #15171c !important;
+}
+/* その中にあるリンクも読めるように */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  [style*="background-color:" i]:not(
+    [style^="color:" i], [style*="; color:" i], [style*=";color:" i],
+    [style*="background-color:black" i],
+    [style*="background-color:#000" i],
+    [style*="background-color:#111" i],
+    [style*="background-color:#222" i],
+    [style*="background-color:#333" i],
+    [style*="background-color:navy" i],
+    [style*="background-color:maroon" i],
+    [style*="background-color:purple" i]
+  ) a {
+  color: #14448f !important;
+  background-color:transparent !important;
+}
+
+/* ---- A-2：暗い背景色のみが指定されている要素 → 文字を明るく ---------------- */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="background-color:black" i],
+    [style*="background-color:#000" i],
+    [style*="background-color:#111" i],
+    [style*="background-color:#121212" i],
+    [style*="background-color:#1a1a1a" i],
+    [style*="background-color:#222" i],
+    [style*="background-color:#333" i],
+    [style*="background-color:#444" i],
+    [style*="background-color:#555" i],
+    [style*="background-color:navy" i],
+    [style*="background-color:darkblue" i],
+    [style*="background-color:midnightblue" i],
+    [style*="background-color:maroon" i],
+    [style*="background-color:darkred" i],
+    [style*="background-color:purple" i],
+    [style*="background-color:indigo" i],
+    [style*="background-color:darkslategray" i],
+    [style*="background-color:#00008b" i],
+    [style*="background-color:#191970" i],
+    [style*="background-color:#800000" i],
+    [style*="background-color:#8b0000" i],
+    [style*="background-color:#800080" i],
+    [style*="background-color:#4b0082" i],
+    [style*="background-color:#2f4f4f" i]
+  ):not([style^="color:" i], [style*="; color:" i], [style*=";color:" i]) {
+  color: #e8ebef !important;
+}
+
+/* ---- B：暗い文字色のみが指定されている要素 → 明るい同系色へ ---------------
+   :not([style*="background" i]) により、背景色や background 省略記法が
+   ついている要素は除外される（＝Cとして放置される）。
+
+   ※ #00f のような3桁指定と #0000ff のような6桁指定は
+     文字列として別物なので、両方を列挙している。 */
+
+/* B-1 ほぼ黒 → 明るいグレー */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:black" i],
+    [style*="color:#000" i],
+    [style*="color:#111" i],
+    [style*="color:#121212" i],
+    [style*="color:#1a1a1a" i],
+    [style*="color:#222" i]
+  ):not([style*="background" i]) {
+  color: #e3e7ec !important;
+}
+
+/* B-2 濃いグレー → 中間グレー */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:#333" i],
+    [style*="color:#3a3a3a" i],
+    [style*="color:#444" i],
+    [style*="color:dimgray" i],
+    [style*="color:dimgrey" i]
+  ):not([style*="background" i]) {
+  color: #c3cad3 !important;
+}
+
+/* B-3 グレー → やや弱い明るいグレー */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:#555" i],
+    [style*="color:#666" i],
+    [style*="color:#777" i],
+    [style*="color:#888" i],
+    [style*="color:gray" i],
+    [style*="color:grey" i],
+    [style*="color:darkgray" i],
+    [style*="color:darkgrey" i]
+  ):not([style*="background" i]) {
+  color: #a8b1bd !important;
+}
+
+/* B-4 濃い青 → 明るい青 */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:navy" i],
+    [style*="color:blue" i],
+    [style*="color:darkblue" i],
+    [style*="color:mediumblue" i],
+    [style*="color:midnightblue" i],
+    [style*="color:royalblue" i],
+    [style*="color:steelblue" i],
+    [style*="color:#00f" i],
+    [style*="color:#0000ff" i],
+    [style*="color:#000080" i],
+    [style*="color:#00008b" i],
+    [style*="color:#0000cd" i],
+    [style*="color:#036" i],
+    [style*="color:#039" i],
+    [style*="color:#003366" i],
+    [style*="color:#003399" i],
+    [style*="color:#0033cc" i],
+    [style*="color:#004699" i],
+    [style*="color:#14549b" i],
+    [style*="color:#215dc6" i],
+    [style*="color:#36c" i],
+    [style*="color:#3366cc" i]
+  ):not([style*="background" i]) {
+  color: #7fb8f5 !important;
+}
+
+/* B-5 濃い赤 → 明るい赤 */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:maroon" i],
+    [style*="color:darkred" i],
+    [style*="color:firebrick" i],
+    [style*="color:brown" i],
+    [style*="color:red" i],
+    [style*="color:#f00" i],
+    [style*="color:#ff0000" i],
+    [style*="color:#900" i],
+    [style*="color:#990000" i],
+    [style*="color:#a00" i],
+    [style*="color:#aa0000" i],
+    [style*="color:#c00" i],
+    [style*="color:#cc0000" i],
+    [style*="color:#800000" i],
+    [style*="color:#8b0000" i],
+    [style*="color:#a52a2a" i],
+    [style*="color:#b22222" i],
+    [style*="color:#dd3333" i]
+  ):not([style*="background" i]) {
+  color: #ff9d95 !important;
+}
+
+/* B-6 濃い緑 → 明るい緑 */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:green" i],
+    [style*="color:darkgreen" i],
+    [style*="color:forestgreen" i],
+    [style*="color:seagreen" i],
+    [style*="color:olivedrab" i],
+    [style*="color:teal" i],
+    [style*="color:#060" i],
+    [style*="color:#006600" i],
+    [style*="color:#080" i],
+    [style*="color:#008800" i],
+    [style*="color:#090" i],
+    [style*="color:#009900" i],
+    [style*="color:#006400" i],
+    [style*="color:#008000" i],
+    [style*="color:#008080" i],
+    [style*="color:#00aa00" i],
+    [style*="color:#228b22" i],
+    [style*="color:#2e8b57" i]
+  ):not([style*="background" i]) {
+  color: #6fd897 !important;
+}
+
+/* B-7 濃い紫 → 明るい紫 */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:purple" i],
+    [style*="color:indigo" i],
+    [style*="color:darkmagenta" i],
+    [style*="color:darkviolet" i],
+    [style*="color:#808" i],
+    [style*="color:#880088" i],
+    [style*="color:#609" i],
+    [style*="color:#660099" i],
+    [style*="color:#800080" i],
+    [style*="color:#8b008b" i],
+    [style*="color:#4b0082" i],
+    [style*="color:#663399" i],
+    [style*="color:#990099" i],
+    [style*="color:#9400d3" i]
+  ):not([style*="background" i]) {
+  color: #cba6f2 !important;
+}
+
+/* B-8 濃い茶・オリーブ → 明るい琥珀 */
+:root[data-theme="dark"] :is(#body, #menubar, #note)
+  :is(
+    [style*="color:olive" i],
+    [style*="color:saddlebrown" i],
+    [style*="color:sienna" i],
+    [style*="color:chocolate" i],
+    [style*="color:darkgoldenrod" i],
+    [style*="color:#630" i],
+    [style*="color:#663300" i],
+    [style*="color:#808000" i],
+    [style*="color:#886800" i],
+    [style*="color:#8b4513" i],
+    [style*="color:#b8860b" i]
+  ):not([style*="background" i]) {
+  color: #e6bf82 !important;
+}
+
+/* ---- A-3：#style プラグイン等で任意のCSSが書かれた箇所 ---------------------
+   #style は利用者が background-color を自由に書けるため、
+     background-color:#FF450080   ← 8桁（透明度つき）
+     background-color:rgba(...)
+   といった指定が入ってくる。
+
+   半透明の背景は下地によって合成結果が変わる。同じ #FF450080 でも
+   白地なら明るい橙、暗い地なら暗いレンガ色になり、必要な文字色が逆になる。
+   属性セレクタは文字列一致しかできないのでこの計算ができない。
+
+   そこで wkr-theme.js が実際の合成後の輝度を測り data-wkr-bg を振る。
+   ここはその結果を受けて色を当てるだけ。上のA-1/A-2より後に置くこと。 */
+:root[data-theme="dark"] :is(#body, #menubar, #note) [data-wkr-bg="light"][style] {
+  color: #15171c !important;
+}
+/* クラスで明るい地を敷いているプラグイン向け。
+   !important を付けないのは意図的で、自前の色を持つ子要素（見出しや数値など）は
+   そのまま残し、色指定の無いテキストだけを継承で拾わせるため。 */
+:root[data-theme="dark"] :is(#body, #menubar, #note) [data-wkr-bg="light"] {
+  color: #15171c;
+}
+:root[data-theme="dark"] :is(#body, #menubar, #note) [data-wkr-bg="light"][style] a {
+  color: #14448f !important;
+  background-color: transparent !important;
+}
+:root[data-theme="dark"] :is(#body, #menubar, #note) [data-wkr-bg="dark"][style] {
+  color: #e8ebef !important;
+}
+/* 暗い地の子孫リンクを一括で塗るルールはここに置いていた。
+   既定のリンク色と同じ値で冗長なうえ、未作成リンクの琥珀色と競合するため削除した。
+   暗い地のリンクは下の data-wkr-a 側と既定値で足りる。 */
+
+/* リンクは枠ではなくリンク自身の地で決める。
+   #style の明るい枠の中に暗い表が入る、という入れ子が普通にあるため、
+   枠を基準に子孫をまとめて塗ると表の中のリンクが読めなくなる。
+   wkr-theme.js が1つずつ測って data-wkr-a を振る。上の2つより後に置くこと。 */
+:root[data-theme="dark"] :is(#body, #menubar, #note) [style] a[data-wkr-a="light"] {
+  color: #14448f !important;
+  background-color: transparent !important;
+}
+:root[data-theme="dark"] :is(#body, #menubar, #note) [style] a[data-wkr-a="dark"] {
+  color: #8cc4f7 !important;
+  background-color: transparent !important;
+}
+
+/* ---- 逃がし弁 -------------------------------------------------------------
+   どうしても補正を切りたい箇所が出たとき用。
+   要素に class="wkr-keep" を付ければ元の色に戻る。
+   （#style や #div でクラスを振れる箇所で使う想定）
+   問い合わせが来たらこれを案内すること。 */
+:root[data-theme="dark"] .wkr-keep,
+:root[data-theme="dark"] .wkr-keep * { color: revert !important; }
+
+
+/* ============================================================================
+   12. テーマ切り替えボタン
+   設置位置は wkr-theme.js 側が自動で判断する。
+   ============================================================================ */
+.wkr-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  margin: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+  border:1px solid #c3ccd6;
+  border-radius: 999px;
+  background:#f4f7fa;
+  color: #33404f;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background .15s, border-color .15s;
+}
+.wkr-theme-toggle:hover { background:#e6edf5; }
+.wkr-theme-toggle svg { width: 15px; height: 15px; flex: 0 0 auto; }
+
+:root[data-theme="dark"] .wkr-theme-toggle {
+  border-color:var(--wkr-input-border);
+  background:var(--wkr-surface-3);
+  color: var(--wkr-text);
+}
+:root[data-theme="dark"] .wkr-theme-toggle:hover { background:#4a5466; }
+
+/* ボタンをアイコンだけで置く場合（SPヘッダーなど） */
+.wkr-theme-toggle.wkr-icon-only { padding: 7px; border-radius: 8px; }
+.wkr-theme-toggle.wkr-icon-only .wkr-theme-label { display: none; }
+
+/* 置き場所が見つからなかったときの浮遊ボタン */
+.wkr-theme-toggle.wkr-floating {
+  position: fixed;
+  right: 14px;
+  bottom: 96px;
+  z-index: 9000;
+  box-shadow:0 2px 8px rgba(0,0,0,.28);
+}
+
+
+/* ============================================================================
+   13. 印刷時は常にライトモードで出力する
+   ダークのまま印刷すると背景が真っ黒に刷られてインクを大量に食う。
+   ============================================================================ */
+@media print {
+  :root[data-theme="dark"] { color-scheme: light; }
+  :root[data-theme="dark"] body,
+  :root[data-theme="dark"] td { color: #000; background-color: #fff; }
+  .wkr-theme-toggle { display: none !important; }
+}
