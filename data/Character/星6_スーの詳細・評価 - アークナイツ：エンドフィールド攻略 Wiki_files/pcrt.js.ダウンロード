@@ -1,0 +1,1563 @@
+/* pcrt 6.6.1 */
+/* pcomment realtime - Phase 2 : ボタン展開 + 枝葉アニメーション */
+(function () {
+'use strict';
+
+var IDLE = 300000;   /* 5分無操作で停止 */
+
+var CSS = '' +
+'.pcrt-bar{margin:8px 0 4px;text-align:right;min-height:1px}' +
+'.pcrt-btn{display:none;align-items:center;gap:8px;background:#fff;border:1px solid #bbb;' +
+ 'border-radius:6px;padding:7px 13px;font-size:13px;color:#333;cursor:pointer;line-height:1.2}' +
+'.pcrt-btn.on{display:inline-flex}' +
+'.pcrt-btn:hover{background:#f5f5f5;border-color:#999}' +
+'.pcrt-btn:disabled{opacity:.6;cursor:default}' +
+'.pcrt-num{background:#e24b4a;color:#fff;font-size:12px;border-radius:10px;padding:1px 8px;font-weight:bold}' +
+'.pcrt-note{display:none;align-items:center;gap:10px;background:#fff8e1;border:1px solid #ffe082;' +
+ 'border-radius:6px;padding:8px 12px;font-size:13px;color:#5d4037;text-align:left}' +
+'.pcrt-note.on{display:flex}' +
+'.pcrt-note button{margin-left:auto;background:#fff;border:1px solid #d7ccc8;border-radius:5px;' +
+ 'padding:5px 12px;font-size:13px;cursor:pointer;color:#5d4037;white-space:nowrap}' +
+'.pcrt-note button:hover{background:#efebe9}' +
+'.pcrt-note-sub{font-size:12px;color:#7d6250}' +
+
+/* 新着ハイライト。
+   要素を足さず class を付けるだけなので、skin の CSS と衝突しない。
+
+   時間では消さない。読む前に消えてしまうと
+   「新着を見つけやすくする」という目的を果たせないため。
+   消えるのは、次に新しいコメントが画面へ入ったときとリロード時だけ。
+   ずっと残るので、最初に強く光ったあとは淡い色に落ち着かせる。 */
+/* background をここで指定しないこと。
+   指定すると開始前から淡い色が出てしまい、最初の強い光が見えなくなる。
+   終了後の色は animation の both が保つので、指定は不要。 */
+'li.pcrt-new{border-radius:4px;animation:pcrtGlow 1.9s var(--pd,0ms) ease-out both}' +
+'@keyframes pcrtGlow{' +
+ '0%{background:rgba(255,214,102,0);box-shadow:0 0 0 0 rgba(255,193,7,0)}' +
+ '8%{background:rgba(255,213,79,1);box-shadow:0 0 0 5px rgba(255,193,7,.55)}' +
+ '45%{background:rgba(255,213,79,1);box-shadow:0 0 0 5px rgba(255,193,7,.5)}' +
+ '100%{background:rgba(255,241,204,.85);box-shadow:0 0 0 0 rgba(255,213,79,0)}}' +
+
+/* 本文がすっと現れる */
+'li.pcrt-new>.pcrt-tx{display:inline;opacity:0;transform:translateX(-4px);' +
+ 'animation:pcrtSlide .34s calc(var(--pd,0ms) + 60ms) ease-out forwards}' +
+'@keyframes pcrtSlide{to{opacity:1;transform:translateX(0)}}' +
+
+/* コメント欄を見ている間だけ、画面上部に浮かべる控えめな通知。
+   下部固定にしないのは、広告やスマホのキーボードと競合するため */
+'.pcrt-float{position:fixed;left:50%;top:var(--pcrt-top,10px);transform:translate(-50%,-16px);' +
+ 'z-index:9998;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.97);' +
+ 'border:1px solid #d0d0d0;border-radius:20px;padding:8px 16px;font-size:13px;color:#333;' +
+ 'cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.18);opacity:0;pointer-events:none;' +
+ 'transition:opacity .22s ease,transform .22s ease;line-height:1.2;white-space:nowrap;' +
+ 'max-width:92vw;font-family:inherit}' +
+'.pcrt-float.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}' +
+'.pcrt-float:hover{background:#fff;border-color:#aaa}' +
+
+'.pcrt-sending{display:none;margin-top:6px;font-size:12px;color:#666;text-align:right}' +
+'.pcrt-sending.on{display:block}' +
+'.pcrt-perr{display:none;margin-top:8px;background:#fff6e5;border:1px solid #ffd699;' +
+ 'border-radius:6px;padding:10px 12px;font-size:13px;color:#7a4b12;text-align:left;line-height:1.7}' +
+'.pcrt-perr.on{display:block}' +
+'.pcrt-perr-sub{font-size:12px;color:#9a6a2a;margin-top:2px}' +
+'.pcrt-perr button{margin-top:8px;background:#fff;border:1px solid #e6c489;border-radius:5px;' +
+ 'padding:5px 12px;font-size:13px;cursor:pointer;color:#7a4b12}' +
+
+/* 動きを控える設定のとき。
+   減らすべきなのは移動や拡大であって、色が変わるだけの演出は残す。
+   ここでハイライト自体を止めると、新着に気づけなくなってしまう。 */
+'@media(prefers-reduced-motion:reduce){' +
+ '.pcrt-float{transition:none}' +
+ 'li.pcrt-new>.pcrt-tx{opacity:1!important;transform:none!important;animation:none!important}}';
+
+/* 同じログを見ているコメント欄が同一ページに複数あっても、
+   取りに行くのは1回で済ませる。
+   短時間の要求は同じ通信の結果を分け合う */
+var shareCache = {};
+function fetchShared(url, file) {
+  var now = Date.now();
+  var c = shareCache[file];
+  if (c && now - c.at < 2000) return c.p;
+
+  var p = fetch(url, { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) {
+      if (r.status === 404) return { gone: true };
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text().then(function (t) { return { text: t }; });
+    });
+
+  shareCache[file] = { at: now, p: p };
+  /* 失敗した結果を握り続けないよう、終わったら捨てる */
+  p.catch(function () { if (shareCache[file] && shareCache[file].p === p) delete shareCache[file]; });
+  return p;
+}
+
+/* 想定外の状態を記録に残す。
+   原因の切り分けに使うだけなので、失敗しても何もしない。 */
+function pcrtReport(w, kind, seen) {
+  try {
+    if (!w || !w.file) return;
+    var d = {
+      k: kind,
+      s2: seen || '',
+      seq: w.seq,
+      at: w.seqAtPost,
+      cnt: w.count,
+      len: (w.sentMsg || '').length,
+      dir: w.dir ? 1 : 0,
+      mi: w.mergeInfo || null,
+      ua: navigator.userAgent.slice(0, 120),
+      w: window.innerWidth,
+      key: w.key || ''
+    };
+    var url = './?plugin=pcrt_log';
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(url, new Blob([JSON.stringify(d)], { type: 'text/plain' }));
+    } else {
+      fetch(url, { method: 'POST', body: JSON.stringify(d), credentials: 'same-origin' });
+    }
+  } catch (e) {}
+}
+
+/* ページを取り直すときの URL。
+
+   そのまま location.href を取りに行くと、
+   保存済みの古いページが返ってくることがある。
+   投稿した直後に取り直しても自分の書き込みが載っておらず、
+   反映されなかったと誤って判断してしまう。
+   毎回ちがう印を付けて、作りたてを返してもらう。 */
+function pcrtPageUrl() {
+  var u = location.href.split('#')[0];
+  var sep = (u.indexOf('?') >= 0) ? '&' : '?';
+  return u + sep + '_pcrt=' + Date.now() + '.' + Math.random().toString(36).slice(2, 8);
+}
+
+var styled = false;
+function injectCSS() {
+  if (styled) return;
+  styled = true;
+  var s = document.createElement('style');
+  s.textContent = CSS;
+  document.head.appendChild(s);
+}
+
+/* 各コメント行を識別するキー。
+   data-comment-id は葉に無く、同一本文で重複もするので
+   本文と時刻を合わせて使う */
+function keyOf(li) {
+  var id = li.getAttribute('data-comment-id') || '';
+  var t  = '';
+  var n  = li.querySelector('.__plugin_new');
+  if (n) t = n.getAttribute('data-mtime') || '';
+  var sp = li.querySelector('.js-comment');
+  var tx = (sp ? sp.textContent : li.textContent) || '';
+  return id + '|' + t + '|' + tx.replace(/\s+/g, ' ').slice(0, 120);
+}
+
+function collectKeys(root) {
+  var map = {};
+  var lis = root.querySelectorAll('li');
+  for (var i = 0; i < lis.length; i++) {
+    var k = keyOf(lis[i]);
+    map[k] = (map[k] || 0) + 1;
+  }
+  return map;
+}
+
+/* 木 = ul.list1 直下、枝葉 = それ以外 */
+function isTree(li) {
+  var ul = li.parentNode;
+  return !!(ul && ul.className && ul.className.indexOf('list1') !== -1);
+}
+
+var TREE_SVG = '<svg class="pcrt-tw" width="26" height="40" viewBox="0 0 26 40" aria-hidden="true">' +
+  '<path d="M11 38 V12"/><ellipse cx="11" cy="9" rx="3.2" ry="5"/></svg>';
+var BRANCH_SVG = '<svg class="pcrt-tw" width="26" height="40" viewBox="0 0 26 40" aria-hidden="true">' +
+  '<path d="M7 0 V24 H19"/><ellipse cx="22" cy="24" rx="4.6" ry="3"/></svg>';
+
+/* 前回まで光っていたものを消す。
+   新しいコメントが画面へ入るたびに呼び、
+   常に「今この瞬間に入ってきたもの」だけが光っている状態にする */
+function clearGlow(root) {
+  if (!root) return;
+  var old = root.querySelectorAll('li.pcrt-new');
+  for (var i = 0; i < old.length; i++) {
+    old[i].classList.remove('pcrt-new');
+    old[i].style.removeProperty('--pd');
+  }
+}
+
+/* 新規の li を光らせる。
+   DOM 構造は変えないので、既存の CSS や JS と衝突しない */
+function decorate(li, delay) {
+  li.style.setProperty('--pd', delay + 'ms');
+
+  /* 本文だけを包む（子の ul は含めない）。
+     包めない環境でもハイライトは効くので、失敗しても続行する */
+  try {
+    var w = document.createElement('span');
+    w.className = 'pcrt-tx';
+    var c = li.firstChild, moved = [];
+    while (c) {
+      var nx = c.nextSibling;
+      if (!(c.nodeType === 1 && c.tagName === 'UL')) moved.push(c);
+      c = nx;
+    }
+    if (moved.length) {
+      for (var i = 0; i < moved.length; i++) w.appendChild(moved[i]);
+      li.insertBefore(w, li.firstChild);
+    }
+  } catch (e) {}
+
+  li.classList.add('pcrt-new');
+}
+
+function Watcher(el) {
+  this.el       = el;
+  /* 再取得したページと対応付けるためのキー。
+     出力順ではなくログページ名を基にしているので、
+     ページ内の並びが変わっても取り違えない */
+  this.key      = el.getAttribute('data-pcrt-key') || el.getAttribute('data-pcrt-idx');
+  this.file     = el.getAttribute('data-pcrt-file');
+  this.seq      = parseInt(el.getAttribute('data-pcrt-seq'), 10) || 0;
+  this.interval = (parseInt(el.getAttribute('data-pcrt-interval'), 10) || 10) * 1000;
+  this.dir      = el.getAttribute('data-pcrt-dir') === '1';
+  this.box      = el.closest ? el.closest('.pcomment') : null;
+  this.count    = 0;
+  this.fails    = 0;
+  this.rotSeen  = 0;
+  /* ページを表示した時点の編集印。
+     0 から始めると、過去に一度でも編集があった板で
+     開くたびに「編集されました」と出てしまう */
+  this.xSeen    = parseInt(el.getAttribute('data-pcrt-x'), 10) || 0;
+  this.busy     = false;
+  this.stopped  = false;
+  this.timer    = null;
+  this.lastAct  = Date.now();
+  this.build();
+  this.bindActivity();
+  this.schedule();
+  try { this.initPost(); } catch (e) {}
+}
+
+Watcher.prototype.build = function () {
+  var self = this;
+
+  this.btn = document.createElement('button');
+  this.btn.type = 'button';
+  this.btn.className = 'pcrt-btn';
+  this.btn.innerHTML = '\u65b0\u7740\u30b3\u30e1\u30f3\u30c8 <span class="pcrt-num">0</span>';
+  this.num = this.btn.querySelector('.pcrt-num');
+  this.btn.onclick = function () { self.expand(); };
+
+  this.note = document.createElement('div');
+  this.note.className = 'pcrt-note';
+  /* 「更新」だと新着と紛らわしいので、何が起きたかをそのまま書く。
+     発生源は page_write() へのフックだけなので、必ず編集か削除である */
+  this.note.innerHTML =
+    '<span>\u30b3\u30e1\u30f3\u30c8\u304c\u7de8\u96c6\u307e\u305f\u306f\u524a\u9664\u3055\u308c\u307e\u3057\u305f<br>' +
+    '<span class="pcrt-note-sub">\u8868\u793a\u3092\u6700\u65b0\u306b\u3059\u308b\u306b\u306f\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3066\u304f\u3060\u3055\u3044</span></span>';
+  var rb = document.createElement('button');
+  rb.type = 'button';
+  rb.textContent = '\u518d\u8aad\u307f\u8fbc\u307f';
+  rb.onclick = function () { location.reload(); };
+  this.note.appendChild(rb);
+
+  this.el.appendChild(this.btn);
+  this.el.appendChild(this.note);
+
+  /* 画面上部に浮かぶ方の通知 */
+  this.fbtn = document.createElement('button');
+  this.fbtn.type = 'button';
+  this.fbtn.className = 'pcrt-float';
+  this.fbtn.innerHTML = '\u65b0\u7740\u30b3\u30e1\u30f3\u30c8 <span class="pcrt-num">0</span>';
+  this.fnum = this.fbtn.querySelector('.pcrt-num');
+  this.fbtn.onclick = function () { self.expand(); };
+  document.body.appendChild(this.fbtn);
+
+  /* コメント欄が視界に入っているかを見張る。
+     見えていないときは浮かべない（読んでいない人の邪魔をしない） */
+  this.inView = false;
+  var watch = this.box || this.el;
+  if (window.IntersectionObserver && watch) {
+    var io = new IntersectionObserver(function (es) {
+      for (var i = 0; i < es.length; i++) self.inView = es[i].isIntersecting;
+      self.syncFloat();
+    }, { rootMargin: '0px 0px -20% 0px' });
+    io.observe(watch);
+  }
+
+  /* region や details で畳まれている場合の監視。
+     閉じている間はポーリングを止め、開いた瞬間に取りに行く。
+     勝手に開くことはしない（畳んだのは本人の意思なので） */
+  this.hidden = this.isHidden();
+  if (window.MutationObserver && watch) {
+    var last = this.hidden;
+    var check = function () {
+      var now = self.isHidden();
+      if (now === last) return;
+      last = now;
+      self.hidden = now;
+      if (now) {
+        self.clear();                 /* 畳まれた → 止める */
+      } else if (!self.stopped) {     /* 開かれた → すぐ取りに行く */
+        self.lastAct = Date.now();
+        self.clear();
+        self.timer = setTimeout(function () { self.poll(); }, 200);
+      }
+    };
+    /* 開閉は style や class、details の open 属性で表現される。
+       どれで実装されていても拾えるよう、祖先をまとめて見張る */
+    var mo = new MutationObserver(check);
+    var node = watch;
+    var depth = 0;
+    while (node && node !== document.body && depth < 12) {
+      mo.observe(node, { attributes: true,
+        attributeFilter: ['style', 'class', 'open', 'hidden'] });
+      node = node.parentElement;
+      depth++;
+    }
+    /* 折りたたみを開く操作は必ずクリックを伴うので、そこでも確認する */
+    window.addEventListener('click', function () { setTimeout(check, 60); }, { passive: true });
+  }
+};
+
+/* 折りたたみなどで画面に描かれていない状態か */
+Watcher.prototype.isHidden = function () {
+  var el = this.box || this.el;
+  if (!el) return false;
+  try {
+    /* 描画されていなければ幅も高さも 0 になる。
+       display:none / visibility:hidden / height:0 のいずれでも拾える */
+    if (el.offsetParent === null && getComputedStyle(el).position !== 'fixed') return true;
+    var r = el.getBoundingClientRect();
+    return (r.width === 0 && r.height === 0);
+  } catch (e) {
+    return false;
+  }
+};
+
+/* 画面上部に固定表示されているものを避ける。
+   skin のヘッダーは環境によって高さが違うので、実際に測る */
+Watcher.prototype.floatTop = function () {
+  var top = 10;
+  try {
+    var cands = [
+      document.getElementById('header'),
+      document.querySelector('.navbar'),
+      document.querySelector('header')
+    ];
+    for (var i = 0; i < cands.length; i++) {
+      var el = cands[i];
+      if (!el) continue;
+      var pos = getComputedStyle(el).position;
+      if (pos !== 'fixed' && pos !== 'sticky') continue;
+      var r = el.getBoundingClientRect();
+      /* 画面上部に貼り付いていて、実際に見えているものだけ */
+      if (r.height > 0 && r.top <= 4 && r.bottom > top) top = r.bottom + 8;
+    }
+  } catch (e) {}
+  return top;
+};
+
+/* 浮遊バッジの出し入れ。
+   コメント欄が見えていて、かつ下部のボタンが画面外のときだけ出す */
+Watcher.prototype.syncFloat = function () {
+  if (!this.fbtn) return;
+  var show = false;
+  if (this.count > 0 && this.inView && !this.stopped && !this.isHidden()) {
+    var r = this.el.getBoundingClientRect();
+    show = (r.top > window.innerHeight - 40);   /* 下部ボタンがまだ見えていない */
+  }
+  if (show) {
+    this.fbtn.style.setProperty('--pcrt-top', this.floatTop() + 'px');
+    this.fbtn.classList.add('on');
+  } else {
+    this.fbtn.classList.remove('on');
+  }
+};
+
+Watcher.prototype.bindActivity = function () {
+  var self = this;
+  var mark = function () {
+    var was = (Date.now() - self.lastAct > IDLE);
+    self.lastAct = Date.now();
+    if (was && !self.stopped && !self.timer) self.schedule();
+  };
+  ['click', 'scroll', 'keydown', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, mark, { passive: true });
+  });
+  var tick = false;
+  window.addEventListener('scroll', function () {
+    if (tick) return;
+    tick = true;
+    requestAnimationFrame(function () { tick = false; self.syncFloat(); });
+  }, { passive: true });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      self.clear();
+    } else {
+      /* 戻ってきたら次の周期を待たずに一度だけ取りに行く。
+         裏にいる間は止めたままなので、負荷は増えない */
+      self.lastAct = Date.now();
+      self.clear();
+      if (!self.stopped) {
+        self.timer = setTimeout(function () { self.poll(); }, 300);
+      }
+    }
+  });
+};
+
+Watcher.prototype.clear = function () {
+  if (this.timer) { clearTimeout(this.timer); this.timer = null; }
+};
+
+Watcher.prototype.schedule = function () {
+  var self = this;
+  this.clear();
+  if (this.stopped) return;
+  if (this.hidden) return;      /* 畳まれている間は予約もしない */
+  this.timer = setTimeout(function () { self.poll(); }, this.interval);
+};
+
+Watcher.prototype.showNote = function () {
+  this.stopped = true;
+  this.clear();
+  this.btn.classList.remove('on');
+  if (this.fbtn) this.fbtn.classList.remove('on');
+  this.note.classList.add('on');
+
+  if (this.box) {
+    /* 表示が古いので、返信先を選ばせない。
+       すでに選ばれていた場合は解除してフォームも戻す。
+       そのまま送ると返信先が見つからず、文脈のない木として
+       立ってしまう（サーバー側でも弾くが、手前で止める方が親切） */
+    var picked = null;
+    var r = this.box.querySelectorAll('input[name=reply]');
+    for (var i = 0; i < r.length; i++) {
+      if (r[i].checked && r[i].value && r[i].value !== '0') picked = r[i];
+    }
+    if (picked && window.PCommentPlugin &&
+        typeof window.PCommentPlugin.cancelForm === 'function') {
+      try { window.PCommentPlugin.cancelForm(picked.value, this.box.id); } catch (e) {}
+    }
+    var base = this.box.querySelector('input[name=reply][value="0"]');
+    if (base) base.checked = true;
+
+    var rr = this.box.querySelectorAll('input.pcmt[type=radio]');
+    for (i = 0; i < rr.length; i++) rr[i].disabled = true;
+  }
+};
+
+Watcher.prototype.poll = function () {
+  var self = this;
+  if (document.hidden) { this.clear(); return; }
+  if (Date.now() - this.lastAct > IDLE) { this.clear(); return; }
+  if (this.busy) { this.schedule(); return; }
+  /* 畳まれている間は通信しない。開いたときに拾い直す */
+  if (this.isHidden()) { this.hidden = true; this.clear(); return; }
+
+  fetchShared(this.file + '?t=' + Date.now() + '.' + Math.random().toString(36).slice(2, 8),
+              this.file)
+    .then(function (res) {
+      self.fails = 0;
+      if (res.gone) { self.showNote(); return; }
+      self.apply(res.text);
+      self.schedule();
+    })
+    .catch(function () {
+      self.fails++;
+      if (self.fails >= 3) { self.stopped = true; self.clear(); return; }
+      self.schedule();
+    });
+};
+
+Watcher.prototype.apply = function (text) {
+  var j = null;
+  try { j = JSON.parse(text); } catch (e) { return; }
+  if (!j || typeof j.s !== 'number') return;
+  this.polledSeq = j.s;
+
+  /* 巻き戻り = 何かの理由で作り直された。
+     ただし送信中は、番号が一時的に前後することがあるので
+     すぐには騒がず、投稿の判定を優先する */
+  if (j.s < this.seq) {
+    if (this.posting) return;
+    this.showNote();
+    return;
+  }
+
+  /* コメントが編集・削除された。
+     番号は進んだままなので、投稿の判定は狂わない */
+  if (j.x && j.x > this.xSeen) {
+    this.xSeen = j.x;
+    if (!this.posting) { this.showNote(); return; }
+  }
+
+  /* ログローテーションが起きていたら、移動済みの木への返信を止める */
+  if (j.r && j.rs && j.rs > this.rotSeen) {
+    this.rotSeen = j.rs;
+    this.markRotated(j.r);
+  }
+
+  /* 送信中に番号が増えたなら、それは自分の投稿が通ったということ。
+     自分のものを「新着」として数えず、そのまま完了処理へ回す。
+     枠の読み込み完了を拾えない環境でも、ここで必ず拾える */
+  if (this.posting && j.s > this.seqAtPost) {
+    this.seq = j.s;
+    clearInterval(this.pwatch);
+    clearTimeout(this.ptimer);
+    this.pullAndFinish();
+    return;
+  }
+
+  if (j.s === this.seq) return;
+
+  this.count += (j.s - this.seq);
+  this.seq = j.s;
+
+  /* 送信中はバッジを出さない。
+     自分の投稿が一瞬「新着1件」として見えると紛らわしい */
+  if (this.posting) return;
+
+  this.num.textContent = this.count;
+  if (this.fnum) this.fnum.textContent = this.count;
+  this.btn.classList.add('on');
+  this.syncFloat();
+};
+
+/* ログローテーションで過去ログへ移った木は、返信できなくする。
+
+   目印になるのは「移動せずに残った最古の木」の投稿ID。
+   その木より前に並んでいるものが移動済み、という考え方。
+
+   ただし目印の木自身が画面に無いときは何もしない。
+   表示件数を超えて押し出された、あるいは編集で消えた場合で、
+   そこで打ち切らずに走ると【画面上のすべてを無効化してしまう】。
+   実際にそれで、返信が一切できなくなる不具合が出た。 */
+Watcher.prototype.markRotated = function (oldestAlive) {
+  if (!this.box || !oldestAlive || oldestAlive === '-') return;
+
+  var lis = this.box.querySelectorAll('li[data-comment-id]');
+  var cut = -1;
+  for (var i = 0; i < lis.length; i++) {
+    var id = (lis[i].getAttribute('data-comment-id') || '')
+             .replace('comment_', '').slice(0, 8);
+    if (id === oldestAlive) { cut = i; break; }
+  }
+
+  /* 目印が見つからない = もう関係のない古い情報。触らない */
+  if (cut <= 0) return;
+
+  for (i = 0; i < cut; i++) {
+    var r = lis[i].querySelector('input.pcmt[type=radio]');
+    if (!r || r.disabled) continue;
+    r.disabled = true;
+    r.title = '\u3053\u306e\u30b3\u30e1\u30f3\u30c8\u306f\u904e\u53bb\u30ed\u30b0\u3078\u79fb\u52d5\u3057\u307e\u3057\u305f';
+  }
+};
+
+/* --- ここからが Phase 2 の本体 --- */
+
+/* li を対応付けるためのキー。
+
+   本文(textContent)は使わない。
+   modalAnimation.js の初期化を通ると本文まわりの構造が組み替わり、
+   とくに添付画像を含む投稿では初期化の前後で文字列が変わってしまう。
+   その結果、同じコメントが別物と判定されて二重に挿さっていた。
+
+   代わりに、初期化の影響を受けない
+     ・data-comment-id (木と枝には必ずある)
+     ・投稿時刻        (葉はこちらで見分ける)
+   だけを使う。時刻が同じコメントが並んでも、
+   呼び出し側が出現順に数えて対応付けるので取り違えは起きない。 */
+function mapKey(li) {
+  var id = li.getAttribute('data-comment-id');
+  if (id) return 'i:' + id;
+
+  var t = '';
+  var n = li.querySelector('.__plugin_new');
+  if (n) t = n.getAttribute('data-mtime') || '';
+  if (!t) {
+    /* &new{} が付いていない古いコメント用。表示されている日時を使う */
+    var d = li.querySelector('.comment_date');
+    if (d) {
+      t = (d.firstChild && d.firstChild.nodeValue) || d.textContent || '';
+    }
+  }
+  var depth = (li.parentNode && li.parentNode.className) || '';
+  return 't:' + depth.replace(/[^a-z0-9]/g, '') + '|' + t.replace(/\s+/g, ' ').trim();
+}
+
+/* 既存 DOM 側の li を索引化する。同じキーが複数あるので配列で持つ */
+function indexLis(root) {
+  var map = {}, lis = root.getElementsByTagName('li');
+  for (var i = 0; i < lis.length; i++) {
+    var k = mapKey(lis[i]);
+    if (!map[k]) map[k] = [];
+    map[k].push(lis[i]);
+  }
+  return map;
+}
+
+/* li の直下から子リストを探す。無ければ作る */
+function childList(li, cls) {
+  var c = li.firstElementChild;
+  while (c) {
+    if (c.tagName === 'UL') return c;
+    c = c.nextElementSibling;
+  }
+  var ul = document.createElement('ul');
+  ul.className = cls + ' list-indent1';
+  li.appendChild(ul);
+  return ul;
+}
+
+Watcher.prototype.expand = function () {
+  var self = this;
+  if (this.busy || !this.box) return;
+  this.busy = true;
+  this.btn.disabled = true;
+
+  fetch(pcrtPageUrl(), { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text();
+    })
+    .then(function (html) {
+      self.merge(new DOMParser().parseFromString(html, 'text/html'));
+    })
+    .catch(function () { location.reload(); });
+};
+
+Watcher.prototype.merge = function (doc) {
+  var bar = doc.querySelector('.pcrt-bar[data-pcrt-key="' + this.key + '"]');
+  if (!bar) { location.reload(); return 0; }
+
+  var freshUl = bar.previousElementSibling;
+  var myUl    = this.el.previousElementSibling;
+  if (!freshUl || freshUl.tagName !== 'UL' || !myUl || myUl.tagName !== 'UL') {
+    location.reload(); return 0;
+  }
+
+  this.mergeInfo = { fresh: 0, mine: 0, added: 0, drop: 0 };
+
+  var known = indexLis(myUl);
+  var used  = {};
+  var pair  = [];      /* 取得側 li -> 手元 li */
+  var added = [];      /* 新しく挿した li */
+  var top   = window.pageYOffset;
+  var h0    = document.documentElement.scrollHeight;
+
+  var lis = freshUl.getElementsByTagName('li');
+  for (var i = 0; i < lis.length; i++) {
+    var src = lis[i];
+    var key = mapKey(src);
+    var n   = used[key] || 0;
+
+    /* 既にあるものは触らない。イベントも状態もそのまま残る */
+    if (known[key] && known[key][n]) {
+      used[key] = n + 1;
+      pair.push([src, known[key][n]]);
+      continue;
+    }
+
+    /* 挿す先を決める */
+    var parentSrc = src.parentNode ? src.parentNode.parentNode : null;
+    var target = null;
+    if (parentSrc && parentSrc.tagName === 'LI') {
+      for (var j = 0; j < pair.length; j++) {
+        if (pair[j][0] === parentSrc) { target = pair[j][1]; break; }
+      }
+      if (!target) {           /* 親が手元に無い返信は捨てる */
+        if (this.mergeInfo) this.mergeInfo.drop++;
+        continue;
+      }
+    }
+
+    var clone = src.cloneNode(true);
+    /* 子リストは後続の処理で個別に挿すので、複製からは外す */
+    var cu = clone.firstElementChild;
+    while (cu) {
+      var nx = cu.nextElementSibling;
+      if (cu.tagName === 'UL') clone.removeChild(cu);
+      cu = nx;
+    }
+
+    if (target) {
+      var cls = (src.parentNode.className || '').indexOf('list3') !== -1 ? 'list3' : 'list2';
+      childList(target, cls).appendChild(clone);
+    } else if (this.dir) {
+      myUl.appendChild(clone);
+    } else {
+      myUl.insertBefore(clone, myUl.firstChild);
+    }
+
+    used[key] = n + 1;
+    pair.push([src, clone]);
+    added.push(clone);
+  }
+
+  /* 追加分だけ初期化する。既存要素には触っていないので
+     元から張られているイベントは生きたまま残る */
+  if (added.length) {
+    /* 外部リンクの装飾 (pukiwiki.skin.php の jQuery)。
+       読み込み時に一度きり走る処理なので、追加分は自分で面倒を見る。
+       これを飛ばすと新着の外部リンクだけ別窓にならず、アイコンも付かない */
+    for (i = 0; i < added.length; i++) {
+      var as = added[i].getElementsByTagName('a');
+      for (var k = 0; k < as.length; k++) {
+        var a = as[k];
+        if (a.getAttribute('data-pcrt-ext')) continue;
+        var href = a.getAttribute('href') || '';
+        if (href.indexOf('http') !== 0) continue;
+        if (href.indexOf(location.hostname) !== -1) continue;
+        if (a.className && a.className.indexOf('exclude-icon') !== -1) continue;
+        a.setAttribute('data-pcrt-ext', '1');
+        a.setAttribute('target', '_blank');
+        a.appendChild(document.createTextNode(' \ud83c\udf10'));
+      }
+    }
+
+    /* ID のリンク化・あぼーん判定 (modalAnimation.js) */
+    if (typeof window.wikiruInitComments === 'function') {
+      try { window.wikiruInitComments(added); } catch (e) {}
+    }
+    /* アンカーID のリンク化 (anchor.js。導入している wiki のみ)。
+       ID のリンク化より後に呼ぶこと。順序が逆だと、
+       まだ組み替えられていない本文を対象にしてしまう */
+    if (typeof window.wikiruInitAnchors === 'function') {
+      try { window.wikiruInitAnchors(added); } catch (e) {}
+    }
+    /* 返信フォームの移動 (pukiwiki.skin.php の PCommentPlugin)。
+       init() は既存のラジオにも重ねて登録してしまうため呼ばず、
+       新しく増えたラジオにだけ同じ処理を張る */
+    if (window.PCommentPlugin && typeof window.PCommentPlugin.showCommentForm === 'function') {
+      for (i = 0; i < added.length; i++) {
+        var rr = added[i].querySelectorAll('input[type=radio][name=reply]');
+        for (var q = 0; q < rr.length; q++) {
+          if (rr[q].getAttribute('data-pcrt-bound')) continue;
+          rr[q].setAttribute('data-pcrt-bound', '1');
+          rr[q].addEventListener('change', function (ev) {
+            try { window.PCommentPlugin.showCommentForm(ev); } catch (e) {}
+          });
+        }
+      }
+    }
+  }
+
+  /* 前回まで光っていたぶんを消してから、今回のぶんを光らせる。
+     きっかけが新着ボタンでも投稿でも同じ扱いにする */
+  if (added.length) clearGlow(myUl);
+
+  var step = added.length ? Math.min(120, Math.floor(900 / added.length)) : 0;
+  for (i = 0; i < added.length; i++) {
+    try { decorate(added[i], i * step); } catch (e) {}
+  }
+  if (added.length) {
+    myUl.classList.add('pcrt-go');
+    void myUl.offsetWidth;
+  }
+
+  /* 上に伸びたぶんだけ補正して見た目を動かさない。
+     投稿経由のときは afterPost 側でまとめて調整する */
+  var h1 = document.documentElement.scrollHeight;
+  if (!this.posting && !this.dir && h1 !== h0) window.scrollTo(0, top + (h1 - h0));
+
+  /* ボタンを押して展開したときは、いちばん新しい投稿まで運ぶ。
+     新着が3件なら3件目、1件なら1件目。
+     枝葉が画面の途中に挿さることもあるので、
+     並び順ではなく投稿時刻がいちばん新しいものを探す */
+  if (!this.posting && added.length) this.gotoNewest(added);
+
+  /* digest を最新にして衝突警告の誤発を防ぐ */
+  /* 取得先も反映先も #pcomment-form の中に限定する。
+     コメント欄全体から探すと、別の欄の値を掴むことがある */
+  var myPanel = this.box.querySelector('#pcomment-form');
+  var nd = doc.querySelector('#pcomment-form input[name=digest]');
+  var od = myPanel ? myPanel.querySelector('input[name=digest]') : null;
+  if (nd && od) od.value = nd.value;
+
+  /* 投稿経由のとき、どれが自分のものか判定するために控えておく */
+  this.lastAdded = added;
+
+  /* 原因の切り分け用。取得側と手元の件数を控える */
+  this.mergeInfo = {
+    fresh: freshUl.getElementsByTagName('li').length,
+    mine:  myUl.getElementsByTagName('li').length,
+    added: added.length,
+    drop:  0
+  };
+
+  var ns = bar.getAttribute('data-pcrt-seq');
+  if (ns) this.seq = parseInt(ns, 10) || this.seq;
+  this.count = 0;
+  this.btn.classList.remove('on');
+  if (this.fbtn) this.fbtn.classList.remove('on');
+  this.btn.disabled = false;
+  this.busy = false;
+  this.schedule();
+  return added.length;
+};
+
+
+/* 追加された中で最も新しい投稿へ寄せる */
+Watcher.prototype.gotoNewest = function (added) {
+  var best = null, bestT = -1;
+  for (var i = 0; i < added.length; i++) {
+    var t = -1;
+    var n = added[i].querySelector('.__plugin_new');
+    if (n) {
+      var d = Date.parse(n.getAttribute('data-mtime') || '');
+      if (!isNaN(d)) t = d;
+    }
+    /* 時刻が読めないものは、後から来たものほど新しいとみなす */
+    if (t < 0) t = i;
+    if (t >= bestT) { bestT = t; best = added[i]; }
+  }
+  if (!best) return;
+
+  try {
+    var r = best.getBoundingClientRect();
+    /* すでに画面内に収まっているなら動かさない */
+    if (r.top >= 60 && r.bottom <= window.innerHeight - 40) return;
+
+    var reduce = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    best.scrollIntoView({
+      block: 'center',
+      behavior: reduce ? 'auto' : 'smooth'
+    });
+  } catch (e) {}
+};
+
+/* =========================================================
+   投稿もリロードなしで反映する
+
+   仕組み: form の送信先を隠し iframe に変えるだけ。
+   pcomment 側の送信処理（画像アップロード等）には一切触れないので、
+   既存の挙動がそのまま生きる。
+   異常時は target を戻せば完全に元の動作へ復帰できる。
+   ========================================================= */
+
+Watcher.prototype.initPost = function () {
+  var self = this;
+  if (!this.box) return;
+
+  var form = this.box.querySelector('form') ||
+             (this.box.tagName === 'FORM' ? this.box : this.box.closest('form'));
+  if (!form) return;
+
+  /* 認証が必要なページで未認証のとき、入力欄は隠されて操作できない。
+     その状態で送信を横取りしても意味がないので、何もしない。
+     認証を済ませればページが読み直され、そこで有効になる。 */
+  var panel = form.querySelector('#pcomment-form');
+  if (panel && panel.style.display === 'none') return;
+
+  this.form = form;
+
+  /* 送信に必要な項目の初期値を控えておく。
+     返信でフォームが動く際に値が入れ替わることがあり、
+     壊れたまま送るとトップページへ飛ばされたり
+     存在しないプラグイン名で弾かれたりする */
+  this.hidden0 = {};
+  var names = ['refer', 'page', 'plugin', 'dir', 'count', 'nodate'];
+  for (var i = 0; i < names.length; i++) {
+    var el = form.querySelector('input[name="' + names[i] + '"]');
+    if (el) this.hidden0[names[i]] = el.value;
+  }
+
+  this.makeFrame();
+
+  /* 送信中の案内 */
+  this.sending = document.createElement('div');
+  this.sending.className = 'pcrt-sending';
+  this.sending.textContent = '\u9001\u4fe1\u4e2d...';
+  this.el.appendChild(this.sending);
+
+  /* 失敗時の案内 */
+  this.perr = document.createElement('div');
+  this.perr.className = 'pcrt-perr';
+  this.el.appendChild(this.perr);
+
+  /* pcomment 側のリスナーより後に登録されるので、
+     画像アップロードが完了して本当に送信される回だけ通る */
+  form.addEventListener('submit', function (ev) {
+    if (ev.defaultPrevented) return;      /* 画像アップロード中は素通り */
+    if (self.posting) return;
+    if (self.bypass) { self.bypass = false; return; }  /* 認証画面へ進む送信 */
+    self.beginPost();
+  });
+};
+
+/* 送信ボタンの有効・無効をまとめて切り替える。
+   二重投稿を防ぐために無効化する仕組みが skin 側にもあるが、
+   リロードしなくなった以上、こちらで必ず戻してやる必要がある */
+Watcher.prototype.setSubmit = function (enabled) {
+  if (!this.form) return;
+  var b = this.form.querySelectorAll('input[type=submit],button[type=submit]');
+  for (var i = 0; i < b.length; i++) {
+    if (enabled) {
+      /* skin 側は jQuery の attr() で disabled="disabled" を付けるため、
+         プロパティを戻すだけでは属性が残る。属性も明示的に消す */
+      b[i].removeAttribute('disabled');
+      b[i].disabled = false;
+      if (b[i].tagName === 'INPUT' && b[i].getAttribute('data-pcrt-label')) {
+        b[i].value = b[i].getAttribute('data-pcrt-label');
+      }
+    } else {
+      b[i].disabled = true;
+    }
+  }
+};
+
+/* 送信先の隠し枠を用意する。
+
+   枠の中でページを読み込むと、その移動が【親ページの履歴に積まれる】。
+   Android では画面端のスワイプで「戻る」が暴発しやすく、
+   積まれた履歴に戻って投稿前の状態が現れてしまう。
+   枠の初回読み込みは履歴に積まれないため、投稿ごとに作り直す。 */
+Watcher.prototype.makeFrame = function () {
+  var self = this;
+  this.dropFrame();
+
+  var name = 'pcrtpost' + Math.random().toString(36).slice(2, 10);
+  var ifr = document.createElement('iframe');
+  ifr.name = name;
+  ifr.setAttribute('title', '');
+  ifr.setAttribute('aria-hidden', 'true');
+  ifr.setAttribute('tabindex', '-1');
+  ifr.style.cssText =
+    'position:absolute;width:0;height:0;border:0;left:-9999px;top:-9999px';
+  document.body.appendChild(ifr);
+
+  this.ifr = ifr;
+  this.ifrName = name;
+  this.ifrUsed = false;
+  ifr.addEventListener('load', function () { self.onPosted(); });
+};
+
+Watcher.prototype.dropFrame = function () {
+  if (this.ifr && this.ifr.parentNode) {
+    try { this.ifr.parentNode.removeChild(this.ifr); } catch (e) {}
+  }
+  this.ifr = null;
+};
+
+/* 送信に必要な項目が壊れていないか確かめ、必要なら元に戻す */
+Watcher.prototype.fixHidden = function () {
+  if (!this.hidden0 || !this.form) return;
+  for (var k in this.hidden0) {
+    if (!this.hidden0.hasOwnProperty(k)) continue;
+    var el = this.form.querySelector('input[name="' + k + '"]');
+    if (!el) continue;
+    var want = this.hidden0[k];
+    if (want === '' || el.value === want) continue;
+
+    /* 値が入れ替わっている。
+       32桁の英数字は返信先やページの照合値が紛れ込んだもの */
+    var v = String(el.value);
+    var looksHash = (v.length === 32 && /^[0-9a-f]+/.test(v) && v.replace(/[0-9a-f]/g, '') === '');
+    if (v === '' || looksHash) {
+      el.value = want;
+      pcrtReport(this, 'hidden_fixed', k + ':' + String(el.value).slice(0, 40));
+    }
+  }
+};
+
+Watcher.prototype.beginPost = function () {
+  this.fixHidden();
+  this.posting = true;
+  this.ifrUsed = true;
+  clearInterval(this.recover);
+  this.perr.classList.remove('on');
+
+  /* 元のラベルを控えておく（初回のみ） */
+  var b = this.form.querySelectorAll('input[type=submit],button[type=submit]');
+  for (var i = 0; i < b.length; i++) {
+    if (b[i].tagName === 'INPUT' && !b[i].getAttribute('data-pcrt-label')) {
+      b[i].setAttribute('data-pcrt-label', b[i].value);
+    }
+  }
+  this.setSubmit(false);
+  this.perr.classList.remove('on');
+  this.sending.classList.add('on');
+  this.form.target = this.ifrName;
+
+  /* 送信した内容を控えておく。失敗しても書き直さずに済むように */
+  var ta = this.form.querySelector('textarea[name=msg], input[name=msg]');
+  this.sentMsg = ta ? ta.value : '';
+
+  /* 投稿後も画面が動かないよう、基準にする要素を控えておく。
+
+     入力欄そのものを基準にはしない。
+     返信後は入力欄がページ下部へ戻るため、それを追いかけると
+     画面が大きく飛んでしまう。
+     返信中なら返信先のコメント、そうでなければ入力欄を使う。 */
+  this.anchor = null;
+  this.anchorTop = null;
+  try {
+    var picked = null;
+    var rs = this.box.querySelectorAll('input[name=reply]');
+    for (var i = 0; i < rs.length; i++) {
+      if (rs[i].checked && rs[i].value && rs[i].value !== '0') picked = rs[i];
+    }
+    var target = picked && picked.closest ? picked.closest('li') : null;
+    this.anchor = target || this.form;
+    this.anchorTop = this.anchor.getBoundingClientRect().top;
+  } catch (e) {
+    this.anchor = null;
+  }
+
+  var self = this;
+  /* 送信を始めた時点の通し番号。
+     枠の読み込み完了を拾えなかった場合、
+     この番号が増えたことで投稿の成立を判断する */
+  this.seqAtPost = this.seq;
+
+  clearTimeout(this.ptimer);
+  this.ptimer = setTimeout(function () { self.postTimeout(); }, 12000);
+
+  /* 枠の完了を待つ間も、様子を見に行く。
+     広告などでブラウザの接続が詰まると読み込み完了の通知が遅れ、
+     いつまでも「送信中」のままになることがある */
+  clearInterval(this.pwatch);
+  this.pwatch = setInterval(function () { self.checkPosted(); }, 1200);
+};
+
+/* 枠の完了を待たずに、通し番号の変化から投稿の成立を確かめる。
+   増えていれば保存はできているので、ページを取り直して反映する */
+Watcher.prototype.checkPosted = function () {
+  var self = this;
+  if (!this.posting) { clearInterval(this.pwatch); return; }
+
+  fetch(this.file + '?t=' + Date.now() + '.' + Math.random().toString(36).slice(2, 8),
+        { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.text() : null; })
+    .then(function (t) {
+      if (!t || !self.posting) return;
+      var j = null;
+      try { j = JSON.parse(t); } catch (e) { return; }
+      if (!j || typeof j.s !== 'number') return;
+      if (j.s <= self.seqAtPost) return;        /* まだ増えていない */
+
+      /* 保存は済んでいる。枠の完了を待たずに画面へ反映する */
+      clearInterval(self.pwatch);
+      clearTimeout(self.ptimer);
+      self.pullAndFinish();
+    })
+    .catch(function () {});
+};
+
+/* ページを取り直して、投稿後の状態に追いつく */
+Watcher.prototype.pullAndFinish = function () {
+  var self = this;
+  fetch(pcrtPageUrl(), { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text();
+    })
+    .then(function (html) {
+      if (!self.posting) return;
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var n = self.merge(doc);
+      self.afterPost(n);
+    })
+    .catch(function () { self.postFailed(null); });
+};
+
+Watcher.prototype.onPosted = function () {
+  if (!this.posting) return;             /* 初期表示の load は無視 */
+  clearTimeout(this.ptimer);
+  clearInterval(this.pwatch);
+
+  var doc = null;
+  try { doc = this.ifr.contentDocument || this.ifr.contentWindow.document; } catch (e) {}
+  if (!doc || !doc.body || doc.location.href === 'about:blank') {
+    this.postFailed(null); return;
+  }
+
+  var bar = doc.querySelector('.pcrt-bar[data-pcrt-key="' + this.key + '"]');
+  if (!bar) { this.postFailed(doc); return; }   /* エラー画面・認証画面など */
+
+  var n = this.merge(doc);
+  this.afterPost(n);
+};
+
+/* 投稿が通ったあとの後始末。
+   added が 0 のときは投稿が入っていない
+   (無記入・NGワードなど。pcomment は黙ってページを返す) */
+Watcher.prototype.afterPost = function (added) {
+  this.posting = false;
+  clearInterval(this.pwatch);
+  clearInterval(this.recover);
+  this.sending.classList.remove('on');
+  this.form.target = '';
+  this.setSubmit(true);
+  /* 使い終わった枠は捨てて新品にする（履歴を汚さないため） */
+  this.makeFrame();
+
+  var box = this.box;
+
+  if (!added) {
+    /* 画面に足せるものが無かった。
+
+       通し番号が進んでいれば保存できているが、
+       進んでいなくても保存されていることがある。
+       番号の更新に失敗する場合があるためで、
+       そのときページ側には自分の投稿が載っている。
+       本文が載っているかどうかで確かめる。 */
+    var saved = (this.seq > this.seqAtPost);
+
+    if (!saved && this.sentMsg) {
+      try {
+        var head = this.sentMsg.replace(/\s+/g, '').slice(0, 30);
+        var box  = this.box || document.body;
+        var all  = (box.textContent || '').replace(/\s+/g, '');
+        if (head && all.indexOf(head) !== -1) saved = true;
+      } catch (e) {}
+    }
+
+    if (saved) pcrtReport(this, 'saved_but_not_shown');
+    else       pcrtReport(this, 'not_saved');
+
+    this.perr.innerHTML = '';
+    var w = document.createElement('div');
+    if (saved) {
+      /* 保存はされている。二度と同じものを送らせない */
+      var ta0 = this.form.querySelector('textarea[name=msg], input[name=msg]');
+      if (ta0) ta0.value = '';
+      w.textContent =
+        '\u6295\u7a3f\u306f\u4fdd\u5b58\u3055\u308c\u307e\u3057\u305f\u304c\u3001' +
+        '\u753b\u9762\u3078\u306e\u53cd\u6620\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002' +
+        '\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3066\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002';
+      this.perr.appendChild(w);
+
+      var sub0 = document.createElement('div');
+      sub0.className = 'pcrt-perr-sub';
+      sub0.textContent =
+        '\u540c\u3058\u5185\u5bb9\u3092\u9001\u308a\u76f4\u3059\u3068\u4e8c\u91cd\u6295\u7a3f\u306b\u306a\u308a\u307e\u3059\u3002';
+      this.perr.appendChild(sub0);
+
+      var rb0 = document.createElement('button');
+      rb0.type = 'button';
+      rb0.textContent = '\u518d\u8aad\u307f\u8fbc\u307f';
+      rb0.onclick = function () { location.reload(); };
+      this.perr.appendChild(rb0);
+
+      this.setSubmit(false);      /* 送り直させない */
+    } else {
+      w.textContent =
+        '\u6295\u7a3f\u306f\u53cd\u6620\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002' +
+        '\u5185\u5bb9\u3092\u3054\u78ba\u8a8d\u306e\u3046\u3048\u3001' +
+        '\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002';
+      this.perr.appendChild(w);
+    }
+    this.perr.classList.add('on');
+    this.anchor = null;
+    this.anchorTop = null;
+    return;
+  }
+  this.perr.classList.remove('on');
+
+  /* 本文を空に */
+  var ta = this.form.querySelector('textarea[name=msg], input[name=msg]');
+  if (ta) ta.value = '';
+
+  /* 入力欄は必ず元の位置へ戻す。
+
+     移動したまま放置すると、skin 側の返信処理が
+     「入力欄は元の位置にある」という前提で hidden を拾うため、
+     二度目の返信で別の値を掴んで投稿が壊れることがある。
+     画面は動かさないので、戻しても体験は変わらない。 */
+  var picked = null;
+  var rs = box.querySelectorAll('input[name=reply]');
+  for (var i = 0; i < rs.length; i++) if (rs[i].checked) picked = rs[i];
+
+  if (picked && picked.value && picked.value !== '0' &&
+      window.PCommentPlugin && typeof window.PCommentPlugin.cancelForm === 'function') {
+    try { window.PCommentPlugin.cancelForm(picked.value, box.id); } catch (e) {}
+  }
+  var base = box.querySelector('input[name=reply][value="0"]');
+  if (base) base.checked = true;
+
+  /* 控えておいた基準の要素が、画面上の同じ位置に見えるよう戻す */
+  if (this.anchor && this.anchorTop != null) {
+    try {
+      var gap = this.anchor.getBoundingClientRect().top - this.anchorTop;
+      if (Math.abs(gap) > 2) window.scrollBy(0, gap);
+    } catch (e) {}
+  }
+  this.anchor = null;
+  this.anchorTop = null;
+
+  /* 溜まっていた新着も一緒に入ってくるので、
+     自分が書いたものを本文で探して、そこへ運ぶ */
+  this.gotoMine();
+};
+
+/* 送信した本文と一致するコメントを、今回挿したものの中から探して寄せる */
+Watcher.prototype.gotoMine = function () {
+  var list = this.lastAdded || [];
+  if (!list.length) return;
+
+  var mine = null;
+  var sent = (this.sentMsg || '').replace(/\s+/g, '');
+  if (sent) {
+    /* 本文の先頭が一致するものを自分の投稿とみなす。
+       装飾記法は変換で姿が変わるため、先頭の数十文字だけを見る */
+    var head = sent.slice(0, 30);
+    for (var i = list.length - 1; i >= 0; i--) {
+      var t = (list[i].textContent || '').replace(/\s+/g, '');
+      if (t.indexOf(head) !== -1) { mine = list[i]; break; }
+    }
+  }
+  /* 見つからなければ、いちばん最後に挿さったものを自分のものとみなす */
+  if (!mine) mine = list[list.length - 1];
+
+  try {
+    var r = mine.getBoundingClientRect();
+    if (r.top >= 60 && r.bottom <= window.innerHeight - 40) return;
+    var reduce = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    mine.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+  } catch (e) {}
+};
+
+/* 投稿の結果が読めなかった場合。
+   本文は絶対に消さず、ユーザーに判断してもらう */
+/* 失敗案内を出したあとの見張り。
+   投稿が遅れて反映されることがあるので、
+   しばらくは番号の変化を追い続け、増えたら自動で画面へ出す。 */
+Watcher.prototype.watchAfterFail = function () {
+  var self = this;
+  var tries = 0;
+  var base = this.seqAtPost;
+
+  clearInterval(this.recover);
+  this.recover = setInterval(function () {
+    tries++;
+    if (tries > 20) { clearInterval(self.recover); return; }   /* 約40秒で打ち切り */
+
+    fetch(self.file + '?t=' + Date.now() + '.' + Math.random().toString(36).slice(2, 8),
+          { credentials: 'same-origin', cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (t) {
+        if (!t) return;
+        var j = null;
+        try { j = JSON.parse(t); } catch (e) { return; }
+        if (!j || typeof j.s !== 'number' || j.s <= base) return;
+
+        /* 反映された。案内を消して画面に出す */
+        clearInterval(self.recover);
+        self.perr.classList.remove('on');
+        self.seq = j.s;
+        self.count = 0;
+        self.btn.classList.remove('on');
+        if (self.fbtn) self.fbtn.classList.remove('on');
+        self.setSubmit(true);
+        self.pullQuiet();
+      })
+      .catch(function () {});
+  }, 1500);
+};
+
+/* 案内を出したあとに反映を取り込む。
+   投稿の後始末はすでに済んでいるので、画面への反映だけ行う */
+Watcher.prototype.pullQuiet = function () {
+  var self = this;
+  fetch(pcrtPageUrl(), { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.text() : null; })
+    .then(function (html) {
+      if (!html) return;
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      self.merge(doc);
+
+      /* 本文を空にして、返信の選択も解除する */
+      var ta = self.form && self.form.querySelector('textarea[name=msg], input[name=msg]');
+      if (ta) ta.value = '';
+      var picked = null;
+      var rs = self.box.querySelectorAll('input[name=reply]');
+      for (var i = 0; i < rs.length; i++) if (rs[i].checked) picked = rs[i];
+      if (picked && picked.value && picked.value !== '0' &&
+          window.PCommentPlugin && typeof window.PCommentPlugin.cancelForm === 'function') {
+        try { window.PCommentPlugin.cancelForm(picked.value, self.box.id); } catch (e) {}
+      }
+      var b0 = self.box.querySelector('input[name=reply][value="0"]');
+      if (b0) b0.checked = true;
+
+      self.gotoMine();
+      self.schedule();
+    })
+    .catch(function () {});
+};
+
+/* 待ち時間を過ぎた。
+   最後にもう一度だけ、投稿が通っていないか確かめる。
+   通っていれば普通に反映し、通っていなければ案内を出す。 */
+Watcher.prototype.postTimeout = function (grace) {
+  var self = this;
+  if (!this.posting) return;
+
+  fetch(this.file + '?t=' + Date.now() + '.' + Math.random().toString(36).slice(2, 8),
+        { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.text() : null; })
+    .then(function (t) {
+      if (!self.posting) return;
+      var j = null;
+      try { j = JSON.parse(t); } catch (e) {}
+      if (j && typeof j.s === 'number' && j.s > self.seqAtPost) {
+        clearInterval(self.pwatch);
+        self.pullAndFinish();      /* 通っていた */
+        return;
+      }
+
+      /* まだ通っていない。
+         ここですぐ案内を出すと、数秒後に反映されたときに
+         「案内が出てすぐ消える」というちらつきになる。
+         あと少しだけ静かに待ってから判断する。 */
+      if (!grace) {
+        clearTimeout(self.ptimer);
+        self.ptimer = setTimeout(function () { self.postTimeout(true); }, 6000);
+        return;
+      }
+      self.postFailed(null);       /* 猶予後も通っていない */
+    })
+    .catch(function () { self.lastResort(); });
+};
+
+/* 状態ファイルすら読めなかったとき。
+   ページ本体を取り直して、自分の投稿が載っているかを直接確かめる。
+   通信が不安定な環境では、こちらが最後の頼みになる */
+Watcher.prototype.lastResort = function () {
+  var self = this;
+  if (!this.posting) return;
+
+  fetch(pcrtPageUrl(), { credentials: 'same-origin', cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text();
+    })
+    .then(function (html) {
+      if (!self.posting) return;
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+
+      /* 送った本文が載っているかを見る */
+      var sent = (self.sentMsg || '').replace(/\s+/g, '').slice(0, 30);
+      var found = false;
+      if (sent) {
+        var b = doc.querySelector('.pcomment') || doc.body;
+        var txt = (b.textContent || '').replace(/\s+/g, '');
+        found = txt.indexOf(sent) !== -1;
+      }
+
+      if (found) {
+        clearInterval(self.pwatch);
+        var n = self.merge(doc);
+        self.afterPost(n);
+      } else {
+        self.postFailed(null);
+      }
+    })
+    .catch(function () { self.postFailed(null); });
+};
+
+/* 返ってきた画面が「認証を求めるもの」かどうか */
+Watcher.prototype.needsChallenge = function (doc) {
+  try {
+    /* 認証ウィジェットが置かれているか */
+    if (doc.querySelector('.cf-turnstile, [class*=turnstile], [id*=turnstile]')) return true;
+    if (doc.querySelector('script[src*="challenges.cloudflare.com"]')) return true;
+    if (doc.querySelector('.g-recaptcha, [class*=recaptcha]')) return true;
+
+    /* 入力欄を含む画面が返っていれば、操作を求められている */
+    var b = doc.querySelector('#body');
+    if (b && b.querySelector('form input[type=submit],form button[type=submit]')) return true;
+  } catch (e) {}
+  return false;
+};
+
+Watcher.prototype.postFailed = function (doc) {
+  /* サーバーが何を返したかを記録する。原因の切り分けに要る */
+  var seen = '';
+  if (doc) {
+    try {
+      var t0 = (doc.title || '');
+      var b0 = doc.querySelector('#body') || doc.body;
+      var x0 = b0 ? (b0.textContent || '') : '';
+      seen = (t0 + ' | ' + x0).replace(/\s+/g, ' ').trim().slice(0, 300);
+    } catch (e) {}
+  }
+  pcrtReport(this, doc ? 'failed_with_page' : 'failed_no_page', seen);
+
+  this.posting = false;
+  clearTimeout(this.ptimer);
+  clearInterval(this.pwatch);
+  this.sending.classList.remove('on');
+  this.form.target = '';
+
+  /* 送信ボタンは戻さない。
+     投稿が通っているかどうか分からない状態で押せるようにすると、
+     二重投稿を招く。認証が必要な場合だけ、この後で戻す。 */
+
+  var msg = '';
+  if (doc) {
+    var b = doc.querySelector('#body') || doc.body;
+    if (b) msg = (b.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 200);
+  }
+
+  /* 画面に出す文言を整える。内部的な見出しは利用者には要らない */
+  if (msg) {
+    msg = msg.replace(/^Runtime error/i, '')
+             .replace(/Error message\s*[:：]\s*/i, '')
+             .replace(/Plugin\s*[:：]\s*\S+/i, '')
+             .replace(/Match\s*[:：]?\s*/i, '')
+             .replace(/\s+/g, ' ')
+             .trim();
+  }
+
+  /* 認証を求められた場合。
+
+     スパム判定などで認証画面が返ってくることがある。
+     その画面は枠の中にあって見えないため、
+     本文だけを写しても「認証ボタンが出てこない」状態になる。
+     枠を使わず送り直せば、認証画面がそのまま表示される。
+
+     ここへ来た時点で投稿は保存されていないので、
+     送り直しても二重にはならない。 */
+  if (doc && this.needsChallenge(doc)) {
+    this.setSubmit(true);          /* 認証後に送り直せるようにする */
+    this.perr.innerHTML = '';
+
+    var p0 = document.createElement('div');
+    p0.textContent = msg ||
+      '\u6295\u7a3f\u306e\u524d\u306b\u8a8d\u8a3c\u304c\u5fc5\u8981\u3067\u3059\u3002';
+    this.perr.appendChild(p0);
+
+    var s0 = document.createElement('div');
+    s0.className = 'pcrt-perr-sub';
+    s0.textContent =
+      '\u4e0b\u306e\u30dc\u30bf\u30f3\u3092\u62bc\u3059\u3068\u8a8d\u8a3c\u753b\u9762\u3078\u9032\u307f\u307e\u3059\u3002' +
+      '\u5165\u529b\u3057\u305f\u5185\u5bb9\u306f\u5f15\u304d\u7d99\u304c\u308c\u307e\u3059\u3002';
+    this.perr.appendChild(s0);
+
+    var self0 = this;
+    var gb = document.createElement('button');
+    gb.type = 'button';
+    gb.textContent = '\u8a8d\u8a3c\u753b\u9762\u3078\u9032\u3080';
+    gb.onclick = function () {
+      self0.bypass = true;          /* 枠を使わず、通常どおり送る */
+      self0.form.target = '';
+      try {
+        var sb = self0.form.querySelector('input[type=submit],button[type=submit]');
+        if (sb) { sb.disabled = false; sb.click(); }
+        else self0.form.submit();
+      } catch (e) { self0.form.submit(); }
+    };
+    this.perr.appendChild(gb);
+    this.perr.classList.add('on');
+    return;
+  }
+
+  this.perr.innerHTML = '';
+
+  /* サーバーからのメッセージがあればそれを先に見せる */
+  if (msg) {
+    var sv = document.createElement('div');
+    sv.textContent = msg;
+    this.perr.appendChild(sv);
+  }
+
+  /* 案内を出したあとも、しばらく自分の投稿を探し続ける。
+     ここへ来た時点ではまだ番号が増えていないことが多く、
+     少し遅れて反映されるためである。
+     見つかれば案内を引っ込めて、そのまま画面に出す。 */
+  this.watchAfterFail();
+
+  /* サーバーが理由を返しているなら、それだけを見せる。
+     余計な補足を足すと「規制しております」の直後に
+     「成功していることが多い」と続いてしまい、話が食い違う。 */
+  if (msg) {
+    var pm = document.createElement('div');
+    pm.textContent = msg;
+    this.perr.appendChild(pm);
+    this.perr.classList.add('on');
+    this.watchAfterFail();
+    return;
+  }
+
+  var p = document.createElement('div');
+  p.textContent =
+    '\u6295\u7a3f\u304c\u53cd\u6620\u3055\u308c\u305f\u304b\u78ba\u8a8d\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002';
+  this.perr.appendChild(p);
+
+  var note = document.createElement('div');
+  note.className = 'pcrt-perr-sub';
+  note.textContent = msg
+    ? '\u5185\u5bb9\u3092\u898b\u76f4\u3057\u3066\u304b\u3089\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002'
+    :
+    '\u6295\u7a3f\u81ea\u4f53\u306f\u6210\u529f\u3057\u3066\u3044\u308b\u3053\u3068\u304c\u591a\u3044\u305f\u3081\u3001' +
+    '\u307e\u305a\u306f\u4e0b\u306e\u30dc\u30bf\u30f3\u304b\u3089\u518d\u8aad\u307f\u8fbc\u307f\u3057\u3001' +
+    '\u3054\u81ea\u8eab\u306e\u30b3\u30e1\u30f3\u30c8\u304c\u8868\u793a\u3055\u308c\u3066\u3044\u306a\u3044\u304b\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002' +
+    '\u78ba\u8a8d\u3059\u308b\u524d\u306b\u6295\u7a3f\u3057\u76f4\u3059\u3068\u3001' +
+    '\u4e8c\u91cd\u6295\u7a3f\u306b\u306a\u308b\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002';
+  this.perr.appendChild(note);
+
+  var note2 = document.createElement('div');
+  note2.className = 'pcrt-perr-sub';
+  note2.textContent =
+    '\u5165\u529b\u3057\u305f\u5185\u5bb9\u306f\u30b3\u30d4\u30fc\u3057\u3066\u304a\u304f\u3053\u3068\u3092\u304a\u3059\u3059\u3081\u3057\u307e\u3059\u3002';
+  this.perr.appendChild(note2);
+
+  var rb = document.createElement('button');
+  rb.type = 'button';
+  rb.textContent = '\u518d\u8aad\u307f\u8fbc\u307f';
+  rb.onclick = function () { location.reload(); };
+  this.perr.appendChild(rb);
+
+  this.perr.classList.add('on');
+
+  /* 失敗した場合も枠は使い切り。作り直して履歴を汚さない */
+  this.makeFrame();
+};
+
+
+/* MenuBar など、全ページに付いてくる領域では動かさない。
+
+   MenuBar に置かれたコメント欄は、サイト内のどのページを開いても
+   ポーリングを始めてしまう。ごく一部の wiki でしか使われない置き方のため、
+   全体の負荷を優先して見送る。
+   コメントの表示と投稿は従来どおり動く（リアルタイム更新だけが働かない）。 */
+function inSharedArea(el) {
+  if (!el.closest) return false;
+  return !!el.closest('#menubar, .menubar, #sidebar, .sidebar, #navigator');
+}
+
+function init() {
+  /* 投稿は隠し iframe に送っており、そこにはページ全体が返ってくる。
+     その HTML にもこのスクリプトが含まれているため、
+     何もしないと iframe の中でもう一組ポーリングが始まってしまう。
+     枠の中で読み込まれたときは何もしない。 */
+  try {
+    if (window.self !== window.top) return;
+  } catch (e) {
+    return;   /* 参照できない = 別オリジンの枠の中 */
+  }
+
+  var els = document.querySelectorAll('.pcrt-bar');
+  if (!els.length) return;
+  injectCSS();
+  for (var i = 0; i < els.length; i++) {
+    if (els[i].getAttribute('data-pcrt-ready')) continue;
+    els[i].setAttribute('data-pcrt-ready', '1');
+    if (inSharedArea(els[i])) continue;
+    try { new Watcher(els[i]); } catch (e) {}
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+})();

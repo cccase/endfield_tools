@@ -1,0 +1,200 @@
+(function() {
+    'use strict';
+
+    function initStyle() {
+        var css = 
+            '.anchor-menu { ' +
+            '    display: inline-block; ' +
+            '    position: absolute; ' +
+            '    top: 1.5em; ' +
+            '    left: 0; ' +
+            '    z-index: 100; ' +
+            '    width: 20em; ' +
+            '    margin: 0; ' +
+            '    padding: 0.4em 0; ' +
+            '    list-style: none; ' +
+            '    background-color: rgba(255,255,255,0.9); ' +
+            '    border: 1px solid #ccc; ' +
+            '    box-shadow: 0 2px 2px rgba(0,0,0,0.2); ' +
+            '} ' +
+            '.anchor-menu li { ' +
+            '    background-color: rgba(0,0,0,0); ' +
+            '} ' +
+            '.anchor-menu li a { ' +
+            '    display: block; ' +
+            '    line-height: 2em; ' +
+            '    padding: 0 1em; ' +
+            '    background-color: rgba(0,0,0,0); ' +
+            '    color: #333; ' +
+            '} ' +
+            '.anchor-menu li a:hover { ' +
+            '    background-color: rgba(0,0,0,0.1); ' +
+            '    text-decoration: none; ' +
+            '} ' +
+            '.anchor-wrap { ' +
+            '    display: inline-block; ' +
+            '    position: relative; ' +
+            '} ';
+
+        var style = document.createElement('style');
+        var styleContent = document.createTextNode(css);
+        style.appendChild(styleContent);
+        document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function findTextNodes(element) {
+        var textNodes = [];
+        var walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        var node;
+        while (node = walker.nextNode()) {
+            textNodes.push(node);
+        }
+        return textNodes;
+    }
+
+    // scope を渡すとその範囲だけを処理する (pcrt の追加読み込み用)。
+    // scope には li 要素そのもの、要素の配列、親要素のいずれも渡せる。
+    // 省略時は従来どおりページ全体。
+    function initComments(scope) {
+        var comments;
+        if (!scope) {
+            comments = document.querySelectorAll("ul.list1 li");
+        } else if (scope.nodeType !== 1) {
+            comments = scope;                       // 配列 / NodeList
+        } else if (scope.tagName === "LI") {
+            comments = [scope];                     // li 自身 (子孫検索では拾えない)
+        } else {
+            comments = scope.querySelectorAll("li");
+        }
+        var regexAnchor = new RegExp('\\[(a_[0-9a-zA-Z]{5})\\]', 'gm');
+
+        for(var i = 0; i < comments.length; i++) {
+            var textNodes = findTextNodes(comments[i]);
+            for(var j = 0; j < textNodes.length; j++) {
+                var node = textNodes[j];
+                var text = node.nodeValue;
+                
+                // アンカーパターンを検出
+                var match = text.match(regexAnchor);
+                if(match) {
+                    // 親要素がjs-abonelinkwrapクラスを持つ場合はスキップ
+                    if(node.parentNode.classList && 
+                       (node.parentNode.classList.contains('js-abonelinkwrap') || 
+                        node.parentNode.classList.contains('js-abonelink'))) {
+                        continue;
+                    }
+
+                    // アンカーをリンクに変換
+                    var span = document.createElement('span');
+                    var parts = text.split(match[0]);
+                    
+                    if(parts[0]) {
+                        span.appendChild(document.createTextNode(parts[0]));
+                    }
+
+                    // アンカー部分
+                    var anchorSpan = document.createElement('span');
+                    anchorSpan.className = 'anchor-wrap';
+                    var link = document.createElement('a');
+                    link.href = 'javascript:void(0);';
+                    link.className = 'anchor-link';
+                    link.dataset.anchor = match[0].slice(1, -1); // []を除去
+                    link.textContent = match[0].slice(1, -1);
+                    anchorSpan.appendChild(document.createTextNode('['));
+                    anchorSpan.appendChild(link);
+                    anchorSpan.appendChild(document.createTextNode(']'));
+                    span.appendChild(anchorSpan);
+
+                    if(parts[1]) {
+                        span.appendChild(document.createTextNode(parts[1]));
+                    }
+
+                    node.parentNode.replaceChild(span, node);
+                }
+            }
+        }
+
+        // アンカーリンクのイベントリスナーを追加
+        // 対象コメントの中だけを見る (scope 指定時に取りこぼさないため)
+        var anchorLinks = [], k, sub;
+        for(i = 0; i < comments.length; i++) {
+            sub = comments[i].querySelectorAll("a.anchor-link");
+            for(k = 0; k < sub.length; k++) anchorLinks.push(sub[k]);
+        }
+        for(i = 0; i < anchorLinks.length; i++) {
+            if (anchorLinks[i].dataset.anchorBound) continue;
+            anchorLinks[i].dataset.anchorBound = "1";
+            anchorLinks[i].addEventListener("click", showAnchorMenu, false);
+        }
+    }
+
+    function showAnchorMenu(ev) {
+        if(!ev.target.parentNode.querySelector(".anchor-menu")) {
+            var anchorLink = ev.target;
+            var anchorId = anchorLink.dataset.anchor;
+            
+            var menu = '' +
+                '<ul class="anchor-menu">' +
+                '    <li><a href="javascript:void(0);" class="anchor-insert" data-anchor="' + anchorId + '">' +
+                '        コメント入力欄にアンカーリンクを挿入' +
+                '    </a></li>' +
+                '</ul>';
+            
+            anchorLink.insertAdjacentHTML('afterend', menu);
+            
+            var insertLink = anchorLink.parentNode.querySelector(".anchor-insert");
+            insertLink.addEventListener("click", insertAnchorToComment, false);
+        }
+    }
+
+    function insertAnchorToComment(ev) {
+        var anchorId = ev.target.dataset.anchor;
+        var anchorText = '[[>>' + anchorId + '>#' + anchorId + ']]';
+        
+        var textarea = document.querySelector('textarea[name="msg"]');
+        if (!textarea) {
+            var input = document.querySelector('input[name="msg"]');
+            if (input) {
+                input.value += anchorText;
+            }
+        } else {
+            textarea.value += anchorText;
+        }
+
+        hideAnchorMenu({ target: document.body });
+    }
+
+    function hideAnchorMenu(ev) {
+        if(ev.target.classList.contains("anchor-menu") ||
+           ev.target.classList.contains("anchor-insert") ||
+           ev.target.classList.contains("anchor-link")) return false;
+        
+        var menus = document.querySelectorAll(".anchor-menu");
+        for(var i = 0; i < menus.length; i++) {
+            menus[i].parentNode.removeChild(menus[i]);
+        }
+    }
+
+    // [pcrt] コメントを後から追加したときに再処理するための入口。
+    // 新しく描画された要素を渡すと、その中だけアンカーIDをリンク化する。
+    window.wikiruInitAnchors = function(scope) {
+        try { initComments(scope); } catch(e) {}
+    };
+
+    // 初期化
+    function initialize() {
+        initStyle();
+        // NGIDの処理が完了するのを少し待ってからアンカー処理を実行
+        setTimeout(function() {
+            initComments();
+            document.body.addEventListener("click", hideAnchorMenu, true);
+        }, 100);
+    }
+
+    // 実行
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+        initialize();
+    }
+})();

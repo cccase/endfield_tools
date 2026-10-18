@@ -31,7 +31,7 @@
     </section>
 
     <!-- 利用可能なスキル・パネルパレット -->
-    <section class="panel palette-panel">
+    <section class="panel palette-panel" style="overflow-y: auto;">
       <h2>スキルパレット (ドラッグ＆ドロップでタイムラインへ)</h2>
       <div id="skill-palette" class="palette-container">
         <!-- 編成したキャラのスキル、および返還SPパネル -->
@@ -66,9 +66,11 @@
           開始時チャージマックス
         </label>
       </div>
-      <div class="status-summary">
-        <div>累積消費SP: <span id="total-sp-spent">0</span></div>
+      <div class="status-summary" style="flex-wrap: wrap;">
+        <div>累計消費SP: <span id="total-sp-spent">0</span></div>
+        <div>累計返還SP: <span id="total-sp-refunded">0</span></div>
         <div>現在の返還SPプール: <span id="current-refund-sp">0</span></div>
+        <div>全体戦技使用回数: <span id="total-skill-casts">0</span></div>
       </div>
       <div id="ep-status-list" class="ep-status-container">
         <!-- 各キャラのEPゲージ -->
