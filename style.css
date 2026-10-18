@@ -21,7 +21,14 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .settings-group { display: flex; align-items: center; gap: 5px; font-size: 14px; }
 .settings-group input, .settings-group select { background-color: var(--bg-color); color: var(--text-main); border: 1px solid var(--border-color); padding: 4px; border-radius: 4px; }
 .remove-btn { margin-left: auto; background: none; border: none; color: #ff4c4c; font-size: 20px; cursor: pointer; font-weight: bold; }
-.palette-container { display: flex; flex-direction: column; gap: 15px; }
+.palette-container { display: flex; flex-direction: column; gap: 12px; overflow-x: auto; }
+.palette-table { display: flex; flex-direction: column; gap: 8px; min-width: max-content; }
+.palette-header-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; color: var(--text-muted); font-size: 12px; font-weight: bold; border-bottom: 1px solid #444; padding-bottom: 4px; }
+.palette-header-cell { text-align: center; }
+.palette-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; padding-bottom: 6px; border-bottom: 1px dashed var(--border-color); }
+.palette-cell { display: flex; align-items: center; justify-content: flex-start; min-height: 34px; }
+.palette-cell-char { justify-content: center; }
+.palette-common-row { display: flex; align-items: center; gap: 10px; padding-top: 8px; }
 .palette-group { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--border-color); overflow-x: auto; }
 .skill-block { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: bold; cursor: grab; user-select: none; white-space: nowrap; }
 .skill-block img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
