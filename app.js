@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-clear-timeline').addEventListener('click', clearTimeline);
   document.getElementById('btn-save-timeline').addEventListener('click', saveTimeline);
   document.getElementById('btn-export-url').addEventListener('click', exportUrl);
+  document.getElementById('btn-save-timeline').addEventListener('click', saveTimeline);
   document.getElementById('btn-export-image').addEventListener('click', exportImage);
   window.addEventListener('hashchange', loadFromUrl);
   loadFromUrl();
@@ -1128,7 +1129,7 @@ function updateSimulation() {
 
 function renderStatus(totalSpSpent, totalSpRefunded, currentRefundSpPool, epState, totalSkillCasts) {
   const totalSpSpentEl = document.getElementById('total-sp-spent');
-  if (totalSpSpentEl) totalSpSpentEl.textContent = totalSpSpent;
+  if (totalSpSpentEl) totalSpSpentEl.textContent = totalSpSpent - totalSpRefunded;
 
   const totalSpRefundedEl = document.getElementById('total-sp-refunded');
   if (totalSpRefundedEl) totalSpRefundedEl.textContent = totalSpRefunded;
