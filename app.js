@@ -745,18 +745,30 @@ function renderTimeline() {
     // タイムラインへのドラッグ＆ドロップ設定
     timeline.addEventListener('dragover', e => {
       e.preventDefault();
-      const draggingElement = document.querySelector('.dragging');
-      if (!draggingElement) return;
-      const afterElement = getDragAfterElement(timeline, e.clientX);
-      if (afterElement == null) {
-        timeline.appendChild(draggingElement);
+      const draggingElement = document.querySelector('.timeline-item.dragging');
+      if (draggingElement) {
+        removeDropIndicator();
+        const afterElement = getDragAfterElement(timeline, e.clientX, e.clientY);
+        if (afterElement == null) {
+          timeline.appendChild(draggingElement);
+        } else {
+          timeline.insertBefore(draggingElement, afterElement);
+        }
       } else {
-        timeline.insertBefore(draggingElement, afterElement);
+        // パレットからのドラッグ時：ドロップ先インジケーター（隙間ガイド）を表示
+        showDropIndicator(timeline, e.clientX, e.clientY);
+      }
+    });
+
+    timeline.addEventListener('dragleave', e => {
+      if (!timeline.contains(e.relatedTarget)) {
+        removeDropIndicator();
       }
     });
 
     timeline.addEventListener('drop', e => {
       e.preventDefault();
+      removeDropIndicator();
       const dataStr = e.dataTransfer.getData('application/json');
       if (!dataStr) return;
       try {
@@ -766,7 +778,7 @@ function renderTimeline() {
           return;
         }
 
-        const afterElement = getDragAfterElement(timeline, e.clientX);
+        const afterElement = getDragAfterElement(timeline, e.clientX, e.clientY);
         let insertIndex = cycle.length;
         if (afterElement) {
           insertIndex = parseInt(afterElement.getAttribute('data-index'));
@@ -1203,11 +1215,49 @@ function renderStatus(totalSpSpent, totalSpRefunded, currentRefundSpPool, epStat
 }
 window.renderTimeline = renderTimeline;
 
-function getDragAfterElement(container, x) {
+let dropIndicator = null;
+function getDropIndicator() {
+  if (!dropIndicator) {
+    dropIndicator = document.createElement('div');
+    dropIndicator.className = 'timeline-drop-indicator';
+  }
+  return dropIndicator;
+}
+
+function showDropIndicator(container, x, y) {
+  const indicator = getDropIndicator();
+  const afterElement = getDragAfterElement(container, x, y);
+  if (afterElement == null) {
+    container.appendChild(indicator);
+  } else {
+    container.insertBefore(indicator, afterElement);
+  }
+}
+
+function removeDropIndicator() {
+  if (dropIndicator && dropIndicator.parentNode) {
+    dropIndicator.parentNode.removeChild(dropIndicator);
+  }
+}
+
+document.addEventListener('dragend', () => {
+  removeDropIndicator();
+});
+
+function getDragAfterElement(container, x, y) {
   const draggableElements = [...container.querySelectorAll('.timeline-item:not(.dragging)')];
+  if (draggableElements.length === 0) return null;
+
+  // コンテナの並び方向（縦並び flex-direction: column または横並び）を判定
+  const style = window.getComputedStyle(container);
+  const isVertical = style.flexDirection === 'column';
+
   return draggableElements.reduce((closest, child) => {
     const box = child.getBoundingClientRect();
-    const offset = x - box.left - box.width / 2;
+    const offset = isVertical
+      ? (y - box.top - box.height / 2)
+      : (x - box.left - box.width / 2);
+
     if (offset < 0 && offset > closest.offset) {
       return {
         offset: offset,
