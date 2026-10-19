@@ -240,6 +240,18 @@ function exportImage() {
       clonedDoc.querySelectorAll('.delete-overlay').forEach(el => el.style.display = 'none');
       // 4. ドロップゾーン（空のドロップ領域）
       clonedDoc.querySelectorAll('.drop-zone').forEach(el => el.style.display = 'none');
+      // 5. タイムライン上の返還SPブロックを非表示
+      clonedDoc.querySelectorAll('.timeline-item').forEach(el => {
+        if (el.querySelector('.bg-refund')) {
+          el.style.display = 'none';
+        }
+      });
+      // 6. サイクル情報内の返還SP表示を非表示
+      clonedDoc.querySelectorAll('.cycle-stats div').forEach(el => {
+        if (el.textContent.includes('返還SP')) {
+          el.style.display = 'none';
+        }
+      });
 
       // タイムライン枠の背景・枠線を透過にしてスキルブロックのみを引き立てる
       clonedDoc.querySelectorAll('.sequence-timeline').forEach(el => {
@@ -247,6 +259,8 @@ function exportImage() {
         el.style.border = 'none';
         el.style.padding = '4px 0';
         el.style.minHeight = 'auto';
+        el.style.overflow = 'visible';
+        el.style.width = 'max-content';
       });
 
       // サイクル情報表示の調整
@@ -888,10 +902,12 @@ function renderTimeline() {
     `;
 
     const timelineContainer = document.createElement('div');
+    timelineContainer.className = 'timeline-cycle-container';
     timelineContainer.style.display = 'flex';
     timelineContainer.style.flexDirection = 'column';
     timelineContainer.style.gap = '5px';
     timelineContainer.style.flexGrow = '1';
+    timelineContainer.style.minWidth = '0';
 
     timelineContainer.appendChild(statsDiv);
     timelineContainer.appendChild(timeline);
