@@ -127,8 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchCharacters();
 
   document.getElementById('btn-clear-timeline').addEventListener('click', clearTimeline);
+  document.getElementById('btn-save-timeline').addEventListener('click', saveTimeline);
   document.getElementById('btn-export-url').addEventListener('click', exportUrl);
   document.getElementById('btn-export-image').addEventListener('click', exportImage);
+  window.addEventListener('hashchange', loadFromUrl);
   loadFromUrl();
   // 初回描画を保証する
   if (!window.location.hash) {
@@ -136,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function exportUrl() {
+function getExportUrl() {
   const data = {
     party: party,
     timelineCycles: timelineCycles,
@@ -144,7 +146,14 @@ function exportUrl() {
   };
   const jsonStr = JSON.stringify(data);
   const base64 = btoa(encodeURIComponent(jsonStr));
-  const newUrl = window.location.origin + window.location.pathname + "#" + base64;
+  const baseUrl = (window.location.origin && window.location.origin !== "null")
+    ? (window.location.origin + window.location.pathname)
+    : window.location.href.split('#')[0];
+  return baseUrl + "#" + base64;
+}
+
+function exportUrl() {
+  const newUrl = getExportUrl();
 
   navigator.clipboard.writeText(newUrl).then(() => {
     alert("URLをクリップボードにコピーしました！");
@@ -152,6 +161,21 @@ function exportUrl() {
     console.error(err);
     alert("URLのコピーに失敗しました。");
   });
+}
+
+// 保存：現在の状態をURL化してクリップボードにコピーし、そのURLへ遷移する
+async function saveTimeline() {
+  const newUrl = getExportUrl();
+
+  try {
+    await navigator.clipboard.writeText(newUrl);
+  } catch (err) {
+    console.error(err);
+  }
+
+  // 保存したURL（URLをコピーと同じURL）へ遷移
+  window.location.href = newUrl;
+  alert("URLをクリップボードにコピーし、保存先URLへ遷移しました！");
 }
 
 function loadFromUrl() {
@@ -190,15 +214,48 @@ function syncPartyWithAllCharacters() {
 }
 
 function exportImage() {
-  const elementToCapture = document.querySelector('main');
+  const elementToCapture = document.getElementById('timeline-wrapper');
   if (!elementToCapture) return;
 
   html2canvas(elementToCapture, {
-    backgroundColor: '#121212',
+    backgroundColor: null, // 背景透過のPNG
     scale: 2,
+    useCORS: true,
     onclone: (clonedDoc) => {
-      // html2canvasではinput要素のテキスト位置がずれることがあるため、
-      // クローンされたドキュメント内でspan要素に置き換えて表示崩れを防ぐ
+      const clonedWrapper = clonedDoc.getElementById('timeline-wrapper');
+      if (clonedWrapper) {
+        clonedWrapper.style.overflow = 'visible';
+        clonedWrapper.style.width = 'max-content';
+        clonedWrapper.style.maxWidth = 'none';
+        clonedWrapper.style.padding = '10px';
+      }
+
+      // 不要なボタン・UI要素を非表示
+      // 1. 各サイクルの複製・削除ボタン
+      clonedDoc.querySelectorAll('.cycle-controls').forEach(el => el.style.display = 'none');
+      // 2. 「＋ サイクルを追加」ボタン
+      clonedDoc.querySelectorAll('.add-cycle-btn').forEach(el => el.style.display = 'none');
+      // 3. 各スキルの削除オーバーレイ（×ボタン）
+      clonedDoc.querySelectorAll('.delete-overlay').forEach(el => el.style.display = 'none');
+      // 4. ドロップゾーン（空のドロップ領域）
+      clonedDoc.querySelectorAll('.drop-zone').forEach(el => el.style.display = 'none');
+
+      // タイムライン枠の背景・枠線を透過にしてスキルブロックのみを引き立てる
+      clonedDoc.querySelectorAll('.sequence-timeline').forEach(el => {
+        el.style.backgroundColor = 'transparent';
+        el.style.border = 'none';
+        el.style.padding = '4px 0';
+        el.style.minHeight = 'auto';
+      });
+
+      // サイクル情報表示の調整
+      clonedDoc.querySelectorAll('.cycle-stats').forEach(el => {
+        el.style.backgroundColor = 'transparent';
+        el.style.border = 'none';
+        el.style.color = '#fff';
+      });
+
+      // input要素のテキストずれ防止と見た目調整
       const inputs = clonedDoc.querySelectorAll('input[type="number"], input[type="text"]');
       inputs.forEach(input => {
         const span = clonedDoc.createElement('span');
@@ -206,22 +263,25 @@ function exportImage() {
         span.style.cssText = window.getComputedStyle(input).cssText;
         span.style.display = 'inline-block';
         span.style.boxSizing = 'border-box';
-        // キャンバス出力時の見た目調整
-        span.style.padding = '2px 4px';
         span.style.lineHeight = 'normal';
-        input.parentNode.replaceChild(span, input);
-      });
 
-      const selects = clonedDoc.querySelectorAll('select');
-      selects.forEach(select => {
-        const span = clonedDoc.createElement('span');
-        const selectedOption = select.options[select.selectedIndex];
-        span.textContent = selectedOption ? selectedOption.text : '';
-        span.style.cssText = window.getComputedStyle(select).cssText;
-        span.style.display = 'inline-block';
-        span.style.boxSizing = 'border-box';
-        span.style.padding = '2px 4px';
-        select.parentNode.replaceChild(span, select);
+        if (input.classList.contains('cycle-name-input')) {
+          span.style.background = 'transparent';
+          span.style.border = 'none';
+          span.style.fontSize = '15px';
+          span.style.fontWeight = 'bold';
+          span.style.color = '#f39c12';
+          span.style.padding = '0';
+          span.style.width = 'auto';
+        } else if (input.classList.contains('refund-input')) {
+          span.style.background = '#2c2c2c';
+          span.style.border = '1px solid #444';
+          span.style.borderRadius = '4px';
+          span.style.padding = '2px 4px';
+          span.style.minWidth = '24px';
+          span.style.textAlign = 'center';
+        }
+        input.parentNode.replaceChild(span, input);
       });
     }
   }).then(canvas => {
@@ -763,7 +823,7 @@ function renderTimeline() {
 
           const currentVal = item.customRefund !== undefined ? item.customRefund : defaultRefund;
           const pObj = party.find(x => x.id === item.charId);
-          const iconHtml = pObj ? `<img src="${pObj.icon}" style="width:20px; height:20px; border-radius:50%; object-fit:cover; margin-right:4px;">` : '';
+          const iconHtml = pObj ? `<img src="${pObj.icon}">` : '';
           text = `${iconHtml}返還SP <input type="number" value="${currentVal}" min="0" step="1" class="refund-input" onchange="updateTimelineRefund(${cycleIndex}, ${index}, this.value)" onclick="event.stopPropagation();">`;
           block.innerHTML = text;
         } else if (item.type === 'separator') {
@@ -786,6 +846,21 @@ function renderTimeline() {
           timelineCycles[cycleIndex].splice(index, 1);
           renderTimeline();
         };
+
+        // 中クリックでスキルを削除できるようにする
+        wrap.addEventListener('auxclick', e => {
+          if (e.button === 1) {
+            e.preventDefault();
+            e.stopPropagation();
+            timelineCycles[cycleIndex].splice(index, 1);
+            renderTimeline();
+          }
+        });
+        wrap.addEventListener('mousedown', e => {
+          if (e.button === 1) {
+            e.preventDefault(); // 自動スクロールの発動を抑止
+          }
+        });
 
         wrap.appendChild(block);
         wrap.appendChild(delBtn);
