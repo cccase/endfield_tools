@@ -128,7 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('btn-clear-timeline').addEventListener('click', clearTimeline);
   document.getElementById('btn-export-url').addEventListener('click', exportUrl);
+  document.getElementById('btn-save-timeline').addEventListener('click', saveTimeline);
   document.getElementById('btn-export-image').addEventListener('click', exportImage);
+  window.addEventListener('hashchange', loadFromUrl);
   loadFromUrl();
   // 初回描画を保証する
   if (!window.location.hash) {
@@ -136,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function exportUrl() {
+function getExportUrl() {
   const data = {
     party: party,
     timelineCycles: timelineCycles,
@@ -144,7 +146,14 @@ function exportUrl() {
   };
   const jsonStr = JSON.stringify(data);
   const base64 = btoa(encodeURIComponent(jsonStr));
-  const newUrl = window.location.origin + window.location.pathname + "#" + base64;
+  const baseUrl = (window.location.origin && window.location.origin !== "null")
+    ? (window.location.origin + window.location.pathname)
+    : window.location.href.split('#')[0];
+  return baseUrl + "#" + base64;
+}
+
+function exportUrl() {
+  const newUrl = getExportUrl();
 
   navigator.clipboard.writeText(newUrl).then(() => {
     alert("URLをクリップボードにコピーしました！");
@@ -152,6 +161,21 @@ function exportUrl() {
     console.error(err);
     alert("URLのコピーに失敗しました。");
   });
+}
+
+// 保存：現在の状態をURL化してクリップボードにコピーし、そのURLへ遷移する
+async function saveTimeline() {
+  const newUrl = getExportUrl();
+
+  try {
+    await navigator.clipboard.writeText(newUrl);
+  } catch (err) {
+    console.error(err);
+  }
+
+  // 保存したURL（URLをコピーと同じURL）へ遷移
+  window.location.href = newUrl;
+  alert("URLをクリップボードにコピーし、保存先URLへ遷移しました！");
 }
 
 function loadFromUrl() {
@@ -1053,7 +1077,7 @@ function updateSimulation() {
 
 function renderStatus(totalSpSpent, totalSpRefunded, currentRefundSpPool, epState, totalSkillCasts) {
   const totalSpSpentEl = document.getElementById('total-sp-spent');
-  if (totalSpSpentEl) totalSpSpentEl.textContent = totalSpSpent;
+  if (totalSpSpentEl) totalSpSpentEl.textContent = totalSpSpent - totalSpRefunded;
 
   const totalSpRefundedEl = document.getElementById('total-sp-refunded');
   if (totalSpRefundedEl) totalSpRefundedEl.textContent = totalSpRefunded;
