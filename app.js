@@ -1876,7 +1876,53 @@ function updateSkillNameToggleButtons() {
   }
 }
 
+// ===== モバイル用スキルパレット表示/非表示トグル & iOS Safari VisualViewport 対応 =====
+let isMobilePaletteCollapsed = false;
+
+window.toggleMobilePalette = function(forceState) {
+  if (typeof forceState === 'boolean') {
+    isMobilePaletteCollapsed = forceState;
+  } else {
+    isMobilePaletteCollapsed = !isMobilePaletteCollapsed;
+  }
+  const panel = document.getElementById('palette-panel') || document.querySelector('.palette-panel');
+  const btn = document.getElementById('btn-toggle-palette');
+  if (panel) {
+    panel.classList.toggle('is-collapsed', isMobilePaletteCollapsed);
+  }
+  document.body.classList.toggle('palette-collapsed', isMobilePaletteCollapsed);
+  if (btn) {
+    btn.setAttribute('aria-expanded', String(!isMobilePaletteCollapsed));
+    btn.textContent = isMobilePaletteCollapsed ? 'パレットを表示 ▲' : 'パレットを隠す ▼';
+  }
+};
+
+function updateMobileViewportMetrics() {
+  const root = document.documentElement;
+  if (window.visualViewport) {
+    const vv = window.visualViewport;
+    const layoutH = root.clientHeight || window.innerHeight;
+    const offsetBottom = Math.max(0, Math.round(layoutH - (vv.height + vv.offsetTop)));
+    root.style.setProperty('--vv-offset-bottom', `${offsetBottom}px`);
+    root.style.setProperty('--vvh', `${Math.round(vv.height)}px`);
+  } else {
+    root.style.setProperty('--vv-offset-bottom', '0px');
+    root.style.setProperty('--vvh', `${window.innerHeight}px`);
+  }
+}
+
+function initMobileViewportListeners() {
+  updateMobileViewportMetrics();
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateMobileViewportMetrics, { passive: true });
+    window.visualViewport.addEventListener('scroll', updateMobileViewportMetrics, { passive: true });
+  }
+  window.addEventListener('resize', updateMobileViewportMetrics, { passive: true });
+  window.addEventListener('orientationchange', updateMobileViewportMetrics, { passive: true });
+}
+
 async function initApp() {
+  initMobileViewportListeners();
   await Promise.all([fetchCharacters(), fetchEquipment()]);
   loadFromUrl();
   initPartyAndRoster();
