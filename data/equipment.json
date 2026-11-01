@@ -1,0 +1,23 @@
+{
+  "armorSets": [
+    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
+    { "id": "syusei", "name": "集成訓練 [3セット] (+10%)", "efficiency": 10.0 },
+    { "id": "tensai", "name": "天災防護 [3セット] (+20%)", "efficiency": 20.0 },
+    { "id": "other", "name": "その他セット (0%)", "efficiency": 0 }
+  ],
+  "bodyArmor": [
+    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
+    { "id": "body_set_max", "name": "セット付き防具（流転など） [MAX] (+16.0%)", "efficiency": 16.0 },
+    { "id": "body_single_max", "name": "セットなし防具（救国など） [MAX] (+16.7%)", "efficiency": 16.7 }
+  ],
+  "armArmor": [
+    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
+    { "id": "arm_set_max", "name": "セット付き防具（流転など） [MAX] (+26.7%)", "efficiency": 26.7 },
+    { "id": "arm_single_max", "name": "セットなし防具（救国など） [MAX] (0%)", "efficiency": 0 }
+  ],
+  "accessory": [
+    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
+    { "id": "acc_set_max", "name": "セット付きアクセ（流転など） [MAX] (+32.0%)", "efficiency": 32.0 },
+    { "id": "acc_single_max", "name": "セットなしアクセ（救国印章など） [MAX] (+33.4%)", "efficiency": 33.4 }
+  ]
+}

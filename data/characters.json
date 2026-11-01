@@ -24,21 +24,27 @@
         {
           "id": "skill_zaihi",
           "type": "skill",
-          "name": "戦技",
+          "name": "DDoS",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_zaihi",
           "type": "combo",
-          "name": "連携技"
+          "name": "ストレステスト",
+          "shortName": "連携技"
         },
         {
           "id": "ult_zaihi",
           "type": "ult",
-          "name": "必殺技",
+          "name": "スタックオーバーフロー",
+          "shortName": "必殺技",
           "epCost": 80
         }
-      ]
+      ],
+      "rarity": 5,
+      "element": "寒冷",
+      "class": "補助"
     },
     {
       "id": "オクギ",
@@ -63,27 +69,34 @@
         {
           "id": "skill_okugi",
           "type": "skill",
-          "name": "戦技",
+          "name": "砕玉領域",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_okugi",
           "type": "combo",
-          "name": "連携技"
+          "name": "応龍四式",
+          "shortName": "連携技"
         },
         {
           "id": "ult_okugi",
           "type": "ult",
-          "name": "必殺技",
+          "name": "破晦",
+          "shortName": "必殺技",
           "epCost": 100
         },
         {
           "id": "ult2_okugi",
           "type": "ult2",
-          "name": "必殺技2",
+          "name": "破晦訣明",
+          "shortName": "必殺技2",
           "epCost": 0
         }
-      ]
+      ],
+      "rarity": 6,
+      "element": "自然",
+      "class": "術師"
     },
     {
       "id": "ギルベルタ",
@@ -103,21 +116,27 @@
         {
           "id": "skill_gilberta",
           "type": "skill",
-          "name": "戦技",
+          "name": "秘杖・引力モード",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_gilberta",
           "type": "combo",
-          "name": "連携技"
+          "name": "秘杖・マトリックス転移",
+          "shortName": "連携技"
         },
         {
           "id": "ult_gilberta",
           "type": "ult",
-          "name": "必殺技",
+          "name": "秘杖・重力場",
+          "shortName": "必殺技",
           "epCost": 90
         }
-      ]
+      ],
+      "rarity": 6,
+      "element": "自然",
+      "class": "補助"
     },
     {
       "id": "タンタン",
@@ -142,33 +161,40 @@
         {
           "id": "skill_tangtang",
           "type": "skill",
-          "name": "戦技",
+          "name": "波が来るぜ！",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_tangtang",
           "type": "combo",
-          "name": "連携技"
+          "name": "川よ、俺様に従え！",
+          "shortName": "連携技"
         },
         {
           "id": "ult_tangtang",
           "type": "ult",
-          "name": "必殺技",
+          "name": "大親分が見てっぞ！",
+          "shortName": "必殺技",
           "epCost": 90
         },
         {
           "id": "ult_cancel_tangtang",
           "type": "ult_cancel",
-          "name": "必殺キャンセル",
+          "name": "大親分が見てっぞ！(キャンセル)",
+          "shortName": "必殺キャンセル",
           "spCost": 0
         }
-      ]
+      ],
+      "rarity": 6,
+      "element": "寒冷",
+      "class": "前衛"
     },
     {
       "id": "char_su",
       "name": "スー",
       "icon": "image/su.png",
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 133.4,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "potentials": [
@@ -182,27 +208,34 @@
         {
           "id": "skill1_su",
           "type": "skill",
-          "name": "戦技1",
+          "name": "山河を映して",
+          "shortName": "戦技1",
           "spCost": 100
         },
         {
           "id": "skill2_su",
           "type": "skill2",
-          "name": "戦技2",
+          "name": "墨継",
+          "shortName": "戦技2",
           "spCost": 15
         },
         {
           "id": "combo_su",
           "type": "combo",
-          "name": "連携技"
+          "name": "胸中に成竹在り",
+          "shortName": "連携技"
         },
         {
           "id": "ult_su",
           "type": "ult",
-          "name": "必殺技",
+          "name": "白けさせるでない！",
+          "shortName": "必殺技",
           "epCost": 80
         }
-      ]
+      ],
+      "rarity": 6,
+      "element": "寒冷",
+      "class": "補助"
     },
     {
       "id": "char_lino",
@@ -222,20 +255,1115 @@
         {
           "id": "skill_lino",
           "type": "skill",
-          "name": "戦技",
+          "name": "キラキラフォーカス",
+          "shortName": "戦技",
           "spCost": 25
         },
         {
           "id": "combo_lino",
           "type": "combo",
-          "name": "連携技",
+          "name": "ときめきメロディー",
+          "shortName": "連携技",
           "epGain": 20
         },
         {
           "id": "ult_lino",
           "type": "ult",
-          "name": "必殺技",
+          "name": "綺羅星コンチェルト",
+          "shortName": "必殺技",
           "epCost": 160
+        }
+      ],
+      "rarity": 6,
+      "element": "電磁",
+      "class": "補助"
+    },
+    {
+      "id": "char_admin",
+      "name": "管理人",
+      "icon": "image/admin.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 1,
+          "type": "refund_sp_boost",
+          "value": 50
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_admin",
+          "type": "skill",
+          "name": "構成配列",
+          "spCost": 100
+        },
+        {
+          "id": "combo_admin",
+          "type": "combo",
+          "name": "封印配列"
+        },
+        {
+          "id": "ult_admin",
+          "type": "ult",
+          "name": "攻撃配列",
+          "epCost": 80
+        }
+      ],
+      "rarity": 6,
+      "element": "物理",
+      "class": "ストライカー"
+    },
+    {
+      "id": "char_laevatain",
+      "name": "レーヴァテイン",
+      "icon": "image/laevatain.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 1,
+          "type": "refund_sp_boost",
+          "value": 20
+        },
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_laevatain",
+          "type": "skill",
+          "name": "焼滅",
+          "spCost": 100
+        },
+        {
+          "id": "combo_laevatain",
+          "type": "combo",
+          "name": "烈火",
+          "epGain": 25
+        },
+        {
+          "id": "ult_laevatain",
+          "type": "ult",
+          "name": "ラグナロク",
+          "epCost": 300
+        }
+      ],
+      "rarity": 6,
+      "element": "灼熱",
+      "class": "戦術家"
+    },
+    {
+      "id": "char_ember",
+      "name": "エンバー",
+      "icon": "image/ember.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_ember",
+          "type": "skill",
+          "name": "出征",
+          "spCost": 100
+        },
+        {
+          "id": "combo_ember",
+          "type": "combo",
+          "name": "前線支援"
+        },
+        {
+          "id": "ult_ember",
+          "type": "ult",
+          "name": "誓約の炎",
+          "epCost": 100
+        }
+      ],
+      "rarity": 6,
+      "element": "灼熱",
+      "class": "重装"
+    },
+    {
+      "id": "char_camille",
+      "name": "カミーユ",
+      "icon": "image/camille.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "baseRecoverSP": 20,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_camille",
+          "type": "skill",
+          "name": "影祓う",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_camille",
+          "type": "combo",
+          "name": "心抉る棘",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_camille",
+          "type": "ult",
+          "name": "降り注ぐ深紅",
+          "shortName": "必殺技",
+          "epCost": 80
+        }
+      ],
+      "rarity": 6,
+      "element": "灼熱",
+      "class": "先鋒"
+    },
+    {
+      "id": "char_ardelia",
+      "name": "アルデリア",
+      "icon": "image/ardelia.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_ardelia",
+          "type": "skill",
+          "name": "ドリーラッシュ",
+          "spCost": 100
+        },
+        {
+          "id": "combo_ardelia",
+          "type": "combo",
+          "name": "イラプション・コラム"
+        },
+        {
+          "id": "ult_ardelia",
+          "type": "ult",
+          "name": "もふもふパーティー",
+          "epCost": 90
+        }
+      ],
+      "rarity": 6,
+      "element": "自然",
+      "class": "サポーター"
+    },
+    {
+      "id": "char_perlica",
+      "name": "ペリカ",
+      "icon": "image/perlica.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 2,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_perlica",
+          "type": "skill",
+          "name": "協約ω：雷撃",
+          "spCost": 100
+        },
+        {
+          "id": "combo_perlica",
+          "type": "combo",
+          "name": "即時協約：閃光鎖"
+        },
+        {
+          "id": "ult_perlica",
+          "type": "ult",
+          "name": "協約ε：70.41κ",
+          "epCost": 80
+        }
+      ],
+      "rarity": 5,
+      "element": "電磁",
+      "class": "アーツマスター"
+    },
+    {
+      "id": "char_wulfgard",
+      "name": "ウルフガード",
+      "icon": "image/wulfgard.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 2,
+          "type": "refund_sp_boost",
+          "value": 10
+        },
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_wulfgard",
+          "type": "skill",
+          "name": "灼熱の弾痕",
+          "spCost": 100
+        },
+        {
+          "id": "combo_wulfgard",
+          "type": "combo",
+          "name": "フラググレネード・β"
+        },
+        {
+          "id": "ult_wulfgard",
+          "type": "ult",
+          "name": "狼の怒り",
+          "epCost": 90
+        }
+      ],
+      "rarity": 5,
+      "element": "灼熱",
+      "class": "アーツマスター"
+    },
+    {
+      "id": "char_rossi",
+      "name": "ロッシ",
+      "icon": "image/rossi.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 1,
+          "type": "refund_sp_boost",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_rossi",
+          "type": "skill",
+          "name": "真紅の影",
+          "spCost": 100
+        },
+        {
+          "id": "combo_rossi",
+          "type": "combo",
+          "name": "刹那の影"
+        },
+        {
+          "id": "ult_rossi",
+          "type": "ult",
+          "name": "“鋭爪”奇襲",
+          "epCost": 110
+        }
+      ],
+      "rarity": 6,
+      "element": "物理",
+      "class": "ストライカー"
+    },
+    {
+      "id": "char_lastrite",
+      "name": "ラストライト",
+      "icon": "image/lastrite.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_lastrite",
+          "type": "skill",
+          "name": "セシュカの秘伝",
+          "spCost": 100
+        },
+        {
+          "id": "combo_lastrite",
+          "type": "combo",
+          "name": "冬喰"
+        },
+        {
+          "id": "ult_lastrite",
+          "type": "ult",
+          "name": "終の別れ",
+          "epCost": 240
+        }
+      ],
+      "rarity": 6,
+      "element": "寒冷",
+      "class": "戦術家"
+    },
+    {
+      "id": "char_chen",
+      "name": "チェン・センユー",
+      "icon": "image/chen.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_chen",
+          "type": "skill",
+          "name": "蒼穹返し",
+          "spCost": 100
+        },
+        {
+          "id": "combo_chen",
+          "type": "combo",
+          "name": "天河昇"
+        },
+        {
+          "id": "ult_chen",
+          "type": "ult",
+          "name": "凍風斬り",
+          "epCost": 70
+        }
+      ],
+      "rarity": 5,
+      "element": "物理",
+      "class": "ストライカー"
+    },
+    {
+      "id": "char_mifu",
+      "name": "ミ・フ",
+      "icon": "image/mifu.png",
+      "defaultEfficiency": 100,
+      "defaultPotential": 0,
+      "baseRefundSP": 50,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill1_mifu",
+          "type": "skill",
+          "name": "断雲",
+          "spCost": 100,
+          "refundSp": 50
+        },
+        {
+          "id": "skill2_mifu",
+          "type": "skill2",
+          "name": "追形",
+          "spCost": 50
+        },
+        {
+          "id": "skill3_mifu",
+          "type": "skill3",
+          "name": "開天",
+          "spCost": 50
+        },
+        {
+          "id": "combo_mifu",
+          "type": "combo",
+          "name": "拳に悔い無し"
+        },
+        {
+          "id": "ult_mifu",
+          "type": "ult",
+          "name": "心絶やす",
+          "epCost": 80
+        }
+      ],
+      "rarity": 6,
+      "element": "物理",
+      "class": "ストライカー"
+    },
+    {
+      "id": "char_lifeng",
+      "name": "リーフォン",
+      "icon": "image/lifeng.png",
+      "rarity": 6,
+      "element": "物理",
+      "class": "ストライカー",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_lifeng",
+          "type": "skill",
+          "name": "千裂脚",
+          "spCost": 100
+        },
+        {
+          "id": "combo_lifeng",
+          "type": "combo",
+          "name": "憤怒形"
+        },
+        {
+          "id": "ult_lifeng",
+          "type": "ult",
+          "name": "龍怒",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_pogranichnik",
+      "name": "ポグラニチニク",
+      "icon": "image/pogranichnik.png",
+      "rarity": 6,
+      "element": "物理",
+      "class": "先鋒",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "baseRecoverSP": 15,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_pogranichnik",
+          "type": "skill",
+          "name": "戦線粉砕",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_pogranichnik",
+          "type": "combo",
+          "name": "満月迎撃",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_pogranichnik",
+          "type": "ult",
+          "name": "盾兵旗隊、進め",
+          "shortName": "必殺技",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_minho",
+      "name": "ミンホ",
+      "icon": "image/minho.png",
+      "rarity": 6,
+      "element": "電磁",
+      "class": "ストライカー",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_minho",
+          "type": "skill",
+          "name": "電光一閃",
+          "spCost": 100
+        },
+        {
+          "id": "combo_minho",
+          "type": "combo",
+          "name": "銀流連斬"
+        },
+        {
+          "id": "ult_minho",
+          "type": "ult",
+          "name": "破天",
+          "epCost": 100
+        }
+      ]
+    },
+    {
+      "id": "char_zhuang",
+      "name": "ゾアン・ファンイ",
+      "icon": "image/zhuang.png",
+      "rarity": 6,
+      "element": "電磁",
+      "class": "戦術家",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_zhuang",
+          "type": "skill",
+          "name": "雷霆陣",
+          "spCost": 100
+        },
+        {
+          "id": "combo_zhuang",
+          "type": "combo",
+          "name": "轟雷連環"
+        },
+        {
+          "id": "ult_zhuang",
+          "type": "ult",
+          "name": "万雷帰一",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_yvonne",
+      "name": "イヴォンヌ",
+      "icon": "image/yvonne.png",
+      "rarity": 6,
+      "element": "寒冷",
+      "class": "戦術家",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_yvonne",
+          "type": "skill",
+          "name": "霜雪の矢",
+          "spCost": 100
+        },
+        {
+          "id": "combo_yvonne",
+          "type": "combo",
+          "name": "氷針射出"
+        },
+        {
+          "id": "ult_yvonne",
+          "type": "ult",
+          "name": "アイスシューター",
+          "epCost": 80
+        }
+      ]
+    },
+    {
+      "id": "char_typhoeus",
+      "name": "ティフォロス",
+      "icon": "image/typhoeus.png",
+      "rarity": 6,
+      "element": "自然",
+      "class": "戦術家",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_typhoeus",
+          "type": "skill",
+          "name": "大地の咆哮",
+          "spCost": 100
+        },
+        {
+          "id": "combo_typhoeus",
+          "type": "combo",
+          "name": "地裂震"
+        },
+        {
+          "id": "ult_typhoeus",
+          "type": "ult",
+          "name": "氷山の呼び声",
+          "epCost": 200
+        }
+      ]
+    },
+    {
+      "id": "char_purrchena",
+      "name": "プチエナ",
+      "icon": "image/purrchena.png",
+      "rarity": 5,
+      "element": "物理",
+      "class": "重装",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_purrchena",
+          "type": "skill",
+          "name": "鉄壁ガード",
+          "spCost": 100
+        },
+        {
+          "id": "combo_purrchena",
+          "type": "combo",
+          "name": "重盾強襲"
+        },
+        {
+          "id": "ult_purrchena",
+          "type": "ult",
+          "name": "守護の誓い",
+          "epCost": 100
+        }
+      ]
+    },
+    {
+      "id": "char_dapan",
+      "name": "ダパン",
+      "icon": "image/dapan.png",
+      "rarity": 5,
+      "element": "物理",
+      "class": "戦術家",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_dapan",
+          "type": "skill",
+          "name": "包丁捌き",
+          "spCost": 100
+        },
+        {
+          "id": "combo_dapan",
+          "type": "combo",
+          "name": "熱湯風呂"
+        },
+        {
+          "id": "ult_dapan",
+          "type": "ult",
+          "name": "具材投入！",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_arclight",
+      "name": "アークライト",
+      "icon": "image/arclight.png",
+      "rarity": 5,
+      "element": "電磁",
+      "class": "先鋒",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "baseRecoverSP": 40,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_arclight",
+          "type": "skill",
+          "name": "電光突進",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_arclight",
+          "type": "combo",
+          "name": "放電ステップ",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_arclight",
+          "type": "ult",
+          "name": "アークチャージ",
+          "shortName": "必殺技",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_avywenna",
+      "name": "アイビーエナ",
+      "icon": "image/avywenna.png",
+      "rarity": 5,
+      "element": "電磁",
+      "class": "戦術家",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_avywenna",
+          "type": "skill",
+          "name": "雷槍一擲",
+          "spCost": 100
+        },
+        {
+          "id": "combo_avywenna",
+          "type": "combo",
+          "name": "雷槍・閃撃"
+        },
+        {
+          "id": "ult_avywenna",
+          "type": "ult",
+          "name": "電磁雷光槍",
+          "epCost": 80
+        }
+      ]
+    },
+    {
+      "id": "char_alesh",
+      "name": "アレッシュ",
+      "icon": "image/alesh.png",
+      "rarity": 5,
+      "element": "寒冷",
+      "class": "先鋒",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "baseRecoverSP": 15,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_alesh",
+          "type": "skill",
+          "name": "氷上キャスト",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_alesh",
+          "type": "combo",
+          "name": "穴釣り戦術",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_alesh",
+          "type": "ult",
+          "name": "大物、ヒット！",
+          "shortName": "必殺技",
+          "epCost": 100
+        }
+      ]
+    },
+    {
+      "id": "char_snowshine",
+      "name": "スノーシャイン",
+      "icon": "image/snowshine.png",
+      "rarity": 5,
+      "element": "寒冷",
+      "class": "重装",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 15
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_snowshine",
+          "type": "skill",
+          "name": "フロストシールド",
+          "spCost": 100
+        },
+        {
+          "id": "combo_snowshine",
+          "type": "combo",
+          "name": "極地救援"
+        },
+        {
+          "id": "ult_snowshine",
+          "type": "ult",
+          "name": "凍てつく寒霜",
+          "epCost": 90
+        }
+      ]
+    },
+    {
+      "id": "char_catcher",
+      "name": "キャッチャー",
+      "icon": "image/catcher.png",
+      "rarity": 4,
+      "element": "物理",
+      "class": "重装",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 5,
+          "type": "refund_sp_boost",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_catcher",
+          "type": "skill",
+          "name": "タックル",
+          "spCost": 100
+        },
+        {
+          "id": "combo_catcher",
+          "type": "combo",
+          "name": "キャッチ＆ホールド"
+        },
+        {
+          "id": "ult_catcher",
+          "type": "ult",
+          "name": "フルスイング",
+          "epCost": 80
+        }
+      ]
+    },
+    {
+      "id": "char_akekuri",
+      "name": "アケクリ",
+      "icon": "image/akekuri.png",
+      "rarity": 4,
+      "element": "灼熱",
+      "class": "先鋒",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "baseRecoverSP": 15,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_akekuri",
+          "type": "skill",
+          "name": "火炎斬り",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_akekuri",
+          "type": "combo",
+          "name": "突撃一閃",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_akekuri",
+          "type": "ult",
+          "name": "烈火の刃",
+          "shortName": "必殺技",
+          "epCost": 120
+        }
+      ]
+    },
+    {
+      "id": "char_antal",
+      "name": "アンタル",
+      "icon": "image/antal.png",
+      "rarity": 4,
+      "element": "電磁",
+      "class": "補助",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_antal",
+          "type": "skill",
+          "name": "磁気トラップ",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_antal",
+          "type": "combo",
+          "name": "磁気嵐実験場",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_antal",
+          "type": "ult",
+          "name": "リミッター、解除",
+          "shortName": "必殺技",
+          "epCost": 100
+        }
+      ]
+    },
+    {
+      "id": "char_estella",
+      "name": "エステーラ",
+      "icon": "image/estella.png",
+      "rarity": 4,
+      "element": "寒冷",
+      "class": "前衛",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 2,
+          "type": "ult_cost_reduction_percent",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_estella",
+          "type": "skill",
+          "name": "氷刃連撃",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_estella",
+          "type": "combo",
+          "name": "ディストーション",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_estella",
+          "type": "ult",
+          "name": "トレモロ",
+          "shortName": "必殺技",
+          "epCost": 70
+        }
+      ]
+    },
+    {
+      "id": "char_fluorite",
+      "name": "フローライト",
+      "icon": "image/fluorite.png",
+      "rarity": 4,
+      "element": "自然",
+      "class": "術師",
+      "defaultEfficiency": 100.0,
+      "defaultPotential": 0,
+      "baseRefundSP": 0,
+      "potentials": [
+        {
+          "level": 4,
+          "type": "ult_cost_reduction_percent",
+          "value": 10
+        }
+      ],
+      "skills": [
+        {
+          "id": "skill_fluorite",
+          "type": "skill",
+          "name": "自然の調和",
+          "shortName": "戦技",
+          "spCost": 100
+        },
+        {
+          "id": "combo_fluorite",
+          "type": "combo",
+          "name": "特別サービス",
+          "shortName": "連携技"
+        },
+        {
+          "id": "ult_fluorite",
+          "type": "ult",
+          "name": "つまらない茶番",
+          "shortName": "必殺技",
+          "epCost": 100
         }
       ]
     }

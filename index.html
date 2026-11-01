@@ -6,6 +6,8 @@
   <title>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="drag-drop-touch.js"></script>
+  <script src="data/weapons.js"></script>
 </head>
 <body>
   <header>
@@ -16,7 +18,15 @@
     <!-- キャラクター選択とパーティー編成 -->
     <section class="panel top-section">
       <div class="roster-panel">
-        <h2>キャラクターリスト (クリックで編成に追加)</h2>
+        <div class="roster-header">
+          <h2>キャラクターリスト</h2>
+          <div class="roster-sort-controls">
+            <span class="sort-label">並び替え:</span>
+            <button type="button" class="sort-btn active" data-sort="rarity">レア度</button>
+            <button type="button" class="sort-btn" data-sort="element">属性</button>
+            <button type="button" class="sort-btn" data-sort="class">職分</button>
+          </div>
+        </div>
         <div id="roster-list" class="roster-container">
           <!-- サーバーから取得したキャラ一覧 -->
         </div>
@@ -43,6 +53,7 @@
       <div class="timeline-header">
         <h2>タイムライン (発動順)</h2>
         <div class="controls">
+          <button id="btn-save-timeline">保存</button>
           <button id="btn-export-url">URLをコピー</button>
           <button id="btn-export-image">画像として保存</button>
           <button id="btn-clear-timeline">クリア</button>
@@ -67,10 +78,12 @@
         </label>
       </div>
       <div class="status-summary" style="flex-wrap: wrap;">
-        <div>累計消費SP: <span id="total-sp-spent">0</span></div>
-        <div>累計返還SP: <span id="total-sp-refunded">0</span></div>
-        <div>現在の返還SPプール: <span id="current-refund-sp">0</span></div>
-        <div>全体戦技使用回数: <span id="total-skill-casts">0</span></div>
+        <div title="使用した戦技の合計消費SP">総消費SP: <span id="total-sp-spent">0</span></div>
+        <div title="戦技や天賦で戻ってきたSP。このSPを消費しても必殺チャージは回復しません">累計返還SP: <span id="total-sp-refunded">0</span></div>
+        <div title="重攻撃や先鋒スキル等で回復した通常SP。このSPを消費した戦技は必殺チャージが通常通り回復します">累計回復SP: <span id="total-sp-recovered">0</span></div>
+        <div title="総消費SPから返還SP・回復SPを差し引いた実質的な消費SP">実質消費SP: <span id="net-sp-spent">0</span></div>
+        <div title="現在プールされている未消費の返還SP。次の戦技で優先消費されます">返還SPプール: <span id="current-refund-sp">0</span></div>
+        <div title="通常SPを100消費するごとに1回とカウントした戦技の使用回数（NSC）です。返還SPで賄った分は含まず、SP消費量に比例します（例: 25SPの戦技は0.25回）。この値が必殺チャージ回復量（1回あたり基礎6.5）の計算に使われます。" style="cursor: help;">全体戦技使用回数: <span id="total-skill-casts">0</span></div>
       </div>
       <div id="ep-status-list" class="ep-status-container">
         <!-- 各キャラのEPゲージ -->

@@ -1,3 +1,56 @@
-node_modules
+# ==========================================
+# 開発・テスト用スクリプト
+# ==========================================
+*.py
+*.pyc
+__pycache__/
+*.sh
+*.bat
+*.ps1
+
+# ==========================================
+# プロンプト・レポート・検証用ディレクトリ・ファイル
+# ==========================================
+Prompt/
+Report/
+state/
+verification/
+scratch*/
+test*/
+debug*/
+check*/
+verify*/
+
+# 検証用動画・画像
+*.webm
+*.mp4
+*.mkv
+*verification*.png
+screenshot*.png
+roster*.png
+
+# Wiki収集データ等の旧ディレクトリ・バックアップ
+data/Character/
+data/System/
+*.tmp
+*.bak
+*.jsonl
+
+# ==========================================
+# ログ・OS・エディタ関連
+# ==========================================
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================================
+# 依存関係
+# ==========================================
+node_modules/
 package-lock.json
-package.json

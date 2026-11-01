@@ -11,27 +11,341 @@ body { margin: 0; padding: 20px; font-family: sans-serif; background-color: var(
 h1, h2 { color: var(--accent); margin-top: 0; }
 .panel { background-color: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; margin-bottom: 20px; }
 .top-section { display: flex; gap: 20px; }
-.roster-panel, .party-panel { flex: 1; }
-.roster-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 15px; } .party-container { display: flex; flex-direction: column; gap: 10px; }
-.roster-char { cursor: pointer; text-align: center; border: 1px solid transparent; padding: 10px; border-radius: 8px; transition: all 0.2s; background-color: #2a2a2a; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 80px; box-sizing: border-box; }
-.roster-char:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-.char-icon { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; display: block; margin: 0; background-color: #111; }
-.roster-char span { font-size: 14px; }
-.party-member { display: flex; align-items: center; gap: 10px; background-color: #2a2a2a; padding: 8px; border-radius: 6px; width: 100%; box-sizing: border-box; border: 1px solid #444; }
+.roster-panel, .party-panel { flex: 1; min-width: 0; }
+.party-container { display: flex; flex-direction: column; gap: 10px; }
+
+/* キャラクターリスト ヘッダー & ソートコントロール */
+.roster-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.roster-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--accent);
+}
+.roster-sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.sort-label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.sort-btn {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.sort-btn:hover {
+  background-color: #383838;
+  color: #fff;
+  border-color: #666;
+}
+.sort-btn.active {
+  background-color: var(--accent);
+  color: #111;
+  font-weight: bold;
+  border-color: var(--accent);
+}
+
+/* キャラクターリスト：グループ表示 */
+.roster-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.roster-group {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.roster-group-header {
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  background-color: #262626;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.roster-group-header .group-count {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+.roster-group-header.group-rarity-6 { color: #ffa940; border-left: 4px solid #fa8c16; }
+.roster-group-header.group-rarity-5 { color: #ffd666; border-left: 4px solid #d4b106; }
+.roster-group-header.group-rarity-4 { color: #b37feb; border-left: 4px solid #722ed1; }
+
+.roster-group-header.group-elem-物理 { color: #e0e0e0; border-left: 4px solid #888; }
+.roster-group-header.group-elem-灼熱 { color: #ff9c6e; border-left: 4px solid #d4380d; }
+.roster-group-header.group-elem-電磁 { color: #85a5ff; border-left: 4px solid #1d39c4; }
+.roster-group-header.group-elem-寒冷 { color: #5cdbd3; border-left: 4px solid #08979c; }
+.roster-group-header.group-elem-自然 { color: #95de64; border-left: 4px solid #389e0d; }
+
+.roster-group-header.group-class-前衛 { color: #ff7875; border-left: 4px solid #f5222d; }
+.roster-group-header.group-class-先鋒 { color: #ffa940; border-left: 4px solid #fa8c16; }
+.roster-group-header.group-class-重装 { color: #ffc069; border-left: 4px solid #faad14; }
+.roster-group-header.group-class-術師 { color: #b37feb; border-left: 4px solid #722ed1; }
+.roster-group-header.group-class-突撃 { color: #ff85c0; border-left: 4px solid #eb2f96; }
+.roster-group-header.group-class-補助 { color: #5cdbd3; border-left: 4px solid #13c2c2; }
+
+.roster-group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 8px;
+  padding: 8px;
+}
+.roster-char {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid #3a3a3a;
+  padding: 8px 4px 6px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  background-color: #242424;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.roster-char:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.roster-char.rarity-6 { border-color: rgba(250, 140, 22, 0.4); }
+.roster-char.rarity-6:hover { border-color: #ffa940; box-shadow: 0 4px 12px rgba(250, 140, 22, 0.25); }
+.roster-char.rarity-5 { border-color: rgba(245, 202, 36, 0.4); }
+.roster-char.rarity-5:hover { border-color: #ffd666; box-shadow: 0 4px 12px rgba(245, 202, 36, 0.25); }
+.roster-char.rarity-4 { border-color: rgba(179, 127, 235, 0.4); }
+.roster-char.rarity-4:hover { border-color: #b37feb; box-shadow: 0 4px 12px rgba(179, 127, 235, 0.25); }
+
+.char-icon-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+.char-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #555;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  background-color: #111;
+}
+.rarity-6 .char-icon { border-color: #ffa940; }
+.rarity-5 .char-icon { border-color: #ffd666; }
+.rarity-4 .char-icon { border-color: #b37feb; }
+
+.char-rarity-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 0 3px;
+  border-radius: 3px;
+  line-height: 1.2;
+}
+.rarity-6 .char-rarity-badge { background-color: #fa8c16; color: #fff; }
+.rarity-5 .char-rarity-badge { background-color: #d4b106; color: #111; }
+.rarity-4 .char-rarity-badge { background-color: #722ed1; color: #fff; }
+
+.roster-char .char-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: #eee;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.char-meta-tags {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.char-tag {
+  font-size: 9px;
+  padding: 1px 3px;
+  border-radius: 3px;
+  line-height: 1.1;
+  background-color: #333;
+  color: #bbb;
+  white-space: nowrap;
+}
+.tag-elem-物理 { background-color: #3e3e3e; color: #e0e0e0; border: 1px solid #555; }
+.tag-elem-灼熱 { background-color: #5c1d0e; color: #ff9c6e; border: 1px solid #872813; }
+.tag-elem-電磁 { background-color: #10239e; color: #85a5ff; border: 1px solid #1d39c4; }
+.tag-elem-寒冷 { background-color: #00474f; color: #5cdbd3; border: 1px solid #08979c; }
+.tag-elem-自然 { background-color: #135200; color: #95de64; border: 1px solid #237804; }
+
+.tag-class {
+  background-color: #2b2b2b;
+  color: #aaa;
+}
+.party-member { display: flex; flex-direction: column; gap: 8px; background-color: #2a2a2a; padding: 10px; border-radius: 6px; width: 100%; box-sizing: border-box; border: 1px solid #444; }
+.party-member-header { display: flex; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; }
+.party-char-name { font-weight: bold; min-width: 65px; font-size: 14px; }
 .settings-group { display: flex; align-items: center; gap: 5px; font-size: 14px; }
 .settings-group input, .settings-group select { background-color: var(--bg-color); color: var(--text-main); border: 1px solid var(--border-color); padding: 4px; border-radius: 4px; }
-.remove-btn { margin-left: auto; background: none; border: none; color: #ff4c4c; font-size: 20px; cursor: pointer; font-weight: bold; }
+.remove-btn { margin-left: auto; background: none; border: none; color: #ff4c4c; font-size: 20px; cursor: pointer; font-weight: bold; padding: 0 4px; }
+/* 装備・武器設定コンテナ（flex配置） */
+.equip-weapon-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.equip-weapon-container > details {
+  flex: 1;
+  min-width: 0;
+}
+
+.equip-details { width: 100%; background-color: #1e1e1e; border: 1px solid #383838; border-radius: 5px; overflow: hidden; box-sizing: border-box; }
+.equip-summary { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; cursor: pointer; font-size: 12px; color: #ccc; user-select: none; background-color: #252525; }
+.equip-summary:hover { background-color: #2e2e2e; color: #fff; }
+.equip-bonus-badge { color: #00b894; font-weight: bold; font-size: 12px; }
+
+/* 武器設定パネル */
+.weapon-body {
+  padding: 8px 10px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.weapon-select-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.weapon-select-row label {
+  font-size: 11px;
+  color: #aaa;
+}
+.weapon-select-row select {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.weapon-select-row select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.weapon-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 2px;
+}
+.weapon-skill-row {
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.weapon-skill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.weapon-skill-name {
+  font-size: 11px;
+  font-weight: bold;
+  color: #ddd;
+}
+.weapon-skill-level-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #aaa;
+}
+.weapon-skill-level-wrap select {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-size: 11px;
+}
+.weapon-skill-desc {
+  font-size: 10px;
+  color: #999;
+  line-height: 1.35;
+  word-break: break-all;
+}
+.weapon-skill-desc .highlight-eff {
+  color: #00cec9;
+  font-weight: bold;
+}
+
+/* 防具設定グリッド */
+.equip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; padding: 10px; background-color: #1a1a1a; }
+.equip-field { display: flex; flex-direction: column; gap: 3px; }
+.equip-field label { font-size: 11px; color: #aaa; }
+.equip-field select { background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px; padding: 4px 6px; font-size: 12px; width: 100%; box-sizing: border-box; }
+.equip-field select:focus { outline: none; border-color: var(--accent); }
+
+@media (max-width: 768px) {
+  .equip-weapon-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .party-member-header { flex-wrap: wrap; gap: 6px; }
+  .equip-grid { grid-template-columns: 1fr; }
+}
 .palette-container { display: flex; flex-direction: column; gap: 12px; overflow-x: auto; }
 .palette-table { display: flex; flex-direction: column; gap: 8px; min-width: max-content; }
-.palette-header-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; color: var(--text-muted); font-size: 12px; font-weight: bold; border-bottom: 1px solid #444; padding-bottom: 4px; }
+.palette-header-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; color: var(--text-muted); font-size: 12px; font-weight: bold; border-bottom: 1px solid #444; padding-bottom: 4px; }
 .palette-header-cell { text-align: center; }
-.palette-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; padding-bottom: 6px; border-bottom: 1px dashed var(--border-color); }
+.palette-row { display: grid; grid-template-columns: 40px 105px 105px 105px 105px 105px 135px 110px; gap: 12px; align-items: center; padding-bottom: 6px; border-bottom: 1px dashed var(--border-color); }
 .palette-cell { display: flex; align-items: center; justify-content: flex-start; min-height: 34px; }
 .palette-cell-char { justify-content: center; }
 .palette-common-row { display: flex; align-items: center; gap: 10px; padding-top: 8px; }
-.skill-block { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: bold; cursor: grab; user-select: none; white-space: nowrap; }
+.palette-group { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px dashed var(--border-color); overflow-x: auto; }
+.skill-block { display: flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 4px; font-size: 14px; font-weight: bold; cursor: grab; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; white-space: nowrap; }
 .skill-block img { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; }
 .bg-refund { background-color: #00b894; color: #fff; }
+.bg-recover { background-color: #00cec9; color: #111; }
 .bg-skill { background-color: #0984e3; color: #fff; }
 .bg-combo { background-color: #6c5ce7; color: #fff; }
 .bg-ult { background-color: #e84393; color: #fff; }
@@ -40,14 +354,25 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .timeline-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 .timeline-header button { background-color: #333; color: #fff; border: 1px solid #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
 .timeline-header button:hover { background-color: #444; }
-.timeline-wrapper { overflow-x: auto; padding-bottom: 10px; }
-.sequence-timeline { display: flex; align-items: center; gap: 10px; min-height: 80px; background-color: #1a1a1a; border: 1px dashed #555; border-radius: 4px; padding: 15px; box-sizing: border-box; }
+.timeline-wrapper { overflow-x: hidden; padding-bottom: 10px; width: 100%; box-sizing: border-box; }
+.sequence-timeline { display: flex; align-items: center; gap: 10px; min-height: 80px; background-color: #1a1a1a; border: 1px dashed #555; border-radius: 4px; padding: 15px; box-sizing: border-box; overflow-x: auto; overflow-y: hidden; width: 100%; }
+.sequence-timeline::-webkit-scrollbar { height: 6px; }
+.sequence-timeline::-webkit-scrollbar-track { background: #111; border-radius: 3px; }
+.sequence-timeline::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+.sequence-timeline::-webkit-scrollbar-thumb:hover { background: #666; }
 .drop-zone { flex: 1; display: flex; min-width: 150px; justify-content: center; align-items: center; color: var(--text-muted); }
-.timeline-item { position: relative; display: flex; flex-direction: column; align-items: center; cursor: grab; }
+.timeline-item { position: relative; display: flex; flex-direction: column; align-items: center; cursor: grab; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation; }
 .timeline-item:active { cursor: grabbing; }
 .timeline-item.dragging { opacity: 0.5; }
 .timeline-item .skill-block { cursor: pointer; pointer-events: none; }
-.refund-input { pointer-events: auto; width: 50px; background-color: #2c2c2c; color: #fff; border: 1px solid #444; border-radius: 4px; padding: 2px 4px; margin-left: 5px; }
+.timeline-item .skill-block img { width: 25px; height: 25px; }
+.timeline-drop-indicator { width: 4px; height: 40px; background-color: var(--accent); border-radius: 2px; box-shadow: 0 0 8px var(--accent); flex-shrink: 0; pointer-events: none; }
+.refund-input { pointer-events: auto; width: 32px; text-align: center; box-sizing: border-box; background-color: #2c2c2c; color: #fff; border: 1px solid #444; border-radius: 4px; padding: 2px 2px; margin-left: 5px; -moz-appearance: textfield; appearance: textfield; }
+.refund-input::-webkit-outer-spin-button,
+.refund-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .refund-input:focus { outline: none; border-color: #f39c12; }
 .timeline-item .delete-overlay { position: absolute; top: -8px; right: -8px; background: red; color: white; border-radius: 50%; width: 20px; height: 20px; display: none; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; z-index: 10; }
 .timeline-item:hover .delete-overlay { display: flex; }
@@ -71,7 +396,17 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.timeline-cycle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-grow: 1;
+  min-width: 0;
+  width: 100%;
 }
 .cycle-controls {
   display: flex;
@@ -164,7 +499,7 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   color: #f39c12;
 }
 
-/* モバイル端末向けレスポンシブ調整 */
+/* Mobile Responsive Adjustments */
 @media screen and (max-width: 768px) {
   body {
     padding: 10px;
@@ -211,7 +546,7 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   .cycle-wrapper {
     flex-direction: column;
     align-items: stretch;
-    min-width: 40vw; /* モバイル画面で1画面に2列程度収まる幅 */
+    min-width: 40vw; /* Fit 2 columns per screen on mobile */
     max-width: 40vw;
     border: 1px solid #444;
     padding: 10px;
@@ -234,13 +569,13 @@ h1, h2 { color: var(--accent); margin-top: 0; }
     max-width: 120px;
   }
 
-  /* 下部固定パレット用の余白を確保 */
+  /* Make the main layout use flex column, but keep palette accessible */
   body {
-    padding-bottom: 200px;
+    padding-bottom: 200px; /* Space for sticky palette */
   }
 
   .sequence-timeline {
-    flex-direction: column !important; /* 縦方向に積むレイアウト */
+    flex-direction: column !important; /* Vertical stack */
     align-items: flex-start !important;
     min-height: auto !important;
     gap: 15px !important;
@@ -249,7 +584,7 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 
   .timeline-item {
     width: 100% !important;
-    flex-direction: row !important; /* ブロックを横幅いっぱいに表示 */
+    flex-direction: row !important; /* Make block take full width, button on side */
     justify-content: flex-start !important;
   }
 
@@ -267,7 +602,14 @@ h1, h2 { color: var(--accent); margin-top: 0; }
     border-radius: 4px;
   }
 
-  /* 画面下部固定（Sticky）スキルパレット */
+  .timeline-drop-indicator {
+    width: 100% !important;
+    height: 4px !important;
+    min-height: 4px !important;
+    margin: 4px 0 !important;
+  }
+
+  /* Sticky Palette Mockup */
   .palette-panel {
     position: fixed;
     bottom: 0;
