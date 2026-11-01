@@ -188,7 +188,7 @@
       ],
       "rarity": 6,
       "element": "寒冷",
-      "class": "前衛"
+      "class": "術師"
     },
     {
       "id": "char_su",
@@ -313,7 +313,7 @@
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_laevatain",
@@ -356,7 +356,7 @@
       ],
       "rarity": 6,
       "element": "灼熱",
-      "class": "戦術家"
+      "class": "突撃"
     },
     {
       "id": "char_ember",
@@ -471,7 +471,7 @@
       ],
       "rarity": 6,
       "element": "自然",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "char_perlica",
@@ -508,7 +508,7 @@
       ],
       "rarity": 5,
       "element": "電磁",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "char_wulfgard",
@@ -550,7 +550,7 @@
       ],
       "rarity": 5,
       "element": "灼熱",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "char_rossi",
@@ -587,7 +587,7 @@
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_lastrite",
@@ -624,7 +624,7 @@
       ],
       "rarity": 6,
       "element": "寒冷",
-      "class": "戦術家"
+      "class": "突撃"
     },
     {
       "id": "char_chen",
@@ -661,7 +661,7 @@
       ],
       "rarity": 5,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_mifu",
@@ -711,7 +711,7 @@
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_lifeng",
@@ -719,7 +719,7 @@
       "icon": "image/lifeng.png",
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー",
+      "class": "前衛",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -797,7 +797,7 @@
       "icon": "image/minho.png",
       "rarity": 6,
       "element": "電磁",
-      "class": "ストライカー",
+      "class": "前衛",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -834,7 +834,7 @@
       "icon": "image/zhuang.png",
       "rarity": 6,
       "element": "電磁",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -871,7 +871,7 @@
       "icon": "image/yvonne.png",
       "rarity": 6,
       "element": "寒冷",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -908,7 +908,7 @@
       "icon": "image/typhoeus.png",
       "rarity": 6,
       "element": "自然",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -982,7 +982,7 @@
       "icon": "image/dapan.png",
       "rarity": 5,
       "element": "物理",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -1060,7 +1060,7 @@
       "icon": "image/avywenna.png",
       "rarity": 5,
       "element": "電磁",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,

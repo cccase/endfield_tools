@@ -25,24 +25,27 @@ const DEFAULT_DATA = {
         {
           "id": "skill_zaihi",
           "type": "skill",
-          "name": "戦技",
+          "name": "DDoS",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_zaihi",
           "type": "combo",
-          "name": "連携技"
+          "name": "ストレステスト",
+          "shortName": "連携技"
         },
         {
           "id": "ult_zaihi",
           "type": "ult",
-          "name": "必殺技",
+          "name": "スタックオーバーフロー",
+          "shortName": "必殺技",
           "epCost": 80
         }
       ],
       "rarity": 5,
       "element": "寒冷",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "オクギ",
@@ -67,30 +70,34 @@ const DEFAULT_DATA = {
         {
           "id": "skill_okugi",
           "type": "skill",
-          "name": "戦技",
+          "name": "砕玉領域",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_okugi",
           "type": "combo",
-          "name": "連携技"
+          "name": "応龍四式",
+          "shortName": "連携技"
         },
         {
           "id": "ult_okugi",
           "type": "ult",
-          "name": "必殺技",
+          "name": "破晦",
+          "shortName": "必殺技",
           "epCost": 100
         },
         {
           "id": "ult2_okugi",
           "type": "ult2",
-          "name": "必殺技2",
+          "name": "破晦訣明",
+          "shortName": "必殺技2",
           "epCost": 0
         }
       ],
       "rarity": 6,
       "element": "自然",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "ギルベルタ",
@@ -110,24 +117,27 @@ const DEFAULT_DATA = {
         {
           "id": "skill_gilberta",
           "type": "skill",
-          "name": "戦技",
+          "name": "秘杖・引力モード",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_gilberta",
           "type": "combo",
-          "name": "連携技"
+          "name": "秘杖・マトリックス転移",
+          "shortName": "連携技"
         },
         {
           "id": "ult_gilberta",
           "type": "ult",
-          "name": "必殺技",
+          "name": "秘杖・重力場",
+          "shortName": "必殺技",
           "epCost": 90
         }
       ],
       "rarity": 6,
       "element": "自然",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "タンタン",
@@ -152,30 +162,34 @@ const DEFAULT_DATA = {
         {
           "id": "skill_tangtang",
           "type": "skill",
-          "name": "戦技",
+          "name": "波が来るぜ！",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_tangtang",
           "type": "combo",
-          "name": "連携技"
+          "name": "川よ、俺様に従え！",
+          "shortName": "連携技"
         },
         {
           "id": "ult_tangtang",
           "type": "ult",
-          "name": "必殺技",
+          "name": "大親分が見てっぞ！",
+          "shortName": "必殺技",
           "epCost": 90
         },
         {
           "id": "ult_cancel_tangtang",
           "type": "ult_cancel",
-          "name": "必殺キャンセル",
+          "name": "大親分が見てっぞ！(キャンセル)",
+          "shortName": "必殺キャンセル",
           "spCost": 0
         }
       ],
       "rarity": 6,
       "element": "寒冷",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "char_su",
@@ -195,30 +209,34 @@ const DEFAULT_DATA = {
         {
           "id": "skill1_su",
           "type": "skill",
-          "name": "戦技1",
+          "name": "山河を映して",
+          "shortName": "戦技1",
           "spCost": 100
         },
         {
           "id": "skill2_su",
           "type": "skill2",
-          "name": "戦技2",
+          "name": "墨継",
+          "shortName": "戦技2",
           "spCost": 15
         },
         {
           "id": "combo_su",
           "type": "combo",
-          "name": "連携技"
+          "name": "胸中に成竹在り",
+          "shortName": "連携技"
         },
         {
           "id": "ult_su",
           "type": "ult",
-          "name": "必殺技",
+          "name": "白けさせるでない！",
+          "shortName": "必殺技",
           "epCost": 80
         }
       ],
       "rarity": 6,
       "element": "寒冷",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "char_lino",
@@ -238,25 +256,28 @@ const DEFAULT_DATA = {
         {
           "id": "skill_lino",
           "type": "skill",
-          "name": "戦技",
+          "name": "キラキラフォーカス",
+          "shortName": "戦技",
           "spCost": 25
         },
         {
           "id": "combo_lino",
           "type": "combo",
-          "name": "連携技",
+          "name": "ときめきメロディー",
+          "shortName": "連携技",
           "epGain": 20
         },
         {
           "id": "ult_lino",
           "type": "ult",
-          "name": "必殺技",
+          "name": "綺羅星コンチェルト",
+          "shortName": "必殺技",
           "epCost": 160
         }
       ],
       "rarity": 6,
       "element": "電磁",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "char_admin",
@@ -293,7 +314,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_laevatain",
@@ -336,7 +357,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "灼熱",
-      "class": "戦術家"
+      "class": "突撃"
     },
     {
       "id": "char_ember",
@@ -382,6 +403,7 @@ const DEFAULT_DATA = {
       "defaultEfficiency": 100,
       "defaultPotential": 0,
       "baseRefundSP": 0,
+      "baseRecoverSP": 20,
       "potentials": [
         {
           "level": 4,
@@ -394,17 +416,20 @@ const DEFAULT_DATA = {
           "id": "skill_camille",
           "type": "skill",
           "name": "影祓う",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_camille",
           "type": "combo",
-          "name": "心抉る棘"
+          "name": "心抉る棘",
+          "shortName": "連携技"
         },
         {
           "id": "ult_camille",
           "type": "ult",
           "name": "降り注ぐ深紅",
+          "shortName": "必殺技",
           "epCost": 80
         }
       ],
@@ -447,7 +472,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "自然",
-      "class": "サポーター"
+      "class": "補助"
     },
     {
       "id": "char_perlica",
@@ -484,7 +509,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 5,
       "element": "電磁",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "char_wulfgard",
@@ -526,7 +551,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 5,
       "element": "灼熱",
-      "class": "アーツマスター"
+      "class": "術師"
     },
     {
       "id": "char_rossi",
@@ -563,7 +588,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_lastrite",
@@ -600,7 +625,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "寒冷",
-      "class": "戦術家"
+      "class": "突撃"
     },
     {
       "id": "char_chen",
@@ -637,7 +662,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 5,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_mifu",
@@ -687,7 +712,7 @@ const DEFAULT_DATA = {
       ],
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー"
+      "class": "前衛"
     },
     {
       "id": "char_lifeng",
@@ -695,7 +720,7 @@ const DEFAULT_DATA = {
       "icon": "image/lifeng.png",
       "rarity": 6,
       "element": "物理",
-      "class": "ストライカー",
+      "class": "前衛",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -736,6 +761,7 @@ const DEFAULT_DATA = {
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
+      "baseRecoverSP": 15,
       "potentials": [
         {
           "level": 4,
@@ -747,18 +773,21 @@ const DEFAULT_DATA = {
         {
           "id": "skill_pogranichnik",
           "type": "skill",
-          "name": "防衛戦術",
+          "name": "戦線粉砕",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_pogranichnik",
           "type": "combo",
-          "name": "満月迎撃"
+          "name": "満月迎撃",
+          "shortName": "連携技"
         },
         {
           "id": "ult_pogranichnik",
           "type": "ult",
           "name": "盾兵旗隊、進め",
+          "shortName": "必殺技",
           "epCost": 90
         }
       ]
@@ -769,7 +798,7 @@ const DEFAULT_DATA = {
       "icon": "image/minho.png",
       "rarity": 6,
       "element": "電磁",
-      "class": "ストライカー",
+      "class": "前衛",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -806,7 +835,7 @@ const DEFAULT_DATA = {
       "icon": "image/zhuang.png",
       "rarity": 6,
       "element": "電磁",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -843,7 +872,7 @@ const DEFAULT_DATA = {
       "icon": "image/yvonne.png",
       "rarity": 6,
       "element": "寒冷",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -880,7 +909,7 @@ const DEFAULT_DATA = {
       "icon": "image/typhoeus.png",
       "rarity": 6,
       "element": "自然",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -954,7 +983,7 @@ const DEFAULT_DATA = {
       "icon": "image/dapan.png",
       "rarity": 5,
       "element": "物理",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -995,6 +1024,7 @@ const DEFAULT_DATA = {
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
+      "baseRecoverSP": 40,
       "potentials": [
         {
           "level": 4,
@@ -1007,17 +1037,20 @@ const DEFAULT_DATA = {
           "id": "skill_arclight",
           "type": "skill",
           "name": "電光突進",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_arclight",
           "type": "combo",
-          "name": "放電ステップ"
+          "name": "放電ステップ",
+          "shortName": "連携技"
         },
         {
           "id": "ult_arclight",
           "type": "ult",
           "name": "アークチャージ",
+          "shortName": "必殺技",
           "epCost": 90
         }
       ]
@@ -1028,7 +1061,7 @@ const DEFAULT_DATA = {
       "icon": "image/avywenna.png",
       "rarity": 5,
       "element": "電磁",
-      "class": "戦術家",
+      "class": "突撃",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -1069,6 +1102,7 @@ const DEFAULT_DATA = {
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
+      "baseRecoverSP": 15,
       "potentials": [
         {
           "level": 4,
@@ -1081,17 +1115,20 @@ const DEFAULT_DATA = {
           "id": "skill_alesh",
           "type": "skill",
           "name": "氷上キャスト",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_alesh",
           "type": "combo",
-          "name": "穴釣り戦術"
+          "name": "穴釣り戦術",
+          "shortName": "連携技"
         },
         {
           "id": "ult_alesh",
           "type": "ult",
           "name": "大物、ヒット！",
+          "shortName": "必殺技",
           "epCost": 100
         }
       ]
@@ -1180,6 +1217,7 @@ const DEFAULT_DATA = {
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
+      "baseRecoverSP": 15,
       "potentials": [
         {
           "level": 4,
@@ -1192,17 +1230,20 @@ const DEFAULT_DATA = {
           "id": "skill_akekuri",
           "type": "skill",
           "name": "火炎斬り",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_akekuri",
           "type": "combo",
-          "name": "突撃一閃"
+          "name": "突撃一閃",
+          "shortName": "連携技"
         },
         {
           "id": "ult_akekuri",
           "type": "ult",
           "name": "烈火の刃",
+          "shortName": "必殺技",
           "epCost": 120
         }
       ]
@@ -1213,7 +1254,7 @@ const DEFAULT_DATA = {
       "icon": "image/antal.png",
       "rarity": 4,
       "element": "電磁",
-      "class": "サポーター",
+      "class": "補助",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -1229,17 +1270,20 @@ const DEFAULT_DATA = {
           "id": "skill_antal",
           "type": "skill",
           "name": "磁気トラップ",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_antal",
           "type": "combo",
-          "name": "磁気嵐実験場"
+          "name": "磁気嵐実験場",
+          "shortName": "連携技"
         },
         {
           "id": "ult_antal",
           "type": "ult",
           "name": "リミッター、解除",
+          "shortName": "必殺技",
           "epCost": 100
         }
       ]
@@ -1250,7 +1294,7 @@ const DEFAULT_DATA = {
       "icon": "image/estella.png",
       "rarity": 4,
       "element": "寒冷",
-      "class": "ストライカー",
+      "class": "前衛",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -1266,17 +1310,20 @@ const DEFAULT_DATA = {
           "id": "skill_estella",
           "type": "skill",
           "name": "氷刃連撃",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_estella",
           "type": "combo",
-          "name": "ディストーション"
+          "name": "ディストーション",
+          "shortName": "連携技"
         },
         {
           "id": "ult_estella",
           "type": "ult",
           "name": "トレモロ",
+          "shortName": "必殺技",
           "epCost": 70
         }
       ]
@@ -1287,7 +1334,7 @@ const DEFAULT_DATA = {
       "icon": "image/fluorite.png",
       "rarity": 4,
       "element": "自然",
-      "class": "アーツマスター",
+      "class": "術師",
       "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
@@ -1303,17 +1350,20 @@ const DEFAULT_DATA = {
           "id": "skill_fluorite",
           "type": "skill",
           "name": "自然の調和",
+          "shortName": "戦技",
           "spCost": 100
         },
         {
           "id": "combo_fluorite",
           "type": "combo",
-          "name": "特別サービス"
+          "name": "特別サービス",
+          "shortName": "連携技"
         },
         {
           "id": "ult_fluorite",
           "type": "ult",
           "name": "つまらない茶番",
+          "shortName": "必殺技",
           "epCost": 100
         }
       ]
