@@ -42,9 +42,18 @@
 
     <!-- 利用可能なスキル・パネルパレット -->
     <section class="panel palette-panel" style="overflow-y: auto;">
-      <h2>スキルパレット (ドラッグ＆ドロップでタイムラインへ)</h2>
+      <div class="palette-header-wrap">
+        <h2>スキルパレット (ドラッグ＆ドロップでタイムラインへ)</h2>
+        <div class="skill-name-toggle-switch" title="スキル名の表示を「正式名称」と「略称（戦技1、必殺技など）」で切り替えます">
+          <span class="toggle-label">スキル名表示:</span>
+          <div class="toggle-btn-group">
+            <button type="button" id="btn-name-formal" class="toggle-mode-btn active" onclick="setSkillNameMode('formal')">正式名称</button>
+            <button type="button" id="btn-name-short" class="toggle-mode-btn" onclick="setSkillNameMode('short')">略称</button>
+          </div>
+        </div>
+      </div>
       <div id="skill-palette" class="palette-container">
-        <!-- 編成したキャラのスキル、および返還SPパネル -->
+        <!-- 編成したキャラのスキル、および返還SP・回復SPパネル -->
       </div>
     </section>
 
