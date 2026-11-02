@@ -1848,6 +1848,76 @@ let timelineCycles = [
 ]; // タイムライン上に配置されたスキルオブジェクトの配列（サイクルごと）
 let cycleNames = ['サイクル 1'];
 
+// ===== 案山子（ターゲット敵）ステータス & ダメージ計算設定 =====
+let targetEnemy = Object.assign({}, (typeof DamageCalculator !== 'undefined' ? DamageCalculator.DEFAULT_TARGET_ENEMY : {
+  level: 90,
+  defense: 100,
+  physicalRes: 0,
+  heatRes: 0,
+  electricRes: 0,
+  cryoRes: 0,
+  natureRes: 0,
+  vulnerability: 0,
+  isBroken: false,
+  breakMultiplier: 1.5
+}));
+let damageDisplayMode = 'expected'; // 'expected' | 'crit' | 'nonCrit'
+
+window.updateEnemySetting = function(key, value) {
+  if (key === 'isBroken') {
+    targetEnemy.isBroken = !!value;
+  } else {
+    targetEnemy[key] = parseFloat(value) || 0;
+  }
+  updateSimulation();
+  renderPalette();
+  renderTimeline();
+};
+
+window.resetEnemySettings = function() {
+  if (typeof DamageCalculator !== 'undefined') {
+    targetEnemy = Object.assign({}, DamageCalculator.DEFAULT_TARGET_ENEMY);
+  }
+  const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.value = val; };
+  setVal('enemy-defense', targetEnemy.defense);
+  setVal('enemy-vuln', targetEnemy.vulnerability);
+  const brk = document.getElementById('enemy-is-broken');
+  if (brk) brk.checked = targetEnemy.isBroken;
+  setVal('enemy-break-mult', targetEnemy.breakMultiplier);
+  setVal('enemy-res-phys', targetEnemy.physicalRes);
+  setVal('enemy-res-heat', targetEnemy.heatRes);
+  setVal('enemy-res-elec', targetEnemy.electricRes);
+  setVal('enemy-res-cryo', targetEnemy.cryoRes);
+  setVal('enemy-res-nature', targetEnemy.natureRes);
+  updateSimulation();
+  renderPalette();
+  renderTimeline();
+};
+
+window.setDamageMode = function(mode) {
+  damageDisplayMode = mode;
+  ['expected', 'crit', 'noncrit'].forEach(m => {
+    const btn = document.getElementById(`btn-dmg-${m}`);
+    if (btn) btn.classList.toggle('active', m.toLowerCase() === mode.toLowerCase());
+  });
+  updateSimulation();
+  renderPalette();
+  renderTimeline();
+};
+
+function getMemberComputedStats(member) {
+  if (!member || typeof DamageCalculator === 'undefined') return null;
+  const charData = allCharacters.find(c => c.name === member.name);
+  if (!charData) return null;
+  return DamageCalculator.calculateCharacterStats(charData, member.weapon, member.equipment, equipmentMaster);
+}
+
+function getMemberSkillDamage(member, skill, skillLevelKey) {
+  const stats = getMemberComputedStats(member);
+  if (!stats || !skill || typeof DamageCalculator === 'undefined') return null;
+  return DamageCalculator.calculateSkillDamage(stats, skill, skillLevelKey, targetEnemy, null);
+}
+
 // ===== スキル名表示モード（正式名称 / 略称） =====
 let skillNameDisplayMode = localStorage.getItem('skillNameDisplayMode') || 'formal';
 
@@ -2986,7 +3056,24 @@ function createDraggableBlock(data, text) {
   const el = document.createElement('div');
   el.className = 'skill-block';
   el.draggable = true;
-  el.innerHTML = `<img src="${data.icon}"> <span>${text}</span>`;
+
+  let dmgBadgeHtml = '';
+  let dmgTitle = '';
+  if (data.type === 'skill' && data.skillData) {
+    const p = party.find(x => x.id === data.charId || x.name === data.charName);
+    if (p) {
+      const dmgRes = getMemberSkillDamage(p, data.skillData, 'lv9');
+      if (dmgRes && dmgRes[damageDisplayMode] !== undefined) {
+        const val = dmgRes[damageDisplayMode];
+        const modeLabel = damageDisplayMode === 'crit' ? '会心' : (damageDisplayMode === 'nonCrit' ? '非会心' : '期待値');
+        dmgBadgeHtml = `<div class="skill-damage-badge">💥 ${DamageCalculator.formatDamage(val)}</div>`;
+        dmgTitle = `${data.charName} [${data.skillData.name || text}]\n属性: ${dmgRes.damageType} | 倍率: ${Math.round(dmgRes.mult * 100)}%\n最終攻撃力: ${dmgRes.details.totalAtk}\n${modeLabel}ダメージ: ${DamageCalculator.formatDamage(val)}\n(期待値: ${DamageCalculator.formatDamage(dmgRes.expected)} / 会心: ${DamageCalculator.formatDamage(dmgRes.crit)} / 非会心: ${DamageCalculator.formatDamage(dmgRes.nonCrit)})\n防御減衰: ${Math.round((1 - dmgRes.details.defMult) * 100)}% | 属性耐性: ${dmgRes.details.resVal}%\n与ダメUP: +${dmgRes.details.damageUpPercent}% | 脆弱: +${dmgRes.details.vulnMult > 1 ? Math.round((dmgRes.details.vulnMult - 1) * 100) : 0}% | ブレイク: ×${dmgRes.details.breakMult}`;
+      }
+    }
+  }
+
+  el.innerHTML = `<img src="${data.icon}"> <span>${text}</span>${dmgBadgeHtml}`;
+  if (dmgTitle) el.title = dmgTitle;
 
   el.addEventListener('dragstart', e => {
     e.dataTransfer.setData('application/json', JSON.stringify(data));
@@ -3235,7 +3322,24 @@ function renderTimeline() {
           if (item.skillData.type === 'ult2') block.classList.add('bg-ult2');
           if (item.skillData.type === 'ult_cancel') block.classList.add('bg-ult-cancel');
           text = getSkillDisplayName(item.skillData);
-          block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
+
+          let dmgBadgeHtml = '';
+          let dmgTitle = '';
+          if (item.skillData) {
+            const p = party.find(x => x.id === item.charId || x.name === item.charName);
+            if (p) {
+              const dmgRes = getMemberSkillDamage(p, item.skillData, 'lv9');
+              if (dmgRes && dmgRes[damageDisplayMode] !== undefined) {
+                const val = dmgRes[damageDisplayMode];
+                const modeLabel = damageDisplayMode === 'crit' ? '会心' : (damageDisplayMode === 'nonCrit' ? '非会心' : '期待値');
+                dmgBadgeHtml = `<div class="skill-damage-badge">💥 ${DamageCalculator.formatDamage(val)}</div>`;
+                dmgTitle = `${item.charName} [${item.skillData.name || text}]\n属性: ${dmgRes.damageType} | 倍率: ${Math.round(dmgRes.mult * 100)}%\n最終攻撃力: ${dmgRes.details.totalAtk}\n${modeLabel}ダメージ: ${DamageCalculator.formatDamage(val)}\n(期待値: ${DamageCalculator.formatDamage(dmgRes.expected)} / 会心: ${DamageCalculator.formatDamage(dmgRes.crit)} / 非会心: ${DamageCalculator.formatDamage(dmgRes.nonCrit)})\n防御減衰: ${Math.round((1 - dmgRes.details.defMult) * 100)}% | 属性耐性: ${dmgRes.details.resVal}%\n与ダメUP: +${dmgRes.details.damageUpPercent}% | 脆弱: +${dmgRes.details.vulnMult > 1 ? Math.round((dmgRes.details.vulnMult - 1) * 100) : 0}% | ブレイク: ×${dmgRes.details.breakMult}`;
+              }
+            }
+          }
+
+          block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>${dmgBadgeHtml}`;
+          if (dmgTitle) block.title = dmgTitle;
         }
 
         const delBtn = document.createElement('div');
@@ -3361,6 +3465,12 @@ function updateSimulation() {
   let currentRefundSpPool = 0;
   let totalSkillCasts = 0;
   let suSkill1CastCount = 0;
+
+  let totalTimelineDamage = 0;
+  let maxSingleDamage = 0;
+  let maxDamageSkillName = '-';
+  let totalDamageCasts = 0;
+
   // キャラクターごとの連携技カウント（返還SP計算用：タンタン・リーノ共通ロジック）
   const comboCountsForRefund = {};
 
@@ -3532,6 +3642,23 @@ function updateSimulation() {
           // 必殺キャンセル発動時、そのキャラの返還SP用連携技カウントを0に戻す
           comboCountsForRefund[step.charId] = 0;
         }
+
+        // ダメージ集計
+        if (step.skillData && (s.type === 'skill' || s.type === 'skill2' || s.type === 'skill3' || s.type === 'combo' || s.type === 'ult' || s.type === 'ult2')) {
+          const p = party.find(x => x.id === step.charId || x.name === step.charName);
+          if (p) {
+            const dmgRes = getMemberSkillDamage(p, step.skillData, 'lv9');
+            if (dmgRes && dmgRes[damageDisplayMode] !== undefined) {
+              const val = dmgRes[damageDisplayMode];
+              totalTimelineDamage += val;
+              totalDamageCasts++;
+              if (val > maxSingleDamage) {
+                maxSingleDamage = val;
+                maxDamageSkillName = `${p.name} [${step.skillData.name || step.skillData.shortName || 'スキル'}]`;
+              }
+            }
+          }
+        }
       }
     });
 
@@ -3545,10 +3672,15 @@ function updateSimulation() {
     }
   });
 
-  renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts);
+  renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, {
+    totalTimelineDamage,
+    maxSingleDamage,
+    maxDamageSkillName,
+    totalDamageCasts
+  });
 }
 
-function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts) {
+function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, dmgSummary) {
   const totalSpSpentEl = document.getElementById('total-sp-spent');
   if (totalSpSpentEl) totalSpSpentEl.textContent = totalSpSpent;
 
@@ -3566,6 +3698,20 @@ function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRe
 
   const totalSkillCastsEl = document.getElementById('total-skill-casts');
   if (totalSkillCastsEl) totalSkillCastsEl.textContent = totalSkillCasts.toFixed(2);
+
+  if (dmgSummary && typeof DamageCalculator !== 'undefined') {
+    const totalDmgEl = document.getElementById('total-timeline-damage');
+    if (totalDmgEl) totalDmgEl.textContent = DamageCalculator.formatDamage(dmgSummary.totalTimelineDamage);
+
+    const maxDmgEl = document.getElementById('max-single-damage');
+    if (maxDmgEl) maxDmgEl.textContent = DamageCalculator.formatDamage(dmgSummary.maxSingleDamage);
+
+    const maxDmgSkillEl = document.getElementById('max-damage-skill');
+    if (maxDmgSkillEl) maxDmgSkillEl.textContent = dmgSummary.maxDamageSkillName;
+
+    const totalCastsEl = document.getElementById('total-damage-casts');
+    if (totalCastsEl) totalCastsEl.textContent = `${dmgSummary.totalDamageCasts} 回`;
+  }
 
   const container = document.getElementById('ep-status-list');
   container.innerHTML = '';

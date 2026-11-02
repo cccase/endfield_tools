@@ -8,6 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="drag-drop-touch.js"></script>
   <script src="data/weapons.js"></script>
+  <script src="damage_calculator.js"></script>
 </head>
 <body>
   <header>
@@ -36,6 +37,54 @@
         <h2>パーティー編成 (最大4人)</h2>
         <div id="party-list" class="party-container">
           <!-- 選択されたキャラ (効率、凸設定付き) -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ターゲット設定（案山子 / 練習用ダミー） -->
+    <section class="panel enemy-panel">
+      <div class="enemy-header">
+        <h2>🎯 ターゲット設定 (案山子 / 練習用ダミー)</h2>
+        <button type="button" class="enemy-reset-btn" onclick="resetEnemySettings()">初期値に戻す</button>
+      </div>
+      <div class="enemy-settings-grid">
+        <div class="enemy-field">
+          <label for="enemy-defense" title="敵の基礎防御力。計算式: 100 / (100 + 防御力)">防御力 (DEF):</label>
+          <input type="number" id="enemy-defense" value="100" min="0" max="5000" step="10" onchange="updateEnemySetting('defense', this.value)">
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-vuln" title="敵が受けるダメージ増加率（脆弱デバフ等）">脆弱 / 被ダメUP (%):</label>
+          <input type="number" id="enemy-vuln" value="0" min="-100" max="500" step="5" onchange="updateEnemySetting('vulnerability', this.value)">
+        </div>
+        <div class="enemy-field enemy-break-field">
+          <label title="敵がブレイク（失衡）状態かどうか" style="display:flex; align-items:center; gap:5px; cursor:pointer;">
+            <input type="checkbox" id="enemy-is-broken" onchange="updateEnemySetting('isBroken', this.checked)">
+            ブレイク状態
+          </label>
+          <div class="break-mult-wrap">
+            <span>倍率:</span>
+            <input type="number" id="enemy-break-mult" value="1.5" min="1.0" max="5.0" step="0.1" style="width:55px;" onchange="updateEnemySetting('breakMultiplier', this.value)">
+          </div>
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-res-phys">物理耐性 (%):</label>
+          <input type="number" id="enemy-res-phys" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('physicalRes', this.value)">
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-res-heat">灼熱耐性 (%):</label>
+          <input type="number" id="enemy-res-heat" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('heatRes', this.value)">
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-res-elec">電磁耐性 (%):</label>
+          <input type="number" id="enemy-res-elec" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('electricRes', this.value)">
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-res-cryo">寒冷耐性 (%):</label>
+          <input type="number" id="enemy-res-cryo" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('cryoRes', this.value)">
+        </div>
+        <div class="enemy-field">
+          <label for="enemy-res-nature">自然耐性 (%):</label>
+          <input type="number" id="enemy-res-nature" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('natureRes', this.value)">
         </div>
       </div>
     </section>
@@ -101,6 +150,33 @@
       </div>
       <div id="ep-status-list" class="ep-status-container">
         <!-- 各キャラのEPゲージ -->
+      </div>
+    </section>
+
+    <!-- ダメージ集計サマリー -->
+    <section class="panel damage-summary-panel">
+      <div class="damage-summary-header">
+        <h2>💥 スキルダメージ集計</h2>
+        <div class="damage-display-mode-switch">
+          <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
+          <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
+          <button type="button" class="dmg-mode-btn" id="btn-dmg-noncrit" onclick="setDamageMode('nonCrit')">非会心</button>
+        </div>
+      </div>
+      <div class="damage-metrics-grid">
+        <div class="damage-card">
+          <div class="damage-card-label">タイムライン総ダメージ</div>
+          <div class="damage-card-value" id="total-timeline-damage">0</div>
+        </div>
+        <div class="damage-card">
+          <div class="damage-card-label">最大単発ダメージ</div>
+          <div class="damage-card-value" id="max-single-damage">0</div>
+          <div class="damage-card-sub" id="max-damage-skill">-</div>
+        </div>
+        <div class="damage-card">
+          <div class="damage-card-label">スキル発動回数</div>
+          <div class="damage-card-value" id="total-damage-casts">0 回</div>
+        </div>
       </div>
     </section>
 
