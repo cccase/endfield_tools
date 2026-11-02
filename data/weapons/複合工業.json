@@ -1,0 +1,57 @@
+﻿{
+    "$schema":  "../../schemas/weapon.schema.json",
+    "id":  "複合工業",
+    "name":  "複合工業",
+    "rarity":  6,
+    "type":  "片手剣",
+    "motif":  null,
+    "baseAtk":  450,
+    "skills":  [
+                   {
+                       "name":  "意志UP・大",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "電磁ダメージUP・大",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "噴発・集約効率",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   }
+               ],
+    "ultEfficiency":  null
+}

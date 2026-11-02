@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_avywenna",
+    "name":  "アイビーエナ",
+    "icon":  "image/avywenna.png",
+    "rarity":  5,
+    "element":  "電磁",
+    "weaponType":  "長柄武器",
+    "class":  "突撃",
+    "mainStat":  "敏捷",
+    "subStat":  "筋力",
+    "baseStats":  {
+                      "hp":  6300,
+                      "atk":  810,
+                      "strength":  160,
+                      "agility":  245,
+                      "intellect":  100,
+                      "willpower":  95,
+                      "artsIntensity":  65,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  15
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_avywenna",
+                       "type":  "skill",
+                       "name":  "雷槍一擲",
+                       "shortName":  "戦技",
+                       "damageType":  "電磁",
+                       "multipliers":  {
+                                           "lv9":  3.6,
+                                           "lv10_spec1":  3.95,
+                                           "lv11_spec2":  4.35,
+                                           "lv12_spec3":  4.8
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_avywenna",
+                       "type":  "combo",
+                       "name":  "雷槍・閃撃",
+                       "shortName":  "連携技",
+                       "damageType":  "電磁",
+                       "multipliers":  {
+                                           "lv9":  2.8,
+                                           "lv10_spec1":  3.05,
+                                           "lv11_spec2":  3.35,
+                                           "lv12_spec3":  3.7
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_avywenna",
+                       "type":  "ult",
+                       "name":  "電磁雷光槍",
+                       "shortName":  "必殺技",
+                       "damageType":  "電磁",
+                       "multipliers":  {
+                                           "lv9":  7.2,
+                                           "lv10_spec1":  7.85,
+                                           "lv11_spec2":  8.6,
+                                           "lv12_spec3":  9.5
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  80
+                   }
+               ],
+    "motifWeapon":  "求心の槍",
+    "recommendedWeapons":  [
+                               "求心の槍",
+                               "J.E.T."
+                           ]
+}

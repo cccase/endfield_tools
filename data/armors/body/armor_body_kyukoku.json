@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_body_kyukoku",
+    "name":  "救国の外装",
+    "part":  "body",
+    "rarity":  6,
+    "setId":  null,
+    "mainStat":  {
+                     "stat":  "hp",
+                     "value":  2650
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "atkPercent",
+                         "value":  0.167
+                     },
+                     {
+                         "stat":  "critRate",
+                         "value":  0.06
+                     }
+                 ],
+    "ultEfficiency":  16.7
+}

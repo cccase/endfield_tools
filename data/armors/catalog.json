@@ -1,0 +1,120 @@
+[
+  {
+    "part": "body",
+    "id": "armor_body_ruten",
+    "name": "流転の胸当て",
+    "rarity": 6,
+    "setId": "set_ruten",
+    "mainStat": { "stat": "hp", "value": 2400 },
+    "subStats": [
+      { "stat": "atkPercent", "value": 0.16 },
+      { "stat": "critRate", "value": 0.05 }
+    ],
+    "ultEfficiency": 16.0
+  },
+  {
+    "part": "body",
+    "id": "armor_body_tensai",
+    "name": "天災防護胴装",
+    "rarity": 6,
+    "setId": "set_tensai",
+    "mainStat": { "stat": "hp", "value": 2400 },
+    "subStats": [
+      { "stat": "artsIntensity", "value": 40 },
+      { "stat": "intellect", "value": 50 }
+    ],
+    "ultEfficiency": 0.0
+  },
+  {
+    "part": "body",
+    "id": "armor_body_kyukoku",
+    "name": "救国の外装",
+    "rarity": 6,
+    "setId": null,
+    "mainStat": { "stat": "hp", "value": 2650 },
+    "subStats": [
+      { "stat": "atkPercent", "value": 0.167 },
+      { "stat": "critRate", "value": 0.06 }
+    ],
+    "ultEfficiency": 16.7
+  },
+  {
+    "part": "arms",
+    "id": "armor_arms_ruten",
+    "name": "流転の腕甲",
+    "rarity": 6,
+    "setId": "set_ruten",
+    "mainStat": { "stat": "defense", "value": 180 },
+    "subStats": [
+      { "stat": "atkFlat", "value": 65 },
+      { "stat": "agility", "value": 45 }
+    ],
+    "ultEfficiency": 26.7
+  },
+  {
+    "part": "arms",
+    "id": "armor_arms_tensai",
+    "name": "天災防護腕甲",
+    "rarity": 6,
+    "setId": "set_tensai",
+    "mainStat": { "stat": "defense", "value": 180 },
+    "subStats": [
+      { "stat": "artsIntensity", "value": 35 },
+      { "stat": "intellect", "value": 45 }
+    ],
+    "ultEfficiency": 0.0
+  },
+  {
+    "part": "arms",
+    "id": "armor_arms_kyukoku",
+    "name": "救国の小手",
+    "rarity": 6,
+    "setId": null,
+    "mainStat": { "stat": "defense", "value": 210 },
+    "subStats": [
+      { "stat": "atkFlat", "value": 80 },
+      { "stat": "strength", "value": 50 }
+    ],
+    "ultEfficiency": 0.0
+  },
+  {
+    "part": "accessories",
+    "id": "armor_acc_ruten",
+    "name": "流転の指輪",
+    "rarity": 6,
+    "setId": "set_ruten",
+    "mainStat": { "stat": "critRate", "value": 0.12 },
+    "subStats": [
+      { "stat": "critDamage", "value": 0.24 },
+      { "stat": "atkPercent", "value": 0.10 }
+    ],
+    "ultEfficiency": 32.0
+  },
+  {
+    "part": "accessories",
+    "id": "armor_acc_tensai",
+    "name": "天災防護アミュレット",
+    "rarity": 6,
+    "setId": "set_tensai",
+    "mainStat": { "stat": "artsIntensity", "value": 50 },
+    "subStats": [
+      { "stat": "allDamageUp", "value": 0.12 },
+      { "stat": "intellect", "value": 60 }
+    ],
+    "ultEfficiency": 0.0
+  },
+  {
+    "part": "accessories",
+    "id": "armor_acc_kyukoku",
+    "name": "救国印章",
+    "rarity": 6,
+    "setId": null,
+    "mainStat": { "stat": "critDamage", "value": 0.35 },
+    "subStats": [
+      { "stat": "atkPercent", "value": 0.12 },
+      { "stat": "critRate", "value": 0.08 }
+    ],
+    "ultEfficiency": 33.4
+  }
+]
+

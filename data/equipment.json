@@ -1,23 +1,434 @@
-{
-  "armorSets": [
-    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
-    { "id": "syusei", "name": "集成訓練 [3セット] (+10%)", "efficiency": 10.0 },
-    { "id": "tensai", "name": "天災防護 [3セット] (+20%)", "efficiency": 20.0 },
-    { "id": "other", "name": "その他セット (0%)", "efficiency": 0 }
-  ],
-  "bodyArmor": [
-    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
-    { "id": "body_set_max", "name": "セット付き防具（流転など） [MAX] (+16.0%)", "efficiency": 16.0 },
-    { "id": "body_single_max", "name": "セットなし防具（救国など） [MAX] (+16.7%)", "efficiency": 16.7 }
-  ],
-  "armArmor": [
-    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
-    { "id": "arm_set_max", "name": "セット付き防具（流転など） [MAX] (+26.7%)", "efficiency": 26.7 },
-    { "id": "arm_single_max", "name": "セットなし防具（救国など） [MAX] (0%)", "efficiency": 0 }
-  ],
-  "accessory": [
-    { "id": "none", "name": "なし (0%)", "efficiency": 0 },
-    { "id": "acc_set_max", "name": "セット付きアクセ（流転など） [MAX] (+32.0%)", "efficiency": 32.0 },
-    { "id": "acc_single_max", "name": "セットなしアクセ（救国印章など） [MAX] (+33.4%)", "efficiency": 33.4 }
-  ]
+﻿{
+    "armorSets":  [
+                      {
+                          "id":  "none",
+                          "name":  "縺ｪ縺・(0%)",
+                          "efficiency":  0
+                      },
+                      {
+                          "id":  "set_ruten",
+                          "name":  "流転繧ｻ繝・ヨ (+0%)",
+                          "efficiency":  0,
+                          "detail":  {
+                                         "id":  "set_ruten",
+                                         "name":  "流転",
+                                         "effects":  {
+                                                         "twoPiece":  {
+                                                                          "description":  "攻撃力+10.0%",
+                                                                          "atkPercent":  0.10
+                                                                      },
+                                                         "threePiece":  {
+                                                                            "description":  "スキル発動時、15秒間物理ダメージ+20.0%",
+                                                                            "physicalDamageUp":  0.20,
+                                                                            "duration":  15.0,
+                                                                            "isStackable":  false
+                                                                        }
+                                                     }
+                                     }
+                      },
+                      {
+                          "id":  "set_tensai",
+                          "name":  "天災防護繧ｻ繝・ヨ (+0%)",
+                          "efficiency":  0,
+                          "detail":  {
+                                         "id":  "set_tensai",
+                                         "name":  "天災防護",
+                                         "effects":  {
+                                                         "twoPiece":  {
+                                                                          "description":  "アーツ強度+30",
+                                                                          "artsIntensity":  30
+                                                                      },
+                                                         "threePiece":  {
+                                                                            "description":  "アーツ異常時、全属性ダメージ+18.0%",
+                                                                            "allDamageUp":  0.18,
+                                                                            "duration":  20.0,
+                                                                            "isStackable":  false
+                                                                        }
+                                                     }
+                                     }
+                      },
+                      {
+                          "id":  "set_syusei",
+                          "name":  "集成訓練繧ｻ繝・ヨ (+10%)",
+                          "efficiency":  10,
+                          "detail":  {
+                                         "id":  "set_syusei",
+                                         "name":  "集成訓練",
+                                         "effects":  {
+                                                         "twoPiece":  {
+                                                                          "description":  "必殺技効率+10.0%",
+                                                                          "ultEfficiency":  10.0
+                                                                      },
+                                                         "threePiece":  {
+                                                                            "description":  "必殺技ダメージ+25.0%",
+                                                                            "ultDamageUp":  0.25,
+                                                                            "duration":  0,
+                                                                            "isStackable":  false
+                                                                        }
+                                                     }
+                                     }
+                      },
+                      {
+                          "id":  "other",
+                          "name":  "縺昴・莉悶そ繝・ヨ (0%)",
+                          "efficiency":  0
+                      }
+                  ],
+    "bodyArmor":  [
+                      {
+                          "id":  "none",
+                          "name":  "縺ｪ縺・(0%)",
+                          "efficiency":  0
+                      },
+                      {
+                          "id":  "armor_body_kyukoku",
+                          "name":  "救国の外装 (+16.7%)",
+                          "efficiency":  16.7,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_body_kyukoku",
+                                         "name":  "救国の外装",
+                                         "part":  "body",
+                                         "rarity":  6,
+                                         "setId":  null,
+                                         "mainStat":  {
+                                                          "stat":  "hp",
+                                                          "value":  2650
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.167
+                                                          },
+                                                          {
+                                                              "stat":  "critRate",
+                                                              "value":  0.06
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  16.7
+                                     }
+                      },
+                      {
+                          "id":  "armor_body_ruten",
+                          "name":  "流転の胸当て (+16%)",
+                          "efficiency":  16,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_body_ruten",
+                                         "name":  "流転の胸当て",
+                                         "part":  "body",
+                                         "rarity":  6,
+                                         "setId":  "set_ruten",
+                                         "mainStat":  {
+                                                          "stat":  "hp",
+                                                          "value":  2400
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.16
+                                                          },
+                                                          {
+                                                              "stat":  "critRate",
+                                                              "value":  0.05
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  16
+                                     }
+                      },
+                      {
+                          "id":  "armor_body_tensai",
+                          "name":  "天災防護胴装 (+0%)",
+                          "efficiency":  0,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_body_tensai",
+                                         "name":  "天災防護胴装",
+                                         "part":  "body",
+                                         "rarity":  6,
+                                         "setId":  "set_tensai",
+                                         "mainStat":  {
+                                                          "stat":  "hp",
+                                                          "value":  2400
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "artsIntensity",
+                                                              "value":  40
+                                                          },
+                                                          {
+                                                              "stat":  "intellect",
+                                                              "value":  50
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  0
+                                     }
+                      },
+                      {
+                          "id":  "armor_body_ruten",
+                          "name":  "流転の胸当て (+16%)",
+                          "efficiency":  16,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_body_ruten",
+                                         "name":  "流転の胸当て",
+                                         "part":  "body",
+                                         "rarity":  6,
+                                         "setId":  "set_ruten",
+                                         "mainStat":  {
+                                                          "stat":  "hp",
+                                                          "value":  2400
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.16
+                                                          },
+                                                          {
+                                                              "stat":  "critRate",
+                                                              "value":  0.05
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  16.0
+                                     }
+                      }
+                  ],
+    "armArmor":  [
+                     {
+                         "id":  "none",
+                         "name":  "縺ｪ縺・(0%)",
+                         "efficiency":  0
+                     },
+                     {
+                         "id":  "armor_arms_kyukoku",
+                         "name":  "救国の小手 (+0%)",
+                         "efficiency":  0,
+                         "detail":  {
+                                        "$schema":  "../../../schemas/armor.schema.json",
+                                        "id":  "armor_arms_kyukoku",
+                                        "name":  "救国の小手",
+                                        "part":  "arms",
+                                        "rarity":  6,
+                                        "setId":  null,
+                                        "mainStat":  {
+                                                         "stat":  "defense",
+                                                         "value":  210
+                                                     },
+                                        "subStats":  [
+                                                         {
+                                                             "stat":  "atkFlat",
+                                                             "value":  80
+                                                         },
+                                                         {
+                                                             "stat":  "strength",
+                                                             "value":  50
+                                                         }
+                                                     ],
+                                        "ultEfficiency":  0
+                                    }
+                     },
+                     {
+                         "id":  "armor_arms_ruten",
+                         "name":  "流転の腕甲 (+26.7%)",
+                         "efficiency":  26.7,
+                         "detail":  {
+                                        "$schema":  "../../../schemas/armor.schema.json",
+                                        "id":  "armor_arms_ruten",
+                                        "name":  "流転の腕甲",
+                                        "part":  "arms",
+                                        "rarity":  6,
+                                        "setId":  "set_ruten",
+                                        "mainStat":  {
+                                                         "stat":  "defense",
+                                                         "value":  180
+                                                     },
+                                        "subStats":  [
+                                                         {
+                                                             "stat":  "atkFlat",
+                                                             "value":  65
+                                                         },
+                                                         {
+                                                             "stat":  "agility",
+                                                             "value":  45
+                                                         }
+                                                     ],
+                                        "ultEfficiency":  26.7
+                                    }
+                     },
+                     {
+                         "id":  "armor_arms_tensai",
+                         "name":  "天災防護腕甲 (+0%)",
+                         "efficiency":  0,
+                         "detail":  {
+                                        "$schema":  "../../../schemas/armor.schema.json",
+                                        "id":  "armor_arms_tensai",
+                                        "name":  "天災防護腕甲",
+                                        "part":  "arms",
+                                        "rarity":  6,
+                                        "setId":  "set_tensai",
+                                        "mainStat":  {
+                                                         "stat":  "defense",
+                                                         "value":  180
+                                                     },
+                                        "subStats":  [
+                                                         {
+                                                             "stat":  "artsIntensity",
+                                                             "value":  35
+                                                         },
+                                                         {
+                                                             "stat":  "intellect",
+                                                             "value":  45
+                                                         }
+                                                     ],
+                                        "ultEfficiency":  0
+                                    }
+                     },
+                     {
+                         "id":  "armor_arms_ruten",
+                         "name":  "流転の腕甲 (+26.7%)",
+                         "efficiency":  26.7,
+                         "detail":  {
+                                        "$schema":  "../../../schemas/armor.schema.json",
+                                        "id":  "armor_arms_ruten",
+                                        "name":  "流転の腕甲",
+                                        "part":  "arms",
+                                        "rarity":  6,
+                                        "setId":  "set_ruten",
+                                        "mainStat":  {
+                                                         "stat":  "defense",
+                                                         "value":  180
+                                                     },
+                                        "subStats":  [
+                                                         {
+                                                             "stat":  "atkFlat",
+                                                             "value":  65
+                                                         },
+                                                         {
+                                                             "stat":  "agility",
+                                                             "value":  45
+                                                         }
+                                                     ],
+                                        "ultEfficiency":  26.7
+                                    }
+                     }
+                 ],
+    "accessory":  [
+                      {
+                          "id":  "none",
+                          "name":  "縺ｪ縺・(0%)",
+                          "efficiency":  0
+                      },
+                      {
+                          "id":  "armor_acc_kyukoku",
+                          "name":  "救国印章 (+33.4%)",
+                          "efficiency":  33.4,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_acc_kyukoku",
+                                         "name":  "救国印章",
+                                         "part":  "accessories",
+                                         "rarity":  6,
+                                         "setId":  null,
+                                         "mainStat":  {
+                                                          "stat":  "critDamage",
+                                                          "value":  0.35
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.12
+                                                          },
+                                                          {
+                                                              "stat":  "critRate",
+                                                              "value":  0.08
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  33.4
+                                     }
+                      },
+                      {
+                          "id":  "armor_acc_ruten",
+                          "name":  "流転の指輪 (+32%)",
+                          "efficiency":  32,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_acc_ruten",
+                                         "name":  "流転の指輪",
+                                         "part":  "accessories",
+                                         "rarity":  6,
+                                         "setId":  "set_ruten",
+                                         "mainStat":  {
+                                                          "stat":  "critRate",
+                                                          "value":  0.12
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "critDamage",
+                                                              "value":  0.24
+                                                          },
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.10
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  32
+                                     }
+                      },
+                      {
+                          "id":  "armor_acc_tensai",
+                          "name":  "天災防護アミュレット (+0%)",
+                          "efficiency":  0,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_acc_tensai",
+                                         "name":  "天災防護アミュレット",
+                                         "part":  "accessories",
+                                         "rarity":  6,
+                                         "setId":  "set_tensai",
+                                         "mainStat":  {
+                                                          "stat":  "artsIntensity",
+                                                          "value":  50
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "allDamageUp",
+                                                              "value":  0.12
+                                                          },
+                                                          {
+                                                              "stat":  "intellect",
+                                                              "value":  60
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  0
+                                     }
+                      },
+                      {
+                          "id":  "armor_acc_ruten",
+                          "name":  "流転の指輪 (+32%)",
+                          "efficiency":  32,
+                          "detail":  {
+                                         "$schema":  "../../../schemas/armor.schema.json",
+                                         "id":  "armor_acc_ruten",
+                                         "name":  "流転の指輪",
+                                         "part":  "accessories",
+                                         "rarity":  6,
+                                         "setId":  "set_ruten",
+                                         "mainStat":  {
+                                                          "stat":  "critRate",
+                                                          "value":  0.12
+                                                      },
+                                         "subStats":  [
+                                                          {
+                                                              "stat":  "critDamage",
+                                                              "value":  0.24
+                                                          },
+                                                          {
+                                                              "stat":  "atkPercent",
+                                                              "value":  0.10
+                                                          }
+                                                      ],
+                                         "ultEfficiency":  32.0
+                                     }
+                      }
+                  ]
 }

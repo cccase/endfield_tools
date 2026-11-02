@@ -1,0 +1,57 @@
+﻿{
+    "$schema":  "../../schemas/weapon.schema.json",
+    "id":  "問月",
+    "name":  "問月",
+    "rarity":  6,
+    "type":  "片手剣",
+    "motif":  "ミンホ",
+    "baseAtk":  450,
+    "skills":  [
+                   {
+                       "name":  "意志UP",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "攻撃力UP",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "付術",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   }
+               ],
+    "ultEfficiency":  null
+}

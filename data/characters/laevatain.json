@@ -1,0 +1,99 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_laevatain",
+    "name":  "レーヴァテイン",
+    "icon":  "image/laevatain.png",
+    "rarity":  6,
+    "element":  "灼熱",
+    "weaponType":  "片手剣",
+    "class":  "突撃",
+    "mainStat":  "敏捷",
+    "subStat":  "筋力",
+    "baseStats":  {
+                      "hp":  7300,
+                      "atk":  920,
+                      "strength":  185,
+                      "agility":  285,
+                      "intellect":  120,
+                      "willpower":  110,
+                      "artsIntensity":  80,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  1,
+                           "type":  "refund_sp_boost",
+                           "value":  20
+                       },
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  15
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_laevatain",
+                       "type":  "skill",
+                       "name":  "焼滅",
+                       "shortName":  "戦技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  3.78,
+                                           "lv10_spec1":  4.15,
+                                           "lv11_spec2":  4.57,
+                                           "lv12_spec3":  5.04
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_laevatain",
+                       "type":  "combo",
+                       "name":  "烈火",
+                       "shortName":  "連携技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  2.94,
+                                           "lv10_spec1":  3.2,
+                                           "lv11_spec2":  3.52,
+                                           "lv12_spec3":  3.88
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_laevatain",
+                       "type":  "ult",
+                       "name":  "ラグナロク",
+                       "shortName":  "必殺技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  7.56,
+                                           "lv10_spec1":  8.24,
+                                           "lv11_spec2":  9.03,
+                                           "lv12_spec3":  9.98
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  300
+                   }
+               ],
+    "motifWeapon":  "フレイムフォージ",
+    "recommendedWeapons":  [
+                               "フレイムフォージ",
+                               "ダークトーチ"
+                           ]
+}

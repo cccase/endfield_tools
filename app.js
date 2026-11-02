@@ -3184,7 +3184,9 @@ function renderTimeline() {
           block.classList.add('bg-separator');
 
         } else {
-          if (item.skillData.type === 'skill' || item.skillData.type === 'skill2' || item.skillData.type === 'skill3') block.classList.add('bg-skill');
+          const sType = item.skillData ? item.skillData.type : '';
+          const sId = item.skillData ? item.skillData.id : '';
+          if (sType === 'skill' || sType === 'skill2' || sType === 'skill3' || sId.startsWith('skill')) block.classList.add('bg-skill');
           if (item.skillData.type === 'combo') block.classList.add('bg-combo');
           if (item.skillData.type === 'ult') block.classList.add('bg-ult');
           if (item.skillData.type === 'ult2') block.classList.add('bg-ult2');

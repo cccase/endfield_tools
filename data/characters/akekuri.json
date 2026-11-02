@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_akekuri",
+    "name":  "アケクリ",
+    "icon":  "image/akekuri.png",
+    "rarity":  4,
+    "element":  "灼熱",
+    "weaponType":  "片手剣",
+    "class":  "先鋒",
+    "mainStat":  "敏捷",
+    "subStat":  "知性",
+    "baseStats":  {
+                      "hp":  5400,
+                      "atk":  630,
+                      "strength":  85,
+                      "agility":  210,
+                      "intellect":  135,
+                      "willpower":  80,
+                      "artsIntensity":  50,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  15,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  10
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_akekuri",
+                       "type":  "skill",
+                       "name":  "火炎斬り",
+                       "shortName":  "戦技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  3.42,
+                                           "lv10_spec1":  3.75,
+                                           "lv11_spec2":  4.13,
+                                           "lv12_spec3":  4.56
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_akekuri",
+                       "type":  "combo",
+                       "name":  "突撃一閃",
+                       "shortName":  "連携技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  2.66,
+                                           "lv10_spec1":  2.9,
+                                           "lv11_spec2":  3.18,
+                                           "lv12_spec3":  3.52
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_akekuri",
+                       "type":  "ult",
+                       "name":  "烈火の刃",
+                       "shortName":  "必殺技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  6.84,
+                                           "lv10_spec1":  7.46,
+                                           "lv11_spec2":  8.17,
+                                           "lv12_spec3":  9.02
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  120
+                   }
+               ],
+    "motifWeapon":  "O.B.J.軽刃",
+    "recommendedWeapons":  [
+                               "O.B.J.軽刃",
+                               "テルミット・カッター"
+                           ]
+}

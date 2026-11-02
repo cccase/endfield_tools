@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_dapan",
+    "name":  "ダパン",
+    "icon":  "image/dapan.png",
+    "rarity":  5,
+    "element":  "物理",
+    "weaponType":  "大剣",
+    "class":  "突撃",
+    "mainStat":  "敏捷",
+    "subStat":  "筋力",
+    "baseStats":  {
+                      "hp":  6300,
+                      "atk":  810,
+                      "strength":  160,
+                      "agility":  245,
+                      "intellect":  100,
+                      "willpower":  95,
+                      "artsIntensity":  30,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  15
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_dapan",
+                       "type":  "skill",
+                       "name":  "包丁捌き",
+                       "shortName":  "戦技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  3.6,
+                                           "lv10_spec1":  3.95,
+                                           "lv11_spec2":  4.35,
+                                           "lv12_spec3":  4.8
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_dapan",
+                       "type":  "combo",
+                       "name":  "熱湯風呂",
+                       "shortName":  "連携技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  2.8,
+                                           "lv10_spec1":  3.05,
+                                           "lv11_spec2":  3.35,
+                                           "lv12_spec3":  3.7
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_dapan",
+                       "type":  "ult",
+                       "name":  "具材投入！",
+                       "shortName":  "必殺技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  7.2,
+                                           "lv10_spec1":  7.85,
+                                           "lv11_spec2":  8.6,
+                                           "lv12_spec3":  9.5
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  90
+                   }
+               ],
+    "motifWeapon":  "千古恒常",
+    "recommendedWeapons":  [
+                               "千古恒常",
+                               "破砕君主"
+                           ]
+}

@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_arms_kyukoku",
+    "name":  "救国の小手",
+    "part":  "arms",
+    "rarity":  6,
+    "setId":  null,
+    "mainStat":  {
+                     "stat":  "defense",
+                     "value":  210
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "atkFlat",
+                         "value":  80
+                     },
+                     {
+                         "stat":  "strength",
+                         "value":  50
+                     }
+                 ],
+    "ultEfficiency":  0
+}

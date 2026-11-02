@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_estella",
+    "name":  "エステーラ",
+    "icon":  "image/estella.png",
+    "rarity":  4,
+    "element":  "寒冷",
+    "weaponType":  "長柄武器",
+    "class":  "前衛",
+    "mainStat":  "筋力",
+    "subStat":  "知性",
+    "baseStats":  {
+                      "hp":  5400,
+                      "atk":  630,
+                      "strength":  210,
+                      "agility":  80,
+                      "intellect":  135,
+                      "willpower":  80,
+                      "artsIntensity":  50,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  2,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  10
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_estella",
+                       "type":  "skill",
+                       "name":  "氷刃連撃",
+                       "shortName":  "戦技",
+                       "damageType":  "寒冷",
+                       "multipliers":  {
+                                           "lv9":  3.42,
+                                           "lv10_spec1":  3.75,
+                                           "lv11_spec2":  4.13,
+                                           "lv12_spec3":  4.56
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_estella",
+                       "type":  "combo",
+                       "name":  "ディストーション",
+                       "shortName":  "連携技",
+                       "damageType":  "寒冷",
+                       "multipliers":  {
+                                           "lv9":  2.66,
+                                           "lv10_spec1":  2.9,
+                                           "lv11_spec2":  3.18,
+                                           "lv12_spec3":  3.52
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_estella",
+                       "type":  "ult",
+                       "name":  "トレモロ",
+                       "shortName":  "必殺技",
+                       "damageType":  "寒冷",
+                       "multipliers":  {
+                                           "lv9":  6.84,
+                                           "lv10_spec1":  7.46,
+                                           "lv11_spec2":  8.17,
+                                           "lv12_spec3":  9.02
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  70
+                   }
+               ],
+    "motifWeapon":  "O.B.J.鋭矛",
+    "recommendedWeapons":  [
+                               "O.B.J.鋭矛",
+                               "灯火の使命"
+                           ]
+}

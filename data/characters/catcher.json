@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_catcher",
+    "name":  "キャッチャー",
+    "icon":  "image/catcher.png",
+    "rarity":  4,
+    "element":  "物理",
+    "weaponType":  "大剣",
+    "class":  "重装",
+    "mainStat":  "筋力",
+    "subStat":  "意志",
+    "baseStats":  {
+                      "hp":  5800,
+                      "atk":  550,
+                      "strength":  210,
+                      "agility":  80,
+                      "intellect":  85,
+                      "willpower":  135,
+                      "artsIntensity":  20,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  5,
+                           "type":  "refund_sp_boost",
+                           "value":  10
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_catcher",
+                       "type":  "skill",
+                       "name":  "タックル",
+                       "shortName":  "戦技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  3.42,
+                                           "lv10_spec1":  3.75,
+                                           "lv11_spec2":  4.13,
+                                           "lv12_spec3":  4.56
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_catcher",
+                       "type":  "combo",
+                       "name":  "キャッチ＆ホールド",
+                       "shortName":  "連携技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  2.66,
+                                           "lv10_spec1":  2.9,
+                                           "lv11_spec2":  3.18,
+                                           "lv12_spec3":  3.52
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_catcher",
+                       "type":  "ult",
+                       "name":  "フルスイング",
+                       "shortName":  "必殺技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  6.84,
+                                           "lv10_spec1":  7.46,
+                                           "lv11_spec2":  8.17,
+                                           "lv12_spec3":  9.02
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  80
+                   }
+               ],
+    "motifWeapon":  "O.B.J.重責",
+    "recommendedWeapons":  [
+                               "O.B.J.重責",
+                               "破砕君主"
+                           ]
+}

@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_body_tensai",
+    "name":  "天災防護胴装",
+    "part":  "body",
+    "rarity":  6,
+    "setId":  "set_tensai",
+    "mainStat":  {
+                     "stat":  "hp",
+                     "value":  2400
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "artsIntensity",
+                         "value":  40
+                     },
+                     {
+                         "stat":  "intellect",
+                         "value":  50
+                     }
+                 ],
+    "ultEfficiency":  0
+}

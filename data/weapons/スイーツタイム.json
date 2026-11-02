@@ -1,0 +1,57 @@
+﻿{
+    "$schema":  "../../schemas/weapon.schema.json",
+    "id":  "スイーツタイム",
+    "name":  "スイーツタイム",
+    "rarity":  5,
+    "type":  "片手剣",
+    "motif":  "プチエナ",
+    "baseAtk":  380,
+    "skills":  [
+                   {
+                       "name":  "筋力UP",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "回復効率UP",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "治癒",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   }
+               ],
+    "ultEfficiency":  null
+}

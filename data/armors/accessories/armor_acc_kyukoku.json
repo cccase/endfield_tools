@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_acc_kyukoku",
+    "name":  "救国印章",
+    "part":  "accessories",
+    "rarity":  6,
+    "setId":  null,
+    "mainStat":  {
+                     "stat":  "critDamage",
+                     "value":  0.35
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "atkPercent",
+                         "value":  0.12
+                     },
+                     {
+                         "stat":  "critRate",
+                         "value":  0.08
+                     }
+                 ],
+    "ultEfficiency":  33.4
+}

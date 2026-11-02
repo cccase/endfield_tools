@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_acc_ruten",
+    "name":  "流転の指輪",
+    "part":  "accessories",
+    "rarity":  6,
+    "setId":  "set_ruten",
+    "mainStat":  {
+                     "stat":  "critRate",
+                     "value":  0.12
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "critDamage",
+                         "value":  0.24
+                     },
+                     {
+                         "stat":  "atkPercent",
+                         "value":  0.10
+                     }
+                 ],
+    "ultEfficiency":  32
+}

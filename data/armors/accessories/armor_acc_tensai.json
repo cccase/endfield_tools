@@ -1,0 +1,23 @@
+﻿{
+    "$schema":  "../../../schemas/armor.schema.json",
+    "id":  "armor_acc_tensai",
+    "name":  "天災防護アミュレット",
+    "part":  "accessories",
+    "rarity":  6,
+    "setId":  "set_tensai",
+    "mainStat":  {
+                     "stat":  "artsIntensity",
+                     "value":  50
+                 },
+    "subStats":  [
+                     {
+                         "stat":  "allDamageUp",
+                         "value":  0.12
+                     },
+                     {
+                         "stat":  "intellect",
+                         "value":  60
+                     }
+                 ],
+    "ultEfficiency":  0
+}

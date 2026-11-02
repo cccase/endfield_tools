@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_lifeng",
+    "name":  "リーフォン",
+    "icon":  "image/lifeng.png",
+    "rarity":  6,
+    "element":  "物理",
+    "weaponType":  "長柄武器",
+    "class":  "前衛",
+    "mainStat":  "筋力",
+    "subStat":  "意志",
+    "baseStats":  {
+                      "hp":  7300,
+                      "atk":  820,
+                      "strength":  285,
+                      "agility":  110,
+                      "intellect":  120,
+                      "willpower":  185,
+                      "artsIntensity":  40,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100.0,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  15
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_lifeng",
+                       "type":  "skill",
+                       "name":  "千裂脚",
+                       "shortName":  "戦技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  3.78,
+                                           "lv10_spec1":  4.15,
+                                           "lv11_spec2":  4.57,
+                                           "lv12_spec3":  5.04
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_lifeng",
+                       "type":  "combo",
+                       "name":  "憤怒形",
+                       "shortName":  "連携技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  2.94,
+                                           "lv10_spec1":  3.2,
+                                           "lv11_spec2":  3.52,
+                                           "lv12_spec3":  3.88
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_lifeng",
+                       "type":  "ult",
+                       "name":  "龍怒",
+                       "shortName":  "必殺技",
+                       "damageType":  "物理",
+                       "multipliers":  {
+                                           "lv9":  7.56,
+                                           "lv10_spec1":  8.24,
+                                           "lv11_spec2":  9.03,
+                                           "lv12_spec3":  9.98
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  90
+                   }
+               ],
+    "motifWeapon":  "負山",
+    "recommendedWeapons":  [
+                               "負山",
+                               "勇猛"
+                           ]
+}

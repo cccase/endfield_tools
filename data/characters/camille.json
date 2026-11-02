@@ -1,0 +1,94 @@
+﻿{
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_camille",
+    "name":  "カミーユ",
+    "icon":  "image/camille.png",
+    "rarity":  6,
+    "element":  "灼熱",
+    "weaponType":  "長柄武器",
+    "class":  "先鋒",
+    "mainStat":  "筋力",
+    "subStat":  "知性",
+    "baseStats":  {
+                      "hp":  7300,
+                      "atk":  820,
+                      "strength":  285,
+                      "agility":  110,
+                      "intellect":  185,
+                      "willpower":  110,
+                      "artsIntensity":  80,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  100,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  20,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  15
+                       }
+                   ],
+    "skills":  [
+                   {
+                       "id":  "skill_camille",
+                       "type":  "skill",
+                       "name":  "影祓う",
+                       "shortName":  "戦技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  3.78,
+                                           "lv10_spec1":  4.15,
+                                           "lv11_spec2":  4.57,
+                                           "lv12_spec3":  5.04
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "combo_camille",
+                       "type":  "combo",
+                       "name":  "心抉る棘",
+                       "shortName":  "連携技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  2.94,
+                                           "lv10_spec1":  3.2,
+                                           "lv11_spec2":  3.52,
+                                           "lv12_spec3":  3.88
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_camille",
+                       "type":  "ult",
+                       "name":  "降り注ぐ深紅",
+                       "shortName":  "必殺技",
+                       "damageType":  "灼熱",
+                       "multipliers":  {
+                                           "lv9":  7.56,
+                                           "lv10_spec1":  8.24,
+                                           "lv11_spec2":  9.03,
+                                           "lv12_spec3":  9.98
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  80
+                   }
+               ],
+    "motifWeapon":  "カーマインヴェール",
+    "recommendedWeapons":  [
+                               "カーマインヴェール",
+                               "負山"
+                           ]
+}

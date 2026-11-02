@@ -79,7 +79,7 @@
           "id": { "type": "string" },
           "type": {
             "type": "string",
-            "enum": ["skill", "combo", "ult", "ult2", "ult_cancel", "other"]
+            "enum": ["skill", "skill2", "skill3", "combo", "ult", "ult2", "ult_cancel", "other"]
           },
           "name": { "type": "string" },
           "shortName": { "type": "string" },

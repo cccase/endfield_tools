@@ -1,0 +1,57 @@
+﻿{
+    "$schema":  "../../schemas/weapon.schema.json",
+    "id":  "オッペロ77",
+    "name":  "オッペロ77",
+    "rarity":  3,
+    "type":  "長柄武器",
+    "motif":  null,
+    "baseAtk":  240,
+    "skills":  [
+                   {
+                       "name":  "メイン能力UP・小",
+                       "ranks":  [
+                                     "10",
+                                     "18",
+                                     "26",
+                                     "34",
+                                     "42",
+                                     "51",
+                                     "59",
+                                     "67",
+                                     "79"
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "強攻・武装整備",
+                       "ranks":  [
+                                     "12",
+                                     "14",
+                                     "17",
+                                     "19",
+                                     "22",
+                                     "24",
+                                     "26",
+                                     "29",
+                                     "34"
+                                 ],
+                       "ultEfficiency":  null
+                   },
+                   {
+                       "name":  "",
+                       "ranks":  [
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     "",
+                                     ""
+                                 ],
+                       "ultEfficiency":  null
+                   }
+               ],
+    "ultEfficiency":  null
+}
