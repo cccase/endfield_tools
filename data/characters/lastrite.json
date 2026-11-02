@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_lastrite",
     "name":  "ラストライト",
@@ -48,7 +48,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "combo_lastrite",
@@ -65,7 +75,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "ult_lastrite",
@@ -83,7 +103,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  240
+                       "epCost":  240,
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  2,
+                                          "label":  "寒冷爆発(2段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    }
                ],
     "motifWeapon":  "クラヴェンガー",

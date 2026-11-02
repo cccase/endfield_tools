@@ -1,117 +1,154 @@
-﻿{
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "オクギ",
-    "name":  "オクギ",
-    "icon":  "image/okugi.png",
-    "rarity":  6,
-    "element":  "自然",
-    "weaponType":  "アーツユニット",
-    "class":  "術師",
-    "mainStat":  "知性",
-    "subStat":  "敏捷",
-    "baseStats":  {
-                      "hp":  6800,
-                      "atk":  920,
-                      "strength":  120,
-                      "agility":  185,
-                      "intellect":  285,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  146.4,
-    "defaultPotential":  1,
-    "baseRefundSP":  30,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  1,
-                           "type":  "refund_sp_boost",
-                           "value":  10
-                       },
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_okugi",
-                       "type":  "skill",
-                       "name":  "砕玉領域",
-                       "shortName":  "戦技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-
-                                 ],
-                       "spCost":  100
-                   },
-                   {
-                       "id":  "combo_okugi",
-                       "type":  "combo",
-                       "name":  "応龍四式",
-                       "shortName":  "連携技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-
-                                 ]
-                   },
-                   {
-                       "id":  "ult_okugi",
-                       "type":  "ult",
-                       "name":  "破晦",
-                       "shortName":  "必殺技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-
-                                 ],
-                       "epCost":  100
-                   },
-                   {
-                       "id":  "ult2_okugi",
-                       "type":  "ult2",
-                       "name":  "破晦訣明",
-                       "shortName":  "必殺技2",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-
-                                 ],
-                       "epCost":  0
-                   }
-               ],
-    "motifWeapon":  "四二式・粛陣",
-    "recommendedWeapons":  [
-                               "四二式・粛陣",
-                               "苦難の果"
-                           ]
+{
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_okugi",
+  "name": "オクギ",
+  "icon": "image/okugi.png",
+  "rarity": 6,
+  "element": "自然",
+  "weaponType": "アーツユニット",
+  "class": "術師",
+  "mainStat": "知性",
+  "subStat": "敏捷",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 920,
+    "strength": 120,
+    "agility": 185,
+    "intellect": 285,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 146.4,
+  "defaultPotential": 1,
+  "baseRefundSP": 30,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "refund_sp_boost",
+      "value": 10
+    },
+    {
+      "level": 4,
+      "type": "ult_cost_reduction_percent",
+      "value": 15
+    }
+  ],
+  "specialMechanic": {
+    "title": "知意双形態",
+    "type": "okugi_dual",
+    "description": "知性 > 意志なら「知形態」（自然付着・自然脆弱・高火力）、意志 >= 知性なら「意形態」（広範囲集敵・アーツ付着段数+2段サポート）。"
+  },
+  "skills": [
+    {
+      "id": "skill_okugi",
+      "type": "skill",
+      "name": "砕玉領域",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "infliction": {
+        "type": "okugi_dual",
+        "stacks": 1,
+        "label": "【特殊】双形態(知:自然付着/意:付着+2段)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし"
+      },
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [],
+      "spCost": 100
+    },
+    {
+      "id": "combo_okugi",
+      "type": "combo",
+      "name": "応龍四式",
+      "shortName": "連携技",
+      "damageType": "自然",
+      "infliction": {
+        "type": "okugi_dual",
+        "stacks": 1,
+        "label": "【特殊】双形態(知:自然脆弱/意:付着支援)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし"
+      },
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": []
+    },
+    {
+      "id": "ult_okugi",
+      "type": "ult",
+      "name": "破晦",
+      "shortName": "必殺技",
+      "damageType": "自然",
+      "infliction": {
+        "type": "nature",
+        "stacks": 2,
+        "label": "自然爆発(2段)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし"
+      },
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [],
+      "epCost": 100
+    },
+    {
+      "id": "ult2_okugi",
+      "type": "ult2",
+      "name": "破晦訣明",
+      "shortName": "必殺技2",
+      "damageType": "自然",
+      "infliction": {
+        "type": "nature",
+        "stacks": 2,
+        "label": "自然爆発(2段/反応)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし"
+      },
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [],
+      "epCost": 0
+    }
+  ],
+  "motifWeapon": "四二式・粛陣",
+  "recommendedWeapons": [
+    "四二式・粛陣",
+    "苦難の果"
+  ]
 }

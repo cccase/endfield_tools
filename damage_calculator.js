@@ -15,7 +15,13 @@
     natureRes: 0,
     vulnerability: 0,
     isBroken: false,
-    breakMultiplier: 1.5
+    breakMultiplier: 1.5,
+    artsAttachment: 'none',    // 'none' | 'heat' | 'cryo' | 'electric' | 'nature'
+    attachmentStacks: 0,       // 0 ~ 4
+    artsAnomaly: 'none',       // 'none' | 'combustion' (燃焼) | 'corrosion' (腐食) | 'freeze' (凍結) | 'shock' (感電)
+    crushStacks: 0,            // 0 ~ 4 (物理脆弱・クラッシュ段階)
+    consumeAttachment: false,  // アーツ反応による付着消費
+    consumeCrush: false        // 猛撃・破砕によるクラッシュ段階消費
   };
 
   /**
@@ -190,6 +196,7 @@
 
     return {
       charName: charData.name,
+      setId: armorConfig ? armorConfig.armorSet : null,
       baseAtk: Math.round(baseAtk),
       totalAtk: Math.round(totalAtk),
       atkPercent: Math.round(atkPercent * 1000) / 10,
@@ -258,7 +265,47 @@
       bonusSum += (bonuses.ult || 0.0);
     }
 
-    // 状況依存バフ（火山セットの燃焼時/腐食時ボーナス等）
+    // === アーツ付着・状態異常・クラッシュ消費によるボーナス ===
+    // (A) 火山セット: 敵が燃焼時に灼熱ダメージ+50%、腐食時に自然ダメージ+50%
+    if (stats.setId === 'set_volcano') {
+      if ((enemy.artsAnomaly === 'combustion' || enemy.artsAttachment === 'heat') && dmgType === '灼熱') {
+        bonusSum += 0.50;
+      }
+      if ((enemy.artsAnomaly === 'corrosion' || enemy.artsAttachment === 'nature') && dmgType === '自然') {
+        bonusSum += 0.50;
+      }
+    }
+
+    // (B) 旧鋒セット: 猛撃・破砕時のクラッシュ段階消費（1〜4段で6%×段数、脆弱/ブレイク時は1.5倍で最大+36%）
+    if (stats.setId === 'set_kyuho' && dmgType === '物理') {
+      const consumedCrush = Math.min(4, Math.max(0, enemy.crushStacks || 0));
+      if (consumedCrush > 0) {
+        let crushBonus = consumedCrush * 0.06;
+        if (enemy.vulnerability > 0 || enemy.isBroken) {
+          crushBonus *= 1.5;
+        }
+        bonusSum += crushBonus;
+      }
+    }
+
+    // (C) アーツ反応ボーナス（付着消費時）: 異なる属性のアーツ攻撃による反応追加ダメージ
+    let reactionName = 'なし';
+    if (enemy.consumeAttachment && enemy.artsAttachment && enemy.artsAttachment !== 'none') {
+      const targetElem = elemKeyMap[dmgType];
+      if (targetElem && targetElem !== 'physical' && targetElem !== enemy.artsAttachment) {
+        const stacks = Math.max(1, enemy.attachmentStacks || 1);
+        const intensityBonus = (stats.artsIntensity || 0) * 0.002;
+        bonusSum += (0.15 * stacks) + intensityBonus;
+        reactionName = `${enemy.artsAttachment} ＋ ${targetElem}`;
+      }
+    }
+
+    // (D) 砕氷 (Shatter): 凍結中の敵に物理スキル攻撃 (+40%ダメージ)
+    if (enemy.artsAnomaly === 'freeze' && dmgType === '物理') {
+      bonusSum += 0.40;
+    }
+
+    // 状況依存バフ
     if (context && context.extraDamageUp) {
       bonusSum += context.extraDamageUp;
     }
@@ -269,6 +316,8 @@
     const defMult = 100.0 / (100.0 + enemyDef);
 
     // 3. 耐性補正: 1 - (耐性% / 100)
+    // 腐食 (Corrosion) 状態なら敵の全属性耐性 -20%
+    let extraResShred = (enemy.artsAnomaly === 'corrosion') ? 20 : 0;
     const resKeyMap = {
       '物理': 'physicalRes',
       '灼熱': 'heatRes',
@@ -277,11 +326,13 @@
       '自然': 'natureRes'
     };
     const resKey = resKeyMap[dmgType] || 'physicalRes';
-    const resVal = enemy[resKey] || 0.0;
+    const resVal = (enemy[resKey] || 0.0) - extraResShred;
     const resMult = 1.0 - (resVal / 100.0);
 
     // 4. 脆弱 / 被ダメージUP
-    const vulnVal = enemy.vulnerability || 0.0;
+    // 感電 (Shock) 状態ならアーツ被ダメージ増加（アーツ脆弱 +20%）
+    let extraVuln = (enemy.artsAnomaly === 'shock' && dmgType !== '物理') ? 20 : 0;
+    const vulnVal = (enemy.vulnerability || 0.0) + extraVuln;
     const vulnMult = 1.0 + (vulnVal / 100.0);
 
     // 5. ブレイク補正
@@ -304,6 +355,7 @@
       skillName: skill.name || skill.shortName || 'スキル',
       damageType: dmgType,
       mult: mult,
+      reactionName: reactionName,
       details: {
         totalAtk: stats.totalAtk,
         mult: mult,
@@ -320,6 +372,285 @@
     };
   }
 
+  /**
+   * タイムラインのスキル回し順序（ローテーション）に沿って
+   * アーツ付着・消費・爆発・クラッシュ蓄積/消費を時系列シミュレーション
+   */
+  function simulateTimelineRotation(timelineCycles, party, enemyConfig, masterData, cycleNames) {
+    if (!party || party.length === 0) {
+      return {
+        totalExpected: 0,
+        totalCrit: 0,
+        totalNonCrit: 0,
+        charTotals: {},
+        stepResults: [],
+        finalEnemyState: { ...DEFAULT_TARGET_ENEMY }
+      };
+    }
+
+    const baseEnemy = Object.assign({}, DEFAULT_TARGET_ENEMY, enemyConfig || {});
+    const currentEnemy = {
+      level: baseEnemy.level || 90,
+      defense: baseEnemy.defense !== undefined ? baseEnemy.defense : 100,
+      physicalRes: baseEnemy.physicalRes || 0,
+      heatRes: baseEnemy.heatRes || 0,
+      electricRes: baseEnemy.electricRes || 0,
+      cryoRes: baseEnemy.cryoRes || 0,
+      natureRes: baseEnemy.natureRes || 0,
+      vulnerability: baseEnemy.vulnerability || 0,
+      isBroken: !!baseEnemy.isBroken,
+      breakMultiplier: baseEnemy.breakMultiplier || 1.5,
+      artsAttachment: 'none',
+      attachmentStacks: 0,
+      crushStacks: 0,
+      artsAnomaly: 'none'
+    };
+
+    // パーティ1枠目のキャラと属性（スーの特殊仕様）
+    const slot1Member = party[0];
+    const slot1Element = (slot1Member && slot1Member.element && slot1Member.element !== '物理')
+      ? slot1Member.element
+      : '寒冷';
+
+    // 各メンバーのステータス計算キャッシュ
+    const charStatsMap = {};
+    const charTotals = {};
+
+    party.forEach(member => {
+      const stats = calculateCharacterStats(member, member.weapon, member.equipment, masterData);
+      charStatsMap[member.id] = stats;
+      charTotals[member.id] = {
+        id: member.id,
+        name: member.name,
+        icon: member.icon,
+        element: member.element,
+        totalExpected: 0,
+        totalCrit: 0,
+        totalNonCrit: 0,
+        skillCount: 0,
+        percentage: 0
+      };
+    });
+
+    const stepResults = [];
+    let grandExpected = 0;
+    let grandCrit = 0;
+    let grandNonCrit = 0;
+
+    const elemToKey = {
+      '灼熱': 'heat',
+      '寒冷': 'cryo',
+      '電磁': 'electric',
+      '自然': 'nature'
+    };
+    const keyToElem = {
+      'heat': '灼熱',
+      'cryo': '寒冷',
+      'electric': '電磁',
+      'nature': '自然'
+    };
+
+    (timelineCycles || []).forEach((cycle, cIdx) => {
+      const cName = (cycleNames && cycleNames[cIdx]) ? cycleNames[cIdx] : `サイクル ${cIdx + 1}`;
+
+      cycle.forEach((item, sIdx) => {
+        // セパレーター、SP返還・回復ブロックはスキップ
+        if (item.type === 'separator' || item.type === 'refund' || item.type === 'recover') {
+          return;
+        }
+
+        const member = party.find(p => p.id === item.charId || p.name === item.charName);
+        if (!member) return;
+
+        const stats = charStatsMap[member.id];
+        if (!stats) return;
+
+        // スキルオブジェクト特定
+        const skill = (member.skills || []).find(sk => sk.id === item.skillId || sk.type === item.type);
+        if (!skill) return;
+
+        // スキルの実効属性と付着判定（スーとオクギの特殊仕様を判定）
+        let effectiveDamageType = skill.damageType || member.element || '物理';
+        let skillInflictionType = skill.infliction ? skill.infliction.type : 'none';
+        let skillInflictionStacks = skill.infliction ? (skill.infliction.stacks || 1) : 1;
+        let skillCrushType = skill.crush ? skill.crush.type : 'none';
+
+        // スーの特殊ギミック: パーティ1枠目の属性を模倣
+        if (skillInflictionType === 'copy_slot1' || (member.specialMechanic && member.specialMechanic.type === 'copy_slot1' && skill.type !== 'ult')) {
+          effectiveDamageType = slot1Element;
+          skillInflictionType = elemToKey[slot1Element] || 'cryo';
+        }
+
+        // オクギの特殊ギミック: 知意双形態
+        let isOkugiIntellectMode = false;
+        if (skillInflictionType === 'okugi_dual' || (member.specialMechanic && member.specialMechanic.type === 'okugi_dual')) {
+          isOkugiIntellectMode = (stats.intellect > stats.willpower);
+          if (isOkugiIntellectMode) {
+            skillInflictionType = 'nature';
+            skillInflictionStacks = 1;
+          } else {
+            // 意形態: アーツ付着+2段サポート
+            skillInflictionType = currentEnemy.artsAttachment !== 'none' ? currentEnemy.artsAttachment : 'nature';
+            skillInflictionStacks = 2;
+          }
+        }
+
+        // 敵の実行前状態を記録
+        const beforeEnemyState = {
+          artsAttachment: currentEnemy.artsAttachment,
+          attachmentStacks: currentEnemy.attachmentStacks,
+          crushStacks: currentEnemy.crushStacks,
+          artsAnomaly: currentEnemy.artsAnomaly
+        };
+
+        // シミュレーション文脈
+        const context = {
+          consumeAttachment: false,
+          consumeCrush: false,
+          reactionType: null,
+          actionNote: ''
+        };
+
+        // (1) 物理クラッシュ消費判定（猛撃・破砕）
+        if (skillCrushType === 'consume_shatter' || skillCrushType === 'consume_smash') {
+          if (currentEnemy.crushStacks > 0) {
+            context.consumeCrush = true;
+          }
+        }
+
+        // (2) アーツ反応 / 付着 / 爆発 判定
+        if (skillInflictionType && skillInflictionType !== 'none') {
+          if (currentEnemy.artsAttachment === 'none') {
+            // 新規付着
+            context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}付着(+${skillInflictionStacks})`;
+          } else if (currentEnemy.artsAttachment === skillInflictionType) {
+            // 同属性 -> アーツ爆発！
+            context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}爆発！`;
+          } else {
+            // 異属性 -> アーツ反応（消費）！
+            context.consumeAttachment = true;
+            if (currentEnemy.artsAttachment === 'heat' || skillInflictionType === 'heat') {
+              context.reactionType = 'combustion';
+              context.actionNote = '【燃焼反応】発動！';
+            } else if (currentEnemy.artsAttachment === 'nature' || skillInflictionType === 'nature') {
+              context.reactionType = 'corrosion';
+              context.actionNote = '【腐食反応】発動！(耐性-20%)';
+            } else if (currentEnemy.artsAttachment === 'cryo' || skillInflictionType === 'cryo') {
+              context.reactionType = 'freeze';
+              context.actionNote = '【凍結反応】発動！(行動停止)';
+            } else if (currentEnemy.artsAttachment === 'electric' || skillInflictionType === 'electric') {
+              context.reactionType = 'shock';
+              context.actionNote = '【感電反応】発動！(被アーツ+20%)';
+            }
+          }
+        }
+
+        // オクギ知形態の脆弱ボーナス
+        if (isOkugiIntellectMode) {
+          context.extraDamageUp = (context.extraDamageUp || 0) + 0.15;
+          context.actionNote = (context.actionNote ? context.actionNote + ' ' : '') + '知形態(自然脆弱)';
+        }
+
+        // スキルレベル
+        const skillLevel = 'lv9';
+        const memberLevel = 90;
+
+        // 一時的に enemy 設定を currentEnemy に合わせて計算
+        const calcEnemy = Object.assign({}, currentEnemy, {
+          consumeAttachment: context.consumeAttachment,
+          consumeCrush: context.consumeCrush
+        });
+
+        const dmgResult = calculateSkillDamage(
+          member,
+          Object.assign({}, skill, { damageType: effectiveDamageType }),
+          memberLevel,
+          skillLevel,
+          calcEnemy,
+          stats,
+          context
+        );
+
+        // スキル発動後の敵状態遷移を適用
+        // (A) クラッシュの遷移
+        if (context.consumeCrush) {
+          currentEnemy.crushStacks = 0;
+        } else if (skillCrushType === 'inflict') {
+          currentEnemy.crushStacks = Math.min(4, currentEnemy.crushStacks + (skill.crush?.stacks || 1));
+          context.actionNote = `クラッシュ付与(${currentEnemy.crushStacks}段)`;
+        }
+
+        // (B) アーツ付着の遷移
+        if (skillInflictionType && skillInflictionType !== 'none') {
+          if (context.consumeAttachment) {
+            // 反応により付着全消費、異常状態へ移行
+            currentEnemy.artsAttachment = 'none';
+            currentEnemy.attachmentStacks = 0;
+            currentEnemy.artsAnomaly = context.reactionType || 'none';
+          } else if (currentEnemy.artsAttachment === skillInflictionType) {
+            // 爆発：スタック増加
+            currentEnemy.attachmentStacks = Math.min(4, currentEnemy.attachmentStacks + skillInflictionStacks);
+          } else {
+            // 新規付着
+            currentEnemy.artsAttachment = skillInflictionType;
+            currentEnemy.attachmentStacks = Math.min(4, skillInflictionStacks);
+          }
+        }
+
+        // ダメージ加算
+        grandExpected += dmgResult.expected;
+        grandCrit += dmgResult.crit;
+        grandNonCrit += dmgResult.nonCrit;
+
+        const charTotal = charTotals[member.id];
+        charTotal.totalExpected += dmgResult.expected;
+        charTotal.totalCrit += dmgResult.crit;
+        charTotal.totalNonCrit += dmgResult.nonCrit;
+        charTotal.skillCount += 1;
+
+        stepResults.push({
+          cycleIndex: cIdx + 1,
+          cycleName: cName,
+          stepIndex: stepResults.length + 1,
+          charId: member.id,
+          charName: member.name,
+          charIcon: member.icon,
+          skillName: skill.name || skill.shortName,
+          skillShortName: skill.shortName || skill.name,
+          skillType: skill.type,
+          damageType: effectiveDamageType,
+          damage: dmgResult.expected,
+          critDamage: dmgResult.crit,
+          nonCritDamage: dmgResult.nonCrit,
+          reactionName: dmgResult.reactionName || '',
+          actionNote: context.actionNote,
+          enemyBefore: beforeEnemyState,
+          enemyAfter: {
+            artsAttachment: currentEnemy.artsAttachment,
+            attachmentStacks: currentEnemy.attachmentStacks,
+            crushStacks: currentEnemy.crushStacks,
+            artsAnomaly: currentEnemy.artsAnomaly
+          }
+        });
+      });
+    });
+
+    // 各キャラのダメージシェア（パーセンテージ）を計算
+    Object.keys(charTotals).forEach(cId => {
+      const c = charTotals[cId];
+      c.percentage = grandExpected > 0 ? Math.round((c.totalExpected / grandExpected) * 1000) / 10 : 0;
+    });
+
+    return {
+      totalExpected: grandExpected,
+      totalCrit: grandCrit,
+      totalNonCrit: grandNonCrit,
+      charTotals: charTotals,
+      stepResults: stepResults,
+      finalEnemyState: currentEnemy
+    };
+  }
+
   function formatDamage(val) {
     if (val === undefined || val === null || isNaN(val)) return '0';
     return Number(val).toLocaleString();
@@ -330,6 +661,7 @@
     calculateCharacterStats,
     getSkillMultiplier,
     calculateSkillDamage,
+    simulateTimelineRotation,
     formatDamage
   };
 

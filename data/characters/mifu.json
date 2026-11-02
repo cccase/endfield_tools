@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_mifu",
     "name":  "ミ・フ",
@@ -48,7 +48,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "inflict",
+                                     "stacks":  1,
+                                     "label":  "クラッシュ付与(1段)"
+                                 }
                    },
                    {
                        "id":  "skill2_mifu",
@@ -66,7 +76,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  50
+                       "spCost":  50,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "inflict",
+                                     "stacks":  1,
+                                     "label":  "クラッシュ付与(1段)"
+                                 }
                    },
                    {
                        "id":  "skill3_mifu",
@@ -84,7 +104,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  50
+                       "spCost":  50,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "inflict",
+                                     "stacks":  1,
+                                     "label":  "クラッシュ付与(1段)"
+                                 }
                    },
                    {
                        "id":  "combo_mifu",
@@ -101,7 +131,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "consume_smash",
+                                     "stacks":  2,
+                                     "label":  "猛撃(クラッシュ消費)"
+                                 }
                    },
                    {
                        "id":  "ult_mifu",
@@ -119,7 +159,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  80
+                       "epCost":  80,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "consume_shatter",
+                                     "stacks":  4,
+                                     "label":  "破砕(クラッシュ全消費)"
+                                 }
                    }
                ],
     "motifWeapon":  "赤纓",

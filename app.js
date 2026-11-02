@@ -1848,6 +1848,22 @@ let timelineCycles = [
 ]; // タイムライン上に配置されたスキルオブジェクトの配列（サイクルごと）
 let cycleNames = ['サイクル 1'];
 
+// ===== ページ切り替え（ローテーション / ダメージ計算） =====
+window.switchPage = function(page) {
+  const isRotation = (page === 'rotation');
+  const rotPage = document.getElementById('page-rotation');
+  const dmgPage = document.getElementById('page-damage');
+  if (rotPage) rotPage.classList.toggle('active', isRotation);
+  if (dmgPage) dmgPage.classList.toggle('active', !isRotation);
+
+  const rotBtn = document.getElementById('tab-btn-rotation');
+  const dmgBtn = document.getElementById('tab-btn-damage');
+  if (rotBtn) rotBtn.classList.toggle('active', isRotation);
+  if (dmgBtn) dmgBtn.classList.toggle('active', !isRotation);
+
+  updateSimulation();
+};
+
 // ===== 案山子（ターゲット敵）ステータス & ダメージ計算設定 =====
 let targetEnemy = Object.assign({}, (typeof DamageCalculator !== 'undefined' ? DamageCalculator.DEFAULT_TARGET_ENEMY : {
   level: 90,
@@ -1859,19 +1875,25 @@ let targetEnemy = Object.assign({}, (typeof DamageCalculator !== 'undefined' ? D
   natureRes: 0,
   vulnerability: 0,
   isBroken: false,
-  breakMultiplier: 1.5
+  breakMultiplier: 1.5,
+  artsAttachment: 'none',
+  attachmentStacks: 0,
+  artsAnomaly: 'none',
+  crushStacks: 0,
+  consumeAttachment: false,
+  consumeCrush: false
 }));
 let damageDisplayMode = 'expected'; // 'expected' | 'crit' | 'nonCrit'
 
 window.updateEnemySetting = function(key, value) {
-  if (key === 'isBroken') {
-    targetEnemy.isBroken = !!value;
+  if (key === 'isBroken' || key === 'consumeAttachment') {
+    targetEnemy[key] = !!value;
+  } else if (key === 'artsAttachment' || key === 'artsAnomaly') {
+    targetEnemy[key] = String(value);
   } else {
     targetEnemy[key] = parseFloat(value) || 0;
   }
   updateSimulation();
-  renderPalette();
-  renderTimeline();
 };
 
 window.resetEnemySettings = function() {
@@ -1889,9 +1911,14 @@ window.resetEnemySettings = function() {
   setVal('enemy-res-elec', targetEnemy.electricRes);
   setVal('enemy-res-cryo', targetEnemy.cryoRes);
   setVal('enemy-res-nature', targetEnemy.natureRes);
+  setVal('enemy-arts-attachment', targetEnemy.artsAttachment);
+  setVal('enemy-attachment-stacks', targetEnemy.attachmentStacks);
+  setVal('enemy-arts-anomaly', targetEnemy.artsAnomaly);
+  setVal('enemy-crush-stacks', targetEnemy.crushStacks);
+  const ca = document.getElementById('enemy-consume-attachment');
+  if (ca) ca.checked = targetEnemy.consumeAttachment;
+
   updateSimulation();
-  renderPalette();
-  renderTimeline();
 };
 
 window.setDamageMode = function(mode) {
@@ -1901,8 +1928,6 @@ window.setDamageMode = function(mode) {
     if (btn) btn.classList.toggle('active', m.toLowerCase() === mode.toLowerCase());
   });
   updateSimulation();
-  renderPalette();
-  renderTimeline();
 };
 
 function getMemberComputedStats(member) {
@@ -1916,6 +1941,163 @@ function getMemberSkillDamage(member, skill, skillLevelKey) {
   const stats = getMemberComputedStats(member);
   if (!stats || !skill || typeof DamageCalculator === 'undefined') return null;
   return DamageCalculator.calculateSkillDamage(stats, skill, skillLevelKey, targetEnemy, null);
+}
+
+// ===== キャラ別ダメージ円グラフ & 詳細内訳テーブル描画 =====
+const CHAR_PALETTE_COLORS = [
+  '#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#34495e'
+];
+
+function renderDamageDonutChart(charSummaryList, totalTimelineDamage) {
+  const svg = document.getElementById('damage-donut-chart');
+  const legend = document.getElementById('char-damage-legend');
+  const totalValEl = document.getElementById('donut-center-total');
+  if (!svg || !legend) return;
+
+  if (totalValEl && typeof DamageCalculator !== 'undefined') {
+    totalValEl.textContent = DamageCalculator.formatDamage(totalTimelineDamage);
+  }
+
+  svg.innerHTML = '';
+  legend.innerHTML = '';
+
+  if (!charSummaryList || charSummaryList.length === 0 || totalTimelineDamage <= 0) {
+    svg.innerHTML = `<circle cx="100" cy="100" r="70" fill="none" stroke="#2a2a2a" stroke-width="24" />`;
+    legend.innerHTML = `<div style="color:#777; font-size:12px; padding:10px;">タイムラインにスキルを配置すると、キャラクター別のダメージ割合が集計されます。</div>`;
+    return;
+  }
+
+  const cx = 100, cy = 100, r = 70;
+  const circumference = 2 * Math.PI * r;
+  let currentOffset = 0;
+
+  charSummaryList.forEach((c, idx) => {
+    const color = CHAR_PALETTE_COLORS[idx % CHAR_PALETTE_COLORS.length];
+    const pct = c.totalDamage / totalTimelineDamage;
+    const strokeDash = pct * circumference;
+    const strokeGap = circumference - strokeDash;
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', cx);
+    circle.setAttribute('cy', cy);
+    circle.setAttribute('r', r);
+    circle.setAttribute('fill', 'none');
+    circle.setAttribute('stroke', color);
+    circle.setAttribute('stroke-width', '24');
+    circle.setAttribute('stroke-dasharray', `${strokeDash} ${strokeGap}`);
+    circle.setAttribute('stroke-dashoffset', -currentOffset);
+    circle.innerHTML = `<title>${c.charName}: ${DamageCalculator.formatDamage(c.totalDamage)} (${(pct * 100).toFixed(1)}%)</title>`;
+    svg.appendChild(circle);
+
+    currentOffset += strokeDash;
+
+    const item = document.createElement('div');
+    item.className = 'char-legend-item';
+    const pctStr = (pct * 100).toFixed(1) + '%';
+    item.innerHTML = `
+      <div class="char-legend-header">
+        <div class="char-legend-left">
+          <div class="char-legend-color" style="background-color: ${color};"></div>
+          ${c.icon ? `<img src="${c.icon}" style="width:22px; height:22px; border-radius:50%; object-fit:cover;">` : ''}
+          <span class="char-legend-name">${c.charName}</span>
+        </div>
+        <div class="char-legend-val">${DamageCalculator.formatDamage(c.totalDamage)} <span style="font-size:11px; color:#85a990;">(${pctStr})</span></div>
+      </div>
+      <div class="char-legend-bar-wrap">
+        <div class="char-legend-bar" style="width: ${pctStr}; background-color: ${color};"></div>
+      </div>
+    `;
+    legend.appendChild(item);
+  });
+}
+
+function renderDamageDetailsTable(stepList) {
+  const tbody = document.getElementById('damage-details-tbody');
+  const modeLabel = document.getElementById('table-mode-label');
+  if (!tbody) return;
+
+  if (modeLabel) {
+    modeLabel.textContent = damageDisplayMode === 'crit' ? '会心時' : (damageDisplayMode === 'nonCrit' ? '非会心' : '期待値');
+  }
+
+  tbody.innerHTML = '';
+  if (!stepList || stepList.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="12" style="text-align:center; color:#777; padding:16px;">タイムラインに攻撃スキルが配置されていません</td></tr>`;
+    return;
+  }
+
+  const elemIcons = {
+    'heat': '🔥',
+    'cryo': '❄️',
+    'electric': '⚡',
+    'nature': '🌿',
+    'none': '-'
+  };
+  const elemNames = {
+    'heat': '灼熱',
+    'cryo': '寒冷',
+    'electric': '電磁',
+    'nature': '自然',
+    'none': 'なし'
+  };
+
+  stepList.forEach((item, idx) => {
+    const tr = document.createElement('tr');
+    const val = damageDisplayMode === 'crit' ? item.critDamage : (damageDisplayMode === 'nonCrit' ? item.nonCritDamage : item.damage);
+    const critVal = DamageCalculator.formatDamage(item.critDamage);
+    const nonCritVal = DamageCalculator.formatDamage(item.nonCritDamage);
+    const curVal = DamageCalculator.formatDamage(val);
+
+    // 敵の状態の可視化
+    const eb = item.enemyBefore || {};
+    const ea = item.enemyAfter || {};
+
+    let beforeArtsText = eb.artsAttachment && eb.artsAttachment !== 'none'
+      ? `${elemIcons[eb.artsAttachment] || ''}${elemNames[eb.artsAttachment]}(${eb.attachmentStacks}段)`
+      : '付着なし';
+    let beforeCrushText = eb.crushStacks > 0 ? `💥クラッシュ(${eb.crushStacks}段)` : '';
+
+    let afterArtsText = ea.artsAttachment && ea.artsAttachment !== 'none'
+      ? `${elemIcons[ea.artsAttachment] || ''}${elemNames[ea.artsAttachment]}(${ea.attachmentStacks}段)`
+      : (ea.artsAnomaly && ea.artsAnomaly !== 'none' ? `⚠️異常:${ea.artsAnomaly}` : '付着なし');
+    let afterCrushText = ea.crushStacks > 0 ? `💥クラッシュ(${ea.crushStacks}段)` : '';
+
+    let transitionHtml = `
+      <div style="font-size:11px; line-height:1.4;">
+        <span style="color:#aaa;">前:</span> ${beforeArtsText} ${beforeCrushText}
+        <br>
+        <span style="color:#2ecc71;">後:</span> ${afterArtsText} ${afterCrushText}
+      </div>
+    `;
+
+    let actionBadgeHtml = '-';
+    if (item.actionNote) {
+      const isReaction = item.actionNote.includes('反応');
+      const isBurst = item.actionNote.includes('爆発');
+      const isShatter = item.actionNote.includes('破砕') || item.actionNote.includes('猛撃');
+      const badgeClass = isReaction ? 'badge-reaction' : (isBurst ? 'badge-burst' : (isShatter ? 'badge-crush' : 'badge-inflict'));
+      actionBadgeHtml = `<span class="action-tag ${badgeClass}">${item.actionNote}</span>`;
+    }
+
+    tr.innerHTML = `
+      <td>${idx + 1}</td>
+      <td style="font-size:11px; color:#85a990;">${item.cycleName}</td>
+      <td>
+        <span style="display:inline-flex; align-items:center; gap:5px;">
+          ${item.charIcon ? `<img src="${item.charIcon}" style="width:18px; height:18px; border-radius:50%;">` : ''}
+          ${item.charName}
+        </span>
+      </td>
+      <td><strong>${item.skillName}</strong></td>
+      <td><span class="tag-elem-${item.damageType}">${item.damageType}</span></td>
+      <td class="td-dmg-val">💥 ${curVal}</td>
+      <td class="td-dmg-sub">${critVal}</td>
+      <td class="td-dmg-sub">${nonCritVal}</td>
+      <td>${actionBadgeHtml}</td>
+      <td>${transitionHtml}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
 // ===== スキル名表示モード（正式名称 / 略称） =====
@@ -1997,6 +2179,9 @@ async function initApp() {
   loadFromUrl();
   initPartyAndRoster();
   updateSkillNameToggleButtons();
+  if (typeof resetEnemySettings === 'function') {
+    resetEnemySettings();
+  }
 
   // ソートボタンのイベントリスナー
   document.querySelectorAll('.roster-sort-controls .sort-btn').forEach(btn => {
@@ -2412,7 +2597,75 @@ function renderRoster() {
       const element = char.element || '物理';
       const charClass = char.class || '前衛';
       el.className = `roster-char rarity-${rarity}`;
-      el.innerHTML = `
+      // スキル設定（付着・クラッシュ欄）の生成
+    let specialBannerHtml = '';
+    if (p.name === 'スー' || p.id === 'char_su') {
+      const slot1 = party[0];
+      const slot1Name = slot1 ? slot1.name : '（未編成）';
+      const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
+      specialBannerHtml = `
+        <div class="special-mechanic-banner">
+          <span class="special-badge">✨【特殊仕様】墨筆の彩り（1枠目属性模倣）</span>
+          <span class="special-text">パーティ1枠目 <strong>${slot1Name}</strong> の属性を参照し、戦技の付着属性が <strong>${slot1El}</strong> に変化中。</span>
+        </div>
+      `;
+    } else if (p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') {
+      let okugiModeDesc = '知形態（自然付着・自然脆弱・高火力アタッカー）';
+      if (typeof DamageCalculator !== 'undefined') {
+        const stats = DamageCalculator.calculateCharacterStats(p, p.weapon, p.equipment, { weapons: allWeapons, equipment: equipmentMaster });
+        if (stats) {
+          if (stats.intellect > stats.willpower) {
+            okugiModeDesc = `知形態 (知性 ${Math.round(stats.intellect)} > 意志 ${Math.round(stats.willpower)}) : 自然付着・自然脆弱・高火力アタッカー`;
+          } else {
+            okugiModeDesc = `意形態 (意志 ${Math.round(stats.willpower)} ≧ 知性 ${Math.round(stats.intellect)}) : 広範囲集敵・アーツ付着+2段サポート`;
+          }
+        }
+      }
+      specialBannerHtml = `
+        <div class="special-mechanic-banner">
+          <span class="special-badge">✨【特殊仕様】知意双形態</span>
+          <span class="special-text">現在: <strong>${okugiModeDesc}</strong></span>
+        </div>
+      `;
+    }
+
+    const skillsHtml = (p.skills || []).map(sk => {
+      let infLabel = sk.infliction ? sk.infliction.label : 'なし';
+      let crushLabel = sk.crush ? sk.crush.label : 'なし';
+
+      // スーの戦技表示の動的書き換え
+      if ((p.name === 'スー' || p.id === 'char_su') && (sk.type === 'skill' || sk.type === 'skill2' || sk.type === 'skill3')) {
+        const slot1 = party[0];
+        const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
+        infLabel = `【特殊模倣】${slot1El}付着(1段)`;
+      }
+
+      // オクギの戦技表示の動的書き換え
+      if ((p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') && (sk.type === 'skill' || sk.type === 'combo')) {
+        infLabel = `【特殊双形態】知:自然付着 / 意:付着+2段`;
+      }
+
+      return `
+        <div class="party-skill-card">
+          <div class="party-skill-top">
+            <span class="party-skill-name">${sk.shortName || sk.name}: ${sk.name}</span>
+            <span class="tag-elem-${sk.damageType || p.element}">${sk.damageType || p.element}</span>
+          </div>
+          <div class="party-skill-meta">
+            <div class="skill-meta-item">
+              <span class="meta-label">付着:</span>
+              <span class="meta-val meta-infliction">${infLabel}</span>
+            </div>
+            <div class="skill-meta-item">
+              <span class="meta-label">クラッシュ:</span>
+              <span class="meta-val meta-crush">${crushLabel}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    el.innerHTML = `
         <div class="char-icon-wrap">
           <img src="${char.icon}" class="char-icon" alt="${char.name}">
           <span class="char-rarity-badge">★${rarity}</span>
@@ -2508,6 +2761,11 @@ window.handleEquipToggle = function(index, isOpen) {
       d.open = isOpen;
     }
   });
+};
+
+window.handlePartySkillToggle = function(index, isOpen) {
+  if (!party[index]) return;
+  party[index].isSkillsOpen = isOpen;
 };
 
 function renderParty() {
@@ -2651,6 +2909,74 @@ function renderParty() {
       `;
     }
 
+    // スキル設定（付着・クラッシュ欄）の生成
+    let specialBannerHtml = '';
+    if (p.name === 'スー' || p.id === 'char_su') {
+      const slot1 = party[0];
+      const slot1Name = slot1 ? slot1.name : '（未編成）';
+      const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
+      specialBannerHtml = `
+        <div class="special-mechanic-banner">
+          <span class="special-badge">✨【特殊仕様】墨筆の彩り（1枠目属性模倣）</span>
+          <span class="special-text">パーティ1枠目 <strong>${slot1Name}</strong> の属性を参照し、戦技の付着属性が <strong>${slot1El}</strong> に変化中。</span>
+        </div>
+      `;
+    } else if (p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') {
+      let okugiModeDesc = '知形態（自然付着・自然脆弱・高火力アタッカー）';
+      if (typeof DamageCalculator !== 'undefined') {
+        const stats = DamageCalculator.calculateCharacterStats(p, p.weapon, p.equipment, { weapons: allWeapons, equipment: equipmentMaster });
+        if (stats) {
+          if (stats.intellect > stats.willpower) {
+            okugiModeDesc = `知形態 (知性 ${Math.round(stats.intellect)} > 意志 ${Math.round(stats.willpower)}) : 自然付着・自然脆弱・高火力アタッカー`;
+          } else {
+            okugiModeDesc = `意形態 (意志 ${Math.round(stats.willpower)} ≧ 知性 ${Math.round(stats.intellect)}) : 広範囲集敵・アーツ付着+2段サポート`;
+          }
+        }
+      }
+      specialBannerHtml = `
+        <div class="special-mechanic-banner">
+          <span class="special-badge">✨【特殊仕様】知意双形態</span>
+          <span class="special-text">現在: <strong>${okugiModeDesc}</strong></span>
+        </div>
+      `;
+    }
+
+    const skillsHtml = (p.skills || []).map(sk => {
+      let infLabel = sk.infliction ? sk.infliction.label : 'なし';
+      let crushLabel = sk.crush ? sk.crush.label : 'なし';
+
+      // スーの戦技表示の動的書き換え
+      if ((p.name === 'スー' || p.id === 'char_su') && (sk.type === 'skill' || sk.type === 'skill2' || sk.type === 'skill3')) {
+        const slot1 = party[0];
+        const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
+        infLabel = `【特殊模倣】${slot1El}付着(1段)`;
+      }
+
+      // オクギの戦技表示の動的書き換え
+      if ((p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') && (sk.type === 'skill' || sk.type === 'combo')) {
+        infLabel = `【特殊双形態】知:自然付着 / 意:付着+2段`;
+      }
+
+      return `
+        <div class="party-skill-card">
+          <div class="party-skill-top">
+            <span class="party-skill-name">${sk.shortName || sk.name}: ${sk.name}</span>
+            <span class="tag-elem-${sk.damageType || p.element}">${sk.damageType || p.element}</span>
+          </div>
+          <div class="party-skill-meta">
+            <div class="skill-meta-item">
+              <span class="meta-label">付着:</span>
+              <span class="meta-val meta-infliction">${infLabel}</span>
+            </div>
+            <div class="skill-meta-item">
+              <span class="meta-label">クラッシュ:</span>
+              <span class="meta-val meta-crush">${crushLabel}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
     el.innerHTML = `
       <div class="party-member-header">
         <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
@@ -2744,6 +3070,22 @@ function renderParty() {
                   ${acc2Options}
                 </select>
               </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- スキル設定（アーツ付着・クラッシュ欄） -->
+        <details class="equip-details" ${(p.isSkillsOpen !== undefined ? p.isSkillsOpen : true) ? 'open' : ''} ontoggle="handlePartySkillToggle(${index}, this.open)">
+          <summary class="equip-summary">
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              ⚡ スキル仕様（アーツ付着・クラッシュ）
+              ${(p.name === 'スー' || p.name === 'オクギ' || p.id === 'char_su' || p.id === 'char_okugi') ? '<span class="special-tag-pill">特殊ギミック</span>' : ''}
+            </span>
+          </summary>
+          <div class="skills-body">
+            ${specialBannerHtml}
+            <div class="party-skills-grid">
+              ${skillsHtml}
             </div>
           </div>
         </details>
@@ -3056,24 +3398,7 @@ function createDraggableBlock(data, text) {
   const el = document.createElement('div');
   el.className = 'skill-block';
   el.draggable = true;
-
-  let dmgBadgeHtml = '';
-  let dmgTitle = '';
-  if (data.type === 'skill' && data.skillData) {
-    const p = party.find(x => x.id === data.charId || x.name === data.charName);
-    if (p) {
-      const dmgRes = getMemberSkillDamage(p, data.skillData, 'lv9');
-      if (dmgRes && dmgRes[damageDisplayMode] !== undefined) {
-        const val = dmgRes[damageDisplayMode];
-        const modeLabel = damageDisplayMode === 'crit' ? '会心' : (damageDisplayMode === 'nonCrit' ? '非会心' : '期待値');
-        dmgBadgeHtml = `<div class="skill-damage-badge">💥 ${DamageCalculator.formatDamage(val)}</div>`;
-        dmgTitle = `${data.charName} [${data.skillData.name || text}]\n属性: ${dmgRes.damageType} | 倍率: ${Math.round(dmgRes.mult * 100)}%\n最終攻撃力: ${dmgRes.details.totalAtk}\n${modeLabel}ダメージ: ${DamageCalculator.formatDamage(val)}\n(期待値: ${DamageCalculator.formatDamage(dmgRes.expected)} / 会心: ${DamageCalculator.formatDamage(dmgRes.crit)} / 非会心: ${DamageCalculator.formatDamage(dmgRes.nonCrit)})\n防御減衰: ${Math.round((1 - dmgRes.details.defMult) * 100)}% | 属性耐性: ${dmgRes.details.resVal}%\n与ダメUP: +${dmgRes.details.damageUpPercent}% | 脆弱: +${dmgRes.details.vulnMult > 1 ? Math.round((dmgRes.details.vulnMult - 1) * 100) : 0}% | ブレイク: ×${dmgRes.details.breakMult}`;
-      }
-    }
-  }
-
-  el.innerHTML = `<img src="${data.icon}"> <span>${text}</span>${dmgBadgeHtml}`;
-  if (dmgTitle) el.title = dmgTitle;
+  el.innerHTML = `<img src="${data.icon}"> <span>${text}</span>`;
 
   el.addEventListener('dragstart', e => {
     e.dataTransfer.setData('application/json', JSON.stringify(data));
@@ -3322,24 +3647,7 @@ function renderTimeline() {
           if (item.skillData.type === 'ult2') block.classList.add('bg-ult2');
           if (item.skillData.type === 'ult_cancel') block.classList.add('bg-ult-cancel');
           text = getSkillDisplayName(item.skillData);
-
-          let dmgBadgeHtml = '';
-          let dmgTitle = '';
-          if (item.skillData) {
-            const p = party.find(x => x.id === item.charId || x.name === item.charName);
-            if (p) {
-              const dmgRes = getMemberSkillDamage(p, item.skillData, 'lv9');
-              if (dmgRes && dmgRes[damageDisplayMode] !== undefined) {
-                const val = dmgRes[damageDisplayMode];
-                const modeLabel = damageDisplayMode === 'crit' ? '会心' : (damageDisplayMode === 'nonCrit' ? '非会心' : '期待値');
-                dmgBadgeHtml = `<div class="skill-damage-badge">💥 ${DamageCalculator.formatDamage(val)}</div>`;
-                dmgTitle = `${item.charName} [${item.skillData.name || text}]\n属性: ${dmgRes.damageType} | 倍率: ${Math.round(dmgRes.mult * 100)}%\n最終攻撃力: ${dmgRes.details.totalAtk}\n${modeLabel}ダメージ: ${DamageCalculator.formatDamage(val)}\n(期待値: ${DamageCalculator.formatDamage(dmgRes.expected)} / 会心: ${DamageCalculator.formatDamage(dmgRes.crit)} / 非会心: ${DamageCalculator.formatDamage(dmgRes.nonCrit)})\n防御減衰: ${Math.round((1 - dmgRes.details.defMult) * 100)}% | 属性耐性: ${dmgRes.details.resVal}%\n与ダメUP: +${dmgRes.details.damageUpPercent}% | 脆弱: +${dmgRes.details.vulnMult > 1 ? Math.round((dmgRes.details.vulnMult - 1) * 100) : 0}% | ブレイク: ×${dmgRes.details.breakMult}`;
-              }
-            }
-          }
-
-          block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>${dmgBadgeHtml}`;
-          if (dmgTitle) block.title = dmgTitle;
+          block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
         }
 
         const delBtn = document.createElement('div');
@@ -3470,6 +3778,16 @@ function updateSimulation() {
   let maxSingleDamage = 0;
   let maxDamageSkillName = '-';
   let totalDamageCasts = 0;
+  const charDamageMap = {};
+  const detailedSkillList = [];
+
+  party.forEach(p => {
+    charDamageMap[p.name] = {
+      charName: p.name,
+      icon: p.icon,
+      totalDamage: 0
+    };
+  });
 
   // キャラクターごとの連携技カウント（返還SP計算用：タンタン・リーノ共通ロジック）
   const comboCountsForRefund = {};
@@ -3652,10 +3970,21 @@ function updateSimulation() {
               const val = dmgRes[damageDisplayMode];
               totalTimelineDamage += val;
               totalDamageCasts++;
+              if (charDamageMap[p.name]) {
+                charDamageMap[p.name].totalDamage += val;
+              }
               if (val > maxSingleDamage) {
                 maxSingleDamage = val;
                 maxDamageSkillName = `${p.name} [${step.skillData.name || step.skillData.shortName || 'スキル'}]`;
               }
+              detailedSkillList.push({
+                charName: p.name,
+                icon: p.icon,
+                skillName: step.skillData.name || step.skillData.shortName || 'スキル',
+                damageType: dmgRes.damageType,
+                mult: dmgRes.mult,
+                dmgRes: dmgRes
+              });
             }
           }
         }
@@ -3672,11 +4001,61 @@ function updateSimulation() {
     }
   });
 
+  // ===== タイムライン順序に基づく動的スキル回しシミュレーション（アーツ付着・消費・クラッシュ） =====
+  let simResult = null;
+  if (typeof DamageCalculator !== 'undefined' && DamageCalculator.simulateTimelineRotation) {
+    simResult = DamageCalculator.simulateTimelineRotation(
+      timelineCycles,
+      party,
+      targetEnemy,
+      { weapons: allWeapons, equipment: equipmentMaster },
+      cycleNames
+    );
+  }
+
+  let finalTimelineDamage = 0;
+  let finalMaxSingleDamage = 0;
+  let finalMaxDamageSkillName = '-';
+  let finalDamageCasts = 0;
+  let charSummaryList = [];
+
+  if (simResult) {
+    finalTimelineDamage = damageDisplayMode === 'crit'
+      ? simResult.totalCrit
+      : (damageDisplayMode === 'nonCrit' ? simResult.totalNonCrit : simResult.totalExpected);
+
+    finalDamageCasts = simResult.stepResults.length;
+
+    simResult.stepResults.forEach(st => {
+      const stVal = damageDisplayMode === 'crit' ? st.critDamage : (damageDisplayMode === 'nonCrit' ? st.nonCritDamage : st.damage);
+      if (stVal > finalMaxSingleDamage) {
+        finalMaxSingleDamage = stVal;
+        finalMaxDamageSkillName = `${st.charName} [${st.skillName}]`;
+      }
+    });
+
+    charSummaryList = Object.values(simResult.charTotals).map(ct => {
+      const cVal = damageDisplayMode === 'crit' ? ct.totalCrit : (damageDisplayMode === 'nonCrit' ? ct.totalNonCrit : ct.totalExpected);
+      return {
+        charName: ct.name,
+        icon: ct.icon,
+        totalDamage: cVal
+      };
+    });
+
+    renderDamageDonutChart(charSummaryList, finalTimelineDamage);
+    renderDamageDetailsTable(simResult.stepResults);
+  } else {
+    charSummaryList = Object.values(charDamageMap);
+    renderDamageDonutChart(charSummaryList, totalTimelineDamage);
+    renderDamageDetailsTable([]);
+  }
+
   renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, {
-    totalTimelineDamage,
-    maxSingleDamage,
-    maxDamageSkillName,
-    totalDamageCasts
+    totalTimelineDamage: finalTimelineDamage,
+    maxSingleDamage: finalMaxSingleDamage,
+    maxDamageSkillName: finalMaxDamageSkillName,
+    totalDamageCasts: finalDamageCasts
   });
 }
 

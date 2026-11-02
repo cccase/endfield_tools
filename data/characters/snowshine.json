@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_snowshine",
     "name":  "スノーシャイン",
@@ -48,7 +48,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "combo_snowshine",
@@ -65,7 +75,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "ult_snowshine",
@@ -83,7 +103,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  90
+                       "epCost":  90,
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  2,
+                                          "label":  "寒冷爆発(2段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    }
                ],
     "motifWeapon":  "最期の声",

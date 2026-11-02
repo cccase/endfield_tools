@@ -89,6 +89,24 @@
             "type": "string",
             "enum": ["物理", "灼熱", "電磁", "寒冷", "自然", "なし"]
           },
+          "infliction": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["none", "heat", "cryo", "electric", "nature", "copy_slot1", "okugi_dual"] },
+              "stacks": { "type": "integer", "minimum": 0, "maximum": 4 },
+              "label": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          },
+          "crush": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["none", "inflict", "consume_smash", "consume_shatter"] },
+              "stacks": { "type": "integer", "minimum": 0, "maximum": 4 },
+              "label": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          },
           "multipliers": {
             "type": "object",
             "required": ["lv9", "lv10_spec1", "lv11_spec2", "lv12_spec3"],
@@ -120,6 +138,14 @@
       }
     },
     "motifWeapon": { "type": ["string", "null"] },
+    "specialMechanic": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "type": { "type": "string", "enum": ["copy_slot1", "okugi_dual", "custom"] },
+        "description": { "type": "string" }
+      }
+    },
     "recommendedWeapons": {
       "type": "array",
       "items": { "type": "string" }

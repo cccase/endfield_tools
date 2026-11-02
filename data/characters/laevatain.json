@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_laevatain",
     "name":  "レーヴァテイン",
@@ -53,7 +53,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "heat",
+                                          "stacks":  1,
+                                          "label":  "灼熱付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "combo_laevatain",
@@ -70,7 +80,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "heat",
+                                          "stacks":  1,
+                                          "label":  "灼熱付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "ult_laevatain",
@@ -88,7 +108,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  300
+                       "epCost":  300,
+                       "infliction":  {
+                                          "type":  "heat",
+                                          "stacks":  2,
+                                          "label":  "灼熱爆発(2段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    }
                ],
     "motifWeapon":  "フレイムフォージ",

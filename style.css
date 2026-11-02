@@ -1040,21 +1040,360 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   color: #666;
 }
 
-/* スキルブロックおよびパレットブロック内のダメージバッジ */
-.skill-damage-badge {
-  display: inline-block;
-  background-color: rgba(46, 204, 113, 0.2);
-  color: #2ecc71;
-  border: 1px solid rgba(46, 204, 113, 0.4);
-  border-radius: 3px;
-  padding: 1px 4px;
-  font-size: 10px;
+/* ==========================================================================
+   ページナビゲーション（タブ切り替え）
+   ========================================================================== */
+.app-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0;
+}
+.nav-tab-btn {
+  background: #1e1e1e;
+  border: 1px solid #3d3d3d;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  color: #888;
+  padding: 10px 18px;
+  font-size: 14px;
   font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.nav-tab-btn:hover {
+  background: #282828;
+  color: #eee;
+}
+.nav-tab-btn.active {
+  background: #2a2a2a;
+  color: #fff;
+  border-color: #555;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: -2px;
+}
+.nav-icon {
+  font-size: 16px;
+}
+
+/* ページビュー表示/非表示 */
+.page-view {
+  display: none;
+}
+.page-view.active {
+  display: block;
+}
+
+/* 敵設定見出し */
+.enemy-settings-section-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f39c12;
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+
+/* ==========================================================================
+   キャラ別ダメージ割合 (円グラフ & レジェンド)
+   ========================================================================== */
+.damage-charts-panel {
+  background-color: #1a1e1b;
+  border: 1px solid #2e4c38;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.damage-charts-panel h2 {
+  font-size: 16px;
+  color: #2ecc71;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.damage-chart-container {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.donut-chart-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.donut-chart-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.donut-center-info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.donut-center-label {
+  font-size: 11px;
+  color: #85a990;
+}
+.donut-center-val {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2ecc71;
   font-family: monospace, sans-serif;
-  margin-top: 2px;
+}
+.char-damage-legend {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.char-legend-item {
+  background-color: #141715;
+  border: 1px solid #283a2e;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.char-legend-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.char-legend-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.char-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.char-legend-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #eee;
+}
+.char-legend-val {
+  font-size: 13px;
+  font-weight: bold;
+  color: #2ecc71;
+  font-family: monospace, sans-serif;
+}
+.char-legend-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background-color: #222;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.char-legend-bar {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* ==========================================================================
+   スキル別詳細内訳テーブル
+   ========================================================================== */
+.damage-details-panel {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.damage-details-panel h2 {
+  font-size: 16px;
+  color: #f39c12;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.table-scroll-wrap {
+  overflow-x: auto;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+.damage-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+.damage-details-table th, .damage-details-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #2a2a2a;
   white-space: nowrap;
 }
-.skill-block .skill-damage-badge {
-  font-size: 9px;
-  padding: 0 3px;
+.damage-details-table th {
+  background-color: #222;
+  color: #bbb;
+  font-weight: 600;
 }
+.damage-details-table tbody tr:hover {
+  background-color: #222;
+}
+.td-dmg-val {
+  font-family: monospace, sans-serif;
+  font-weight: bold;
+  color: #2ecc71;
+}
+.td-dmg-sub {
+  font-family: monospace, sans-serif;
+  color: #888;
+}
+
+/* ==========================================================================
+   キャラ編成カード内 スキル（付着・クラッシュ）UI
+   ========================================================================== */
+.special-tag-pill {
+  font-size: 10px;
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.special-mechanic-banner {
+  background: rgba(243, 156, 18, 0.12);
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.special-badge {
+  font-size: 11px;
+  font-weight: bold;
+  color: #f39c12;
+}
+
+.special-text {
+  font-size: 11px;
+  color: #ccc;
+  line-height: 1.4;
+}
+
+.party-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.party-skill-card {
+  background-color: #202020;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 7px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color 0.2s;
+}
+
+.party-skill-card:hover {
+  border-color: #444;
+}
+
+.party-skill-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.party-skill-name {
+  font-weight: bold;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.party-skill-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  padding-top: 4px;
+  border-top: 1px solid #282828;
+}
+
+.skill-meta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta-label {
+  color: #888;
+  font-size: 10px;
+}
+
+.meta-val {
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.meta-infliction {
+  color: #5dade2;
+}
+
+.meta-crush {
+  color: #f5b041;
+}
+
+/* アクションタグ / 反応タグ */
+.action-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.badge-reaction {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid #e74c3c;
+  color: #ff6b6b;
+}
+
+.badge-burst {
+  background: rgba(52, 152, 219, 0.2);
+  border: 1px solid #3498db;
+  color: #5dade2;
+}
+
+.badge-crush {
+  background: rgba(243, 156, 18, 0.2);
+  border: 1px solid #f39c12;
+  color: #f5b041;
+}
+
+.badge-inflict {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+}
+

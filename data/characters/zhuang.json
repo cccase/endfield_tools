@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_zhuang",
     "name":  "ゾアン・ファンイ",
@@ -48,7 +48,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "electric",
+                                          "stacks":  1,
+                                          "label":  "電磁付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "combo_zhuang",
@@ -65,7 +75,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "electric",
+                                          "stacks":  1,
+                                          "label":  "電磁付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    },
                    {
                        "id":  "ult_zhuang",
@@ -83,7 +103,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  90
+                       "epCost":  90,
+                       "infliction":  {
+                                          "type":  "electric",
+                                          "stacks":  2,
+                                          "label":  "電磁爆発(2段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 }
                    }
                ],
     "motifWeapon":  "孤舟",

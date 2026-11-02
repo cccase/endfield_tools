@@ -12,173 +12,285 @@
 </head>
 <body>
   <header>
-    <h1>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</h1>
+    <h1>アークナイツ：エンドフィールド ローテーション＆ダメージシミュレーター</h1>
+    <nav class="app-nav">
+      <button type="button" id="tab-btn-rotation" class="nav-tab-btn active" onclick="switchPage('rotation')">
+        <span class="nav-icon">🔄</span> ローテーション
+      </button>
+      <button type="button" id="tab-btn-damage" class="nav-tab-btn" onclick="switchPage('damage')">
+        <span class="nav-icon">💥</span> ダメージ計算
+      </button>
+    </nav>
   </header>
 
   <main>
-    <!-- キャラクター選択とパーティー編成 -->
-    <section class="panel top-section">
-      <div class="roster-panel">
-        <div class="roster-header">
-          <h2>キャラクターリスト</h2>
-          <div class="roster-sort-controls">
-            <span class="sort-label">並び替え:</span>
-            <button type="button" class="sort-btn active" data-sort="rarity">レア度</button>
-            <button type="button" class="sort-btn" data-sort="element">属性</button>
-            <button type="button" class="sort-btn" data-sort="class">職分</button>
-          </div>
-        </div>
-        <div id="roster-list" class="roster-container">
-          <!-- サーバーから取得したキャラ一覧 -->
-        </div>
-      </div>
-
-      <div class="party-panel">
-        <h2>パーティー編成 (最大4人)</h2>
-        <div id="party-list" class="party-container">
-          <!-- 選択されたキャラ (効率、凸設定付き) -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ターゲット設定（案山子 / 練習用ダミー） -->
-    <section class="panel enemy-panel">
-      <div class="enemy-header">
-        <h2>🎯 ターゲット設定 (案山子 / 練習用ダミー)</h2>
-        <button type="button" class="enemy-reset-btn" onclick="resetEnemySettings()">初期値に戻す</button>
-      </div>
-      <div class="enemy-settings-grid">
-        <div class="enemy-field">
-          <label for="enemy-defense" title="敵の基礎防御力。計算式: 100 / (100 + 防御力)">防御力 (DEF):</label>
-          <input type="number" id="enemy-defense" value="100" min="0" max="5000" step="10" onchange="updateEnemySetting('defense', this.value)">
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-vuln" title="敵が受けるダメージ増加率（脆弱デバフ等）">脆弱 / 被ダメUP (%):</label>
-          <input type="number" id="enemy-vuln" value="0" min="-100" max="500" step="5" onchange="updateEnemySetting('vulnerability', this.value)">
-        </div>
-        <div class="enemy-field enemy-break-field">
-          <label title="敵がブレイク（失衡）状態かどうか" style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-            <input type="checkbox" id="enemy-is-broken" onchange="updateEnemySetting('isBroken', this.checked)">
-            ブレイク状態
-          </label>
-          <div class="break-mult-wrap">
-            <span>倍率:</span>
-            <input type="number" id="enemy-break-mult" value="1.5" min="1.0" max="5.0" step="0.1" style="width:55px;" onchange="updateEnemySetting('breakMultiplier', this.value)">
-          </div>
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-res-phys">物理耐性 (%):</label>
-          <input type="number" id="enemy-res-phys" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('physicalRes', this.value)">
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-res-heat">灼熱耐性 (%):</label>
-          <input type="number" id="enemy-res-heat" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('heatRes', this.value)">
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-res-elec">電磁耐性 (%):</label>
-          <input type="number" id="enemy-res-elec" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('electricRes', this.value)">
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-res-cryo">寒冷耐性 (%):</label>
-          <input type="number" id="enemy-res-cryo" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('cryoRes', this.value)">
-        </div>
-        <div class="enemy-field">
-          <label for="enemy-res-nature">自然耐性 (%):</label>
-          <input type="number" id="enemy-res-nature" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('natureRes', this.value)">
-        </div>
-      </div>
-    </section>
-
-    <!-- 利用可能なスキル・パネルパレット -->
-    <section id="palette-panel" class="panel palette-panel" style="overflow-y: auto;">
-      <div class="palette-header-wrap">
-        <h2>スキルパレット <span class="palette-subtitle">(ドラッグ＆ドロップでタイムラインへ)</span></h2>
-        <div class="palette-header-controls">
-          <div class="skill-name-toggle-switch" title="スキル名の表示を「正式名称」と「略称（戦技1、必殺技など）」で切り替えます">
-            <span class="toggle-label">スキル名表示:</span>
-            <div class="toggle-btn-group">
-              <button type="button" id="btn-name-formal" class="toggle-mode-btn active" onclick="setSkillNameMode('formal')">正式名称</button>
-              <button type="button" id="btn-name-short" class="toggle-mode-btn" onclick="setSkillNameMode('short')">略称</button>
+    <!-- ==================== 1. ローテーションページ ==================== -->
+    <div id="page-rotation" class="page-view active">
+      <!-- キャラクター選択とパーティー編成 -->
+      <section class="panel top-section">
+        <div class="roster-panel">
+          <div class="roster-header">
+            <h2>キャラクターリスト</h2>
+            <div class="roster-sort-controls">
+              <span class="sort-label">並び替え:</span>
+              <button type="button" class="sort-btn active" data-sort="rarity">レア度</button>
+              <button type="button" class="sort-btn" data-sort="element">属性</button>
+              <button type="button" class="sort-btn" data-sort="class">職分</button>
             </div>
           </div>
-          <button type="button" id="btn-toggle-palette" class="mobile-palette-toggle-btn" onclick="toggleMobilePalette()" aria-expanded="true" title="スキルパレットの表示/非表示を切り替えます">
-            パレットを隠す ▼
-          </button>
+          <div id="roster-list" class="roster-container">
+            <!-- サーバーから取得したキャラ一覧 -->
+          </div>
         </div>
-      </div>
-      <div id="skill-palette" class="palette-container">
-        <!-- 編成したキャラのスキル、および返還SP・回復SPパネル -->
-      </div>
-    </section>
 
-    <!-- シーケンス型タイムライン -->
-    <section class="panel timeline-panel">
-      <div class="timeline-header">
-        <h2>タイムライン (発動順)</h2>
-        <div class="controls">
-          <button id="btn-save-timeline">保存</button>
-          <button id="btn-export-url">URLをコピー</button>
-          <button id="btn-export-image">画像として保存</button>
-          <button id="btn-clear-timeline">クリア</button>
+        <div class="party-panel">
+          <h2>パーティー編成 (最大4人)</h2>
+          <div id="party-list" class="party-container">
+            <!-- 選択されたキャラ (効率、凸設定付き) -->
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="timeline-wrapper" id="timeline-wrapper">
-        <div id="timeline" class="sequence-timeline">
-          <!-- ここにブロックが並ぶ -->
-          <div class="drop-indicator" id="timeline-drop-zone">ここにスキルをドロップ</div>
+      <!-- 利用可能なスキル・パネルパレット -->
+      <section id="palette-panel" class="panel palette-panel" style="overflow-y: auto;">
+        <div class="palette-header-wrap">
+          <h2>スキルパレット <span class="palette-subtitle">(ドラッグ＆ドロップでタイムラインへ)</span></h2>
+          <div class="palette-header-controls">
+            <div class="skill-name-toggle-switch" title="スキル名の表示を「正式名称」と「略称（戦技1、必殺技など）」で切り替えます">
+              <span class="toggle-label">スキル名表示:</span>
+              <div class="toggle-btn-group">
+                <button type="button" id="btn-name-formal" class="toggle-mode-btn active" onclick="setSkillNameMode('formal')">正式名称</button>
+                <button type="button" id="btn-name-short" class="toggle-mode-btn" onclick="setSkillNameMode('short')">略称</button>
+              </div>
+            </div>
+            <button type="button" id="btn-toggle-palette" class="mobile-palette-toggle-btn" onclick="toggleMobilePalette()" aria-expanded="true" title="スキルパレットの表示/非表示を切り替えます">
+              パレットを隠す ▼
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+        <div id="skill-palette" class="palette-container">
+          <!-- 編成したキャラのスキル、および返還SP・回復SPパネル -->
+        </div>
+      </section>
 
-    <!-- EP/SP 状態表示 -->
-    <section class="panel status-panel">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h2>必殺チャージ</h2>
-        <label style="color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 5px;">
-          <input type="checkbox" id="start-max-charge" onchange="updateSimulation()">
-          開始時チャージマックス
-        </label>
-      </div>
-      <div class="status-summary" style="flex-wrap: wrap;">
-        <div title="使用した戦技の合計消費SP">総消費SP: <span id="total-sp-spent">0</span></div>
-        <div title="戦技や天賦で戻ってきたSP。このSPを消費しても必殺チャージは回復しません">累計返還SP: <span id="total-sp-refunded">0</span></div>
-        <div title="重攻撃や先鋒スキル等で回復した通常SP。このSPを消費した戦技は必殺チャージが通常通り回復します">累計回復SP: <span id="total-sp-recovered">0</span></div>
-        <div title="総消費SPから返還SP・回復SPを差し引いた実質的な消費SP">実質消費SP: <span id="net-sp-spent">0</span></div>
-        <div title="現在プールされている未消費の返還SP。次の戦技で優先消費されます">返還SPプール: <span id="current-refund-sp">0</span></div>
-        <div title="通常SPを100消費するごとに1回とカウントした戦技の使用回数（NSC）です。返還SPで賄った分は含まず、SP消費量に比例します（例: 25SPの戦技は0.25回）。この値が必殺チャージ回復量（1回あたり基礎6.5）の計算に使われます。" style="cursor: help;">全体戦技使用回数: <span id="total-skill-casts">0</span></div>
-      </div>
-      <div id="ep-status-list" class="ep-status-container">
-        <!-- 各キャラのEPゲージ -->
-      </div>
-    </section>
+      <!-- シーケンス型タイムライン -->
+      <section class="panel timeline-panel">
+        <div class="timeline-header">
+          <h2>タイムライン (発動順)</h2>
+          <div class="controls">
+            <button id="btn-save-timeline">保存</button>
+            <button id="btn-export-url">URLをコピー</button>
+            <button id="btn-export-image">画像として保存</button>
+            <button id="btn-clear-timeline">クリア</button>
+          </div>
+        </div>
 
-    <!-- ダメージ集計サマリー -->
-    <section class="panel damage-summary-panel">
-      <div class="damage-summary-header">
-        <h2>💥 スキルダメージ集計</h2>
-        <div class="damage-display-mode-switch">
-          <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
-          <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
-          <button type="button" class="dmg-mode-btn" id="btn-dmg-noncrit" onclick="setDamageMode('nonCrit')">非会心</button>
+        <div class="timeline-wrapper" id="timeline-wrapper">
+          <div id="timeline" class="sequence-timeline">
+            <!-- ここにブロックが並ぶ -->
+            <div class="drop-indicator" id="timeline-drop-zone">ここにスキルをドロップ</div>
+          </div>
         </div>
-      </div>
-      <div class="damage-metrics-grid">
-        <div class="damage-card">
-          <div class="damage-card-label">タイムライン総ダメージ</div>
-          <div class="damage-card-value" id="total-timeline-damage">0</div>
+      </section>
+
+      <!-- EP/SP 状態表示 -->
+      <section class="panel status-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2>必殺チャージ</h2>
+          <label style="color: var(--text-color); cursor: pointer; display: flex; align-items: center; gap: 5px;">
+            <input type="checkbox" id="start-max-charge" onchange="updateSimulation()">
+            開始時チャージマックス
+          </label>
         </div>
-        <div class="damage-card">
-          <div class="damage-card-label">最大単発ダメージ</div>
-          <div class="damage-card-value" id="max-single-damage">0</div>
-          <div class="damage-card-sub" id="max-damage-skill">-</div>
+        <div class="status-summary" style="flex-wrap: wrap;">
+          <div title="使用した戦技の合計消費SP">総消費SP: <span id="total-sp-spent">0</span></div>
+          <div title="戦技や天賦で戻ってきたSP。このSPを消費しても必殺チャージは回復しません">累計返還SP: <span id="total-sp-refunded">0</span></div>
+          <div title="重攻撃や先鋒スキル等で回復した通常SP。このSPを消費した戦技は必殺チャージが通常通り回復します">累計回復SP: <span id="total-sp-recovered">0</span></div>
+          <div title="総消費SPから返還SP・回復SPを差し引いた実質的な消費SP">実質消費SP: <span id="net-sp-spent">0</span></div>
+          <div title="現在プールされている未消費の返還SP。次の戦技で優先消費されます">返還SPプール: <span id="current-refund-sp">0</span></div>
+          <div title="通常SPを100消費するごとに1回とカウントした戦技の使用回数（NSC）です。返還SPで賄った分は含まず、SP消費量に比例します（例: 25SPの戦技は0.25回）。この値が必殺チャージ回復量（1回あたり基礎6.5）の計算に使われます。" style="cursor: help;">全体戦技使用回数: <span id="total-skill-casts">0</span></div>
         </div>
-        <div class="damage-card">
-          <div class="damage-card-label">スキル発動回数</div>
-          <div class="damage-card-value" id="total-damage-casts">0 回</div>
+        <div id="ep-status-list" class="ep-status-container">
+          <!-- 各キャラのEPゲージ -->
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+
+    <!-- ==================== 2. ダメージ計算ページ ==================== -->
+    <div id="page-damage" class="page-view">
+      <!-- ターゲット設定（案山子 / 練習用ダミー ＆ アーツ付着・クラッシュ） -->
+      <section class="panel enemy-panel">
+        <div class="enemy-header">
+          <h2>🎯 ターゲット設定 (案山子 / アーツ付着・クラッシュ段階)</h2>
+          <button type="button" class="enemy-reset-btn" onclick="resetEnemySettings()">初期値に戻す</button>
+        </div>
+        
+        <div class="enemy-settings-section-title">■ 基礎ステータス・耐性</div>
+        <div class="enemy-settings-grid">
+          <div class="enemy-field">
+            <label for="enemy-defense" title="敵の基礎防御力。計算式: 100 / (100 + 防御力)">防御力 (DEF):</label>
+            <input type="number" id="enemy-defense" value="100" min="0" max="5000" step="10" onchange="updateEnemySetting('defense', this.value)">
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-vuln" title="敵が受けるダメージ増加率（脆弱デバフ等）">脆弱 / 被ダメUP (%):</label>
+            <input type="number" id="enemy-vuln" value="0" min="-100" max="500" step="5" onchange="updateEnemySetting('vulnerability', this.value)">
+          </div>
+          <div class="enemy-field enemy-break-field">
+            <label title="敵がブレイク（失衡）状態かどうか" style="display:flex; align-items:center; gap:5px; cursor:pointer;">
+              <input type="checkbox" id="enemy-is-broken" onchange="updateEnemySetting('isBroken', this.checked)">
+              ブレイク状態
+            </label>
+            <div class="break-mult-wrap">
+              <span>倍率:</span>
+              <input type="number" id="enemy-break-mult" value="1.5" min="1.0" max="5.0" step="0.1" style="width:55px;" onchange="updateEnemySetting('breakMultiplier', this.value)">
+            </div>
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-res-phys">物理耐性 (%):</label>
+            <input type="number" id="enemy-res-phys" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('physicalRes', this.value)">
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-res-heat">灼熱耐性 (%):</label>
+            <input type="number" id="enemy-res-heat" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('heatRes', this.value)">
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-res-elec">電磁耐性 (%):</label>
+            <input type="number" id="enemy-res-elec" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('electricRes', this.value)">
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-res-cryo">寒冷耐性 (%):</label>
+            <input type="number" id="enemy-res-cryo" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('cryoRes', this.value)">
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-res-nature">自然耐性 (%):</label>
+            <input type="number" id="enemy-res-nature" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('natureRes', this.value)">
+          </div>
+        </div>
+
+        <div class="enemy-settings-section-title" style="margin-top:12px;">■ アーツ付着・状態異常・クラッシュ段階 (装備効果・反応トリガー)</div>
+        <div class="enemy-settings-grid">
+          <div class="enemy-field">
+            <label for="enemy-arts-attachment">アーツ付着状態:</label>
+            <select id="enemy-arts-attachment" onchange="updateEnemySetting('artsAttachment', this.value)">
+              <option value="none">付着なし</option>
+              <option value="heat">灼熱付着 (Heat)</option>
+              <option value="cryo">寒冷付着 (Cryo)</option>
+              <option value="electric">電磁付着 (Electric)</option>
+              <option value="nature">自然付着 (Nature)</option>
+            </select>
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-attachment-stacks">付着段階 (スタック):</label>
+            <select id="enemy-attachment-stacks" onchange="updateEnemySetting('attachmentStacks', this.value)">
+              <option value="0">0 段階</option>
+              <option value="1">1 段階</option>
+              <option value="2">2 段階</option>
+              <option value="3">3 段階</option>
+              <option value="4">4 段階 (最大)</option>
+            </select>
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-arts-anomaly">アーツ状態異常:</label>
+            <select id="enemy-arts-anomaly" onchange="updateEnemySetting('artsAnomaly', this.value)">
+              <option value="none">異常なし</option>
+              <option value="combustion">燃焼 (DoT / 火山セット灼熱+50%)</option>
+              <option value="corrosion">腐食 (全耐性-20% / 火山セット自然+50%)</option>
+              <option value="freeze">凍結 (砕氷物理+40%)</option>
+              <option value="shock">感電 (アーツ脆弱+20%)</option>
+            </select>
+          </div>
+          <div class="enemy-field">
+            <label for="enemy-crush-stacks" title="物理攻撃の蓄積段階。猛撃・破砕時に全消費">クラッシュ段階 (0〜4):</label>
+            <select id="enemy-crush-stacks" onchange="updateEnemySetting('crushStacks', this.value)">
+              <option value="0">0 段階</option>
+              <option value="1">1 段階 (+6% / 9%)</option>
+              <option value="2">2 段階 (+12% / 18%)</option>
+              <option value="3">3 段階 (+18% / 27%)</option>
+              <option value="4">4 段階 (最大 +24% / 36%)</option>
+            </select>
+          </div>
+          <div class="enemy-field" style="justify-content:center;">
+            <label title="異属性アーツ攻撃時に付着を消費して元素反応ボーナスを計算" style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:11px;">
+              <input type="checkbox" id="enemy-consume-attachment" onchange="updateEnemySetting('consumeAttachment', this.checked)">
+              アーツ付着を消費して反応
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ダメージ集計サマリー -->
+      <section class="panel damage-summary-panel">
+        <div class="damage-summary-header">
+          <h2>💥 タイムライン ダメージ集計サマリー</h2>
+          <div class="damage-display-mode-switch">
+            <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
+            <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
+            <button type="button" class="dmg-mode-btn" id="btn-dmg-noncrit" onclick="setDamageMode('nonCrit')">非会心</button>
+          </div>
+        </div>
+        <div class="damage-metrics-grid">
+          <div class="damage-card">
+            <div class="damage-card-label">タイムライン総ダメージ</div>
+            <div class="damage-card-value" id="total-timeline-damage">0</div>
+          </div>
+          <div class="damage-card">
+            <div class="damage-card-label">最大単発ダメージ</div>
+            <div class="damage-card-value" id="max-single-damage">0</div>
+            <div class="damage-card-sub" id="max-damage-skill">-</div>
+          </div>
+          <div class="damage-card">
+            <div class="damage-card-label">スキル発動回数</div>
+            <div class="damage-card-value" id="total-damage-casts">0 回</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- キャラ別ダメージ内訳 ＆ 円グラフ -->
+      <section class="panel damage-charts-panel">
+        <h2>📊 キャラクター別ダメージ割合 (シェア率)</h2>
+        <div class="damage-chart-container">
+          <div class="donut-chart-wrap">
+            <svg id="damage-donut-chart" viewBox="0 0 200 200" class="donut-chart-svg">
+              <!-- 円グラフのSVGパスが動的描画される -->
+            </svg>
+            <div class="donut-center-info">
+              <span class="donut-center-label">総ダメージ</span>
+              <span class="donut-center-val" id="donut-center-total">0</span>
+            </div>
+          </div>
+          <div id="char-damage-legend" class="char-damage-legend">
+            <!-- キャラごとのダメージカードとパーセンテージバー -->
+          </div>
+        </div>
+      </section>
+
+      <!-- タイムライン発動スキルの詳細内訳テーブル -->
+      <section class="panel damage-details-panel">
+        <h2>📋 スキル別ダメージ計算内訳</h2>
+        <div class="table-scroll-wrap">
+          <table class="damage-details-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>サイクル</th>
+                <th>キャラクター</th>
+                <th>発動スキル</th>
+                <th>属性</th>
+                <th>実効ダメージ (<span id="table-mode-label">期待値</span>)</th>
+                <th>会心時</th>
+                <th>非会心</th>
+                <th>付着・クラッシュ連動</th>
+                <th>敵状態遷移 (前 → 後)</th>
+              </tr>
+            </thead>
+            <tbody id="damage-details-tbody">
+              <!-- 各スキルの計算内訳行 -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
 
 
   </main>

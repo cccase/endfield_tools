@@ -1,4 +1,4 @@
-﻿{
+{
     "$schema":  "../../schemas/character.schema.json",
     "id":  "char_catcher",
     "name":  "キャッチャー",
@@ -48,7 +48,17 @@
                        "buffs":  [
 
                                  ],
-                       "spCost":  100
+                       "spCost":  100,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "inflict",
+                                     "stacks":  1,
+                                     "label":  "クラッシュ付与(1段)"
+                                 }
                    },
                    {
                        "id":  "combo_catcher",
@@ -65,7 +75,17 @@
                        "hitCount":  1,
                        "buffs":  [
 
-                                 ]
+                                 ],
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "consume_smash",
+                                     "stacks":  2,
+                                     "label":  "猛撃(クラッシュ消費)"
+                                 }
                    },
                    {
                        "id":  "ult_catcher",
@@ -83,7 +103,17 @@
                        "buffs":  [
 
                                  ],
-                       "epCost":  80
+                       "epCost":  80,
+                       "infliction":  {
+                                          "type":  "none",
+                                          "stacks":  0,
+                                          "label":  "なし"
+                                      },
+                       "crush":  {
+                                     "type":  "consume_shatter",
+                                     "stacks":  4,
+                                     "label":  "破砕(クラッシュ全消費)"
+                                 }
                    }
                ],
     "motifWeapon":  "O.B.J.重責",
