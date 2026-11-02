@@ -6,6 +6,7 @@
   "properties": {
     "id": { "type": "string" },
     "name": { "type": "string" },
+    "icon": { "type": "string" },
     "rarity": { "type": "integer", "minimum": 3, "maximum": 6 },
     "type": {
       "type": "string",

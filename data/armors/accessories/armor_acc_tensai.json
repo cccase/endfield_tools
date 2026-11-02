@@ -19,5 +19,6 @@
                          "value":  60
                      }
                  ],
-    "ultEfficiency":  0
+    "ultEfficiency":  0,
+    "icon":  "image/armors/armor_acc_tensai.png"
 }

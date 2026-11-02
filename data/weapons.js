@@ -101,7 +101,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/J.E.T..png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -158,7 +159,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/O.B.J.術識.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -215,7 +217,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/O.B.J.軽刃.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -282,7 +285,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/O.B.J.迅速.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -339,7 +343,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/O.B.J.重責.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -396,7 +401,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/O.B.J.鋭矛.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -458,7 +464,8 @@
                                                      ]
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/taigan.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -515,7 +522,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/アンゲロス・スレイヤー.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -572,7 +580,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/オッペロ77.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -629,7 +638,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/オート・ハイパーノヴァ.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -686,7 +696,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/カーマインヴェール.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -743,7 +754,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/クラヴェンガー.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -800,7 +812,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ジミニ12.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -857,7 +870,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/スイーツタイム.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -914,7 +928,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/タール11.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -971,7 +986,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ダルホフ7.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1028,7 +1044,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ダークトーチ.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1085,7 +1102,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/テルミット・カッター.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1142,7 +1160,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ナビゲーター.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1199,7 +1218,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ファントムペイン.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1256,7 +1276,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ファーサイト.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1313,7 +1334,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/フィンチェイサー3.0.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1370,7 +1392,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/フレイムフォージ.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1427,7 +1450,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/フーヤオ.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1484,7 +1508,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/プリズムナイトデビュー.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1541,7 +1566,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ペッコ5.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1598,7 +1624,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/ロアーガード.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1655,7 +1682,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/不知帰.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1712,7 +1740,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/仰止.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1769,7 +1798,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/作品：蝕跡.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1826,7 +1856,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/作品：衆生.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1893,7 +1924,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/使命必達.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -1950,7 +1982,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/勇猛.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2007,7 +2040,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/十二問.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2064,7 +2098,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/千古恒常.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2121,7 +2156,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/合理的決別.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2178,7 +2214,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/同類共食.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2235,7 +2272,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/問月.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2302,7 +2340,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/四二式・粛陣.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2369,7 +2408,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/堅城鋳造者.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2426,7 +2466,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/大雷斑.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2483,7 +2524,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/大願.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2540,7 +2582,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/孤舟.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2597,7 +2640,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/寒夜の影.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2654,7 +2698,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/工業零点一.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2711,7 +2756,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/布教の自由.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2768,7 +2814,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/弔いの詩.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2825,7 +2872,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/悠久の継承.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2892,7 +2940,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/探龍.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -2949,7 +2998,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/昔日の逸品.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3006,7 +3056,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/最期の声.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3063,7 +3114,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/望郷.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3120,7 +3172,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/朧光.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3177,7 +3230,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/栄光の記憶.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3234,7 +3288,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/楔.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3301,7 +3356,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/正義嵌合.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3358,7 +3414,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/求心の槍.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3415,7 +3472,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/潮流.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3482,7 +3540,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/灯火の使命.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3539,7 +3598,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/狼緋.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3596,7 +3656,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/玉中身.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3653,7 +3714,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/白夜新星.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3710,7 +3772,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/破壊ユニット.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3767,7 +3830,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/破砕君主.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3824,7 +3888,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/芸術の独裁者.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3881,7 +3946,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/苦難の果.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3938,7 +4004,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/荒野迷走.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -3995,7 +4062,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/落草.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4052,7 +4120,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/蒼星の囁き.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4109,7 +4178,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/蛍光雷羽.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4176,7 +4246,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/術無.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4233,7 +4304,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/複合工業.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4290,7 +4362,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/負山.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4347,7 +4420,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/赤纓.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4404,7 +4478,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/輝かしき名声.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4471,7 +4546,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/連結点.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4528,7 +4604,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/遺忘.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4585,7 +4662,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/鋼鉄余音.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4642,7 +4720,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/鍛冶師.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4699,7 +4778,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/鑑.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4756,7 +4836,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/長路.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4813,7 +4894,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/開拓者の道標.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4870,7 +4952,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/顕鋒.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4927,7 +5010,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/騎士精神.png"
                     },
                     {
                         "$schema":  "../../schemas/weapon.schema.json",
@@ -4984,7 +5068,8 @@
                                            "ultEfficiency":  null
                                        }
                                    ],
-                        "ultEfficiency":  null
+                        "ultEfficiency":  null,
+                        "icon":  "image/weapons/黄金時代.png"
                     }
                 ]
 };

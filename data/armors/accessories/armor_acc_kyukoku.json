@@ -19,5 +19,6 @@
                          "value":  0.08
                      }
                  ],
-    "ultEfficiency":  33.4
+    "ultEfficiency":  33.4,
+    "icon":  "image/armors/armor_acc_kyukoku.png"
 }

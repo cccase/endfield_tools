@@ -6,6 +6,7 @@
   "properties": {
     "id": { "type": "string" },
     "name": { "type": "string" },
+    "icon": { "type": "string" },
     "part": {
       "type": "string",
       "enum": ["body", "arms", "accessories"]

@@ -53,5 +53,6 @@
                        "ultEfficiency":  null
                    }
                ],
-    "ultEfficiency":  null
+    "ultEfficiency":  null,
+    "icon":  "image/weapons/遺忘.png"
 }

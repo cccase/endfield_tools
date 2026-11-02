@@ -19,5 +19,6 @@
                          "value":  0.05
                      }
                  ],
-    "ultEfficiency":  16
+    "ultEfficiency":  16,
+    "icon":  "image/armors/armor_body_ruten.png"
 }
