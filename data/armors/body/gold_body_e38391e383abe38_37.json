@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e38391e383abe38_37",
+  "name": "パルス式妨害服",
+  "icon": "image/armors/gold_body_e38391e383abe38_37.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_pulse",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 87.0
+    },
+    {
+      "stat": "willpower",
+      "value": 58.0
+    },
+    {
+      "stat": "artsIntensity",
+      "value": 20.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

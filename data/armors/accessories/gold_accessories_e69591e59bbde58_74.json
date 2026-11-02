@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e69591e59bbde58_74",
+  "name": "救国印章Ⅰ",
+  "icon": "image/armors/gold_accessories_e69591e59bbde58_74.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "willpower",
+      "value": 43.0
+    },
+    {
+      "stat": "critRate",
+      "value": 0.10800000000000001
+    }
+  ],
+  "ultEfficiency": 0.0
+}

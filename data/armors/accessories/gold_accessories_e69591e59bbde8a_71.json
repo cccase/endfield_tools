@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e69591e59bbde8a_71",
+  "name": "救国識別札",
+  "icon": "image/armors/gold_accessories_e69591e59bbde8a_71.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 43.0
+    },
+    {
+      "stat": "damageReduction",
+      "value": 0.17800000000000002
+    }
+  ],
+  "ultEfficiency": 0.0
+}

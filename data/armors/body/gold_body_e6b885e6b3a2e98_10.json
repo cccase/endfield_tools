@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e6b885e6b3a2e98_10",
+  "name": "清波重防具",
+  "icon": "image/armors/gold_body_e6b885e6b3a2e98_10.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_seiba",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 58.0
+    },
+    {
+      "stat": "agility",
+      "value": 87.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 12.3
+    }
+  ],
+  "ultEfficiency": 12.3
+}

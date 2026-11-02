@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_50e5bc8fe5bf9ce_29",
+  "name": "50式応龍ビーコン",
+  "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_29.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_oryu",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "intellect",
+      "value": 32.0
+    },
+    {
+      "stat": "comboDamageUp",
+      "value": 0.414
+    }
+  ],
+  "ultEfficiency": 0.0
+}

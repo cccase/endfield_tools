@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e5ae8fe5b1b1e78_66",
+  "name": "宏山点剣短剣",
+  "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_66.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_kozantenken",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "agility",
+      "value": 32.0
+    },
+    {
+      "stat": "ultDamageUp",
+      "value": 0.518
+    }
+  ],
+  "ultEfficiency": 0.0
+}

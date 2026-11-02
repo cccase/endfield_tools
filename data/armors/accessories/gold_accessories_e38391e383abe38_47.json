@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e38391e383abe38_47",
+  "name": "パルス式探針",
+  "icon": "image/armors/gold_accessories_e38391e383abe38_47.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_pulse",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 21.0
+    },
+    {
+      "stat": "intellect",
+      "value": 32.0
+    },
+    {
+      "stat": "artsIntensity",
+      "value": 41.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

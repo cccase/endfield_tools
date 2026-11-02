@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e6bf81e6b581e38_22",
+  "name": "濁流ホットカッター",
+  "icon": "image/armors/gold_accessories_e6bf81e6b581e38_22.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_mancho",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "intellect",
+      "value": 32.0
+    },
+    {
+      "stat": "normalAttackDamageUp",
+      "value": 0.276
+    }
+  ],
+  "ultEfficiency": 0.0
+}

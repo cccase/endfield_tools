@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e697a7e98b92e38_8",
+  "name": "旧鋒ガントレットⅠ",
+  "icon": "image/armors/gold_arms_e697a7e98b92e38_8.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_kyuho",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 43.0
+    },
+    {
+      "stat": "agility",
+      "value": 65.0
+    },
+    {
+      "stat": "artsIntensity",
+      "value": 34.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

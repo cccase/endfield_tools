@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e5a38ce6b581e6a_9",
+  "name": "壌流棍棒",
+  "icon": "image/armors/gold_accessories_e5a38ce6b581e6a_9.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_joryu",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 21.0
+    },
+    {
+      "stat": "willpower",
+      "value": 32.0
+    },
+    {
+      "stat": "skillDamageUp",
+      "value": 0.414
+    }
+  ],
+  "ultEfficiency": 0.0
+}

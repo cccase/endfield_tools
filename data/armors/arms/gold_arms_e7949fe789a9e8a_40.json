@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e7949fe789a9e8a_40",
+  "name": "生物補助グローブ",
+  "icon": "image/armors/gold_arms_e7949fe789a9e8a_40.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_bio_support",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 65.0
+    },
+    {
+      "stat": "willpower",
+      "value": 43.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 20.5
+    }
+  ],
+  "ultEfficiency": 20.5
+}

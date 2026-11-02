@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e99b86e68890e8a_3",
+  "name": "集成訓練ライト",
+  "icon": "image/armors/gold_accessories_e99b86e68890e8a_3.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_syusei",
+  "mainStat": {
+    "stat": "defense",
+    "value": 18.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 18.0
+    },
+    {
+      "stat": "agility",
+      "value": 27.0
+    },
+    {
+      "stat": "subStatPercent",
+      "value": 0.177
+    }
+  ],
+  "ultEfficiency": 0.0
+}

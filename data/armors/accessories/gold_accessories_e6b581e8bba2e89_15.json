@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e6b581e8bba2e89_15",
+  "name": "流転蓄電装置Ⅰ",
+  "icon": "image/armors/gold_accessories_e6b581e8bba2e89_15.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_ruten",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 32.0
+    },
+    {
+      "stat": "willpower",
+      "value": 21.0
+    },
+    {
+      "stat": "healingEfficiency",
+      "value": 0.207
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e38391e382a4e38_43",
+  "name": "パイオニアガス供給強化装置",
+  "icon": "image/armors/gold_accessories_e38391e382a4e38_43.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_pioneer",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 32.0
+    },
+    {
+      "stat": "intellect",
+      "value": 21.0
+    },
+    {
+      "stat": "subStatPercent",
+      "value": 0.207
+    }
+  ],
+  "ultEfficiency": 0.0
+}

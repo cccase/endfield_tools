@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e697a7e98b92e38_7",
+  "name": "旧鋒ナイフ",
+  "icon": "image/armors/gold_accessories_e697a7e98b92e38_7.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_kyuho",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 32.0
+    },
+    {
+      "stat": "willpower",
+      "value": 21.0
+    },
+    {
+      "stat": "physicalDamageUp",
+      "value": 0.23
+    }
+  ],
+  "ultEfficiency": 0.0
+}

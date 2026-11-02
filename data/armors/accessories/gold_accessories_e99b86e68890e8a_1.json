@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e99b86e68890e8a_1",
+  "name": "集成訓練多機能ナイフ",
+  "icon": "image/armors/gold_accessories_e99b86e68890e8a_1.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_syusei",
+  "mainStat": {
+    "stat": "defense",
+    "value": 18.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 27.0
+    },
+    {
+      "stat": "agility",
+      "value": 18.0
+    },
+    {
+      "stat": "artsDamageUp",
+      "value": 0.18600000000000003
+    }
+  ],
+  "ultEfficiency": 0.0
+}

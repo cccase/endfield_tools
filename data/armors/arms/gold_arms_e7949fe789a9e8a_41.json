@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e7949fe789a9e8a_41",
+  "name": "生物補助手袋",
+  "icon": "image/armors/gold_arms_e7949fe789a9e8a_41.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_bio_support",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 43.0
+    },
+    {
+      "stat": "willpower",
+      "value": 65.0
+    },
+    {
+      "stat": "healingEfficiency",
+      "value": 0.17300000000000001
+    }
+  ],
+  "ultEfficiency": 0.0
+}

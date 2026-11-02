@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_50e5bc8fe5bf9ce_20",
+  "name": "50式応龍重防具",
+  "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_20.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_oryu",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 87.0
+    },
+    {
+      "stat": "willpower",
+      "value": 58.0
+    },
+    {
+      "stat": "physicalDamageUp",
+      "value": 0.115
+    }
+  ],
+  "ultEfficiency": 0.0
+}

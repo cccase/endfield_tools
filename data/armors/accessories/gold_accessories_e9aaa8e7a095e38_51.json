@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e9aaa8e7a095e38_51",
+  "name": "骨砕のマスクⅠ",
+  "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_51.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_kotsusai",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "agility",
+      "value": 32.0
+    },
+    {
+      "stat": "critRate",
+      "value": 0.10400000000000001
+    }
+  ],
+  "ultEfficiency": 0.0
+}

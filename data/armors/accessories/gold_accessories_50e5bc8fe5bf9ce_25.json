@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_50e5bc8fe5bf9ce_25",
+  "name": "50式応龍短剣Ⅰ",
+  "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_25.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_oryu",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "intellect",
+      "value": 32.0
+    },
+    {
+      "stat": "allSkillDamageUp",
+      "value": 0.276
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e69591e59bbde58_73",
+  "name": "救国印章",
+  "icon": "image/armors/gold_accessories_e69591e59bbde58_73.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 43.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 25.7
+    }
+  ],
+  "ultEfficiency": 25.7
+}

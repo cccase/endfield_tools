@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_mie8ada6e58299e_28",
+  "name": "M.I.警備マントⅠ",
+  "icon": "image/armors/gold_body_mie8ada6e58299e_28.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_mi_security",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 87.0
+    },
+    {
+      "stat": "willpower",
+      "value": 58.0
+    },
+    {
+      "stat": "critRate",
+      "value": 0.052000000000000005
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e7949fe789a9e8a_62",
+  "name": "生物補助コンタクタⅡ",
+  "icon": "image/armors/gold_accessories_e7949fe789a9e8a_62.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_bio_support",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 41.0
+    },
+    {
+      "stat": "hpPercent",
+      "value": 0.414
+    }
+  ],
+  "ultEfficiency": 0.0
+}

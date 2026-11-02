@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e99b86e68890e8a_2",
+  "name": "集成訓練プロテクター",
+  "icon": "image/armors/gold_arms_e99b86e68890e8a_2.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_syusei",
+  "mainStat": {
+    "stat": "defense",
+    "value": 36.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 55.0
+    },
+    {
+      "stat": "agility",
+      "value": 37.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 17.6
+    }
+  ],
+  "ultEfficiency": 17.6
+}

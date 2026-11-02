@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e38391e382a4e38_34",
+  "name": "パイオニア防具Ⅱ",
+  "icon": "image/armors/gold_body_e38391e382a4e38_34.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_pioneer",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 87.0
+    },
+    {
+      "stat": "intellect",
+      "value": 58.0
+    },
+    {
+      "stat": "skillDamageUp",
+      "value": 0.207
+    }
+  ],
+  "ultEfficiency": 0.0
+}

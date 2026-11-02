@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_mie8ada6e58299e_26",
+  "name": "M.I.警備防具Ⅰ",
+  "icon": "image/armors/gold_body_mie8ada6e58299e_26.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_mi_security",
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 87.0
+    },
+    {
+      "stat": "intellect",
+      "value": 58.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 12.3
+    }
+  ],
+  "ultEfficiency": 12.3
+}

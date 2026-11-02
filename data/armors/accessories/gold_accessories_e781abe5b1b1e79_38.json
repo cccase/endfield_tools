@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e781abe5b1b1e79_38",
+  "name": "火山用モバイルバッテリー",
+  "icon": "image/armors/gold_accessories_e781abe5b1b1e79_38.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_volcano",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 21.0
+    },
+    {
+      "stat": "willpower",
+      "value": 32.0
+    },
+    {
+      "stat": "artsIntensity",
+      "value": 41.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

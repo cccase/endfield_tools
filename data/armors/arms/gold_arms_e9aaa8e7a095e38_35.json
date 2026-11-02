@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e9aaa8e7a095e38_35",
+  "name": "骨砕のグローブ",
+  "icon": "image/armors/gold_arms_e9aaa8e7a095e38_35.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_kotsusai",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 65.0
+    },
+    {
+      "stat": "agility",
+      "value": 43.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

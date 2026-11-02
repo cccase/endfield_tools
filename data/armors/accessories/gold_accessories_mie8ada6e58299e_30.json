@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_mie8ada6e58299e_30",
+  "name": "M.I.警備アームバンド",
+  "icon": "image/armors/gold_accessories_mie8ada6e58299e_30.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_mi_security",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 32.0
+    },
+    {
+      "stat": "willpower",
+      "value": 21.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

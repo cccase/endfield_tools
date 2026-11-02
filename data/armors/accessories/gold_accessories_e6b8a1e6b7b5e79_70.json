@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e6b8a1e6b7b5e79_70",
+  "name": "渡淵白刃",
+  "icon": "image/armors/gold_accessories_e6b8a1e6b7b5e79_70.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 43.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 25.7
+    }
+  ],
+  "ultEfficiency": 25.7
+}

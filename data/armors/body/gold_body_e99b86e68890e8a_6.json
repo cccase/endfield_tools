@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e99b86e68890e8a_6",
+  "name": "集成訓練剣術防具",
+  "icon": "image/armors/gold_body_e99b86e68890e8a_6.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_syusei",
+  "mainStat": {
+    "stat": "defense",
+    "value": 48.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 74.0
+    },
+    {
+      "stat": "agility",
+      "value": 49.0
+    },
+    {
+      "stat": "physicalDamageUp",
+      "value": 0.098
+    }
+  ],
+  "ultEfficiency": 0.0
+}

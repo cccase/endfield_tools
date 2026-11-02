@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e6b885e6b3a2e68_12",
+  "name": "清波探知器具Ⅰ",
+  "icon": "image/armors/gold_accessories_e6b885e6b3a2e68_12.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_seiba",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "agility",
+      "value": 32.0
+    },
+    {
+      "stat": "physicalDamageUp",
+      "value": 0.23
+    }
+  ],
+  "ultEfficiency": 0.0
+}

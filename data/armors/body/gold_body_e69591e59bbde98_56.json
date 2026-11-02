@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e69591e59bbde98_56",
+  "name": "救国重防具",
+  "icon": "image/armors/gold_body_e69591e59bbde98_56.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 115.0
+    },
+    {
+      "stat": "normalAttackDamageUp",
+      "value": 0.14400000000000002
+    }
+  ],
+  "ultEfficiency": 0.0
+}

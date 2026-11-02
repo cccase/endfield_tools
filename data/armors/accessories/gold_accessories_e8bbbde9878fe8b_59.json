@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e8bbbde9878fe8b_59",
+  "name": "軽量超域腕時計",
+  "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_59.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_chouiki",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 32.0
+    },
+    {
+      "stat": "agility",
+      "value": 21.0
+    },
+    {
+      "stat": "skillDamageUp",
+      "value": 0.414
+    }
+  ],
+  "ultEfficiency": 0.0
+}

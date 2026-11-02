@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e69591e59bbde38_50",
+  "name": "救国プロテクター",
+  "icon": "image/armors/gold_arms_e69591e59bbde38_50.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 86.0
+    },
+    {
+      "stat": "ultDamageUp",
+      "value": 0.45
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e38391e383abe38_33",
+  "name": "パルス式グローブ",
+  "icon": "image/armors/gold_arms_e38391e383abe38_33.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_pulse",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 43.0
+    },
+    {
+      "stat": "willpower",
+      "value": 65.0
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_50e5bc8fe5bf9ce_19",
+  "name": "50式応龍プロテクター",
+  "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_19.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_oryu",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 65.0
+    },
+    {
+      "stat": "intellect",
+      "value": 43.0
+    },
+    {
+      "stat": "comboDamageUp",
+      "value": 0.345
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_mie8ada6e58299e_31",
+  "name": "M.I.警備照準器",
+  "icon": "image/armors/gold_accessories_mie8ada6e58299e_31.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_mi_security",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "agility",
+      "value": 32.0
+    },
+    {
+      "stat": "skillDamageUp",
+      "value": 0.414
+    }
+  ],
+  "ultEfficiency": 0.0
+}

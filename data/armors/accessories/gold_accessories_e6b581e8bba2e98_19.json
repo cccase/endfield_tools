@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e6b581e8bba2e98_19",
+  "name": "流転重量プレート",
+  "icon": "image/armors/gold_accessories_e6b581e8bba2e98_19.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_ruten",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 32.0
+    },
+    {
+      "stat": "willpower",
+      "value": 21.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 24.6
+    }
+  ],
+  "ultEfficiency": 24.6
+}

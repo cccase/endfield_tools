@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e99b86e68890e8a_3",
+  "name": "集成訓練ベスト",
+  "icon": "image/armors/gold_body_e99b86e68890e8a_3.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_syusei",
+  "mainStat": {
+    "stat": "defense",
+    "value": 48.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 49.0
+    },
+    {
+      "stat": "agility",
+      "value": 74.0
+    },
+    {
+      "stat": "subStatPercent",
+      "value": 0.08900000000000001
+    }
+  ],
+  "ultEfficiency": 0.0
+}

@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_arms_e6b581e8bba2e38_15",
+  "name": "流転グローブ",
+  "icon": "image/armors/gold_arms_e6b581e8bba2e38_15.png",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_ruten",
+  "mainStat": {
+    "stat": "defense",
+    "value": 42.0
+  },
+  "subStats": [
+    {
+      "stat": "agility",
+      "value": 43.0
+    },
+    {
+      "stat": "willpower",
+      "value": 65.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 20.5
+    }
+  ],
+  "ultEfficiency": 20.5
+}

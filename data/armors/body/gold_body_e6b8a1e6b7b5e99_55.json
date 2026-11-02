@@ -1,0 +1,24 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_body_e6b8a1e6b7b5e99_55",
+  "name": "渡淵防護服",
+  "icon": "image/armors/gold_body_e6b8a1e6b7b5e99_55.png",
+  "part": "body",
+  "rarity": 6,
+  "setId": null,
+  "mainStat": {
+    "stat": "defense",
+    "value": 56.0
+  },
+  "subStats": [
+    {
+      "stat": "intellect",
+      "value": 115.0
+    },
+    {
+      "stat": "heatAndNatureDamageUp",
+      "value": 0.12
+    }
+  ],
+  "ultEfficiency": 0.0
+}

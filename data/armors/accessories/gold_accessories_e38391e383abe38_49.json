@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "gold_accessories_e38391e383abe38_49",
+  "name": "パルス式装甲板",
+  "icon": "image/armors/gold_accessories_e38391e383abe38_49.png",
+  "part": "accessories",
+  "rarity": 6,
+  "setId": "set_pulse",
+  "mainStat": {
+    "stat": "defense",
+    "value": 21.0
+  },
+  "subStats": [
+    {
+      "stat": "strength",
+      "value": 21.0
+    },
+    {
+      "stat": "willpower",
+      "value": 32.0
+    },
+    {
+      "stat": "ultEfficiency",
+      "value": 24.6
+    }
+  ],
+  "ultEfficiency": 24.6
+}
