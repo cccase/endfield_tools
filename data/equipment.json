@@ -1,13 +1,13 @@
-﻿{
+{
     "armorSets":  [
                       {
                           "id":  "none",
-                          "name":  "縺ｪ縺・(0%)",
+                          "name":  "なし (0%)",
                           "efficiency":  0
                       },
                       {
                           "id":  "set_tenken",
-                          "name":  "天険繧ｻ繝・ヨ (+0%)",
+                          "name":  "天険セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_tenken",
@@ -26,7 +26,7 @@
                       },
                       {
                           "id":  "set_syusei",
-                          "name":  "集成訓練繧ｻ繝・ヨ (+15%)",
+                          "name":  "集成訓練セット (+15%)",
                           "efficiency":  15,
                           "detail":  {
                                          "id":  "set_syusei",
@@ -45,7 +45,7 @@
                       },
                       {
                           "id":  "set_kyuho",
-                          "name":  "旧鋒繧ｻ繝・ヨ (+0%)",
+                          "name":  "旧鋒セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_kyuho",
@@ -64,7 +64,7 @@
                       },
                       {
                           "id":  "set_joryu",
-                          "name":  "壌流繧ｻ繝・ヨ (+0%)",
+                          "name":  "壌流セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_joryu",
@@ -83,7 +83,7 @@
                       },
                       {
                           "id":  "set_seiba",
-                          "name":  "清波繧ｻ繝・ヨ (+0%)",
+                          "name":  "清波セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_seiba",
@@ -102,7 +102,7 @@
                       },
                       {
                           "id":  "set_ruten",
-                          "name":  "流転繧ｻ繝・ヨ (+0%)",
+                          "name":  "流転セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_ruten",
@@ -121,7 +121,7 @@
                       },
                       {
                           "id":  "set_mancho",
-                          "name":  "満潮繧ｻ繝・ヨ (+0%)",
+                          "name":  "満潮セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_mancho",
@@ -140,7 +140,7 @@
                       },
                       {
                           "id":  "set_oryu",
-                          "name":  "50式応龍繧ｻ繝・ヨ (+0%)",
+                          "name":  "50式応龍セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_oryu",
@@ -159,7 +159,7 @@
                       },
                       {
                           "id":  "set_mi_security",
-                          "name":  "M.I.警備繧ｻ繝・ヨ (+0%)",
+                          "name":  "M.I.警備セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_mi_security",
@@ -178,7 +178,7 @@
                       },
                       {
                           "id":  "set_volcano",
-                          "name":  "火山用繧ｻ繝・ヨ (+0%)",
+                          "name":  "火山用セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_volcano",
@@ -197,7 +197,7 @@
                       },
                       {
                           "id":  "set_pioneer",
-                          "name":  "パイオニア繧ｻ繝・ヨ (+0%)",
+                          "name":  "パイオニアセット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_pioneer",
@@ -216,7 +216,7 @@
                       },
                       {
                           "id":  "set_pulse",
-                          "name":  "パルス式繧ｻ繝・ヨ (+0%)",
+                          "name":  "パルス式セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_pulse",
@@ -235,7 +235,7 @@
                       },
                       {
                           "id":  "set_kotsusai",
-                          "name":  "骨砕繧ｻ繝・ヨ (+0%)",
+                          "name":  "骨砕セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_kotsusai",
@@ -254,7 +254,7 @@
                       },
                       {
                           "id":  "set_chouiki",
-                          "name":  "軽量超域繧ｻ繝・ヨ (+0%)",
+                          "name":  "軽量超域セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_chouiki",
@@ -273,7 +273,7 @@
                       },
                       {
                           "id":  "set_bio_support",
-                          "name":  "生物補助繧ｻ繝・ヨ (+0%)",
+                          "name":  "生物補助セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_bio_support",
@@ -292,7 +292,7 @@
                       },
                       {
                           "id":  "set_kozantenken",
-                          "name":  "宏山点剣繧ｻ繝・ヨ (+0%)",
+                          "name":  "宏山点剣セット (+0%)",
                           "efficiency":  0,
                           "detail":  {
                                          "id":  "set_kozantenken",
@@ -311,14 +311,14 @@
                       },
                       {
                           "id":  "other",
-                          "name":  "縺昴・莉悶そ繝・ヨ (0%)",
+                          "name":  "その他セット (0%)",
                           "efficiency":  0
                       }
                   ],
     "bodyArmor":  [
                       {
                           "id":  "none",
-                          "name":  "縺ｪ縺・(0%)",
+                          "name":  "なし (0%)",
                           "efficiency":  0,
                           "icon":  null
                       },
@@ -2361,7 +2361,7 @@
     "armArmor":  [
                      {
                          "id":  "none",
-                         "name":  "縺ｪ縺・(0%)",
+                         "name":  "なし (0%)",
                          "efficiency":  0,
                          "icon":  null
                      },
@@ -4192,7 +4192,7 @@
     "accessory":  [
                       {
                           "id":  "none",
-                          "name":  "縺ｪ縺・(0%)",
+                          "name":  "なし (0%)",
                           "efficiency":  0,
                           "icon":  null
                       },

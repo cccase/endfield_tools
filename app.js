@@ -2485,6 +2485,26 @@ function renderParty() {
     const armorBonus = calculateArmorBonus(p.equipment);
     const armorBonusText = armorBonus > 0 ? `+${armorBonus}%` : `+0%`;
 
+    // 選択中防具アイテムおよびアイコンの取得
+    const curBodyItem = (equipmentMaster.bodyArmor || []).find(i => i.id === p.equipment.body || i.id === normalizeEquipId('', p.equipment.body));
+    const curArmItem = (equipmentMaster.armArmor || []).find(i => i.id === p.equipment.arm || i.id === normalizeEquipId('', p.equipment.arm));
+    const curAcc1Item = (equipmentMaster.accessory || []).find(i => i.id === p.equipment.acc1 || i.id === normalizeEquipId('', p.equipment.acc1));
+    const curAcc2Item = (equipmentMaster.accessory || []).find(i => i.id === p.equipment.acc2 || i.id === normalizeEquipId('', p.equipment.acc2));
+    const curSetItem = (equipmentMaster.armorSets || []).find(i => i.id === p.equipment.armorSet);
+
+    let curSetIcon = null;
+    if (curSetItem && curSetItem.id !== 'none' && curSetItem.id !== 'other') {
+      const matchArmor = (equipmentMaster.bodyArmor || []).find(b => b.detail && b.detail.setId === curSetItem.id);
+      if (matchArmor && matchArmor.icon) curSetIcon = matchArmor.icon;
+    }
+
+    const makeIconBox = (iconUrl, placeholder, title) => {
+      if (iconUrl) {
+        return `<div class="equip-icon-box" title="${title || ''}"><img src="${iconUrl}" class="equip-thumb-img" alt="${title || ''}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>${placeholder}</span>';"></div>`;
+      }
+      return `<div class="equip-icon-box" title="${title || ''}"><span class="equip-icon-placeholder">${placeholder}</span></div>`;
+    };
+
     // 武器選択肢の生成（複数のおすすめ武器とモチーフ武器のタグ表示）
     const availableWeapons = getWeaponsForChar(p);
     const curWeaponObj = findWeapon(p.weapon.id);
@@ -2581,15 +2601,21 @@ function renderParty() {
         <!-- 武器設定 -->
         <details class="equip-details" ${p.isWeaponOpen ? 'open' : ''} ontoggle="handleEquipToggle(${index}, this.open)">
           <summary class="equip-summary">
-            <span>⚔️ 武器設定: ${curWeaponObj ? curWeaponObj.name : 'なし'}</span>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              ${curWeaponObj && curWeaponObj.icon ? `<img src="${curWeaponObj.icon}" style="width:18px; height:18px; object-fit:contain; border-radius:2px; vertical-align:middle;">` : '⚔️'}
+              武器設定: ${curWeaponObj ? curWeaponObj.name : 'なし'}
+            </span>
             <span class="equip-bonus-badge">武器効率: ${weaponBonusText}</span>
           </summary>
           <div class="weapon-body">
             <div class="weapon-select-row">
               <label>武器選択 (おすすめ/モチーフが最優先表示)</label>
-              <select onchange="updatePartyWeapon(${index}, this.value)">
-                ${weaponOptions}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curWeaponObj ? curWeaponObj.icon : null, '⚔️', curWeaponObj ? curWeaponObj.name : '武器なし')}
+                <select onchange="updatePartyWeapon(${index}, this.value)">
+                  ${weaponOptions}
+                </select>
+              </div>
             </div>
             ${weaponSkillsHtml}
           </div>
@@ -2598,39 +2624,56 @@ function renderParty() {
         <!-- 防具設定 -->
         <details class="equip-details" ${p.isEquipOpen ? 'open' : ''} ontoggle="handleEquipToggle(${index}, this.open)">
           <summary class="equip-summary">
-            <span>🛡️ 防具設定</span>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              🛡️ 防具設定
+            </span>
             <span class="equip-bonus-badge">防具効率: ${armorBonusText}</span>
           </summary>
           <div class="equip-grid">
             <div class="equip-field">
               <label>防具セット</label>
-              <select onchange="updatePartyEquipment(${index}, 'armorSet', this.value)">
-                ${armorSetOptions}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curSetIcon, '🛡️', curSetItem ? curSetItem.name : '防具セット')}
+                <select onchange="updatePartyEquipment(${index}, 'armorSet', this.value)">
+                  ${armorSetOptions}
+                </select>
+              </div>
             </div>
             <div class="equip-field">
               <label>胴防具</label>
-              <select onchange="updatePartyEquipment(${index}, 'body', this.value)">
-                ${bodyOptions}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curBodyItem ? curBodyItem.icon : null, '🦺', curBodyItem ? curBodyItem.name : '胴防具')}
+                <select onchange="updatePartyEquipment(${index}, 'body', this.value)">
+                  ${bodyOptions}
+                </select>
+              </div>
             </div>
             <div class="equip-field">
               <label>腕防具</label>
-              <select onchange="updatePartyEquipment(${index}, 'arm', this.value)">
-                ${armOptions}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curArmItem ? curArmItem.icon : null, '🧤', curArmItem ? curArmItem.name : '腕防具')}
+                <select onchange="updatePartyEquipment(${index}, 'arm', this.value)">
+                  ${armOptions}
+                </select>
+              </div>
             </div>
             <div class="equip-field">
               <label>アクセサリー1</label>
-              <select onchange="updatePartyEquipment(${index}, 'acc1', this.value)">
-                ${acc1Options}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curAcc1Item ? curAcc1Item.icon : null, '💍', curAcc1Item ? curAcc1Item.name : 'アクセサリー1')}
+                <select onchange="updatePartyEquipment(${index}, 'acc1', this.value)">
+                  ${acc1Options}
+                </select>
+              </div>
             </div>
             <div class="equip-field">
               <label>アクセサリー2</label>
-              <select onchange="updatePartyEquipment(${index}, 'acc2', this.value)">
-                ${acc2Options}
-              </select>
+              <div class="equip-select-wrapper">
+                ${makeIconBox(curAcc2Item ? curAcc2Item.icon : null, '💍', curAcc2Item ? curAcc2Item.name : 'アクセサリー2')}
+                <select onchange="updatePartyEquipment(${index}, 'acc2', this.value)">
+                  ${acc2Options}
+                </select>
+              </div>
             </div>
           </div>
         </details>

@@ -1,4 +1,4 @@
-﻿window.WEAPON_DATA = {
+window.WEAPON_DATA = {
     "typeOperators":  {
                           "片手剣":  [
                                       "管理人",
