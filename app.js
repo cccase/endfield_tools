@@ -2597,75 +2597,7 @@ function renderRoster() {
       const element = char.element || '物理';
       const charClass = char.class || '前衛';
       el.className = `roster-char rarity-${rarity}`;
-      // スキル設定（付着・クラッシュ欄）の生成
-    let specialBannerHtml = '';
-    if (p.name === 'スー' || p.id === 'char_su') {
-      const slot1 = party[0];
-      const slot1Name = slot1 ? slot1.name : '（未編成）';
-      const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
-      specialBannerHtml = `
-        <div class="special-mechanic-banner">
-          <span class="special-badge">✨【特殊仕様】墨筆の彩り（1枠目属性模倣）</span>
-          <span class="special-text">パーティ1枠目 <strong>${slot1Name}</strong> の属性を参照し、戦技の付着属性が <strong>${slot1El}</strong> に変化中。</span>
-        </div>
-      `;
-    } else if (p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') {
-      let okugiModeDesc = '知形態（自然付着・自然脆弱・高火力アタッカー）';
-      if (typeof DamageCalculator !== 'undefined') {
-        const stats = DamageCalculator.calculateCharacterStats(p, p.weapon, p.equipment, { weapons: allWeapons, equipment: equipmentMaster });
-        if (stats) {
-          if (stats.intellect > stats.willpower) {
-            okugiModeDesc = `知形態 (知性 ${Math.round(stats.intellect)} > 意志 ${Math.round(stats.willpower)}) : 自然付着・自然脆弱・高火力アタッカー`;
-          } else {
-            okugiModeDesc = `意形態 (意志 ${Math.round(stats.willpower)} ≧ 知性 ${Math.round(stats.intellect)}) : 広範囲集敵・アーツ付着+2段サポート`;
-          }
-        }
-      }
-      specialBannerHtml = `
-        <div class="special-mechanic-banner">
-          <span class="special-badge">✨【特殊仕様】知意双形態</span>
-          <span class="special-text">現在: <strong>${okugiModeDesc}</strong></span>
-        </div>
-      `;
-    }
-
-    const skillsHtml = (p.skills || []).map(sk => {
-      let infLabel = sk.infliction ? sk.infliction.label : 'なし';
-      let crushLabel = sk.crush ? sk.crush.label : 'なし';
-
-      // スーの戦技表示の動的書き換え
-      if ((p.name === 'スー' || p.id === 'char_su') && (sk.type === 'skill' || sk.type === 'skill2' || sk.type === 'skill3')) {
-        const slot1 = party[0];
-        const slot1El = (slot1 && slot1.element && slot1.element !== '物理') ? slot1.element : '寒冷';
-        infLabel = `【特殊模倣】${slot1El}付着(1段)`;
-      }
-
-      // オクギの戦技表示の動的書き換え
-      if ((p.name === 'オクギ' || p.id === 'char_okugi' || p.id === 'オクギ') && (sk.type === 'skill' || sk.type === 'combo')) {
-        infLabel = `【特殊双形態】知:自然付着 / 意:付着+2段`;
-      }
-
-      return `
-        <div class="party-skill-card">
-          <div class="party-skill-top">
-            <span class="party-skill-name">${sk.shortName || sk.name}: ${sk.name}</span>
-            <span class="tag-elem-${sk.damageType || p.element}">${sk.damageType || p.element}</span>
-          </div>
-          <div class="party-skill-meta">
-            <div class="skill-meta-item">
-              <span class="meta-label">付着:</span>
-              <span class="meta-val meta-infliction">${infLabel}</span>
-            </div>
-            <div class="skill-meta-item">
-              <span class="meta-label">クラッシュ:</span>
-              <span class="meta-val meta-crush">${crushLabel}</span>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    el.innerHTML = `
+      el.innerHTML = `
         <div class="char-icon-wrap">
           <img src="${char.icon}" class="char-icon" alt="${char.name}">
           <span class="char-rarity-badge">★${rarity}</span>
