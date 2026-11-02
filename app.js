@@ -2173,6 +2173,22 @@ function initMobileViewportListeners() {
   window.addEventListener('orientationchange', updateMobileViewportMetrics, { passive: true });
 }
 
+let timeTrackTimeline = null;
+
+function initTimeTrackTimeline() {
+  const container = document.getElementById('time-track-container');
+  if (container && typeof TimeTrackTimeline !== 'undefined') {
+    timeTrackTimeline = new TimeTrackTimeline('time-track-container', { pxPerSec: 28 });
+    autoSyncTimeTracks();
+  }
+}
+
+window.autoSyncTimeTracks = function() {
+  if (timeTrackTimeline) {
+    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
+  }
+};
+
 async function initApp() {
   initMobileViewportListeners();
   await Promise.all([fetchCharacters(), fetchEquipment()]);
@@ -2182,6 +2198,7 @@ async function initApp() {
   if (typeof resetEnemySettings === 'function') {
     resetEnemySettings();
   }
+  initTimeTrackTimeline();
 
   // ソートボタンのイベントリスナー
   document.querySelectorAll('.roster-sort-controls .sort-btn').forEach(btn => {
@@ -4067,7 +4084,9 @@ function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRe
     container.appendChild(row);
   });
 
-
+  if (timeTrackTimeline && !timeTrackTimeline.activeDrag) {
+    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
+  }
 }
 window.renderTimeline = renderTimeline;
 
