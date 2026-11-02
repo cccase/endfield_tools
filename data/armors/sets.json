@@ -1,0 +1,53 @@
+{
+  "sets": [
+    {
+      "id": "set_ruten",
+      "name": "流転",
+      "effects": {
+        "twoPiece": {
+          "description": "攻撃力+10.0%",
+          "atkPercent": 0.10
+        },
+        "threePiece": {
+          "description": "スキル発動時、15秒間物理ダメージ+20.0%",
+          "physicalDamageUp": 0.20,
+          "duration": 15.0,
+          "isStackable": false
+        }
+      }
+    },
+    {
+      "id": "set_tensai",
+      "name": "天災防護",
+      "effects": {
+        "twoPiece": {
+          "description": "アーツ強度+30",
+          "artsIntensity": 30
+        },
+        "threePiece": {
+          "description": "アーツ異常時、全属性ダメージ+18.0%",
+          "allDamageUp": 0.18,
+          "duration": 20.0,
+          "isStackable": false
+        }
+      }
+    },
+    {
+      "id": "set_syusei",
+      "name": "集成訓練",
+      "effects": {
+        "twoPiece": {
+          "description": "必殺技効率+10.0%",
+          "ultEfficiency": 10.0
+        },
+        "threePiece": {
+          "description": "必殺技ダメージ+25.0%",
+          "ultDamageUp": 0.25,
+          "duration": 0,
+          "isStackable": false
+        }
+      }
+    }
+  ]
+}
+

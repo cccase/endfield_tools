@@ -1,0 +1,100 @@
+{
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_admin",
+  "name": "管理人",
+  "icon": "image/admin.png",
+  "rarity": 6,
+  "element": "物理",
+  "weaponType": "片手剣",
+  "class": "前衛",
+  "mainStat": "敏捷",
+  "subStat": "知性",
+  "baseStats": {
+    "hp": 7200,
+    "atk": 850,
+    "strength": 130,
+    "agility": 285,
+    "intellect": 185,
+    "willpower": 110,
+    "artsIntensity": 50,
+    "critRate": 0.05,
+    "critDamage": 0.50
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "refund_sp_boost",
+      "value": 50,
+      "description": "スキル発動時返還SP+50"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_admin",
+      "type": "skill",
+      "name": "構成配列",
+      "shortName": "戦技",
+      "spCost": 100,
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 3.80,
+        "lv10_spec1": 4.10,
+        "lv11_spec2": 4.45,
+        "lv12_spec3": 4.85
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "admin_skill_atk_up",
+          "name": "構成配列・自己強化",
+          "stat": "atkPercent",
+          "value": 0.15,
+          "duration": 15.0,
+          "maxStacks": 1,
+          "isStackable": false
+        }
+      ]
+    },
+    {
+      "id": "combo_admin",
+      "type": "combo",
+      "name": "封印配列",
+      "shortName": "連携技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 2.90,
+        "lv10_spec1": 3.15,
+        "lv11_spec2": 3.40,
+        "lv12_spec3": 3.70
+      },
+      "hitCount": 1,
+      "buffs": []
+    },
+    {
+      "id": "ult_admin",
+      "type": "ult",
+      "name": "攻撃配列",
+      "shortName": "必殺技",
+      "epCost": 80,
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 7.50,
+        "lv10_spec1": 8.10,
+        "lv11_spec2": 8.80,
+        "lv12_spec3": 9.60
+      },
+      "hitCount": 5,
+      "buffs": []
+    }
+  ],
+  "baseRecoverSP": 0,
+  "motifWeapon": "大願",
+  "recommendedWeapons": [
+    "大願",
+    "輝かしき名声"
+  ]
+}
+

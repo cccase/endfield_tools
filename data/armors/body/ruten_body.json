@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "armor_body_ruten",
+  "name": "流転の胸当て",
+  "part": "body",
+  "rarity": 6,
+  "setId": "set_ruten",
+  "mainStat": {
+    "stat": "hp",
+    "value": 2400
+  },
+  "subStats": [
+    {
+      "stat": "atkPercent",
+      "value": 0.16
+    },
+    {
+      "stat": "critRate",
+      "value": 0.05
+    }
+  ],
+  "ultEfficiency": 16.0
+}
+

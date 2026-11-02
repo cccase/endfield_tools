@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/enemy.schema.json",
+  "id": "target_dummy",
+  "name": "案山子（ダミー）",
+  "level": 90,
+  "defense": 100,
+  "resistances": {
+    "physical": 0.0,
+    "heat": 0.0,
+    "electric": 0.0,
+    "cryo": 0.0,
+    "nature": 0.0
+  },
+  "vulnerability": 0.0,
+  "isBroken": false,
+  "breakMultiplier": 1.5
+}
+

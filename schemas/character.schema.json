@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CharacterData",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "rarity",
+    "element",
+    "weaponType",
+    "class",
+    "mainStat",
+    "subStat",
+    "baseStats",
+    "skills"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "icon": { "type": "string" },
+    "rarity": { "type": "integer", "minimum": 4, "maximum": 6 },
+    "element": {
+      "type": "string",
+      "enum": ["物理", "灼熱", "電磁", "寒冷", "自然"]
+    },
+    "weaponType": {
+      "type": "string",
+      "enum": ["片手剣", "大剣", "長柄武器", "拳銃", "アーツユニット"]
+    },
+    "class": {
+      "type": "string",
+      "enum": ["前衛", "先鋒", "重装", "術師", "突撃", "補助"]
+    },
+    "mainStat": {
+      "type": "string",
+      "enum": ["筋力", "敏捷", "知性", "意志"]
+    },
+    "subStat": {
+      "type": "string",
+      "enum": ["筋力", "敏捷", "知性", "意志"]
+    },
+    "baseStats": {
+      "type": "object",
+      "required": ["hp", "atk", "strength", "agility", "intellect", "willpower"],
+      "properties": {
+        "hp": { "type": "number", "minimum": 0 },
+        "atk": { "type": "number", "minimum": 0 },
+        "strength": { "type": "number", "minimum": 0 },
+        "agility": { "type": "number", "minimum": 0 },
+        "intellect": { "type": "number", "minimum": 0 },
+        "willpower": { "type": "number", "minimum": 0 },
+        "artsIntensity": { "type": "number", "minimum": 0 },
+        "critRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "critDamage": { "type": "number", "minimum": 0 }
+      }
+    },
+    "defaultEfficiency": { "type": "number" },
+    "defaultPotential": { "type": "integer" },
+    "baseRefundSP": { "type": "number" },
+    "potentials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "type", "value"],
+        "properties": {
+          "level": { "type": "integer" },
+          "type": { "type": "string" },
+          "value": { "type": "number" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "name", "damageType", "multipliers"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["skill", "combo", "ult", "ult2", "ult_cancel", "other"]
+          },
+          "name": { "type": "string" },
+          "shortName": { "type": "string" },
+          "spCost": { "type": "number" },
+          "epCost": { "type": "number" },
+          "damageType": {
+            "type": "string",
+            "enum": ["物理", "灼熱", "電磁", "寒冷", "自然", "なし"]
+          },
+          "multipliers": {
+            "type": "object",
+            "required": ["lv9", "lv10_spec1", "lv11_spec2", "lv12_spec3"],
+            "properties": {
+              "lv9": { "type": "number", "minimum": 0 },
+              "lv10_spec1": { "type": "number", "minimum": 0 },
+              "lv11_spec2": { "type": "number", "minimum": 0 },
+              "lv12_spec3": { "type": "number", "minimum": 0 }
+            }
+          },
+          "hitCount": { "type": "integer", "minimum": 1 },
+          "buffs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name", "stat", "value", "duration"],
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "stat": { "type": "string" },
+                "value": { "type": "number" },
+                "duration": { "type": "number" },
+                "maxStacks": { "type": "integer" },
+                "isStackable": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "motifWeapon": { "type": ["string", "null"] },
+    "recommendedWeapons": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
+

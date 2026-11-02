@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WeaponData",
+  "type": "object",
+  "required": ["id", "name", "rarity", "type", "baseAtk", "skills"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "rarity": { "type": "integer", "minimum": 3, "maximum": 6 },
+    "type": {
+      "type": "string",
+      "enum": ["片手剣", "大剣", "長柄武器", "拳銃", "アーツユニット"]
+    },
+    "motif": { "type": ["string", "null"] },
+    "baseAtk": { "type": "number", "minimum": 0 },
+    "mainStatBonus": {
+      "type": "object",
+      "properties": {
+        "stat": { "type": "string" },
+        "value": { "type": "number" }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "ranks": {
+            "type": "array"
+          },
+          "description": { "type": "string" },
+          "ultEfficiency": { "type": ["array", "null"] }
+        }
+      }
+    },
+    "ultEfficiency": { "type": ["array", "number", "null"] }
+  }
+}
+

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnemyTargetData",
+  "type": "object",
+  "required": ["id", "name", "level", "defense", "resistances"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "level": { "type": "integer", "minimum": 1 },
+    "defense": { "type": "number", "minimum": 0 },
+    "resistances": {
+      "type": "object",
+      "required": ["physical", "heat", "electric", "cryo", "nature"],
+      "properties": {
+        "physical": { "type": "number" },
+        "heat": { "type": "number" },
+        "electric": { "type": "number" },
+        "cryo": { "type": "number" },
+        "nature": { "type": "number" }
+      }
+    },
+    "vulnerability": { "type": "number" },
+    "isBroken": { "type": "boolean" },
+    "breakMultiplier": { "type": "number", "minimum": 1.0 }
+  }
+}
+

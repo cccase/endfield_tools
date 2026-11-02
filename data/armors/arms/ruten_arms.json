@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schemas/armor.schema.json",
+  "id": "armor_arms_ruten",
+  "name": "流転の腕甲",
+  "part": "arms",
+  "rarity": 6,
+  "setId": "set_ruten",
+  "mainStat": {
+    "stat": "defense",
+    "value": 180
+  },
+  "subStats": [
+    {
+      "stat": "atkFlat",
+      "value": 65
+    },
+    {
+      "stat": "agility",
+      "value": 45
+    }
+  ],
+  "ultEfficiency": 26.7
+}
+
