@@ -581,13 +581,13 @@
     "type": "custom",
     "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
   },
-  "recommendedArmorSet": "set_ruten",
-  "recommendedArmorSetName": "流転セット",
+  "recommendedArmorSet": "set_bio_support",
+  "recommendedArmorSetName": "生物補助セット",
   "recommendedArmor": {
-    "armorSet": "set_ruten",
-    "body": "gold_body_e6b581e8bba2e8b_13",
-    "arm": "gold_arms_e6b581e8bba2e38_12",
-    "acc1": "gold_accessories_e6b581e8bba2e38_16",
+    "armorSet": "set_bio_support",
+    "body": "gold_body_e7949fe789a9e8a_45",
+    "arm": "gold_arms_e7949fe789a9e8a_40",
+    "acc1": "gold_accessories_e7949fe789a9e8a_60",
     "acc2": "gold_accessories_e7949fe789a9e8a_63"
   }
 }

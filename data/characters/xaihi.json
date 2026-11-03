@@ -322,13 +322,13 @@
       ]
     }
   ],
-  "recommendedArmorSet": "set_ruten",
-  "recommendedArmorSetName": "流転セット",
+  "recommendedArmorSet": "none",
+  "recommendedArmorSetName": "セットなし（知性特化）",
   "recommendedArmor": {
-    "armorSet": "set_ruten",
-    "body": "gold_body_e6b581e8bba2e8b_13",
-    "arm": "gold_arms_e6b581e8bba2e38_12",
-    "acc1": "gold_accessories_e6b581e8bba2e38_16",
-    "acc2": "gold_accessories_e69591e59bbde58_73"
+    "armorSet": "none",
+    "body": "gold_body_e69591e59bbde99_57",
+    "arm": "gold_arms_e69591e59bbde38_50",
+    "acc1": "gold_accessories_e69591e59bbde58_73",
+    "acc2": "gold_accessories_e7949fe789a9e8a_63"
   }
 }

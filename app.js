@@ -10625,13 +10625,13 @@ const DEFAULT_DATA = {
         "type": "custom",
         "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
       },
-      "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット",
+      "recommendedArmorSet": "set_bio_support",
+      "recommendedArmorSetName": "生物補助セット",
       "recommendedArmor": {
-        "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
-        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "armorSet": "set_bio_support",
+        "body": "gold_body_e7949fe789a9e8a_45",
+        "arm": "gold_arms_e7949fe789a9e8a_40",
+        "acc1": "gold_accessories_e7949fe789a9e8a_60",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -15983,13 +15983,13 @@ const DEFAULT_DATA = {
         "type": "custom",
         "description": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加） ／ 【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する ／ 必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット",
+      "recommendedArmorSet": "set_kotsusai",
+      "recommendedArmorSetName": "骨砕セット",
       "recommendedArmor": {
-        "armorSet": "set_pulse",
-        "body": "gold_body_e38391e383abe38_37",
-        "arm": "gold_arms_e38391e383abe38_33",
-        "acc1": "gold_accessories_e38391e383abe38_46",
+        "armorSet": "set_kotsusai",
+        "body": "gold_body_e9aaa8e7a095e38_39",
+        "arm": "gold_arms_e9aaa8e7a095e38_35",
+        "acc1": "gold_accessories_e9aaa8e7a095e38_50",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -17051,14 +17051,14 @@ const DEFAULT_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット",
+      "recommendedArmorSet": "none",
+      "recommendedArmorSetName": "セットなし（知性特化）",
       "recommendedArmor": {
-        "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
-        "acc1": "gold_accessories_e6b581e8bba2e38_16",
-        "acc2": "gold_accessories_e69591e59bbde58_73"
+        "armorSet": "none",
+        "body": "gold_body_e69591e59bbde99_57",
+        "arm": "gold_arms_e69591e59bbde38_50",
+        "acc1": "gold_accessories_e69591e59bbde58_73",
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -19372,9 +19372,11 @@ function renderParty() {
           <div class="rich-armor-panel">
             <div class="rich-armor-set-row">
               ${(() => {
-                const isSetRec = (p.recommendedArmorSet && curSetItem && curSetItem.id === p.recommendedArmorSet);
-                let badge = curSetItem && curSetItem.id !== 'none' ? '3部位発動' : '';
-                if (isSetRec) badge = '★ おすすめセット';
+                const isSetRec = Boolean(p.recommendedArmorSet && p.recommendedArmorSet !== 'none' && curSetItem && curSetItem.id === p.recommendedArmorSet);
+                let badge = '';
+                if (curSetItem && curSetItem.id !== 'none') {
+                  badge = isSetRec ? '★ おすすめセット' : '3部位発動';
+                }
                 return makeRichSlotCard(
                   'armorSet',
                   '🛡️ 3部位セット効果',
