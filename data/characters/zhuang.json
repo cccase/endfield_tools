@@ -1,172 +1,375 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_zhuang",
-    "name":  "ゾアン・ファンイ",
-    "icon":  "image/zhuang.png",
-    "rarity":  6,
-    "element":  "電磁",
-    "weaponType":  "アーツユニット",
-    "class":  "突撃",
-    "mainStat":  "敏捷",
-    "subStat":  "筋力",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  920,
-                      "strength":  185,
-                      "agility":  285,
-                      "intellect":  120,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_zhuang",
-                       "type":  "skill",
-                       "name":  "雷霆陣",
-                       "shortName":  "戦技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_zhuang__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_zhuang",
-                       "type":  "combo",
-                       "name":  "轟雷連環",
-                       "shortName":  "連携技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_zhuang__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_zhuang",
-                       "type":  "ult",
-                       "name":  "万雷帰一",
-                       "shortName":  "必殺技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_zhuang_ult_self",
-                                         "name":  "万雷帰一 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_zhuang__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "孤舟",
-    "recommendedWeapons":  [
-                               "孤舟",
-                               "破壊ユニット"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_zhuang",
+  "name": "ゾアン・ファンイ",
+  "icon": "image/zhuang.png",
+  "rarity": 6,
+  "element": "電磁",
+  "weaponType": "アーツユニット",
+  "class": "突撃",
+  "mainStat": "敏捷",
+  "subStat": "筋力",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 920,
+    "strength": 185,
+    "agility": 285,
+    "intellect": 120,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "戦技倍率1.15倍・初回戦技蒼雷剣+1",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "意志+20・戦技ダメ+15%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "感電消費時SP10返還・蒼雷剣持続+10秒",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "必殺消費-15%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "理の境中電磁耐性15無視",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_zhuang",
+      "type": "skill",
+      "name": "驚雷訣",
+      "shortName": "戦技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_zhuang_skill_multiplier",
+          "name": "驚雷訣 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 36.0,
+          "description": "雷撃1本毎倍率(最後の1本はダメージ6倍！・1凸で戦技全体1.15倍): 通常時[R1=20%→R9=36%→特化III=45%]＋感電消費1段階毎[R1=+3%→R9=+6%→特化III=+9%] / 理の境(必殺)中[R1=36%→R9=65%→特化III=81%]＋感電消費1段階毎[R1=+8%→R9=+15%→特化III=+18%]",
+          "condition": "SP消費100(3凸で感電消費時SP10返還) / 蒼雷剣を[消費感電段階+1]本生成(1回最大3本、既存3本未満なら非消費でも1本生成、上限9本・持続36秒)し全剣で雷撃(最終弾6倍！)"
+        },
+        {
+          "id": "buff_zhuang_skill_aux",
+          "name": "驚雷訣 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 36.0,
+          "description": "総ブレイク値15 / 雷撃を放った蒼雷剣1本につき必殺チャージ+6回復",
+          "condition": "SP消費100(3凸で感電消費時SP10返還) / 蒼雷剣を[消費感電段階+1]本生成(1回最大3本、既存3本未満なら非消費でも1本生成、上限9本・持続36秒)し全剣で雷撃(最終弾6倍！)"
+        },
+        {
+          "id": "buff_zhuang_skill_special",
+          "name": "驚雷訣 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 36.0,
+          "description": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。",
+          "condition": "SP消費100(3凸で感電消費時SP10返還) / 蒼雷剣を[消費感電段階+1]本生成(1回最大3本、既存3本未満なら非消費でも1本生成、上限9本・持続36秒)し全剣で雷撃(最終弾6倍！)",
+          "special": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "【限定】必殺技期間中のみ通常時はなし / ※必殺技「理の境」持続中のみ最後の雷撃命中時に電磁付着(1段階)を付与！",
+        "description": "通常時はなし / ※必殺技「理の境」持続中のみ最後の雷撃命中時に電磁付着(1段階)を付与！"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "目標の感電状態を消費(※理の境中の初回戦技は感電・SPを消費せず蒼雷剣3本生成)",
+        "description": "目標の感電状態を消費(※理の境中の初回戦技は感電・SPを消費せず蒼雷剣3本生成)"
+      },
+      "description": "目標の感電状態を消費し[消費段階+1]本の蒼雷剣を生成(1回最大3本・上限9本・持続36秒)。付近の全蒼雷剣が順に雷撃を放ち(1本毎必殺チャージ+6)、最後の雷撃は6倍のダメージを与える。必殺技「理の境」期間中のみ最後の雷撃命中時に電磁付着(1段階)を付与する。",
+      "damageTypeDetail": "電磁",
+      "rawText": "目標の感電状態を消費し[消費段階+1]本の蒼雷剣を生成(1回最大3本・上限9本・持続36秒)。付近の全蒼雷剣が順に雷撃を放ち(1本毎必殺チャージ+6)、最後の雷撃は6倍のダメージを与える。必殺技「理の境」期間中のみ最後の雷撃命中時に電磁付着(1段階)を付与する。",
+      "attachText": "通常時はなし / ※必殺技「理の境」持続中のみ最後の雷撃命中時に電磁付着(1段階)を付与！",
+      "anomalyText": "目標の感電状態を消費(※理の境中の初回戦技は感電・SPを消費せず蒼雷剣3本生成)",
+      "special": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。"
+    },
+    {
+      "id": "combo_zhuang",
+      "type": "combo",
+      "name": "一息万変",
+      "shortName": "連携技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_zhuang_combo_multiplier",
+          "name": "一息万変 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 18.0,
+          "description": "通常時電磁ダメ: R1=160%→R9=288%→特化III=360% / 理の境(必殺)中電磁ダメ: R1=240%→R9=432%→特化III=540%",
+          "condition": "電磁付着状態の敵に重攻撃または終撃を行った時発動可(理の境中は範囲内発動可＆CD回復速度4倍) / CD: R1=18秒→R9=18秒→特化III=17秒"
+        },
+        {
+          "id": "buff_zhuang_combo_aux",
+          "name": "一息万変 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 18.0,
+          "description": "ブレイク値10 / 基礎必殺チャージ+10回復 ＋ 消費した電磁付着1段階につき必殺チャージ+10追加回復",
+          "condition": "電磁付着状態の敵に重攻撃または終撃を行った時発動可(理の境中は範囲内発動可＆CD回復速度4倍) / CD: R1=18秒→R9=18秒→特化III=17秒"
+        },
+        {
+          "id": "buff_zhuang_combo_special",
+          "name": "一息万変 [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 18.0,
+          "description": "【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。",
+          "condition": "電磁付着状態の敵に重攻撃または終撃を行った時発動可(理の境中は範囲内発動可＆CD回復速度4倍) / CD: R1=18秒→R9=18秒→特化III=17秒",
+          "special": "【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "電磁付着を全消費して強制的に感電状態にする(すでに感電中なら感電異常段階+1)！",
+        "description": "電磁付着を全消費して強制的に感電状態にする(すでに感電中なら感電異常段階+1)！"
+      },
+      "description": "電磁付着状態の敵に重攻撃または終撃を行ったときに発動可能。敵に電磁ダメージを与え、電磁付着を消費して強制的に感電状態にする(すでに感電状態なら異常段階+1)。消費1段階ごとに必殺チャージを追加で10回復。（※電磁付着は付与しない）",
+      "damageTypeDetail": "電磁",
+      "rawText": "電磁付着状態の敵に重攻撃または終撃を行ったときに発動可能。敵に電磁ダメージを与え、電磁付着を消費して強制的に感電状態にする(すでに感電状態なら異常段階+1)。消費1段階ごとに必殺チャージを追加で10回復。（※電磁付着は付与しない）",
+      "attachText": "なし",
+      "anomalyText": "電磁付着を全消費して強制的に感電状態にする(すでに感電中なら感電異常段階+1)！",
+      "special": "【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。"
+    },
+    {
+      "id": "ult_zhuang",
+      "type": "ult",
+      "name": "風来轟轟",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_zhuang_ult_multiplier",
+          "name": "風来轟轟 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "理の境中の強化通常攻撃3段: R1[67%/94%/134%] → R9[120%/168%/240%] → 特化III[150%/210%/300%](戦技・連携倍率も上記各スキル欄の通り強化)",
+          "condition": "必殺チャージ消費240(4凸204) / CD15秒 / 25秒間「理の境」状態に移行"
+        },
+        {
+          "id": "buff_zhuang_ult_aux",
+          "name": "風来轟轟 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "連携技CD回復速度4倍(実質CD約4.25秒) / 期間中初回の戦技はSPと感電を消費せず必ず蒼雷剣を3本生成",
+          "condition": "必殺チャージ消費240(4凸204) / CD15秒 / 25秒間「理の境」状態に移行"
+        },
+        {
+          "id": "buff_zhuang_ult_special",
+          "name": "風来轟轟 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。",
+          "condition": "必殺チャージ消費240(4凸204) / CD15秒 / 25秒間「理の境」状態に移行",
+          "special": "【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "⚡ 電磁付着 (+1段階)",
+        "description": "期間中の戦技「驚雷訣」最終雷撃に電磁付着(1段階)効果を付与(必殺発動自体には付着なし)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "25秒間「理の境」に入る。通常攻撃・戦技・連携技が強化され、戦技の最後の雷撃が電磁付着を付与するようになり、連携技のCD回復速度が4倍になる。さらに期間中最初の戦技はSPと感電を消費せず蒼雷剣を3本生成する。",
+      "damageTypeDetail": "電磁",
+      "rawText": "25秒間「理の境」に入る。通常攻撃・戦技・連携技が強化され、戦技の最後の雷撃が電磁付着を付与するようになり、連携技のCD回復速度が4倍になる。さらに期間中最初の戦技はSPと感電を消費せず蒼雷剣を3本生成する。",
+      "attachText": "期間中の戦技「驚雷訣」最終雷撃に電磁付着(1段階)効果を付与(必殺発動自体には付着なし)",
+      "anomalyText": "なし",
+      "special": "【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
+    }
+  ],
+  "motifWeapon": "孤舟",
+  "recommendedWeapons": [
+    "孤舟",
+    "破壊ユニット"
+  ],
+  "normalAttack": {
+    "name": "迅雷法",
+    "damageType": "電磁",
+    "damageTypeDetail": "電磁",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[16%/24%/32%/45%/48%]→R9[29%/43%/58%/81%/86%]→特化III[36%/54%/72%/101%/108%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+    "description": "最大5段の攻撃で、敵に電磁ダメージを与える。重攻撃はブレイク値18を与える。（※電磁付着なし）",
+    "raw": "最大5段の攻撃で、敵に電磁ダメージを与える。重攻撃はブレイク値18を与える。（※電磁付着なし）"
+  },
+  "talents": [
+    {
+      "id": "talent_zhuang_1",
+      "name": "天地造化",
+      "description": "戦技を発動したとき5秒間電磁増幅+9%→+18%、蒼雷剣の雷撃が命中するたびさらに+1%→+2%(次の戦技発動時にリセット)。",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_zhuang_talent1_amp",
+          "name": "天地造化 [【枠5】増幅枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "amp",
+          "calcGroupLabel": "【枠5】増幅枠",
+          "value": 0,
+          "duration": 5.0,
+          "description": "戦技発動時に自身の電磁増幅+9%(昇進1)→+18%(昇進2)、さらに雷撃命中毎に電磁増幅+1%(昇進1)→+2%(昇進2)加算(9本命中なら+18%+18%=+36%！)",
+          "condition": "戦技発動時5秒間持続、さらに蒼雷剣の雷撃命中毎にスタック加算(次回戦技発動でリセット)"
+        }
+      ]
+    },
+    {
+      "id": "talent_zhuang_2",
+      "name": "承天之佑",
+      "description": "9%+蒼雷剣の数×1%の確率でダメージを無効化し、自身の最大HPの9%→18%を回復する(回復効果は99秒に1回まで)。",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_zhuang_talent2_aux",
+          "name": "承天之佑 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 99.0,
+          "description": "[9% + 戦場の蒼雷剣数×1%]の確率で受けるダメージを無効化し、最大HPの9%(昇進1)→18%(昇進2)を回復(回復CD99秒)",
+          "condition": "被ダメージ時確率発動 / HP回復効果はCD99秒"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "ゾアン・ファンイ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。 ／ 【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。 ／ 【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
+  }
 }

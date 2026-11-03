@@ -1,206 +1,463 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_tangtang",
-    "name":  "タンタン",
-    "icon":  "image/tangtang.png",
-    "rarity":  6,
-    "element":  "寒冷",
-    "weaponType":  "拳銃",
-    "class":  "術師",
-    "mainStat":  "知性",
-    "subStat":  "敏捷",
-    "baseStats":  {
-                      "hp":  6800,
-                      "atk":  920,
-                      "strength":  120,
-                      "agility":  185,
-                      "intellect":  285,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  1,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  1,
-                           "type":  "refund_sp_boost",
-                           "value":  5
-                       },
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "char_tangtang",
-                       "type":  "skill",
-                       "name":  "波が来るぜ！",
-                       "shortName":  "戦技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_tangtang__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "char_tangtang",
-                       "type":  "combo",
-                       "name":  "川よ、俺様に従え！",
-                       "shortName":  "連携技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_tangtang__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "char_tangtang",
-                       "type":  "ult",
-                       "name":  "大親分が見てっぞ！",
-                       "shortName":  "必殺技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_tangtang_ult_self",
-                                         "name":  "大親分が見てっぞ！ 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_tangtang__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   },
-                   {
-                       "id":  "char_tangtang",
-                       "type":  "ult_cancel",
-                       "name":  "大親分が見てっぞ！(キャンセル)",
-                       "shortName":  "必殺キャンセル",
-                       "damageType":  "なし",
-                       "multipliers":  {
-                                           "lv9":  0,
-                                           "lv10_spec1":  0,
-                                           "lv11_spec2":  0,
-                                           "lv12_spec3":  0
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-
-                                 ],
-                       "spCost":  0,
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "設置技・展開状態を任意に解除し、クールダウンや陣形をリセットする。"
-                   }
-               ],
-    "motifWeapon":  "落草",
-    "recommendedWeapons":  [
-                               "落草",
-                               "望郷"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_tangtang",
+  "name": "タンタン",
+  "icon": "image/tangtang.png",
+  "rarity": 6,
+  "element": "寒冷",
+  "weaponType": "拳銃",
+  "class": "術師",
+  "mainStat": "知性",
+  "subStat": "敏捷",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 920,
+    "strength": 120,
+    "agility": 185,
+    "intellect": 285,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 1,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "連携1.2倍・連携CD-2秒・湍水SP返還+5",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "敏捷+20・寒冷ダメ+10%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "戦技1.1倍・水竜巻アーツ脆弱+5%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "必殺消費-15%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "必殺1.15倍・素質2水竜巻ダメ+80%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "char_tangtang",
+      "type": "skill",
+      "name": "波が来るぜ！",
+      "shortName": "戦技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_tangtang_skill_multiplier",
+          "name": "波が来るぜ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 3.0,
+          "description": "射撃寒冷ダメ: R1=80%→R9=144%→特化III=180% / 水竜巻1つにつき寒冷ダメ(戦技ダメージ見なし): R1=133%→R9=240%→特化III=300%(3凸で戦技倍率1.1倍)",
+          "condition": "SP消費100 / 水竜巻1つ＋周囲の「湍水」(最大2カ所)を全消費して同数の水竜巻追加発生(最大計3つ・持続3秒) / 複数発生時15秒間アーツ脆弱付与"
+        },
+        {
+          "id": "buff_tangtang_skill_vulnerability",
+          "name": "波が来るぜ！ [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 3.0,
+          "description": "水竜巻複数発生時15秒間アーツ脆弱付与: 2つ発生時R1=3%→R9=4%→特化III=5%(3凸10%) / 3つ発生時R1=6%→R9=8%→特化III=10%(3凸15%)",
+          "condition": "SP消費100 / 水竜巻1つ＋周囲の「湍水」(最大2カ所)を全消費して同数の水竜巻追加発生(最大計3つ・持続3秒) / 複数発生時15秒間アーツ脆弱付与"
+        },
+        {
+          "id": "buff_tangtang_skill_aux",
+          "name": "波が来るぜ！ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "射撃ブレイク値10 / 湍水1つ消費毎にSP20返還(1凸でSP25返還、最大2つ消費でSP40〜50返還)",
+          "condition": "SP消費100 / 水竜巻1つ＋周囲の「湍水」(最大2カ所)を全消費して同数の水竜巻追加発生(最大計3つ・持続3秒) / 複数発生時15秒間アーツ脆弱付与"
+        },
+        {
+          "id": "buff_tangtang_skill_special",
+          "name": "波が来るぜ！ [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加）",
+          "condition": "SP消費100 / 水竜巻1つ＋周囲の「湍水」(最大2カ所)を全消費して同数の水竜巻追加発生(最大計3つ・持続3秒) / 複数発生時15秒間アーツ脆弱付与",
+          "special": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加）"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "寒冷付着(1段階 / 水竜巻が複数発生しても付着は重複せず1段階のみ)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "寒冷ダメージを与え水竜巻を1つ発生させ、さらに周囲の湍水(最大2)を消費して同数の水竜巻を発生(1つにつきSP20返還)。水竜巻は寒冷付着(1段階のみ・重複不可)と寒冷ダメージを与え、2つ以上でアーツ脆弱(5%/10%)を付与する。",
+      "damageTypeDetail": "寒冷",
+      "rawText": "寒冷ダメージを与え水竜巻を1つ発生させ、さらに周囲の湍水(最大2)を消費して同数の水竜巻を発生(1つにつきSP20返還)。水竜巻は寒冷付着(1段階のみ・重複不可)と寒冷ダメージを与え、2つ以上でアーツ脆弱(5%/10%)を付与する。",
+      "attachText": "寒冷付着(1段階 / 水竜巻が複数発生しても付着は重複せず1段階のみ)",
+      "anomalyText": "なし",
+      "special": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加）"
+    },
+    {
+      "id": "char_tangtang",
+      "type": "combo",
+      "name": "川よ、俺様に従え！",
+      "shortName": "連携技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_tangtang_combo_multiplier",
+          "name": "川よ、俺様に従え！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 14.0,
+          "description": "寒冷ダメ倍率: R1=107% → R9=192% → 特化III=240%(1凸で1.2倍=288%)",
+          "condition": "敵が寒冷付着またはアーツ爆発のダメージを受けた時発動可 / CD: R1=14秒→R9=13秒→特化III=12秒(1凸-2秒=10秒)"
+        },
+        {
+          "id": "buff_tangtang_combo_aux",
+          "name": "川よ、俺様に従え！ [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 14.0,
+          "description": "ブレイク値10 / フィールドに「湍水」を1カ所生成(持続30秒・最大2カ所まで存在可能)",
+          "condition": "敵が寒冷付着またはアーツ爆発のダメージを受けた時発動可 / CD: R1=14秒→R9=13秒→特化III=12秒(1凸-2秒=10秒)"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし(フィールドに「湍水」1カ所生成)",
+        "description": "なし(フィールドに「湍水」1カ所生成)"
+      },
+      "description": "敵が寒冷付着またはアーツ爆発のダメージを受けたときに発動可能。敵に寒冷ダメージを与え、戦場に「湍水」を1つ生成する。（※連携技自体は寒冷付着を付与しない！）",
+      "damageTypeDetail": "寒冷",
+      "rawText": "敵が寒冷付着またはアーツ爆発のダメージを受けたときに発動可能。敵に寒冷ダメージを与え、戦場に「湍水」を1つ生成する。（※連携技自体は寒冷付着を付与しない！）",
+      "attachText": "なし",
+      "anomalyText": "なし(フィールドに「湍水」1カ所生成)"
+    },
+    {
+      "id": "char_tangtang",
+      "type": "ult",
+      "name": "大親分が見てっぞ！",
+      "shortName": "必殺技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_tangtang_ult_multiplier",
+          "name": "大親分が見てっぞ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 4.0,
+          "description": "4秒持続寒冷ダメ合計: R1=142%→R9=256%→特化III=320% / 通常終了大波: R1=178%→R9=320%→特化III=400% / 落下攻撃早期終了強化大波: R1=311%→R9=560%→特化III=700%(5凸で必殺全体1.15倍)",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発"
+        },
+        {
+          "id": "buff_tangtang_ult_aux",
+          "name": "大親分が見てっぞ！ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 4.0,
+          "description": "通常終了ブレイク15 / 落下早期終了ブレイク20 / 範囲内行動停止付与",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発"
+        },
+        {
+          "id": "buff_tangtang_ult_special",
+          "name": "大親分が見てっぞ！ [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 4.0,
+          "description": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発",
+          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "範囲内の敵に行動停止付与",
+        "description": "範囲内の敵に行動停止付与"
+      },
+      "description": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
+      "damageTypeDetail": "寒冷",
+      "rawText": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
+      "attachText": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)",
+      "anomalyText": "範囲内の敵に行動停止付与",
+      "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+    },
+    {
+      "id": "char_tangtang",
+      "type": "ult_cancel",
+      "name": "大親分が見てっぞ！",
+      "shortName": "必殺キャンセル",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 0,
+        "lv10_spec1": 0,
+        "lv11_spec2": 0,
+        "lv12_spec3": 0
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_tangtang_ult_multiplier",
+          "name": "大親分が見てっぞ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 4.0,
+          "description": "4秒持続寒冷ダメ合計: R1=142%→R9=256%→特化III=320% / 通常終了大波: R1=178%→R9=320%→特化III=400% / 落下攻撃早期終了強化大波: R1=311%→R9=560%→特化III=700%(5凸で必殺全体1.15倍)",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発"
+        },
+        {
+          "id": "buff_tangtang_ult_aux",
+          "name": "大親分が見てっぞ！ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 4.0,
+          "description": "通常終了ブレイク15 / 落下早期終了ブレイク20 / 範囲内行動停止付与",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発"
+        },
+        {
+          "id": "buff_tangtang_ult_special",
+          "name": "大親分が見てっぞ！ [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 4.0,
+          "description": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する",
+          "condition": "必殺チャージ消費90(4凸76.5) / 古の紋様4秒間展開 / 操作キャラが範囲内で落下攻撃を行うと早期終了して大波強化＆素質2誘発",
+          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+        }
+      ],
+      "spCost": 0,
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "範囲内の敵に行動停止付与",
+        "description": "範囲内の敵に行動停止付与"
+      },
+      "description": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
+      "damageTypeDetail": "寒冷",
+      "rawText": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
+      "attachText": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)",
+      "anomalyText": "範囲内の敵に行動停止付与",
+      "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+    }
+  ],
+  "motifWeapon": "落草",
+  "recommendedWeapons": [
+    "落草",
+    "望郷"
+  ],
+  "normalAttack": {
+    "name": "脳天ぶち抜く！",
+    "damageType": "寒冷",
+    "damageTypeDetail": "寒冷",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[23%/25%/35%/37%/50%]→R9[41%/45%/63%/66%/90%]→特化III[51%/56%/79%/82%/113%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+    "description": "最大5段の射撃で、敵に寒冷ダメージを与える。重攻撃はブレイク値18を与える。（※寒冷付着なし）",
+    "raw": "最大5段の射撃で、敵に寒冷ダメージを与える。重攻撃はブレイク値18を与える。（※寒冷付着なし）"
+  },
+  "talents": [
+    {
+      "id": "talent_tangtang_1",
+      "name": "肝胆相照らす",
+      "description": "湍水の周囲5m以内の味方に10%→20%の加速、敵に20%→40%のスローを付与する(範囲を離れた後も3秒持続)。",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_tangtang_talent1_aux",
+          "name": "肝胆相照らす [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "味方に移動速度+10%(昇進1)→+20%(昇進2)の加速付与 / 敵に20%(昇進1)→40%(昇進2)のスロー付与",
+          "condition": "湍水の半径5m以内(離脱後3秒持続)"
+        }
+      ]
+    },
+    {
+      "id": "talent_tangtang_2",
+      "name": "嵐を呼ぶ娘",
+      "description": "古の紋様が落下攻撃によって早期終了したとき、戦技と同じ水竜巻を1つ＋周囲の湍水消費数分発生させ、その水竜巻の与えるダメージ+40%→+60%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_tangtang_talent2_damage_up",
+          "name": "嵐を呼ぶ娘 [【枠4】ダメージUP枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "damage_up",
+          "calcGroupLabel": "【枠4】ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "この素質で発生した水竜巻の与えるダメージ+40%(昇進1) → +60%(昇進2)(5凸でさらに+80%加算＝+140%)",
+          "condition": "必殺技「古の紋様」を落下攻撃で早期終了させた時(周囲の湍水も消費して水竜巻追加発生・SP返還あり)"
+        },
+        {
+          "id": "buff_tangtang_talent2_special",
+          "name": "嵐を呼ぶ娘 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する",
+          "condition": "必殺技「古の紋様」を落下攻撃で早期終了させた時(周囲の湍水も消費して水竜巻追加発生・SP返還あり)",
+          "special": "必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する"
+        }
+      ],
+      "special": "必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する"
+    }
+  ],
+  "specialMechanic": {
+    "title": "タンタン 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加） ／ 【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する ／ 必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する"
+  }
 }

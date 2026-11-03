@@ -61,13 +61,60 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["level", "type", "value"],
+        "required": ["level", "type"],
         "properties": {
           "level": { "type": "integer" },
           "type": { "type": "string" },
           "value": { "type": "number" },
-          "description": { "type": "string" }
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "target": {
+            "type": "string",
+            "enum": ["self", "single", "team", "others", "enemy", "none"]
+          },
+          "targetLabel": { "type": "string" },
+          "calcGroup": { "type": "string" },
+          "calcGroupLabel": { "type": "string" },
+          "special": { "type": ["string", "null"] }
         }
+      }
+    },
+    "talents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "target": {
+            "type": "string",
+            "enum": ["self", "single", "team", "others", "enemy", "none"]
+          },
+          "targetLabel": { "type": "string" },
+          "calcGroup": { "type": "string" },
+          "calcGroupLabel": { "type": "string" },
+          "special": { "type": ["string", "null"] },
+          "buffs": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "normalAttack": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "damageType": { "type": "string" },
+        "attach": { "type": "string" },
+        "multipliers": { "type": "string" },
+        "breakValue": { "type": "string" },
+        "description": { "type": "string" },
+        "raw": { "type": "string" }
       }
     },
     "skills": {
@@ -118,29 +165,37 @@
             }
           },
           "description": { "type": "string" },
+          "special": { "type": ["string", "null"] },
+          "rawText": { "type": "string" },
+          "attachText": { "type": "string" },
+          "anomalyText": { "type": "string" },
           "hitCount": { "type": "integer", "minimum": 1 },
           "buffs": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["id", "name", "target", "stat", "value", "duration"],
+              "required": ["id", "name", "target"],
               "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
                 "target": {
                   "type": "string",
-                  "enum": ["self", "single", "team", "enemy"]
+                  "enum": ["self", "single", "team", "others", "enemy", "none"]
                 },
+                "targetLabel": { "type": "string" },
                 "category": {
                   "type": "string",
-                  "enum": ["buff", "debuff"]
+                  "enum": ["buff", "debuff", "special", "aux"]
                 },
                 "stat": { "type": "string" },
                 "value": { "type": "number" },
                 "duration": { "type": "number" },
                 "description": { "type": "string" },
+                "calcGroup": { "type": "string" },
+                "calcGroupLabel": { "type": "string" },
                 "maxStacks": { "type": "integer" },
-                "isStackable": { "type": "boolean" }
+                "isStackable": { "type": "boolean" },
+                "special": { "type": ["string", "null"] }
               }
             }
           }

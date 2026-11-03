@@ -1,208 +1,558 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_ardelia",
-    "name":  "アルデリア",
-    "icon":  "image/ardelia.png",
-    "rarity":  6,
-    "element":  "自然",
-    "weaponType":  "アーツユニット",
-    "class":  "補助",
-    "mainStat":  "知性",
-    "subStat":  "意志",
-    "baseStats":  {
-                      "hp":  6800,
-                      "atk":  920,
-                      "strength":  120,
-                      "agility":  110,
-                      "intellect":  285,
-                      "willpower":  185,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_ardelia",
-                       "type":  "skill",
-                       "name":  "ドリーラッシュ",
-                       "shortName":  "戦技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_ardelia__team",
-                                         "name":  "もふもふ支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_ardelia__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_ardelia",
-                       "type":  "combo",
-                       "name":  "イラプション・コラム",
-                       "shortName":  "連携技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_ardelia__team",
-                                         "name":  "もふもふ支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_ardelia__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_ardelia",
-                       "type":  "ult",
-                       "name":  "もふもふパーティー",
-                       "shortName":  "必殺技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_ardelia_ult_self",
-                                         "name":  "もふもふパーティー 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "buff_char_ardelia__team",
-                                         "name":  "もふもふ支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_ardelia__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "蒼星の囁き",
-    "recommendedWeapons":  [
-                               "蒼星の囁き",
-                               "遺忘"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_ardelia",
+  "name": "アルデリア",
+  "icon": "image/ardelia.png",
+  "rarity": 6,
+  "element": "自然",
+  "weaponType": "アーツユニット",
+  "class": "補助",
+  "mainStat": "知性",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 920,
+    "strength": 120,
+    "agility": 110,
+    "intellect": 285,
+    "willpower": 185,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_ardelia",
+      "type": "skill",
+      "name": "ドリーラッシュ",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_ardelia_skill_multiplier",
+          "name": "ドリーラッシュ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 30.0,
+          "description": "自然ダメ倍率: R1=142% → R9=256% → 特化III=320%",
+          "condition": "SP消費100 / 腐食消費時の脆弱持続30秒"
+        },
+        {
+          "id": "buff_ardelia_skill_vulnerability",
+          "name": "ドリーラッシュ [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 30.0,
+          "description": "腐食消費時、敵に物理脆弱 & アーツ脆弱(30秒): R1=12% → R9=16% → 特化III=20%",
+          "condition": "SP消費100 / 腐食消費時の脆弱持続30秒"
+        },
+        {
+          "id": "buff_ardelia_skill_aux",
+          "name": "ドリーラッシュ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 30.0,
+          "description": "SP消費100 / ブレイク値10",
+          "condition": "SP消費100 / 腐食消費時の脆弱持続30秒"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "腐食状態の消費(腐食中の敵に命中時、腐食を消費して物理脆弱＆アーツ脆弱を付与)",
+        "description": "腐食状態の消費(腐食中の敵に命中時、腐食を消費して物理脆弱＆アーツ脆弱を付与)"
+      },
+      "description": "ドリーさんに乗って敵に突進し、自然ダメージを与える。腐食状態の敵に命中した場合、腐食状態を消費し、物理脆弱とアーツ脆弱を付与する。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "ドリーさんに乗って敵に突進し、自然ダメージを与える。腐食状態の敵に命中した場合、腐食状態を消費し、物理脆弱とアーツ脆弱を付与する。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "腐食状態の消費(腐食中の敵に命中時、腐食を消費して物理脆弱＆アーツ脆弱を付与)"
+    },
+    {
+      "id": "combo_ardelia",
+      "type": "combo",
+      "name": "イラプション・コラム",
+      "shortName": "連携技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_ardelia_combo_multiplier",
+          "name": "イラプション・コラム [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 18.0,
+          "description": "接近ダメ: R1=45%→R9=80%→特化III=100% / 爆発ダメ: R1=111%→R9=200%→特化III=250%(周囲の他敵には半分)",
+          "condition": "クラッシュ・アーツ付着いずれもない敵に操作キャラが重攻撃時発動可 / CD: R1〜9=18秒→特化III=17秒"
+        },
+        {
+          "id": "buff_ardelia_combo_res_down",
+          "name": "イラプション・コラム [【枠9】敵耐性ダウン・耐性無視枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "res_down",
+          "calcGroupLabel": "【枠9】敵耐性ダウン・耐性無視枠",
+          "value": 0,
+          "duration": 18.0,
+          "description": "強制腐食による全属性耐性ダウン(7秒間、段階1相当の強制腐食)",
+          "condition": "クラッシュ・アーツ付着いずれもない敵に操作キャラが重攻撃時発動可 / CD: R1〜9=18秒→特化III=17秒"
+        },
+        {
+          "id": "buff_ardelia_combo_aux",
+          "name": "イラプション・コラム [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 18.0,
+          "description": "ブレイク値10",
+          "condition": "クラッシュ・アーツ付着いずれもない敵に操作キャラが重攻撃時発動可 / CD: R1〜9=18秒→特化III=17秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "強制腐食付与(7秒間、5凸で11秒間 ※付着を介さず直接腐食にする)",
+        "description": "強制腐食付与(7秒間、5凸で11秒間 ※付着を介さず直接腐食にする)"
+      },
+      "description": "操作中のオペレーターがクラッシュまたはアーツ付着状態でない敵に重攻撃を与えると発動可能。火山雲は敵を追尾し爆発し、強制的に短時間(7秒)腐食状態にする。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "操作中のオペレーターがクラッシュまたはアーツ付着状態でない敵に重攻撃を与えると発動可能。火山雲は敵を追尾し爆発し、強制的に短時間(7秒)腐食状態にする。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "強制腐食付与(7秒間、5凸で11秒間 ※付着を介さず直接腐食にする)"
+    },
+    {
+      "id": "ult_ardelia",
+      "type": "ult",
+      "name": "もふもふパーティー",
+      "shortName": "必殺技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_ardelia_ult_multiplier",
+          "name": "もふもふパーティー [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 3.0,
+          "description": "分身1ヒット毎自然ダメ倍率: R1=73% → R9=132% → 特化III=165%",
+          "condition": "必殺チャージ消費90 / 持続3秒(同一敵へ0.3秒に1回まで命中)"
+        },
+        {
+          "id": "buff_ardelia_ult_aux",
+          "name": "もふもふパーティー [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "1ヒット毎ブレイク値2",
+          "condition": "必殺チャージ消費90 / 持続3秒(同一敵へ0.3秒に1回まで命中)"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "移動できる状態で持続的にアーツを放ち、周囲にドリーさんの分身を放つ。同じ敵は0.3秒に1回まで自然ダメージを受ける。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "移動できる状態で持続的にアーツを放ち、周囲にドリーさんの分身を放つ。同じ敵は0.3秒に1回まで自然ダメージを受ける。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    }
+  ],
+  "motifWeapon": "蒼星の囁き",
+  "recommendedWeapons": [
+    "蒼星の囁き",
+    "遺忘"
+  ],
+  "normalAttack": {
+    "name": "岩の囁き",
+    "damageType": "自然",
+    "damageTypeDetail": "自然",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[30%/40%/53%/55%]→R9[54%/72%/95%/99%]→特化III[68%/90%/118%/124%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値18を与える。",
+    "raw": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値18を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_ardelia_1",
+      "name": "友の面影",
+      "description": "戦技命中時ドリーさんの影を3個生成、必殺分身着地時10%で生成。触れるとHPを[90+意志×0.75]回復させる。",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_ardelia_talent1_aux",
+          "name": "友の面影 [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 10.0,
+          "description": "操作キャラ(満タン時は最低HP割合の味方)のHPを[45+意志×0.38](初期)→[63+意志×0.53](昇進1)→[90+意志×0.75](昇進2)回復",
+          "condition": "戦技命中時3個・必殺分身着地時10%確率で「ドリーさんの影」生成(持続10秒・最大10個) → 接触時回復"
+        }
+      ]
+    },
+    {
+      "id": "talent_ardelia_2",
+      "name": "山頂サーフィン",
+      "description": "戦技「ドリーラッシュ」の追加効果が発動したとき、近くに他の腐食状態の敵がいる場合、その敵に戦技をもう1回発動する（1回のみ）",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_ardelia_talent2_special",
+          "name": "山頂サーフィン [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する",
+          "condition": "戦技の腐食消費追加効果発動時、近くに他の腐食状態の敵がいる場合(戦技1回につき1回)",
+          "special": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する"
+        }
+      ],
+      "special": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する"
+    }
+  ],
+  "specialMechanic": {
+    "title": "アルデリア 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する"
+  }
 }

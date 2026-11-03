@@ -1,172 +1,371 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_typhoeus",
-    "name":  "ティフォロス",
-    "icon":  "image/typhoeus.png",
-    "rarity":  6,
-    "element":  "自然",
-    "weaponType":  "アーツユニット",
-    "class":  "突撃",
-    "mainStat":  "敏捷",
-    "subStat":  "筋力",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  920,
-                      "strength":  185,
-                      "agility":  285,
-                      "intellect":  120,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_typhoeus",
-                       "type":  "skill",
-                       "name":  "大地の咆哮",
-                       "shortName":  "戦技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_typhoeus__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_typhoeus",
-                       "type":  "combo",
-                       "name":  "地裂震",
-                       "shortName":  "連携技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_typhoeus__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_typhoeus",
-                       "type":  "ult",
-                       "name":  "氷山の呼び声",
-                       "shortName":  "必殺技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_typhoeus_ult_self",
-                                         "name":  "氷山の呼び声 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_typhoeus__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  200,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "寒夜の影",
-    "recommendedWeapons":  [
-                               "寒夜の影",
-                               "破壊ユニット"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_typhoeus",
+  "name": "ティフォロス",
+  "icon": "image/typhoeus.png",
+  "rarity": 6,
+  "element": "自然",
+  "weaponType": "アーツユニット",
+  "class": "突撃",
+  "mainStat": "敏捷",
+  "subStat": "筋力",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 920,
+    "strength": 185,
+    "agility": 285,
+    "intellect": 120,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "浮遊中攻撃力+18%・空中ダメ1.2倍・素質2CD-3秒",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "敏捷+20・アーツ強度+16",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "連携CD-2秒・矢陣被自然爆発ダメ+6%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "必殺消費-15%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "必殺猟矢+1・必殺ダメ1.2倍・強化自然爆発1.1倍",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_typhoeus",
+      "type": "skill",
+      "name": "風裂く一矢",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_typhoeus_skill_multiplier",
+          "name": "風裂く一矢 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ジャンプ射撃: R1=22%→R9=40%→特化III=50% / 空中通常1〜4段(各段): R1=29%→R9=52%→特化III=65% / 空中5段目重攻撃: R1=44%→R9=80%→特化III=100% / 自然付着消費時の強化射撃による自然爆発ダメージ倍率乗算: R1=1.1倍→R9=1.2倍→特化III=1.3倍(5凸でさらに1.1倍)",
+          "condition": "SP消費100 / ジャンプ射撃後「浮遊状態」に入り空中通常攻撃5回(毎回最大2体・操作キャラ時は5段目が猟矢消費なしで重攻撃＆強化射撃化)"
+        },
+        {
+          "id": "buff_typhoeus_skill_aux",
+          "name": "風裂く一矢 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "空中5段目ブレイク値20 / 自然付着1段階消費毎に「啓示」+1獲得＆必殺チャージ+12回復",
+          "condition": "SP消費100 / ジャンプ射撃後「浮遊状態」に入り空中通常攻撃5回(毎回最大2体・操作キャラ時は5段目が猟矢消費なしで重攻撃＆強化射撃化)"
+        },
+        {
+          "id": "buff_typhoeus_skill_special",
+          "name": "風裂く一矢 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。",
+          "condition": "SP消費100 / ジャンプ射撃後「浮遊状態」に入り空中通常攻撃5回(毎回最大2体・操作キャラ時は5段目が猟矢消費なしで重攻撃＆強化射撃化)",
+          "special": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "命中毎に自然付着を1段階消費 / 「強化射撃」命中時に強制的に自然爆発を1回発動！",
+        "description": "命中毎に自然付着を1段階消費 / 「強化射撃」命中時に強制的に自然爆発を1回発動！"
+      },
+      "description": "ジャンプ射撃後、浮遊状態に入り最大5回の空中通常攻撃を行う。自然付着状態の敵に命中すると自然付着を1段階消費し啓示+1と必殺チャージ+12を獲得。猟矢を1本消費した強化射撃は命中時に強制的に自然爆発を1回与え、自然付着を消費していた場合は自然爆発ダメージが1.1倍→1.3倍にアップ。（※自然付着は付与しない）",
+      "damageTypeDetail": "自然",
+      "rawText": "ジャンプ射撃後、浮遊状態に入り最大5回の空中通常攻撃を行う。自然付着状態の敵に命中すると自然付着を1段階消費し啓示+1と必殺チャージ+12を獲得。猟矢を1本消費した強化射撃は命中時に強制的に自然爆発を1回与え、自然付着を消費していた場合は自然爆発ダメージが1.1倍→1.3倍にアップ。（※自然付着は付与しない）",
+      "attachText": "なし",
+      "anomalyText": "命中毎に自然付着を1段階消費 / 「強化射撃」命中時に強制的に自然爆発を1回発動！",
+      "special": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。"
+    },
+    {
+      "id": "combo_typhoeus",
+      "type": "combo",
+      "name": "荒れ狂うトゲ",
+      "shortName": "連携技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_typhoeus_combo_multiplier",
+          "name": "荒れ狂うトゲ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 21.0,
+          "description": "狩人の眼差し命中自然ダメ: R1=89%→R9=160%→特化III=200% / 矢陣エリア持続自然ダメ: R1=45%→R9=80%→特化III=100%",
+          "condition": "「啓示」が上限(8)に達した時発動可 / CD: R1=21秒→R9=21秒→特化III=19秒(3凸-2秒=17秒) / 啓示8をすべて猟矢4本に変換＆空中通常回数リセット"
+        },
+        {
+          "id": "buff_typhoeus_combo_taken_damage_up",
+          "name": "荒れ狂うトゲ [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 21.0,
+          "description": "矢陣エリア内の敵が受ける自然爆発ダメージUP: R1=+6% → R9=+8% → 特化III=+10%(3凸で+6%加算＝+16%)",
+          "condition": "「啓示」が上限(8)に達した時発動可 / CD: R1=21秒→R9=21秒→特化III=19秒(3凸-2秒=17秒) / 啓示8をすべて猟矢4本に変換＆空中通常回数リセット"
+        },
+        {
+          "id": "buff_typhoeus_combo_aux",
+          "name": "荒れ狂うトゲ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 21.0,
+          "description": "ブレイク値10 / 必殺チャージ+10回復 / 啓示8→猟矢4本変換 / 空中通常回数リセット / 矢陣内60%スロー",
+          "condition": "「啓示」が上限(8)に達した時発動可 / CD: R1=21秒→R9=21秒→特化III=19秒(3凸-2秒=17秒) / 啓示8をすべて猟矢4本に変換＆空中通常回数リセット"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "スロー60%付与",
+        "description": "スロー60%付与"
+      },
+      "description": "啓示が最大(8)のときに発動可能。すべての啓示を猟矢に変換(2につき1本)し空中攻撃回数をリセット。自然ダメージを与え矢陣を展開し、範囲内の敵にスロー60%と受ける自然爆発ダメージ+6%→+10%を付与する。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "啓示が最大(8)のときに発動可能。すべての啓示を猟矢に変換(2につき1本)し空中攻撃回数をリセット。自然ダメージを与え矢陣を展開し、範囲内の敵にスロー60%と受ける自然爆発ダメージ+6%→+10%を付与する。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "スロー60%付与"
+    },
+    {
+      "id": "ult_typhoeus",
+      "type": "ult",
+      "name": "氷山の呼び声",
+      "shortName": "必殺技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_typhoeus_ult_multiplier",
+          "name": "氷山の呼び声 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "爆発自然ダメ: R1=133%→R9=240%→特化III=300% / 1〜4段目矢の雨追撃: R1=33%→R9=60%→特化III=75% / 5段目強化矢の雨追撃: R1=89%→R9=160%→特化III=200%(5凸で必殺全体1.2倍)",
+          "condition": "必殺チャージ消費200(4凸170) / CD20秒 / 猟矢2本(5凸3本)即獲得＋浮遊状態移行＆空中回数リセット＋後続5回の空中通常に矢の雨追撃"
+        },
+        {
+          "id": "buff_typhoeus_ult_aux",
+          "name": "氷山の呼び声 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ブレイク値20 / 猟矢2本(5凸3本)獲得 / 浮遊状態移行＆回数リセット",
+          "condition": "必殺チャージ消費200(4凸170) / CD20秒 / 猟矢2本(5凸3本)即獲得＋浮遊状態移行＆空中回数リセット＋後続5回の空中通常に矢の雨追撃"
+        }
+      ],
+      "epCost": 200,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "自然ダメージを与え、猟矢を2本獲得して浮遊状態に入り空中攻撃回数をリセットする。その後5回の空中通常攻撃命中時に矢の雨による追撃が発生する。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "自然ダメージを与え、猟矢を2本獲得して浮遊状態に入り空中攻撃回数をリセットする。その後5回の空中通常攻撃命中時に矢の雨による追撃が発生する。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    }
+  ],
+  "motifWeapon": "寒夜の影",
+  "recommendedWeapons": [
+    "寒夜の影",
+    "破壊ユニット"
+  ],
+  "normalAttack": {
+    "name": "荒原の狩猟",
+    "damageType": "自然",
+    "damageTypeDetail": "自然",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[21%/25%/38%/42%/56%]→R9[37%/45%/68%/76%/100%]→特化III[46%/56%/86%/95%/125%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク17 / 終撃時SP回復",
+    "description": "最大5段の攻撃で、敵に自然ダメージを与える。重攻撃はブレイク値17を与える。（※自然付着なし）",
+    "raw": "最大5段の攻撃で、敵に自然ダメージを与える。重攻撃はブレイク値17を与える。（※自然付着なし）"
+  },
+  "talents": [
+    {
+      "id": "talent_typhoeus_1",
+      "name": "獲物のチェック",
+      "description": "敵が自然爆発を受けるたび啓示+1(上限8)。猟矢を消費して強化された攻撃はダメージが1.2倍→1.4倍→1.6倍までアップ。",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_typhoeus_talent1_multiplier",
+          "name": "獲物のチェック [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "猟矢を消費して強化された攻撃のダメージ倍率乗算: 1.2倍(初期) → 1.4倍(昇進1) → 1.6倍(昇進2)までアップ",
+          "condition": "自然爆発発生毎に啓示+1(上限8・戦闘開始時1→2→4獲得) / 猟矢(上限4本)を消費して強化された攻撃時"
+        },
+        {
+          "id": "buff_typhoeus_talent1_aux",
+          "name": "獲物のチェック [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "戦闘開始時啓示獲得(1→2→4) / 自然爆発毎に啓示+1",
+          "condition": "自然爆発発生毎に啓示+1(上限8・戦闘開始時1→2→4獲得) / 猟矢(上限4本)を消費して強化された攻撃時"
+        }
+      ]
+    },
+    {
+      "id": "talent_typhoeus_2",
+      "name": "狩人の集中力",
+      "description": "浮遊状態中、中断耐性と被ダメージ-15%→-30%の防御シールドを獲得する。",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_typhoeus_talent2_aux",
+          "name": "狩人の集中力 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 30.0,
+          "description": "中断耐性アップ＆受けるダメージ-15%(昇進1) → -30%(昇進2)の防御シールド獲得",
+          "condition": "浮遊状態中(被弾破壊後の再発動CD: 30秒→18秒、1凸で-3秒)"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "ティフォロス 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。"
+  }
 }

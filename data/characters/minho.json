@@ -1,172 +1,276 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_minho",
-    "name":  "ミンホ",
-    "icon":  "image/minho.png",
-    "rarity":  6,
-    "element":  "電磁",
-    "weaponType":  "片手剣",
-    "class":  "前衛",
-    "mainStat":  "敏捷",
-    "subStat":  "知性",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  820,
-                      "strength":  120,
-                      "agility":  285,
-                      "intellect":  185,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_minho",
-                       "type":  "skill",
-                       "name":  "電光一閃",
-                       "shortName":  "戦技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_minho__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_minho",
-                       "type":  "combo",
-                       "name":  "銀流連斬",
-                       "shortName":  "連携技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_minho__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_minho",
-                       "type":  "ult",
-                       "name":  "破天",
-                       "shortName":  "必殺技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_minho_ult_self",
-                                         "name":  "破天 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_minho__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "問月",
-    "recommendedWeapons":  [
-                               "問月",
-                               "複合工業"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_minho",
+  "name": "ミンホ",
+  "icon": "image/minho.png",
+  "rarity": 6,
+  "element": "電磁",
+  "weaponType": "片手剣",
+  "class": "前衛",
+  "mainStat": "敏捷",
+  "subStat": "知性",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 820,
+    "strength": 120,
+    "agility": 285,
+    "intellect": 185,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [],
+  "skills": [
+    {
+      "id": "skill_minho",
+      "type": "skill",
+      "name": "鎮影 ／ 派生「奔雷」",
+      "shortName": "戦技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_minho_skill_taken_damage_up",
+          "name": "鎮影 ／ 派生「奔雷」 [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "奔雷の強制感電＋素質1により敵が受ける「全種類のダメージ」UP(数値Wiki未記載)",
+          "condition": "連携技発動後に「鎮影」が「奔雷」へ変化(倍率・消費SP数値はWiki未記載)"
+        },
+        {
+          "id": "buff_minho_skill_special",
+          "name": "鎮影 ／ 派生「奔雷」 [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【戦技変化＆電磁付着消費→高段階感電＋クラッシュ付与】鎮影は物理ダメ＋浮遊(付着なし)。連携後の『奔雷』は電磁付着を付与するのではなく、既存の電磁付着を消費して高段階感電とクラッシュ1段階を同時付与する（※具体的倍率はWiki未記載）",
+          "condition": "連携技発動後に「鎮影」が「奔雷」へ変化(倍率・消費SP数値はWiki未記載)",
+          "special": "【戦技変化＆電磁付着消費→高段階感電＋クラッシュ付与】鎮影は物理ダメ＋浮遊(付着なし)。連携後の『奔雷』は電磁付着を付与するのではなく、既存の電磁付着を消費して高段階感電とクラッシュ1段階を同時付与する（※具体的倍率はWiki未記載）"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💨 浮遊 (クラッシュ付与 +1段)",
+        "description": "鎮影: 浮遊付与(クラッシュ+1段階) / 奔雷: 電磁付着を消費し、高段階数の感電＋クラッシュ1段階を付与"
+      },
+      "description": "鎮影：周囲の敵に物理ダメージを与え、前方の目標に浮遊効果を与える。連携技を発動すると戦技が奔雷に替わる。奔雷：電磁付着を消費し、高い段階数の感電と1段階のクラッシュを付与する。",
+      "damageTypeDetail": "物理(鎮影) / 電磁または状態付与(奔雷・Wiki数値未記載)",
+      "rawText": "鎮影：周囲の敵に物理ダメージを与え、前方の目標に浮遊効果を与える。連携技を発動すると戦技が奔雷に替わる。奔雷：電磁付着を消費し、高い段階数の感電と1段階のクラッシュを付与する。",
+      "attachText": "なし",
+      "anomalyText": "鎮影: 浮遊付与(クラッシュ+1段階) / 奔雷: 電磁付着を消費し、高段階数の感電＋クラッシュ1段階を付与",
+      "special": "【戦技変化＆電磁付着消費→高段階感電＋クラッシュ付与】鎮影は物理ダメ＋浮遊(付着なし)。連携後の『奔雷』は電磁付着を付与するのではなく、既存の電磁付着を消費して高段階感電とクラッシュ1段階を同時付与する（※具体的倍率はWiki未記載）"
+    },
+    {
+      "id": "combo_minho",
+      "type": "combo",
+      "name": "星霜",
+      "shortName": "連携技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_minho_combo_special",
+          "name": "星霜 [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【Wiki数値未記載】電磁ダメージ複数回＋電磁付着付与＋戦技を「奔雷」へ切替（CD・倍率はWiki未記載）",
+          "condition": "敵がクラッシュ状態になった時発動可 / 発動後戦技が「奔雷」に変化(CD・倍率はWiki未記載)",
+          "special": "【Wiki数値未記載】電磁ダメージ複数回＋電磁付着付与＋戦技を「奔雷」へ切替（CD・倍率はWiki未記載）"
+        }
+      ],
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "⚡ 電磁付着 (+1段階)",
+        "description": "電磁付着(1段階)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "敵がクラッシュ状態になったときに発動可能。敵に電磁ダメージを複数回与え、電磁付着を付与する。戦技が奔雷に替わる。",
+      "damageTypeDetail": "電磁",
+      "rawText": "敵がクラッシュ状態になったときに発動可能。敵に電磁ダメージを複数回与え、電磁付着を付与する。戦技が奔雷に替わる。",
+      "attachText": "電磁付着(1段階)",
+      "anomalyText": "なし",
+      "special": "【Wiki数値未記載】電磁ダメージ複数回＋電磁付着付与＋戦技を「奔雷」へ切替（CD・倍率はWiki未記載）"
+    },
+    {
+      "id": "ult_minho",
+      "type": "ult",
+      "name": "破天",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_minho_ult_special",
+          "name": "破天 [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【電磁付着＋猛撃複合必殺・Wiki数値未記載】電磁付着(1段階)を付与した直後に広範囲へ猛撃(素質1の雷勢起爆トリガー)と電磁ダメージを与える",
+          "condition": "突進運搬→鋭光(電磁付着1段階)→槍突き刺し(猛撃＋電磁ダメ) ※チャージ量・倍率はWiki未記載",
+          "special": "【電磁付着＋猛撃複合必殺・Wiki数値未記載】電磁付着(1段階)を付与した直後に広範囲へ猛撃(素質1の雷勢起爆トリガー)と電磁ダメージを与える"
+        }
+      ],
+      "epCost": 100,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "⚡ 電磁付着 (+1段階)",
+        "description": "電磁付着(1段階・突進終了後の鋭光時)"
+      },
+      "crush": {
+        "type": "consume_smash",
+        "stacks": 1,
+        "label": "💥 猛撃・クラッシュ消費",
+        "description": "最終段で猛撃付与(クラッシュ消費)"
+      },
+      "description": "前方の目標に持続的に電磁ダメージを与え運ぶ。突進終了後、目標に電磁ダメージを与え、電磁付着を1段階付与する。その後、広範囲の敵に猛撃と電磁ダメージを与える。",
+      "damageTypeDetail": "電磁",
+      "rawText": "前方の目標に持続的に電磁ダメージを与え運ぶ。突進終了後、目標に電磁ダメージを与え、電磁付着を1段階付与する。その後、広範囲の敵に猛撃と電磁ダメージを与える。",
+      "attachText": "電磁付着(1段階・突進終了後の鋭光時)",
+      "anomalyText": "最終段で猛撃付与(クラッシュ消費)",
+      "special": "【電磁付着＋猛撃複合必殺・Wiki数値未記載】電磁付着(1段階)を付与した直後に広範囲へ猛撃(素質1の雷勢起爆トリガー)と電磁ダメージを与える"
+    }
+  ],
+  "motifWeapon": "問月",
+  "recommendedWeapons": [
+    "問月",
+    "複合工業"
+  ],
+  "normalAttack": {
+    "name": "輝塵",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常倍率: Wiki未記載 / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "-",
+    "description": "最大●段の攻撃で、敵に物理ダメージを与える。（※通常攻撃倍率はWiki未記載）",
+    "raw": "最大●段の攻撃で、敵に物理ダメージを与える。（※通常攻撃倍率はWiki未記載）"
+  },
+  "talents": [
+    {
+      "id": "talent_minho_1",
+      "name": "天奔る稲妻",
+      "description": "ミンホが感電状態を付与したとき、この感電効果は目標が受ける全種類のダメージをアップし、さらに雷勢を付与する。雷勢状態の目標が猛撃ダメージを受けるとき、その猛撃ダメージがアップし、すべての雷勢を起爆し電磁ダメージを与える。",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_minho_talent1_taken_damage_up",
+          "name": "天奔る稲妻 [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "自身が付与した感電はアーツだけでなく敵が受ける「全種類のダメージ」をアップさせる(物理にも乗る特殊仕様)",
+          "condition": "自身が感電状態を付与した時 → 目標が猛撃ダメージを受けた時"
+        },
+        {
+          "id": "buff_minho_talent1_special",
+          "name": "天奔る稲妻 [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【特殊感電拡張＆雷勢連鎖起爆】①ミンホが付与する感電は敵の受ける全種類ダメージUPになる。②感電異常段階と同数の『雷勢』を付与し、猛撃被弾時に猛撃ダメUP＋全雷勢を起爆して段階に応じた電磁ダメ＆周囲の雷勢も連鎖起爆する（※数値はWiki未記載）",
+          "condition": "自身が感電状態を付与した時 → 目標が猛撃ダメージを受けた時",
+          "special": "【特殊感電拡張＆雷勢連鎖起爆】①ミンホが付与する感電は敵の受ける全種類ダメージUPになる。②感電異常段階と同数の『雷勢』を付与し、猛撃被弾時に猛撃ダメUP＋全雷勢を起爆して段階に応じた電磁ダメ＆周囲の雷勢も連鎖起爆する（※数値はWiki未記載）"
+        }
+      ],
+      "special": "【特殊感電拡張＆雷勢連鎖起爆】①ミンホが付与する感電は敵の受ける全種類ダメージUPになる。②感電異常段階と同数の『雷勢』を付与し、猛撃被弾時に猛撃ダメUP＋全雷勢を起爆して段階に応じた電磁ダメ＆周囲の雷勢も連鎖起爆する（※数値はWiki未記載）"
+    },
+    {
+      "id": "talent_minho_2",
+      "name": "（Wiki未記載）",
+      "description": "●素質2 / 潜在1〜5：説明文（Wiki未記載）",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_minho_talent2_special",
+          "name": "（Wiki未記載） [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【Wiki未記載】素質2および潜在1〜5の名称・効果文はWiki未記入",
+          "condition": "Wiki未記載",
+          "special": "【Wiki未記載】素質2および潜在1〜5の名称・効果文はWiki未記入"
+        }
+      ],
+      "special": "【Wiki未記載】素質2および潜在1〜5の名称・効果文はWiki未記入"
+    }
+  ],
+  "specialMechanic": {
+    "title": "ミンホ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【Wiki数値未記載】先行ページのため通常倍率・基礎ステータスはWiki未記入 ／ 【戦技変化＆電磁付着消費→高段階感電＋クラッシュ付与】鎮影は物理ダメ＋浮遊(付着なし)。連携後の『奔雷』は電磁付着を付与するのではなく、既存の電磁付着を消費して高段階感電とクラッシュ1段階を同時付与する（※具体的倍率はWiki未記載） ／ 【Wiki数値未記載】電磁ダメージ複数回＋電磁付着付与＋戦技を「奔雷」へ切替（CD・倍率はWiki未記載） ／ 【電磁付着＋猛撃複合必殺・Wiki数値未記載】電磁付着(1段階)を付与した直後に広範囲へ猛撃(素質1の雷勢起爆トリガー)と電磁ダメージを与える ／ 【特殊感電拡張＆雷勢連鎖起爆】①ミンホが付与する感電は敵の受ける全種類ダメージUPになる。②感電異常段階と同数の『雷勢』を付与し、猛撃被弾時に猛撃ダメUP＋全雷勢を起爆して段階に応じた電磁ダメ＆周囲の雷勢も連鎖起爆する（※数値はWiki未記載） ／ 【Wiki未記載】素質2および潜在1〜5の名称・効果文はWiki未記入"
+  }
 }

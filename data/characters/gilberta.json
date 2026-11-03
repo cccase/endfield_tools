@@ -1,208 +1,558 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_gilberta",
-    "name":  "ギルベルタ",
-    "icon":  "image/gilberta.png",
-    "rarity":  6,
-    "element":  "自然",
-    "weaponType":  "アーツユニット",
-    "class":  "補助",
-    "mainStat":  "知性",
-    "subStat":  "意志",
-    "baseStats":  {
-                      "hp":  6800,
-                      "atk":  920,
-                      "strength":  120,
-                      "agility":  110,
-                      "intellect":  285,
-                      "willpower":  185,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  202.9,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  10
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "char_gilberta",
-                       "type":  "skill",
-                       "name":  "秘杖・引力モード",
-                       "shortName":  "戦技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_gilberta__team",
-                                         "name":  "ギルベルタ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_gilberta__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "char_gilberta",
-                       "type":  "combo",
-                       "name":  "秘杖・マトリックス転移",
-                       "shortName":  "連携技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_gilberta__team",
-                                         "name":  "ギルベルタ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_gilberta__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "char_gilberta",
-                       "type":  "ult",
-                       "name":  "秘杖・重力場",
-                       "shortName":  "必殺技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_gilberta_ult_self",
-                                         "name":  "秘杖・重力場 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "buff_char_gilberta__team",
-                                         "name":  "ギルベルタ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_gilberta__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "使命必達",
-    "recommendedWeapons":  [
-                               "使命必達",
-                               "破壊ユニット"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_gilberta",
+  "name": "ギルベルタ",
+  "icon": "image/gilberta.png",
+  "rarity": 6,
+  "element": "自然",
+  "weaponType": "アーツユニット",
+  "class": "補助",
+  "mainStat": "知性",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 920,
+    "strength": 120,
+    "agility": 110,
+    "intellect": 285,
+    "willpower": 185,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 202.9,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "char_gilberta",
+      "type": "skill",
+      "name": "秘杖・引力モード",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_gilberta_skill_multiplier",
+          "name": "秘杖・引力モード [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "引力ダメ: R1=97%→R9=175%→特化III=219% / 終了爆発ダメ: R1=58%→R9=104%→特化III=130%",
+          "condition": "SP消費100 / 引力吸引後に爆発"
+        },
+        {
+          "id": "buff_gilberta_skill_aux",
+          "name": "秘杖・引力モード [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "SP消費100 / 爆発ブレイク値10 / 周囲の敵を引き寄せ",
+          "condition": "SP消費100 / 引力吸引後に爆発"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "nature",
+        "stacks": 1,
+        "label": "🌿 自然付着 (+1段階)",
+        "description": "自然付着(1段階・終了爆発時)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "引力特異点は周囲の敵を引き寄せ、自然ダメージを与える。終了時に爆発し、範囲内の敵に自然ダメージを与えて自然付着を付与する。",
+      "damageTypeDetail": "自然",
+      "rawText": "引力特異点は周囲の敵を引き寄せ、自然ダメージを与える。終了時に爆発し、範囲内の敵に自然ダメージを与えて自然付着を付与する。",
+      "attachText": "自然付着(1段階・終了爆発時)",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "char_gilberta",
+      "type": "combo",
+      "name": "秘杖・マトリックス転移",
+      "shortName": "連携技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_gilberta_combo_multiplier",
+          "name": "秘杖・マトリックス転移 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "自然ダメ倍率: R1=140% → R9=252% → 特化III=315%",
+          "condition": "敵がアーツ異常状態になった時発動可 / CD: R1〜9=20秒→特化III=19秒"
+        },
+        {
+          "id": "buff_gilberta_combo_aux",
+          "name": "秘杖・マトリックス転移 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ブレイク値5 / 周囲の敵を引き寄せ",
+          "condition": "敵がアーツ異常状態になった時発動可 / CD: R1〜9=20秒→特化III=19秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💨 浮遊 (クラッシュ付与 +1段)",
+        "description": "強制浮遊付与(クラッシュ+1段階 ※自然ダメだが自然付着なし！)"
+      },
+      "description": "敵がアーツ異常状態になったときに発動可能。重力で目標および周囲の敵を引き寄せ、自然ダメージを与え、強制的に浮遊させる。（※自然付着なし）",
+      "damageTypeDetail": "自然",
+      "rawText": "敵がアーツ異常状態になったときに発動可能。重力で目標および周囲の敵を引き寄せ、自然ダメージを与え、強制的に浮遊させる。（※自然付着なし）",
+      "attachText": "なし",
+      "anomalyText": "強制浮遊付与(クラッシュ+1段階 ※自然ダメだが自然付着なし！)"
+    },
+    {
+      "id": "char_gilberta",
+      "type": "ult",
+      "name": "秘杖・重力場",
+      "shortName": "必殺技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_gilberta_ult_multiplier",
+          "name": "秘杖・重力場 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 5.0,
+          "description": "自然ダメ倍率: R1=333% → R9=600% → 特化III=750%",
+          "condition": "必殺チャージ消費90 / 力場持続5秒"
+        },
+        {
+          "id": "buff_gilberta_ult_vulnerability",
+          "name": "秘杖・重力場 [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 5.0,
+          "description": "基礎アーツ脆弱: R1=18%→R9=26%→特化III=30% ＋ 敵のクラッシュ1段階毎にアーツ脆弱追加: R1=+1.8%→R9=+2.6%→特化III=+3.0%(最大4段階で計42%、2凸で最大54%)",
+          "condition": "必殺チャージ消費90 / 力場持続5秒"
+        },
+        {
+          "id": "buff_gilberta_ult_aux",
+          "name": "秘杖・重力場 [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 5.0,
+          "description": "ブレイク値20 / スロー80%(5秒)",
+          "condition": "必殺チャージ消費90 / 力場持続5秒"
+        },
+        {
+          "id": "buff_gilberta_ult_special",
+          "name": "秘杖・重力場 [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 5.0,
+          "description": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される",
+          "condition": "必殺チャージ消費90 / 力場持続5秒",
+          "special": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "nature",
+        "stacks": 1,
+        "label": "🌿 自然付着 (+1段階)",
+        "description": "自然付着(1段階)"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💨 浮遊 (クラッシュ付与 +1段)",
+        "description": "範囲内の浮遊状態の敵は重力場終了まで浮遊状態維持"
+      },
+      "description": "範囲内の敵に自然ダメージを1回与えて自然付着を付与する。範囲内の敵はスロー(80%)とアーツ脆弱状態になり、クラッシュ段階に応じてアーツ脆弱が追加UP。浮遊状態は終了まで維持される。",
+      "damageTypeDetail": "自然",
+      "rawText": "範囲内の敵に自然ダメージを1回与えて自然付着を付与する。範囲内の敵はスロー(80%)とアーツ脆弱状態になり、クラッシュ段階に応じてアーツ脆弱が追加UP。浮遊状態は終了まで維持される。",
+      "attachText": "自然付着(1段階)",
+      "anomalyText": "範囲内の浮遊状態の敵は重力場終了まで浮遊状態維持",
+      "special": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
+    }
+  ],
+  "motifWeapon": "使命必達",
+  "recommendedWeapons": [
+    "使命必達",
+    "破壊ユニット"
+  ],
+  "normalAttack": {
+    "name": "秘杖・エネルギー束縛",
+    "damageType": "自然",
+    "damageTypeDetail": "自然",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[30%/36%/41%/50%]→R9[54%/65%/73%/90%]→特化III[68%/81%/91%/112%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク16 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値16を与える。",
+    "raw": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値16を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_gilberta_1",
+      "name": "トランスポーターの歌声",
+      "description": "戦場に出ている間、編成されたすべての味方前衛、術師と補助オペレーターの必殺チャージ回復効率+4%→+7%",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_gilberta_talent1_aux",
+          "name": "トランスポーターの歌声 [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "前衛・術師・補助の必殺チャージ回復効率+4%(昇進1) → +7%(昇進2)",
+          "condition": "戦場に出ている間、編成内の前衛・術師・補助オペレーター全員に適用"
+        }
+      ]
+    },
+    {
+      "id": "talent_gilberta_2",
+      "name": "遅れてきた返信",
+      "description": "戦技の最後の一撃か連携技が2体以上の敵に命中すると、操作中のオペレーターのHPを[72+知性x0.60]→[108+知性x0.90]回復する",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_gilberta_talent2_aux",
+          "name": "遅れてきた返信 [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "操作キャラ(満タン時は最低HP割合の味方)のHPを[72+知性×0.60](昇進2) → [108+知性×0.90](昇進3)回復",
+          "condition": "戦技最終撃または連携技が2体以上の敵に命中した時"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "ギルベルタ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
+  }
 }

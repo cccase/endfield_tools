@@ -1,172 +1,545 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_avywenna",
-    "name":  "アイビーエナ",
-    "icon":  "image/avywenna.png",
-    "rarity":  5,
-    "element":  "電磁",
-    "weaponType":  "長柄武器",
-    "class":  "突撃",
-    "mainStat":  "敏捷",
-    "subStat":  "筋力",
-    "baseStats":  {
-                      "hp":  6300,
-                      "atk":  810,
-                      "strength":  160,
-                      "agility":  245,
-                      "intellect":  100,
-                      "willpower":  95,
-                      "artsIntensity":  65,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_avywenna",
-                       "type":  "skill",
-                       "name":  "雷槍一擲",
-                       "shortName":  "戦技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  3.6,
-                                           "lv10_spec1":  3.95,
-                                           "lv11_spec2":  4.35,
-                                           "lv12_spec3":  4.8
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_avywenna__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_avywenna",
-                       "type":  "combo",
-                       "name":  "雷槍・閃撃",
-                       "shortName":  "連携技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  2.8,
-                                           "lv10_spec1":  3.05,
-                                           "lv11_spec2":  3.35,
-                                           "lv12_spec3":  3.7
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_avywenna__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_avywenna",
-                       "type":  "ult",
-                       "name":  "電磁雷光槍",
-                       "shortName":  "必殺技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  7.2,
-                                           "lv10_spec1":  7.85,
-                                           "lv11_spec2":  8.6,
-                                           "lv12_spec3":  9.5
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_avywenna_ult_self",
-                                         "name":  "電磁雷光槍 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_avywenna__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  80,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "求心の槍",
-    "recommendedWeapons":  [
-                               "求心の槍",
-                               "J.E.T."
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_avywenna",
+  "name": "アイビーエナ",
+  "icon": "image/avywenna.png",
+  "rarity": 5,
+  "element": "電磁",
+  "weaponType": "長柄武器",
+  "class": "突撃",
+  "mainStat": "敏捷",
+  "subStat": "筋力",
+  "baseStats": {
+    "hp": 6300,
+    "atk": 810,
+    "strength": 160,
+    "agility": 245,
+    "intellect": 100,
+    "willpower": 95,
+    "artsIntensity": 65,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_avywenna",
+      "type": "skill",
+      "name": "雷槍・逆襲",
+      "shortName": "戦技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 3.6,
+        "lv10_spec1": 3.95,
+        "lv11_spec2": 4.35,
+        "lv12_spec3": 4.8
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_avywenna_skill_multiplier",
+          "name": "雷槍・逆襲 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "旋風: R1=67%→R9=120%→特化III=150% / 雷槍1本毎: R1=75%→R9=134%→特化III=168% / 強雷槍: R1=192%→R9=346%→特化III=432%",
+          "condition": "SP消費100 / 設置済みの雷槍(連携)・強雷槍(必殺)を全回収"
+        },
+        {
+          "id": "buff_avywenna_skill_aux",
+          "name": "雷槍・逆襲 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値: 旋風5 / 雷槍5 / 強雷槍10",
+          "condition": "SP消費100 / 設置済みの雷槍(連携)・強雷槍(必殺)を全回収"
+        },
+        {
+          "id": "buff_avywenna_skill_special",
+          "name": "雷槍・逆襲 [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する",
+          "condition": "SP消費100 / 設置済みの雷槍(連携)・強雷槍(必殺)を全回収",
+          "special": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "【限定】必殺技期間中のみ条件付き電磁付着(1段階・必殺技で設置した「強雷槍」を回収貫通した時のみ付与。通常旋風・連携雷槍回収には付着なし！)",
+        "description": "条件付き電磁付着(1段階・必殺技で設置した「強雷槍」を回収貫通した時のみ付与。通常旋風・連携雷槍回収には付着なし！)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "周囲の敵にわずかな電磁ダメージを与え、すべての雷槍、強雷槍を回収する。回収時に雷槍が敵を貫通すると電磁ダメージを与え、強雷槍はより高い電磁ダメージを与え、電磁付着を付与する。",
+      "damageTypeDetail": "電磁",
+      "rawText": "周囲の敵にわずかな電磁ダメージを与え、すべての雷槍、強雷槍を回収する。回収時に雷槍が敵を貫通すると電磁ダメージを与え、強雷槍はより高い電磁ダメージを与え、電磁付着を付与する。",
+      "attachText": "条件付き電磁付着(1段階・必殺技で設置した「強雷槍」を回収貫通した時のみ付与。通常旋風・連携雷槍回収には付着なし！)",
+      "anomalyText": "なし",
+      "special": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
+    },
+    {
+      "id": "combo_avywenna",
+      "type": "combo",
+      "name": "雷槍・閃撃",
+      "shortName": "連携技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 2.8,
+        "lv10_spec1": 3.05,
+        "lv11_spec2": 3.35,
+        "lv12_spec3": 3.7
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_avywenna_combo_multiplier",
+          "name": "雷槍・閃撃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 13.0,
+          "description": "電磁ダメ倍率: R1=169% → R9=304% → 特化III=380%(雷槍3本設置・持続30秒)",
+          "condition": "電磁付着または感電状態の敵に操作キャラが重攻撃時発動可 / CD: R1〜9=13秒→特化III=12秒"
+        },
+        {
+          "id": "buff_avywenna_combo_aux",
+          "name": "雷槍・閃撃 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 13.0,
+          "description": "ブレイク値10 / 必殺チャージ獲得0(※素質1で命中回収時に回復)",
+          "condition": "電磁付着または感電状態の敵に操作キャラが重攻撃時発動可 / CD: R1〜9=13秒→特化III=12秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "電磁付着または感電状態の敵に重攻撃を与えると発動可能。敵に3本の雷槍を投げ、範囲内の敵に1回電磁ダメージを与える。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "電磁付着または感電状態の敵に重攻撃を与えると発動可能。敵に3本の雷槍を投げ、範囲内の敵に1回電磁ダメージを与える。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "ult_avywenna",
+      "type": "ult",
+      "name": "雷槍・決震",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.2,
+        "lv10_spec1": 7.85,
+        "lv11_spec2": 8.6,
+        "lv12_spec3": 9.5
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_avywenna_ult_multiplier",
+          "name": "雷槍・決震 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 10.0,
+          "description": "電磁ダメ倍率: R1=422% → R9=760% → 特化III=950%",
+          "condition": "必殺チャージ消費100 / CD10秒(強雷槍1本設置・持続30秒 ※投擲命中自体は電磁付着なし！)"
+        },
+        {
+          "id": "buff_avywenna_ult_aux",
+          "name": "雷槍・決震 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 10.0,
+          "description": "ブレイク値15",
+          "condition": "必殺チャージ消費100 / CD10秒(強雷槍1本設置・持続30秒 ※投擲命中自体は電磁付着なし！)"
+        }
+      ],
+      "epCost": 80,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "目標エリアに強雷槍を投げ、周囲の敵に高い電磁ダメージを与える。（※設置時点では電磁付着なし、戦技回収時に付着）",
+      "damageTypeDetail": "電磁",
+      "rawText": "目標エリアに強雷槍を投げ、周囲の敵に高い電磁ダメージを与える。（※設置時点では電磁付着なし、戦技回収時に付着）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    }
+  ],
+  "motifWeapon": "求心の槍",
+  "recommendedWeapons": [
+    "求心の槍",
+    "J.E.T."
+  ],
+  "normalAttack": {
+    "name": "雷槍・迅撃",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[17%/22%/21%/30%/50%]→R9[30%/39%/37%/54%/90%]→特化III[37%/48%/46%/68%/113%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク17 / 終撃時SP回復",
+    "description": "最大5段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値17を与える。",
+    "raw": "最大5段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値17を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_avywenna_1",
+      "name": "配達の効率化",
+      "description": "投げてから回収するまでの雷槍、強雷槍が敵に命中すると、必殺チャージを3→4回復する",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_avywenna_talent1_aux",
+          "name": "配達の効率化 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "1命中につき必殺チャージ+3(昇進1) → +4(昇進2)回復",
+          "condition": "投げてから回収するまでの雷槍・強雷槍が敵に命中した時"
+        }
+      ]
+    },
+    {
+      "id": "talent_avywenna_2",
+      "name": "婉曲手段",
+      "description": "必殺技「雷槍・決震」が敵に命中するとき、10秒間持続する6%→10%の電磁脆弱を付与する",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_avywenna_talent2_vulnerability",
+          "name": "婉曲手段 [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 10.0,
+          "description": "敵に電磁脆弱+6%(昇進2) → +10%(昇進3)",
+          "condition": "必殺技「雷槍・決震」命中時 / 持続10秒"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "アイビーエナ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
+  }
 }

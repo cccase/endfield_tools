@@ -1,196 +1,545 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_arclight",
-    "name":  "アークライト",
-    "icon":  "image/arclight.png",
-    "rarity":  5,
-    "element":  "電磁",
-    "weaponType":  "片手剣",
-    "class":  "先鋒",
-    "mainStat":  "敏捷",
-    "subStat":  "知性",
-    "baseStats":  {
-                      "hp":  6300,
-                      "atk":  720,
-                      "strength":  100,
-                      "agility":  245,
-                      "intellect":  160,
-                      "willpower":  95,
-                      "artsIntensity":  65,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  40,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_arclight",
-                       "type":  "skill",
-                       "name":  "電光突進",
-                       "shortName":  "戦技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  3.6,
-                                           "lv10_spec1":  3.95,
-                                           "lv11_spec2":  4.35,
-                                           "lv12_spec3":  4.8
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_arclight__sp",
-                                         "name":  "アークライト 戦術指揮",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "ultEfficiency",
-                                         "value":  10,
-                                         "duration":  10,
-                                         "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_arclight__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_arclight",
-                       "type":  "combo",
-                       "name":  "放電ステップ",
-                       "shortName":  "連携技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  2.8,
-                                           "lv10_spec1":  3.05,
-                                           "lv11_spec2":  3.35,
-                                           "lv12_spec3":  3.7
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_arclight__sp",
-                                         "name":  "アークライト 戦術指揮",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "ultEfficiency",
-                                         "value":  10,
-                                         "duration":  10,
-                                         "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_arclight__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_arclight",
-                       "type":  "ult",
-                       "name":  "アークチャージ",
-                       "shortName":  "必殺技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  7.2,
-                                           "lv10_spec1":  7.85,
-                                           "lv11_spec2":  8.6,
-                                           "lv12_spec3":  9.5
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_arclight_ult_self",
-                                         "name":  "アークチャージ 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_arclight__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "十二問",
-    "recommendedWeapons":  [
-                               "テルミット・カッター",
-                               "十二問"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_arclight",
+  "name": "アークライト",
+  "icon": "image/arclight.png",
+  "rarity": 5,
+  "element": "電磁",
+  "weaponType": "片手剣",
+  "class": "先鋒",
+  "mainStat": "敏捷",
+  "subStat": "知性",
+  "baseStats": {
+    "hp": 6300,
+    "atk": 720,
+    "strength": 100,
+    "agility": 245,
+    "intellect": 160,
+    "willpower": 95,
+    "artsIntensity": 65,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 40,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_arclight",
+      "type": "skill",
+      "name": "疾風迅雷",
+      "shortName": "戦技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 3.6,
+        "lv10_spec1": 3.95,
+        "lv11_spec2": 4.35,
+        "lv12_spec3": 4.8
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_arclight_skill_multiplier",
+          "name": "疾風迅雷 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "1・2段目(物理): R1[45%+45%]→R9[81%+81%]→特化III[101%+101%] / 感電消費追撃(電磁): R1=180%→R9=324%→特化III=405%",
+          "condition": "SP消費100 / 感電状態の敵に命中時追撃発生"
+        },
+        {
+          "id": "buff_arclight_skill_aux",
+          "name": "疾風迅雷 [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値: 2段目5＋追撃5 / 感電消費時SP回復: R1=30→R9=35→特化III=40",
+          "condition": "SP消費100 / 感電状態の敵に命中時追撃発生"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "感電状態の消費(敵が感電中の場合、感電を消費して追加電磁ダメ＆SP回復 ※電磁付着は付与しない)",
+        "description": "感電状態の消費(敵が感電中の場合、感電を消費して追加電磁ダメ＆SP回復 ※電磁付着は付与しない)"
+      },
+      "description": "敵の近くに瞬間移動して2回斬撃を放ち、わずかな物理ダメージを与える。敵が感電状態の場合、感電状態を消費して追加でもう1回攻撃し、電磁ダメージを与え、SPを一定量回復する。（※電磁付着なし）",
+      "damageTypeDetail": "物理(1・2段) / 電磁(感電消費追撃)",
+      "rawText": "敵の近くに瞬間移動して2回斬撃を放ち、わずかな物理ダメージを与える。敵が感電状態の場合、感電状態を消費して追加でもう1回攻撃し、電磁ダメージを与え、SPを一定量回復する。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "感電状態の消費(敵が感電中の場合、感電を消費して追加電磁ダメ＆SP回復 ※電磁付着は付与しない)"
+    },
+    {
+      "id": "combo_arclight",
+      "type": "combo",
+      "name": "雷鳴",
+      "shortName": "連携技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 2.8,
+        "lv10_spec1": 3.05,
+        "lv11_spec2": 3.35,
+        "lv12_spec3": 3.7
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_arclight_combo_multiplier",
+          "name": "雷鳴 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 3.0,
+          "description": "物理ダメ倍率: R1=155% → R9=280% → 特化III=350%",
+          "condition": "敵が感電状態になるか感電が消費された時発動可 / CD3秒"
+        },
+        {
+          "id": "buff_arclight_combo_aux",
+          "name": "雷鳴 [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "ブレイク値5 / 必殺チャージ回復5 / SP回復: R1=8→R9=9→特化III=10",
+          "condition": "敵が感電状態になるか感電が消費された時発動可 / CD3秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "敵が感電状態になるか感電状態が消費されると発動可能。複数回斬撃を放ち、物理ダメージを与え、SPを一定量回復する。",
+      "damageTypeDetail": "物理",
+      "rawText": "敵が感電状態になるか感電状態が消費されると発動可能。複数回斬撃を放ち、物理ダメージを与え、SPを一定量回復する。",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "ult_arclight",
+      "type": "ult",
+      "name": "轟雷裂電",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.2,
+        "lv10_spec1": 7.85,
+        "lv11_spec2": 8.6,
+        "lv12_spec3": 9.5
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_arclight_ult_multiplier",
+          "name": "轟雷裂電 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "1段目突進(電磁+電磁付着): R1=156%→R9=280%→特化III=350% / 2段目爆発(電磁+付着消費強制感電): R1=244%→R9=440%→特化III=550%",
+          "condition": "必殺チャージ消費90"
+        },
+        {
+          "id": "buff_arclight_ult_aux",
+          "name": "轟雷裂電 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値: R1〜9[7+7]→特化III[10+10]",
+          "condition": "必殺チャージ消費90"
+        },
+        {
+          "id": "buff_arclight_ult_special",
+          "name": "轟雷裂電 [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造",
+          "condition": "必殺チャージ消費90",
+          "special": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "⚡ 電磁付着 (+1段階)",
+        "description": "電磁付着(1段階・1段目突進時)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "2段目爆発時、敵が電磁付着状態なら電磁付着を消費して強制感電付与",
+        "description": "2段目爆発時、敵が電磁付着状態なら電磁付着を消費して強制感電付与"
+      },
+      "description": "前方に向かって突進し、軌道上の敵に電磁ダメージを与え、電磁付着を付与する。一定時間後、残っている電光を爆発させ、再度電磁ダメージを与える。敵が電磁付着状態の場合、電磁付着状態を消費して、敵を強制的に感電状態にする。",
+      "damageTypeDetail": "電磁",
+      "rawText": "前方に向かって突進し、軌道上の敵に電磁ダメージを与え、電磁付着を付与する。一定時間後、残っている電光を爆発させ、再度電磁ダメージを与える。敵が電磁付着状態の場合、電磁付着状態を消費して、敵を強制的に感電状態にする。",
+      "attachText": "電磁付着(1段階・1段目突進時)",
+      "anomalyText": "2段目爆発時、敵が電磁付着状態なら電磁付着を消費して強制感電付与",
+      "special": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造"
+    }
+  ],
+  "motifWeapon": "十二問",
+  "recommendedWeapons": [
+    "テルミット・カッター",
+    "十二問"
+  ],
+  "normalAttack": {
+    "name": "追跡捕獲",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[10%/13%/26%/36%/48%]→R9[18%/23%/47%/65%/86%]→特化III[23%/28%/59%/81%/107%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク16 / 終撃時SP回復",
+    "description": "最大5段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値16を与える。",
+    "raw": "最大5段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値16を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_arclight_1",
+      "name": "荒野の吟遊者",
+      "description": "戦技「疾風迅雷」で追加効果が3回発動すると、15秒間自身の知性1につきチーム全員の電磁ダメージ+0.05%→+0.08%（重ね掛け不可）",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_arclight_talent1_damage_up",
+          "name": "荒野の吟遊者 [【枠4】ダメージUP枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "damage_up",
+          "calcGroupLabel": "【枠4】ダメージUP枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "自身の知性1につきチーム全員の電磁ダメージ+0.05%(昇進1) → +0.08%(昇進2)",
+          "condition": "戦技「疾風迅雷」の感電消費追加効果が累計3回(5凸で2回)発動時 / 15秒間 / 重ね掛け不可"
+        }
+      ]
+    },
+    {
+      "id": "talent_arclight_2",
+      "name": "衆生智慧",
+      "description": "アーツ付着を受けるとき、30%→50%の確率で無効になる",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_arclight_talent2_aux",
+          "name": "衆生智慧 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "30%(昇進2) → 50%(昇進3)の確率で被アーツ付着無効",
+          "condition": "自身が敵からアーツ付着を受ける時"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "アークライト 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造 ／ 【発動回数緩和】素質1「荒野の吟遊者」の発動に必要な戦技追加効果回数が3回→2回に減少"
+  }
 }

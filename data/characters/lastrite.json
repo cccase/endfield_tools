@@ -1,172 +1,575 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_lastrite",
-    "name":  "ラストライト",
-    "icon":  "image/lastrite.png",
-    "rarity":  6,
-    "element":  "寒冷",
-    "weaponType":  "大剣",
-    "class":  "突撃",
-    "mainStat":  "敏捷",
-    "subStat":  "筋力",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  920,
-                      "strength":  185,
-                      "agility":  285,
-                      "intellect":  120,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_lastrite",
-                       "type":  "skill",
-                       "name":  "セシュカの秘伝",
-                       "shortName":  "戦技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_lastrite__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_lastrite",
-                       "type":  "combo",
-                       "name":  "冬喰",
-                       "shortName":  "連携技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_lastrite__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_lastrite",
-                       "type":  "ult",
-                       "name":  "終の別れ",
-                       "shortName":  "必殺技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_lastrite_ult_self",
-                                         "name":  "終の別れ 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_lastrite__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  240,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "クラヴェンガー",
-    "recommendedWeapons":  [
-                               "クラヴェンガー",
-                               "破砕君主"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_lastrite",
+  "name": "ラストライト",
+  "icon": "image/lastrite.png",
+  "rarity": 6,
+  "element": "寒冷",
+  "weaponType": "大剣",
+  "class": "突撃",
+  "mainStat": "敏捷",
+  "subStat": "筋力",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 920,
+    "strength": 185,
+    "agility": 285,
+    "intellect": 120,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_lastrite",
+      "type": "skill",
+      "name": "セシュカの秘伝",
+      "shortName": "戦技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_lastrite_skill_multiplier",
+          "name": "セシュカの秘伝 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "幻影追撃寒冷ダメ倍率(ラストライト基準): R1=142% → R9=256% → 特化III=320%",
+          "condition": "SP消費100(即時SP30返還) / 操作中の味方武器に15秒間「低温注入」付与 → 次の重攻撃時に幻影追撃発動"
+        },
+        {
+          "id": "buff_lastrite_skill_aux",
+          "name": "セシュカの秘伝 [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "即時SP30返還 / 幻影追撃発動時にラストライトの必殺チャージ+16回復",
+          "condition": "SP消費100(即時SP30返還) / 操作中の味方武器に15秒間「低温注入」付与 → 次の重攻撃時に幻影追撃発動"
+        },
+        {
+          "id": "buff_lastrite_skill_special",
+          "name": "セシュカの秘伝 [【特殊枠（例外処理）】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える",
+          "condition": "SP消費100(即時SP30返還) / 操作中の味方武器に15秒間「低温注入」付与 → 次の重攻撃時に幻影追撃発動",
+          "special": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "寒冷付着(1段階・低温注入を受けた操作キャラの次の重攻撃時の幻影追撃で付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "操作中のオペレーターの武器に低温注入を行い、SPが30返還される。15秒内、操作中のオペレーターの次の重攻撃はラストライトの幻影を生成し、寒冷ダメージを与え、寒冷付着を付与する。",
+      "damageTypeDetail": "寒冷(重攻撃時の幻影追撃)",
+      "rawText": "操作中のオペレーターの武器に低温注入を行い、SPが30返還される。15秒内、操作中のオペレーターの次の重攻撃はラストライトの幻影を生成し、寒冷ダメージを与え、寒冷付着を付与する。",
+      "attachText": "寒冷付着(1段階・低温注入を受けた操作キャラの次の重攻撃時の幻影追撃で付与)",
+      "anomalyText": "なし",
+      "special": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える"
+    },
+    {
+      "id": "combo_lastrite",
+      "type": "combo",
+      "name": "冬喰",
+      "shortName": "連携技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_lastrite_combo_multiplier",
+          "name": "冬喰 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 9.0,
+          "description": "氷柱: R1=71%→R9=128%→特化III=160% ＋ 斬撃基礎: R1=71%→R9=128%→特化III=160% ＋ 寒冷付着消費1段階につき追加: R1=+107%→R9=+192%→特化III=+240%(3段階消費で計1040%、4段階で1280%)",
+          "condition": "敵の寒冷付着が3段階以上になった時発動可 / CD: R1〜9=9秒→特化III=8秒"
+        },
+        {
+          "id": "buff_lastrite_combo_aux",
+          "name": "冬喰 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 9.0,
+          "description": "斬撃ブレイク値15 / 必殺チャージ回復: 基礎40 ＋ 付着消費1段階につき+15(3段階で85、4段階で100)",
+          "condition": "敵の寒冷付着が3段階以上になった時発動可 / CD: R1〜9=9秒→特化III=8秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "敵の寒冷付着を全段階消費(3段階または4段階消費)",
+        "description": "敵の寒冷付着を全段階消費(3段階または4段階消費)"
+      },
+      "description": "敵の寒冷付着状態が3段階以上になったときに発動可能。敵の寒冷付着をすべて消費し、消費した寒冷付着段階に応じて寒冷ダメージを与え、必殺チャージを回復する。",
+      "damageTypeDetail": "寒冷",
+      "rawText": "敵の寒冷付着状態が3段階以上になったときに発動可能。敵の寒冷付着をすべて消費し、消費した寒冷付着段階に応じて寒冷ダメージを与え、必殺チャージを回復する。",
+      "attachText": "なし",
+      "anomalyText": "敵の寒冷付着を全段階消費(3段階または4段階消費)"
+    },
+    {
+      "id": "ult_lastrite",
+      "type": "ult",
+      "name": "終の別れ",
+      "shortName": "必殺技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_lastrite_ult_multiplier",
+          "name": "終の別れ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "3段斬撃: R1[178%/178%/356%] → R9[320%/320%/640%] → 特化III[400%/400%/800%](合計1600%)",
+          "condition": "必殺チャージ消費240(※自身の戦技・連携技でのみチャージ回復可能) / 発動中無敵"
+        },
+        {
+          "id": "buff_lastrite_ult_aux",
+          "name": "終の別れ [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値[5+5+10=20] / 発動中被ダメ完全無効",
+          "condition": "必殺チャージ消費240(※自身の戦技・連携技でのみチャージ回復可能) / 発動中無敵"
+        },
+        {
+          "id": "buff_lastrite_ult_special",
+          "name": "終の別れ [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る）",
+          "condition": "必殺チャージ消費240(※自身の戦技・連携技でのみチャージ回復可能) / 発動中無敵",
+          "special": "【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る）"
+        }
+      ],
+      "epCost": 240,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "前方に斬撃を3回放ち、高い寒冷ダメージを与える（寒冷付着なし）。ラストライトの必殺チャージは、自身の戦技および連携技でのみ回復可能。",
+      "damageTypeDetail": "寒冷",
+      "rawText": "前方に斬撃を3回放ち、高い寒冷ダメージを与える（寒冷付着なし）。ラストライトの必殺チャージは、自身の戦技および連携技でのみ回復可能。",
+      "attachText": "なし",
+      "anomalyText": "なし",
+      "special": "【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る）"
+    }
+  ],
+  "motifWeapon": "クラヴェンガー",
+  "recommendedWeapons": [
+    "クラヴェンガー",
+    "破砕君主"
+  ],
+  "normalAttack": {
+    "name": "氷霜の舞",
+    "damageType": "寒冷",
+    "damageTypeDetail": "寒冷",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[30%/55%/68%/90%]→R9[54%/99%/122%/162%]→特化III[68%/124%/153%/203%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク25 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に寒冷ダメージを与える（※寒冷付着なし）。重攻撃はブレイク値25を与える。",
+    "raw": "最大4段の攻撃で敵に寒冷ダメージを与える（※寒冷付着なし）。重攻撃はブレイク値25を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_lastrite_1",
+      "name": "低体温症",
+      "description": "ラストライトが任意のアーツ付着を消費すると、15秒間その敵に消費したアーツ付着の段階数×2%→×4%の寒冷脆弱を付与する（重ね掛け不可）",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lastrite_talent1_vulnerability",
+          "name": "低体温症 [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "消費した付着段階数×2%(昇進1) → ×4%(昇進2)の寒冷脆弱を付与(3段階消費12%、4段階消費16%)",
+          "condition": "自身が任意のアーツ付着を消費した時 / 15秒間 / 重ね掛け不可"
+        }
+      ]
+    },
+    {
+      "id": "talent_lastrite_2",
+      "name": "低温脆性",
+      "description": "必殺技「終の別れ」で寒冷脆弱状態の敵にダメージを与えるとき、寒冷脆弱の効果が1.2倍→1.5倍と見なされる",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lastrite_talent2_vulnerability",
+          "name": "低温脆性 [【枠11】敵脆弱枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "敵の寒冷脆弱の効果を1.2倍(昇進2) → 1.5倍(昇進3)として計算(必殺技ヒット時のみ乗算強化)",
+          "condition": "必殺技「終の別れ」で寒冷脆弱状態の敵にダメージを与える時"
+        },
+        {
+          "id": "buff_lastrite_talent2_special",
+          "name": "低温脆性 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる",
+          "condition": "必殺技「終の別れ」で寒冷脆弱状態の敵にダメージを与える時",
+          "special": "【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる"
+        }
+      ],
+      "special": "【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる"
+    }
+  ],
+  "specialMechanic": {
+    "title": "ラストライト 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える ／ 【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る） ／ 【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる"
+  }
 }

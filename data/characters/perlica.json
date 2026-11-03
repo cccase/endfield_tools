@@ -1,172 +1,545 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_perlica",
-    "name":  "ペリカ",
-    "icon":  "image/perlica.png",
-    "rarity":  5,
-    "element":  "電磁",
-    "weaponType":  "アーツユニット",
-    "class":  "術師",
-    "mainStat":  "知性",
-    "subStat":  "敏捷",
-    "baseStats":  {
-                      "hp":  5900,
-                      "atk":  810,
-                      "strength":  100,
-                      "agility":  160,
-                      "intellect":  245,
-                      "willpower":  95,
-                      "artsIntensity":  65,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  2,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_perlica",
-                       "type":  "skill",
-                       "name":  "協約ω：雷撃",
-                       "shortName":  "戦技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  3.6,
-                                           "lv10_spec1":  3.95,
-                                           "lv11_spec2":  4.35,
-                                           "lv12_spec3":  4.8
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_perlica__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_perlica",
-                       "type":  "combo",
-                       "name":  "即時協約：閃光鎖",
-                       "shortName":  "連携技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  2.8,
-                                           "lv10_spec1":  3.05,
-                                           "lv11_spec2":  3.35,
-                                           "lv12_spec3":  3.7
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_perlica__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_perlica",
-                       "type":  "ult",
-                       "name":  "協約ε：70.41κ",
-                       "shortName":  "必殺技",
-                       "damageType":  "電磁",
-                       "multipliers":  {
-                                           "lv9":  7.2,
-                                           "lv10_spec1":  7.85,
-                                           "lv11_spec2":  8.6,
-                                           "lv12_spec3":  9.5
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_perlica_ult_self",
-                                         "name":  "協約ε：70.41κ 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_perlica__inflict",
-                                         "name":  "電磁アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  80,
-                       "infliction":  {
-                                          "type":  "electric",
-                                          "stacks":  1,
-                                          "label":  "電磁付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "荒野迷走",
-    "recommendedWeapons":  [
-                               "弔いの詩",
-                               "破壊ユニット"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_perlica",
+  "name": "ペリカ",
+  "icon": "image/perlica.png",
+  "rarity": 5,
+  "element": "電磁",
+  "weaponType": "アーツユニット",
+  "class": "術師",
+  "mainStat": "知性",
+  "subStat": "敏捷",
+  "baseStats": {
+    "hp": 5900,
+    "atk": 810,
+    "strength": 100,
+    "agility": 160,
+    "intellect": 245,
+    "willpower": 95,
+    "artsIntensity": 65,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_perlica",
+      "type": "skill",
+      "name": "協約ω：雷撃",
+      "shortName": "戦技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 3.6,
+        "lv10_spec1": 3.95,
+        "lv11_spec2": 4.35,
+        "lv12_spec3": 4.8
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_perlica_skill_multiplier",
+          "name": "協約ω：雷撃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "電磁ダメ倍率: R1=178% → R9=320% → 特化III=400%",
+          "condition": "SP消費100"
+        },
+        {
+          "id": "buff_perlica_skill_aux",
+          "name": "協約ω：雷撃 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "SP消費100 / ブレイク値10",
+          "condition": "SP消費100"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "electric",
+        "stacks": 1,
+        "label": "⚡ 電磁付着 (+1段階)",
+        "description": "電磁付着(1段階)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "放出した電磁エネルギーを空中から落とし、一定範囲内の敵に電磁ダメージを与え、電磁付着を付与する。",
+      "damageTypeDetail": "電磁",
+      "rawText": "放出した電磁エネルギーを空中から落とし、一定範囲内の敵に電磁ダメージを与え、電磁付着を付与する。",
+      "attachText": "電磁付着(1段階)",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "combo_perlica",
+      "type": "combo",
+      "name": "即時協約：閃光鎖",
+      "shortName": "連携技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 2.8,
+        "lv10_spec1": 3.05,
+        "lv11_spec2": 3.35,
+        "lv12_spec3": 3.7
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_perlica_combo_multiplier",
+          "name": "即時協約：閃光鎖 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "電磁ダメ倍率: R1=80% → R9=144% → 特化III=180%",
+          "condition": "操作キャラが敵に重攻撃を与えた時発動可 / CD: R1〜9=20秒→特化III=19秒"
+        },
+        {
+          "id": "buff_perlica_combo_taken_damage_up",
+          "name": "即時協約：閃光鎖 [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "強制感電(5秒、段階1相当の被アーツダメ+12%×強度補正)",
+          "condition": "操作キャラが敵に重攻撃を与えた時発動可 / CD: R1〜9=20秒→特化III=19秒"
+        },
+        {
+          "id": "buff_perlica_combo_aux",
+          "name": "即時協約：閃光鎖 [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ブレイク値10",
+          "condition": "操作キャラが敵に重攻撃を与えた時発動可 / CD: R1〜9=20秒→特化III=19秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "強制感電付与(5秒間 ※電磁付着ではなく直接感電状態にする)",
+        "description": "強制感電付与(5秒間 ※電磁付着ではなく直接感電状態にする)"
+      },
+      "description": "操作中のオペレーターが敵に重攻撃を与えると発動可能。電磁ダメージを与え、強制的に短時間(5秒)感電状態にする。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "操作中のオペレーターが敵に重攻撃を与えると発動可能。電磁ダメージを与え、強制的に短時間(5秒)感電状態にする。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "強制感電付与(5秒間 ※電磁付着ではなく直接感電状態にする)"
+    },
+    {
+      "id": "ult_perlica",
+      "type": "ult",
+      "name": "協約ε：70.41κ",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.2,
+        "lv10_spec1": 7.85,
+        "lv11_spec2": 8.6,
+        "lv12_spec3": 9.5
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_perlica_ult_multiplier",
+          "name": "協約ε：70.41κ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "電磁ダメ倍率: R1=445% → R9=800% → 特化III=1000%",
+          "condition": "必殺チャージ消費80(※電磁ダメのみ、電磁付着・感電ともになし！)"
+        },
+        {
+          "id": "buff_perlica_ult_aux",
+          "name": "協約ε：70.41κ [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値20",
+          "condition": "必殺チャージ消費80(※電磁ダメのみ、電磁付着・感電ともになし！)"
+        }
+      ],
+      "epCost": 80,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "巨大な軌道浮遊物を転送し、範囲内の敵に高い電磁ダメージを与える。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "巨大な軌道浮遊物を転送し、範囲内の敵に高い電磁ダメージを与える。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    }
+  ],
+  "motifWeapon": "荒野迷走",
+  "recommendedWeapons": [
+    "弔いの詩",
+    "破壊ユニット"
+  ],
+  "normalAttack": {
+    "name": "協約α：突破",
+    "damageType": "電磁",
+    "damageTypeDetail": "電磁",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[25%/30%/37%/57%]→R9[46%/54%/67%/102%]→特化III[57%/68%/84%/127%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク15 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値15を与える。",
+    "raw": "最大4段の攻撃で敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値15を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_perlica_1",
+      "name": "殲滅協約",
+      "description": "ブレイク状態の敵へのダメージ+20%→+30%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_perlica_talent1_damage_up",
+          "name": "殲滅協約 [【枠4】ダメージUP枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "damage_up",
+          "calcGroupLabel": "【枠4】ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク状態の敵へのダメージ+20%(昇進1) → +30%(昇進2)",
+          "condition": "敵がブレイク状態の時"
+        }
+      ]
+    },
+    {
+      "id": "talent_perlica_2",
+      "name": "循環協約",
+      "description": "連携技「即時協約：閃光鎖」がクラッシュ状態の敵に命中するとき、1回連鎖して攻撃する",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_perlica_talent2_special",
+          "name": "循環協約 [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する",
+          "condition": "連携技がクラッシュ状態の敵に命中した時",
+          "special": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する"
+        }
+      ],
+      "special": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する"
+    }
+  ],
+  "specialMechanic": {
+    "title": "ペリカ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する"
+  }
 }

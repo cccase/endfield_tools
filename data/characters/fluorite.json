@@ -1,172 +1,586 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_fluorite",
-    "name":  "フローライト",
-    "icon":  "image/fluorite.png",
-    "rarity":  4,
-    "element":  "自然",
-    "weaponType":  "拳銃",
-    "class":  "術師",
-    "mainStat":  "知性",
-    "subStat":  "敏捷",
-    "baseStats":  {
-                      "hp":  5000,
-                      "atk":  710,
-                      "strength":  85,
-                      "agility":  135,
-                      "intellect":  210,
-                      "willpower":  80,
-                      "artsIntensity":  50,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  10
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_fluorite",
-                       "type":  "skill",
-                       "name":  "自然の調和",
-                       "shortName":  "戦技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  3.42,
-                                           "lv10_spec1":  3.75,
-                                           "lv11_spec2":  4.13,
-                                           "lv12_spec3":  4.56
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_fluorite__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_fluorite",
-                       "type":  "combo",
-                       "name":  "特別サービス",
-                       "shortName":  "連携技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  2.66,
-                                           "lv10_spec1":  2.9,
-                                           "lv11_spec2":  3.18,
-                                           "lv12_spec3":  3.52
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_fluorite__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_fluorite",
-                       "type":  "ult",
-                       "name":  "つまらない茶番",
-                       "shortName":  "必殺技",
-                       "damageType":  "自然",
-                       "multipliers":  {
-                                           "lv9":  6.84,
-                                           "lv10_spec1":  7.46,
-                                           "lv11_spec2":  8.17,
-                                           "lv12_spec3":  9.02
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_fluorite_ult_self",
-                                         "name":  "つまらない茶番 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_fluorite__inflict",
-                                         "name":  "自然アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  100,
-                       "infliction":  {
-                                          "type":  "nature",
-                                          "stacks":  1,
-                                          "label":  "自然付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "O.B.J.迅速",
-    "recommendedWeapons":  [
-                               "O.B.J.迅速",
-                               "ナビゲーター"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_fluorite",
+  "name": "フローライト",
+  "icon": "image/fluorite.png",
+  "rarity": 4,
+  "element": "自然",
+  "weaponType": "拳銃",
+  "class": "術師",
+  "mainStat": "知性",
+  "subStat": "敏捷",
+  "baseStats": {
+    "hp": 5000,
+    "atk": 710,
+    "strength": 85,
+    "agility": 135,
+    "intellect": 210,
+    "willpower": 80,
+    "artsIntensity": 50,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_fluorite",
+      "type": "skill",
+      "name": "ちょっとイタズラ",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 3.42,
+        "lv10_spec1": 3.75,
+        "lv11_spec2": 4.13,
+        "lv12_spec3": 4.56
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_fluorite_skill_multiplier",
+          "name": "ちょっとイタズラ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "爆発自然ダメ倍率: R1=187% → R9=336% → 特化III=420%",
+          "condition": "SP消費100 / お手製爆弾は同時1個まで"
+        },
+        {
+          "id": "buff_fluorite_skill_aux",
+          "name": "ちょっとイタズラ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値10 / 貼り付け時スロー30%付与",
+          "condition": "SP消費100 / お手製爆弾は同時1個まで"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "nature",
+        "stacks": 1,
+        "label": "🌿 自然付着 (+1段階)",
+        "description": "自然付着(1段階・爆発時)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "お手製爆弾を蹴って敵に貼り付け、スロー(30%)を付与する。そのあと爆発し、範囲内の敵に自然ダメージを与え、自然付着を付与する。",
+      "damageTypeDetail": "自然",
+      "rawText": "お手製爆弾を蹴って敵に貼り付け、スロー(30%)を付与する。そのあと爆発し、範囲内の敵に自然ダメージを与え、自然付着を付与する。",
+      "attachText": "自然付着(1段階・爆発時)",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "combo_fluorite",
+      "type": "combo",
+      "name": "特別サービス",
+      "shortName": "連携技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 2.66,
+        "lv10_spec1": 2.9,
+        "lv11_spec2": 3.18,
+        "lv12_spec3": 3.52
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_fluorite_combo_multiplier",
+          "name": "特別サービス [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 40.0,
+          "description": "自然ダメ倍率: R1=169% → R9=304% → 特化III=380%",
+          "condition": "敵の寒冷付着または自然付着が2段階以上になった時発動可 / CD: R1〜9=40秒→特化III=38秒"
+        },
+        {
+          "id": "buff_fluorite_combo_aux",
+          "name": "特別サービス [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 40.0,
+          "description": "ブレイク値10",
+          "condition": "敵の寒冷付着または自然付着が2段階以上になった時発動可 / CD: R1〜9=40秒→特化III=38秒"
+        },
+        {
+          "id": "buff_fluorite_combo_special",
+          "name": "特別サービス [【特殊枠（例外処理）】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 40.0,
+          "description": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める）",
+          "condition": "敵の寒冷付着または自然付着が2段階以上になった時発動可 / CD: R1〜9=40秒→特化III=38秒",
+          "special": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める）"
+        }
+      ],
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "条件付き付着(1段階・敵に付いている寒冷付着または自然付着と同じ属性を追加付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "敵の寒冷付着または自然付着の付着段階が2以上になったときに発動可能。敵に自然ダメージを与え、対応属性のアーツ付着を付与する。",
+      "damageTypeDetail": "自然",
+      "rawText": "敵の寒冷付着または自然付着の付着段階が2以上になったときに発動可能。敵に自然ダメージを与え、対応属性のアーツ付着を付与する。",
+      "attachText": "条件付き付着(1段階・敵に付いている寒冷付着または自然付着と同じ属性を追加付与)",
+      "anomalyText": "なし",
+      "special": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める）"
+    },
+    {
+      "id": "ult_fluorite",
+      "type": "ult",
+      "name": "つまんない茶番",
+      "shortName": "必殺技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 6.84,
+        "lv10_spec1": 7.46,
+        "lv11_spec2": 8.17,
+        "lv12_spec3": 9.02
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_fluorite_ult_multiplier",
+          "name": "つまんない茶番 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "1〜4段目(各): R1=111% → R9=200% → 特化III=250%(計444%→800%→1000%)",
+          "condition": "必殺チャージ消費100 / 4段射撃"
+        },
+        {
+          "id": "buff_fluorite_ult_damage_up",
+          "name": "つまんない茶番 [【枠4】ダメージUP枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "damage_up",
+          "calcGroupLabel": "【枠4】ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "お手製爆弾が付いている敵に命中時、即時起爆し爆弾の爆発ダメージ+30%",
+          "condition": "必殺チャージ消費100 / 4段射撃"
+        },
+        {
+          "id": "buff_fluorite_ult_aux",
+          "name": "つまんない茶番 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "ブレイク値20 / お手製爆弾の爆発範囲+30%",
+          "condition": "必殺チャージ消費100 / 4段射撃"
+        },
+        {
+          "id": "buff_fluorite_ult_special",
+          "name": "つまんない茶番 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆",
+          "condition": "必殺チャージ消費100 / 4段射撃",
+          "special": "【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆"
+        }
+      ],
+      "epCost": 100,
+      "infliction": {
+        "type": "nature",
+        "stacks": 1,
+        "label": "🌿 自然付着 (+1段階)",
+        "description": "条件付き付着(1段階・最終4段目が2段階以上の寒冷/自然付着の敵に命中時、対応属性の付着を追加付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "自然ダメージを4段与える。お手製爆弾が付いている場合即座に起爆し爆発ダメージ+30%。最後の1段が2段階以上の寒冷付着または自然付着状態の敵に命中した場合、対応属性のアーツ付着をもう一度付与する。",
+      "damageTypeDetail": "自然",
+      "rawText": "自然ダメージを4段与える。お手製爆弾が付いている場合即座に起爆し爆発ダメージ+30%。最後の1段が2段階以上の寒冷付着または自然付着状態の敵に命中した場合、対応属性のアーツ付着をもう一度付与する。",
+      "attachText": "条件付き付着(1段階・最終4段目が2段階以上の寒冷/自然付着の敵に命中時、対応属性の付着を追加付与)",
+      "anomalyText": "なし",
+      "special": "【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆"
+    }
+  ],
+  "motifWeapon": "O.B.J.迅速",
+  "recommendedWeapons": [
+    "O.B.J.迅速",
+    "ナビゲーター"
+  ],
+  "normalAttack": {
+    "name": "自己流射撃法",
+    "damageType": "自然",
+    "damageTypeDetail": "自然",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[25%/33%/26%/60%]→R9[45%/59%/46%/108%]→特化III[56%/73%/57%/135%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク15 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値15を与える。",
+    "raw": "最大4段の攻撃で敵に自然ダメージを与える（※自然付着なし）。重攻撃はブレイク値15を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_fluorite_1",
+      "name": "泣きっ面に石",
+      "description": "フローライトによるスロー状態の敵へのダメージ+10%→+20%",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_fluorite_talent1_damage_up",
+          "name": "泣きっ面に石 [【枠4】ダメージUP枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "damage_up",
+          "calcGroupLabel": "【枠4】ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "スロー状態の敵へのダメージ+10%(昇進1) → +20%(昇進2)",
+          "condition": "攻撃対象がスロー状態の時"
+        }
+      ]
+    },
+    {
+      "id": "talent_fluorite_2",
+      "name": "予測不可能",
+      "description": "20%の確率でアーツダメージが無効になり、その後10秒間自身の攻撃力+10%→+20%（重ね掛け不可）",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_fluorite_talent2_atk_pct",
+          "name": "予測不可能 [【枠1】攻撃力%枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "atk_pct",
+          "calcGroupLabel": "【枠1】攻撃力%枠",
+          "value": 0,
+          "duration": 10.0,
+          "description": "無効化成功時10秒間攻撃力+10%(昇進2) → +20%(昇進3)",
+          "condition": "アーツ被弾時20%確率(2凸で30%) → 発動後10秒間(重ね掛け不可)"
+        },
+        {
+          "id": "buff_fluorite_talent2_aux",
+          "name": "予測不可能 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 10.0,
+          "description": "20%の確率で被アーツダメージ無効",
+          "condition": "アーツ被弾時20%確率(2凸で30%) → 発動後10秒間(重ね掛け不可)"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "フローライト 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める） ／ 【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆"
+  }
 }

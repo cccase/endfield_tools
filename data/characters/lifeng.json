@@ -1,172 +1,551 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_lifeng",
-    "name":  "リーフォン",
-    "icon":  "image/lifeng.png",
-    "rarity":  6,
-    "element":  "物理",
-    "weaponType":  "長柄武器",
-    "class":  "前衛",
-    "mainStat":  "筋力",
-    "subStat":  "意志",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  820,
-                      "strength":  285,
-                      "agility":  110,
-                      "intellect":  120,
-                      "willpower":  185,
-                      "artsIntensity":  40,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100.0,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_lifeng",
-                       "type":  "skill",
-                       "name":  "千裂脚",
-                       "shortName":  "戦技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_lifeng__crush",
-                                         "name":  "体勢崩し(クラッシュ+1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "inflict",
-                                     "stacks":  1,
-                                     "label":  "クラッシュ付与(+1段)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
-                   },
-                   {
-                       "id":  "combo_lifeng",
-                       "type":  "combo",
-                       "name":  "憤怒形",
-                       "shortName":  "連携技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_lifeng__crush",
-                                         "name":  "クラッシュ段階消費",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "consume_smash",
-                                     "stacks":  1,
-                                     "label":  "猛撃(クラッシュ消費)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_lifeng",
-                       "type":  "ult",
-                       "name":  "龍怒",
-                       "shortName":  "必殺技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_lifeng_ult_self",
-                                         "name":  "龍怒 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_lifeng__crush",
-                                         "name":  "クラッシュ段階消費",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  90,
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "consume_shatter",
-                                     "stacks":  1,
-                                     "label":  "破砕(クラッシュ消費)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "負山",
-    "recommendedWeapons":  [
-                               "負山",
-                               "勇猛"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_lifeng",
+  "name": "リーフォン",
+  "icon": "image/lifeng.png",
+  "rarity": 6,
+  "element": "物理",
+  "weaponType": "長柄武器",
+  "class": "前衛",
+  "mainStat": "筋力",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 820,
+    "strength": 285,
+    "agility": 110,
+    "intellect": 120,
+    "willpower": 185,
+    "artsIntensity": 40,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_lifeng",
+      "type": "skill",
+      "name": "浄化身",
+      "shortName": "戦技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_lifeng_skill_multiplier",
+          "name": "浄化身 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 12.0,
+          "description": "1〜3段目: R1[38%/38%/119%] → R9[69%/69%/214%] → 特化III[86%/86%/268%]",
+          "condition": "SP消費100 / 最終撃命中時、敵がクラッシュ状態でない場合(1凸でクラッシュ2以下も可)に物理脆弱(12秒)付与"
+        },
+        {
+          "id": "buff_lifeng_skill_vulnerability",
+          "name": "浄化身 [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 12.0,
+          "description": "クラッシュ0(1凸で2以下)の敵に物理脆弱(12秒): R1=5% → R9=9% → 特化III=12%",
+          "condition": "SP消費100 / 最終撃命中時、敵がクラッシュ状態でない場合(1凸でクラッシュ2以下も可)に物理脆弱(12秒)付与"
+        },
+        {
+          "id": "buff_lifeng_skill_aux",
+          "name": "浄化身 [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 12.0,
+          "description": "SP消費100 / 3段目ブレイク値10",
+          "condition": "SP消費100 / 最終撃命中時、敵がクラッシュ状態でない場合(1凸でクラッシュ2以下も可)に物理脆弱(12秒)付与"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💥 クラッシュ付与 (+1段)",
+        "description": "3段目で転倒付与(クラッシュ+1段階)"
+      },
+      "description": "物理ダメージを2回与え、その後重い打撃で物理ダメージと転倒効果を与える。最後の一撃を受けた敵がクラッシュ状態でない場合、追加で物理脆弱を付与する。",
+      "damageTypeDetail": "物理",
+      "rawText": "物理ダメージを2回与え、その後重い打撃で物理ダメージと転倒効果を与える。最後の一撃を受けた敵がクラッシュ状態でない場合、追加で物理脆弱を付与する。",
+      "attachText": "なし",
+      "anomalyText": "3段目で転倒付与(クラッシュ+1段階)"
+    },
+    {
+      "id": "combo_lifeng",
+      "type": "combo",
+      "name": "忿怒形",
+      "shortName": "連携技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_lifeng_combo_multiplier",
+          "name": "忿怒形 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 16.0,
+          "description": "1・2段目倍率: R1[47%+167%] → R9[84%+300%] → 特化III[105%+375%]",
+          "condition": "物理脆弱または破砕状態の敵が操作キャラの重攻撃を受けた時発動可 / CD: R1〜9=16秒→特化III=15秒"
+        },
+        {
+          "id": "buff_lifeng_combo_link",
+          "name": "忿怒形 [【枠8】リンク補正枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "link",
+          "calcGroupLabel": "【枠8】リンク補正枠",
+          "value": 0,
+          "duration": 16.0,
+          "description": "リンク状態獲得(20秒間、チーム共有・誰かの次の戦技1.3倍または必殺1.2倍で消費)",
+          "condition": "物理脆弱または破砕状態の敵が操作キャラの重攻撃を受けた時発動可 / CD: R1〜9=16秒→特化III=15秒"
+        },
+        {
+          "id": "buff_lifeng_combo_aux",
+          "name": "忿怒形 [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 16.0,
+          "description": "2段目ブレイク値10",
+          "condition": "物理脆弱または破砕状態の敵が操作キャラの重攻撃を受けた時発動可 / CD: R1〜9=16秒→特化III=15秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "物理脆弱または破砕状態の敵が、操作中のオペレーターの重攻撃を受けると発動可能。物理ダメージを与え、リンク状態を獲得する。",
+      "damageTypeDetail": "物理",
+      "rawText": "物理脆弱または破砕状態の敵が、操作中のオペレーターの重攻撃を受けると発動可能。物理ダメージを与え、リンク状態を獲得する。",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "ult_lifeng",
+      "type": "ult",
+      "name": "不動心",
+      "shortName": "必殺技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_lifeng_ult_multiplier",
+          "name": "不動心 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "1段目: R1=178%→R9=320%→特化III=400% / 2段目: R1=178%→R9=320%→特化III=400% / リンク消費時追加ダメ: R1=267%→R9=480%→特化III=600%",
+          "condition": "必殺チャージ消費90 / CD15秒"
+        },
+        {
+          "id": "buff_lifeng_ult_aux",
+          "name": "不動心 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "敵を中心に引き寄せ",
+          "condition": "必殺チャージ消費90 / CD15秒"
+        }
+      ],
+      "epCost": 90,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💥 クラッシュ付与 (+1段)",
+        "description": "1段目・2段目それぞれで転倒付与(計クラッシュ+2段階) / リンク消費時に追加物理ダメ"
+      },
+      "description": "広範囲の敵に物理ダメージと転倒効果を与え中心に引き寄せ、一定時間後再度高い物理ダメージと転倒効果を与える。必殺技発動時にリンク状態を消費した場合、追加で高い物理ダメージを与える。",
+      "damageTypeDetail": "物理",
+      "rawText": "広範囲の敵に物理ダメージと転倒効果を与え中心に引き寄せ、一定時間後再度高い物理ダメージと転倒効果を与える。必殺技発動時にリンク状態を消費した場合、追加で高い物理ダメージを与える。",
+      "attachText": "なし",
+      "anomalyText": "1段目・2段目それぞれで転倒付与(計クラッシュ+2段階) / リンク消費時に追加物理ダメ"
+    }
+  ],
+  "motifWeapon": "負山",
+  "recommendedWeapons": [
+    "負山",
+    "勇猛"
+  ],
+  "normalAttack": {
+    "name": "摧破",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常1〜4段: R1[24%/29%/35%/68%]→R9[44%/52%/63%/122%]→特化III[55%/65%/79%/152%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク19 / 終撃時SP回復",
+    "description": "最大4段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値19を与える。",
+    "raw": "最大4段の攻撃で敵に物理ダメージを与える。重攻撃はブレイク値19を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_lifeng_1",
+      "name": "円頓",
+      "description": "知性と意志1につき攻撃力+0.10％→+0.15％（※ダメージ計算式上「能力値付加」枠に加算）",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lifeng_talent1_stat",
+          "name": "円頓 [【枠2】能力値枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "stat",
+          "calcGroupLabel": "【枠2】能力値枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【能力値付加枠に加算】知性1および意志1につき能力値付加+0.10%(昇進1)→+0.15%(昇進2) ※攻撃力%枠ではなくメイン0.5%・サブ0.2%と同じ能力値付加枠に加算される重要仕様",
+          "condition": "常時(自身の知性・意志参照)"
+        }
+      ]
+    },
+    {
+      "id": "talent_lifeng_2",
+      "name": "伏魔",
+      "description": "自身が敵を転倒させるたびに、追加で攻撃力50％→100％分の物理ダメージを与える",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lifeng_talent2_multiplier",
+          "name": "伏魔 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "追加で攻撃力50%(昇進1) → 100%(昇進2)分の物理ダメージを別ヒット発生",
+          "condition": "自身が敵を転倒させるたび(戦技1回・必殺2回発動)"
+        }
+      ]
+    }
+  ]
 }

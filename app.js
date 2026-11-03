@@ -3572,9 +3572,9 @@ function renderWikiCharacterDetail(charId) {
     cryo: '❄️ 寒冷付着 (+1段階)',
     electric: '⚡ 電磁付着 (+1段階)',
     nature: '🌿 自然付着 (+1段階)',
-    copy_slot1: '🎨 1枠目属性模倣付着 (+1段階)',
+    copy_slot1: '🎨 01位置属性模倣付着 (+1段階)',
     okugi_dual: '☯️ 知意双形態付着 (+1段階)',
-    none: '付着なし'
+    none: '付着なし（※属性ダメージのみ）'
   };
 
   const crushLabelMap = {
@@ -3584,27 +3584,62 @@ function renderWikiCharacterDetail(charId) {
     none: 'なし'
   };
 
+  const targetLabelMap = {
+    self: { label: '👤 自己バフ', class: 'target-self' },
+    single: { label: '🎯 単体バフ', class: 'target-single' },
+    team: { label: '👥 全体バフ', class: 'target-team' },
+    others: { label: '🤝 他の味方バフ', class: 'target-others' },
+    enemy: { label: '👾 敵デバフ', class: 'target-enemy' },
+    none: { label: '効果', class: 'target-self' }
+  };
+
   let specialHtml = '';
   if (c.specialMechanic && c.specialMechanic.description) {
     specialHtml = `
       <div class="wiki-special-callout">
-        <div class="wiki-special-title">✨ 固有メカニクス・特殊仕様</div>
+        <div class="wiki-special-title">✨ 固有メカニクス・特殊仕様（一次情報Wiki準拠）</div>
         <div class="wiki-special-desc">${c.specialMechanic.description}</div>
-      </div>
-    `;
-  } else if (c.id === 'char_chen') {
-    specialHtml = `
-      <div class="wiki-special-callout">
-        <div class="wiki-special-title">✨ チェン・センユー 固有クラッシュ仕様</div>
-        <div class="wiki-special-desc">チェンが扱う物理状態異常は<strong>「浮遊（クラッシュ付与タイプ +1段階）」のみ</strong>です。「猛撃」や「破砕」などのクラッシュ消費は行いません。</div>
       </div>
     `;
   }
 
-  const potentialsHtml = (c.potentials && c.potentials.length > 0)
-    ? c.potentials.map(pt => `<span class="wiki-pot-badge">${pt.level}凸: ${pt.type === 'ult_cost_reduction_percent' ? `必殺技消費EP -${pt.value}%` : `返還SP +${pt.value}`}</span>`).join('')
-    : '<span style="color:#888; font-size:12px;">特記凸効果なし</span>';
+  // 1. 通常攻撃カード
+  let normalHtml = '';
+  if (c.normalAttack) {
+    const na = c.normalAttack;
+    normalHtml = `
+      <div class="wiki-skill-card">
+        <div class="wiki-skill-header">
+          <div>
+            <span class="wiki-skill-type-badge" style="background:#555;">通常</span>
+            <strong class="wiki-skill-name">${na.name || '通常攻撃'}</strong>
+            <span class="char-tag tag-elem-${na.damageType || c.element || '物理'}">${na.damageType || c.element || '物理'}</span>
+          </div>
+          <div class="wiki-skill-costs">
+            <span class="wiki-cost-pill" style="background:#2c3e50; color:#bdc3c7;">SP消費なし</span>
+          </div>
+        </div>
+        <div class="wiki-skill-desc-text">📝 <strong>攻撃仕様:</strong> ${na.description || na.raw || ''}</div>
+        <div class="wiki-skill-mechanics-grid">
+          <div class="wiki-mech-box">
+            <span class="wiki-mech-label">アーツ付着仕様</span>
+            <span class="wiki-mech-val">${na.attach || '付着なし（※全キャラ通常攻撃は付着なし）'}</span>
+          </div>
+          <div class="wiki-mech-box">
+            <span class="wiki-mech-label">ブレイク / 派生</span>
+            <span class="wiki-mech-val is-active">${na.breakValue || '重攻撃ブレイクあり'}</span>
+          </div>
+        </div>
+        ${na.multipliers ? `
+          <div style="background:#171a20; padding:6px 10px; border-radius:4px; font-size:12px; color:#d1d8e0;">
+            📊 <strong>倍率詳細:</strong> ${na.multipliers}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
 
+  // 2. スキル一覧（戦技・連携・必殺）
   const skillsHtml = (c.skills || []).map(sk => {
     const mults = sk.multipliers || {};
     const fmtM = (v) => v !== undefined ? `${Math.round(v * 1000) / 10}%` : '-';
@@ -3623,31 +3658,26 @@ function renderWikiCharacterDetail(charId) {
     if (sk.epCost !== undefined) costBadges.push(`<span class="wiki-cost-pill ep">消費EP: ${sk.epCost}</span>`);
     if (sk.epGain !== undefined) costBadges.push(`<span class="wiki-cost-pill epgain">獲得EP: +${sk.epGain}</span>`);
 
-    // バフ・デバフの分類表示
-    const targetLabelMap = {
-      self: { label: '👤 自己バフ', class: 'target-self' },
-      single: { label: '🎯 単体バフ', class: 'target-single' },
-      team: { label: '👥 全体バフ', class: 'target-team' },
-      enemy: { label: '👾 敵デバフ', class: 'target-enemy' }
-    };
-
     let buffsHtml = '';
     if (sk.buffs && sk.buffs.length > 0) {
       buffsHtml = `
         <div class="wiki-buffs-list">
-          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果:</div>
+          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果（計算グループ分類）:</div>
           <div class="wiki-buffs-grid">
             ${sk.buffs.map(b => {
-              const tgtInfo = targetLabelMap[b.target] || { label: b.target || '効果', class: 'target-self' };
+              const tgtInfo = targetLabelMap[b.target] || { label: b.targetLabel || b.target || '効果', class: 'target-self' };
               const durText = b.duration ? `(${b.duration}秒)` : '';
+              const groupBadge = b.calcGroupLabel ? `<span class="wiki-buff-calc-badge">${b.calcGroupLabel}</span>` : '';
               return `
                 <div class="wiki-buff-item ${tgtInfo.class}">
                   <div class="wiki-buff-top">
                     <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
+                    ${groupBadge}
                     <strong class="wiki-buff-name">${b.name}</strong>
                     <span class="wiki-buff-dur">${durText}</span>
                   </div>
                   <div class="wiki-buff-desc">${b.description || ''}</div>
+                  ${b.condition ? `<div style="font-size:11px; color:#888; margin-top:2px;">条件: ${b.condition}</div>` : ''}
                 </div>
               `;
             }).join('')}
@@ -3662,12 +3692,13 @@ function renderWikiCharacterDetail(charId) {
           <div>
             <span class="wiki-skill-type-badge type-${sk.type}">${sk.shortName || sk.type}</span>
             <strong class="wiki-skill-name">${sk.name}</strong>
-            <span class="char-tag tag-elem-${sk.damageType || c.element || '物理'}">${sk.damageType || c.element || '物理'}</span>
+            <span class="char-tag tag-elem-${sk.damageType || c.element || '物理'}">${sk.damageTypeDetail || sk.damageType || c.element || '物理'}</span>
           </div>
           <div class="wiki-skill-costs">${costBadges.join('')}</div>
         </div>
 
         ${sk.description ? `<div class="wiki-skill-desc-text">📝 <strong>スキル効果:</strong> ${sk.description}</div>` : ''}
+        ${sk.special ? `<div class="wiki-special-banner">⚡ <strong>【特殊挙動・例外処理】:</strong> ${sk.special}</div>` : ''}
 
         <div class="wiki-skill-mechanics-grid">
           <div class="wiki-mech-box">
@@ -3694,15 +3725,65 @@ function renderWikiCharacterDetail(charId) {
           <tbody>
             <tr>
               <td>${fmtM(mults.lv9)}</td>
-              <td>${fmtM(mults.rank1)}</td>
-              <td>${fmtM(mults.rank2)}</td>
-              <td class="wiki-mult-max">${fmtM(mults.rank3)}</td>
+              <td>${fmtM(mults.lv10_spec1 || mults.rank1)}</td>
+              <td>${fmtM(mults.lv11_spec2 || mults.rank2)}</td>
+              <td class="wiki-mult-max">${fmtM(mults.lv12_spec3 || mults.rank3)}</td>
             </tr>
           </tbody>
         </table>
       </div>
     `;
   }).join('');
+
+  // 3. 素質一覧 (talents)
+  let talentsHtml = '';
+  if (c.talents && c.talents.length > 0) {
+    talentsHtml = `
+      <div class="wiki-talents-section">
+        <h4 class="wiki-section-header">🧬 素質仕様</h4>
+        <div class="wiki-talents-grid">
+          ${c.talents.map(t => {
+            const tgtInfo = targetLabelMap[t.target] || { label: t.targetLabel || '自己バフ', class: 'target-self' };
+            return `
+              <div class="wiki-talent-card">
+                <div class="wiki-talent-top">
+                  <strong class="wiki-talent-title">⭐ ${t.name}</strong>
+                  <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
+                </div>
+                <div class="wiki-talent-desc">${t.description}</div>
+                ${t.special ? `<div class="wiki-special-banner">⚡ <strong>【特殊枠】:</strong> ${t.special}</div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. 潜在能力一覧 (potentials)
+  let potentialsSectionHtml = '';
+  if (c.potentials && c.potentials.length > 0) {
+    potentialsSectionHtml = `
+      <div class="wiki-potentials-section">
+        <h4 class="wiki-section-header">💎 潜在能力 (凸効果 1〜5凸)</h4>
+        <div class="wiki-potentials-grid">
+          ${c.potentials.map(pt => {
+            const tgtInfo = targetLabelMap[pt.target] || { label: pt.targetLabel || '自己バフ', class: 'target-self' };
+            return `
+              <div class="wiki-potential-card">
+                <div class="wiki-potential-top">
+                  <strong class="wiki-potential-title">◆ ${pt.level}凸 (${pt.name || `${pt.level}段階`})</strong>
+                  <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
+                </div>
+                <div class="wiki-potential-desc">${pt.description}</div>
+                ${pt.special ? `<div class="wiki-special-banner">⚡ <strong>【特殊枠】:</strong> ${pt.special}</div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
 
   pane.innerHTML = `
     <div class="wiki-profile-card">
@@ -3728,32 +3809,30 @@ function renderWikiCharacterDetail(charId) {
     ${specialHtml}
 
     <div class="wiki-stats-section">
-      <h4>📊 基礎ステータス (Lv.90) ＆ 能力値補正</h4>
+      <h4 class="wiki-section-header">📊 基礎ステータス (Lv.90) ＆ 能力値補正</h4>
       <div class="wiki-stats-grid">
         <div class="wiki-stat-cell"><span class="k">基礎攻撃力</span><span class="v">${bs.atk}</span></div>
         <div class="wiki-stat-cell"><span class="k">基礎HP</span><span class="v">${bs.hp}</span></div>
-        <div class="wiki-stat-cell"><span class="k">基礎防御力</span><span class="v">${bs.def}</span></div>
+        <div class="wiki-stat-cell"><span class="k">基礎防御力</span><span class="v">${bs.def || 100}</span></div>
         <div class="wiki-stat-cell"><span class="k">筋力 (STR)</span><span class="v">${bs.strength}</span></div>
         <div class="wiki-stat-cell"><span class="k">敏捷 (AGI)</span><span class="v">${bs.agility}</span></div>
         <div class="wiki-stat-cell"><span class="k">知性 (INT)</span><span class="v">${bs.intellect}</span></div>
-        <div class="wiki-stat-cell"><span class="k">意志 (WIL)</span><span class="v">${bs.will}</span></div>
+        <div class="wiki-stat-cell"><span class="k">意志 (WIL)</span><span class="v">${bs.willpower || bs.will || 100}</span></div>
         <div class="wiki-stat-cell"><span class="k">メイン能力 (×0.5%)</span><span class="v highlight">${statNameMap[c.mainStat] || c.mainStat}</span></div>
         <div class="wiki-stat-cell"><span class="k">サブ能力 (×0.2%)</span><span class="v">${statNameMap[c.subStat] || c.subStat}</span></div>
-      </div>
-      <div class="wiki-potentials-row">
-        <strong>潜在能力(凸効果) / SP特性:</strong>
-        ${potentialsHtml}
-        ${c.baseRefundSP > 0 ? `<span class="wiki-pot-badge">戦技返還SP: +${c.baseRefundSP}</span>` : ''}
-        ${c.baseRecoverSP > 0 ? `<span class="wiki-pot-badge">戦技回復SP: +${c.baseRecoverSP}</span>` : ''}
       </div>
     </div>
 
     <div class="wiki-skills-section">
-      <h4>⚔️ スキル仕様・倍率・付着/クラッシュ一覧</h4>
+      <h4 class="wiki-section-header">⚔️ スキル仕様・倍率・付着/クラッシュ一覧</h4>
       <div class="wiki-skills-list">
+        ${normalHtml}
         ${skillsHtml}
       </div>
     </div>
+
+    ${talentsHtml}
+    ${potentialsSectionHtml}
   `;
 }
 

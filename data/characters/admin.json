@@ -1,172 +1,545 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_admin",
-    "name":  "管理人",
-    "icon":  "image/admin.png",
-    "rarity":  6,
-    "element":  "物理",
-    "weaponType":  "片手剣",
-    "class":  "前衛",
-    "mainStat":  "敏捷",
-    "subStat":  "意志",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  820,
-                      "strength":  120,
-                      "agility":  285,
-                      "intellect":  120,
-                      "willpower":  185,
-                      "artsIntensity":  40,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  1,
-                           "type":  "refund_sp_boost",
-                           "value":  50
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_admin",
-                       "type":  "skill",
-                       "name":  "構成配列",
-                       "shortName":  "戦技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_admin__crush",
-                                         "name":  "体勢崩し(クラッシュ+1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "inflict",
-                                     "stacks":  1,
-                                     "label":  "クラッシュ付与(+1段)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
-                   },
-                   {
-                       "id":  "combo_admin",
-                       "type":  "combo",
-                       "name":  "封印配列",
-                       "shortName":  "連携技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_admin__crush",
-                                         "name":  "クラッシュ段階消費",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "consume_smash",
-                                     "stacks":  1,
-                                     "label":  "猛撃(クラッシュ消費)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_admin",
-                       "type":  "ult",
-                       "name":  "攻撃配列",
-                       "shortName":  "必殺技",
-                       "damageType":  "物理",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_admin_ult_self",
-                                         "name":  "攻撃配列 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_admin__crush",
-                                         "name":  "クラッシュ段階消費",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "vulnerability",
-                                         "value":  10,
-                                         "duration":  12,
-                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  80,
-                       "infliction":  {
-                                          "type":  "none",
-                                          "stacks":  0,
-                                          "label":  "なし"
-                                      },
-                       "crush":  {
-                                     "type":  "consume_shatter",
-                                     "stacks":  1,
-                                     "label":  "破砕(クラッシュ消費)"
-                                 },
-                       "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "大願",
-    "recommendedWeapons":  [
-                               "大願",
-                               "輝かしき名声"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_admin",
+  "name": "管理人",
+  "icon": "image/admin.png",
+  "rarity": 6,
+  "element": "物理",
+  "weaponType": "片手剣",
+  "class": "前衛",
+  "mainStat": "敏捷",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 820,
+    "strength": 120,
+    "agility": 285,
+    "intellect": 120,
+    "willpower": 185,
+    "artsIntensity": 40,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "none",
+      "targetLabel": "なし",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_admin",
+      "type": "skill",
+      "name": "構成配列",
+      "shortName": "戦技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_admin_skill_multiplier",
+          "name": "構成配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "基礎倍率: R1=156% → R9=280% → 特化III=350% (+猛撃異常ダメ: 150%×[1+消費クラッシュ段階])",
+          "condition": "SP消費100"
+        },
+        {
+          "id": "buff_admin_skill_aux",
+          "name": "構成配列 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "SP消費100 / ブレイク値10",
+          "condition": "SP消費100"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "consume_smash",
+        "stacks": 1,
+        "label": "💥 猛撃・クラッシュ消費",
+        "description": "猛撃(クラッシュ全段階消費) / 源石結晶消費トリガー"
+      },
+      "description": "アーツを発動して前方の一定範囲内の敵を攻撃する。物理ダメージと猛撃を与える。",
+      "damageTypeDetail": "物理",
+      "rawText": "アーツを発動して前方の一定範囲内の敵を攻撃する。物理ダメージと猛撃を与える。",
+      "attachText": "なし",
+      "anomalyText": "猛撃(クラッシュ全段階消費) / 源石結晶消費トリガー"
+    },
+    {
+      "id": "combo_admin",
+      "type": "combo",
+      "name": "封印配列",
+      "shortName": "連携技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_admin_combo_multiplier",
+          "name": "封印配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 16.0,
+          "description": "突進ダメ: R1=45%→R9=80%→特化III=100% / 結晶粉砕追加物理ダメ: R1=178%→R9=320%→特化III=400%",
+          "condition": "他味方の連携技でダメージ時発動可 / CD: R1=16秒→特化III=15秒 / 封印時間: R1=4秒→特化III=5秒"
+        },
+        {
+          "id": "buff_admin_combo_aux",
+          "name": "封印配列 [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 16.0,
+          "description": "ブレイク値10 / 源石結晶付与(敵封印4秒→5秒)",
+          "condition": "他味方の連携技でダメージ時発動可 / CD: R1=16秒→特化III=15秒 / 封印時間: R1=4秒→特化III=5秒"
+        },
+        {
+          "id": "buff_admin_combo_special",
+          "name": "封印配列 [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 16.0,
+          "description": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー）",
+          "condition": "他味方の連携技でダメージ時発動可 / CD: R1=16秒→特化III=15秒 / 封印時間: R1=4秒→特化III=5秒",
+          "special": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー）"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "inflict",
+        "stacks": 1,
+        "label": "💥 クラッシュ付与 (+1段)",
+        "description": "源石結晶付与(封印) → 物理異常またはクラッシュ付与時に源石結晶消費＆結晶粉砕追加物理ダメ"
+      },
+      "description": "チーム内の他のオペレーターの連携技でダメージを与えたときに発動可能。物理ダメージを与え、源石結晶を付与して一定時間封印する。物理異常を与えるかクラッシュを付与すると、源石結晶が消費され、追加の物理ダメージを与える。",
+      "damageTypeDetail": "物理",
+      "rawText": "チーム内の他のオペレーターの連携技でダメージを与えたときに発動可能。物理ダメージを与え、源石結晶を付与して一定時間封印する。物理異常を与えるかクラッシュを付与すると、源石結晶が消費され、追加の物理ダメージを与える。",
+      "attachText": "なし",
+      "anomalyText": "源石結晶付与(封印) → 物理異常またはクラッシュ付与時に源石結晶消費＆結晶粉砕追加物理ダメ",
+      "special": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー）"
+    },
+    {
+      "id": "ult_admin",
+      "type": "ult",
+      "name": "攻撃配列",
+      "shortName": "必殺技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_admin_ult_multiplier",
+          "name": "攻撃配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "基礎ダメ: R1=356%→R9=640%→特化III=800% / 源石結晶消費時の追加ダメ: R1=267%→R9=480%→特化III=600%",
+          "condition": "必殺チャージ消費80"
+        },
+        {
+          "id": "buff_admin_ult_aux",
+          "name": "攻撃配列 [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "必殺チャージ消費80 / ブレイク値25",
+          "condition": "必殺チャージ消費80"
+        }
+      ],
+      "epCost": 80,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "源石結晶消費(敵に源石結晶がある場合、消費して追加物理ダメ)",
+        "description": "源石結晶消費(敵に源石結晶がある場合、消費して追加物理ダメ)"
+      },
+      "description": "アーツを発動して地面を攻撃し、前方の扇形範囲内の敵に高い物理ダメージを与える。敵に源石結晶がある場合、源石結晶が消費され、追加でもう1回物理ダメージを与える。",
+      "damageTypeDetail": "物理",
+      "rawText": "アーツを発動して地面を攻撃し、前方の扇形範囲内の敵に高い物理ダメージを与える。敵に源石結晶がある場合、源石結晶が消費され、追加でもう1回物理ダメージを与える。",
+      "attachText": "なし",
+      "anomalyText": "源石結晶消費(敵に源石結晶がある場合、消費して追加物理ダメ)"
+    }
+  ],
+  "motifWeapon": "大願",
+  "recommendedWeapons": [
+    "大願",
+    "輝かしき名声"
+  ],
+  "normalAttack": {
+    "name": "破壊配列",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[23%/27%/30%/35%/40%]→R9[41%/49%/54%/62%/72%]→特化III[51%/61%/68%/78%/90%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+    "description": "最大5段の攻撃で敵に物理ダメージを与える。操作中のオペレーターの場合、重攻撃はブレイク値18を与える。終撃：高い物理ダメージを与えてSPを一定量回復する。",
+    "raw": "最大5段の攻撃で敵に物理ダメージを与える。操作中のオペレーターの場合、重攻撃はブレイク値18を与える。終撃：高い物理ダメージを与えてSPを一定量回復する。"
+  },
+  "talents": [
+    {
+      "id": "talent_admin_1",
+      "name": "根源瓦解",
+      "description": "敵の源石結晶が消費されると、15秒間自身の攻撃力＋15%→＋30%（重ね掛け不可）",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_admin_talent1_atk_pct",
+          "name": "根源瓦解 [【枠1】攻撃力%枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "atk_pct",
+          "calcGroupLabel": "【枠1】攻撃力%枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "攻撃力+15%(昇進1) → +30%(昇進2)",
+          "condition": "敵の源石結晶が消費された時 / 持続15秒 / 重ね掛け不可"
+        }
+      ]
+    },
+    {
+      "id": "talent_admin_2",
+      "name": "空間静止",
+      "description": "源石結晶が付与されている敵の受ける物理ダメージ＋10%→＋20%",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_admin_talent2_taken_damage_up",
+          "name": "空間静止 [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 0.0,
+          "description": "敵の受ける物理ダメージ+10%(昇進2) → +20%(昇進3)",
+          "condition": "敵に源石結晶が付与されている間"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "管理人 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー） ／ 【Wiki未記載】現行バージョンで未解放のためWiki上も名称・効果が空欄"
+  }
 }

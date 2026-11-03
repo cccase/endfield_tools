@@ -1,177 +1,562 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_laevatain",
-    "name":  "レーヴァテイン",
-    "icon":  "image/laevatain.png",
-    "rarity":  6,
-    "element":  "灼熱",
-    "weaponType":  "片手剣",
-    "class":  "突撃",
-    "mainStat":  "敏捷",
-    "subStat":  "筋力",
-    "baseStats":  {
-                      "hp":  7300,
-                      "atk":  920,
-                      "strength":  185,
-                      "agility":  285,
-                      "intellect":  120,
-                      "willpower":  110,
-                      "artsIntensity":  80,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  100,
-    "defaultPotential":  0,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  1,
-                           "type":  "refund_sp_boost",
-                           "value":  20
-                       },
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  15
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "skill_laevatain",
-                       "type":  "skill",
-                       "name":  "焼滅",
-                       "shortName":  "戦技",
-                       "damageType":  "灼熱",
-                       "multipliers":  {
-                                           "lv9":  3.78,
-                                           "lv10_spec1":  4.15,
-                                           "lv11_spec2":  4.57,
-                                           "lv12_spec3":  5.04
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_laevatain__inflict",
-                                         "name":  "灼熱アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "heat",
-                                          "stacks":  1,
-                                          "label":  "灼熱付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "combo_laevatain",
-                       "type":  "combo",
-                       "name":  "烈火",
-                       "shortName":  "連携技",
-                       "damageType":  "灼熱",
-                       "multipliers":  {
-                                           "lv9":  2.94,
-                                           "lv10_spec1":  3.2,
-                                           "lv11_spec2":  3.52,
-                                           "lv12_spec3":  3.88
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "debuff_char_laevatain__inflict",
-                                         "name":  "灼熱アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "heat",
-                                          "stacks":  1,
-                                          "label":  "灼熱付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "ult_laevatain",
-                       "type":  "ult",
-                       "name":  "ラグナロク",
-                       "shortName":  "必殺技",
-                       "damageType":  "灼熱",
-                       "multipliers":  {
-                                           "lv9":  7.56,
-                                           "lv10_spec1":  8.24,
-                                           "lv11_spec2":  9.03,
-                                           "lv12_spec3":  9.98
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_laevatain_ult_self",
-                                         "name":  "ラグナロク 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_laevatain__inflict",
-                                         "name":  "灼熱アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  300,
-                       "infliction":  {
-                                          "type":  "heat",
-                                          "stacks":  1,
-                                          "label":  "灼熱付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "フレイムフォージ",
-    "recommendedWeapons":  [
-                               "フレイムフォージ",
-                               "ダークトーチ"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_laevatain",
+  "name": "レーヴァテイン",
+  "icon": "image/laevatain.png",
+  "rarity": 6,
+  "element": "灼熱",
+  "weaponType": "片手剣",
+  "class": "突撃",
+  "mainStat": "敏捷",
+  "subStat": "筋力",
+  "baseStats": {
+    "hp": 7300,
+    "atk": 920,
+    "strength": 185,
+    "agility": 285,
+    "intellect": 120,
+    "willpower": 110,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_laevatain",
+      "type": "skill",
+      "name": "焼滅",
+      "shortName": "戦技",
+      "damageType": "灼熱",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_laevatain_skill_multiplier",
+          "name": "焼滅 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 5.0,
+          "description": "通常時: 初回R1=62%→R9=112%→特化III=140%、劫火4追撃R1=342%→R9=616%→特化III=770%(燃焼持続ダメ毎秒6%→14%) / 必殺中: 1段目147%→264%→330%、2段目164%→296%→370%、劫火4追撃400%→720%→900%",
+          "condition": "SP消費100 / 命中時劫火+1 / 劫火4段階時は全消費して追撃＆強制燃焼(5秒) / 必殺技中は2段攻撃に強化"
+        },
+        {
+          "id": "buff_laevatain_skill_aux",
+          "name": "焼滅 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 5.0,
+          "description": "ブレイク値: 初回10+追撃10(必殺中10+10+10) / 劫火4追撃命中時必殺チャージ+100回復",
+          "condition": "SP消費100 / 命中時劫火+1 / 劫火4段階時は全消費して追撃＆強制燃焼(5秒) / 必殺技中は2段攻撃に強化"
+        },
+        {
+          "id": "buff_laevatain_skill_special",
+          "name": "焼滅 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 5.0,
+          "description": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化",
+          "condition": "SP消費100 / 命中時劫火+1 / 劫火4段階時は全消費して追撃＆強制燃焼(5秒) / 必殺技中は2段攻撃に強化",
+          "special": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "劫火4段階消費時、強制燃焼付与(5秒間 ※灼熱付着は付与しない！)",
+        "description": "劫火4段階消費時、強制燃焼付与(5秒間 ※灼熱付着は付与しない！)"
+      },
+      "description": "灼熱ダメージを与え、命中時劫火+1。劫火4段階時はすべて消費して追加攻撃を行い、灼熱ダメージを与え、強制的に短時間燃焼状態にし、必殺チャージを100回復する。（※灼熱付着なし）",
+      "damageTypeDetail": "灼熱",
+      "rawText": "灼熱ダメージを与え、命中時劫火+1。劫火4段階時はすべて消費して追加攻撃を行い、灼熱ダメージを与え、強制的に短時間燃焼状態にし、必殺チャージを100回復する。（※灼熱付着なし）",
+      "attachText": "なし",
+      "anomalyText": "劫火4段階消費時、強制燃焼付与(5秒間 ※灼熱付着は付与しない！)",
+      "special": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化"
+    },
+    {
+      "id": "combo_laevatain",
+      "type": "combo",
+      "name": "烈火",
+      "shortName": "連携技",
+      "damageType": "灼熱",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_laevatain_combo_multiplier",
+          "name": "烈火 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 10.0,
+          "description": "灼熱ダメ倍率: R1=240% → R9=432% → 特化III=540%",
+          "condition": "敵が燃焼または腐食状態になった時発動可 / CD: R1〜9=10秒→特化III=9秒(※灼熱付着なし！)"
+        },
+        {
+          "id": "buff_laevatain_combo_aux",
+          "name": "烈火 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 10.0,
+          "description": "ブレイク値10 / 命中時劫火+1獲得 / 必殺チャージ回復: 敵1体25・2体30・3体以上35",
+          "condition": "敵が燃焼または腐食状態になった時発動可 / CD: R1〜9=10秒→特化III=9秒(※灼熱付着なし！)"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "敵が燃焼または腐食状態になったときに発動可能。灼熱ダメージを与え、劫火を1回獲得し、命中敵数に応じて必殺チャージ(25/30/35)を回復する。（※灼熱付着なし）",
+      "damageTypeDetail": "灼熱",
+      "rawText": "敵が燃焼または腐食状態になったときに発動可能。灼熱ダメージを与え、劫火を1回獲得し、命中敵数に応じて必殺チャージ(25/30/35)を回復する。（※灼熱付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "ult_laevatain",
+      "type": "ult",
+      "name": "ラグナロク",
+      "shortName": "必殺技",
+      "damageType": "灼熱",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_laevatain_ult_multiplier",
+          "name": "ラグナロク [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 15.0,
+          "description": "強化通常攻撃1〜4段: R1[65%/81%/115%/203%] → R9[117%/146%/208%/365%] → 特化III[146%/182%/260%/456%]",
+          "condition": "必殺チャージ消費300 / 持続15秒 / 強制的に自身が操作オペレーターへ切替 / 通常攻撃4段化＆戦技強化"
+        },
+        {
+          "id": "buff_laevatain_ult_special",
+          "name": "ラグナロク [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 15.0,
+          "description": "【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する",
+          "condition": "必殺チャージ消費300 / 持続15秒 / 強制的に自身が操作オペレーターへ切替 / 通常攻撃4段化＆戦技強化",
+          "special": "【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する"
+        }
+      ],
+      "epCost": 300,
+      "infliction": {
+        "type": "heat",
+        "stacks": 1,
+        "label": "🔥 灼熱付着 (+1段階)",
+        "description": "灼熱付着(1段階・強化通常攻撃の3段目のみ付与)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "烈火の魔剣を召喚し、自身が操作中のオペレーターへと切り替わる。15秒間通常攻撃が強化され灼熱ダメージを与える。さらに、通常攻撃の3段目は敵に灼熱付着を付与する。",
+      "damageTypeDetail": "灼熱",
+      "rawText": "烈火の魔剣を召喚し、自身が操作中のオペレーターへと切り替わる。15秒間通常攻撃が強化され灼熱ダメージを与える。さらに、通常攻撃の3段目は敵に灼熱付着を付与する。",
+      "attachText": "灼熱付着(1段階・強化通常攻撃の3段目のみ付与)",
+      "anomalyText": "なし",
+      "special": "【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する"
+    }
+  ],
+  "motifWeapon": "フレイムフォージ",
+  "recommendedWeapons": [
+    "フレイムフォージ",
+    "ダークトーチ"
+  ],
+  "normalAttack": {
+    "name": "残り火",
+    "damageType": "灼熱",
+    "damageTypeDetail": "灼熱",
+    "attach": "なし(※通常時は付着なし。必殺技強化中の通常攻撃3段目のみ灼熱付着あり)",
+    "multipliers": "通常1〜5段: R1[16%/24%/25%/39%/53%]→R9[29%/43%/45%/70%/95%]→特化III[36%/54%/56%/88%/119%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+    "description": "最大5段の攻撃で、敵に灼熱ダメージを与える（※通常時灼熱付着なし）。重攻撃はブレイク値18を与える。",
+    "raw": "最大5段の攻撃で、敵に灼熱ダメージを与える（※通常時灼熱付着なし）。重攻撃はブレイク値18を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_laevatain_1",
+      "name": "灼熱の心",
+      "description": "重攻撃または終撃命中時、周囲の敵から灼熱付着を吸収し、1段階につき劫火+1（最大4段階）。4段階到達時、20秒間敵の灼熱耐性を10→15→20無視してダメージを与える。",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_laevatain_talent1_res_down",
+          "name": "灼熱の心 [【枠9】敵耐性ダウン・耐性無視枠]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "res_down",
+          "calcGroupLabel": "【枠9】敵耐性ダウン・耐性無視枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "劫火4段階到達時、20秒間自身の攻撃が敵の灼熱耐性を10(初期)→15(昇進1)→20(昇進3)無視",
+          "condition": "操作キャラの重攻撃/終撃命中時または近くの敵撃破時に灼熱付着を吸収→劫火獲得(最大4段階) / 4段階到達時20秒間"
+        },
+        {
+          "id": "buff_laevatain_talent1_special",
+          "name": "灼熱の心 [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)",
+          "condition": "操作キャラの重攻撃/終撃命中時または近くの敵撃破時に灼熱付着を吸収→劫火獲得(最大4段階) / 4段階到達時20秒間",
+          "special": "【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)"
+        }
+      ],
+      "special": "【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)"
+    },
+    {
+      "id": "talent_laevatain_2",
+      "name": "再燃",
+      "description": "HPが40％未満の場合、90%の加護を獲得し、4秒→8秒間最大HPの5％分回復する（120秒に1回）",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_laevatain_talent2_aux",
+          "name": "再燃 [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 120.0,
+          "description": "90%の加護を獲得し、4秒間(昇進2)→8秒間(昇進3)毎秒最大HP5%分回復",
+          "condition": "HP40%未満時(CD120秒)"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "レーヴァテイン 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化 ／ 【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する ／ 【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)"
+  }
 }

@@ -1,208 +1,325 @@
 {
-    "$schema":  "../../schemas/character.schema.json",
-    "id":  "char_xaihi",
-    "name":  "ザイヒ",
-    "icon":  "image/xaihi.png",
-    "rarity":  5,
-    "element":  "寒冷",
-    "weaponType":  "アーツユニット",
-    "class":  "補助",
-    "mainStat":  "知性",
-    "subStat":  "意志",
-    "baseStats":  {
-                      "hp":  5900,
-                      "atk":  810,
-                      "strength":  100,
-                      "agility":  95,
-                      "intellect":  245,
-                      "willpower":  160,
-                      "artsIntensity":  65,
-                      "critRate":  0.05,
-                      "critDamage":  0.5
-                  },
-    "defaultEfficiency":  144.6,
-    "defaultPotential":  4,
-    "baseRefundSP":  0,
-    "baseRecoverSP":  0,
-    "potentials":  [
-                       {
-                           "level":  4,
-                           "type":  "ult_cost_reduction_percent",
-                           "value":  10
-                       }
-                   ],
-    "skills":  [
-                   {
-                       "id":  "char_xaihi",
-                       "type":  "skill",
-                       "name":  "DDoS",
-                       "shortName":  "戦技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  3.6,
-                                           "lv10_spec1":  3.95,
-                                           "lv11_spec2":  4.35,
-                                           "lv12_spec3":  4.8
-                                       },
-                       "hitCount":  3,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_xaihi__team",
-                                         "name":  "ザイヒ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_xaihi__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "spCost":  100,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
-                   },
-                   {
-                       "id":  "char_xaihi",
-                       "type":  "combo",
-                       "name":  "ストレステスト",
-                       "shortName":  "連携技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  2.8,
-                                           "lv10_spec1":  3.05,
-                                           "lv11_spec2":  3.35,
-                                           "lv12_spec3":  3.7
-                                       },
-                       "hitCount":  1,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_xaihi__team",
-                                         "name":  "ザイヒ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_xaihi__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
-                   },
-                   {
-                       "id":  "char_xaihi",
-                       "type":  "ult",
-                       "name":  "スタックオーバーフロー",
-                       "shortName":  "必殺技",
-                       "damageType":  "寒冷",
-                       "multipliers":  {
-                                           "lv9":  7.2,
-                                           "lv10_spec1":  7.85,
-                                           "lv11_spec2":  8.6,
-                                           "lv12_spec3":  9.5
-                                       },
-                       "hitCount":  5,
-                       "buffs":  [
-                                     {
-                                         "id":  "buff_char_xaihi_ult_self",
-                                         "name":  "スタックオーバーフロー 必殺自己強化",
-                                         "target":  "self",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.2,
-                                         "duration":  15,
-                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "buff_char_xaihi__team",
-                                         "name":  "ザイヒ チーム支援",
-                                         "target":  "team",
-                                         "category":  "buff",
-                                         "stat":  "allDamageUp",
-                                         "value":  0.15,
-                                         "duration":  12,
-                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
-                                         "isStackable":  false,
-                                         "maxStacks":  1
-                                     },
-                                     {
-                                         "id":  "debuff_char_xaihi__inflict",
-                                         "name":  "寒冷アーツ付着(1段)",
-                                         "target":  "enemy",
-                                         "category":  "debuff",
-                                         "stat":  "artsAttachment",
-                                         "value":  1,
-                                         "duration":  15,
-                                         "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
-                                         "isStackable":  true,
-                                         "maxStacks":  4
-                                     }
-                                 ],
-                       "epCost":  80,
-                       "infliction":  {
-                                          "type":  "cryo",
-                                          "stacks":  1,
-                                          "label":  "寒冷付着(1段)"
-                                      },
-                       "crush":  {
-                                     "type":  "none",
-                                     "stacks":  0,
-                                     "label":  "なし"
-                                 },
-                       "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
-                   }
-               ],
-    "motifWeapon":  "布教の自由",
-    "recommendedWeapons":  [
-                               "布教の自由",
-                               "破壊ユニット"
-                           ]
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_xaihi",
+  "name": "ザイヒ",
+  "icon": "image/xaihi.png",
+  "rarity": 5,
+  "element": "寒冷",
+  "weaponType": "アーツユニット",
+  "class": "補助",
+  "mainStat": "知性",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 5900,
+    "atk": 810,
+    "strength": 100,
+    "agility": 95,
+    "intellect": 245,
+    "willpower": 160,
+    "artsIntensity": 65,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 144.6,
+  "defaultPotential": 4,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "戦技アーツ増幅+5%",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "必殺消費-10%",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "連携1体連鎖",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "知性+15・回復効率+10%",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "必殺増幅効果1.1倍",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "char_xaihi",
+      "type": "skill",
+      "name": "DDoS",
+      "shortName": "戦技",
+      "damageType": "なし",
+      "multipliers": {
+        "lv9": 3.6,
+        "lv10_spec1": 3.95,
+        "lv11_spec2": 4.35,
+        "lv12_spec3": 4.8
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_xaihi_skill_amp",
+          "name": "DDoS [【枠5】増幅枠]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "amp",
+          "calcGroupLabel": "【枠5】増幅枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "HP満タン時の操作キャラ単体に25秒間アーツ増幅: R1=+9% → R9=+13% → 特化III=+15%(1凸で+5%加算＝+20%)",
+          "condition": "SP消費100 / 操作キャラ周囲にサポートクリスタル展開(20秒・重攻撃時HP回復最大2回) / 回復時に操作キャラのHPが満タンなら25秒間アーツ増幅付与(重ね掛け不可)"
+        },
+        {
+          "id": "buff_xaihi_skill_aux",
+          "name": "DDoS [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "操作キャラ重攻撃時にHP回復(最大2回): R1[144+意志×0.34]→R9[302+意志×0.71]→特化III[324+意志×0.76]",
+          "condition": "SP消費100 / 操作キャラ周囲にサポートクリスタル展開(20秒・重攻撃時HP回復最大2回) / 回復時に操作キャラのHPが満タンなら25秒間アーツ増幅付与(重ね掛け不可)"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "操作オペレーターの周囲にサポートクリスタルを生成(20秒)。操作オペレーターが重攻撃を行うとHPを回復する(最大2回)。回復発動時にそのオペレーターのHPが満タンの場合、25秒間アーツ増幅(9%→15%)を付与する。（※ダメージ・付着なし）",
+      "damageTypeDetail": "なし",
+      "rawText": "操作オペレーターの周囲にサポートクリスタルを生成(20秒)。操作オペレーターが重攻撃を行うとHPを回復する(最大2回)。回復発動時にそのオペレーターのHPが満タンの場合、25秒間アーツ増幅(9%→15%)を付与する。（※ダメージ・付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "char_xaihi",
+      "type": "combo",
+      "name": "ストレステスト",
+      "shortName": "連携技",
+      "damageType": "寒冷",
+      "multipliers": {
+        "lv9": 2.8,
+        "lv10_spec1": 3.05,
+        "lv11_spec2": 3.35,
+        "lv12_spec3": 3.7
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_xaihi_combo_multiplier",
+          "name": "ストレステスト [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 8.0,
+          "description": "寒冷ダメ倍率: R1=200% → R9=360% → 特化III=450%(3凸で周囲別敵1体にも連鎖)",
+          "condition": "サポートクリスタルの回復回数がすべて消費された(0になった)時発動可 / CD: R1=8秒→R9=8秒→特化III=7秒"
+        },
+        {
+          "id": "buff_xaihi_combo_aux",
+          "name": "ストレステスト [【補助・耐久・リソース枠】]",
+          "target": "none",
+          "targetLabel": "なし",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 8.0,
+          "description": "ブレイク値10",
+          "condition": "サポートクリスタルの回復回数がすべて消費された(0になった)時発動可 / CD: R1=8秒→R9=8秒→特化III=7秒"
+        }
+      ],
+      "infliction": {
+        "type": "cryo",
+        "stacks": 1,
+        "label": "❄️ 寒冷付着 (+1段階)",
+        "description": "寒冷付着(1段階)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "サポートクリスタルの回復回数が0になったときに発動可能。敵にクリスタルを投げつけ寒冷ダメージを与え、寒冷付着(1段階)を付与する。",
+      "damageTypeDetail": "寒冷",
+      "rawText": "サポートクリスタルの回復回数が0になったときに発動可能。敵にクリスタルを投げつけ寒冷ダメージを与え、寒冷付着(1段階)を付与する。",
+      "attachText": "寒冷付着(1段階)",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "char_xaihi",
+      "type": "ult",
+      "name": "スタックオーバーフロー",
+      "shortName": "必殺技",
+      "damageType": "なし",
+      "multipliers": {
+        "lv9": 7.2,
+        "lv10_spec1": 7.85,
+        "lv11_spec2": 8.6,
+        "lv12_spec3": 9.5
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_xaihi_ult_amp",
+          "name": "スタックオーバーフロー [【枠5】増幅枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "amp",
+          "calcGroupLabel": "【枠5】増幅枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "チーム全員に12秒間 寒冷増幅 & 自然増幅: 基礎[R1=11%→R9=19%→特化III=24%] ＋ 知性1につき[R1=+0.014%→R9=+0.024%→特化III=+0.03%](知性上限込み最大: 昇進1上限30% → 特化III上限36%、5凸で1.1倍＝最大39.6%)",
+          "condition": "必殺チャージ消費80(2凸72) / CD20秒 / 持続12秒(知性スケーリング上限あり)"
+        },
+        {
+          "id": "buff_xaihi_ult_aux",
+          "name": "スタックオーバーフロー [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "素質2連動でチーム全員の寒冷付着・凍結状態を浄化",
+          "condition": "必殺チャージ消費80(2凸72) / CD20秒 / 持続12秒(知性スケーリング上限あり)"
+        }
+      ],
+      "epCost": 80,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "12秒間チーム全員に寒冷増幅と自然増幅を付与する(基礎11%→24%＋知性に応じた追加増幅、特化IIIで最大36%)。（※ダメージ・付着なし）",
+      "damageTypeDetail": "なし",
+      "rawText": "12秒間チーム全員に寒冷増幅と自然増幅を付与する(基礎11%→24%＋知性に応じた追加増幅、特化IIIで最大36%)。（※ダメージ・付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    }
+  ],
+  "motifWeapon": "布教の自由",
+  "recommendedWeapons": [
+    "布教の自由",
+    "破壊ユニット"
+  ],
+  "normalAttack": {
+    "name": "クールダウン",
+    "damageType": "寒冷",
+    "damageTypeDetail": "寒冷",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[15%/16%/21%/33%/55%]→R9[27%/29%/38%/59%/99%]→特化III[34%/36%/47%/74%/124%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク15 / 終撃時SP回復",
+    "description": "最大5段の攻撃で、敵に寒冷ダメージを与える。重攻撃はブレイク値15を与える。（※寒冷付着なし）",
+    "raw": "最大5段の攻撃で、敵に寒冷ダメージを与える。重攻撃はブレイク値15を与える。（※寒冷付着なし）"
+  },
+  "talents": [
+    {
+      "id": "talent_xaihi_1",
+      "name": "エグゼキュートプロセス",
+      "description": "連携技が命中したとき、対象がすでに寒冷付着または凍結状態であれば、5秒間その敵が受ける寒冷ダメージ+7%→+10%(重ね掛け不可)。",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_xaihi_talent1_taken_damage_up",
+          "name": "エグゼキュートプロセス [【枠10】敵被ダメージUP枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "taken_damage_up",
+          "calcGroupLabel": "【枠10】敵被ダメージUP枠",
+          "value": 0,
+          "duration": 5.0,
+          "description": "その敵が受ける寒冷ダメージ+7%(昇進1) → +10%(昇進2)",
+          "condition": "連携技「ストレステスト」命中時、対象がすでに寒冷付着または凍結状態の場合 / 持続5秒 / 重ね掛け不可"
+        }
+      ]
+    },
+    {
+      "id": "talent_xaihi_2",
+      "name": "フリーズプロトコル",
+      "description": "必殺技発動時、追加でチーム全員の寒冷付着と凍結状態を浄化する。",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_xaihi_talent2_aux",
+          "name": "フリーズプロトコル [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "チーム全員の寒冷付着および凍結状態を浄化(解除)する",
+          "condition": "必殺技発動時"
+        }
+      ]
+    }
+  ]
 }
