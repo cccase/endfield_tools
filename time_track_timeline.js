@@ -211,6 +211,139 @@
       return clip;
     }
 
+    assignSlotsToBlocks(blocks) {
+      const normalBlocks = blocks.filter(b => b.kind !== 'attach_node' && (b.duration || 0) > 0);
+      normalBlocks.sort((a, b) => {
+        if (Math.abs(a.startTime - b.startTime) > 0.001) return a.startTime - b.startTime;
+        return (b.duration || 0) - (a.duration || 0);
+      });
+
+      const slotEndTimes = [];
+      normalBlocks.forEach(b => {
+        const start = b.startTime;
+        const end = b.startTime + b.duration;
+        let placedSlot = -1;
+        for (let s = 0; s < slotEndTimes.length; s++) {
+          if (start >= slotEndTimes[s] - 0.05) {
+            placedSlot = s;
+            slotEndTimes[s] = end;
+            break;
+          }
+        }
+        if (placedSlot === -1) {
+          placedSlot = slotEndTimes.length;
+          slotEndTimes.push(end);
+        }
+        b.slotIndex = placedSlot;
+      });
+
+      return Math.max(1, slotEndTimes.length);
+    }
+
+    /**
+     * 装備武器（S3効果）に連動する時限バフを自動配置
+     */
+    spawnWeaponBuffsForSkill(clip, p, skill) {
+      if (!p || !p.weapon || !p.weapon.id || p.weapon.id === 'none') return;
+      const wId = p.weapon.id;
+      const weaponMaster = (global.WEAPON_DATA && global.WEAPON_DATA.weapons) ? global.WEAPON_DATA.weapons : [];
+      const weapon = weaponMaster.find(w => w.id === wId || w.name === wId);
+      if (!weapon || !weapon.skills) return;
+
+      const skType = skill.type || 'skill';
+      const tStart = clip.startTime;
+      const s3Rank = Math.min(weapon.skills[2]?.ranks?.length || 9, Math.max(1, p.weapon.s3 || 9));
+      const s3Skill = weapon.skills[2];
+      if (!s3Skill || !s3Skill.ranks) return;
+
+      const rawText = Array.isArray(s3Skill.ranks[s3Rank - 1])
+        ? s3Skill.ranks[s3Rank - 1][0]
+        : String(s3Skill.ranks[s3Rank - 1] || '');
+      if (!rawText) return;
+
+      let shouldTrigger = false;
+      const isSkillCast = (skType === 'skill' || skType === 'skill2' || skType === 'skill3');
+      const isComboCast = (skType === 'combo');
+      const isUltCast = (skType === 'ult' || skType === 'ult2');
+      const hasCrush = skill.crush && skill.crush.type && skill.crush.type !== 'none';
+      const hasInflict = skill.infliction && skill.infliction.type && skill.infliction.type !== 'none';
+
+      if (isSkillCast && (rawText.includes('戦技を発動') || rawText.includes('戦技が敵に命中') || (hasInflict && rawText.includes('戦技で') && rawText.includes('付着')))) {
+        shouldTrigger = true;
+      }
+      if (isComboCast && (rawText.includes('連携技を発動') || rawText.includes('連携技が敵に命中') || rawText.includes('自身の連携技で'))) {
+        shouldTrigger = true;
+      }
+      if (isUltCast && (rawText.includes('必殺技を発動') || rawText.includes('必殺技が敵に命中') || rawText.includes('必殺技命中時') || rawText.includes('必殺技を使う'))) {
+        shouldTrigger = true;
+      }
+      if (hasCrush && (rawText.includes('クラッシュを付与') || rawText.includes('敵を転倒'))) {
+        shouldTrigger = true;
+      }
+      if ((p.baseRecoverSP > 0 || p.baseRefundSP > 0) && rawText.includes('SPを回復すると')) {
+        shouldTrigger = true;
+      }
+
+      if (!shouldTrigger) return;
+
+      // 持続時間（デフォルト15秒）
+      const durMatch = rawText.match(/(\d+(?:\.\d+)?)秒間/);
+      const duration = durMatch ? parseFloat(durMatch[1]) : 15;
+
+      // 数値（%）
+      const pctMatches = [...rawText.matchAll(/\+(\d+(?:\.\d+)?)%/g)];
+      let bonusVal = 0.15;
+      if (pctMatches.length > 0) {
+        bonusVal = parseFloat(pctMatches[pctMatches.length - 1][1]) / 100.0;
+      }
+
+      // 対象判定
+      const isTeam = rawText.includes('チーム全員') || rawText.includes('チームの他の');
+      const isEnemy = rawText.includes('敵の受ける') || rawText.includes('脆弱');
+
+      // 計算グループ判定
+      let calcGroup = 'damage_up';
+      let statLabel = '与ダメ';
+      if (rawText.includes('攻撃力+')) {
+        calcGroup = 'atk_pct';
+        statLabel = '攻撃力';
+      } else if (rawText.includes('増幅+')) {
+        calcGroup = 'amp';
+        statLabel = '増幅';
+      } else if (rawText.includes('会心率+')) {
+        calcGroup = 'crit_rate';
+        statLabel = '会心率';
+      } else if (rawText.includes('会心ダメージ+')) {
+        calcGroup = 'crit_dmg';
+        statLabel = '会心ダメ';
+      } else if (rawText.includes('脆弱')) {
+        calcGroup = 'vulnerability';
+        statLabel = '脆弱';
+      } else if (rawText.includes('受ける') && rawText.includes('ダメージ+')) {
+        calcGroup = 'taken_damage_up';
+        statLabel = '被ダメUP';
+      }
+
+      const targetTrackId = isEnemy ? 'track_enemy_debuffs' : `track_char_${p.id}`;
+
+      this.blocks.push({
+        id: this._nextId('blk'),
+        linkedClipId: clip.id,
+        trackId: targetTrackId,
+        charId: isTeam || isEnemy ? null : p.id,
+        kind: 'buff',
+        name: `⚔️ [${weapon.name}] S3: ${statLabel}+${Math.round(bonusVal * 1000) / 10}%`,
+        startTime: tStart,
+        duration: duration,
+        color: 'linear-gradient(135deg, #b7950b, #7d6608)',
+        calcGroup: calcGroup,
+        bonusType: isTeam ? 'teamDamageUp' : (isEnemy ? 'vuln' : 'damageUp'),
+        bonusValue: bonusVal,
+        valueText: `${isTeam ? 'チーム' : ''}${statLabel} +${Math.round(bonusVal * 1000) / 10}%`,
+        source: `${weapon.name} (武器S3)`
+      });
+    }
+
     spawnLinkedBuffsForSkill(clip, p, skill) {
       const sName = skill.name || skill.shortName || 'スキル';
       const skType = skill.type || 'skill';
@@ -225,21 +358,31 @@
         generic: 'linear-gradient(135deg, #f39c12, #d68910)'
       };
 
-      // (A) スキル固有の自己バフ / チームバフ
+      // (A) スキル固有の自己バフ / チームバフ / デバフ（一次情報完全紐付け）
       if (skill.buffs && skill.buffs.length > 0) {
         skill.buffs.forEach(b => {
           const dur = b.duration || 10;
           const valNum = parseFloat(b.value) || 15;
+          const isEnemy = (b.target === 'enemy');
+          const isParty = (b.target === 'party');
+          const targetTrackId = isEnemy ? 'track_enemy_debuffs' : `track_char_${p.id}`;
+
+          let targetPrefix = '';
+          if (isParty) targetPrefix = '👥[全体] ';
+          else if (isEnemy) targetPrefix = '🎯[デバフ] ';
+
           this.blocks.push({
             id: this._nextId('blk'),
             linkedClipId: clip.id,
-            trackId: `track_char_${p.id}`,
-            charId: p.id,
-            name: `${b.name || sName} (+${valNum}%)`,
+            trackId: targetTrackId,
+            charId: isEnemy || isParty ? null : p.id,
+            kind: 'buff',
+            name: `${targetPrefix}${b.name || sName} (+${valNum}%)`,
             startTime: tStart,
             duration: dur,
-            color: buffColors.generic,
-            bonusType: 'damageUp',
+            color: isEnemy ? 'linear-gradient(135deg, #c0392b, #922b21)' : (isParty ? 'linear-gradient(135deg, #27ae60, #1e8449)' : buffColors.generic),
+            calcGroup: b.calcGroup || (isEnemy ? 'vulnerability' : 'damage_up'),
+            bonusType: isParty ? 'teamDamageUp' : (isEnemy ? 'vuln' : 'damageUp'),
             bonusValue: valNum / 100,
             valueText: `${b.stat || '与ダメ'} +${valNum}%`,
             source: `${p.name} [${sName}]`
@@ -247,7 +390,7 @@
         });
       }
 
-      // (B) 必殺技発動時の強化バフ (デフォルト15秒)
+      // (B) 必殺技発動時の自己強化バフ (デフォルト15秒)
       if (skType === 'ult' || skType === 'ult2') {
         const elemColorKey = p.element === '灼熱' ? 'heat' : (p.element === '寒冷' ? 'cryo' : (p.element === '電磁' ? 'electric' : (p.element === '自然' ? 'nature' : 'physical')));
         this.blocks.push({
@@ -255,10 +398,12 @@
           linkedClipId: clip.id,
           trackId: `track_char_${p.id}`,
           charId: p.id,
+          kind: 'buff',
           name: `必殺強化 [${sName}]`,
           startTime: tStart,
           duration: 15,
           color: buffColors[elemColorKey],
+          calcGroup: 'damage_up',
           bonusType: 'damageUp',
           bonusValue: 0.20,
           valueText: '与ダメージ+20%',
@@ -274,10 +419,12 @@
           linkedClipId: clip.id,
           trackId: `track_char_${p.id}`,
           charId: p.id,
+          kind: 'buff',
           name: '火山セット [灼熱/自然+50%]',
           startTime: tStart,
           duration: 10,
           color: 'linear-gradient(135deg, #d35400, #e74c3c)',
+          calcGroup: 'damage_up',
           bonusType: 'damageUp',
           bonusValue: 0.50,
           valueText: '灼熱/自然ダメ+50%',
@@ -290,10 +437,12 @@
             linkedClipId: clip.id,
             trackId: `track_char_${p.id}`,
             charId: p.id,
+            kind: 'buff',
             name: '旧鋒セット [物理ダメ+24%]',
             startTime: tStart,
             duration: 20,
             color: 'linear-gradient(135deg, #7f8c8d, #34495e)',
+            calcGroup: 'damage_up',
             bonusType: 'damageUp',
             bonusValue: 0.24,
             valueText: '物理ダメージ+24%',
@@ -306,10 +455,12 @@
           linkedClipId: clip.id,
           trackId: `track_char_${p.id}`,
           charId: null, // チーム全体バフ
+          kind: 'buff',
           name: 'パイオニア [全体与ダメ+16%]',
           startTime: tStart,
           duration: 15,
           color: 'linear-gradient(135deg, #16a085, #1abc9c)',
+          calcGroup: 'damage_up',
           bonusType: 'teamDamageUp',
           bonusValue: 0.16,
           valueText: 'チーム与ダメ+16%',
@@ -317,44 +468,73 @@
         });
       }
 
-      // (D) 敵へのアーツ付着 / クラッシュ・デバフブロック自動仮配置
+      // (D) 武器S3バフの自動配置
+      this.spawnWeaponBuffsForSkill(clip, p, skill);
+
+      // (E) 敵へのアーツ付着ノード（秒数なし！スキル発動時刻にピン配置）
+      // 【ユーザー重要指示】
+      // 1. 付着に秒数はいらない。基本的に秒数はバフのみでいい。
+      // 2. アーツ付着はタイムライン上で「1つのノード（ブロック）」としてシンプルに配置。
+      // 3. 付着のないスキル（通常攻撃、ティフォロス、イヴォンヌ、リーノ、ペリカ等）では付着ノードを生成しない！
       const infType = skill.infliction ? skill.infliction.type : 'none';
       const crushType = skill.crush ? skill.crush.type : 'none';
 
-      if (crushType && crushType !== 'none') {
-        const isChen = (p.id === 'char_chen' || (p.name && p.name.includes('チェン')));
-        const crushName = isChen
-          ? `浮遊(クラッシュ付与+1段) [${p.name}]`
-          : (crushType === 'inflict' ? `クラッシュ付与(+1段) [${p.name}]` : `クラッシュ消費(${crushType === 'consume_shatter' ? '破砕' : '猛撃'}) [${p.name}]`);
+      if (infType && infType !== 'none') {
+        const elemIcons = {
+          heat: '🔥',
+          cryo: '❄️',
+          electric: '⚡',
+          nature: '🌿',
+          physical: '⚔️'
+        };
+        const elemKey = (infType === 'copy_slot1' || infType === 'okugi_dual')
+          ? (p.element === '灼熱' ? 'heat' : (p.element === '寒冷' ? 'cryo' : (p.element === '電磁' ? 'electric' : 'nature')))
+          : infType;
+        const elemNames = {
+          heat: '灼熱',
+          cryo: '寒冷',
+          electric: '電磁',
+          nature: '自然',
+          physical: '物理'
+        };
+        const icon = elemIcons[elemKey] || '✨';
+        const eName = elemNames[elemKey] || p.element || 'アーツ';
+
         this.blocks.push({
-          id: this._nextId('blk'),
+          id: this._nextId('node'),
           linkedClipId: clip.id,
           trackId: 'track_enemy_debuffs',
           charId: null,
-          name: crushName,
+          kind: 'attach_node', // 秒数なしピンノード
+          inflictionType: elemKey,
+          stacks: 1,
+          name: `${icon} ${eName}付着(1段)`,
+          shortBadge: `${icon}1`,
           startTime: tStart,
-          duration: 12,
-          color: 'linear-gradient(135deg, #e67e22, #d35400)',
-          bonusType: 'vuln',
-          bonusValue: 10,
-          valueText: '物理体勢崩し/脆弱+10%',
+          duration: 0, // 秒数なし！
+          color: buffColors[elemKey] || buffColors.cryo,
           source: `${p.name} [${sName}]`
         });
-      } else if (infType && infType !== 'none') {
-        const elemColorKey = p.element === '灼熱' ? 'heat' : (p.element === '寒冷' ? 'cryo' : (p.element === '電磁' ? 'electric' : 'nature'));
-        const elemLabel = p.element === '物理' ? '寒冷' : (p.element || 'アーツ');
+      }
+
+      // (F) クラッシュノード（秒数なし）
+      if (crushType && crushType !== 'none') {
+        const isChen = (p.id === 'char_chen' || (p.name && p.name.includes('チェン')));
+        const cBadge = isChen ? '☁️浮' : (crushType === 'inflict' ? '🔨1' : '💥崩');
+        const cTitle = isChen ? '浮遊(クラッシュ1段)' : (crushType === 'inflict' ? 'クラッシュ付与(1段)' : 'クラッシュ消費');
         this.blocks.push({
-          id: this._nextId('blk'),
+          id: this._nextId('node'),
           linkedClipId: clip.id,
           trackId: 'track_enemy_debuffs',
           charId: null,
-          name: `${elemLabel}付着(+1段) [${p.name}]`,
+          kind: 'attach_node',
+          inflictionType: 'crush',
+          stacks: 1,
+          name: `${cBadge} ${cTitle}`,
+          shortBadge: cBadge,
           startTime: tStart,
-          duration: 10,
-          color: buffColors[elemColorKey] || buffColors.cryo,
-          bonusType: 'vuln',
-          bonusValue: 10,
-          valueText: `${elemLabel}付着(1段階)`,
+          duration: 0, // 秒数なし！
+          color: 'linear-gradient(135deg, #d35400, #b9770e)',
           source: `${p.name} [${sName}]`
         });
       }
@@ -463,23 +643,48 @@
 
       const enrichedCycle = sortedClips.map(clip => {
         const t = clip.startTime + 0.05; // 発動直後の判定時刻
-        let extraDmgUp = 0;
+        let extraAtkPct = 0;
+        let extraDamageUp = 0;
+        let extraAmp = 0;
+        let extraCritRate = 0;
+        let extraCritDmg = 0;
+        let extraTakenDamageUp = 0;
         let extraVuln = 0;
         const activeNotes = [];
 
         this.blocks.forEach(blk => {
-          // 自身のスキル発動と同時に自動生成された「同クリップ由来」の基礎付着/必殺バフ以外の重なり、
-          // またはユーザーがドラッグ・伸縮で重ねたバフ・デバフを集計
-          if (t >= blk.startTime && t <= (blk.startTime + blk.duration)) {
-            const appliesToChar = (!blk.charId || blk.charId === clip.charId || blk.bonusType === 'teamDamageUp' || blk.bonusType === 'vuln');
-            if (!appliesToChar) return;
+          // 秒数幅のあるバフブロック（duration > 0）のみ有効範囲を集計
+          if (blk.kind !== 'attach_node' && (blk.duration || 0) > 0) {
+            if (t >= blk.startTime && t <= (blk.startTime + blk.duration)) {
+              const appliesToChar = (!blk.charId || blk.charId === clip.charId || blk.bonusType === 'teamDamageUp' || blk.bonusType === 'vuln');
+              if (!appliesToChar) return;
 
-            if (blk.bonusType === 'damageUp' || blk.bonusType === 'teamDamageUp') {
-              extraDmgUp += (blk.bonusValue || 0);
-              activeNotes.push(`🔊${blk.name}(${blk.startTime.toFixed(1)}-${(blk.startTime + blk.duration).toFixed(1)}s)`);
-            } else if (blk.bonusType === 'vuln') {
-              extraVuln += (blk.bonusValue || 0);
-              activeNotes.push(`🎯${blk.name}`);
+              const val = blk.bonusValue || 0;
+              const grp = blk.calcGroup || (blk.bonusType === 'vuln' ? 'vulnerability' : 'damage_up');
+
+              if (grp === 'atk_pct') {
+                extraAtkPct += val;
+                activeNotes.push(`⚔️攻+${Math.round(val * 100)}%`);
+              } else if (grp === 'damage_up') {
+                extraDamageUp += val;
+                activeNotes.push(`🔊ダメ+${Math.round(val * 100)}%`);
+              } else if (grp === 'amp') {
+                extraAmp += val;
+                activeNotes.push(`⚡増幅+${Math.round(val * 100)}%`);
+              } else if (grp === 'crit_rate') {
+                extraCritRate += val;
+                activeNotes.push(`🎯会率+${Math.round(val * 100)}%`);
+              } else if (grp === 'crit_dmg') {
+                extraCritDmg += val;
+                activeNotes.push(`💥会ダメ+${Math.round(val * 100)}%`);
+              } else if (grp === 'taken_damage_up') {
+                extraTakenDamageUp += val;
+                activeNotes.push(`🎯被ダメ+${Math.round(val * 100)}%`);
+              } else if (grp === 'vulnerability') {
+                const vNum = (val <= 1.0 && val > 0) ? (val * 100) : val;
+                extraVuln += vNum;
+                activeNotes.push(`🎯脆弱+${Math.round(vNum)}%`);
+              }
             }
           }
         });
@@ -490,9 +695,18 @@
           charName: clip.charName,
           skillId: clip.skillId,
           startTime: clip.startTime,
-          timelineExtraDamageUp: extraDmgUp,
+          timelineExtraDamageUp: extraDamageUp,
           timelineExtraVuln: extraVuln,
-          timelineBuffNote: activeNotes.slice(0, 2).join(', ')
+          timelineBuffs: {
+            atkPct: extraAtkPct,
+            damageUp: extraDamageUp,
+            amp: extraAmp,
+            critRate: extraCritRate,
+            critDmg: extraCritDmg,
+            takenDamageUp: extraTakenDamageUp,
+            vulnerability: extraVuln
+          },
+          timelineBuffNote: activeNotes.slice(0, 3).join(', ')
         };
       });
 
@@ -589,8 +803,11 @@
         rulerEl.appendChild(mark);
       }
 
-      // 2. トラックヘッダーの描画
+      // 2. トラックヘッダーおよび3. トラックレーンとブロックの描画
       headerListEl.innerHTML = '';
+      lanesEl.style.width = `${totalWidthPx}px`;
+      lanesEl.innerHTML = '';
+
       this.tracks.forEach(tr => {
         const h = document.createElement('div');
         h.className = `track-header-item kind-${tr.kind}`;
@@ -599,14 +816,7 @@
           ${tr.icon ? `<img src="${tr.icon}" class="track-icon-img" onerror="this.onerror=null;this.style.display='none';">` : ''}
           <span class="track-header-name" title="${tr.name}">${tr.name}</span>
         `;
-        headerListEl.appendChild(h);
-      });
 
-      // 3. トラックレーンとクリップ/ブロックの描画
-      lanesEl.style.width = `${totalWidthPx}px`;
-      lanesEl.innerHTML = '';
-
-      this.tracks.forEach(tr => {
         const lane = document.createElement('div');
         lane.className = `track-lane kind-${tr.kind}`;
         lane.dataset.trackId = tr.id;
@@ -618,38 +828,42 @@
         gridBg.style.backgroundSize = `${this.pxPerSec}px 100%`;
         lane.appendChild(gridBg);
 
-        // スキルトラックへのD&Dドロップ受け入れ
-        lane.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          lane.classList.add('drag-over');
-        });
-        lane.addEventListener('dragleave', () => {
-          lane.classList.remove('drag-over');
-        });
-        lane.addEventListener('drop', (e) => {
-          e.preventDefault();
-          lane.classList.remove('drag-over');
-          try {
-            const payload = JSON.parse(e.dataTransfer.getData('text/plain'));
-            if (payload && payload.source === 'clip-palette') {
-              const rect = lane.getBoundingClientRect();
-              const dropX = Math.max(0, e.clientX - rect.left);
-              const dropSec = Math.round((dropX / this.pxPerSec) / this.snapGrid) * this.snapGrid;
-              const member = this.party.find(m => m.id === payload.charId);
-              const skill = member ? (member.skills || []).find(s => s.id === payload.skillId) : null;
-              if (member && skill) {
-                this.addSkillClip(member, skill, dropSec);
-                if (typeof global.appendSkillFromTimeTrack === 'function') {
-                  global.appendSkillFromTimeTrack(member, skill);
+        if (tr.kind === 'skill') {
+          // スキルトラック: 高さ44px固定
+          h.style.height = '44px';
+          lane.style.height = '44px';
+
+          // スキルトラックへのD&Dドロップ受け入れ
+          lane.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            lane.classList.add('drag-over');
+          });
+          lane.addEventListener('dragleave', () => {
+            lane.classList.remove('drag-over');
+          });
+          lane.addEventListener('drop', (e) => {
+            e.preventDefault();
+            lane.classList.remove('drag-over');
+            try {
+              const payload = JSON.parse(e.dataTransfer.getData('text/plain'));
+              if (payload && payload.source === 'clip-palette') {
+                const rect = lane.getBoundingClientRect();
+                const dropX = Math.max(0, e.clientX - rect.left);
+                const dropSec = Math.round((dropX / this.pxPerSec) / this.snapGrid) * this.snapGrid;
+                const member = this.party.find(m => m.id === payload.charId);
+                const skill = member ? (member.skills || []).find(s => s.id === payload.skillId) : null;
+                if (member && skill) {
+                  this.addSkillClip(member, skill, dropSec);
+                  if (typeof global.appendSkillFromTimeTrack === 'function') {
+                    global.appendSkillFromTimeTrack(member, skill);
+                  }
                 }
               }
+            } catch (err) {
+              // ignore non-json drag
             }
-          } catch (err) {
-            // ignore non-json drag
-          }
-        });
+          });
 
-        if (tr.kind === 'skill') {
           // 映像クリップ風のスキルブロックを描画
           const clips = this.skillClips.filter(c => c.trackId === tr.id);
           clips.forEach(clip => {
@@ -684,20 +898,36 @@
             lane.appendChild(cEl);
           });
         } else {
-          // 音声トラック風のバフ・デバフ・状態異常ブロックを描画
+          // 音声トラック風のバフ・デバフ・状態異常トラック
           const trackBlocks = this.blocks.filter(b => b.trackId === tr.id);
-          trackBlocks.forEach(blk => {
+          const maxSlots = this.assignSlotsToBlocks(trackBlocks);
+
+          const slotHeight = 26;
+          const slotGap = 4;
+          const topPadding = 6;
+          const bottomPadding = 6;
+          const calcHeight = topPadding + bottomPadding + (maxSlots * slotHeight) + (Math.max(0, maxSlots - 1) * slotGap);
+          const laneHeight = Math.max(64, calcHeight);
+
+          // ヘッダーとレーンの高さを完全同期（太く拡大）
+          h.style.height = `${laneHeight}px`;
+          lane.style.height = `${laneHeight}px`;
+
+          // (1) 通常の持続バフブロックを描画（スロット縦並び配置）
+          trackBlocks.filter(b => b.kind !== 'attach_node').forEach(blk => {
             const bEl = document.createElement('div');
             bEl.className = 'time-buff-block';
             bEl.dataset.blockId = blk.id;
             bEl.style.left = `${blk.startTime * this.pxPerSec}px`;
-            bEl.style.width = `${Math.max(24, blk.duration * this.pxPerSec)}px`;
+            bEl.style.width = `${Math.max(26, blk.duration * this.pxPerSec)}px`;
+            bEl.style.top = `${topPadding + (blk.slotIndex || 0) * (slotHeight + slotGap)}px`;
+            bEl.style.height = `${slotHeight}px`;
             bEl.style.background = blk.color || 'linear-gradient(135deg, #f39c12, #e67e22)';
 
             bEl.innerHTML = `
               <div class="block-drag-handle left" data-handle="left"></div>
               <div class="block-content">
-                <span class="block-title">🔊 ${blk.name}</span>
+                <span class="block-title">${blk.name}</span>
                 <span class="block-sub">${blk.duration.toFixed(1)}s</span>
               </div>
               <button type="button" class="clip-delete-btn" title="このバフブロックを削除">×</button>
@@ -717,8 +947,37 @@
 
             lane.appendChild(bEl);
           });
+
+          // (2) アーツ付着・クラッシュノード（秒数なし・ピンバッジ）を描画
+          trackBlocks.filter(b => b.kind === 'attach_node').forEach(node => {
+            const nEl = document.createElement('div');
+            nEl.className = 'time-attach-node';
+            nEl.dataset.blockId = node.id;
+            nEl.style.left = `${Math.max(0, node.startTime * this.pxPerSec - 14)}px`;
+            nEl.style.top = `${Math.round((laneHeight - 28) / 2)}px`;
+            nEl.style.background = node.color || 'linear-gradient(135deg, #3498db, #2980b9)';
+
+            nEl.innerHTML = `
+              <span class="attach-node-badge">${node.shortBadge || '✨'}</span>
+              <button type="button" class="node-delete-btn" title="この付着ノードを削除">×</button>
+            `;
+
+            nEl.title = `🎯 【${node.name}】\n発動時刻: ${node.startTime.toFixed(1)}s (秒数なし・付着イベント)\n発生源: ${node.source || ''}\n※左右ドラッグで発動時刻を変更できます`;
+
+            const delBtn = nEl.querySelector('.node-delete-btn');
+            if (delBtn) {
+              delBtn.addEventListener('mousedown', (ev) => ev.stopPropagation());
+              delBtn.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                this.removeBuffBlock(node.id);
+              });
+            }
+
+            lane.appendChild(nEl);
+          });
         }
 
+        headerListEl.appendChild(h);
         lanesEl.appendChild(lane);
       });
     }
@@ -728,31 +987,36 @@
       if (!editor) return;
 
       const onMouseDown = (e) => {
-        if (e.target.classList.contains('clip-delete-btn')) return;
+        if (e.target.classList.contains('clip-delete-btn') || e.target.classList.contains('node-delete-btn')) return;
 
         const clipEl = e.target.closest('.time-skill-clip');
         const blockEl = e.target.closest('.time-buff-block');
-        const targetEl = clipEl || blockEl;
+        const nodeEl = e.target.closest('.time-attach-node');
+        const targetEl = clipEl || blockEl || nodeEl;
         if (!targetEl) return;
 
         const isClip = !!clipEl;
-        const itemId = isClip ? clipEl.dataset.clipId : blockEl.dataset.blockId;
+        const isNode = !!nodeEl;
+        const itemId = isClip
+          ? clipEl.dataset.clipId
+          : (isNode ? nodeEl.dataset.blockId : blockEl.dataset.blockId);
         const itemData = isClip
           ? this.skillClips.find(c => c.id === itemId)
           : this.blocks.find(b => b.id === itemId);
         if (!itemData) return;
 
-        const isHandleLeft = e.target.classList.contains('left');
-        const isHandleRight = e.target.classList.contains('right');
+        const isHandleLeft = !isNode && e.target.classList.contains('left');
+        const isHandleRight = !isNode && e.target.classList.contains('right');
 
         this.activeDrag = {
           isClip: isClip,
+          isNode: isNode,
           itemId: itemId,
           itemData: itemData,
           targetEl: targetEl,
           startX: e.clientX,
           origStartSec: itemData.startTime,
-          origDuration: itemData.duration,
+          origDuration: itemData.duration || 0,
           mode: isHandleLeft ? 'resize-left' : (isHandleRight ? 'resize-right' : 'move')
         };
 
@@ -778,18 +1042,28 @@
           }
           const shift = newStart - d.itemData.startTime;
           d.itemData.startTime = newStart;
-          d.targetEl.style.left = `${newStart * this.pxPerSec}px`;
+
+          if (d.isNode) {
+            d.targetEl.style.left = `${Math.max(0, newStart * this.pxPerSec - 14)}px`;
+          } else {
+            d.targetEl.style.left = `${newStart * this.pxPerSec}px`;
+          }
 
           if (d.isClip) {
             const tTag = d.targetEl.querySelector('.clip-time-tag');
             if (tTag) tTag.textContent = `${newStart.toFixed(1)}s`;
-            // スキルクリップを移動した際、連動仮配置されたバフブロックも一緒に追従させる
+            // スキルクリップを移動した際、連動仮配置されたバフブロック＆付着ノードも一緒に追従させる
             if (shift !== 0) {
               this.blocks.forEach(b => {
                 if (b.linkedClipId === d.itemId) {
                   b.startTime = Math.max(0, b.startTime + shift);
-                  const domB = this.container.querySelector(`.time-buff-block[data-block-id="${b.id}"]`);
-                  if (domB) domB.style.left = `${b.startTime * this.pxPerSec}px`;
+                  if (b.kind === 'attach_node') {
+                    const domN = this.container.querySelector(`.time-attach-node[data-block-id="${b.id}"]`);
+                    if (domN) domN.style.left = `${Math.max(0, b.startTime * this.pxPerSec - 14)}px`;
+                  } else {
+                    const domB = this.container.querySelector(`.time-buff-block[data-block-id="${b.id}"]`);
+                    if (domB) domB.style.left = `${b.startTime * this.pxPerSec}px`;
+                  }
                 }
               });
             }

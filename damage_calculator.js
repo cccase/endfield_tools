@@ -342,6 +342,9 @@
     }
     const damageUpMult = 1.0 + bonusSum;
 
+    // 増幅枠（独立乗算）
+    const ampMult = 1.0 + ((context && context.extraAmp) ? context.extraAmp : 0);
+
     // 2. 防御補正: 100 / (100 + 敵防御力)
     const enemyDef = Math.max(0, enemy.defense);
     const defMult = 100.0 / (100.0 + enemyDef);
@@ -371,20 +374,33 @@
       const aScale = enemy.anomalyScale !== undefined ? Math.min(4, Math.max(1, enemy.anomalyScale)) : 2;
       extraVuln = 10 + (5 * aScale);
     }
-    const vulnVal = (enemy.vulnerability || 0.0) + extraVuln;
+    const extraTimelineVuln = (context && context.extraVuln) ? context.extraVuln : 0;
+    const vulnVal = (enemy.vulnerability || 0.0) + extraVuln + extraTimelineVuln;
     const vulnMult = 1.0 + (vulnVal / 100.0);
+
+    // 敵被ダメージUP枠（独立乗算）
+    const extraTakenDamageUp = (context && context.extraTakenDamageUp) ? context.extraTakenDamageUp : 0;
+    const takenDamageMult = 1.0 + ((enemy.takenDamageUp || 0) / 100.0) + extraTakenDamageUp;
 
     // 5. ブレイク補正
     const breakMult = enemy.isBroken ? (enemy.breakMultiplier || 1.5) : 1.0;
 
     // 6. 会心係数
-    const critRate = Math.min(1.0, Math.max(0.0, stats.critRate || 0.05));
-    const critDamage = stats.critDamage || 0.50;
+    const extraCritRate = (context && context.extraCritRate) ? context.extraCritRate : 0;
+    const extraCritDmg = (context && context.extraCritDmg) ? context.extraCritDmg : 0;
+    const critRate = Math.min(1.0, Math.max(0.0, (stats.critRate || 0.05) + extraCritRate));
+    const critDamage = (stats.critDamage || 0.50) + extraCritDmg;
     const critExpected = 1.0 + (critRate * critDamage);
     const critHit = 1.0 + critDamage;
 
-    // 基礎ダメージ（非会心ベース）
-    const baseDamage = stats.totalAtk * mult * damageUpMult * defMult * resMult * vulnMult * breakMult;
+    // 攻撃力%バフの反映
+    const extraAtkPct = (context && context.extraAtkPct) ? context.extraAtkPct : 0;
+    const dynamicBaseAtk = stats.baseAtk || 500;
+    const dynamicStatMult = stats.statMultiplier || 1.0;
+    const effectiveAtk = stats.totalAtk + (dynamicBaseAtk * extraAtkPct * dynamicStatMult);
+
+    // 基礎ダメージ（非会心ベース）: 攻撃力 * 倍率 * 与ダメUP * 増幅 * 敵被ダメUP * 防御 * 耐性 * 脆弱 * ブレイク
+    const baseDamage = effectiveAtk * mult * damageUpMult * ampMult * takenDamageMult * defMult * resMult * vulnMult * breakMult;
 
     return {
       expected: Math.round(baseDamage * critExpected),
@@ -396,10 +412,12 @@
       mult: mult,
       reactionName: reactionName,
       details: {
-        totalAtk: stats.totalAtk,
+        totalAtk: Math.round(effectiveAtk),
         mult: mult,
         damageUpPercent: Math.round(bonusSum * 1000) / 10,
         damageUpMult: Math.round(damageUpMult * 1000) / 1000,
+        ampMult: Math.round(ampMult * 1000) / 1000,
+        takenDamageMult: Math.round(takenDamageMult * 1000) / 1000,
         defMult: Math.round(defMult * 1000) / 1000,
         resVal: resVal,
         resMult: Math.round(resMult * 1000) / 1000,
@@ -622,9 +640,15 @@
         }
 
         // Priority C: タイムライン上のバフ・デバフブロック重なりによるリアルタイム補正
-        if (typeof item.timelineExtraDamageUp === 'number' && item.timelineExtraDamageUp !== 0) {
-          context.extraDamageUp = (context.extraDamageUp || 0) + item.timelineExtraDamageUp;
-        }
+        const tBuffs = item.timelineBuffs || {};
+        context.extraAtkPct = (context.extraAtkPct || 0) + (tBuffs.atkPct || 0);
+        context.extraDamageUp = (context.extraDamageUp || 0) + (item.timelineExtraDamageUp || 0) + (tBuffs.damageUp || 0);
+        context.extraAmp = (context.extraAmp || 0) + (tBuffs.amp || 0);
+        context.extraCritRate = (context.extraCritRate || 0) + (tBuffs.critRate || 0);
+        context.extraCritDmg = (context.extraCritDmg || 0) + (tBuffs.critDmg || 0);
+        context.extraTakenDamageUp = (context.extraTakenDamageUp || 0) + (tBuffs.takenDamageUp || 0);
+        context.extraVuln = (context.extraVuln || 0) + (item.timelineExtraVuln || 0) + (tBuffs.vulnerability || 0);
+
         if (item.timelineBuffNote) {
           context.actionNote = (context.actionNote ? context.actionNote + ' / ' : '') + item.timelineBuffNote;
         }
@@ -634,7 +658,7 @@
 
         // 一時的に enemy 設定を currentEnemy に合わせて計算
         const calcEnemy = Object.assign({}, currentEnemy, {
-          vulnerability: (currentEnemy.vulnerability || 0) + (typeof item.timelineExtraVuln === 'number' ? item.timelineExtraVuln : 0),
+          vulnerability: (currentEnemy.vulnerability || 0) + (context.extraVuln || 0),
           consumeAttachment: context.consumeAttachment,
           consumeCrush: context.consumeCrush
         });

@@ -1653,9 +1653,9 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .time-buff-block {
   position: absolute;
   top: 6px;
-  height: 32px;
+  height: 26px;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   cursor: grab;
   display: flex;
@@ -1670,8 +1670,8 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 
 .time-buff-block:hover {
   filter: brightness(1.15);
-  border-color: rgba(255, 255, 255, 0.6);
-  z-index: 4;
+  border-color: rgba(255, 255, 255, 0.7);
+  z-index: 5;
 }
 
 .time-buff-block.is-dragging {
@@ -1706,28 +1706,29 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
-  padding: 0 6px;
+  gap: 4px;
+  padding: 0 4px;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .block-title {
   color: #fff;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .block-sub {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.45);
   color: #ddd;
   font-size: 9px;
   font-family: monospace;
-  padding: 1px 4px;
+  padding: 1px 3px;
   border-radius: 3px;
+  flex-shrink: 0;
 }
 
 /* =========================================================
@@ -2728,21 +2729,101 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 
 .track-header-item.kind-skill {
   background: rgba(41, 128, 185, 0.1);
+  height: 44px;
 }
 .track-header-item.kind-enemy {
   background: rgba(192, 57, 43, 0.12);
   border-top: 2px solid #444;
+  min-height: 64px;
+}
+.track-header-item.kind-buff {
+  min-height: 64px;
 }
 .track-lane.kind-skill {
   background: rgba(25, 35, 48, 0.45);
+  height: 44px;
 }
 .track-lane.kind-enemy {
   background: rgba(48, 25, 28, 0.35);
   border-top: 2px solid #444;
+  min-height: 64px;
+}
+.track-lane.kind-buff {
+  min-height: 64px;
 }
 .track-lane.drag-over {
   background: rgba(243, 156, 18, 0.18) !important;
   outline: 1px dashed #f39c12;
+}
+
+/* アーツ付着・クラッシュノード（秒数なし・ピンバッジ） */
+.time-attach-node {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.65), inset 0 0 6px rgba(255, 255, 255, 0.3);
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 6;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  box-sizing: border-box;
+}
+
+.time-attach-node:hover {
+  transform: scale(1.18);
+  filter: brightness(1.25);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+  z-index: 10;
+}
+
+.time-attach-node.is-dragging {
+  cursor: grabbing;
+  transform: scale(1.25);
+  opacity: 0.9;
+  z-index: 15;
+  box-shadow: 0 0 16px #f1c40f;
+}
+
+.attach-node-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
+.node-delete-btn {
+  display: none;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #c0392b;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 10px;
+  line-height: 12px;
+  padding: 0;
+  cursor: pointer;
+  z-index: 12;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-attach-node:hover .node-delete-btn {
+  display: inline-flex;
+}
+
+.node-delete-btn:hover {
+  background: #e74c3c;
+  transform: scale(1.2);
 }
 
 /* 映像クリップ風スキルブロック */
