@@ -594,6 +594,13 @@
     "type": "custom",
     "description": "【2連続発動連携＆完璧連携ボーナス】1回のトリガーで連携技を連続2回発動でき、2回目で全アーツ付着を消費して浮遊と自己会心バフを獲得。2回目を『完璧連携(ジャスト入力)』で発動すると追加でクラッシュ+1段階を付与する"
   },
-  "recommendedArmorSet": "set_kyuho",
-  "recommendedArmorSetName": "旧鋒セット"
+  "recommendedArmorSet": "set_chouiki",
+  "recommendedArmorSetName": "軽量超域セット",
+  "recommendedArmor": {
+    "armorSet": "set_chouiki",
+    "body": "gold_body_e8bbbde9878fe8b_44",
+    "arm": "gold_arms_e8bbbde9878fe8b_38",
+    "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+    "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+  }
 }

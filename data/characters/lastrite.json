@@ -572,6 +572,13 @@
     "type": "custom",
     "description": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える ／ 【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る） ／ 【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる"
   },
-  "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSet": "set_mancho",
+  "recommendedArmorSetName": "満潮セット",
+  "recommendedArmor": {
+    "armorSet": "set_mancho",
+    "body": "gold_body_e5a594e6b5aae38_19",
+    "arm": "gold_arms_e6b288e6b0b4e38_18",
+    "acc1": "gold_accessories_e687b8e6b2b3e38_21",
+    "acc2": "gold_accessories_e6bf81e6b581e38_22"
+  }
 }

@@ -582,5 +582,12 @@
     "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
   },
   "recommendedArmorSet": "set_ruten",
-  "recommendedArmorSetName": "流転セット"
+  "recommendedArmorSetName": "流転セット",
+  "recommendedArmor": {
+    "armorSet": "set_ruten",
+    "body": "armor_body_ruten",
+    "arm": "armor_arms_ruten",
+    "acc1": "armor_acc_ruten",
+    "acc2": "gold_accessories_e6b581e8bba2e38_16"
+  }
 }

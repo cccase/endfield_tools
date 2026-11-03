@@ -220,6 +220,16 @@
     },
     "recommendedArmorSetName": {
       "type": ["string", "null"]
+    },
+    "recommendedArmor": {
+      "type": "object",
+      "properties": {
+        "armorSet": { "type": "string" },
+        "body": { "type": "string" },
+        "arm": { "type": "string" },
+        "acc1": { "type": "string" },
+        "acc2": { "type": "string" }
+      }
     }
   }
 }

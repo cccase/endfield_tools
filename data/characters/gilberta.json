@@ -556,5 +556,12 @@
     "description": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
   },
   "recommendedArmorSet": "set_ruten",
-  "recommendedArmorSetName": "流転セット"
+  "recommendedArmorSetName": "流転セット",
+  "recommendedArmor": {
+    "armorSet": "set_ruten",
+    "body": "armor_body_ruten",
+    "arm": "armor_arms_ruten",
+    "acc1": "armor_acc_ruten",
+    "acc2": "gold_accessories_e6b581e8bba2e38_16"
+  }
 }

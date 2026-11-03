@@ -540,6 +540,13 @@
     "type": "custom",
     "description": "【単体命中時クラッシュ追加】戦技が敵1体のみに命中した場合、浮遊分とは別にクラッシュを追加で1段階付与する(CD45秒)"
   },
-  "recommendedArmorSet": "set_kyuho",
-  "recommendedArmorSetName": "旧鋒セット"
+  "recommendedArmorSet": "set_oryu",
+  "recommendedArmorSetName": "50式応龍セット",
+  "recommendedArmor": {
+    "armorSet": "set_oryu",
+    "body": "gold_body_50e5bc8fe5bf9ce_20",
+    "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+    "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+    "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+  }
 }

@@ -355,6 +355,13 @@
     "type": "custom",
     "description": "【寒冷/自然付着全消費→強制凍結＆超高速必殺チャージ】自身は寒冷付着を持たず、味方が付与した寒冷付着または自然付着を全段階消費して強制凍結に変換し、消費段階×30＋10の必殺チャージを獲得する。"
   },
-  "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSet": "set_mi_security",
+  "recommendedArmorSetName": "M.I.警備セット",
+  "recommendedArmor": {
+    "armorSet": "set_mi_security",
+    "body": "gold_body_mie8ada6e58299e_25",
+    "arm": "gold_arms_mie8ada6e58299e_22",
+    "acc1": "gold_accessories_mie8ada6e58299e_30",
+    "acc2": "gold_accessories_mie8ada6e58299e_31"
+  }
 }

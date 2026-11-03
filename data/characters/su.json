@@ -447,6 +447,13 @@
       ]
     }
   ],
-  "recommendedArmorSet": "set_ruten",
-  "recommendedArmorSetName": "流転セット"
+  "recommendedArmorSet": "set_oryu",
+  "recommendedArmorSetName": "50式応龍セット",
+  "recommendedArmor": {
+    "armorSet": "set_oryu",
+    "body": "gold_body_50e5bc8fe5bf9ce_20",
+    "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+    "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+    "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+  }
 }

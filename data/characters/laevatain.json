@@ -560,5 +560,12 @@
     "description": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化 ／ 【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する ／ 【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)"
   },
   "recommendedArmorSet": "set_volcano",
-  "recommendedArmorSetName": "火山用セット"
+  "recommendedArmorSetName": "火山用セット",
+  "recommendedArmor": {
+    "armorSet": "set_volcano",
+    "body": "gold_body_e781abe5b1b1e79_30",
+    "arm": "gold_arms_e781abe5b1b1e79_26",
+    "acc1": "gold_accessories_e781abe5b1b1e79_36",
+    "acc2": "gold_accessories_e781abe5b1b1e79_37"
+  }
 }

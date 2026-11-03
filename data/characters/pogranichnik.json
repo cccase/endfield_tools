@@ -581,6 +581,13 @@
     "type": "custom",
     "description": "【鉄誓5スタック連動追撃】物理異常または自身の連携技1ヒットごとに鉄誓を消費して盾兵追撃＆SP回復が発生し、任意のオペレーターによる誘発時に素質2の単体バフが付与される"
   },
-  "recommendedArmorSet": "set_pioneer",
-  "recommendedArmorSetName": "パイオニアセット"
+  "recommendedArmorSet": "set_oryu",
+  "recommendedArmorSetName": "50式応龍セット",
+  "recommendedArmor": {
+    "armorSet": "set_oryu",
+    "body": "gold_body_50e5bc8fe5bf9ce_20",
+    "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+    "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+    "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+  }
 }

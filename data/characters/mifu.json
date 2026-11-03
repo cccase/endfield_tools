@@ -706,5 +706,12 @@
     "description": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）"
   },
   "recommendedArmorSet": "set_kyuho",
-  "recommendedArmorSetName": "旧鋒セット"
+  "recommendedArmorSetName": "旧鋒セット",
+  "recommendedArmor": {
+    "armorSet": "set_kyuho",
+    "body": "gold_body_e697a7e98b92e99_7",
+    "arm": "gold_arms_e697a7e98b92e38_7",
+    "acc1": "gold_accessories_e697a7e98b92e38_7",
+    "acc2": "gold_accessories_e697a7e98b92e38_8"
+  }
 }

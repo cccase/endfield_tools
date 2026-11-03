@@ -601,5 +601,12 @@
     "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える ／ 【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する ／ 【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる ／ 【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%) ／ 【確率乗算】スペシャルギフトの基礎出現率が1.5倍(特化IIIで20%→30%)"
   },
   "recommendedArmorSet": "set_pioneer",
-  "recommendedArmorSetName": "パイオニアセット"
+  "recommendedArmorSetName": "パイオニアセット",
+  "recommendedArmor": {
+    "armorSet": "set_pioneer",
+    "body": "gold_body_e38391e382a4e38_32",
+    "arm": "gold_arms_e38391e382a4e38_30",
+    "acc1": "gold_accessories_e38391e382a4e38_40",
+    "acc2": "gold_accessories_e38391e382a4e38_41"
+  }
 }

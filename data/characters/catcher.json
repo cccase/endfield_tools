@@ -528,5 +528,12 @@
     "description": "【防御力参照追加ダメ】追加で[300+防御力×5.0]の物理ダメージを1回与える(攻撃力倍率ではなく固定値+防御力スケーリング)"
   },
   "recommendedArmorSet": "set_pioneer",
-  "recommendedArmorSetName": "パイオニアセット"
+  "recommendedArmorSetName": "パイオニアセット",
+  "recommendedArmor": {
+    "armorSet": "set_pioneer",
+    "body": "gold_body_e38391e382a4e38_32",
+    "arm": "gold_arms_e38391e382a4e38_30",
+    "acc1": "gold_accessories_e38391e382a4e38_40",
+    "acc2": "gold_accessories_e38391e382a4e38_41"
+  }
 }

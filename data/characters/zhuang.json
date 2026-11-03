@@ -373,5 +373,12 @@
     "description": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。 ／ 【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。 ／ 【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
   },
   "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSetName": "パルス式セット",
+  "recommendedArmor": {
+    "armorSet": "set_pulse",
+    "body": "gold_body_e38391e383abe38_37",
+    "arm": "gold_arms_e38391e383abe38_33",
+    "acc1": "gold_accessories_e38391e383abe38_46",
+    "acc2": "gold_accessories_e38391e383abe38_47"
+  }
 }

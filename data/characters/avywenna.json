@@ -542,6 +542,13 @@
     "type": "custom",
     "description": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
   },
-  "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSet": "set_kotsusai",
+  "recommendedArmorSetName": "骨砕セット",
+  "recommendedArmor": {
+    "armorSet": "set_kotsusai",
+    "body": "gold_body_e9aaa8e7a095e38_39",
+    "arm": "gold_arms_e9aaa8e7a095e38_35",
+    "acc1": "gold_accessories_e9aaa8e7a095e38_50",
+    "acc2": "gold_accessories_e9aaa8e7a095e38_51"
+  }
 }

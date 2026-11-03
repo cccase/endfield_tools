@@ -542,6 +542,13 @@
     "type": "custom",
     "description": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー） ／ 【Wiki未記載】現行バージョンで未解放のためWiki上も名称・効果が空欄"
   },
-  "recommendedArmorSet": "set_kyuho",
-  "recommendedArmorSetName": "旧鋒セット"
+  "recommendedArmorSet": "set_oryu",
+  "recommendedArmorSetName": "50式応龍セット",
+  "recommendedArmor": {
+    "armorSet": "set_oryu",
+    "body": "gold_body_50e5bc8fe5bf9ce_20",
+    "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+    "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+    "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+  }
 }

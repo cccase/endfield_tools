@@ -535,6 +535,13 @@
       ]
     }
   ],
-  "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSet": "set_ruten",
+  "recommendedArmorSetName": "流転セット",
+  "recommendedArmor": {
+    "armorSet": "set_ruten",
+    "body": "armor_body_ruten",
+    "arm": "armor_arms_ruten",
+    "acc1": "armor_acc_ruten",
+    "acc2": "gold_accessories_e6b581e8bba2e38_16"
+  }
 }

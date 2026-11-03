@@ -542,6 +542,13 @@
     "type": "custom",
     "description": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造 ／ 【発動回数緩和】素質1「荒野の吟遊者」の発動に必要な戦技追加効果回数が3回→2回に減少"
   },
-  "recommendedArmorSet": "set_pulse",
-  "recommendedArmorSetName": "パルス式セット"
+  "recommendedArmorSet": "set_pioneer",
+  "recommendedArmorSetName": "パイオニアセット",
+  "recommendedArmor": {
+    "armorSet": "set_pioneer",
+    "body": "gold_body_e38391e382a4e38_32",
+    "arm": "gold_arms_e38391e382a4e38_30",
+    "acc1": "gold_accessories_e38391e382a4e38_40",
+    "acc2": "gold_accessories_e38391e382a4e38_41"
+  }
 }

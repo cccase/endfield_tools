@@ -1,4 +1,3 @@
-// 自動生成されたキャラクターデータ
 window.CHARACTER_DATA = {
   "defaultParty": [
     "スー",
@@ -551,8 +550,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー） ／ 【Wiki未記載】現行バージョンで未解放のためWiki上も名称・効果が空欄"
       },
-      "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSet": "set_oryu",
+      "recommendedArmorSetName": "50式応龍セット",
+      "recommendedArmor": {
+        "armorSet": "set_oryu",
+        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -1065,8 +1071,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSet": "set_pioneer",
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -1614,8 +1627,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【確率分岐(珍鱗)】基礎10%＋素質2(知性10につき+0.5%、上限+30%)の確率で珍鱗を釣り上げ、倍率強化＆SP追加+10（3凸で全体攻撃力+15%発動） ／ 【確率補正】知性10につき連携技で珍鱗を釣り上げる確率+0.2%(昇進2)→+0.5%(昇進3)（最大+30%）"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_pioneer",
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -2175,7 +2195,14 @@ window.CHARACTER_DATA = {
         "description": "【特殊付着/異常コピー】固有で電磁付着を持つのではなく、トリガーとなった直前の「物理異常」または「任意属性のアーツ付着」と同じものを再度付与する"
       },
       "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -2721,8 +2748,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造 ／ 【発動回数緩和】素質1「荒野の吟遊者」の発動に必要な戦技追加効果回数が3回→2回に減少"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_pioneer",
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -3282,7 +3316,14 @@ window.CHARACTER_DATA = {
         "description": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する"
       },
       "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -3828,8 +3869,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_kotsusai",
+      "recommendedArmorSetName": "骨砕セット",
+      "recommendedArmor": {
+        "armorSet": "set_kotsusai",
+        "body": "gold_body_e9aaa8e7a095e38_39",
+        "arm": "gold_arms_e9aaa8e7a095e38_35",
+        "acc1": "gold_accessories_e9aaa8e7a095e38_50",
+        "acc2": "gold_accessories_e9aaa8e7a095e38_51"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -4402,7 +4450,14 @@ window.CHARACTER_DATA = {
         "description": "【必殺派生「追及」】必殺技発動後15秒間、次の戦技がSP消費0の「追及」に変化し、戦技ではなく『連携技ダメージ』として扱われる（連携技ダメUPが乗り、戦技ダメUP・リンクは乗らない）"
       },
       "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSetName": "火山用セット",
+      "recommendedArmor": {
+        "armorSet": "set_volcano",
+        "body": "gold_body_e781abe5b1b1e79_30",
+        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -4934,7 +4989,14 @@ window.CHARACTER_DATA = {
         "description": "【防御力参照追加ダメ】追加で[300+防御力×5.0]の物理ダメージを1回与える(攻撃力倍率ではなく固定値+防御力スケーリング)"
       },
       "recommendedArmorSet": "set_pioneer",
-      "recommendedArmorSetName": "パイオニアセット"
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -5460,8 +5522,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSet": "set_chouiki",
+      "recommendedArmorSetName": "軽量超域セット",
+      "recommendedArmor": {
+        "armorSet": "set_chouiki",
+        "body": "gold_body_e8bbbde9878fe8b_44",
+        "arm": "gold_arms_e8bbbde9878fe8b_38",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -6005,8 +6074,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【単体命中時クラッシュ追加】戦技が敵1体のみに命中した場合、浮遊分とは別にクラッシュを追加で1段階付与する(CD45秒)"
       },
-      "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSet": "set_oryu",
+      "recommendedArmorSetName": "50式応龍セット",
+      "recommendedArmor": {
+        "armorSet": "set_oryu",
+        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -6533,7 +6609,14 @@ window.CHARACTER_DATA = {
         }
       ],
       "recommendedArmorSet": "set_pioneer",
-      "recommendedArmorSetName": "パイオニアセット"
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -7072,8 +7155,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_ruten",
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -7660,8 +7750,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める） ／ 【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆"
       },
-      "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSet": "set_pioneer",
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -8221,7 +8318,14 @@ window.CHARACTER_DATA = {
         "description": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
       },
       "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -8785,7 +8889,14 @@ window.CHARACTER_DATA = {
         "description": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化 ／ 【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する ／ 【灼熱付着吸収→劫火変換】操作中キャラの重攻撃/終撃で敵の灼熱付着を吸収(カミーユやスー連携の「吸収」トリガーを発動させる)"
       },
       "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSetName": "火山用セット",
+      "recommendedArmor": {
+        "armorSet": "set_volcano",
+        "body": "gold_body_e781abe5b1b1e79_30",
+        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -9361,8 +9472,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える ／ 【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る） ／ 【必殺技限定・寒冷脆弱倍率見なし】敵に付与されているすべての寒冷脆弱(素質1やオクギ等含む)が、必殺技ダメージ計算時のみ1.5倍として扱われる"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_mancho",
+      "recommendedArmorSetName": "満潮セット",
+      "recommendedArmor": {
+        "armorSet": "set_mancho",
+        "body": "gold_body_e5a594e6b5aae38_19",
+        "arm": "gold_arms_e6b288e6b0b4e38_18",
+        "acc1": "gold_accessories_e687b8e6b2b3e38_21",
+        "acc2": "gold_accessories_e6bf81e6b581e38_22"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -9914,8 +10032,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSet": "set_chouiki",
+      "recommendedArmorSetName": "軽量超域セット",
+      "recommendedArmor": {
+        "armorSet": "set_chouiki",
+        "body": "gold_body_e8bbbde9878fe8b_44",
+        "arm": "gold_arms_e8bbbde9878fe8b_38",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -10501,7 +10626,14 @@ window.CHARACTER_DATA = {
         "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
       },
       "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -11211,7 +11343,14 @@ window.CHARACTER_DATA = {
         "description": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）"
       },
       "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSetName": "旧鋒セット",
+      "recommendedArmor": {
+        "armorSet": "set_kyuho",
+        "body": "gold_body_e697a7e98b92e99_7",
+        "arm": "gold_arms_e697a7e98b92e38_7",
+        "acc1": "gold_accessories_e697a7e98b92e38_7",
+        "acc2": "gold_accessories_e697a7e98b92e38_8"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -11489,7 +11628,14 @@ window.CHARACTER_DATA = {
         "description": "【Wiki数値未記載】先行ページのため通常倍率・基礎ステータスはWiki未記入 ／ 【戦技変化＆電磁付着消費→高段階感電＋クラッシュ付与】鎮影は物理ダメ＋浮遊(付着なし)。連携後の『奔雷』は電磁付着を付与するのではなく、既存の電磁付着を消費して高段階感電とクラッシュ1段階を同時付与する（※具体的倍率はWiki未記載） ／ 【Wiki数値未記載】電磁ダメージ複数回＋電磁付着付与＋戦技を「奔雷」へ切替（CD・倍率はWiki未記載） ／ 【電磁付着＋猛撃複合必殺・Wiki数値未記載】電磁付着(1段階)を付与した直後に広範囲へ猛撃(素質1の雷勢起爆トリガー)と電磁ダメージを与える ／ 【特殊感電拡張＆雷勢連鎖起爆】①ミンホが付与する感電は敵の受ける全種類ダメージUPになる。②感電異常段階と同数の『雷勢』を付与し、猛撃被弾時に猛撃ダメUP＋全雷勢を起爆して段階に応じた電磁ダメ＆周囲の雷勢も連鎖起爆する（※数値はWiki未記載） ／ 【Wiki未記載】素質2および潜在1〜5の名称・効果文はWiki未記入"
       },
       "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSetName": "パルス式セット",
+      "recommendedArmor": {
+        "armorSet": "set_pulse",
+        "body": "gold_body_e38391e383abe38_37",
+        "arm": "gold_arms_e38391e383abe38_33",
+        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc2": "gold_accessories_e38391e383abe38_47"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -12221,7 +12367,14 @@ window.CHARACTER_DATA = {
         }
       ],
       "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSetName": "火山用セット",
+      "recommendedArmor": {
+        "armorSet": "set_volcano",
+        "body": "gold_body_e781abe5b1b1e79_30",
+        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -12768,7 +12921,14 @@ window.CHARACTER_DATA = {
         "description": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する"
       },
       "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSetName": "パルス式セット",
+      "recommendedArmor": {
+        "armorSet": "set_pulse",
+        "body": "gold_body_e38391e383abe38_37",
+        "arm": "gold_arms_e38391e383abe38_33",
+        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc2": "gold_accessories_e38391e383abe38_47"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -13353,8 +13513,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【鉄誓5スタック連動追撃】物理異常または自身の連携技1ヒットごとに鉄誓を消費して盾兵追撃＆SP回復が発生し、任意のオペレーターによる誘発時に素質2の単体バフが付与される"
       },
-      "recommendedArmorSet": "set_pioneer",
-      "recommendedArmorSetName": "パイオニアセット"
+      "recommendedArmorSet": "set_oryu",
+      "recommendedArmorSetName": "50式応龍セット",
+      "recommendedArmor": {
+        "armorSet": "set_oryu",
+        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -13959,7 +14126,14 @@ window.CHARACTER_DATA = {
         "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える ／ 【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する ／ 【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる ／ 【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%) ／ 【確率乗算】スペシャルギフトの基礎出現率が1.5倍(特化IIIで20%→30%)"
       },
       "recommendedArmorSet": "set_pioneer",
-      "recommendedArmorSetName": "パイオニアセット"
+      "recommendedArmorSetName": "パイオニアセット",
+      "recommendedArmor": {
+        "armorSet": "set_pioneer",
+        "body": "gold_body_e38391e382a4e38_32",
+        "arm": "gold_arms_e38391e382a4e38_30",
+        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc2": "gold_accessories_e38391e382a4e38_41"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -14557,8 +14731,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【2連続発動連携＆完璧連携ボーナス】1回のトリガーで連携技を連続2回発動でき、2回目で全アーツ付着を消費して浮遊と自己会心バフを獲得。2回目を『完璧連携(ジャスト入力)』で発動すると追加でクラッシュ+1段階を付与する"
       },
-      "recommendedArmorSet": "set_kyuho",
-      "recommendedArmorSetName": "旧鋒セット"
+      "recommendedArmorSet": "set_chouiki",
+      "recommendedArmorSetName": "軽量超域セット",
+      "recommendedArmor": {
+        "armorSet": "set_chouiki",
+        "body": "gold_body_e8bbbde9878fe8b_44",
+        "arm": "gold_arms_e8bbbde9878fe8b_38",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -14871,8 +15052,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_pioneer",
-      "recommendedArmorSetName": "パイオニアセット"
+      "recommendedArmorSet": "set_bio_support",
+      "recommendedArmorSetName": "生物補助セット",
+      "recommendedArmor": {
+        "armorSet": "set_bio_support",
+        "body": "gold_body_e7949fe789a9e8a_45",
+        "arm": "gold_arms_e7949fe789a9e8a_40",
+        "acc1": "gold_accessories_e7949fe789a9e8a_60",
+        "acc2": "gold_accessories_e7949fe789a9e8a_61"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -15323,8 +15511,15 @@ window.CHARACTER_DATA = {
           ]
         }
       ],
-      "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSet": "set_oryu",
+      "recommendedArmorSetName": "50式応龍セット",
+      "recommendedArmor": {
+        "armorSet": "set_oryu",
+        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -15789,7 +15984,14 @@ window.CHARACTER_DATA = {
         "description": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加） ／ 【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する ／ 必殺技の落下早期終了時に戦技と同じ水竜巻(戦技ダメージ見なし・寒冷付着1段階・複数時アーツ脆弱・湍水消費SP返還)を自動発動する"
       },
       "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSetName": "パルス式セット",
+      "recommendedArmor": {
+        "armorSet": "set_pulse",
+        "body": "gold_body_e38391e383abe38_37",
+        "arm": "gold_arms_e38391e383abe38_33",
+        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc2": "gold_accessories_e38391e383abe38_47"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -16162,7 +16364,14 @@ window.CHARACTER_DATA = {
         "description": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。"
       },
       "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSetName": "火山用セット",
+      "recommendedArmor": {
+        "armorSet": "set_volcano",
+        "body": "gold_body_e781abe5b1b1e79_30",
+        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -16509,7 +16718,14 @@ window.CHARACTER_DATA = {
         "description": "【状態条件による付着/異常消費排他分岐】目標が燃焼・感電でない時は「灼熱付着(1段階)」を付与するが、燃焼または感電状態の時は「灼熱付着を付与せず」そのアーツ異常を消費して850%(特化III)の追加射撃を行う。"
       },
       "recommendedArmorSet": "set_volcano",
-      "recommendedArmorSetName": "火山用セット"
+      "recommendedArmorSetName": "火山用セット",
+      "recommendedArmor": {
+        "armorSet": "set_volcano",
+        "body": "gold_body_e781abe5b1b1e79_30",
+        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -16836,7 +17052,14 @@ window.CHARACTER_DATA = {
         }
       ],
       "recommendedArmorSet": "set_ruten",
-      "recommendedArmorSetName": "流転セット"
+      "recommendedArmorSetName": "流転セット",
+      "recommendedArmor": {
+        "armorSet": "set_ruten",
+        "body": "armor_body_ruten",
+        "arm": "armor_arms_ruten",
+        "acc1": "armor_acc_ruten",
+        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -17195,8 +17418,15 @@ window.CHARACTER_DATA = {
         "type": "custom",
         "description": "【寒冷/自然付着全消費→強制凍結＆超高速必殺チャージ】自身は寒冷付着を持たず、味方が付与した寒冷付着または自然付着を全段階消費して強制凍結に変換し、消費段階×30＋10の必殺チャージを獲得する。"
       },
-      "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSet": "set_mi_security",
+      "recommendedArmorSetName": "M.I.警備セット",
+      "recommendedArmor": {
+        "armorSet": "set_mi_security",
+        "body": "gold_body_mie8ada6e58299e_25",
+        "arm": "gold_arms_mie8ada6e58299e_22",
+        "acc1": "gold_accessories_mie8ada6e58299e_30",
+        "acc2": "gold_accessories_mie8ada6e58299e_31"
+      }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -17573,7 +17803,14 @@ window.CHARACTER_DATA = {
         "description": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。 ／ 【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。 ／ 【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
       },
       "recommendedArmorSet": "set_pulse",
-      "recommendedArmorSetName": "パルス式セット"
+      "recommendedArmorSetName": "パルス式セット",
+      "recommendedArmor": {
+        "armorSet": "set_pulse",
+        "body": "gold_body_e38391e383abe38_37",
+        "arm": "gold_arms_e38391e383abe38_33",
+        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc2": "gold_accessories_e38391e383abe38_47"
+      }
     }
   ]
 };
