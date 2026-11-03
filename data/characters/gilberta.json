@@ -1,6 +1,6 @@
 {
     "$schema":  "../../schemas/character.schema.json",
-    "id":  "ギルベルタ",
+    "id":  "char_gilberta",
     "name":  "ギルベルタ",
     "icon":  "image/gilberta.png",
     "rarity":  6,
@@ -33,7 +33,7 @@
                    ],
     "skills":  [
                    {
-                       "id":  "skill_gilberta",
+                       "id":  "char_gilberta",
                        "type":  "skill",
                        "name":  "秘杖・引力モード",
                        "shortName":  "戦技",
@@ -46,7 +46,30 @@
                                        },
                        "hitCount":  3,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_gilberta__team",
+                                         "name":  "ギルベルタ チーム支援",
+                                         "target":  "team",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.15,
+                                         "duration":  12,
+                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_gilberta__inflict",
+                                         "name":  "自然アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "spCost":  100,
                        "infliction":  {
@@ -58,10 +81,11 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
                    },
                    {
-                       "id":  "combo_gilberta",
+                       "id":  "char_gilberta",
                        "type":  "combo",
                        "name":  "秘杖・マトリックス転移",
                        "shortName":  "連携技",
@@ -74,7 +98,30 @@
                                        },
                        "hitCount":  1,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_gilberta__team",
+                                         "name":  "ギルベルタ チーム支援",
+                                         "target":  "team",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.15,
+                                         "duration":  12,
+                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_gilberta__inflict",
+                                         "name":  "自然アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "infliction":  {
                                           "type":  "nature",
@@ -85,10 +132,11 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                    },
                    {
-                       "id":  "ult_gilberta",
+                       "id":  "char_gilberta",
                        "type":  "ult",
                        "name":  "秘杖・重力場",
                        "shortName":  "必殺技",
@@ -101,7 +149,42 @@
                                        },
                        "hitCount":  5,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_gilberta_ult_self",
+                                         "name":  "秘杖・重力場 必殺自己強化",
+                                         "target":  "self",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.2,
+                                         "duration":  15,
+                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "buff_char_gilberta__team",
+                                         "name":  "ギルベルタ チーム支援",
+                                         "target":  "team",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.15,
+                                         "duration":  12,
+                                         "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_gilberta__inflict",
+                                         "name":  "自然アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "epCost":  90,
                        "infliction":  {
@@ -113,7 +196,8 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                    }
                ],
     "motifWeapon":  "使命必達",

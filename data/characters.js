@@ -54,7 +54,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_admin__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -66,7 +77,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_admin",
@@ -82,7 +94,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_admin__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -93,7 +116,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_admin",
@@ -109,7 +133,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_admin_ult_self",
+                                                                "name":  "攻撃配列 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_admin__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -121,7 +168,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "大願",
@@ -178,7 +226,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_akekuri__sp",
+                                                                "name":  "アケクリ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_akekuri__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -190,7 +261,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_akekuri",
@@ -206,7 +278,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_akekuri__sp",
+                                                                "name":  "アケクリ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_akekuri__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "heat",
@@ -217,7 +312,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_akekuri",
@@ -233,7 +329,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_akekuri_ult_self",
+                                                                "name":  "烈火の刃 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_akekuri__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  120,
                                               "infliction":  {
@@ -245,7 +364,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "O.B.J.軽刃",
@@ -302,7 +422,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_alesh__sp",
+                                                                "name":  "アレッシュ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_alesh__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -314,7 +457,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_alesh",
@@ -330,7 +474,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_alesh__sp",
+                                                                "name":  "アレッシュ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_alesh__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -341,7 +508,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_alesh",
@@ -357,7 +525,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_alesh_ult_self",
+                                                                "name":  "大物、ヒット！ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_alesh__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -369,7 +560,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "フィンチェイサー3.0",
@@ -426,7 +618,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_antal__team",
+                                                                "name":  "磁気フィールド同調",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_antal__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -438,7 +653,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_antal",
@@ -454,7 +670,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_antal__team",
+                                                                "name":  "磁気フィールド同調",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_antal__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -465,7 +704,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_antal",
@@ -481,7 +721,42 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_antal_ult_self",
+                                                                "name":  "リミッター、解除 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_antal__team",
+                                                                "name":  "磁気フィールド同調",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_antal__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -493,7 +768,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "O.B.J.術識",
@@ -550,7 +826,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_arclight__sp",
+                                                                "name":  "アークライト 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_arclight__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -562,7 +861,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_arclight",
@@ -578,7 +878,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_arclight__sp",
+                                                                "name":  "アークライト 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_arclight__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -589,7 +912,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_arclight",
@@ -605,7 +929,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_arclight_ult_self",
+                                                                "name":  "アークチャージ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_arclight__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -617,7 +964,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "十二問",
@@ -674,7 +1022,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_ardelia__team",
+                                                                "name":  "もふもふ支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_ardelia__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -686,7 +1057,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_ardelia",
@@ -702,7 +1074,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_ardelia__team",
+                                                                "name":  "もふもふ支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_ardelia__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "nature",
@@ -713,7 +1108,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_ardelia",
@@ -729,7 +1125,42 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_ardelia_ult_self",
+                                                                "name":  "もふもふパーティー 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_ardelia__team",
+                                                                "name":  "もふもふ支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_ardelia__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -741,7 +1172,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "蒼星の囁き",
@@ -798,7 +1230,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_avywenna__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -810,7 +1253,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_avywenna",
@@ -826,7 +1270,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_avywenna__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -837,7 +1292,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_avywenna",
@@ -853,7 +1309,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_avywenna_ult_self",
+                                                                "name":  "電磁雷光槍 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_avywenna__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -865,7 +1344,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "求心の槍",
@@ -922,7 +1402,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_camille__sp",
+                                                                "name":  "カミーユ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_camille__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -934,7 +1437,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_camille",
@@ -950,7 +1454,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_camille__sp",
+                                                                "name":  "カミーユ 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_camille__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "heat",
@@ -961,7 +1488,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_camille",
@@ -977,7 +1505,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_camille_ult_self",
+                                                                "name":  "降り注ぐ深紅 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_camille__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -989,7 +1540,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "カーマインヴェール",
@@ -1046,7 +1598,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_catcher__def",
+                                                                "name":  "キャッチャー 防壁展開",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "defPercent",
+                                                                "value":  0.3,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、自身の防御力+30%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_catcher__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1058,7 +1633,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_catcher",
@@ -1074,7 +1650,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_catcher__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -1085,7 +1672,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_catcher",
@@ -1101,7 +1689,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_catcher_ult_self",
+                                                                "name":  "フルスイング 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_catcher__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -1113,7 +1724,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "O.B.J.重責",
@@ -1170,7 +1782,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_chen__crush",
+                                                                "name":  "浮遊(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1182,7 +1805,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "浮遊(クラッシュ付与+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【浮遊】敵を浮遊状態にし、クラッシュ蓄積値+1段階を付与する（※猛撃・破砕による消費は不可）。"
                                           },
                                           {
                                               "id":  "combo_chen",
@@ -1198,7 +1822,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_chen__crush",
+                                                                "name":  "浮遊(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -1209,7 +1844,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "浮遊(クラッシュ付与+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【浮遊】敵を浮遊状態にし、クラッシュ蓄積値+1段階を付与する（※猛撃・破砕による消費は不可）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_chen",
@@ -1225,7 +1861,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_chen_ult_self",
+                                                                "name":  "凍風斬り 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            }
                                                         ],
                                               "epCost":  70,
                                               "infliction":  {
@@ -1237,7 +1884,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "仰止",
@@ -1294,7 +1942,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_dapan__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1306,7 +1965,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_dapan",
@@ -1322,7 +1982,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_dapan__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -1333,7 +2004,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_dapan",
@@ -1349,7 +2021,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_dapan_ult_self",
+                                                                "name":  "具材投入！ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_dapan__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -1361,7 +2056,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "千古恒常",
@@ -1418,7 +2114,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_ember__def",
+                                                                "name":  "エンバー 防壁展開",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "defPercent",
+                                                                "value":  0.3,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、自身の防御力+30%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_ember__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1430,7 +2149,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_ember",
@@ -1446,7 +2166,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_ember__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "heat",
@@ -1457,7 +2188,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_ember",
@@ -1473,7 +2205,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_ember_ult_self",
+                                                                "name":  "誓約の炎 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_ember__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -1485,7 +2240,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "大雷斑",
@@ -1542,7 +2298,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_estella__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1554,7 +2321,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_estella",
@@ -1570,7 +2338,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_estella__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -1581,7 +2360,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_estella",
@@ -1597,7 +2377,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_estella_ult_self",
+                                                                "name":  "トレモロ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_estella__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  70,
                                               "infliction":  {
@@ -1609,7 +2412,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "O.B.J.鋭矛",
@@ -1666,7 +2470,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_fluorite__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1678,7 +2493,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_fluorite",
@@ -1694,7 +2510,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_fluorite__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "nature",
@@ -1705,7 +2532,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_fluorite",
@@ -1721,7 +2549,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_fluorite_ult_self",
+                                                                "name":  "つまらない茶番 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_fluorite__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -1733,7 +2584,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "O.B.J.迅速",
@@ -1744,7 +2596,7 @@ window.CHARACTER_DATA = {
                        },
                        {
                            "$schema":  "../../schemas/character.schema.json",
-                           "id":  "ギルベルタ",
+                           "id":  "char_gilberta",
                            "name":  "ギルベルタ",
                            "icon":  "image/gilberta.png",
                            "rarity":  6,
@@ -1777,7 +2629,7 @@ window.CHARACTER_DATA = {
                                           ],
                            "skills":  [
                                           {
-                                              "id":  "skill_gilberta",
+                                              "id":  "char_gilberta",
                                               "type":  "skill",
                                               "name":  "秘杖・引力モード",
                                               "shortName":  "戦技",
@@ -1790,7 +2642,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_gilberta__team",
+                                                                "name":  "ギルベルタ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_gilberta__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1802,10 +2677,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
                                           },
                                           {
-                                              "id":  "combo_gilberta",
+                                              "id":  "char_gilberta",
                                               "type":  "combo",
                                               "name":  "秘杖・マトリックス転移",
                                               "shortName":  "連携技",
@@ -1818,7 +2694,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_gilberta__team",
+                                                                "name":  "ギルベルタ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_gilberta__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "nature",
@@ -1829,10 +2728,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
-                                              "id":  "ult_gilberta",
+                                              "id":  "char_gilberta",
                                               "type":  "ult",
                                               "name":  "秘杖・重力場",
                                               "shortName":  "必殺技",
@@ -1845,7 +2745,42 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_gilberta_ult_self",
+                                                                "name":  "秘杖・重力場 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_gilberta__team",
+                                                                "name":  "ギルベルタ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_gilberta__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -1857,7 +2792,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "使命必達",
@@ -1919,7 +2855,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_laevatain__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -1931,7 +2878,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_laevatain",
@@ -1947,7 +2895,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_laevatain__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "heat",
@@ -1958,7 +2917,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_laevatain",
@@ -1974,7 +2934,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_laevatain_ult_self",
+                                                                "name":  "ラグナロク 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_laevatain__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  300,
                                               "infliction":  {
@@ -1986,7 +2969,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "フレイムフォージ",
@@ -2043,7 +3027,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_lastrite__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -2055,7 +3050,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_lastrite",
@@ -2071,7 +3067,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_lastrite__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -2082,7 +3089,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_lastrite",
@@ -2098,7 +3106,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_lastrite_ult_self",
+                                                                "name":  "終の別れ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_lastrite__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  240,
                                               "infliction":  {
@@ -2110,7 +3141,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "クラヴェンガー",
@@ -2167,7 +3199,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_lifeng__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -2179,7 +3222,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_lifeng",
@@ -2195,7 +3239,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_lifeng__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -2206,7 +3261,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_lifeng",
@@ -2222,7 +3278,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_lifeng_ult_self",
+                                                                "name":  "龍怒 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_lifeng__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -2234,7 +3313,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "負山",
@@ -2291,7 +3371,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_lino__team",
+                                                                "name":  "ときめきオーラ",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_lino__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  25,
                                               "infliction":  {
@@ -2303,7 +3406,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_lino",
@@ -2319,7 +3423,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_lino__team",
+                                                                "name":  "ときめきオーラ",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_lino__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -2330,7 +3457,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_lino",
@@ -2346,7 +3474,42 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_lino_ult_self",
+                                                                "name":  "綺羅星コンチェルト 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_lino__team",
+                                                                "name":  "ときめきオーラ",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_lino__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  160,
                                               "infliction":  {
@@ -2358,7 +3521,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "プリズムナイトデビュー",
@@ -2415,7 +3579,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_mifu__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -2427,7 +3602,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "skill2_mifu",
@@ -2443,7 +3619,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_mifu__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  50,
                                               "infliction":  {
@@ -2455,7 +3642,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "skill3_mifu",
@@ -2471,7 +3659,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_mifu__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  50,
                                               "infliction":  {
@@ -2483,7 +3682,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_mifu",
@@ -2499,7 +3699,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_mifu__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -2510,7 +3721,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_mifu",
@@ -2526,7 +3738,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_mifu_ult_self",
+                                                                "name":  "心絶やす 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_mifu__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -2538,7 +3773,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "赤纓",
@@ -2595,7 +3831,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_minho__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -2607,7 +3854,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_minho",
@@ -2623,7 +3871,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_minho__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -2634,7 +3893,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_minho",
@@ -2650,7 +3910,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_minho_ult_self",
+                                                                "name":  "破天 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_minho__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -2662,7 +3945,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "問月",
@@ -2673,7 +3957,7 @@ window.CHARACTER_DATA = {
                        },
                        {
                            "$schema":  "../../schemas/character.schema.json",
-                           "id":  "オクギ",
+                           "id":  "char_okugi",
                            "name":  "オクギ",
                            "icon":  "image/okugi.png",
                            "rarity":  6,
@@ -2716,7 +4000,7 @@ window.CHARACTER_DATA = {
                                                },
                            "skills":  [
                                           {
-                                              "id":  "skill_okugi",
+                                              "id":  "char_okugi",
                                               "type":  "skill",
                                               "name":  "砕玉領域",
                                               "shortName":  "戦技",
@@ -2739,12 +4023,24 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_okugi__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "spCost":  100
+                                              "spCost":  100,
+                                              "description":  "敵に自然ダメージを与える。 【知意双形態】知性優位時は敵に自然付着(1段)と自然脆弱を付与。意志優位時は敵の既存アーツ付着段数を+1進行させる。"
                                           },
                                           {
-                                              "id":  "combo_okugi",
+                                              "id":  "char_okugi",
                                               "type":  "combo",
                                               "name":  "応龍四式",
                                               "shortName":  "連携技",
@@ -2767,11 +4063,23 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
-                                                        ]
+                                                            {
+                                                                "id":  "debuff_char_okugi__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
+                                                        ],
+                                              "description":  "敵に自然ダメージを与える。 【知意双形態】知性優位時は敵に自然付着(1段)と自然脆弱を付与。意志優位時は敵の既存アーツ付着段数を+1進行させる。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
-                                              "id":  "ult_okugi",
+                                              "id":  "char_okugi",
                                               "type":  "ult",
                                               "name":  "破晦",
                                               "shortName":  "必殺技",
@@ -2794,12 +4102,36 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_okugi_ult_self",
+                                                                "name":  "破晦 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_okugi__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "epCost":  100
+                                              "epCost":  100,
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           },
                                           {
-                                              "id":  "ult2_okugi",
+                                              "id":  "char_okugi",
                                               "type":  "ult2",
                                               "name":  "破晦訣明",
                                               "shortName":  "必殺技2",
@@ -2822,9 +4154,33 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_okugi_ult2_self",
+                                                                "name":  "破晦訣明 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_okugi__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "epCost":  0
+                                              "epCost":  0,
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "四二式・粛陣",
@@ -2881,7 +4237,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_perlica__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -2893,7 +4260,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_perlica",
@@ -2909,7 +4277,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_perlica__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -2920,7 +4299,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_perlica",
@@ -2936,7 +4316,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_perlica_ult_self",
+                                                                "name":  "協約ε：70.41κ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_perlica__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -2948,7 +4351,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "荒野迷走",
@@ -3005,7 +4409,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_pogranichnik__sp",
+                                                                "name":  "ポグラニチニク 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_pogranichnik__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3017,7 +4444,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_pogranichnik",
@@ -3033,7 +4461,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_pogranichnik__sp",
+                                                                "name":  "ポグラニチニク 戦術指揮",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "ultEfficiency",
+                                                                "value":  10,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_pogranichnik__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -3044,7 +4495,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_pogranichnik",
@@ -3060,7 +4512,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_pogranichnik_ult_self",
+                                                                "name":  "盾兵旗隊、進め 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_pogranichnik__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -3072,7 +4547,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "不知帰",
@@ -3129,7 +4605,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_purrchena__def",
+                                                                "name":  "プチエナ 防壁展開",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "defPercent",
+                                                                "value":  0.3,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、自身の防御力+30%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_purrchena__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3141,7 +4640,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_purrchena",
@@ -3157,7 +4657,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_purrchena__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -3168,7 +4679,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_purrchena",
@@ -3184,7 +4696,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_purrchena_ult_self",
+                                                                "name":  "守護の誓い 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_purrchena__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  100,
                                               "infliction":  {
@@ -3196,7 +4731,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "スイーツタイム",
@@ -3253,7 +4789,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_rossi__crush",
+                                                                "name":  "体勢崩し(クラッシュ+1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3265,7 +4812,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "inflict",
                                                             "stacks":  1,
                                                             "label":  "クラッシュ付与(+1段)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                                           },
                                           {
                                               "id":  "combo_rossi",
@@ -3281,7 +4829,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_rossi__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "none",
@@ -3292,7 +4851,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_smash",
                                                             "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_rossi",
@@ -3308,7 +4868,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_rossi_ult_self",
+                                                                "name":  "“鋭爪”奇襲 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_rossi__crush",
+                                                                "name":  "クラッシュ段階消費",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "vulnerability",
+                                                                "value":  10,
+                                                                "duration":  12,
+                                                                "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  110,
                                               "infliction":  {
@@ -3320,7 +4903,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "consume_shatter",
                                                             "stacks":  1,
                                                             "label":  "破砕(クラッシュ消費)"
-                                                        }
+                                                        },
+                                              "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "狼緋",
@@ -3377,7 +4961,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_snowshine__def",
+                                                                "name":  "スノーシャイン 防壁展開",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "defPercent",
+                                                                "value":  0.3,
+                                                                "duration":  10,
+                                                                "description":  "10秒間、自身の防御力+30%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_snowshine__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3389,7 +4996,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_snowshine",
@@ -3405,7 +5013,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_snowshine__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -3416,7 +5035,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_snowshine",
@@ -3432,7 +5052,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_snowshine_ult_self",
+                                                                "name":  "凍てつく寒霜 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_snowshine__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -3444,7 +5087,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "最期の声",
@@ -3516,9 +5160,33 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_su__team",
+                                                                "name":  "墨筆の彩り支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_su__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "spCost":  100
+                                              "spCost":  100,
+                                              "description":  "敵に寒冷ダメージを与える。 【特殊】パーティ1枠目(先頭)のオペレーターの属性を模倣し、敵に該当属性のアーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "skill2_su",
@@ -3544,9 +5212,21 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_su__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "spCost":  15
+                                              "spCost":  15,
+                                              "description":  "敵に寒冷ダメージを与える。 【特殊】パーティ1枠目(先頭)のオペレーターの属性を模倣し、敵に該当属性のアーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_su",
@@ -3572,8 +5252,32 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
-                                                        ]
+                                                            {
+                                                                "id":  "buff_char_su__team",
+                                                                "name":  "墨筆の彩り支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_su__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
+                                                        ],
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_su",
@@ -3599,9 +5303,45 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_su_ult_self",
+                                                                "name":  "白けさせるでない！ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_su__team",
+                                                                "name":  "墨筆の彩り支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_su__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
-                                              "epCost":  80
+                                              "epCost":  80,
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "玉中身",
@@ -3612,7 +5352,7 @@ window.CHARACTER_DATA = {
                        },
                        {
                            "$schema":  "../../schemas/character.schema.json",
-                           "id":  "タンタン",
+                           "id":  "char_tangtang",
                            "name":  "タンタン",
                            "icon":  "image/tangtang.png",
                            "rarity":  6,
@@ -3650,7 +5390,7 @@ window.CHARACTER_DATA = {
                                           ],
                            "skills":  [
                                           {
-                                              "id":  "skill_tangtang",
+                                              "id":  "char_tangtang",
                                               "type":  "skill",
                                               "name":  "波が来るぜ！",
                                               "shortName":  "戦技",
@@ -3663,7 +5403,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_tangtang__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3675,10 +5426,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
-                                              "id":  "combo_tangtang",
+                                              "id":  "char_tangtang",
                                               "type":  "combo",
                                               "name":  "川よ、俺様に従え！",
                                               "shortName":  "連携技",
@@ -3691,7 +5443,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_tangtang__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -3702,10 +5465,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
-                                              "id":  "ult_tangtang",
+                                              "id":  "char_tangtang",
                                               "type":  "ult",
                                               "name":  "大親分が見てっぞ！",
                                               "shortName":  "必殺技",
@@ -3718,7 +5482,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_tangtang_ult_self",
+                                                                "name":  "大親分が見てっぞ！ 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_tangtang__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -3730,10 +5517,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           },
                                           {
-                                              "id":  "ult_cancel_tangtang",
+                                              "id":  "char_tangtang",
                                               "type":  "ult_cancel",
                                               "name":  "大親分が見てっぞ！(キャンセル)",
                                               "shortName":  "必殺キャンセル",
@@ -3758,7 +5546,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "設置技・展開状態を任意に解除し、クールダウンや陣形をリセットする。"
                                           }
                                       ],
                            "motifWeapon":  "落草",
@@ -3815,7 +5604,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_typhoeus__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3827,7 +5627,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_typhoeus",
@@ -3843,7 +5644,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_typhoeus__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "nature",
@@ -3854,7 +5666,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_typhoeus",
@@ -3870,7 +5683,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_typhoeus_ult_self",
+                                                                "name":  "氷山の呼び声 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_typhoeus__inflict",
+                                                                "name":  "自然アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に自然アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  200,
                                               "infliction":  {
@@ -3882,7 +5718,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に自然ダメージを与える。 命中時に敵へ自然アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "寒夜の影",
@@ -3944,7 +5781,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_wulfgard__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -3956,7 +5804,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_wulfgard",
@@ -3972,7 +5821,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_wulfgard__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "heat",
@@ -3983,7 +5843,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_wulfgard",
@@ -3999,7 +5860,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_wulfgard_ult_self",
+                                                                "name":  "狼の怒り 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_wulfgard__inflict",
+                                                                "name":  "灼熱アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に灼熱アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -4011,7 +5895,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に灼熱ダメージを与える。 命中時に敵へ灼熱アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "合理的決別",
@@ -4022,7 +5907,7 @@ window.CHARACTER_DATA = {
                        },
                        {
                            "$schema":  "../../schemas/character.schema.json",
-                           "id":  "ザイヒ",
+                           "id":  "char_xaihi",
                            "name":  "ザイヒ",
                            "icon":  "image/xaihi.png",
                            "rarity":  5,
@@ -4055,7 +5940,7 @@ window.CHARACTER_DATA = {
                                           ],
                            "skills":  [
                                           {
-                                              "id":  "skill_zaihi",
+                                              "id":  "char_xaihi",
                                               "type":  "skill",
                                               "name":  "DDoS",
                                               "shortName":  "戦技",
@@ -4068,7 +5953,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_xaihi__team",
+                                                                "name":  "ザイヒ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_xaihi__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -4080,10 +5988,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
-                                              "id":  "combo_zaihi",
+                                              "id":  "char_xaihi",
                                               "type":  "combo",
                                               "name":  "ストレステスト",
                                               "shortName":  "連携技",
@@ -4096,7 +6005,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_xaihi__team",
+                                                                "name":  "ザイヒ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_xaihi__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -4107,10 +6039,11 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
-                                              "id":  "ult_zaihi",
+                                              "id":  "char_xaihi",
                                               "type":  "ult",
                                               "name":  "スタックオーバーフロー",
                                               "shortName":  "必殺技",
@@ -4123,7 +6056,42 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_xaihi_ult_self",
+                                                                "name":  "スタックオーバーフロー 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "buff_char_xaihi__team",
+                                                                "name":  "ザイヒ チーム支援",
+                                                                "target":  "team",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.15,
+                                                                "duration":  12,
+                                                                "description":  "12秒間、味方チーム全員の与ダメージ+15%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_xaihi__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -4135,7 +6103,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "布教の自由",
@@ -4192,7 +6161,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_yvonne__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -4204,7 +6184,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_yvonne",
@@ -4220,7 +6201,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_yvonne__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "cryo",
@@ -4231,7 +6223,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_yvonne",
@@ -4247,7 +6240,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_yvonne_ult_self",
+                                                                "name":  "アイスシューター 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_yvonne__inflict",
+                                                                "name":  "寒冷アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に寒冷アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  80,
                                               "infliction":  {
@@ -4259,7 +6275,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に寒冷ダメージを与える。 命中時に敵へ寒冷アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "芸術の独裁者",
@@ -4316,7 +6333,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  3,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_zhuang__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "spCost":  100,
                                               "infliction":  {
@@ -4328,7 +6356,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                                           },
                                           {
                                               "id":  "combo_zhuang",
@@ -4344,7 +6373,18 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  1,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "debuff_char_zhuang__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "infliction":  {
                                                                  "type":  "electric",
@@ -4355,7 +6395,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                                           },
                                           {
                                               "id":  "ult_zhuang",
@@ -4371,7 +6412,30 @@ window.CHARACTER_DATA = {
                                                               },
                                               "hitCount":  5,
                                               "buffs":  [
-
+                                                            {
+                                                                "id":  "buff_char_zhuang_ult_self",
+                                                                "name":  "万雷帰一 必殺自己強化",
+                                                                "target":  "self",
+                                                                "category":  "buff",
+                                                                "stat":  "allDamageUp",
+                                                                "value":  0.2,
+                                                                "duration":  15,
+                                                                "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                                                "isStackable":  false,
+                                                                "maxStacks":  1
+                                                            },
+                                                            {
+                                                                "id":  "debuff_char_zhuang__inflict",
+                                                                "name":  "電磁アーツ付着(1段)",
+                                                                "target":  "enemy",
+                                                                "category":  "debuff",
+                                                                "stat":  "artsAttachment",
+                                                                "value":  1,
+                                                                "duration":  15,
+                                                                "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                                                "isStackable":  true,
+                                                                "maxStacks":  4
+                                                            }
                                                         ],
                                               "epCost":  90,
                                               "infliction":  {
@@ -4383,7 +6447,8 @@ window.CHARACTER_DATA = {
                                                             "type":  "none",
                                                             "stacks":  0,
                                                             "label":  "なし"
-                                                        }
+                                                        },
+                                              "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                                           }
                                       ],
                            "motifWeapon":  "孤舟",

@@ -46,7 +46,30 @@
                                        },
                        "hitCount":  3,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_arclight__sp",
+                                         "name":  "アークライト 戦術指揮",
+                                         "target":  "team",
+                                         "category":  "buff",
+                                         "stat":  "ultEfficiency",
+                                         "value":  10,
+                                         "duration":  10,
+                                         "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_arclight__inflict",
+                                         "name":  "電磁アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "spCost":  100,
                        "infliction":  {
@@ -58,7 +81,8 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。"
                    },
                    {
                        "id":  "combo_arclight",
@@ -74,7 +98,30 @@
                                        },
                        "hitCount":  1,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_arclight__sp",
+                                         "name":  "アークライト 戦術指揮",
+                                         "target":  "team",
+                                         "category":  "buff",
+                                         "stat":  "ultEfficiency",
+                                         "value":  10,
+                                         "duration":  10,
+                                         "description":  "10秒間、チーム全員の必殺チャージ回復効率+10%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_arclight__inflict",
+                                         "name":  "電磁アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "infliction":  {
                                           "type":  "electric",
@@ -85,7 +132,8 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                    },
                    {
                        "id":  "ult_arclight",
@@ -101,7 +149,30 @@
                                        },
                        "hitCount":  5,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_arclight_ult_self",
+                                         "name":  "アークチャージ 必殺自己強化",
+                                         "target":  "self",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.2,
+                                         "duration":  15,
+                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_arclight__inflict",
+                                         "name":  "電磁アーツ付着(1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "artsAttachment",
+                                         "value":  1,
+                                         "duration":  15,
+                                         "description":  "敵に電磁アーツ付着を付与。同属性追撃でアーツ爆発、異属性追撃でアーツ異常を誘発。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "epCost":  90,
                        "infliction":  {
@@ -113,7 +184,8 @@
                                      "type":  "none",
                                      "stacks":  0,
                                      "label":  "なし"
-                                 }
+                                 },
+                       "description":  "敵に電磁ダメージを与える。 命中時に敵へ電磁アーツ付着(1段階)を付与する。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                    }
                ],
     "motifWeapon":  "十二問",

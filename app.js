@@ -3623,6 +3623,39 @@ function renderWikiCharacterDetail(charId) {
     if (sk.epCost !== undefined) costBadges.push(`<span class="wiki-cost-pill ep">消費EP: ${sk.epCost}</span>`);
     if (sk.epGain !== undefined) costBadges.push(`<span class="wiki-cost-pill epgain">獲得EP: +${sk.epGain}</span>`);
 
+    // バフ・デバフの分類表示
+    const targetLabelMap = {
+      self: { label: '👤 自己バフ', class: 'target-self' },
+      single: { label: '🎯 単体バフ', class: 'target-single' },
+      team: { label: '👥 全体バフ', class: 'target-team' },
+      enemy: { label: '👾 敵デバフ', class: 'target-enemy' }
+    };
+
+    let buffsHtml = '';
+    if (sk.buffs && sk.buffs.length > 0) {
+      buffsHtml = `
+        <div class="wiki-buffs-list">
+          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果:</div>
+          <div class="wiki-buffs-grid">
+            ${sk.buffs.map(b => {
+              const tgtInfo = targetLabelMap[b.target] || { label: b.target || '効果', class: 'target-self' };
+              const durText = b.duration ? `(${b.duration}秒)` : '';
+              return `
+                <div class="wiki-buff-item ${tgtInfo.class}">
+                  <div class="wiki-buff-top">
+                    <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
+                    <strong class="wiki-buff-name">${b.name}</strong>
+                    <span class="wiki-buff-dur">${durText}</span>
+                  </div>
+                  <div class="wiki-buff-desc">${b.description || ''}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="wiki-skill-card">
         <div class="wiki-skill-header">
@@ -3634,6 +3667,8 @@ function renderWikiCharacterDetail(charId) {
           <div class="wiki-skill-costs">${costBadges.join('')}</div>
         </div>
 
+        ${sk.description ? `<div class="wiki-skill-desc-text">📝 <strong>スキル効果:</strong> ${sk.description}</div>` : ''}
+
         <div class="wiki-skill-mechanics-grid">
           <div class="wiki-mech-box">
             <span class="wiki-mech-label">アーツ付着仕様</span>
@@ -3644,6 +3679,8 @@ function renderWikiCharacterDetail(charId) {
             <span class="wiki-mech-val ${crType !== 'none' ? 'is-active' : ''}">${crBadge}</span>
           </div>
         </div>
+
+        ${buffsHtml}
 
         <table class="wiki-mult-table">
           <thead>

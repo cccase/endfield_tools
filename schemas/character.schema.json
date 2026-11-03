@@ -117,18 +117,28 @@
               "lv12_spec3": { "type": "number", "minimum": 0 }
             }
           },
+          "description": { "type": "string" },
           "hitCount": { "type": "integer", "minimum": 1 },
           "buffs": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["id", "name", "stat", "value", "duration"],
+              "required": ["id", "name", "target", "stat", "value", "duration"],
               "properties": {
                 "id": { "type": "string" },
                 "name": { "type": "string" },
+                "target": {
+                  "type": "string",
+                  "enum": ["self", "single", "team", "enemy"]
+                },
+                "category": {
+                  "type": "string",
+                  "enum": ["buff", "debuff"]
+                },
                 "stat": { "type": "string" },
                 "value": { "type": "number" },
                 "duration": { "type": "number" },
+                "description": { "type": "string" },
                 "maxStacks": { "type": "integer" },
                 "isStackable": { "type": "boolean" }
               }

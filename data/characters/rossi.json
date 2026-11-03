@@ -46,7 +46,18 @@
                                        },
                        "hitCount":  3,
                        "buffs":  [
-
+                                     {
+                                         "id":  "debuff_char_rossi__crush",
+                                         "name":  "体勢崩し(クラッシュ+1段)",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "vulnerability",
+                                         "value":  10,
+                                         "duration":  12,
+                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "spCost":  100,
                        "infliction":  {
@@ -58,7 +69,8 @@
                                      "type":  "inflict",
                                      "stacks":  1,
                                      "label":  "クラッシュ付与(+1段)"
-                                 }
+                                 },
+                       "description":  "敵に物理ダメージを与える。 敵の体勢を崩し、クラッシュ段階を蓄積する（0段時は1段付与、1段以上時は+1段、最大4段）。"
                    },
                    {
                        "id":  "combo_rossi",
@@ -74,7 +86,18 @@
                                        },
                        "hitCount":  1,
                        "buffs":  [
-
+                                     {
+                                         "id":  "debuff_char_rossi__crush",
+                                         "name":  "クラッシュ段階消費",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "vulnerability",
+                                         "value":  10,
+                                         "duration":  12,
+                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "infliction":  {
                                           "type":  "none",
@@ -85,7 +108,8 @@
                                      "type":  "consume_smash",
                                      "stacks":  1,
                                      "label":  "猛撃(クラッシュ消費)"
-                                 }
+                                 },
+                       "description":  "敵に物理ダメージを与える。 【猛撃】敵のクラッシュ段階を消費して追加物理バーストダメージを与える（0段時は1段付与）。 特定のアーツ異常や体勢崩しに呼応して発動可能な強力な追撃。"
                    },
                    {
                        "id":  "ult_rossi",
@@ -101,7 +125,30 @@
                                        },
                        "hitCount":  5,
                        "buffs":  [
-
+                                     {
+                                         "id":  "buff_char_rossi_ult_self",
+                                         "name":  "“鋭爪”奇襲 必殺自己強化",
+                                         "target":  "self",
+                                         "category":  "buff",
+                                         "stat":  "allDamageUp",
+                                         "value":  0.2,
+                                         "duration":  15,
+                                         "description":  "必殺技発動後15秒間、自身の与ダメージ+20%",
+                                         "isStackable":  false,
+                                         "maxStacks":  1
+                                     },
+                                     {
+                                         "id":  "debuff_char_rossi__crush",
+                                         "name":  "クラッシュ段階消費",
+                                         "target":  "enemy",
+                                         "category":  "debuff",
+                                         "stat":  "vulnerability",
+                                         "value":  10,
+                                         "duration":  12,
+                                         "description":  "敵の体勢を崩し、物理脆弱を付与（最大4段階蓄積）。",
+                                         "isStackable":  true,
+                                         "maxStacks":  4
+                                     }
                                  ],
                        "epCost":  110,
                        "infliction":  {
@@ -113,7 +160,8 @@
                                      "type":  "consume_shatter",
                                      "stacks":  1,
                                      "label":  "破砕(クラッシュ消費)"
-                                 }
+                                 },
+                       "description":  "敵に物理ダメージを与える。 【破砕】敵の全クラッシュ段階を一挙に消費して極大フィニッシュダメージを与える（0段時は1段付与）。 必殺エネルギーを満たすことで発動できる最大火力スキル。"
                    }
                ],
     "motifWeapon":  "狼緋",

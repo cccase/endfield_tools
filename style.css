@@ -2386,6 +2386,107 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   color: #2ecc71;
   font-weight: 700;
 }
+
+/* スキル効果テキスト */
+.wiki-skill-desc-text {
+  background: #171a1f;
+  border-left: 3px solid #3498db;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #d1d8e0;
+}
+
+/* 紐づくバフ・デバフ一覧 */
+.wiki-buffs-list {
+  background: #191c22;
+  border: 1px solid #2d333e;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wiki-buffs-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f39c12;
+}
+.wiki-buffs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+.wiki-buff-item {
+  border-radius: 5px;
+  padding: 8px 10px;
+  background: #20242b;
+  border: 1px solid #333a46;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wiki-buff-item.target-self {
+  border-left: 3px solid #3498db;
+}
+.wiki-buff-item.target-single {
+  border-left: 3px solid #9b59b6;
+}
+.wiki-buff-item.target-team {
+  border-left: 3px solid #2ecc71;
+}
+.wiki-buff-item.target-enemy {
+  border-left: 3px solid #e74c3c;
+}
+.wiki-buff-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.wiki-buff-target-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.wiki-buff-target-badge.target-self {
+  background: rgba(52, 152, 219, 0.2);
+  color: #5dade2;
+  border: 1px solid rgba(52, 152, 219, 0.4);
+}
+.wiki-buff-target-badge.target-single {
+  background: rgba(155, 89, 182, 0.2);
+  color: #bb8fce;
+  border: 1px solid rgba(155, 89, 182, 0.4);
+}
+.wiki-buff-target-badge.target-team {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+}
+.wiki-buff-target-badge.target-enemy {
+  background: rgba(231, 76, 60, 0.2);
+  color: #ff7675;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+.wiki-buff-name {
+  font-size: 12px;
+  color: #fff;
+}
+.wiki-buff-dur {
+  font-size: 11px;
+  color: #9aa4b0;
+  margin-left: auto;
+  font-family: monospace;
+}
+.wiki-buff-desc {
+  font-size: 11px;
+  color: #b2bec3;
+  line-height: 1.4;
+}
+
 .wiki-mult-table {
   width: 100%;
   border-collapse: collapse;
