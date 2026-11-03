@@ -2855,6 +2855,53 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   transform: scale(1.2);
 }
 
+/* アーツ異常（感電・腐食・凍結・燃焼）専用持続デバフブロック */
+.time-buff-block.time-anomaly-block {
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), inset 0 0 6px rgba(255, 255, 255, 0.25);
+  font-weight: bold;
+}
+
+.time-buff-block.time-anomaly-block .block-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.time-buff-block.time-anomaly-block .anomaly-level-pill {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 0 4px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0;
+}
+
+.time-buff-block.time-anomaly-block.shock {
+  border-color: #d2b4de;
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.6);
+}
+
+.time-buff-block.time-anomaly-block.corrosion {
+  border-color: #7dcea0;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
+}
+
+.time-buff-block.time-anomaly-block.freeze {
+  border-color: #85c1e9;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+.time-buff-block.time-anomaly-block.combustion {
+  border-color: #f8c471;
+  box-shadow: 0 0 10px rgba(230, 126, 34, 0.6);
+}
+
 /* 映像クリップ風スキルブロック */
 .time-skill-clip {
   position: absolute;

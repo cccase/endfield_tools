@@ -281,9 +281,71 @@
     }
 
     /**
-     * アーツ付着ノードの段階数を時系列でシミュレーションし、ノード内の段階数・爆発表示を動的更新
+     * アーツ異常（燃焼・感電・凍結・腐食）の段階(Lv.1〜4)ごとの仕様定義
+     * 一次情報(Wiki/ゲーム内仕様)準拠:
+     * - 感電: 電磁属性により発動。敵のアーツ被ダメージ増加。Lv.1=12秒(+12%)、Lv.2=18秒(+16%)、Lv.3=24秒(+20%)、Lv.4=30秒(+24%)
+     * - 腐食: 自然属性により発動。敵の全属性耐性ダウン。Lv.1=12秒(-15%)、Lv.2=15秒(-20%)、Lv.3=18秒(-25%)、Lv.4=21秒(-30%)
+     * - 凍結: 寒冷属性により発動。敵を行動不能＋物理脆弱＋砕氷。Lv.1=6秒(+15%)、Lv.2=8秒(+20%)、Lv.3=10秒(+25%)、Lv.4=12秒(+30%)
+     * - 燃焼: 灼熱属性により発動。毎秒灼熱持続ダメージ(DoT)。Lv.1〜4持続10秒固定(DoT倍率が1.0倍〜2.5倍に強化)
+     */
+    getArtsAnomalyConfig(triggerElem) {
+      const config = {
+        electric: {
+          name: '感電',
+          enName: 'shock',
+          icon: '⚡',
+          color: 'linear-gradient(135deg, #8e44ad, #6c3483)',
+          durations: { 1: 12.0, 2: 18.0, 3: 24.0, 4: 30.0 },
+          values: { 1: 12, 2: 16, 3: 20, 4: 24 },
+          calcGroup: 'vulnerability',
+          bonusType: 'vuln',
+          desc: (lvl, dur) => `アーツ被ダメ+${config.electric.values[lvl]}% (${dur}秒間)`
+        },
+        nature: {
+          name: '腐食',
+          enName: 'corrosion',
+          icon: '🌿',
+          color: 'linear-gradient(135deg, #27ae60, #1e8449)',
+          durations: { 1: 12.0, 2: 15.0, 3: 18.0, 4: 21.0 },
+          values: { 1: 15, 2: 20, 3: 25, 4: 30 },
+          calcGroup: 'vulnerability',
+          bonusType: 'vuln',
+          desc: (lvl, dur) => `全属性耐性-${config.nature.values[lvl]}% (${dur}秒間)`
+        },
+        cryo: {
+          name: '凍結',
+          enName: 'freeze',
+          icon: '❄️',
+          color: 'linear-gradient(135deg, #2980b9, #1f618d)',
+          durations: { 1: 6.0, 2: 8.0, 3: 10.0, 4: 12.0 },
+          values: { 1: 15, 2: 20, 3: 25, 4: 30 },
+          calcGroup: 'vulnerability',
+          bonusType: 'vuln',
+          desc: (lvl, dur) => `行動不能＆物理脆弱+${config.cryo.values[lvl]}% (${dur}秒間)`
+        },
+        heat: {
+          name: '燃焼',
+          enName: 'combustion',
+          icon: '🔥',
+          color: 'linear-gradient(135deg, #d35400, #a04000)',
+          durations: { 1: 10.0, 2: 10.0, 3: 10.0, 4: 10.0 },
+          values: { 1: 100, 2: 150, 3: 200, 4: 250 },
+          calcGroup: 'damage_up',
+          bonusType: 'damageUp',
+          desc: (lvl, dur) => `毎秒灼熱DoT (${config.heat.values[lvl]}%倍率・${dur}秒間)`
+        }
+      };
+      return config[triggerElem] || null;
+    }
+
+    /**
+     * アーツ付着ノードの段階数を時系列でシミュレーションし、ノード内の段階数・爆発表示および
+     * アーツ異常（感電・腐食・凍結・燃焼）のレベル・効果時間に応じた持続ブロックを動的更新
      */
     recalculateAttachmentNodeStacks() {
+      // 既存の自動生成されたアーツ異常ブロック（isAutoAnomaly）を全削除して最新の順序で再構成
+      this.blocks = this.blocks.filter(b => !b.isAutoAnomaly);
+
       const attachNodes = this.blocks.filter(b => b.kind === 'attach_node' && b.inflictionType && b.inflictionType !== 'crush');
       attachNodes.sort((a, b) => a.startTime - b.startTime);
 
@@ -299,12 +361,13 @@
         const eName = elemNames[elem] || 'アーツ';
 
         if (!currentElem || currentElem === elem) {
+          // 同属性スタック増加
           currentElem = elem;
           currentStacks = Math.min(4, currentStacks + 1);
           if (currentStacks >= 4) {
             node.stacks = 4;
             node.isBurst = true;
-            node.shortBadge = '💥爆';
+            node.shortBadge = '💥爆4';
             node.name = `💥 ${eName}爆発！(4段階到達)`;
             node.color = 'linear-gradient(135deg, #e74c3c, #f39c12)';
             currentElem = null;
@@ -314,14 +377,62 @@
             node.isBurst = false;
             node.shortBadge = `${icon}${currentStacks}`;
             node.name = `${icon} ${eName}付着(${currentStacks}段)`;
+            node.color = (elem === 'heat' ? 'linear-gradient(135deg, #e74c3c, #c0392b)' :
+                          (elem === 'cryo' ? 'linear-gradient(135deg, #3498db, #2980b9)' :
+                          (elem === 'electric' ? 'linear-gradient(135deg, #9b59b6, #8e44ad)' :
+                          'linear-gradient(135deg, #2ecc71, #27ae60)')));
           }
         } else {
-          // 異属性付着（アーツ異常発動）
-          const prevStacks = currentStacks;
-          node.stacks = 1;
-          node.isBurst = false;
-          node.shortBadge = `${icon}異`;
-          node.name = `🌀 ${eName}異常発動！(初期${prevStacks}段)`;
+          // 異属性付着（アーツ異常発動！）
+          // 下地属性の段階数が異常のレベル(Lv.1〜4)となる
+          const prevElem = currentElem;
+          const prevStacks = Math.min(4, Math.max(1, currentStacks));
+          const prevElemName = elemNames[prevElem] || '属性';
+
+          const anomConf = this.getArtsAnomalyConfig(elem);
+          if (anomConf) {
+            const anomDur = anomConf.durations[prevStacks] || 12.0;
+            const anomVal = anomConf.values[prevStacks] || 15;
+
+            // ピンノード側のバッジ・表示更新
+            node.stacks = prevStacks;
+            node.isBurst = false;
+            node.shortBadge = `${anomConf.icon}${anomConf.name[0]}${prevStacks}`;
+            node.name = `${anomConf.icon} 【${anomConf.name} Lv.${prevStacks}】発動！(下地${prevElemName}${prevStacks}段消費 / ${anomDur}秒間)`;
+            node.color = anomConf.color;
+
+            // 🎯 案山子トラックに、レベルに応じた持続時間（横幅）を持ったアーツ異常ブロックを自動配置！
+            this.blocks.push({
+              id: this._nextId('anom'),
+              linkedClipId: node.linkedClipId,
+              linkedNodeId: node.id,
+              trackId: 'track_enemy_debuffs',
+              charId: null,
+              kind: 'anomaly_block',
+              isAutoAnomaly: true,
+              isAnomaly: true,
+              anomalyType: anomConf.enName,
+              anomalyLevel: prevStacks,
+              anomalyName: anomConf.name,
+              name: `🎯 [異常] ${anomConf.icon} ${anomConf.name} Lv.${prevStacks}`,
+              shortName: `${anomConf.icon} ${anomConf.name} Lv.${prevStacks}`,
+              startTime: node.startTime,
+              duration: anomDur,
+              color: anomConf.color,
+              calcGroup: anomConf.calcGroup,
+              bonusType: anomConf.bonusType,
+              bonusValue: anomVal / 100,
+              valueText: anomConf.desc(prevStacks, anomDur),
+              source: `アーツ異常 (${prevElemName}${prevStacks}段消費)`
+            });
+          } else {
+            node.stacks = prevStacks;
+            node.isBurst = false;
+            node.shortBadge = `${icon}異`;
+            node.name = `🌀 ${eName}異常発動！(初期${prevStacks}段)`;
+          }
+
+          // 下地付着は消費リセット
           currentElem = null;
           currentStacks = 0;
         }
@@ -802,7 +913,11 @@
               const val = blk.bonusValue || 0;
               const grp = blk.calcGroup || (isEnemyDebuff ? 'vulnerability' : 'damage_up');
 
-              if (grp === 'atk_pct') {
+              if (blk.isAnomaly) {
+                const vNum = (val <= 1.0 && val > 0) ? (val * 100) : val;
+                extraVuln += vNum;
+                activeNotes.push(`${blk.shortName || blk.name}`);
+              } else if (grp === 'atk_pct') {
                 extraAtkPct += val;
                 activeNotes.push(`⚔️攻+${Math.round(val * 100)}%`);
               } else if (grp === 'damage_up') {
@@ -829,6 +944,19 @@
           }
         });
 
+        // 該当時刻におけるアクティブなアーツ異常（感電・腐食・凍結・燃焼）を抽出
+        let activeAnomaly = null;
+        this.blocks.forEach(blk => {
+          if (blk.isAnomaly && t >= blk.startTime && t <= (blk.startTime + blk.duration)) {
+            activeAnomaly = {
+              type: blk.anomalyType,
+              level: blk.anomalyLevel,
+              name: blk.anomalyName,
+              duration: blk.duration
+            };
+          }
+        });
+
         return {
           type: clip.skillType,
           charId: clip.charId,
@@ -844,7 +972,8 @@
             critRate: extraCritRate,
             critDmg: extraCritDmg,
             takenDamageUp: extraTakenDamageUp,
-            vulnerability: extraVuln
+            vulnerability: extraVuln,
+            activeAnomaly: activeAnomaly
           },
           timelineBuffNote: activeNotes.slice(0, 3).join(', ')
         };
@@ -1054,10 +1183,11 @@
           h.style.height = `${laneHeight}px`;
           lane.style.height = `${laneHeight}px`;
 
-          // (1) 通常の持続バフブロックを描画（スロット縦並び配置）
+          // (1) 通常の持続バフブロック & アーツ異常ブロックを描画（スロット縦並び配置）
           trackBlocks.filter(b => b.kind !== 'attach_node').forEach(blk => {
             const bEl = document.createElement('div');
-            bEl.className = 'time-buff-block';
+            const anomalyClass = blk.isAnomaly ? ` time-anomaly-block ${blk.anomalyType || ''}` : '';
+            bEl.className = `time-buff-block${anomalyClass}`;
             bEl.dataset.blockId = blk.id;
             bEl.style.left = `${blk.startTime * this.pxPerSec}px`;
             bEl.style.width = `${Math.max(26, blk.duration * this.pxPerSec)}px`;
@@ -1065,17 +1195,27 @@
             bEl.style.height = `${slotHeight}px`;
             bEl.style.background = blk.color || 'linear-gradient(135deg, #f39c12, #e67e22)';
 
+            const titleHtml = blk.isAnomaly
+              ? `<span class="block-title">${blk.shortName || blk.name} <span class="anomaly-level-pill">Lv.${blk.anomalyLevel}</span></span>`
+              : `<span class="block-title">${blk.name}</span>`;
+
+            const delBtnHtml = blk.isAutoAnomaly
+              ? ''
+              : `<button type="button" class="clip-delete-btn" title="このバフブロックを削除">×</button>`;
+
             bEl.innerHTML = `
               <div class="block-drag-handle left" data-handle="left"></div>
               <div class="block-content">
-                <span class="block-title">${blk.name}</span>
+                ${titleHtml}
                 <span class="block-sub">${blk.duration.toFixed(1)}s</span>
               </div>
-              <button type="button" class="clip-delete-btn" title="このバフブロックを削除">×</button>
+              ${delBtnHtml}
               <div class="block-drag-handle right" data-handle="right"></div>
             `;
 
-            bEl.title = `🔊 【${blk.name}】\n持続時間: ${blk.duration.toFixed(1)}秒 (${blk.startTime.toFixed(1)}s 〜 ${(blk.startTime + blk.duration).toFixed(1)}s)\n効果: ${blk.valueText || ''}\n発生源: ${blk.source || ''}\n※本体ドラッグで移動、左右端ドラッグで持続時間を伸縮できます`;
+            bEl.title = blk.isAnomaly
+              ? `🎯 【アーツ異常: ${blk.anomalyName} Lv.${blk.anomalyLevel}】\n持続時間: ${blk.duration.toFixed(1)}秒 (${blk.startTime.toFixed(1)}s 〜 ${(blk.startTime + blk.duration).toFixed(1)}s)\n効果: ${blk.valueText || ''}\n発生源: ${blk.source || ''}\n※付着スキルの順序連動で自動計算・更新されます`
+              : `🔊 【${blk.name}】\n持続時間: ${blk.duration.toFixed(1)}秒 (${blk.startTime.toFixed(1)}s 〜 ${(blk.startTime + blk.duration).toFixed(1)}s)\n効果: ${blk.valueText || ''}\n発生源: ${blk.source || ''}\n※本体ドラッグで移動、左右端ドラッグで持続時間を伸縮できます`;
 
             const delBtn = bEl.querySelector('.clip-delete-btn');
             if (delBtn) {

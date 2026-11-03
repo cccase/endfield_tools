@@ -649,6 +649,12 @@
         context.extraTakenDamageUp = (context.extraTakenDamageUp || 0) + (tBuffs.takenDamageUp || 0);
         context.extraVuln = (context.extraVuln || 0) + (item.timelineExtraVuln || 0) + (tBuffs.vulnerability || 0);
 
+        // タイムライン上のアーツ異常ブロック（感電・腐食・凍結・燃焼）の反映
+        if (tBuffs.activeAnomaly) {
+          currentEnemy.artsAnomaly = tBuffs.activeAnomaly.type;
+          currentEnemy.anomalyScale = tBuffs.activeAnomaly.level;
+        }
+
         if (item.timelineBuffNote) {
           context.actionNote = (context.actionNote ? context.actionNote + ' / ' : '') + item.timelineBuffNote;
         }
