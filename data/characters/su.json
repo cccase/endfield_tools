@@ -1,149 +1,157 @@
 {
-  "$schema": "../../schemas/character.schema.json",
-  "id": "char_su",
-  "name": "スー",
-  "icon": "image/su.png",
-  "rarity": 6,
-  "element": "寒冷",
-  "weaponType": "大剣",
-  "class": "補助",
-  "mainStat": "知性",
-  "subStat": "意志",
-  "baseStats": {
-    "hp": 6800,
-    "atk": 920,
-    "strength": 120,
-    "agility": 110,
-    "intellect": 285,
-    "willpower": 185,
-    "artsIntensity": 80,
-    "critRate": 0.05,
-    "critDamage": 0.5
-  },
-  "defaultEfficiency": 133.4,
-  "defaultPotential": 0,
-  "baseRefundSP": 0,
-  "baseRecoverSP": 0,
-  "potentials": [
-    {
-      "level": 4,
-      "type": "ult_cost_reduction_percent",
-      "value": 10
-    }
-  ],
-  "specialMechanic": {
-    "title": "墨筆の彩り（1枠目属性模倣）",
-    "type": "copy_slot1",
-    "description": "パーティ1枠目（先頭）のオペレーターの属性を模倣し、戦技の付着属性が変化する。1枠目が物理キャラの場合は寒冷属性となる。"
-  },
-  "skills": [
-    {
-      "id": "skill1_su",
-      "type": "skill",
-      "name": "山河を映して",
-      "shortName": "戦技1",
-      "damageType": "寒冷",
-      "infliction": {
-        "type": "copy_slot1",
-        "stacks": 1,
-        "label": "【特殊】1枠目属性模倣(1段)"
-      },
-      "crush": {
-        "type": "none",
-        "stacks": 0,
-        "label": "なし"
-      },
-      "multipliers": {
-        "lv9": 3.78,
-        "lv10_spec1": 4.15,
-        "lv11_spec2": 4.57,
-        "lv12_spec3": 5.04
-      },
-      "hitCount": 3,
-      "buffs": [],
-      "spCost": 100
-    },
-    {
-      "id": "skill2_su",
-      "type": "skill2",
-      "name": "墨継",
-      "shortName": "戦技2",
-      "damageType": "寒冷",
-      "infliction": {
-        "type": "copy_slot1",
-        "stacks": 1,
-        "label": "【特殊】1枠目属性模倣(1段)"
-      },
-      "crush": {
-        "type": "none",
-        "stacks": 0,
-        "label": "なし"
-      },
-      "multipliers": {
-        "lv9": 2.1,
-        "lv10_spec1": 2.31,
-        "lv11_spec2": 2.57,
-        "lv12_spec3": 2.89
-      },
-      "hitCount": 1,
-      "buffs": [],
-      "spCost": 15
-    },
-    {
-      "id": "combo_su",
-      "type": "combo",
-      "name": "胸中に成竹在り",
-      "shortName": "連携技",
-      "damageType": "寒冷",
-      "infliction": {
-        "type": "cryo",
-        "stacks": 1,
-        "label": "寒冷付着(1段)"
-      },
-      "crush": {
-        "type": "none",
-        "stacks": 0,
-        "label": "なし"
-      },
-      "multipliers": {
-        "lv9": 2.94,
-        "lv10_spec1": 3.2,
-        "lv11_spec2": 3.52,
-        "lv12_spec3": 3.88
-      },
-      "hitCount": 1,
-      "buffs": []
-    },
-    {
-      "id": "ult_su",
-      "type": "ult",
-      "name": "白けさせるでない！",
-      "shortName": "必殺技",
-      "damageType": "寒冷",
-      "infliction": {
-        "type": "cryo",
-        "stacks": 2,
-        "label": "寒冷爆発(2段)"
-      },
-      "crush": {
-        "type": "none",
-        "stacks": 0,
-        "label": "なし"
-      },
-      "multipliers": {
-        "lv9": 7.56,
-        "lv10_spec1": 8.24,
-        "lv11_spec2": 9.03,
-        "lv12_spec3": 9.98
-      },
-      "hitCount": 5,
-      "buffs": [],
-      "epCost": 80
-    }
-  ],
-  "motifWeapon": "玉中身",
-  "recommendedWeapons": [
-    "玉中身",
-    "破砕君主"
-  ]
+    "$schema":  "../../schemas/character.schema.json",
+    "id":  "char_su",
+    "name":  "スー",
+    "icon":  "image/su.png",
+    "rarity":  6,
+    "element":  "寒冷",
+    "weaponType":  "大剣",
+    "class":  "補助",
+    "mainStat":  "知性",
+    "subStat":  "意志",
+    "baseStats":  {
+                      "hp":  6800,
+                      "atk":  920,
+                      "strength":  120,
+                      "agility":  110,
+                      "intellect":  285,
+                      "willpower":  185,
+                      "artsIntensity":  80,
+                      "critRate":  0.05,
+                      "critDamage":  0.5
+                  },
+    "defaultEfficiency":  133.4,
+    "defaultPotential":  0,
+    "baseRefundSP":  0,
+    "baseRecoverSP":  0,
+    "potentials":  [
+                       {
+                           "level":  4,
+                           "type":  "ult_cost_reduction_percent",
+                           "value":  10
+                       }
+                   ],
+    "specialMechanic":  {
+                            "title":  "墨筆の彩り（1枠目属性模倣）",
+                            "type":  "copy_slot1",
+                            "description":  "パーティ1枠目（先頭）のオペレーターの属性を模倣し、戦技の付着属性が変化する。1枠目が物理キャラの場合は寒冷属性となる。"
+                        },
+    "skills":  [
+                   {
+                       "id":  "skill1_su",
+                       "type":  "skill",
+                       "name":  "山河を映して",
+                       "shortName":  "戦技1",
+                       "damageType":  "寒冷",
+                       "infliction":  {
+                                          "type":  "copy_slot1",
+                                          "stacks":  1,
+                                          "label":  "【特殊】1枠目属性模倣(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 },
+                       "multipliers":  {
+                                           "lv9":  3.78,
+                                           "lv10_spec1":  4.15,
+                                           "lv11_spec2":  4.57,
+                                           "lv12_spec3":  5.04
+                                       },
+                       "hitCount":  3,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  100
+                   },
+                   {
+                       "id":  "skill2_su",
+                       "type":  "skill2",
+                       "name":  "墨継",
+                       "shortName":  "戦技2",
+                       "damageType":  "寒冷",
+                       "infliction":  {
+                                          "type":  "copy_slot1",
+                                          "stacks":  1,
+                                          "label":  "【特殊】1枠目属性模倣(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 },
+                       "multipliers":  {
+                                           "lv9":  2.1,
+                                           "lv10_spec1":  2.31,
+                                           "lv11_spec2":  2.57,
+                                           "lv12_spec3":  2.89
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ],
+                       "spCost":  15
+                   },
+                   {
+                       "id":  "combo_su",
+                       "type":  "combo",
+                       "name":  "胸中に成竹在り",
+                       "shortName":  "連携技",
+                       "damageType":  "寒冷",
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 },
+                       "multipliers":  {
+                                           "lv9":  2.94,
+                                           "lv10_spec1":  3.2,
+                                           "lv11_spec2":  3.52,
+                                           "lv12_spec3":  3.88
+                                       },
+                       "hitCount":  1,
+                       "buffs":  [
+
+                                 ]
+                   },
+                   {
+                       "id":  "ult_su",
+                       "type":  "ult",
+                       "name":  "白けさせるでない！",
+                       "shortName":  "必殺技",
+                       "damageType":  "寒冷",
+                       "infliction":  {
+                                          "type":  "cryo",
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
+                                      },
+                       "crush":  {
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
+                                 },
+                       "multipliers":  {
+                                           "lv9":  7.56,
+                                           "lv10_spec1":  8.24,
+                                           "lv11_spec2":  9.03,
+                                           "lv12_spec3":  9.98
+                                       },
+                       "hitCount":  5,
+                       "buffs":  [
+
+                                 ],
+                       "epCost":  80
+                   }
+               ],
+    "motifWeapon":  "玉中身",
+    "recommendedWeapons":  [
+                               "玉中身",
+                               "破砕君主"
+                           ]
 }

@@ -106,8 +106,8 @@
                        "epCost":  200,
                        "infliction":  {
                                           "type":  "nature",
-                                          "stacks":  2,
-                                          "label":  "自然爆発(2段)"
+                                          "stacks":  1,
+                                          "label":  "自然付着(1段)"
                                       },
                        "crush":  {
                                      "type":  "none",

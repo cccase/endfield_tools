@@ -57,7 +57,7 @@
                        "crush":  {
                                      "type":  "inflict",
                                      "stacks":  1,
-                                     "label":  "クラッシュ付与(1段)"
+                                     "label":  "クラッシュ付与(+1段)"
                                  }
                    },
                    {
@@ -85,7 +85,7 @@
                        "crush":  {
                                      "type":  "inflict",
                                      "stacks":  1,
-                                     "label":  "クラッシュ付与(1段)"
+                                     "label":  "クラッシュ付与(+1段)"
                                  }
                    },
                    {
@@ -113,7 +113,7 @@
                        "crush":  {
                                      "type":  "inflict",
                                      "stacks":  1,
-                                     "label":  "クラッシュ付与(1段)"
+                                     "label":  "クラッシュ付与(+1段)"
                                  }
                    },
                    {
@@ -139,7 +139,7 @@
                                       },
                        "crush":  {
                                      "type":  "consume_smash",
-                                     "stacks":  2,
+                                     "stacks":  1,
                                      "label":  "猛撃(クラッシュ消費)"
                                  }
                    },
@@ -167,8 +167,8 @@
                                       },
                        "crush":  {
                                      "type":  "consume_shatter",
-                                     "stacks":  4,
-                                     "label":  "破砕(クラッシュ全消費)"
+                                     "stacks":  1,
+                                     "label":  "破砕(クラッシュ消費)"
                                  }
                    }
                ],

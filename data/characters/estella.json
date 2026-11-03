@@ -106,8 +106,8 @@
                        "epCost":  70,
                        "infliction":  {
                                           "type":  "cryo",
-                                          "stacks":  2,
-                                          "label":  "寒冷爆発(2段)"
+                                          "stacks":  1,
+                                          "label":  "寒冷付着(1段)"
                                       },
                        "crush":  {
                                      "type":  "none",

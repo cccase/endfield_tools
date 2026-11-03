@@ -57,7 +57,7 @@
                        "crush":  {
                                      "type":  "inflict",
                                      "stacks":  1,
-                                     "label":  "クラッシュ付与(1段)"
+                                     "label":  "浮遊(クラッシュ付与+1段)"
                                  }
                    },
                    {
@@ -82,9 +82,9 @@
                                           "label":  "なし"
                                       },
                        "crush":  {
-                                     "type":  "consume_smash",
-                                     "stacks":  2,
-                                     "label":  "猛撃(クラッシュ消費)"
+                                     "type":  "inflict",
+                                     "stacks":  1,
+                                     "label":  "浮遊(クラッシュ付与+1段)"
                                  }
                    },
                    {
@@ -110,9 +110,9 @@
                                           "label":  "なし"
                                       },
                        "crush":  {
-                                     "type":  "consume_shatter",
-                                     "stacks":  4,
-                                     "label":  "破砕(クラッシュ全消費)"
+                                     "type":  "none",
+                                     "stacks":  0,
+                                     "label":  "なし"
                                  }
                    }
                ],

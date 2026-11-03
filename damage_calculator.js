@@ -276,33 +276,64 @@
       }
     }
 
-    // (B) 旧鋒セット: 猛撃・破砕時のクラッシュ段階消費（1〜4段で6%×段数、脆弱/ブレイク時は1.5倍で最大+36%）
-    if (stats.setId === 'set_kyuho' && dmgType === '物理') {
-      const consumedCrush = Math.min(4, Math.max(0, enemy.crushStacks || 0));
-      if (consumedCrush > 0) {
-        let crushBonus = consumedCrush * 0.06;
+    // (B) クラッシュ消費（猛撃・破砕）時の段階数に応じた追加効果（1段階以上の時のみ消費発動）
+    const consumedCrush = (context && context.consumeCrush)
+      ? Math.min(4, Math.max(1, context.consumedCrushStacks || enemy.crushStacks || 1))
+      : ((enemy.consumeCrush && enemy.crushStacks > 0) ? Math.min(4, enemy.crushStacks) : 0);
+
+    if (consumedCrush > 0 && dmgType === '物理') {
+      const cType = (context && context.crushSkillType) ? context.crushSkillType : 'consume_smash';
+      // 破砕は段階あたり+25%、猛撃は段階あたり+15%の追加効果
+      const perStackBonus = (cType === 'consume_shatter') ? 0.25 : 0.15;
+      bonusSum += perStackBonus * consumedCrush;
+
+      // 旧鋒セット: 猛撃・破砕時のクラッシュ段階消費（1〜4段で6%×段数、脆弱/ブレイク時は1.5倍で最大+36%）
+      if (stats.setId === 'set_kyuho') {
+        let kyuhoBonus = consumedCrush * 0.06;
         if (enemy.vulnerability > 0 || enemy.isBroken) {
-          crushBonus *= 1.5;
+          kyuhoBonus *= 1.5;
         }
-        bonusSum += crushBonus;
+        bonusSum += kyuhoBonus;
       }
+    } else if (stats.setId === 'set_kyuho' && dmgType === '物理' && enemy.crushStacks > 0 && !context) {
+      // 単体計算テスト用の後方互換（context未指定時）
+      let kyuhoBonus = Math.min(4, enemy.crushStacks) * 0.06;
+      if (enemy.vulnerability > 0 || enemy.isBroken) {
+        kyuhoBonus *= 1.5;
+      }
+      bonusSum += kyuhoBonus;
     }
 
-    // (C) アーツ反応ボーナス（付着消費時）: 異なる属性のアーツ攻撃による反応追加ダメージ
+    // (C) アーツ爆発ボーナス（同属性付着が4段階＝最大に達した時点）
     let reactionName = 'なし';
-    if (enemy.consumeAttachment && enemy.artsAttachment && enemy.artsAttachment !== 'none') {
+    if (context && context.isArtsBurst) {
+      const intensityBonus = (stats.artsIntensity || 0) * 0.002;
+      bonusSum += 0.40 + intensityBonus;
+      reactionName = 'アーツ爆発(4段階)';
+    }
+
+    // (D) アーツ異常ボーナス（異なる属性を付着させた場合）
+    // 効果量は「初めに付着していた属性が何であったか」には依存せず、「初めに付着していた属性の段階数(1〜4)」にのみ依存
+    if ((context && context.consumeAttachment) || (enemy.consumeAttachment && enemy.artsAttachment && enemy.artsAttachment !== 'none')) {
       const targetElem = elemKeyMap[dmgType];
       if (targetElem && targetElem !== 'physical' && targetElem !== enemy.artsAttachment) {
-        const stacks = Math.max(1, enemy.attachmentStacks || 1);
+        const prevStacks = Math.min(4, Math.max(1, (context && context.anomalyScale) || enemy.attachmentStacks || 1));
         const intensityBonus = (stats.artsIntensity || 0) * 0.002;
-        bonusSum += (0.15 * stacks) + intensityBonus;
-        reactionName = `${enemy.artsAttachment} ＋ ${targetElem}`;
+        bonusSum += (0.20 * prevStacks) + intensityBonus;
+        const anomalyNameMap = {
+          heat: '燃焼',
+          cryo: '凍結',
+          electric: '感電',
+          nature: '腐食'
+        };
+        reactionName = `${anomalyNameMap[targetElem] || targetElem}異常 (${prevStacks}段スケール)`;
       }
     }
 
-    // (D) 砕氷 (Shatter): 凍結中の敵に物理スキル攻撃 (+40%ダメージ)
+    // (E) 砕氷 (Shatter): 凍結中の敵に物理スキル攻撃 (凍結時の初期段階数に応じてスケール)
     if (enemy.artsAnomaly === 'freeze' && dmgType === '物理') {
-      bonusSum += 0.40;
+      const aScale = Math.min(4, Math.max(1, enemy.anomalyScale || 1));
+      bonusSum += 0.25 + (0.10 * aScale);
     }
 
     // 状況依存バフ
@@ -316,8 +347,12 @@
     const defMult = 100.0 / (100.0 + enemyDef);
 
     // 3. 耐性補正: 1 - (耐性% / 100)
-    // 腐食 (Corrosion) 状態なら敵の全属性耐性 -20%
-    let extraResShred = (enemy.artsAnomaly === 'corrosion') ? 20 : 0;
+    // 腐食 (Corrosion) 状態なら初期付着段階数(1〜4)に応じて敵の全属性耐性ダウン (基礎10% + 5%×段階数、デフォルト2段相当=20%)
+    let extraResShred = 0;
+    if (enemy.artsAnomaly === 'corrosion') {
+      const aScale = enemy.anomalyScale !== undefined ? Math.min(4, Math.max(1, enemy.anomalyScale)) : 2;
+      extraResShred = 10 + (5 * aScale);
+    }
     const resKeyMap = {
       '物理': 'physicalRes',
       '灼熱': 'heatRes',
@@ -330,8 +365,12 @@
     const resMult = 1.0 - (resVal / 100.0);
 
     // 4. 脆弱 / 被ダメージUP
-    // 感電 (Shock) 状態ならアーツ被ダメージ増加（アーツ脆弱 +20%）
-    let extraVuln = (enemy.artsAnomaly === 'shock' && dmgType !== '物理') ? 20 : 0;
+    // 感電 (Shock) 状態なら初期付着段階数(1〜4)に応じてアーツ被ダメージ増加 (基礎10% + 5%×段階数、デフォルト2段相当=20%)
+    let extraVuln = 0;
+    if (enemy.artsAnomaly === 'shock' && dmgType !== '物理') {
+      const aScale = enemy.anomalyScale !== undefined ? Math.min(4, Math.max(1, enemy.anomalyScale)) : 2;
+      extraVuln = 10 + (5 * aScale);
+    }
     const vulnVal = (enemy.vulnerability || 0.0) + extraVuln;
     const vulnMult = 1.0 + (vulnVal / 100.0);
 
@@ -403,7 +442,8 @@
       artsAttachment: 'none',
       attachmentStacks: 0,
       crushStacks: 0,
-      artsAnomaly: 'none'
+      artsAnomaly: 'none',
+      anomalyScale: 0
     };
 
     // パーティ1枠目のキャラと属性（スーの特殊仕様）
@@ -472,8 +512,16 @@
         // スキルの実効属性と付着判定（スーとオクギの特殊仕様を判定）
         let effectiveDamageType = skill.damageType || member.element || '物理';
         let skillInflictionType = skill.infliction ? skill.infliction.type : 'none';
-        let skillInflictionStacks = skill.infliction ? (skill.infliction.stacks || 1) : 1;
+        // Priority A 仕様: どのスキルを使用しても、1回の付与につき「1段階」までしか付着しない
+        let skillInflictionStacks = 1;
         let skillCrushType = skill.crush ? skill.crush.type : 'none';
+
+        // Priority A 仕様: チェンが扱う状態異常は「浮遊」のみであり「猛撃」や「破砕」は扱えない
+        if (member.id === 'char_chen' || (member.name && member.name.indexOf('チェン') !== -1)) {
+          if (skillCrushType === 'consume_smash' || skillCrushType === 'consume_shatter') {
+            skillCrushType = (skill.type === 'ult') ? 'none' : 'inflict';
+          }
+        }
 
         // スーの特殊ギミック: パーティ1枠目の属性を模倣
         if (skillInflictionType === 'copy_slot1' || (member.specialMechanic && member.specialMechanic.type === 'copy_slot1' && skill.type !== 'ult')) {
@@ -481,7 +529,7 @@
           skillInflictionType = elemToKey[slot1Element] || 'cryo';
         }
 
-        // オクギの特殊ギミック: 知意双形態
+        // オクギの特殊ギミック: 知意双形態（いずれの形態でも1回の付与は1段階）
         let isOkugiIntellectMode = false;
         if (skillInflictionType === 'okugi_dual' || (member.specialMechanic && member.specialMechanic.type === 'okugi_dual')) {
           isOkugiIntellectMode = (stats.int > stats.wil);
@@ -489,9 +537,9 @@
             skillInflictionType = 'nature';
             skillInflictionStacks = 1;
           } else {
-            // 意形態: アーツ付着+2段サポート
+            // 意形態: 既存付着属性があればその属性を+1段階、なければ自然付着+1段階
             skillInflictionType = currentEnemy.artsAttachment !== 'none' ? currentEnemy.artsAttachment : 'nature';
-            skillInflictionStacks = 2;
+            skillInflictionStacks = 1;
           }
         }
 
@@ -500,47 +548,69 @@
           artsAttachment: currentEnemy.artsAttachment,
           attachmentStacks: currentEnemy.attachmentStacks,
           crushStacks: currentEnemy.crushStacks,
-          artsAnomaly: currentEnemy.artsAnomaly
+          artsAnomaly: currentEnemy.artsAnomaly,
+          anomalyScale: currentEnemy.anomalyScale || 0
         };
 
         // シミュレーション文脈
         const context = {
           consumeAttachment: false,
           consumeCrush: false,
+          consumedCrushStacks: 0,
+          crushSkillType: skillCrushType,
+          isArtsBurst: false,
+          anomalyScale: 0,
           reactionType: null,
           actionNote: ''
         };
 
-        // (1) 物理クラッシュ消費判定（猛撃・破砕）
-        if (skillCrushType === 'consume_shatter' || skillCrushType === 'consume_smash') {
-          if (currentEnemy.crushStacks > 0) {
+        // (1) クラッシュ判定（Priority A 仕様）
+        // ・0段階の時は「付与」でも「消費」でも1段階になる（消費は発生しない）
+        // ・1段階以上の時は「付与」で+1段階（最大4）、「消費」で全段階消費して段階数に応じた追加効果
+        if (skillCrushType === 'inflict' || skillCrushType === 'consume_shatter' || skillCrushType === 'consume_smash') {
+          if (currentEnemy.crushStacks === 0) {
+            context.consumeCrush = false;
+          } else if (skillCrushType === 'consume_shatter' || skillCrushType === 'consume_smash') {
             context.consumeCrush = true;
+            context.consumedCrushStacks = currentEnemy.crushStacks;
           }
         }
 
-        // (2) アーツ反応 / 付着 / 爆発 判定
+        // (2) アーツ付着 / アーツ爆発 / アーツ異常 判定（Priority A 仕様）
+        // ・1回の付与につき1段階のみ
+        // ・同属性は最大4段階までスタック可能、4段階（最大）に達した時点で「アーツ爆発」発生
+        // ・既に付着がある状態に「異なる属性」を付着させた場合、後から付着した属性に応じた「アーツ異常」が発生
+        // ・異常の効果量は初めの属性種類には依存せず、初めに付着していた段階数(1〜4)にのみ依存
         if (skillInflictionType && skillInflictionType !== 'none') {
           if (currentEnemy.artsAttachment === 'none') {
-            // 新規付着
-            context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}付着(+${skillInflictionStacks})`;
+            // 新規付着 (1段階)
+            context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}付着(1段)`;
           } else if (currentEnemy.artsAttachment === skillInflictionType) {
-            // 同属性 -> アーツ爆発！
-            context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}爆発！`;
+            // 同属性スタック (最大4段階)
+            const nextStacks = Math.min(4, currentEnemy.attachmentStacks + 1);
+            if (nextStacks >= 4) {
+              context.isArtsBurst = true;
+              context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}爆発！(4段階到達)`;
+            } else {
+              context.actionNote = `${keyToElem[skillInflictionType] || skillInflictionType}付着(${nextStacks}段)`;
+            }
           } else {
-            // 異属性 -> アーツ反応（消費）！
+            // 異属性 -> 後から付着した属性に応じた「アーツ異常」発生！
+            const prevStacks = Math.min(4, Math.max(1, currentEnemy.attachmentStacks || 1));
             context.consumeAttachment = true;
-            if (currentEnemy.artsAttachment === 'heat' || skillInflictionType === 'heat') {
+            context.anomalyScale = prevStacks;
+            if (skillInflictionType === 'heat') {
               context.reactionType = 'combustion';
-              context.actionNote = '【燃焼反応】発動！';
-            } else if (currentEnemy.artsAttachment === 'nature' || skillInflictionType === 'nature') {
-              context.reactionType = 'corrosion';
-              context.actionNote = '【腐食反応】発動！(耐性-20%)';
-            } else if (currentEnemy.artsAttachment === 'cryo' || skillInflictionType === 'cryo') {
+              context.actionNote = `【燃焼異常】発動！(初期${prevStacks}段スケール)`;
+            } else if (skillInflictionType === 'cryo') {
               context.reactionType = 'freeze';
-              context.actionNote = '【凍結反応】発動！(行動停止)';
-            } else if (currentEnemy.artsAttachment === 'electric' || skillInflictionType === 'electric') {
+              context.actionNote = `【凍結異常】発動！(初期${prevStacks}段スケール)`;
+            } else if (skillInflictionType === 'electric') {
               context.reactionType = 'shock';
-              context.actionNote = '【感電反応】発動！(被アーツ+20%)';
+              context.actionNote = `【感電異常】発動！(初期${prevStacks}段スケール)`;
+            } else if (skillInflictionType === 'nature') {
+              context.reactionType = 'corrosion';
+              context.actionNote = `【腐食異常】発動！(初期${prevStacks}段スケール)`;
             }
           }
         }
@@ -551,9 +621,8 @@
           context.actionNote = (context.actionNote ? context.actionNote + ' ' : '') + '知形態(自然脆弱)';
         }
 
-        // スキルレベル
-        const skillLevel = 'lv9';
-        const memberLevel = 90;
+        // スキルレベル（メンバーの個別設定があれば参照、なければlv9）
+        const skillLevel = (item.skillLevel) || (member.skillLevels && member.skillLevels[skill.type]) || 'lv9';
 
         // 一時的に enemy 設定を currentEnemy に合わせて計算
         const calcEnemy = Object.assign({}, currentEnemy, {
@@ -570,28 +639,46 @@
         );
 
         // スキル発動後の敵状態遷移を適用
-        // (A) クラッシュの遷移
-        if (context.consumeCrush) {
-          currentEnemy.crushStacks = 0;
-        } else if (skillCrushType === 'inflict') {
-          currentEnemy.crushStacks = Math.min(4, currentEnemy.crushStacks + (skill.crush?.stacks || 1));
-          context.actionNote = `クラッシュ付与(${currentEnemy.crushStacks}段)`;
+        // (A) クラッシュの遷移（Priority A 仕様）
+        if (skillCrushType === 'inflict' || skillCrushType === 'consume_shatter' || skillCrushType === 'consume_smash') {
+          if (currentEnemy.crushStacks === 0) {
+            // 0段階の時はどちらのタイプを使用しても1段階になる
+            currentEnemy.crushStacks = 1;
+            const cLabel = (member.id === 'char_chen' || (member.name && member.name.indexOf('チェン') !== -1))
+              ? '浮遊(クラッシュ1段)'
+              : 'クラッシュ付与(0→1段)';
+            context.actionNote = context.actionNote ? `${context.actionNote} / ${cLabel}` : cLabel;
+          } else if (skillCrushType === 'inflict') {
+            // 1段階以上の時に「付与」を使うと段階数が増加（最大4段階）
+            currentEnemy.crushStacks = Math.min(4, currentEnemy.crushStacks + 1);
+            const cLabel = (member.id === 'char_chen' || (member.name && member.name.indexOf('チェン') !== -1))
+              ? `浮遊(クラッシュ${currentEnemy.crushStacks}段)`
+              : `クラッシュ付与(${currentEnemy.crushStacks}段)`;
+            context.actionNote = context.actionNote ? `${context.actionNote} / ${cLabel}` : cLabel;
+          } else if (context.consumeCrush) {
+            // 1段階以上の時に「消費」を使うと全段階消費し追加効果
+            const cTypeName = skillCrushType === 'consume_shatter' ? '破砕' : '猛撃';
+            const cLabel = `${cTypeName}(クラッシュ${context.consumedCrushStacks}段消費)`;
+            currentEnemy.crushStacks = 0;
+            context.actionNote = context.actionNote ? `${context.actionNote} / ${cLabel}` : cLabel;
+          }
         }
 
-        // (B) アーツ付着の遷移
+        // (B) アーツ付着の遷移（Priority A 仕様）
         if (skillInflictionType && skillInflictionType !== 'none') {
           if (context.consumeAttachment) {
-            // 反応により付着全消費、異常状態へ移行
+            // 異属性付着によりアーツ異常が発生：初期付着は消費され、後属性の異常状態＆初期段階数スケールを保持
             currentEnemy.artsAttachment = 'none';
             currentEnemy.attachmentStacks = 0;
             currentEnemy.artsAnomaly = context.reactionType || 'none';
+            currentEnemy.anomalyScale = context.anomalyScale || 1;
           } else if (currentEnemy.artsAttachment === skillInflictionType) {
-            // 爆発：スタック増加
-            currentEnemy.attachmentStacks = Math.min(4, currentEnemy.attachmentStacks + skillInflictionStacks);
+            // 同属性スタック増加（最大4段階、4段階到達時点でアーツ爆発発生）
+            currentEnemy.attachmentStacks = Math.min(4, currentEnemy.attachmentStacks + 1);
           } else {
-            // 新規付着
+            // 新規付着（常に1段階）
             currentEnemy.artsAttachment = skillInflictionType;
-            currentEnemy.attachmentStacks = Math.min(4, skillInflictionStacks);
+            currentEnemy.attachmentStacks = 1;
           }
         }
 
@@ -627,7 +714,8 @@
             artsAttachment: currentEnemy.artsAttachment,
             attachmentStacks: currentEnemy.attachmentStacks,
             crushStacks: currentEnemy.crushStacks,
-            artsAnomaly: currentEnemy.artsAnomaly
+            artsAnomaly: currentEnemy.artsAnomaly,
+            anomalyScale: currentEnemy.anomalyScale || 0
           }
         });
       });

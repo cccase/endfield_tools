@@ -106,8 +106,8 @@
                        "epCost":  100,
                        "infliction":  {
                                           "type":  "heat",
-                                          "stacks":  2,
-                                          "label":  "灼熱爆発(2段)"
+                                          "stacks":  1,
+                                          "label":  "灼熱付着(1段)"
                                       },
                        "crush":  {
                                      "type":  "none",

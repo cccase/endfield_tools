@@ -65,7 +65,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -91,7 +91,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -119,8 +119,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -238,8 +238,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  120,
                                               "infliction":  {
                                                                  "type":  "heat",
-                                                                 "stacks":  2,
-                                                                 "label":  "灼熱爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "灼熱付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -362,8 +362,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  100,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -486,8 +486,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  100,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -610,8 +610,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -734,8 +734,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -858,8 +858,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  80,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -982,8 +982,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  80,
                                               "infliction":  {
                                                                  "type":  "heat",
-                                                                 "stacks":  2,
-                                                                 "label":  "灼熱爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "灼熱付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -1057,7 +1057,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -1083,7 +1083,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -1111,8 +1111,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -1181,7 +1181,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "浮遊(クラッシュ付与+1段)"
                                                         }
                                           },
                                           {
@@ -1206,9 +1206,9 @@ window.CHARACTER_DATA = {
                                                                  "label":  "なし"
                                                              },
                                               "crush":  {
-                                                            "type":  "consume_smash",
-                                                            "stacks":  2,
-                                                            "label":  "猛撃(クラッシュ消費)"
+                                                            "type":  "inflict",
+                                                            "stacks":  1,
+                                                            "label":  "浮遊(クラッシュ付与+1段)"
                                                         }
                                           },
                                           {
@@ -1234,9 +1234,9 @@ window.CHARACTER_DATA = {
                                                                  "label":  "なし"
                                                              },
                                               "crush":  {
-                                                            "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "type":  "none",
+                                                            "stacks":  0,
+                                                            "label":  "なし"
                                                         }
                                           }
                                       ],
@@ -1305,7 +1305,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -1331,7 +1331,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -1359,8 +1359,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -1478,8 +1478,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  100,
                                               "infliction":  {
                                                                  "type":  "heat",
-                                                                 "stacks":  2,
-                                                                 "label":  "灼熱爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "灼熱付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -1602,8 +1602,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  70,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -1726,8 +1726,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  100,
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -1850,8 +1850,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -1979,8 +1979,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  300,
                                               "infliction":  {
                                                                  "type":  "heat",
-                                                                 "stacks":  2,
-                                                                 "label":  "灼熱爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "灼熱付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2103,8 +2103,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  240,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2178,7 +2178,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -2204,7 +2204,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -2232,8 +2232,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -2351,8 +2351,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  160,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2426,7 +2426,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -2454,7 +2454,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -2482,7 +2482,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -2508,7 +2508,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -2536,8 +2536,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -2655,8 +2655,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  100,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2724,7 +2724,7 @@ window.CHARACTER_DATA = {
                                               "infliction":  {
                                                                  "type":  "okugi_dual",
                                                                  "stacks":  1,
-                                                                 "label":  "【特殊】双形態(知:自然付着/意:付着+2段)"
+                                                                 "label":  "【特殊】双形態(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2752,7 +2752,7 @@ window.CHARACTER_DATA = {
                                               "infliction":  {
                                                                  "type":  "okugi_dual",
                                                                  "stacks":  1,
-                                                                 "label":  "【特殊】双形態(知:自然脆弱/意:付着支援)"
+                                                                 "label":  "【特殊】双形態(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2778,8 +2778,8 @@ window.CHARACTER_DATA = {
                                               "damageType":  "自然",
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2806,8 +2806,8 @@ window.CHARACTER_DATA = {
                                               "damageType":  "自然",
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段/反応)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -2941,8 +2941,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  80,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -3016,7 +3016,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -3042,7 +3042,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -3070,8 +3070,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -3140,7 +3140,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -3166,7 +3166,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -3194,8 +3194,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -3264,7 +3264,7 @@ window.CHARACTER_DATA = {
                                               "crush":  {
                                                             "type":  "inflict",
                                                             "stacks":  1,
-                                                            "label":  "クラッシュ付与(1段)"
+                                                            "label":  "クラッシュ付与(+1段)"
                                                         }
                                           },
                                           {
@@ -3290,7 +3290,7 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_smash",
-                                                            "stacks":  2,
+                                                            "stacks":  1,
                                                             "label":  "猛撃(クラッシュ消費)"
                                                         }
                                           },
@@ -3318,8 +3318,8 @@ window.CHARACTER_DATA = {
                                                              },
                                               "crush":  {
                                                             "type":  "consume_shatter",
-                                                            "stacks":  4,
-                                                            "label":  "破砕(クラッシュ全消費)"
+                                                            "stacks":  1,
+                                                            "label":  "破砕(クラッシュ消費)"
                                                         }
                                           }
                                       ],
@@ -3437,8 +3437,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -3583,8 +3583,8 @@ window.CHARACTER_DATA = {
                                               "damageType":  "寒冷",
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -3723,8 +3723,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -3875,8 +3875,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  200,
                                               "infliction":  {
                                                                  "type":  "nature",
-                                                                 "stacks":  2,
-                                                                 "label":  "自然爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "自然付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -4004,8 +4004,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "heat",
-                                                                 "stacks":  2,
-                                                                 "label":  "灼熱爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "灼熱付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -4128,8 +4128,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  80,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -4252,8 +4252,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  80,
                                               "infliction":  {
                                                                  "type":  "cryo",
-                                                                 "stacks":  2,
-                                                                 "label":  "寒冷爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "寒冷付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",
@@ -4376,8 +4376,8 @@ window.CHARACTER_DATA = {
                                               "epCost":  90,
                                               "infliction":  {
                                                                  "type":  "electric",
-                                                                 "stacks":  2,
-                                                                 "label":  "電磁爆発(2段)"
+                                                                 "stacks":  1,
+                                                                 "label":  "電磁付着(1段)"
                                                              },
                                               "crush":  {
                                                             "type":  "none",

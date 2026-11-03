@@ -106,8 +106,8 @@
                        "epCost":  80,
                        "infliction":  {
                                           "type":  "electric",
-                                          "stacks":  2,
-                                          "label":  "電磁爆発(2段)"
+                                          "stacks":  1,
+                                          "label":  "電磁付着(1段)"
                                       },
                        "crush":  {
                                      "type":  "none",
