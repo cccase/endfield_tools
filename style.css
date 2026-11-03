@@ -2722,6 +2722,10 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   background: #c0392b;
   color: #fff;
 }
+.track-code-badge.team_buff {
+  background: #16a085;
+  color: #fff;
+}
 .track-code-badge.buff {
   background: #27ae60;
   color: #fff;
@@ -2736,6 +2740,11 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   border-top: 2px solid #444;
   min-height: 64px;
 }
+.track-header-item.kind-team_buff {
+  background: rgba(22, 160, 133, 0.12);
+  border-top: 1px solid #333;
+  min-height: 64px;
+}
 .track-header-item.kind-buff {
   min-height: 64px;
 }
@@ -2746,6 +2755,11 @@ h1, h2 { color: var(--accent); margin-top: 0; }
 .track-lane.kind-enemy {
   background: rgba(48, 25, 28, 0.35);
   border-top: 2px solid #444;
+  min-height: 64px;
+}
+.track-lane.kind-team_buff {
+  background: rgba(22, 160, 133, 0.06);
+  border-top: 1px solid #333;
   min-height: 64px;
 }
 .track-lane.kind-buff {

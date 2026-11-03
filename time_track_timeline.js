@@ -132,7 +132,8 @@
         });
       });
 
-      // 2. 音声トラック群 (A1〜A5): 敵デバフ＆各キャラのバフ・持続効果トラック
+      // 2. 音声トラック群 (A1: 案山子, A2: チーム全体バフ, A3〜: 各キャラバフ)
+      // A1: 案山子 (敵デバフ・アーツ付着)
       this.tracks.push({
         id: 'track_enemy_debuffs',
         code: 'A1',
@@ -142,10 +143,21 @@
         charId: null
       });
 
+      // A2: 👥 チーム全体バフ（全体バフ専用トラック）
+      this.tracks.push({
+        id: 'track_team_buffs',
+        code: 'A2',
+        name: '👥 チーム全体バフ',
+        icon: '',
+        kind: 'team_buff',
+        charId: null
+      });
+
+      // A3〜A6: 各キャラのバフ/単体バフ/装備トラック
       this.party.forEach((p, idx) => {
         this.tracks.push({
           id: `track_char_${p.id}`,
-          code: `A${idx + 2}`,
+          code: `A${idx + 3}`,
           name: `${p.name} (バフ/装備)`,
           icon: p.icon,
           kind: 'buff',
@@ -241,6 +253,79 @@
     }
 
     /**
+     * ダメージ計算に関係するバフのみを抽出（耐久系・回復・防御等は除外、リンク・蓄積は保留）
+     */
+    isDamageRelatedBuff(b) {
+      if (!b) return false;
+      const cg = b.calcGroup || '';
+      // 耐久・回復・防御・シールド系は除外
+      if (cg === 'defense' || cg === 'heal' || cg === 'shield' || cg === 'res_up' || cg === 'hp_up') {
+        return false;
+      }
+      const n = b.name || '';
+      const desc = b.description || '';
+      if (n.includes('防御') || n.includes('回復') || n.includes('治癒') || n.includes('加護') || n.includes('シールド') ||
+          desc.includes('防御力+') || desc.includes('HP回復') || desc.includes('HPを回復') || desc.includes('最大HP+')) {
+        return false;
+      }
+      // 特殊処理（リンク効果、スーのダメージ蓄積）は保留
+      if (b.special === 'accumulate' || n.includes('ダメージ蓄積') || n.includes('リンク効果') || n.includes('リンク消費')) {
+        return false;
+      }
+      const validGroups = ['atk_pct', 'damage_up', 'amp', 'crit_rate', 'crit_dmg', 'taken_damage_up', 'vulnerability'];
+      if (cg && validGroups.includes(cg)) return true;
+      return (b.stat === 'damageUp' || b.stat === 'atkPercent' || b.stat === 'amp' || b.stat === 'critRate' || b.stat === 'critDamage');
+    }
+
+    /**
+     * アーツ付着ノードの段階数を時系列でシミュレーションし、ノード内の段階数・爆発表示を動的更新
+     */
+    recalculateAttachmentNodeStacks() {
+      const attachNodes = this.blocks.filter(b => b.kind === 'attach_node' && b.inflictionType && b.inflictionType !== 'crush');
+      attachNodes.sort((a, b) => a.startTime - b.startTime);
+
+      let currentElem = null;
+      let currentStacks = 0;
+
+      const elemIcons = { heat: '🔥', cryo: '❄️', electric: '⚡', nature: '🌿' };
+      const elemNames = { heat: '灼熱', cryo: '寒冷', electric: '電磁', nature: '自然' };
+
+      attachNodes.forEach(node => {
+        const elem = node.inflictionType;
+        const icon = elemIcons[elem] || '✨';
+        const eName = elemNames[elem] || 'アーツ';
+
+        if (!currentElem || currentElem === elem) {
+          currentElem = elem;
+          currentStacks = Math.min(4, currentStacks + 1);
+          if (currentStacks >= 4) {
+            node.stacks = 4;
+            node.isBurst = true;
+            node.shortBadge = '💥爆';
+            node.name = `💥 ${eName}爆発！(4段階到達)`;
+            node.color = 'linear-gradient(135deg, #e74c3c, #f39c12)';
+            currentElem = null;
+            currentStacks = 0; // 爆発で消費
+          } else {
+            node.stacks = currentStacks;
+            node.isBurst = false;
+            node.shortBadge = `${icon}${currentStacks}`;
+            node.name = `${icon} ${eName}付着(${currentStacks}段)`;
+          }
+        } else {
+          // 異属性付着（アーツ異常発動）
+          const prevStacks = currentStacks;
+          node.stacks = 1;
+          node.isBurst = false;
+          node.shortBadge = `${icon}異`;
+          node.name = `🌀 ${eName}異常発動！(初期${prevStacks}段)`;
+          currentElem = null;
+          currentStacks = 0;
+        }
+      });
+    }
+
+    /**
      * 装備武器（S3効果）に連動する時限バフを自動配置
      */
     spawnWeaponBuffsForSkill(clip, p, skill) {
@@ -260,6 +345,11 @@
         ? s3Skill.ranks[s3Rank - 1][0]
         : String(s3Skill.ranks[s3Rank - 1] || '');
       if (!rawText) return;
+
+      // 耐久系（防御力UP、回復など）は除外
+      if (rawText.includes('防御力+') || rawText.includes('HP+') || rawText.includes('HPを回復') || rawText.includes('治癒')) {
+        return;
+      }
 
       let shouldTrigger = false;
       const isSkillCast = (skType === 'skill' || skType === 'skill2' || skType === 'skill3');
@@ -324,7 +414,13 @@
         statLabel = '被ダメUP';
       }
 
-      const targetTrackId = isEnemy ? 'track_enemy_debuffs' : `track_char_${p.id}`;
+      // 全体バフなら新設の「全体バフトラック」、敵なら「案山子トラック」、自己なら「キャラバフトラック」へ！
+      let targetTrackId = `track_char_${p.id}`;
+      if (isEnemy) {
+        targetTrackId = 'track_enemy_debuffs';
+      } else if (isTeam) {
+        targetTrackId = 'track_team_buffs';
+      }
 
       this.blocks.push({
         id: this._nextId('blk'),
@@ -335,7 +431,7 @@
         name: `⚔️ [${weapon.name}] S3: ${statLabel}+${Math.round(bonusVal * 1000) / 10}%`,
         startTime: tStart,
         duration: duration,
-        color: 'linear-gradient(135deg, #b7950b, #7d6608)',
+        color: isTeam ? 'linear-gradient(135deg, #27ae60, #1e8449)' : 'linear-gradient(135deg, #b7950b, #7d6608)',
         calcGroup: calcGroup,
         bonusType: isTeam ? 'teamDamageUp' : (isEnemy ? 'vuln' : 'damageUp'),
         bonusValue: bonusVal,
@@ -358,24 +454,45 @@
         generic: 'linear-gradient(135deg, #f39c12, #d68910)'
       };
 
-      // (A) スキル固有の自己バフ / チームバフ / デバフ（一次情報完全紐付け）
+      // (A) スキル固有の自己バフ / チームバフ / 単体バフ / デバフ
       if (skill.buffs && skill.buffs.length > 0) {
         skill.buffs.forEach(b => {
+          // ダメージに関係のない耐久・回復・防御効果は除外！
+          if (!this.isDamageRelatedBuff(b)) return;
+
           const dur = b.duration || 10;
           const valNum = parseFloat(b.value) || 15;
           const isEnemy = (b.target === 'enemy');
           const isParty = (b.target === 'party');
-          const targetTrackId = isEnemy ? 'track_enemy_debuffs' : `track_char_${p.id}`;
+          const isSingle = (b.target === 'single');
 
+          let targetTrackId = `track_char_${p.id}`;
+          let assignedCharId = p.id;
           let targetPrefix = '';
-          if (isParty) targetPrefix = '👥[全体] ';
-          else if (isEnemy) targetPrefix = '🎯[デバフ] ';
+
+          if (isEnemy) {
+            targetTrackId = 'track_enemy_debuffs';
+            assignedCharId = null;
+            targetPrefix = '🎯[デバフ] ';
+          } else if (isParty) {
+            // 新設の「全体バフトラック」へ配置！
+            targetTrackId = 'track_team_buffs';
+            assignedCharId = null;
+            targetPrefix = '👥[全体] ';
+          } else if (isSingle) {
+            // ザイヒ等の「味方単体へのバフ」は、対象味方のバフトラックに直接配置！
+            // デフォルト対象：パーティ内の他キャラ（スロット1、または自身以外のアタッカー）
+            const targetMember = this.party.find(m => m.id !== p.id) || p;
+            targetTrackId = `track_char_${targetMember.id}`;
+            assignedCharId = targetMember.id;
+            targetPrefix = `🎯[${targetMember.name}へ] `;
+          }
 
           this.blocks.push({
             id: this._nextId('blk'),
             linkedClipId: clip.id,
             trackId: targetTrackId,
-            charId: isEnemy || isParty ? null : p.id,
+            charId: assignedCharId,
             kind: 'buff',
             name: `${targetPrefix}${b.name || sName} (+${valNum}%)`,
             startTime: tStart,
@@ -450,10 +567,11 @@
           });
         }
       } else if (armorSet === 'set_pioneer' && (p.baseRecoverSP > 0 || p.baseRefundSP > 0)) {
+        // パイオニアセット効果はチーム全員バフなので「全体バフトラック」へ！
         this.blocks.push({
           id: this._nextId('blk'),
           linkedClipId: clip.id,
-          trackId: `track_char_${p.id}`,
+          trackId: 'track_team_buffs',
           charId: null, // チーム全体バフ
           kind: 'buff',
           name: 'パイオニア [全体与ダメ+16%]',
@@ -474,7 +592,7 @@
       // (E) 敵へのアーツ付着ノード（秒数なし！スキル発動時刻にピン配置）
       // 【ユーザー重要指示】
       // 1. 付着に秒数はいらない。基本的に秒数はバフのみでいい。
-      // 2. アーツ付着はタイムライン上で「1つのノード（ブロック）」としてシンプルに配置。
+      // 2. アーツ付着はタイムライン上で「1つのノード（ブロック）」としてシンプルに配置し、段階数が変動・表現される。
       // 3. 付着のないスキル（通常攻撃、ティフォロス、イヴォンヌ、リーノ、ペリカ等）では付着ノードを生成しない！
       const infType = skill.infliction ? skill.infliction.type : 'none';
       const crushType = skill.crush ? skill.crush.type : 'none';
@@ -538,6 +656,9 @@
           source: `${p.name} [${sName}]`
         });
       }
+
+      // 全体の付着ノードの段階数を最新の時系列で再計算
+      this.recalculateAttachmentNodeStacks();
     }
 
     addManualBuffBlock(presetKey) {
@@ -550,9 +671,8 @@
         vuln20: { name: '感電/腐食異常 (+20%)', duration: 10, bonusType: 'vuln', bonusValue: 20, valueText: '敵被ダメージ+20%', color: 'linear-gradient(135deg, #2ecc71, #27ae60)', isEnemy: true }
       };
       const pr = presets[presetKey] || presets.dmg20;
-      const targetTrackId = pr.isEnemy
-        ? 'track_enemy_debuffs'
-        : (this.party[0] ? `track_char_${this.party[0].id}` : 'track_enemy_debuffs');
+      // 敵なら案山子トラック、味方全体バフなら新設の「全体バフトラック」へ！
+      const targetTrackId = pr.isEnemy ? 'track_enemy_debuffs' : 'track_team_buffs';
 
       this.blocks.push({
         id: this._nextId('blk'),
@@ -656,11 +776,17 @@
           // 秒数幅のあるバフブロック（duration > 0）のみ有効範囲を集計
           if (blk.kind !== 'attach_node' && (blk.duration || 0) > 0) {
             if (t >= blk.startTime && t <= (blk.startTime + blk.duration)) {
-              const appliesToChar = (!blk.charId || blk.charId === clip.charId || blk.bonusType === 'teamDamageUp' || blk.bonusType === 'vuln');
-              if (!appliesToChar) return;
+              // 縦軸（時間軸）での合算ルール:
+              // 1. スキル使用キャラのバフ（自己バフ＋受けた単体バフ＋武器バフ）: track_char_${clip.charId}
+              // 2. 全体バフトラックのバフ: track_team_buffs
+              // 3. 案山子トラックのデバフ: track_enemy_debuffs
+              const isCharBuff = (blk.trackId === `track_char_${clip.charId}`);
+              const isTeamBuff = (blk.trackId === 'track_team_buffs' || blk.bonusType === 'teamDamageUp');
+              const isEnemyDebuff = (blk.trackId === 'track_enemy_debuffs' || blk.bonusType === 'vuln');
+              if (!isCharBuff && !isTeamBuff && !isEnemyDebuff) return;
 
               const val = blk.bonusValue || 0;
-              const grp = blk.calcGroup || (blk.bonusType === 'vuln' ? 'vulnerability' : 'damage_up');
+              const grp = blk.calcGroup || (isEnemyDebuff ? 'vulnerability' : 'damage_up');
 
               if (grp === 'atk_pct') {
                 extraAtkPct += val;
@@ -781,6 +907,7 @@
 
     render() {
       if (!this.container) return;
+      this.recalculateAttachmentNodeStacks();
       this.renderClipPaletteBar();
 
       const headerListEl = this.container.querySelector('#track-header-list');
