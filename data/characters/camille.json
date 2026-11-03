@@ -567,5 +567,7 @@
     "title": "カミーユ 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【必殺派生「追及」】必殺技発動後15秒間、次の戦技がSP消費0の「追及」に変化し、戦技ではなく『連携技ダメージ』として扱われる（連携技ダメUPが乗り、戦技ダメUP・リンクは乗らない）"
-  }
+  },
+  "recommendedArmorSet": "set_volcano",
+  "recommendedArmorSetName": "火山用セット"
 }

@@ -534,5 +534,7 @@
         }
       ]
     }
-  ]
+  ],
+  "recommendedArmorSet": "set_pulse",
+  "recommendedArmorSetName": "パルス式セット"
 }

@@ -539,5 +539,7 @@
     "title": "ダパン 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【単体命中時クラッシュ追加】戦技が敵1体のみに命中した場合、浮遊分とは別にクラッシュを追加で1段階付与する(CD45秒)"
-  }
+  },
+  "recommendedArmorSet": "set_kyuho",
+  "recommendedArmorSetName": "旧鋒セット"
 }

@@ -526,5 +526,7 @@
     "title": "キャッチャー 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【防御力参照追加ダメ】追加で[300+防御力×5.0]の物理ダメージを1回与える(攻撃力倍率ではなく固定値+防御力スケーリング)"
-  }
+  },
+  "recommendedArmorSet": "set_pioneer",
+  "recommendedArmorSetName": "パイオニアセット"
 }

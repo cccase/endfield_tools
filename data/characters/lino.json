@@ -1,1 +1,586 @@
-{   "$schema": "../../schemas/character.schema.json",   "id": "char_lino",   "name": "リーノ",   "icon": "image/lino.png",   "rarity": 6,   "element": "電磁",   "weaponType": "長柄武器",   "class": "補助",   "mainStat": "知性",   "subStat": "意志",   "baseStats": {     "hp": 6800,     "atk": 920,     "strength": 120,     "agility": 110,     "intellect": 285,     "willpower": 185,     "artsIntensity": 80,     "critRate": 0.05,     "critDamage": 0.5   },   "defaultEfficiency": 142.7,   "defaultPotential": 0,   "baseRefundSP": 0,   "baseRecoverSP": 0,   "potentials": [     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     }   ],   "skills": [     {       "id": "skill_lino",       "type": "skill",       "name": "キラキラフォーカス",       "shortName": "戦技",       "damageType": "電磁",       "multipliers": {         "lv9": 3.78,         "lv10_spec1": 4.15,         "lv11_spec2": 4.57,         "lv12_spec3": 5.04       },       "hitCount": 3,       "buffs": [         {           "id": "buff_lino_skill_atk_pct",           "name": "キラキラフォーカス [【枠1】攻撃力%枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "atk_pct",           "calcGroupLabel": "【枠1】攻撃力%枠",           "value": 10,           "duration": 60.0,           "description": "ライブモード中チーム全員の攻撃力UP: R1=+6% → R9=+8% → 特化III=+10%",           "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"         },         {           "id": "buff_lino_skill_multiplier",           "name": "キラキラフォーカス [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 60.0,           "description": "初回電磁ダメ: R1=107%→R9=192%→特化III=240% / 10秒毎追加電磁ダメ: R1=53%→R9=96%→特化III=120%",           "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"         },         {           "id": "buff_lino_skill_aux",           "name": "キラキラフォーカス [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体回復",           "category": "buff",           "calcGroup": "heal",           "calcGroupLabel": "【回復・耐久枠】(全体回復)",           "value": 0,           "duration": 60.0,           "description": "SP消費25 / ブレイク値3 / 3秒毎範囲HP回復: R1[18+敏捷×0.04]→R9[38+敏捷×0.09]→特化III[41+敏捷×0.09]",           "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"         },         {           "id": "buff_lino_skill_special",           "name": "キラキラフォーカス [【特殊枠（例外処理）】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "special",           "calcGroup": "special",           "calcGroupLabel": "【特殊枠（例外処理）】",           "value": 0,           "duration": 60.0,           "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）",           "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療",           "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"         }       ],       "spCost": 25,       "infliction": {         "type": "none",         "stacks": 0,         "label": "付着なし",         "description": "アーツ付着効果はありません（※属性ダメージのみ）"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "なし",         "description": "クラッシュ効果はありません"       },       "description": "敵に電磁ダメージを与え、その後ライブモード(60秒)に入る。持続期間中、チーム全員の攻撃力をアップし、範囲内のオペレーターを治療し続ける。（※電磁付着なし）",       "damageTypeDetail": "電磁",       "rawText": "敵に電磁ダメージを与え、その後ライブモード(60秒)に入る。持続期間中、チーム全員の攻撃力をアップし、範囲内のオペレーターを治療し続ける。（※電磁付着なし）",       "attachText": "なし",       "anomalyText": "なし",       "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"     },     {       "id": "combo_lino",       "type": "combo",       "name": "ときめきメロディー",       "shortName": "連携技",       "damageType": "電磁",       "multipliers": {         "lv9": 2.94,         "lv10_spec1": 3.2,         "lv11_spec2": 3.52,         "lv12_spec3": 3.88       },       "hitCount": 1,       "buffs": [         {           "id": "buff_lino_combo_multiplier",           "name": "ときめきメロディー [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "single",           "targetLabel": "単体バフ",           "category": "buff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 10.0,           "description": "電磁ダメ倍率: R1=160% → R9=288% → 特化III=360%",           "condition": "ライブモード期間中、敵がアーツ異常を受けるか消費された時発動可 / CD: R1=10秒→R9=9秒→特化III=8秒"         },         {           "id": "buff_lino_combo_aux",           "name": "ときめきメロディー [【補助・耐久・リソース枠】]",           "target": "single",           "targetLabel": "単体回復",           "category": "buff",           "calcGroup": "heal",           "calcGroupLabel": "【回復・耐久枠】(単体回復)",           "value": 0,           "duration": 10.0,           "description": "ブレイク値5 / 必殺チャージ+20回復 / 操作キャラHP回復: R1[72+敏捷×0.17]→R9[151+敏捷×0.35]→特化III[162+敏捷×0.38]",           "condition": "ライブモード期間中、敵がアーツ異常を受けるか消費された時発動可 / CD: R1=10秒→R9=9秒→特化III=8秒"         }       ],       "infliction": {         "type": "none",         "stacks": 0,         "label": "付着なし",         "description": "アーツ付着効果はありません（※属性ダメージのみ）"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "なし",         "description": "クラッシュ効果はありません"       },       "description": "ライブモード期間中、敵がアーツ異常を受けるかアーツ異常が消費されたときに発動可能。敵に電磁ダメージを与え、操作オペレーターを治療し、必殺チャージを20回復する。（※電磁付着なし）",       "damageTypeDetail": "電磁",       "rawText": "ライブモード期間中、敵がアーツ異常を受けるかアーツ異常が消費されたときに発動可能。敵に電磁ダメージを与え、操作オペレーターを治療し、必殺チャージを20回復する。（※電磁付着なし）",       "attachText": "なし",       "anomalyText": "なし"     },     {       "id": "ult_lino",       "type": "ult",       "name": "綺羅星コンチェルト",       "shortName": "必殺技",       "damageType": "電磁",       "multipliers": {         "lv9": 7.56,         "lv10_spec1": 8.24,         "lv11_spec2": 9.03,         "lv12_spec3": 9.98       },       "hitCount": 5,       "buffs": [         {           "id": "buff_lino_ult_atk_pct",           "name": "綺羅星コンチェルト [【枠1】攻撃力%枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "atk_pct",           "calcGroupLabel": "【枠1】攻撃力%枠",           "value": 10,           "duration": 15.0,           "description": "パフォーマンスモード中チーム全員の攻撃力+10%",           "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"         },         {           "id": "buff_lino_ult_multiplier",           "name": "綺羅星コンチェルト [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 20.0,           "description": "ステージ花火: R1=142%→R9=256%→特化III=320% / クライマックス最高潮: R1=284%→R9=512%→特化III=640% / 1.5秒毎歌唱: R1=27%→R9=48%→特化III=60%(完走時終了ダメは歌唱の3倍=180%)",           "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"         },         {           "id": "buff_lino_ult_amp",           "name": "綺羅星コンチェルト [【枠5】増幅枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "amp",           "calcGroupLabel": "【枠5】増幅枠",           "value": 60,           "duration": 15.0,           "description": "チーム全員に意志参照の電磁増幅 & 自然増幅: 意志1につきR1=+0.018%(上限40%) → R9=+0.032%(上限45%) → 特化III=+0.04%(上限60%)",           "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"         },         {           "id": "buff_lino_ult_aux",           "name": "綺羅星コンチェルト [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体回復",           "category": "buff",           "calcGroup": "heal",           "calcGroupLabel": "【回復・耐久枠】(全体回復)",           "value": 0,           "duration": 20.0,           "description": "ブレイク値20 / 初回全体回復: R1[324+敏捷×0.76]→特化III[729+敏捷×1.7] / 1.5秒毎範囲回復: R1[36+敏捷×0.08]→特化III[81+敏捷×0.19](完走時3倍全体回復)",           "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"         }       ],       "epCost": 160,       "infliction": {         "type": "none",         "stacks": 0,         "label": "付着なし",         "description": "アーツ付着効果はありません（※属性ダメージのみ）"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)",         "description": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)"       },       "description": "チーム全員を治療しパフォーマンスモード(15秒)に入る。クライマックス最高潮で広範囲の敵に電磁ダメージを与え、強制的に感電状態にする。持続中、チーム全員の攻撃力+10%、意志に応じて電磁増幅と自然増幅を付与する。（※電磁付着なし）",       "damageTypeDetail": "電磁",       "rawText": "チーム全員を治療しパフォーマンスモード(15秒)に入る。クライマックス最高潮で広範囲の敵に電磁ダメージを与え、強制的に感電状態にする。持続中、チーム全員の攻撃力+10%、意志に応じて電磁増幅と自然増幅を付与する。（※電磁付着なし）",       "attachText": "なし",       "anomalyText": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)"     }   ],   "motifWeapon": "プリズムナイトデビュー",   "recommendedWeapons": [     "プリズムナイトデビュー",     "黄金時代"   ],   "normalAttack": {     "name": "キラめきハート",     "damageType": "電磁",     "damageTypeDetail": "電磁",     "attach": "なし",     "multipliers": "通常1〜5段: R1[19%/27%/27%/36%/45%]→R9[34%/48%/48%/65%/80%]→特化III[42%/60%/60%/81%/100%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",     "breakValue": "重攻撃ブレイク19 / 終撃時SP回復",     "description": "最大5段の攻撃で、敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値19を与える。",     "raw": "最大5段の攻撃で、敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値19を与える。"   },   "talents": [     {       "id": "talent_lino_1",       "name": "アイドルゾーン",       "description": "ライブモードとパフォーマンスモードの持続中、範囲内のオペレーターが受ける回復効率+10%→+20%、受けるダメージ-10%→-20%",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "talent",       "calcGroupLabel": "素質効果",       "buffs": [         {           "id": "buff_lino_talent1_aux",           "name": "アイドルゾーン [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 3.0,           "description": "範囲内の味方の受ける回復効率+10%(昇進1)→+20%(昇進2)、受けるダメージ-10%(昇進1)→-20%(昇進2)",           "condition": "ライブモード・パフォーマンスモード中(範囲離脱後も3秒持続)"         }       ]     },     {       "id": "talent_lino_2",       "name": "一等星の応援",       "description": "連携技を発動すると、チーム内の電磁または自然属性のオペレーターが次の戦技を発動するとき、SPが5→10返還される（持続30秒・重ね掛け不可）",       "target": "single",       "targetLabel": "単体バフ",       "calcGroup": "talent",       "calcGroupLabel": "素質効果",       "buffs": [         {           "id": "buff_lino_talent2_aux",           "name": "一等星の応援 [【補助・耐久・リソース枠】]",           "target": "single",           "targetLabel": "単体バフ",           "category": "buff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 30.0,           "description": "SP5(昇進2) → SP10(昇進3)返還",           "condition": "連携技発動後30秒間、チーム内の電磁または自然オペレーターが次の戦技を発動した時(1回で終了・重ね掛け不可)"         }       ]     }   ],   "specialMechanic": {     "title": "リーノ 固有メカニクス・特殊仕様",     "type": "custom",     "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"   } }
+{
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_lino",
+  "name": "リーノ",
+  "icon": "image/lino.png",
+  "rarity": 6,
+  "element": "電磁",
+  "weaponType": "長柄武器",
+  "class": "補助",
+  "mainStat": "知性",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 920,
+    "strength": 120,
+    "agility": 110,
+    "intellect": 285,
+    "willpower": 185,
+    "artsIntensity": 80,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 142.7,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_lino",
+      "type": "skill",
+      "name": "キラキラフォーカス",
+      "shortName": "戦技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 3.78,
+        "lv10_spec1": 4.15,
+        "lv11_spec2": 4.57,
+        "lv12_spec3": 5.04
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_lino_skill_atk_pct",
+          "name": "キラキラフォーカス [【枠1】攻撃力%枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "atk_pct",
+          "calcGroupLabel": "【枠1】攻撃力%枠",
+          "value": 10,
+          "duration": 60.0,
+          "description": "ライブモード中チーム全員の攻撃力UP: R1=+6% → R9=+8% → 特化III=+10%",
+          "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"
+        },
+        {
+          "id": "buff_lino_skill_multiplier",
+          "name": "キラキラフォーカス [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 60.0,
+          "description": "初回電磁ダメ: R1=107%→R9=192%→特化III=240% / 10秒毎追加電磁ダメ: R1=53%→R9=96%→特化III=120%",
+          "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"
+        },
+        {
+          "id": "buff_lino_skill_aux",
+          "name": "キラキラフォーカス [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体回復",
+          "category": "buff",
+          "calcGroup": "heal",
+          "calcGroupLabel": "【回復・耐久枠】(全体回復)",
+          "value": 0,
+          "duration": 60.0,
+          "description": "SP消費25 / ブレイク値3 / 3秒毎範囲HP回復: R1[18+敏捷×0.04]→R9[38+敏捷×0.09]→特化III[41+敏捷×0.09]",
+          "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療"
+        },
+        {
+          "id": "buff_lino_skill_special",
+          "name": "キラキラフォーカス [【特殊枠（例外処理）】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 60.0,
+          "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）",
+          "condition": "SP消費25 / 60秒間「ライブモード」に移行(期間中戦技はSP0の「モード停止」に変化) / 10秒毎追加攻撃・3秒毎範囲治療",
+          "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
+        }
+      ],
+      "spCost": 25,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "敵に電磁ダメージを与え、その後ライブモード(60秒)に入る。持続期間中、チーム全員の攻撃力をアップし、範囲内のオペレーターを治療し続ける。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "敵に電磁ダメージを与え、その後ライブモード(60秒)に入る。持続期間中、チーム全員の攻撃力をアップし、範囲内のオペレーターを治療し続ける。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし",
+      "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
+    },
+    {
+      "id": "combo_lino",
+      "type": "combo",
+      "name": "ときめきメロディー",
+      "shortName": "連携技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 2.94,
+        "lv10_spec1": 3.2,
+        "lv11_spec2": 3.52,
+        "lv12_spec3": 3.88
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_lino_combo_multiplier",
+          "name": "ときめきメロディー [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 10.0,
+          "description": "電磁ダメ倍率: R1=160% → R9=288% → 特化III=360%",
+          "condition": "ライブモード期間中、敵がアーツ異常を受けるか消費された時発動可 / CD: R1=10秒→R9=9秒→特化III=8秒"
+        },
+        {
+          "id": "buff_lino_combo_aux",
+          "name": "ときめきメロディー [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体回復",
+          "category": "buff",
+          "calcGroup": "heal",
+          "calcGroupLabel": "【回復・耐久枠】(単体回復)",
+          "value": 0,
+          "duration": 10.0,
+          "description": "ブレイク値5 / 必殺チャージ+20回復 / 操作キャラHP回復: R1[72+敏捷×0.17]→R9[151+敏捷×0.35]→特化III[162+敏捷×0.38]",
+          "condition": "ライブモード期間中、敵がアーツ異常を受けるか消費された時発動可 / CD: R1=10秒→R9=9秒→特化III=8秒"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "ライブモード期間中、敵がアーツ異常を受けるかアーツ異常が消費されたときに発動可能。敵に電磁ダメージを与え、操作オペレーターを治療し、必殺チャージを20回復する。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "ライブモード期間中、敵がアーツ異常を受けるかアーツ異常が消費されたときに発動可能。敵に電磁ダメージを与え、操作オペレーターを治療し、必殺チャージを20回復する。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "なし"
+    },
+    {
+      "id": "ult_lino",
+      "type": "ult",
+      "name": "綺羅星コンチェルト",
+      "shortName": "必殺技",
+      "damageType": "電磁",
+      "multipliers": {
+        "lv9": 7.56,
+        "lv10_spec1": 8.24,
+        "lv11_spec2": 9.03,
+        "lv12_spec3": 9.98
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_lino_ult_atk_pct",
+          "name": "綺羅星コンチェルト [【枠1】攻撃力%枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "atk_pct",
+          "calcGroupLabel": "【枠1】攻撃力%枠",
+          "value": 10,
+          "duration": 15.0,
+          "description": "パフォーマンスモード中チーム全員の攻撃力+10%",
+          "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"
+        },
+        {
+          "id": "buff_lino_ult_multiplier",
+          "name": "綺羅星コンチェルト [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ステージ花火: R1=142%→R9=256%→特化III=320% / クライマックス最高潮: R1=284%→R9=512%→特化III=640% / 1.5秒毎歌唱: R1=27%→R9=48%→特化III=60%(完走時終了ダメは歌唱の3倍=180%)",
+          "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"
+        },
+        {
+          "id": "buff_lino_ult_amp",
+          "name": "綺羅星コンチェルト [【枠5】増幅枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "amp",
+          "calcGroupLabel": "【枠5】増幅枠",
+          "value": 60,
+          "duration": 15.0,
+          "description": "チーム全員に意志参照の電磁増幅 & 自然増幅: 意志1につきR1=+0.018%(上限40%) → R9=+0.032%(上限45%) → 特化III=+0.04%(上限60%)",
+          "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"
+        },
+        {
+          "id": "buff_lino_ult_aux",
+          "name": "綺羅星コンチェルト [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体回復",
+          "category": "buff",
+          "calcGroup": "heal",
+          "calcGroupLabel": "【回復・耐久枠】(全体回復)",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ブレイク値20 / 初回全体回復: R1[324+敏捷×0.76]→特化III[729+敏捷×1.7] / 1.5秒毎範囲回復: R1[36+敏捷×0.08]→特化III[81+敏捷×0.19](完走時3倍全体回復)",
+          "condition": "必殺チャージ消費160 / CD20秒 / 15秒間「パフォーマンスモード」(ライブモードを上書き・1.5秒毎歌唱・完走時3倍フィニッシュ)"
+        }
+      ],
+      "epCost": 160,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)",
+        "description": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)"
+      },
+      "description": "チーム全員を治療しパフォーマンスモード(15秒)に入る。クライマックス最高潮で広範囲の敵に電磁ダメージを与え、強制的に感電状態にする。持続中、チーム全員の攻撃力+10%、意志に応じて電磁増幅と自然増幅を付与する。（※電磁付着なし）",
+      "damageTypeDetail": "電磁",
+      "rawText": "チーム全員を治療しパフォーマンスモード(15秒)に入る。クライマックス最高潮で広範囲の敵に電磁ダメージを与え、強制的に感電状態にする。持続中、チーム全員の攻撃力+10%、意志に応じて電磁増幅と自然増幅を付与する。（※電磁付着なし）",
+      "attachText": "なし",
+      "anomalyText": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)"
+    }
+  ],
+  "motifWeapon": "プリズムナイトデビュー",
+  "recommendedWeapons": [
+    "プリズムナイトデビュー",
+    "黄金時代"
+  ],
+  "normalAttack": {
+    "name": "キラめきハート",
+    "damageType": "電磁",
+    "damageTypeDetail": "電磁",
+    "attach": "なし",
+    "multipliers": "通常1〜5段: R1[19%/27%/27%/36%/45%]→R9[34%/48%/48%/65%/80%]→特化III[42%/60%/60%/81%/100%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク19 / 終撃時SP回復",
+    "description": "最大5段の攻撃で、敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値19を与える。",
+    "raw": "最大5段の攻撃で、敵に電磁ダメージを与える（※電磁付着なし）。重攻撃はブレイク値19を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_lino_1",
+      "name": "アイドルゾーン",
+      "description": "ライブモードとパフォーマンスモードの持続中、範囲内のオペレーターが受ける回復効率+10%→+20%、受けるダメージ-10%→-20%",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lino_talent1_aux",
+          "name": "アイドルゾーン [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "範囲内の味方の受ける回復効率+10%(昇進1)→+20%(昇進2)、受けるダメージ-10%(昇進1)→-20%(昇進2)",
+          "condition": "ライブモード・パフォーマンスモード中(範囲離脱後も3秒持続)"
+        }
+      ]
+    },
+    {
+      "id": "talent_lino_2",
+      "name": "一等星の応援",
+      "description": "連携技を発動すると、チーム内の電磁または自然属性のオペレーターが次の戦技を発動するとき、SPが5→10返還される（持続30秒・重ね掛け不可）",
+      "target": "single",
+      "targetLabel": "単体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_lino_talent2_aux",
+          "name": "一等星の応援 [【補助・耐久・リソース枠】]",
+          "target": "single",
+          "targetLabel": "単体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 30.0,
+          "description": "SP5(昇進2) → SP10(昇進3)返還",
+          "condition": "連携技発動後30秒間、チーム内の電磁または自然オペレーターが次の戦技を発動した時(1回で終了・重ね掛け不可)"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "リーノ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
+  },
+  "recommendedArmorSet": "set_ruten",
+  "recommendedArmorSetName": "流転セット"
+}

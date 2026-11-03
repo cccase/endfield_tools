@@ -354,5 +354,7 @@
     "title": "イヴォンヌ 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【寒冷/自然付着全消費→強制凍結＆超高速必殺チャージ】自身は寒冷付着を持たず、味方が付与した寒冷付着または自然付着を全段階消費して強制凍結に変換し、消費段階×30＋10の必殺チャージを獲得する。"
-  }
+  },
+  "recommendedArmorSet": "set_pulse",
+  "recommendedArmorSetName": "パルス式セット"
 }

@@ -580,5 +580,7 @@
     "title": "ポグラニチニク 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【鉄誓5スタック連動追撃】物理異常または自身の連携技1ヒットごとに鉄誓を消費して盾兵追撃＆SP回復が発生し、任意のオペレーターによる誘発時に素質2の単体バフが付与される"
-  }
+  },
+  "recommendedArmorSet": "set_pioneer",
+  "recommendedArmorSetName": "パイオニアセット"
 }

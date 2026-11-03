@@ -1,1 +1,605 @@
-{   "$schema": "../../schemas/character.schema.json",   "id": "char_purrchena",   "name": "プチエナ",   "icon": "image/purrchena.png",   "rarity": 5,   "element": "物理",   "weaponType": "片手剣",   "class": "重装",   "mainStat": "筋力",   "subStat": "意志",   "baseStats": {     "hp": 6800,     "atk": 630,     "strength": 245,     "agility": 95,     "intellect": 100,     "willpower": 160,     "artsIntensity": 30,     "critRate": 0.05,     "critDamage": 0.5   },   "defaultEfficiency": 100.0,   "defaultPotential": 0,   "baseRefundSP": 0,   "baseRecoverSP": 0,   "potentials": [     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 1,       "type": "potential_1",       "name": "潜在1段階",       "description": "1凸強化効果",       "target": "enemy",       "targetLabel": "敵デバフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 2,       "type": "potential_2",       "name": "潜在2段階",       "description": "2凸強化効果",       "target": "enemy",       "targetLabel": "敵デバフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 3,       "type": "potential_3",       "name": "潜在3段階",       "description": "3凸強化効果",       "target": "enemy",       "targetLabel": "敵デバフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 4,       "type": "potential_4",       "name": "潜在4段階",       "description": "4凸強化効果",       "target": "enemy",       "targetLabel": "敵デバフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     },     {       "level": 5,       "type": "potential_5",       "name": "潜在5段階",       "description": "5凸強化効果",       "target": "enemy",       "targetLabel": "敵デバフ",       "calcGroup": "potential",       "calcGroupLabel": "潜在能力"     }   ],   "skills": [     {       "id": "skill_purrchena",       "type": "skill",       "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」",       "shortName": "戦技",       "damageType": "自然",       "multipliers": {         "lv9": 3.6,         "lv10_spec1": 3.95,         "lv11_spec2": 4.35,         "lv12_spec3": 4.8       },       "hitCount": 3,       "buffs": [         {           "id": "buff_purrchena_skill_multiplier",           "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 3.0,           "description": "派生頭突き自然ダメ倍率: R1=178% → R9=320% → 特化III=400%",           "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化"         },         {           "id": "buff_purrchena_skill_aux",           "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 3.0,           "description": "自身と周囲の味方に加護90%(3秒、ブロック毎に減衰) / 頭突きブレイク値20 / SP返還20(+初ブロック時20)",           "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化"         },         {           "id": "buff_purrchena_skill_special",           "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【特殊枠（例外処理）】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "special",           "calcGroup": "special",           "calcGroupLabel": "【特殊枠（例外処理）】",           "value": 0,           "duration": 3.0,           "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える",           "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化",           "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える"         }       ],       "spCost": 100,       "infliction": {         "type": "nature",         "stacks": 1,         "label": "🌿 自然付着 (+1段階)",         "description": "自然付着(1段階・派生戦技「お友だちから離れろ～！」発動時)"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "なし",         "description": "クラッシュ効果はありません"       },       "description": "盾を構えている間加護(90%)を与えSP20返還(初ブロック成功時さらにSP20返還)。発動後、戦技が「お友だちから離れろ～！」に替わり、頭突きして自然ダメージを与え、自然付着を付与する。",       "damageTypeDetail": "なし(初段構え) → 自然(派生頭突き)",       "rawText": "盾を構えている間加護(90%)を与えSP20返還(初ブロック成功時さらにSP20返還)。発動後、戦技が「お友だちから離れろ～！」に替わり、頭突きして自然ダメージを与え、自然付着を付与する。",       "attachText": "自然付着(1段階・派生戦技「お友だちから離れろ～！」発動時)",       "anomalyText": "なし",       "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える"     },     {       "id": "combo_purrchena",       "type": "combo",       "name": "お菓子or“プレゼント”",       "shortName": "連携技",       "damageType": "物理",       "multipliers": {         "lv9": 2.8,         "lv10_spec1": 3.05,         "lv11_spec2": 3.35,         "lv12_spec3": 3.7       },       "hitCount": 1,       "buffs": [         {           "id": "buff_purrchena_combo_multiplier",           "name": "お菓子or“プレゼント” [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 24.0,           "description": "ランダム分岐: ①爆弾(物理): R1=133%→R9=240%→特化III=300% / ②手作りアイテム(吸引+物理): R1=66%→R9=120%→特化III=150% / ③お菓子: ダメなし(追加回復)",           "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現"         },         {           "id": "buff_purrchena_combo_aux",           "name": "お菓子or“プレゼント” [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体回復",           "category": "buff",           "calcGroup": "heal",           "calcGroupLabel": "【回復・耐久枠】(全体回復)",           "value": 0,           "duration": 24.0,           "description": "必殺チャージ+10 / 基礎範囲HP回復: R1[216+意志×0.5]→特化III[486+意志×1.13] / お菓子当選時操作キャラ追加回復: R1[144+意志×0.34]→特化III[324+意志×0.76] / 爆弾時ブレイク10",           "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現"         },         {           "id": "buff_purrchena_combo_special",           "name": "お菓子or“プレゼント” [【特殊枠（例外処理）】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "special",           "calcGroup": "special",           "calcGroupLabel": "【特殊枠（例外処理）】",           "value": 0,           "duration": 24.0,           "description": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する",           "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現",           "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する"         }       ],       "infliction": {         "type": "none",         "stacks": 0,         "label": "付着なし",         "description": "アーツ付着効果はありません（※属性ダメージのみ）"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "なし",         "description": "クラッシュ効果はありません"       },       "description": "範囲内のオペレーターを治療し、爆弾・手作りアイテム・おいし～お菓子のいずれか1つがランダムで出現する。",       "damageTypeDetail": "物理(ランダム抽選時)",       "rawText": "範囲内のオペレーターを治療し、爆弾・手作りアイテム・おいし～お菓子のいずれか1つがランダムで出現する。",       "attachText": "なし",       "anomalyText": "なし",       "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する"     },     {       "id": "ult_purrchena",       "type": "ult",       "name": "悪いことは許しませ～ん！",       "shortName": "必殺技",       "damageType": "物理",       "multipliers": {         "lv9": 7.2,         "lv10_spec1": 7.85,         "lv11_spec2": 8.6,         "lv12_spec3": 9.5       },       "hitCount": 5,       "buffs": [         {           "id": "buff_purrchena_ult_multiplier",           "name": "悪いことは許しませ～ん！ [【枠3】基礎倍率・乗算・追加倍率枠]",           "target": "enemy",           "targetLabel": "敵デバフ",           "category": "debuff",           "calcGroup": "multiplier",           "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",           "value": 0,           "duration": 20.0,           "description": "3個それぞれ爆弾(133%→240%→300%)または手作りアイテム(66%→120%→150%) / スペシャルギフト当選時(基礎確率15%→18%→20%): 物理ダメ267%→480%→600%",           "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"         },         {           "id": "buff_purrchena_ult_vulnerability",           "name": "悪いことは許しませ～ん！ [【枠11】敵脆弱枠]",           "target": "enemy",           "targetLabel": "敵デバフ",           "category": "debuff",           "calcGroup": "vulnerability",           "calcGroupLabel": "【枠11】敵脆弱枠",           "value": 0,           "duration": 20.0,           "description": "スペシャルギフト当選時、敵にアーツ脆弱(5秒): R1=1.5% → R9=2.0% → 特化III=2.5%",           "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"         },         {           "id": "buff_purrchena_ult_aux",           "name": "悪いことは許しませ～ん！ [【補助・耐久・リソース枠】]",           "target": "enemy",           "targetLabel": "敵デバフ",           "category": "debuff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 20.0,           "description": "ブレイク値: 爆弾10 / スペシャルギフト15",           "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"         },         {           "id": "buff_purrchena_ult_special",           "name": "悪いことは許しませ～ん！ [【特殊枠（例外処理）】]",           "target": "enemy",           "targetLabel": "敵デバフ",           "category": "debuff",           "calcGroup": "special",           "calcGroupLabel": "【特殊枠（例外処理）】",           "value": 0,           "duration": 20.0,           "description": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる",           "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)",           "special": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる"         }       ],       "epCost": 100,       "infliction": {         "type": "none",         "stacks": 0,         "label": "付着なし",         "description": "アーツ付着効果はありません（※属性ダメージのみ）"       },       "crush": {         "type": "none",         "stacks": 0,         "label": "なし",         "description": "クラッシュ効果はありません"       },       "description": "ギフトを3つ開け爆弾か手作りアイテムがランダム出現。一定確率でスペシャルギフトが出現し物理ダメージとブレイク値15、アーツ脆弱(1.5%→2.5%, 5秒)を付与する。",       "damageTypeDetail": "物理",       "rawText": "ギフトを3つ開け爆弾か手作りアイテムがランダム出現。一定確率でスペシャルギフトが出現し物理ダメージとブレイク値15、アーツ脆弱(1.5%→2.5%, 5秒)を付与する。",       "attachText": "なし",       "anomalyText": "なし",       "special": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる"     }   ],   "motifWeapon": "スイーツタイム",   "recommendedWeapons": [     "スイーツタイム",     "ファーサイト"   ],   "normalAttack": {     "name": "お菓子、どうぞ～！",     "damageType": "物理",     "damageTypeDetail": "物理",     "attach": "なし",     "multipliers": "通常1〜3段: R1[48%/52%/102%]→R9[86%/93%/184%]→特化III[108%/116%/230%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",     "breakValue": "重攻撃ブレイク21 / 終撃時SP回復",     "description": "最大3段の攻撃で、敵に物理ダメージを与える。重攻撃はブレイク値21を与える。",     "raw": "最大3段の攻撃で、敵に物理ダメージを与える。重攻撃はブレイク値21を与える。"   },   "talents": [     {       "id": "talent_purrchena_1",       "name": "謝っても遅いのですっ！",       "description": "戦技で初めてブロック成功時、必殺チャージ6→10回復、次の必殺技でスペシャルギフト出現確率+10%(最大3回)",       "target": "self",       "targetLabel": "自分へのバフ（自己バフ）",       "calcGroup": "special",       "calcGroupLabel": "素質効果",       "buffs": [         {           "id": "buff_purrchena_talent1_aux",           "name": "謝っても遅いのですっ！ [【補助・耐久・リソース枠】]",           "target": "self",           "targetLabel": "自分へのバフ（自己バフ）",           "category": "buff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 0.0,           "description": "必殺チャージ+6(昇進1)→+10(昇進2)回復",           "condition": "戦技で初めて敵攻撃のブロックに成功した時(最大3回重ね掛け)"         },         {           "id": "buff_purrchena_talent1_special",           "name": "謝っても遅いのですっ！ [【特殊枠（例外処理）】]",           "target": "self",           "targetLabel": "自分へのバフ（自己バフ）",           "category": "special",           "calcGroup": "special",           "calcGroupLabel": "【特殊枠（例外処理）】",           "value": 0,           "duration": 0.0,           "description": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)",           "condition": "戦技で初めて敵攻撃のブロックに成功した時(最大3回重ね掛け)",           "special": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)"         }       ],       "special": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)"     },     {       "id": "talent_purrchena_2",       "name": "アンバサダーの務め",       "description": "チーム内のHPが満タンのオペレーター全員は次に受けるダメージが50%ダウンする（各90秒に1回）",       "target": "team",       "targetLabel": "全体バフ",       "calcGroup": "talent",       "calcGroupLabel": "素質効果",       "buffs": [         {           "id": "buff_purrchena_talent2_aux",           "name": "アンバサダーの務め [【補助・耐久・リソース枠】]",           "target": "team",           "targetLabel": "全体バフ",           "category": "buff",           "calcGroup": "aux",           "calcGroupLabel": "【補助・耐久・リソース枠】",           "value": 0,           "duration": 180.0,           "description": "HP満タン時の次回被ダメージ-50%",           "condition": "戦場に出ている間、HP満タンの味方全員(各オペレーター180秒→90秒毎に1回)"         }       ]     }   ],   "specialMechanic": {     "title": "プチエナ 固有メカニクス・特殊仕様",     "type": "custom",     "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える ／ 【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する ／ 【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる ／ 【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%) ／ 【確率乗算】スペシャルギフトの基礎出現率が1.5倍(特化IIIで20%→30%)"   } }
+{
+  "$schema": "../../schemas/character.schema.json",
+  "id": "char_purrchena",
+  "name": "プチエナ",
+  "icon": "image/purrchena.png",
+  "rarity": 5,
+  "element": "物理",
+  "weaponType": "片手剣",
+  "class": "重装",
+  "mainStat": "筋力",
+  "subStat": "意志",
+  "baseStats": {
+    "hp": 6800,
+    "atk": 630,
+    "strength": 245,
+    "agility": 95,
+    "intellect": 100,
+    "willpower": 160,
+    "artsIntensity": 30,
+    "critRate": 0.05,
+    "critDamage": 0.5
+  },
+  "defaultEfficiency": 100.0,
+  "defaultPotential": 0,
+  "baseRefundSP": 0,
+  "baseRecoverSP": 0,
+  "potentials": [
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 1,
+      "type": "potential_1",
+      "name": "潜在1段階",
+      "description": "1凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 2,
+      "type": "potential_2",
+      "name": "潜在2段階",
+      "description": "2凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 3,
+      "type": "potential_3",
+      "name": "潜在3段階",
+      "description": "3凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 4,
+      "type": "potential_4",
+      "name": "潜在4段階",
+      "description": "4凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    },
+    {
+      "level": 5,
+      "type": "potential_5",
+      "name": "潜在5段階",
+      "description": "5凸強化効果",
+      "target": "enemy",
+      "targetLabel": "敵デバフ",
+      "calcGroup": "potential",
+      "calcGroupLabel": "潜在能力"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill_purrchena",
+      "type": "skill",
+      "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」",
+      "shortName": "戦技",
+      "damageType": "自然",
+      "multipliers": {
+        "lv9": 3.6,
+        "lv10_spec1": 3.95,
+        "lv11_spec2": 4.35,
+        "lv12_spec3": 4.8
+      },
+      "hitCount": 3,
+      "buffs": [
+        {
+          "id": "buff_purrchena_skill_multiplier",
+          "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 3.0,
+          "description": "派生頭突き自然ダメ倍率: R1=178% → R9=320% → 特化III=400%",
+          "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化"
+        },
+        {
+          "id": "buff_purrchena_skill_aux",
+          "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "自身と周囲の味方に加護90%(3秒、ブロック毎に減衰) / 頭突きブレイク値20 / SP返還20(+初ブロック時20)",
+          "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化"
+        },
+        {
+          "id": "buff_purrchena_skill_special",
+          "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【特殊枠（例外処理）】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 3.0,
+          "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える",
+          "condition": "初段:SP消費100(即時SP20返還、初ブロック成功時さらに+3秒延長＆SP20返還) → 派生戦技「お友だちから離れろ～！」に変化",
+          "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える"
+        }
+      ],
+      "spCost": 100,
+      "infliction": {
+        "type": "nature",
+        "stacks": 1,
+        "label": "🌿 自然付着 (+1段階)",
+        "description": "自然付着(1段階・派生戦技「お友だちから離れろ～！」発動時)"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "盾を構えている間加護(90%)を与えSP20返還(初ブロック成功時さらにSP20返還)。発動後、戦技が「お友だちから離れろ～！」に替わり、頭突きして自然ダメージを与え、自然付着を付与する。",
+      "damageTypeDetail": "なし(初段構え) → 自然(派生頭突き)",
+      "rawText": "盾を構えている間加護(90%)を与えSP20返還(初ブロック成功時さらにSP20返還)。発動後、戦技が「お友だちから離れろ～！」に替わり、頭突きして自然ダメージを与え、自然付着を付与する。",
+      "attachText": "自然付着(1段階・派生戦技「お友だちから離れろ～！」発動時)",
+      "anomalyText": "なし",
+      "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える"
+    },
+    {
+      "id": "combo_purrchena",
+      "type": "combo",
+      "name": "お菓子or“プレゼント”",
+      "shortName": "連携技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 2.8,
+        "lv10_spec1": 3.05,
+        "lv11_spec2": 3.35,
+        "lv12_spec3": 3.7
+      },
+      "hitCount": 1,
+      "buffs": [
+        {
+          "id": "buff_purrchena_combo_multiplier",
+          "name": "お菓子or“プレゼント” [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 24.0,
+          "description": "ランダム分岐: ①爆弾(物理): R1=133%→R9=240%→特化III=300% / ②手作りアイテム(吸引+物理): R1=66%→R9=120%→特化III=150% / ③お菓子: ダメなし(追加回復)",
+          "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現"
+        },
+        {
+          "id": "buff_purrchena_combo_aux",
+          "name": "お菓子or“プレゼント” [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体回復",
+          "category": "buff",
+          "calcGroup": "heal",
+          "calcGroupLabel": "【回復・耐久枠】(全体回復)",
+          "value": 0,
+          "duration": 24.0,
+          "description": "必殺チャージ+10 / 基礎範囲HP回復: R1[216+意志×0.5]→特化III[486+意志×1.13] / お菓子当選時操作キャラ追加回復: R1[144+意志×0.34]→特化III[324+意志×0.76] / 爆弾時ブレイク10",
+          "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現"
+        },
+        {
+          "id": "buff_purrchena_combo_special",
+          "name": "お菓子or“プレゼント” [【特殊枠（例外処理）】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 24.0,
+          "description": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する",
+          "condition": "操作キャラ被弾時発動可 / CD: R1=24秒→R9=23秒→特化III=22秒 / 範囲治療＋3種アイテムからランダム1つ出現",
+          "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する"
+        }
+      ],
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "範囲内のオペレーターを治療し、爆弾・手作りアイテム・おいし～お菓子のいずれか1つがランダムで出現する。",
+      "damageTypeDetail": "物理(ランダム抽選時)",
+      "rawText": "範囲内のオペレーターを治療し、爆弾・手作りアイテム・おいし～お菓子のいずれか1つがランダムで出現する。",
+      "attachText": "なし",
+      "anomalyText": "なし",
+      "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する"
+    },
+    {
+      "id": "ult_purrchena",
+      "type": "ult",
+      "name": "悪いことは許しませ～ん！",
+      "shortName": "必殺技",
+      "damageType": "物理",
+      "multipliers": {
+        "lv9": 7.2,
+        "lv10_spec1": 7.85,
+        "lv11_spec2": 8.6,
+        "lv12_spec3": 9.5
+      },
+      "hitCount": 5,
+      "buffs": [
+        {
+          "id": "buff_purrchena_ult_multiplier",
+          "name": "悪いことは許しませ～ん！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "multiplier",
+          "calcGroupLabel": "【枠3】基礎倍率・乗算・追加倍率枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "3個それぞれ爆弾(133%→240%→300%)または手作りアイテム(66%→120%→150%) / スペシャルギフト当選時(基礎確率15%→18%→20%): 物理ダメ267%→480%→600%",
+          "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"
+        },
+        {
+          "id": "buff_purrchena_ult_vulnerability",
+          "name": "悪いことは許しませ～ん！ [【枠11】敵脆弱枠]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "vulnerability",
+          "calcGroupLabel": "【枠11】敵脆弱枠",
+          "value": 0,
+          "duration": 20.0,
+          "description": "スペシャルギフト当選時、敵にアーツ脆弱(5秒): R1=1.5% → R9=2.0% → 特化III=2.5%",
+          "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"
+        },
+        {
+          "id": "buff_purrchena_ult_aux",
+          "name": "悪いことは許しませ～ん！ [【補助・耐久・リソース枠】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "ブレイク値: 爆弾10 / スペシャルギフト15",
+          "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)"
+        },
+        {
+          "id": "buff_purrchena_ult_special",
+          "name": "悪いことは許しませ～ん！ [【特殊枠（例外処理）】]",
+          "target": "enemy",
+          "targetLabel": "敵デバフ",
+          "category": "debuff",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 20.0,
+          "description": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる",
+          "condition": "必殺チャージ消費100 / CD20秒 / ギフト3個開封(爆弾or手作りアイテム抽選＋確率でスペシャルギフト出現)",
+          "special": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる"
+        }
+      ],
+      "epCost": 100,
+      "infliction": {
+        "type": "none",
+        "stacks": 0,
+        "label": "付着なし",
+        "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+      },
+      "crush": {
+        "type": "none",
+        "stacks": 0,
+        "label": "なし",
+        "description": "クラッシュ効果はありません"
+      },
+      "description": "ギフトを3つ開け爆弾か手作りアイテムがランダム出現。一定確率でスペシャルギフトが出現し物理ダメージとブレイク値15、アーツ脆弱(1.5%→2.5%, 5秒)を付与する。",
+      "damageTypeDetail": "物理",
+      "rawText": "ギフトを3つ開け爆弾か手作りアイテムがランダム出現。一定確率でスペシャルギフトが出現し物理ダメージとブレイク値15、アーツ脆弱(1.5%→2.5%, 5秒)を付与する。",
+      "attachText": "なし",
+      "anomalyText": "なし",
+      "special": "【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる"
+    }
+  ],
+  "motifWeapon": "スイーツタイム",
+  "recommendedWeapons": [
+    "スイーツタイム",
+    "ファーサイト"
+  ],
+  "normalAttack": {
+    "name": "お菓子、どうぞ～！",
+    "damageType": "物理",
+    "damageTypeDetail": "物理",
+    "attach": "なし",
+    "multipliers": "通常1〜3段: R1[48%/52%/102%]→R9[86%/93%/184%]→特化III[108%/116%/230%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+    "breakValue": "重攻撃ブレイク21 / 終撃時SP回復",
+    "description": "最大3段の攻撃で、敵に物理ダメージを与える。重攻撃はブレイク値21を与える。",
+    "raw": "最大3段の攻撃で、敵に物理ダメージを与える。重攻撃はブレイク値21を与える。"
+  },
+  "talents": [
+    {
+      "id": "talent_purrchena_1",
+      "name": "謝っても遅いのですっ！",
+      "description": "戦技で初めてブロック成功時、必殺チャージ6→10回復、次の必殺技でスペシャルギフト出現確率+10%(最大3回)",
+      "target": "self",
+      "targetLabel": "自分へのバフ（自己バフ）",
+      "calcGroup": "special",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_purrchena_talent1_aux",
+          "name": "謝っても遅いのですっ！ [【補助・耐久・リソース枠】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "必殺チャージ+6(昇進1)→+10(昇進2)回復",
+          "condition": "戦技で初めて敵攻撃のブロックに成功した時(最大3回重ね掛け)"
+        },
+        {
+          "id": "buff_purrchena_talent1_special",
+          "name": "謝っても遅いのですっ！ [【特殊枠（例外処理）】]",
+          "target": "self",
+          "targetLabel": "自分へのバフ（自己バフ）",
+          "category": "special",
+          "calcGroup": "special",
+          "calcGroupLabel": "【特殊枠（例外処理）】",
+          "value": 0,
+          "duration": 0.0,
+          "description": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)",
+          "condition": "戦技で初めて敵攻撃のブロックに成功した時(最大3回重ね掛け)",
+          "special": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)"
+        }
+      ],
+      "special": "【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%)"
+    },
+    {
+      "id": "talent_purrchena_2",
+      "name": "アンバサダーの務め",
+      "description": "チーム内のHPが満タンのオペレーター全員は次に受けるダメージが50%ダウンする（各90秒に1回）",
+      "target": "team",
+      "targetLabel": "全体バフ",
+      "calcGroup": "talent",
+      "calcGroupLabel": "素質効果",
+      "buffs": [
+        {
+          "id": "buff_purrchena_talent2_aux",
+          "name": "アンバサダーの務め [【補助・耐久・リソース枠】]",
+          "target": "team",
+          "targetLabel": "全体バフ",
+          "category": "buff",
+          "calcGroup": "aux",
+          "calcGroupLabel": "【補助・耐久・リソース枠】",
+          "value": 0,
+          "duration": 180.0,
+          "description": "HP満タン時の次回被ダメージ-50%",
+          "condition": "戦場に出ている間、HP満タンの味方全員(各オペレーター180秒→90秒毎に1回)"
+        }
+      ]
+    }
+  ],
+  "specialMechanic": {
+    "title": "プチエナ 固有メカニクス・特殊仕様",
+    "type": "custom",
+    "description": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える ／ 【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する ／ 【ランダム抽選必殺】3つのギフトの中身とスペシャルギフト出現(基礎15〜20%＋素質1で最大+30%)が確率抽選となる ／ 【確率加算】次の必殺技のスペシャルギフト出現確率+10%×最大3回(最大+30%) ／ 【確率乗算】スペシャルギフトの基礎出現率が1.5倍(特化IIIで20%→30%)"
+  },
+  "recommendedArmorSet": "set_pioneer",
+  "recommendedArmorSetName": "パイオニアセット"
+}

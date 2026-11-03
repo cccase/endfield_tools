@@ -554,5 +554,7 @@
     "title": "アルデリア 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【戦技連鎖再発動】近くの別の腐食状態の敵に対しても戦技「ドリーラッシュ」をもう1回自動発動する"
-  }
+  },
+  "recommendedArmorSet": "set_ruten",
+  "recommendedArmorSetName": "流転セット"
 }

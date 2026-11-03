@@ -341,5 +341,7 @@
     "title": "ウルフガード 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【状態条件による付着/異常消費排他分岐】目標が燃焼・感電でない時は「灼熱付着(1段階)」を付与するが、燃焼または感電状態の時は「灼熱付着を付与せず」そのアーツ異常を消費して850%(特化III)の追加射撃を行う。"
-  }
+  },
+  "recommendedArmorSet": "set_volcano",
+  "recommendedArmorSetName": "火山用セット"
 }

@@ -541,5 +541,7 @@
     "title": "ペリカ 固有メカニクス・特殊仕様",
     "type": "custom",
     "description": "【クラッシュ参照連鎖】連携技がクラッシュ状態の敵に命中すると周囲の敵へ1回連鎖攻撃する"
-  }
+  },
+  "recommendedArmorSet": "set_pulse",
+  "recommendedArmorSetName": "パルス式セット"
 }

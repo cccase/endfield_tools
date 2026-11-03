@@ -1774,6 +1774,64 @@ function makeDefaultWeapon(p) {
   return { id: defId, ...WEAPON_DEFAULT_RANKS };
 }
 
+// デフォルト防具の決定：
+// 1. キャラクターの recommendedArmorSet があればそれを採用
+// 2. なければ属性・クラスから自動フォールバック
+// 3. 該当セットの胴・腕・アクセサリー（2枠）を取得してフルセットを返す
+function getDefaultArmorForChar(p) {
+  if (!p) return { armorSet: 'none', body: 'none', arm: 'none', acc1: 'none', acc2: 'none' };
+
+  let setId = p.recommendedArmorSet;
+  if (!setId || setId === 'none') {
+    if (p.class === '補助') {
+      setId = 'set_ruten';
+    } else if (p.element === '灼熱' || p.element === '自然') {
+      setId = 'set_volcano';
+    } else if (p.element === '電磁' || p.element === '寒冷') {
+      setId = 'set_pulse';
+    } else if (p.element === '物理') {
+      setId = (p.class === '重装' || p.class === '先鋒') ? 'set_pioneer' : 'set_kyuho';
+    } else {
+      setId = 'set_ruten';
+    }
+  }
+
+  const em = (typeof equipmentMaster !== 'undefined' && equipmentMaster) ? equipmentMaster : (typeof DEFAULT_EQUIPMENT !== 'undefined' ? DEFAULT_EQUIPMENT : null);
+  if (!em) {
+    return { armorSet: setId, body: 'none', arm: 'none', acc1: 'none', acc2: 'none' };
+  }
+
+  const matchBody = (em.bodyArmor || []).find(b => b.detail && b.detail.setId === setId) || (em.bodyArmor || []).find(b => b.id && b.id.includes(setId.replace('set_', '')));
+  const matchArm = (em.armArmor || []).find(a => a.detail && a.detail.setId === setId) || (em.armArmor || []).find(a => a.id && a.id.includes(setId.replace('set_', '')));
+  const matchAccs = (em.accessory || []).filter(a => (a.detail && a.detail.setId === setId) || (a.id && a.id.includes(setId.replace('set_', ''))));
+
+  return {
+    armorSet: setId,
+    body: matchBody ? matchBody.id : 'none',
+    arm: matchArm ? matchArm.id : 'none',
+    acc1: matchAccs.length > 0 ? matchAccs[0].id : 'none',
+    acc2: matchAccs.length > 1 ? matchAccs[1].id : (matchAccs.length > 0 ? matchAccs[0].id : 'none')
+  };
+}
+
+function makeDefaultArmor(p) {
+  return getDefaultArmorForChar(p);
+}
+
+function normalizePartyEquipment(p) {
+  if (!p.equipment || typeof p.equipment !== 'object') {
+    p.equipment = makeDefaultArmor(p);
+    return p.equipment;
+  }
+  const isAllNone = (!p.equipment.armorSet || p.equipment.armorSet === 'none') &&
+                    (!p.equipment.body || p.equipment.body === 'none') &&
+                    (!p.equipment.arm || p.equipment.arm === 'none');
+  if (isAllNone) {
+    p.equipment = makeDefaultArmor(p);
+  }
+  return p.equipment;
+}
+
 // 旧形式（equipment.weapon）や未設定の武器データを正規化する
 // 旧URLデータ（新武器体系導入前）は武器なしとし、合計効率が変わらないよう基礎効率を再計算する
 function normalizePartyWeapon(p) {
@@ -2346,14 +2404,14 @@ function syncPartyWithAllCharacters() {
       p.weaponType = fresh.weaponType;
       p.motifWeapon = fresh.motifWeapon;
       p.recommendedWeapons = fresh.recommendedWeapons;
+      p.recommendedArmorSet = fresh.recommendedArmorSet;
+      p.recommendedArmorSetName = fresh.recommendedArmorSetName;
       p.baseStats = fresh.baseStats;
       p.mainStat = fresh.mainStat;
       p.subStat = fresh.subStat;
       p.specialMechanic = fresh.specialMechanic;
     }
-    if (!p.equipment) {
-      p.equipment = { armorSet: 'none', body: 'none', arm: 'none', acc1: 'none', acc2: 'none' };
-    }
+    normalizePartyEquipment(p);
     if (p.baseEfficiency === undefined) {
       const bonus = calculateArmorBonus(p.equipment);
       p.baseEfficiency = Math.max(0, Math.round(((p.efficiency !== undefined ? p.efficiency : 100) - bonus) * 10) / 10);
@@ -2689,24 +2747,24 @@ function addToParty(charData) {
   // 初期武器は優先度仕様に基づくデフォルト武器（スキル1・2: Lv9 / スキル3: Lv4）
   const weapon = makeDefaultWeapon(charData);
   const weaponBonus = calculateWeaponBonus(weapon);
-  // defaultEfficiency が100%を超えて個別設定されているキャラは、その値を初期武器込みの合計値とみなす
+
+  // 初期防具はお薦め防具セットに基づくデフォルト装備
+  const equipment = makeDefaultArmor(charData);
+  const armorBonus = calculateArmorBonus(equipment);
+  const totalEquipBonus = Math.round((weaponBonus + armorBonus) * 10) / 10;
+
+  // defaultEfficiency が100%を超えて個別設定されているキャラは、その値を初期装備込みの合計値とみなす
   const baseEfficiency = defaultEfficiency > 100
-    ? Math.max(0, Math.round((defaultEfficiency - weaponBonus) * 10) / 10)
+    ? Math.max(0, Math.round((defaultEfficiency - totalEquipBonus) * 10) / 10)
     : defaultEfficiency;
 
   party.push({
     ...charData,
-    efficiency: Math.round((baseEfficiency + weaponBonus) * 10) / 10,
+    efficiency: Math.round((baseEfficiency + totalEquipBonus) * 10) / 10,
     baseEfficiency: baseEfficiency,
     potential: defaultPotential,
     weapon: weapon,
-    equipment: {
-      armorSet: 'none',
-      body: 'none',
-      arm: 'none',
-      acc1: 'none',
-      acc2: 'none'
-    },
+    equipment: equipment,
     isEquipOpen: false,
     isWeaponOpen: false
   });
@@ -2828,13 +2886,7 @@ function renderParty() {
   container.innerHTML = '';
 
   party.forEach((p, index) => {
-    p.equipment = p.equipment || {
-      armorSet: 'none',
-      body: 'none',
-      arm: 'none',
-      acc1: 'none',
-      acc2: 'none'
-    };
+    normalizePartyEquipment(p);
     normalizePartyWeapon(p);
 
     const el = document.createElement('div');
@@ -3345,8 +3397,17 @@ window.renderEquipPickerList = function() {
       return true;
     });
 
+    // おすすめ防具セットを最優先で上位ソート
+    filtered.sort((a, b) => {
+      const aRec = (p.recommendedArmorSet && p.recommendedArmorSet === a.id) ? 1 : 0;
+      const bRec = (p.recommendedArmorSet && p.recommendedArmorSet === b.id) ? 1 : 0;
+      if (aRec !== bRec) return bRec - aRec;
+      return (b.efficiency || 0) - (a.efficiency || 0);
+    });
+
     grid.innerHTML = filtered.map(s => {
       const isSelected = s.id === curSetId;
+      const isRecommended = Boolean(p.recommendedArmorSet && p.recommendedArmorSet === s.id);
       let iconUrl = null;
       if (s.id !== 'none' && s.id !== 'other') {
         const matchBody = (equipmentMaster.bodyArmor || []).find(b => b.detail && b.detail.setId === s.id);
@@ -3367,6 +3428,7 @@ window.renderEquipPickerList = function() {
             <div class="equip-picker-meta">
               <div class="equip-picker-badges">
                 <span class="equip-type-pill">3部位セット</span>
+                ${isRecommended ? '<span class="equip-rec-badge">★ おすすめ</span>' : ''}
                 ${s.efficiency > 0 ? `<span class="equip-eff-pill">必殺効率+${s.efficiency}%</span>` : ''}
               </div>
               <div class="equip-picker-name">${displayName}</div>
@@ -3815,6 +3877,7 @@ function renderWikiCharacterDetail(charId) {
           <div class="wiki-profile-weapons">
             <span>モチーフ武器: <strong>${c.motifWeapon || 'なし'}</strong></span>
             <span> / おすすめ武器: <strong>${(c.recommendedWeapons || []).join('、') || '-'}</strong></span>
+            <span> / おすすめ防具: <strong>${c.recommendedArmorSetName || c.recommendedArmorSet || '-'}</strong></span>
           </div>
         </div>
       </div>
