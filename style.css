@@ -2476,6 +2476,21 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   border-left: 3px solid #1abc9c;
 }
 
+.wiki-buff-item.target-heal-team,
+.wiki-buff-item.target-heal-single,
+.wiki-buff-item.target-heal-self,
+.wiki-buff-item.target-heal {
+  border-left: 3px solid #00b894;
+}
+.wiki-buff-target-badge.target-heal-team,
+.wiki-buff-target-badge.target-heal-single,
+.wiki-buff-target-badge.target-heal-self,
+.wiki-buff-target-badge.target-heal {
+  background: rgba(0, 184, 148, 0.2);
+  color: #00cec9;
+  border: 1px solid rgba(0, 184, 148, 0.4);
+}
+
 .wiki-buff-calc-badge {
   font-size: 10px;
   font-weight: 700;

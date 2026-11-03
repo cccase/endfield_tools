@@ -258,8 +258,11 @@
     isDamageRelatedBuff(b) {
       if (!b) return false;
       const cg = b.calcGroup || '';
+      const t = b.target || '';
+      const tl = b.targetLabel || '';
       // 耐久・回復・防御・シールド系は除外
-      if (cg === 'defense' || cg === 'heal' || cg === 'shield' || cg === 'res_up' || cg === 'hp_up') {
+      if (cg === 'defense' || cg === 'heal' || cg === 'shield' || cg === 'res_up' || cg === 'hp_up' ||
+          t === 'team_heal' || t === 'single_heal' || t === 'self_heal' || tl.includes('回復') || tl.includes('治癒')) {
         return false;
       }
       const n = b.name || '';
@@ -461,10 +464,12 @@
           if (!this.isDamageRelatedBuff(b)) return;
 
           const dur = b.duration || 10;
-          const valNum = parseFloat(b.value) || 15;
-          const isEnemy = (b.target === 'enemy');
-          const isParty = (b.target === 'party');
-          const isSingle = (b.target === 'single');
+          const valNum = (b.value !== undefined && b.value !== null && parseFloat(b.value) > 0)
+            ? parseFloat(b.value)
+            : (b.bonusValue ? Math.round(b.bonusValue * 100) : 15);
+          const isEnemy = (b.target === 'enemy' || (b.targetLabel && b.targetLabel.includes('敵デバフ')));
+          const isParty = (b.target === 'party' || b.target === 'team' || (b.targetLabel && b.targetLabel.includes('全体バフ')));
+          const isSingle = (b.target === 'single' || (b.targetLabel && b.targetLabel.includes('単体バフ')));
 
           let targetTrackId = `track_char_${p.id}`;
           let assignedCharId = p.id;
@@ -488,6 +493,9 @@
             targetPrefix = `🎯[${targetMember.name}へ] `;
           }
 
+          const statLabel = (b.calcGroup === 'amp' ? '増幅' : (b.calcGroup === 'atk_pct' ? '攻撃力' : (b.calcGroup === 'vulnerability' ? '脆弱' : (b.stat || '与ダメ'))));
+          const bonusType = isParty ? (b.calcGroup === 'amp' ? 'teamAmp' : (b.calcGroup === 'atk_pct' ? 'teamAtkPct' : 'teamDamageUp')) : (isEnemy ? 'vuln' : 'damageUp');
+
           this.blocks.push({
             id: this._nextId('blk'),
             linkedClipId: clip.id,
@@ -499,9 +507,9 @@
             duration: dur,
             color: isEnemy ? 'linear-gradient(135deg, #c0392b, #922b21)' : (isParty ? 'linear-gradient(135deg, #27ae60, #1e8449)' : buffColors.generic),
             calcGroup: b.calcGroup || (isEnemy ? 'vulnerability' : 'damage_up'),
-            bonusType: isParty ? 'teamDamageUp' : (isEnemy ? 'vuln' : 'damageUp'),
+            bonusType: bonusType,
             bonusValue: valNum / 100,
-            valueText: `${b.stat || '与ダメ'} +${valNum}%`,
+            valueText: `${statLabel} +${valNum}%`,
             source: `${p.name} [${sName}]`
           });
         });
@@ -738,7 +746,13 @@
       flatSteps.forEach(({ step }) => {
         const p = (party || []).find(m => m.id === step.charId || m.name === step.charName);
         if (!p) return;
-        const skill = (p.skills || []).find(s => s.id === step.skillId || s.type === step.type) || step.skillData;
+        const skill = step.skillData ||
+          (step.skillId && (p.skills || []).find(s => s.id === step.skillId && s.id !== p.id)) ||
+          (step.skillType && (p.skills || []).find(s => s.type === step.skillType)) ||
+          (step.type && step.type !== 'skill' && (p.skills || []).find(s => s.type === step.type)) ||
+          (p.skills || []).find(s => s.id === step.skillId) ||
+          (p.skills || []).find(s => s.name === step.name || s.name === step.skillName) ||
+          (p.skills || [])[0];
         if (!skill) return;
 
         this.addSkillClip(p, skill, currentTime, { silent: true });
@@ -781,7 +795,7 @@
               // 2. 全体バフトラックのバフ: track_team_buffs
               // 3. 案山子トラックのデバフ: track_enemy_debuffs
               const isCharBuff = (blk.trackId === `track_char_${clip.charId}`);
-              const isTeamBuff = (blk.trackId === 'track_team_buffs' || blk.bonusType === 'teamDamageUp');
+              const isTeamBuff = (blk.trackId === 'track_team_buffs' || blk.bonusType === 'teamDamageUp' || blk.bonusType === 'teamAmp' || blk.bonusType === 'teamAtkPct');
               const isEnemyDebuff = (blk.trackId === 'track_enemy_debuffs' || blk.bonusType === 'vuln');
               if (!isCharBuff && !isTeamBuff && !isEnemyDebuff) return;
 

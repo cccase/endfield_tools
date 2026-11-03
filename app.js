@@ -3587,9 +3587,13 @@ function renderWikiCharacterDetail(charId) {
   const targetLabelMap = {
     self: { label: '👤 自己バフ', class: 'target-self' },
     single: { label: '🎯 単体バフ', class: 'target-single' },
+    party: { label: '👥 全体バフ', class: 'target-team' },
     team: { label: '👥 全体バフ', class: 'target-team' },
     others: { label: '🤝 他の味方バフ', class: 'target-others' },
     enemy: { label: '👾 敵デバフ', class: 'target-enemy' },
+    team_heal: { label: '💚 全体回復', class: 'target-heal-team' },
+    single_heal: { label: '💚 単体回復', class: 'target-heal-single' },
+    self_heal: { label: '💚 自己回復', class: 'target-heal-self' },
     none: { label: '効果', class: 'target-self' }
   };
 
@@ -3665,7 +3669,18 @@ function renderWikiCharacterDetail(charId) {
           <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果（計算グループ分類）:</div>
           <div class="wiki-buffs-grid">
             ${sk.buffs.map(b => {
-              const tgtInfo = targetLabelMap[b.target] || { label: b.targetLabel || b.target || '効果', class: 'target-self' };
+              let tgtInfo = targetLabelMap[b.target];
+              if (!tgtInfo) {
+                if (b.targetLabel && b.targetLabel.includes('全体回復')) {
+                  tgtInfo = { label: '💚 全体回復', class: 'target-heal-team' };
+                } else if (b.targetLabel && b.targetLabel.includes('単体回復')) {
+                  tgtInfo = { label: '💚 単体回復', class: 'target-heal-single' };
+                } else if (b.targetLabel && b.targetLabel.includes('自己回復')) {
+                  tgtInfo = { label: '💚 自己回復', class: 'target-heal-self' };
+                } else {
+                  tgtInfo = { label: b.targetLabel || b.target || '効果', class: 'target-self' };
+                }
+              }
               const durText = b.duration ? `(${b.duration}秒)` : '';
               const groupBadge = b.calcGroupLabel ? `<span class="wiki-buff-calc-badge">${b.calcGroupLabel}</span>` : '';
               return `
@@ -3743,7 +3758,7 @@ function renderWikiCharacterDetail(charId) {
         <h4 class="wiki-section-header">🧬 素質仕様</h4>
         <div class="wiki-talents-grid">
           ${c.talents.map(t => {
-            const tgtInfo = targetLabelMap[t.target] || { label: t.targetLabel || '自己バフ', class: 'target-self' };
+            const tgtInfo = targetLabelMap[t.target] || { label: t.targetLabel || '自己バフ', class: (t.targetLabel && t.targetLabel.includes('回復') ? 'target-heal-team' : 'target-self') };
             return `
               <div class="wiki-talent-card">
                 <div class="wiki-talent-top">
@@ -3768,7 +3783,7 @@ function renderWikiCharacterDetail(charId) {
         <h4 class="wiki-section-header">💎 潜在能力 (凸効果 1〜5凸)</h4>
         <div class="wiki-potentials-grid">
           ${c.potentials.map(pt => {
-            const tgtInfo = targetLabelMap[pt.target] || { label: pt.targetLabel || '自己バフ', class: 'target-self' };
+            const tgtInfo = targetLabelMap[pt.target] || { label: pt.targetLabel || '自己バフ', class: (pt.targetLabel && pt.targetLabel.includes('回復') ? 'target-heal-team' : 'target-self') };
             return `
               <div class="wiki-potential-card">
                 <div class="wiki-potential-top">
@@ -3876,6 +3891,7 @@ function renderPalette() {
     if (s1) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: s1.type || 'skill',
         charId: p.id,
         skillId: s1.id,
         charName: p.name,
@@ -3894,6 +3910,7 @@ function renderPalette() {
     if (s2) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: s2.type || 'skill2',
         charId: p.id,
         skillId: s2.id,
         charName: p.name,
@@ -3912,6 +3929,7 @@ function renderPalette() {
     if (s3) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: s3.type || 'skill3',
         charId: p.id,
         skillId: s3.id,
         charName: p.name,
@@ -3930,6 +3948,7 @@ function renderPalette() {
     if (combo) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: combo.type || 'combo',
         charId: p.id,
         skillId: combo.id,
         charName: p.name,
@@ -3948,6 +3967,7 @@ function renderPalette() {
     if (ult) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: ult.type || 'ult',
         charId: p.id,
         skillId: ult.id,
         charName: p.name,
@@ -3966,6 +3986,7 @@ function renderPalette() {
     if (ultExtra) {
       const el = createDraggableBlock({
         type: 'skill',
+        skillType: ultExtra.type,
         charId: p.id,
         skillId: ultExtra.id,
         charName: p.name,
