@@ -1730,4 +1730,685 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   border-radius: 3px;
 }
 
+/* =========================================================
+   Priority B: リッチな装備スロット＆装備選択モーダル ＆ キャラ・スキルWiki
+   ========================================================= */
+
+.wiki-jump-btn {
+  background: #233329;
+  color: #85a990;
+  border: 1px solid #3c5a47;
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 3px 8px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: all 0.15s;
+}
+.wiki-jump-btn:hover {
+  background: #2e4738;
+  color: #fff;
+  border-color: #2ecc71;
+}
+
+.rich-armor-panel {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rich-armor-parts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+@media (max-width: 680px) {
+  .rich-armor-parts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rich-equip-slot-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1b1e23 0%, #23272e 100%);
+  border: 1px solid #3a3f48;
+  border-radius: 7px;
+  padding: 8px 10px;
+  color: #eaeaea;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.rich-equip-slot-btn.is-equipped {
+  border-color: #5b6a5e;
+  background: linear-gradient(135deg, #1d2226 0%, #252d29 100%);
+}
+.rich-equip-slot-btn:hover {
+  border-color: #f39c12;
+  background: linear-gradient(135deg, #242930 0%, #2e342d 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+.rich-slot-icon-wrap {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 6px;
+  background: #141619;
+  border: 1px solid #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.rich-slot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rich-slot-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rich-slot-top-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.rich-slot-category {
+  font-size: 10px;
+  color: #9aa4b0;
+  font-weight: 600;
+}
+.rich-slot-set-badge {
+  background: rgba(243, 156, 18, 0.18);
+  color: #f5b041;
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  font-size: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+.rich-slot-eff-badge {
+  background: rgba(46, 204, 113, 0.16);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  font-size: 10px;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+.rich-slot-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rich-slot-desc {
+  font-size: 11px;
+  color: #b5bcc4;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.rich-slot-change-arrow {
+  font-size: 11px;
+  color: #f39c12;
+  font-weight: 700;
+  white-space: nowrap;
+  padding-left: 4px;
+}
+
+/* モーダルオーバーレイ */
+.equip-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(3px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.equip-modal-dialog {
+  width: min(980px, 96vw);
+  max-height: 88vh;
+  background: #181b20;
+  border: 1px solid #3e4652;
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.equip-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: #20242b;
+  border-bottom: 1px solid #323842;
+}
+.equip-modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.equip-modal-header-icon {
+  font-size: 24px;
+}
+.equip-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+.equip-modal-subtitle {
+  font-size: 12px;
+  color: #9aa4b0;
+}
+.equip-modal-close-btn {
+  background: #2d333d;
+  color: #eee;
+  border: 1px solid #454d59;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.equip-modal-close-btn:hover {
+  background: #c0392b;
+  border-color: #e74c3c;
+  color: #fff;
+}
+.equip-modal-toolbar {
+  padding: 10px 18px;
+  background: #1c2026;
+  border-bottom: 1px solid #2d323b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.equip-modal-search {
+  flex: 1;
+  min-width: 220px;
+  background: #121519;
+  color: #fff;
+  border: 1px solid #3a404c;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 13px;
+}
+.equip-modal-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.equip-filter-chip {
+  background: #262b33;
+  color: #ccc;
+  border: 1px solid #3b424f;
+  border-radius: 16px;
+  padding: 4px 11px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.equip-filter-chip.active {
+  background: #f39c12;
+  color: #111;
+  border-color: #f39c12;
+  font-weight: 700;
+}
+.equip-modal-body {
+  padding: 14px 18px;
+  overflow-y: auto;
+  flex: 1;
+}
+.equip-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(410px, 1fr));
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .equip-modal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.equip-picker-card {
+  background: #21252c;
+  border: 1px solid #353b47;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.equip-picker-card:hover {
+  border-color: #f39c12;
+  background: #272c35;
+  transform: translateY(-1px);
+}
+.equip-picker-card.selected {
+  border: 2px solid #2ecc71;
+  background: rgba(46, 204, 113, 0.08);
+}
+.equip-picker-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.equip-picker-icon-box {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  background: #14171b;
+  border: 1px solid #474f5e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.equip-picker-icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.equip-picker-meta {
+  flex: 1;
+  min-width: 0;
+}
+.equip-picker-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 3px;
+}
+.equip-rarity-stars {
+  background: #d35400;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.equip-type-pill {
+  background: #2f3642;
+  color: #cbd3de;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.equip-rec-badge {
+  background: rgba(241, 196, 15, 0.2);
+  color: #f1c40f;
+  border: 1px solid rgba(241, 196, 15, 0.5);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.equip-eff-pill {
+  background: rgba(46, 204, 113, 0.18);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.45);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.equip-picker-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+.equip-picker-sub {
+  font-size: 12px;
+  color: #aeb7c4;
+  margin-top: 2px;
+}
+.equip-selected-pill {
+  background: #2ecc71;
+  color: #111;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+.equip-quick-set-btn {
+  background: #2980b9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.equip-quick-set-btn:hover {
+  background: #3498db;
+}
+.equip-picker-effect-box {
+  background: #171a1f;
+  border: 1px solid #2c323d;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #cfd6e0;
+  line-height: 1.45;
+}
+.equip-picker-skill-line {
+  margin-bottom: 3px;
+}
+.equip-picker-skill-line:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== キャラ・スキルWikiページ ===== */
+.wiki-header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+.wiki-subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #9aa4b0;
+}
+.wiki-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wiki-search-input, .wiki-filter-select {
+  background: #16191e;
+  color: #fff;
+  border: 1px solid #3b424e;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.wiki-layout {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .wiki-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.wiki-sidebar {
+  max-height: 75vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #16181c;
+  border: 1px solid #2d323b;
+  border-radius: 8px;
+  padding: 8px;
+}
+.wiki-char-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1f2329;
+  border: 1px solid #2e343e;
+  border-radius: 6px;
+  padding: 7px 9px;
+  color: #eee;
+  cursor: pointer;
+  text-align: left;
+}
+.wiki-char-item:hover {
+  border-color: #f39c12;
+  background: #262b33;
+}
+.wiki-char-item.active {
+  border-color: #2ecc71;
+  background: rgba(46, 204, 113, 0.12);
+}
+.wiki-char-item-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.wiki-char-item-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+.wiki-char-item-tags {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+.wiki-detail-pane {
+  background: #171a1f;
+  border: 1px solid #2e343e;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.wiki-profile-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2d323c;
+}
+.wiki-profile-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.wiki-profile-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  border: 2px solid #f39c12;
+  object-fit: cover;
+}
+.wiki-profile-name {
+  margin: 4px 0;
+  font-size: 20px;
+  color: #fff;
+}
+.wiki-profile-weapons {
+  font-size: 12px;
+  color: #b0b9c6;
+}
+.wiki-add-party-btn {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wiki-add-party-btn:hover {
+  background: #2ecc71;
+}
+.wiki-special-callout {
+  background: rgba(243, 156, 18, 0.1);
+  border-left: 4px solid #f39c12;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.wiki-special-title {
+  font-weight: 700;
+  color: #f39c12;
+  margin-bottom: 4px;
+}
+.wiki-special-desc {
+  font-size: 13px;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+.wiki-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.wiki-stat-cell {
+  background: #21252d;
+  border: 1px solid #323844;
+  border-radius: 6px;
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wiki-stat-cell .k {
+  font-size: 11px;
+  color: #9aa4b0;
+}
+.wiki-stat-cell .v {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.wiki-stat-cell .v.highlight {
+  color: #f39c12;
+}
+.wiki-potentials-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+}
+.wiki-pot-badge {
+  background: #252b34;
+  border: 1px solid #3d4756;
+  color: #d6deeb;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.wiki-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.wiki-skill-card {
+  background: #20242c;
+  border: 1px solid #333a47;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wiki-skill-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.wiki-skill-type-badge {
+  background: #34495e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+.wiki-skill-name {
+  font-size: 15px;
+  color: #fff;
+  margin-right: 6px;
+}
+.wiki-skill-costs {
+  display: flex;
+  gap: 6px;
+}
+.wiki-cost-pill {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.wiki-cost-pill.sp { background: rgba(241, 196, 15, 0.18); color: #f1c40f; }
+.wiki-cost-pill.ep { background: rgba(231, 76, 60, 0.2); color: #ff7675; }
+.wiki-cost-pill.epgain { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+.wiki-skill-mechanics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+}
+.wiki-mech-box {
+  background: #171a20;
+  border: 1px solid #2d333f;
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wiki-mech-label {
+  font-size: 10px;
+  color: #8f99a8;
+}
+.wiki-mech-val {
+  font-size: 12px;
+  color: #888;
+}
+.wiki-mech-val.is-active {
+  color: #2ecc71;
+  font-weight: 700;
+}
+.wiki-mult-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.wiki-mult-table th, .wiki-mult-table td {
+  border: 1px solid #323946;
+  padding: 6px 8px;
+  text-align: center;
+}
+.wiki-mult-table th {
+  background: #181b21;
+  color: #9aa4b0;
+}
+.wiki-mult-table td {
+  background: #1d2128;
+  color: #e2e8f0;
+  font-weight: 600;
+}
+.wiki-mult-table td.wiki-mult-max {
+  color: #f39c12;
+  font-weight: 700;
+}
+
+
 

@@ -1848,19 +1848,26 @@ let timelineCycles = [
 ]; // タイムライン上に配置されたスキルオブジェクトの配列（サイクルごと）
 let cycleNames = ['サイクル 1'];
 
-// ===== ページ切り替え（ローテーション / ダメージ計算） =====
+// ===== ページ切り替え（スキル回し / ダメージ計算 / キャラ・スキルWiki） =====
 window.switchPage = function(page) {
-  const isRotation = (page === 'rotation');
-  const rotPage = document.getElementById('page-rotation');
-  const dmgPage = document.getElementById('page-damage');
-  if (rotPage) rotPage.classList.toggle('active', isRotation);
-  if (dmgPage) dmgPage.classList.toggle('active', !isRotation);
+  const pages = {
+    rotation: document.getElementById('page-rotation'),
+    damage: document.getElementById('page-damage'),
+    wiki: document.getElementById('page-wiki')
+  };
+  const btns = {
+    rotation: document.getElementById('tab-btn-rotation'),
+    damage: document.getElementById('tab-btn-damage'),
+    wiki: document.getElementById('tab-btn-wiki')
+  };
+  Object.keys(pages).forEach(k => {
+    if (pages[k]) pages[k].classList.toggle('active', k === page);
+    if (btns[k]) btns[k].classList.toggle('active', k === page);
+  });
 
-  const rotBtn = document.getElementById('tab-btn-rotation');
-  const dmgBtn = document.getElementById('tab-btn-damage');
-  if (rotBtn) rotBtn.classList.toggle('active', isRotation);
-  if (dmgBtn) dmgBtn.classList.toggle('active', !isRotation);
-
+  if (page === 'wiki' && typeof renderWikiPage === 'function') {
+    renderWikiPage();
+  }
   updateSimulation();
 };
 
@@ -2186,6 +2193,9 @@ async function initApp() {
   await Promise.all([fetchCharacters(), fetchEquipment()]);
   loadFromUrl();
   initPartyAndRoster();
+  if (typeof renderWikiPage === 'function') {
+    renderWikiPage();
+  }
   updateSkillNameToggleButtons();
   if (typeof resetEnemySettings === 'function') {
     resetEnemySettings();
@@ -2723,8 +2733,75 @@ window.handlePartySkillToggle = function(index, isOpen) {
   party[index].isSkillsOpen = isOpen;
 };
 
+function formatArmorStatLabel(statObj) {
+  if (!statObj || !statObj.stat) return '';
+  const map = {
+    hp: 'HP',
+    atk: '攻撃力',
+    def: '防御力',
+    atkPercent: '攻撃力',
+    hpPercent: 'HP',
+    defPercent: '防御力',
+    strength: '筋力',
+    agility: '敏捷',
+    intellect: '知性',
+    will: '意志',
+    critRate: '会心率',
+    critDmg: '会心ダメ',
+    artsIntensity: 'アーツ強度',
+    physicalDamageUp: '物理ダメ',
+    heatDamageUp: '灼熱ダメ',
+    electricDamageUp: '電磁ダメ',
+    cryoDamageUp: '寒冷ダメ',
+    natureDamageUp: '自然ダメ',
+    skillDamageUp: '戦技ダメ',
+    comboDamageUp: '連携ダメ',
+    ultDamageUp: '必殺ダメ',
+    allDamageUp: '全ダメ'
+  };
+  const label = map[statObj.stat] || statObj.stat;
+  const val = statObj.value;
+  if (typeof val === 'number' && val > 0 && val < 1) {
+    return `${label}+${Math.round(val * 1000) / 10}%`;
+  }
+  return `${label}+${val}`;
+}
+
+function getArmorItemSummaryText(item) {
+  if (!item || item.id === 'none') return '未装着（クリックして防具を選択）';
+  const d = item.detail;
+  const parts = [];
+  if (d) {
+    if (d.mainStat) {
+      const m = formatArmorStatLabel(d.mainStat);
+      if (m) parts.push(m);
+    }
+    if (Array.isArray(d.subStats)) {
+      d.subStats.forEach(s => {
+        const st = formatArmorStatLabel(s);
+        if (st) parts.push(st);
+      });
+    }
+    if (d.ultEfficiency && d.ultEfficiency > 0) {
+      parts.push(`必殺効率+${d.ultEfficiency}%`);
+    }
+  } else if (item.efficiency > 0) {
+    parts.push(`必殺効率+${item.efficiency}%`);
+  }
+  return parts.length > 0 ? parts.join(' / ') : 'ステータス補正あり';
+}
+
+function getArmorSetNameById(setId) {
+  if (!setId) return '単体防具(セットなし)';
+  const s = (equipmentMaster.armorSets || []).find(x => x.id === setId);
+  if (s && s.detail && s.detail.name) return `${s.detail.name}セット`;
+  if (s) return s.name.replace(/\s*\(.*\)/, '');
+  return setId;
+}
+
 function renderParty() {
   const container = document.getElementById('party-list');
+  if (!container) return;
   container.innerHTML = '';
 
   party.forEach((p, index) => {
@@ -2748,23 +2825,6 @@ function renderParty() {
       });
     }
 
-    // 防具の各セレクト選択肢を生成
-    const makeOptions = (items, selectedId) => {
-      if (!items) return '';
-      const normId = normalizeEquipId('', selectedId);
-      return items.map(item => `
-        <option value="${item.id}" ${(item.id === selectedId || item.id === normId) ? 'selected' : ''}>
-          ${item.name}
-        </option>
-      `).join('');
-    };
-
-    const armorSetOptions = makeOptions(equipmentMaster.armorSets, p.equipment.armorSet);
-    const bodyOptions = makeOptions(equipmentMaster.bodyArmor, p.equipment.body);
-    const armOptions = makeOptions(equipmentMaster.armArmor, p.equipment.arm);
-    const acc1Options = makeOptions(equipmentMaster.accessory, p.equipment.acc1);
-    const acc2Options = makeOptions(equipmentMaster.accessory, p.equipment.acc2);
-
     const armorBonus = calculateArmorBonus(p.equipment);
     const armorBonusText = armorBonus > 0 ? `+${armorBonus}%` : `+0%`;
 
@@ -2781,37 +2841,53 @@ function renderParty() {
       if (matchArmor && matchArmor.icon) curSetIcon = matchArmor.icon;
     }
 
-    const makeIconBox = (iconUrl, placeholder, title) => {
-      if (iconUrl) {
-        return `<div class="equip-icon-box" title="${title || ''}"><img src="${iconUrl}" class="equip-thumb-img" alt="${title || ''}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>${placeholder}</span>';"></div>`;
-      }
-      return `<div class="equip-icon-box" title="${title || ''}"><span class="equip-icon-placeholder">${placeholder}</span></div>`;
+    const curSetEffectDesc = (curSetItem && curSetItem.detail && curSetItem.detail.effects && curSetItem.detail.effects.threePiece)
+      ? curSetItem.detail.effects.threePiece.description
+      : (curSetItem && curSetItem.id !== 'none' ? `必殺技効率 +${curSetItem.efficiency || 0}%` : '防具3部位セット効果を選択できます（クリックで一覧表示）');
+
+    const makeRichSlotCard = (slotKey, slotLabel, itemObj, iconUrl, placeholder, descText, badgeText) => {
+      const hasItem = itemObj && itemObj.id !== 'none';
+      const displayName = hasItem
+        ? ((itemObj.detail && itemObj.detail.name) ? itemObj.detail.name : itemObj.name.replace(/\s*\(\+?\d+(\.\d+)?%\)/, ''))
+        : 'なし (未装着)';
+      const effVal = itemObj && itemObj.efficiency ? itemObj.efficiency : (itemObj && itemObj.detail && itemObj.detail.ultEfficiency ? itemObj.detail.ultEfficiency : 0);
+      return `
+        <button type="button" class="rich-equip-slot-btn ${hasItem ? 'is-equipped' : 'is-empty'}" onclick="openEquipPickerModal(${index}, '${slotKey}')">
+          <div class="rich-slot-icon-wrap">
+            ${iconUrl
+              ? `<img src="${iconUrl}" class="rich-slot-img" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>${placeholder}</span>';">`
+              : `<span class="equip-icon-placeholder">${placeholder}</span>`}
+          </div>
+          <div class="rich-slot-info">
+            <div class="rich-slot-top-row">
+              <span class="rich-slot-category">${slotLabel}</span>
+              ${badgeText ? `<span class="rich-slot-set-badge">${badgeText}</span>` : ''}
+              ${effVal > 0 ? `<span class="rich-slot-eff-badge">効率+${effVal}%</span>` : ''}
+            </div>
+            <div class="rich-slot-name">${displayName}</div>
+            <div class="rich-slot-desc">${descText || ''}</div>
+          </div>
+          <span class="rich-slot-change-arrow" title="クリックして変更">変更 ▸</span>
+        </button>
+      `;
     };
 
-    // 武器選択肢の生成（複数のおすすめ武器とモチーフ武器のタグ表示）
-    const availableWeapons = getWeaponsForChar(p);
+    // 選択中武器の情報
     const curWeaponObj = findWeapon(p.weapon.id);
     const recList = Array.isArray(p.recommendedWeapons) ? p.recommendedWeapons : [];
     const motif = p.motifWeapon;
-
-    const weaponOptions = [
-      `<option value="none" ${p.weapon.id === 'none' ? 'selected' : ''}>武器なし (0%)</option>`,
-      ...availableWeapons.map(w => {
-        const isMotif = (w.id === motif || w.name === motif);
-        const recIdx = recList.indexOf(w.id) !== -1 ? recList.indexOf(w.id) : recList.indexOf(w.name);
-        let tag = '';
-        if (isMotif && recIdx !== -1) {
-          tag = recIdx === 0 ? '【おすすめ/モチーフ】' : `【おすすめ${recIdx + 1}/モチーフ】`;
-        } else if (recIdx !== -1) {
-          tag = recList.length > 1 ? `【おすすめ${recIdx + 1}】` : '【おすすめ】';
-        } else if (isMotif) {
-          tag = '【モチーフ】';
-        }
-        const star = `★${w.rarity}`;
-        const isSelected = (w.id === p.weapon.id || w.name === p.weapon.id);
-        return `<option value="${w.id}" ${isSelected ? 'selected' : ''}>${star} ${w.name} ${tag}</option>`;
-      })
-    ].join('');
+    let weaponTagBadge = '';
+    if (curWeaponObj) {
+      const isMotif = (curWeaponObj.id === motif || curWeaponObj.name === motif);
+      const recIdx = recList.indexOf(curWeaponObj.id) !== -1 ? recList.indexOf(curWeaponObj.id) : recList.indexOf(curWeaponObj.name);
+      if (isMotif && recIdx !== -1) {
+        weaponTagBadge = 'おすすめ / モチーフ';
+      } else if (recIdx !== -1) {
+        weaponTagBadge = 'おすすめ武器';
+      } else if (isMotif) {
+        weaponTagBadge = 'モチーフ武器';
+      }
+    }
 
     const weaponBonus = calculateWeaponBonus(p.weapon);
     const weaponBonusText = weaponBonus > 0 ? `+${weaponBonus}%` : `+0%`;
@@ -2864,6 +2940,10 @@ function renderParty() {
       `;
     }
 
+    const weaponDescSummary = curWeaponObj
+      ? `★${curWeaponObj.rarity} ${curWeaponObj.type || p.weaponType || ''} / 基礎攻撃力: ${curWeaponObj.baseAtk || 500}`
+      : 'クリックして武器を視覚的に選択';
+
     el.innerHTML = `
       <div class="party-member-header">
         <img src="${p.icon}" class="char-icon" style="margin:0; width:30px; height:30px;">
@@ -2878,6 +2958,7 @@ function renderParty() {
             ${potOptions}
           </select>
         </div>
+        <button type="button" class="wiki-jump-btn" onclick="openCharInWiki('${p.id}')" title="キャラ・スキルWikiでこのオペレーターの倍率・付着仕様を確認">📖 Wiki</button>
         <button class="remove-btn" onclick="removeFromParty(${index})" title="編成から外す">×</button>
       </div>
       <div class="equip-weapon-container">
@@ -2885,21 +2966,21 @@ function renderParty() {
         <details class="equip-details" ${p.isWeaponOpen ? 'open' : ''} ontoggle="handleEquipToggle(${index}, this.open)">
           <summary class="equip-summary">
             <span style="display:inline-flex; align-items:center; gap:6px;">
-              ${curWeaponObj && curWeaponObj.icon ? `<img src="${curWeaponObj.icon}" style="width:18px; height:18px; object-fit:contain; border-radius:2px; vertical-align:middle;">` : '⚔️'}
-              武器設定: ${curWeaponObj ? curWeaponObj.name : 'なし'}
+              ${curWeaponObj && curWeaponObj.icon ? `<img src="${curWeaponObj.icon}" style="width:20px; height:20px; object-fit:contain; border-radius:3px; vertical-align:middle;">` : '⚔️'}
+              武器: ${curWeaponObj ? curWeaponObj.name : 'なし'}
             </span>
             <span class="equip-bonus-badge">武器効率: ${weaponBonusText}</span>
           </summary>
           <div class="weapon-body">
-            <div class="weapon-select-row">
-              <label>武器選択 (おすすめ/モチーフが最優先表示)</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curWeaponObj ? curWeaponObj.icon : null, '⚔️', curWeaponObj ? curWeaponObj.name : '武器なし')}
-                <select onchange="updatePartyWeapon(${index}, this.value)">
-                  ${weaponOptions}
-                </select>
-              </div>
-            </div>
+            ${makeRichSlotCard(
+              'weapon',
+              `⚔️ 装着武器 (${p.weaponType || '武器'})`,
+              curWeaponObj ? { id: curWeaponObj.id, name: `★${curWeaponObj.rarity} ${curWeaponObj.name}`, efficiency: weaponBonus } : { id: 'none', name: '武器なし' },
+              curWeaponObj ? curWeaponObj.icon : null,
+              '⚔️',
+              weaponDescSummary,
+              weaponTagBadge
+            )}
             ${weaponSkillsHtml}
           </div>
         </details>
@@ -2908,55 +2989,60 @@ function renderParty() {
         <details class="equip-details" ${p.isEquipOpen ? 'open' : ''} ontoggle="handleEquipToggle(${index}, this.open)">
           <summary class="equip-summary">
             <span style="display:inline-flex; align-items:center; gap:6px;">
-              🛡️ 防具設定
+              ${curSetIcon ? `<img src="${curSetIcon}" style="width:20px; height:20px; object-fit:contain; border-radius:3px; vertical-align:middle;">` : '🛡️'}
+              防具: ${curSetItem && curSetItem.id !== 'none' ? (curSetItem.detail?.name ? curSetItem.detail.name + 'セット' : curSetItem.name) : 'セットなし'}
             </span>
             <span class="equip-bonus-badge">防具効率: ${armorBonusText}</span>
           </summary>
-          <div class="equip-grid">
-            <div class="equip-field">
-              <label>防具セット</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curSetIcon, '🛡️', curSetItem ? curSetItem.name : '防具セット')}
-                <select onchange="updatePartyEquipment(${index}, 'armorSet', this.value)">
-                  ${armorSetOptions}
-                </select>
-              </div>
+          <div class="rich-armor-panel">
+            <div class="rich-armor-set-row">
+              ${makeRichSlotCard(
+                'armorSet',
+                '🛡️ 3部位セット効果',
+                curSetItem,
+                curSetIcon,
+                '🛡️',
+                curSetEffectDesc,
+                curSetItem && curSetItem.id !== 'none' ? '3部位発動' : ''
+              )}
             </div>
-            <div class="equip-field">
-              <label>胴防具</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curBodyItem ? curBodyItem.icon : null, '🦺', curBodyItem ? curBodyItem.name : '胴防具')}
-                <select onchange="updatePartyEquipment(${index}, 'body', this.value)">
-                  ${bodyOptions}
-                </select>
-              </div>
-            </div>
-            <div class="equip-field">
-              <label>腕防具</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curArmItem ? curArmItem.icon : null, '🧤', curArmItem ? curArmItem.name : '腕防具')}
-                <select onchange="updatePartyEquipment(${index}, 'arm', this.value)">
-                  ${armOptions}
-                </select>
-              </div>
-            </div>
-            <div class="equip-field">
-              <label>アクセサリー1</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curAcc1Item ? curAcc1Item.icon : null, '💍', curAcc1Item ? curAcc1Item.name : 'アクセサリー1')}
-                <select onchange="updatePartyEquipment(${index}, 'acc1', this.value)">
-                  ${acc1Options}
-                </select>
-              </div>
-            </div>
-            <div class="equip-field">
-              <label>アクセサリー2</label>
-              <div class="equip-select-wrapper">
-                ${makeIconBox(curAcc2Item ? curAcc2Item.icon : null, '💍', curAcc2Item ? curAcc2Item.name : 'アクセサリー2')}
-                <select onchange="updatePartyEquipment(${index}, 'acc2', this.value)">
-                  ${acc2Options}
-                </select>
-              </div>
+            <div class="rich-armor-parts-grid">
+              ${makeRichSlotCard(
+                'body',
+                '🦺 胴防具',
+                curBodyItem,
+                curBodyItem ? curBodyItem.icon : null,
+                '🦺',
+                getArmorItemSummaryText(curBodyItem),
+                curBodyItem && curBodyItem.detail ? getArmorSetNameById(curBodyItem.detail.setId) : ''
+              )}
+              ${makeRichSlotCard(
+                'arm',
+                '🧤 腕防具',
+                curArmItem,
+                curArmItem ? curArmItem.icon : null,
+                '🧤',
+                getArmorItemSummaryText(curArmItem),
+                curArmItem && curArmItem.detail ? getArmorSetNameById(curArmItem.detail.setId) : ''
+              )}
+              ${makeRichSlotCard(
+                'acc1',
+                '💍 アクセサリー1',
+                curAcc1Item,
+                curAcc1Item ? curAcc1Item.icon : null,
+                '💍',
+                getArmorItemSummaryText(curAcc1Item),
+                curAcc1Item && curAcc1Item.detail ? getArmorSetNameById(curAcc1Item.detail.setId) : ''
+              )}
+              ${makeRichSlotCard(
+                'acc2',
+                '💍 アクセサリー2',
+                curAcc2Item,
+                curAcc2Item ? curAcc2Item.icon : null,
+                '💍',
+                getArmorItemSummaryText(curAcc2Item),
+                curAcc2Item && curAcc2Item.detail ? getArmorSetNameById(curAcc2Item.detail.setId) : ''
+              )}
             </div>
           </div>
         </details>
@@ -3030,6 +3116,586 @@ window.updatePartyWeaponSkill = function(index, skillKey, levelValue) {
   renderParty();
   updateSimulation();
 };
+
+// ===== Priority B: リッチな装備選択モーダル（アイコン＋効果テキスト視覚選択） =====
+let currentEquipModalState = {
+  memberIndex: 0,
+  slotType: 'weapon', // 'weapon' | 'armorSet' | 'body' | 'arm' | 'acc1' | 'acc2'
+  tagFilter: 'all'
+};
+
+window.openEquipPickerModal = function(memberIndex, slotType) {
+  if (!party[memberIndex]) return;
+  currentEquipModalState = {
+    memberIndex: memberIndex,
+    slotType: slotType,
+    tagFilter: 'all'
+  };
+
+  const modal = document.getElementById('equip-picker-modal');
+  const titleEl = document.getElementById('equip-modal-title');
+  const subEl = document.getElementById('equip-modal-subtitle');
+  const iconEl = document.getElementById('equip-modal-icon');
+  const searchEl = document.getElementById('equip-modal-search');
+  if (searchEl) searchEl.value = '';
+
+  const p = party[memberIndex];
+  const slotLabels = {
+    weapon: `${p.name} の武器選択 (${p.weaponType || '全武器'})`,
+    armorSet: `${p.name} の防具3部位セット選択`,
+    body: `${p.name} の胴防具選択`,
+    arm: `${p.name} の腕防具選択`,
+    acc1: `${p.name} のアクセサリー1選択`,
+    acc2: `${p.name} のアクセサリー2選択`
+  };
+  const slotIcons = {
+    weapon: '⚔️',
+    armorSet: '🛡️',
+    body: '🦺',
+    arm: '🧤',
+    acc1: '💍',
+    acc2: '💍'
+  };
+
+  if (titleEl) titleEl.textContent = slotLabels[slotType] || '装備を選択';
+  if (subEl) subEl.textContent = 'アイコン画像とスキル・セット効果・ステータスを確認してクリックで装着します';
+  if (iconEl) iconEl.textContent = slotIcons[slotType] || '⚔️';
+
+  renderEquipPickerFilterTags();
+  renderEquipPickerList();
+  if (modal) modal.style.display = 'flex';
+};
+
+window.closeEquipPickerModal = function() {
+  const modal = document.getElementById('equip-picker-modal');
+  if (modal) modal.style.display = 'none';
+};
+
+window.setEquipModalTagFilter = function(tag) {
+  currentEquipModalState.tagFilter = tag;
+  renderEquipPickerFilterTags();
+  renderEquipPickerList();
+};
+
+function renderEquipPickerFilterTags() {
+  const wrap = document.getElementById('equip-modal-filter-tags');
+  if (!wrap) return;
+  const { slotType, tagFilter } = currentEquipModalState;
+  let tags = [];
+  if (slotType === 'weapon') {
+    tags = [
+      { key: 'all', label: 'すべて' },
+      { key: 'rec', label: '★ おすすめ・モチーフ' },
+      { key: 'r6', label: '★6' },
+      { key: 'r5', label: '★5' },
+      { key: 'r4', label: '★4' }
+    ];
+  } else if (slotType === 'armorSet') {
+    tags = [
+      { key: 'all', label: 'すべて' },
+      { key: 'eff', label: '必殺効率UPあり' },
+      { key: 'dmg', label: 'ダメージ・会心・アーツ強化' }
+    ];
+  } else {
+    tags = [
+      { key: 'all', label: 'すべて' },
+      { key: 'curset', label: '現在のセット一致' },
+      { key: 'eff', label: '必殺効率UPあり' },
+      { key: 'noset', label: '単体防具(セットなし)' }
+    ];
+  }
+  wrap.innerHTML = tags.map(t => `
+    <button type="button" class="equip-filter-chip ${tagFilter === t.key ? 'active' : ''}" onclick="setEquipModalTagFilter('${t.key}')">
+      ${t.label}
+    </button>
+  `).join('');
+}
+
+window.renderEquipPickerList = function() {
+  const grid = document.getElementById('equip-modal-grid');
+  if (!grid) return;
+  const { memberIndex, slotType, tagFilter } = currentEquipModalState;
+  const p = party[memberIndex];
+  if (!p) return;
+
+  const q = ((document.getElementById('equip-modal-search') || {}).value || '').trim().toLowerCase();
+  grid.innerHTML = '';
+
+  if (slotType === 'weapon') {
+    const availableWeapons = getWeaponsForChar(p);
+    const recList = Array.isArray(p.recommendedWeapons) ? p.recommendedWeapons : [];
+    const motif = p.motifWeapon;
+    const curId = p.weapon ? p.weapon.id : 'none';
+
+    const items = [
+      { id: 'none', name: '武器なし', rarity: 0, type: p.weaponType || '', baseAtk: 0, skills: [] },
+      ...availableWeapons
+    ].filter(w => {
+      if (w.id === 'none') return tagFilter === 'all' && !q;
+      const isMotif = (w.id === motif || w.name === motif);
+      const isRec = recList.includes(w.id) || recList.includes(w.name);
+      if (tagFilter === 'rec' && !isMotif && !isRec) return false;
+      if (tagFilter === 'r6' && w.rarity !== 6) return false;
+      if (tagFilter === 'r5' && w.rarity !== 5) return false;
+      if (tagFilter === 'r4' && w.rarity !== 4) return false;
+      if (q) {
+        const skText = (w.skills || []).map(s => `${s.name} ${(s.ranks && s.ranks[8] ? s.ranks[8][0] : '')}`).join(' ').toLowerCase();
+        if (!w.name.toLowerCase().includes(q) && !skText.includes(q)) return false;
+      }
+      return true;
+    });
+
+    grid.innerHTML = items.map(w => {
+      const isSelected = (w.id === curId || w.name === curId);
+      if (w.id === 'none') {
+        return `
+          <div class="equip-picker-card ${isSelected ? 'selected' : ''}" onclick="selectEquipFromModal('none')">
+            <div class="equip-picker-card-top">
+              <div class="equip-picker-icon-box"><span class="equip-icon-placeholder">⚔️</span></div>
+              <div class="equip-picker-meta">
+                <div class="equip-picker-name">武器なし (未装着)</div>
+                <div class="equip-picker-sub">基礎攻撃力 +0 / 武器効率 +0%</div>
+              </div>
+              ${isSelected ? '<span class="equip-selected-pill">装着中</span>' : ''}
+            </div>
+          </div>
+        `;
+      }
+
+      const isMotif = (w.id === motif || w.name === motif);
+      const recIdx = recList.indexOf(w.id) !== -1 ? recList.indexOf(w.id) : recList.indexOf(w.name);
+      let badgeHtml = '';
+      if (isMotif && recIdx !== -1) {
+        badgeHtml = `<span class="equip-rec-badge motif">★ おすすめ / モチーフ</span>`;
+      } else if (recIdx !== -1) {
+        badgeHtml = `<span class="equip-rec-badge">★ おすすめ</span>`;
+      } else if (isMotif) {
+        badgeHtml = `<span class="equip-rec-badge motif">★ モチーフ</span>`;
+      }
+
+      const s2 = w.skills && w.skills[1];
+      const eff9 = (s2 && s2.ultEfficiency) ? (s2.ultEfficiency[8] || 0) : 0;
+      const skillsPreview = (w.skills || []).map((sk, idx) => {
+        const defRankIdx = idx === 2 ? 3 : 8; // Lv9 / Lv9 / Lv4
+        const r = sk.ranks && sk.ranks[defRankIdx] ? sk.ranks[defRankIdx][0] : '';
+        return `<div class="equip-picker-skill-line"><strong>S${idx + 1} (${sk.name || ''}):</strong> ${r}</div>`;
+      }).join('');
+
+      const safeId = w.id.replace(/'/g, "\\'");
+      return `
+        <div class="equip-picker-card rarity-${w.rarity || 5} ${isSelected ? 'selected' : ''}" onclick="selectEquipFromModal('${safeId}')">
+          <div class="equip-picker-card-top">
+            <div class="equip-picker-icon-box">
+              ${w.icon ? `<img src="${w.icon}" alt="${w.name}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>⚔️</span>';">` : '<span class="equip-icon-placeholder">⚔️</span>'}
+            </div>
+            <div class="equip-picker-meta">
+              <div class="equip-picker-badges">
+                <span class="equip-rarity-stars">★${w.rarity}</span>
+                <span class="equip-type-pill">${w.type || ''}</span>
+                ${badgeHtml}
+                ${eff9 > 0 ? `<span class="equip-eff-pill">必殺効率+${eff9}%</span>` : ''}
+              </div>
+              <div class="equip-picker-name">${w.name}</div>
+              <div class="equip-picker-sub">基礎攻撃力: <strong>${w.baseAtk || 500}</strong> (Lv.90)</div>
+            </div>
+            ${isSelected ? '<span class="equip-selected-pill">装着中</span>' : ''}
+          </div>
+          <div class="equip-picker-effect-box">
+            ${skillsPreview}
+          </div>
+        </div>
+      `;
+    }).join('');
+    return;
+  }
+
+  if (slotType === 'armorSet') {
+    const sets = equipmentMaster.armorSets || [];
+    const curSetId = p.equipment ? p.equipment.armorSet : 'none';
+    const filtered = sets.filter(s => {
+      if (tagFilter === 'eff' && !(s.efficiency > 0)) return false;
+      if (tagFilter === 'dmg' && s.id === 'none') return false;
+      if (q) {
+        const desc = (s.detail && s.detail.effects && s.detail.effects.threePiece) ? s.detail.effects.threePiece.description : '';
+        if (!s.name.toLowerCase().includes(q) && !desc.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    });
+
+    grid.innerHTML = filtered.map(s => {
+      const isSelected = s.id === curSetId;
+      let iconUrl = null;
+      if (s.id !== 'none' && s.id !== 'other') {
+        const matchBody = (equipmentMaster.bodyArmor || []).find(b => b.detail && b.detail.setId === s.id);
+        if (matchBody && matchBody.icon) iconUrl = matchBody.icon;
+      }
+      const desc3 = (s.detail && s.detail.effects && s.detail.effects.threePiece)
+        ? s.detail.effects.threePiece.description
+        : (s.id === 'none' ? '3部位セット効果を発動しません（単体防具編成など）' : `必殺技効率 +${s.efficiency || 0}%`);
+      const displayName = (s.detail && s.detail.name) ? `${s.detail.name} セット` : s.name;
+      const safeId = s.id.replace(/'/g, "\\'");
+
+      return `
+        <div class="equip-picker-card ${isSelected ? 'selected' : ''}" onclick="selectEquipFromModal('${safeId}')">
+          <div class="equip-picker-card-top">
+            <div class="equip-picker-icon-box">
+              ${iconUrl ? `<img src="${iconUrl}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>🛡️</span>';">` : '<span class="equip-icon-placeholder">🛡️</span>'}
+            </div>
+            <div class="equip-picker-meta">
+              <div class="equip-picker-badges">
+                <span class="equip-type-pill">3部位セット</span>
+                ${s.efficiency > 0 ? `<span class="equip-eff-pill">必殺効率+${s.efficiency}%</span>` : ''}
+              </div>
+              <div class="equip-picker-name">${displayName}</div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:4px; align-items:flex-end;">
+              ${isSelected ? '<span class="equip-selected-pill">選択中</span>' : ''}
+              ${s.id !== 'none' && s.id !== 'other' ? `<button type="button" class="equip-quick-set-btn" onclick="event.stopPropagation(); equipFullSetFromModal('${safeId}')">部位も一括装着</button>` : ''}
+            </div>
+          </div>
+          <div class="equip-picker-effect-box">
+            <strong>【3部位セット効果】</strong> ${desc3}
+          </div>
+        </div>
+      `;
+    }).join('');
+    return;
+  }
+
+  // 部位防具 (body / arm / acc1 / acc2)
+  const listMap = {
+    body: equipmentMaster.bodyArmor || [],
+    arm: equipmentMaster.armArmor || [],
+    acc1: equipmentMaster.accessory || [],
+    acc2: equipmentMaster.accessory || []
+  };
+  const items = listMap[slotType] || [];
+  const curId = p.equipment ? p.equipment[slotType] : 'none';
+  const curSetId = p.equipment ? p.equipment.armorSet : 'none';
+
+  const filtered = items.filter(item => {
+    const d = item.detail;
+    const setId = d ? d.setId : null;
+    if (tagFilter === 'curset') {
+      if (curSetId && curSetId !== 'none' && setId !== curSetId) return false;
+    } else if (tagFilter === 'eff') {
+      if (!((item.efficiency || 0) > 0 || (d && d.ultEfficiency > 0))) return false;
+    } else if (tagFilter === 'noset') {
+      if (setId) return false;
+    }
+    if (q) {
+      const setName = getArmorSetNameById(setId).toLowerCase();
+      const statsStr = getArmorItemSummaryText(item).toLowerCase();
+      if (!item.name.toLowerCase().includes(q) && !setName.includes(q) && !statsStr.includes(q)) return false;
+    }
+    return true;
+  });
+
+  grid.innerHTML = filtered.map(item => {
+    const isSelected = (item.id === curId || item.id === normalizeEquipId('', curId));
+    const d = item.detail;
+    const displayName = d && d.name ? d.name : item.name;
+    const setId = d ? d.setId : null;
+    const setName = setId ? getArmorSetNameById(setId) : 'セットなし(単体)';
+    const setObj = setId ? (equipmentMaster.armorSets || []).find(s => s.id === setId) : null;
+    const setDesc = (setObj && setObj.detail && setObj.detail.effects && setObj.detail.effects.threePiece)
+      ? setObj.detail.effects.threePiece.description
+      : '';
+    const statsText = getArmorItemSummaryText(item);
+    const effVal = item.efficiency || (d && d.ultEfficiency) || 0;
+    const safeId = item.id.replace(/'/g, "\\'");
+
+    return `
+      <div class="equip-picker-card ${isSelected ? 'selected' : ''}" onclick="selectEquipFromModal('${safeId}')">
+        <div class="equip-picker-card-top">
+          <div class="equip-picker-icon-box">
+            ${item.icon ? `<img src="${item.icon}" alt="${displayName}" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'equip-icon-placeholder\\'>🦺</span>';">` : '<span class="equip-icon-placeholder">🦺</span>'}
+          </div>
+          <div class="equip-picker-meta">
+            <div class="equip-picker-badges">
+              <span class="equip-type-pill">${setName}</span>
+              ${effVal > 0 ? `<span class="equip-eff-pill">必殺効率+${effVal}%</span>` : ''}
+            </div>
+            <div class="equip-picker-name">${displayName}</div>
+            <div class="equip-picker-sub">${statsText}</div>
+          </div>
+          ${isSelected ? '<span class="equip-selected-pill">装着中</span>' : ''}
+        </div>
+        ${setDesc ? `<div class="equip-picker-effect-box"><strong>[${setName} 3部位効果]</strong> ${setDesc}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+};
+
+window.selectEquipFromModal = function(selectedId) {
+  const { memberIndex, slotType } = currentEquipModalState;
+  if (slotType === 'weapon') {
+    updatePartyWeapon(memberIndex, selectedId);
+  } else {
+    updatePartyEquipment(memberIndex, slotType, selectedId);
+  }
+  closeEquipPickerModal();
+};
+
+window.equipFullSetFromModal = function(setId) {
+  const { memberIndex } = currentEquipModalState;
+  const p = party[memberIndex];
+  if (!p) return;
+  p.equipment = p.equipment || { armorSet: 'none', body: 'none', arm: 'none', acc1: 'none', acc2: 'none' };
+  p.equipment.armorSet = setId;
+
+  const matchBody = (equipmentMaster.bodyArmor || []).find(b => b.detail && b.detail.setId === setId);
+  const matchArm = (equipmentMaster.armArmor || []).find(a => a.detail && a.detail.setId === setId);
+  const matchAccs = (equipmentMaster.accessory || []).filter(a => a.detail && a.detail.setId === setId);
+
+  if (matchBody) p.equipment.body = matchBody.id;
+  if (matchArm) p.equipment.arm = matchArm.id;
+  if (matchAccs.length > 0) {
+    p.equipment.acc1 = matchAccs[0].id;
+    p.equipment.acc2 = (matchAccs[1] || matchAccs[0]).id;
+  }
+
+  const base = p.baseEfficiency !== undefined ? p.baseEfficiency : 100;
+  const bonus = calcMemberBonus(p);
+  p.efficiency = Math.round((base + bonus) * 10) / 10;
+
+  renderParty();
+  updateSimulation();
+  closeEquipPickerModal();
+};
+
+// ===== Priority B: キャラ・スキルWiki（別タブ詳細画面） =====
+let selectedWikiCharId = null;
+
+window.openCharInWiki = function(charId) {
+  selectedWikiCharId = charId;
+  switchPage('wiki');
+};
+
+window.filterWikiRoster = function() {
+  renderWikiRosterList();
+};
+
+window.selectWikiCharacter = function(charId) {
+  selectedWikiCharId = charId;
+  renderWikiRosterList();
+  renderWikiCharacterDetail(charId);
+};
+
+function renderWikiPage() {
+  if (!selectedWikiCharId && allCharacters.length > 0) {
+    selectedWikiCharId = (party[0] && party[0].id) ? party[0].id : allCharacters[0].id;
+  }
+  renderWikiRosterList();
+  if (selectedWikiCharId) {
+    renderWikiCharacterDetail(selectedWikiCharId);
+  }
+}
+
+function renderWikiRosterList() {
+  const listEl = document.getElementById('wiki-char-list');
+  if (!listEl) return;
+
+  const q = ((document.getElementById('wiki-search-input') || {}).value || '').trim().toLowerCase();
+  const elemFilter = ((document.getElementById('wiki-elem-filter') || {}).value || 'all');
+  const classFilter = ((document.getElementById('wiki-class-filter') || {}).value || 'all');
+
+  const filtered = allCharacters.filter(c => {
+    if (elemFilter !== 'all' && c.element !== elemFilter) return false;
+    if (classFilter !== 'all' && c.class !== classFilter) return false;
+    if (q) {
+      const hay = `${c.name} ${c.element} ${c.class} ${c.weaponType || ''}`.toLowerCase();
+      if (!hay.includes(q)) return false;
+    }
+    return true;
+  });
+
+  listEl.innerHTML = filtered.map(c => {
+    const isActive = c.id === selectedWikiCharId;
+    return `
+      <button type="button" class="wiki-char-item ${isActive ? 'active' : ''}" onclick="selectWikiCharacter('${c.id}')">
+        <img src="${c.icon}" class="wiki-char-item-icon" alt="${c.name}">
+        <div class="wiki-char-item-info">
+          <div class="wiki-char-item-name">★${c.rarity || 5} ${c.name}</div>
+          <div class="wiki-char-item-tags">
+            <span class="char-tag tag-elem-${c.element || '物理'}">${c.element || '物理'}</span>
+            <span class="char-tag tag-class">${c.class || ''}</span>
+          </div>
+        </div>
+      </button>
+    `;
+  }).join('');
+}
+
+function renderWikiCharacterDetail(charId) {
+  const pane = document.getElementById('wiki-char-detail');
+  if (!pane) return;
+  const c = allCharacters.find(x => x.id === charId || x.name === charId);
+  if (!c) {
+    pane.innerHTML = '<div style="padding:20px; color:#888;">オペレーターを選択してください</div>';
+    return;
+  }
+
+  const statNameMap = {
+    strength: '筋力 (STR)',
+    agility: '敏捷 (AGI)',
+    intellect: '知性 (INT)',
+    will: '意志 (WIL)'
+  };
+  const bs = c.baseStats || { atk: 300, hp: 2000, def: 100, strength: 100, agility: 100, intellect: 100, will: 100 };
+
+  const inflictLabelMap = {
+    heat: '🔥 灼熱付着 (+1段階)',
+    cryo: '❄️ 寒冷付着 (+1段階)',
+    electric: '⚡ 電磁付着 (+1段階)',
+    nature: '🌿 自然付着 (+1段階)',
+    copy_slot1: '🎨 1枠目属性模倣付着 (+1段階)',
+    okugi_dual: '☯️ 知意双形態付着 (+1段階)',
+    none: '付着なし'
+  };
+
+  const crushLabelMap = {
+    inflict: '💥 クラッシュ付与 (0段→1段 / 1段以上→+1段、最大4段)',
+    consume_smash: '💥 猛撃・クラッシュ消費 (0段時→1段付与 / 1段以上時→全段階消費して追加効果)',
+    consume_shatter: '💥 破砕・クラッシュ消費 (0段時→1段付与 / 1段以上時→全段階消費して極大効果)',
+    none: 'なし'
+  };
+
+  let specialHtml = '';
+  if (c.specialMechanic && c.specialMechanic.description) {
+    specialHtml = `
+      <div class="wiki-special-callout">
+        <div class="wiki-special-title">✨ 固有メカニクス・特殊仕様</div>
+        <div class="wiki-special-desc">${c.specialMechanic.description}</div>
+      </div>
+    `;
+  } else if (c.id === 'char_chen') {
+    specialHtml = `
+      <div class="wiki-special-callout">
+        <div class="wiki-special-title">✨ チェン・センユー 固有クラッシュ仕様</div>
+        <div class="wiki-special-desc">チェンが扱う物理状態異常は<strong>「浮遊（クラッシュ付与タイプ +1段階）」のみ</strong>です。「猛撃」や「破砕」などのクラッシュ消費は行いません。</div>
+      </div>
+    `;
+  }
+
+  const potentialsHtml = (c.potentials && c.potentials.length > 0)
+    ? c.potentials.map(pt => `<span class="wiki-pot-badge">${pt.level}凸: ${pt.type === 'ult_cost_reduction_percent' ? `必殺技消費EP -${pt.value}%` : `返還SP +${pt.value}`}</span>`).join('')
+    : '<span style="color:#888; font-size:12px;">特記凸効果なし</span>';
+
+  const skillsHtml = (c.skills || []).map(sk => {
+    const mults = sk.multipliers || {};
+    const fmtM = (v) => v !== undefined ? `${Math.round(v * 1000) / 10}%` : '-';
+    const infType = sk.infliction ? sk.infliction.type : 'none';
+    const infBadge = sk.infliction && sk.infliction.label
+      ? `${inflictLabelMap[infType] || sk.infliction.label}`
+      : (inflictLabelMap[infType] || '付着なし');
+
+    const crType = sk.crush ? sk.crush.type : 'none';
+    const crBadge = sk.crush && sk.crush.label
+      ? `${sk.crush.label} — ${crushLabelMap[crType] || ''}`
+      : (crushLabelMap[crType] || 'なし');
+
+    const costBadges = [];
+    if (sk.spCost !== undefined) costBadges.push(`<span class="wiki-cost-pill sp">消費SP: ${sk.spCost}</span>`);
+    if (sk.epCost !== undefined) costBadges.push(`<span class="wiki-cost-pill ep">消費EP: ${sk.epCost}</span>`);
+    if (sk.epGain !== undefined) costBadges.push(`<span class="wiki-cost-pill epgain">獲得EP: +${sk.epGain}</span>`);
+
+    return `
+      <div class="wiki-skill-card">
+        <div class="wiki-skill-header">
+          <div>
+            <span class="wiki-skill-type-badge type-${sk.type}">${sk.shortName || sk.type}</span>
+            <strong class="wiki-skill-name">${sk.name}</strong>
+            <span class="char-tag tag-elem-${sk.damageType || c.element || '物理'}">${sk.damageType || c.element || '物理'}</span>
+          </div>
+          <div class="wiki-skill-costs">${costBadges.join('')}</div>
+        </div>
+
+        <div class="wiki-skill-mechanics-grid">
+          <div class="wiki-mech-box">
+            <span class="wiki-mech-label">アーツ付着仕様</span>
+            <span class="wiki-mech-val ${infType !== 'none' ? 'is-active' : ''}">${infBadge}</span>
+          </div>
+          <div class="wiki-mech-box">
+            <span class="wiki-mech-label">クラッシュ仕様</span>
+            <span class="wiki-mech-val ${crType !== 'none' ? 'is-active' : ''}">${crBadge}</span>
+          </div>
+        </div>
+
+        <table class="wiki-mult-table">
+          <thead>
+            <tr>
+              <th>Lv.9 (基準)</th>
+              <th>特化1 (Rank 1)</th>
+              <th>特化2 (Rank 2)</th>
+              <th>特化3 (Rank 3)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${fmtM(mults.lv9)}</td>
+              <td>${fmtM(mults.rank1)}</td>
+              <td>${fmtM(mults.rank2)}</td>
+              <td class="wiki-mult-max">${fmtM(mults.rank3)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+  }).join('');
+
+  pane.innerHTML = `
+    <div class="wiki-profile-card">
+      <div class="wiki-profile-left">
+        <img src="${c.icon}" class="wiki-profile-avatar" alt="${c.name}">
+        <div>
+          <div class="wiki-profile-badges">
+            <span class="equip-rarity-stars">★${c.rarity || 5}</span>
+            <span class="char-tag tag-elem-${c.element || '物理'}">${c.element || '物理'}</span>
+            <span class="char-tag tag-class">${c.class || ''}</span>
+            <span class="equip-type-pill">武器種: ${c.weaponType || '-'}</span>
+          </div>
+          <h3 class="wiki-profile-name">${c.name}</h3>
+          <div class="wiki-profile-weapons">
+            <span>モチーフ武器: <strong>${c.motifWeapon || 'なし'}</strong></span>
+            <span> / おすすめ武器: <strong>${(c.recommendedWeapons || []).join('、') || '-'}</strong></span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="wiki-add-party-btn" onclick="addToParty(allCharacters.find(x=>x.id==='${c.id}')); switchPage('rotation');">+ パーティーに編成してスキル回しへ</button>
+    </div>
+
+    ${specialHtml}
+
+    <div class="wiki-stats-section">
+      <h4>📊 基礎ステータス (Lv.90) ＆ 能力値補正</h4>
+      <div class="wiki-stats-grid">
+        <div class="wiki-stat-cell"><span class="k">基礎攻撃力</span><span class="v">${bs.atk}</span></div>
+        <div class="wiki-stat-cell"><span class="k">基礎HP</span><span class="v">${bs.hp}</span></div>
+        <div class="wiki-stat-cell"><span class="k">基礎防御力</span><span class="v">${bs.def}</span></div>
+        <div class="wiki-stat-cell"><span class="k">筋力 (STR)</span><span class="v">${bs.strength}</span></div>
+        <div class="wiki-stat-cell"><span class="k">敏捷 (AGI)</span><span class="v">${bs.agility}</span></div>
+        <div class="wiki-stat-cell"><span class="k">知性 (INT)</span><span class="v">${bs.intellect}</span></div>
+        <div class="wiki-stat-cell"><span class="k">意志 (WIL)</span><span class="v">${bs.will}</span></div>
+        <div class="wiki-stat-cell"><span class="k">メイン能力 (×0.5%)</span><span class="v highlight">${statNameMap[c.mainStat] || c.mainStat}</span></div>
+        <div class="wiki-stat-cell"><span class="k">サブ能力 (×0.2%)</span><span class="v">${statNameMap[c.subStat] || c.subStat}</span></div>
+      </div>
+      <div class="wiki-potentials-row">
+        <strong>潜在能力(凸効果) / SP特性:</strong>
+        ${potentialsHtml}
+        ${c.baseRefundSP > 0 ? `<span class="wiki-pot-badge">戦技返還SP: +${c.baseRefundSP}</span>` : ''}
+        ${c.baseRecoverSP > 0 ? `<span class="wiki-pot-badge">戦技回復SP: +${c.baseRecoverSP}</span>` : ''}
+      </div>
+    </div>
+
+    <div class="wiki-skills-section">
+      <h4>⚔️ スキル仕様・倍率・付着/クラッシュ一覧</h4>
+      <div class="wiki-skills-list">
+        ${skillsHtml}
+      </div>
+    </div>
+  `;
+}
 
 function renderPalette() {
   const container = document.getElementById('skill-palette');

@@ -22,6 +22,9 @@
       <button type="button" id="tab-btn-damage" class="nav-tab-btn" onclick="switchPage('damage')">
         <span class="nav-icon">💥</span> ダメージ計算
       </button>
+      <button type="button" id="tab-btn-wiki" class="nav-tab-btn" onclick="switchPage('wiki')">
+        <span class="nav-icon">📖</span> キャラ・スキルWiki
+      </button>
     </nav>
   </header>
 
@@ -249,7 +252,73 @@
         </div>
       </section>
     </div>
+
+    <!-- ==================== 3. キャラ・スキルWikiページ ==================== -->
+    <div id="page-wiki" class="page-view">
+      <section class="panel wiki-panel">
+        <div class="wiki-header-bar">
+          <div>
+            <h2>📖 オペレーター ＆ スキル仕様 Wiki</h2>
+            <p class="wiki-subtitle">各キャラクターのステータス・凸効果・固有仕様・全スキルの倍率（Lv9〜特化3）・アーツ付着＆クラッシュ仕様を確認できます。</p>
+          </div>
+          <div class="wiki-filters">
+            <input type="text" id="wiki-search-input" class="wiki-search-input" placeholder="🔍 キャラ名・属性・職分で検索..." oninput="filterWikiRoster()">
+            <select id="wiki-elem-filter" class="wiki-filter-select" onchange="filterWikiRoster()">
+              <option value="all">全属性</option>
+              <option value="物理">物理</option>
+              <option value="灼熱">灼熱</option>
+              <option value="電磁">電磁</option>
+              <option value="寒冷">寒冷</option>
+              <option value="自然">自然</option>
+            </select>
+            <select id="wiki-class-filter" class="wiki-filter-select" onchange="filterWikiRoster()">
+              <option value="all">全職分</option>
+              <option value="前衛">前衛</option>
+              <option value="先鋒">先鋒</option>
+              <option value="重装">重装</option>
+              <option value="術師">術師</option>
+              <option value="突撃">突撃</option>
+              <option value="補助">補助</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wiki-layout">
+          <aside id="wiki-char-list" class="wiki-sidebar">
+            <!-- キャラ選択リスト -->
+          </aside>
+          <article id="wiki-char-detail" class="wiki-detail-pane">
+            <!-- 選択中キャラの詳細・スキル倍率・付着/クラッシュ仕様 -->
+          </article>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <!-- ==================== 武器・防具 リッチ選択モーダル ==================== -->
+  <div id="equip-picker-modal" class="equip-modal-overlay" style="display: none;" onclick="if(event.target===this) closeEquipPickerModal()">
+    <div class="equip-modal-dialog">
+      <div class="equip-modal-header">
+        <div class="equip-modal-title-wrap">
+          <span id="equip-modal-icon" class="equip-modal-header-icon">⚔️</span>
+          <div>
+            <h3 id="equip-modal-title">装備を選択</h3>
+            <span id="equip-modal-subtitle" class="equip-modal-subtitle">アイコンと効果テキストを確認して選択してください</span>
+          </div>
+        </div>
+        <button type="button" class="equip-modal-close-btn" onclick="closeEquipPickerModal()">✕ 閉じる</button>
+      </div>
+      <div class="equip-modal-toolbar">
+        <input type="text" id="equip-modal-search" class="equip-modal-search" placeholder="🔍 装備名・セット名・スキル効果で検索..." oninput="renderEquipPickerList()">
+        <div id="equip-modal-filter-tags" class="equip-modal-filter-tags"></div>
+      </div>
+      <div class="equip-modal-body">
+        <div id="equip-modal-grid" class="equip-modal-grid">
+          <!-- 装備カード一覧 -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="time_track_timeline.js"></script>
   <script src="app.js"></script>
