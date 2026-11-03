@@ -484,7 +484,7 @@
         // オクギの特殊ギミック: 知意双形態
         let isOkugiIntellectMode = false;
         if (skillInflictionType === 'okugi_dual' || (member.specialMechanic && member.specialMechanic.type === 'okugi_dual')) {
-          isOkugiIntellectMode = (stats.intellect > stats.willpower);
+          isOkugiIntellectMode = (stats.int > stats.wil);
           if (isOkugiIntellectMode) {
             skillInflictionType = 'nature';
             skillInflictionStacks = 1;
@@ -562,12 +562,10 @@
         });
 
         const dmgResult = calculateSkillDamage(
-          member,
+          stats,
           Object.assign({}, skill, { damageType: effectiveDamageType }),
-          memberLevel,
           skillLevel,
           calcEnemy,
-          stats,
           context
         );
 

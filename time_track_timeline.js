@@ -26,8 +26,7 @@
       this.container.innerHTML = `
         <div class="time-track-toolbar">
           <div class="time-track-title-wrap">
-            <span class="time-track-badge">Phase 4</span>
-            <h3 class="time-track-heading">⏱️ バフ・デバフ時間軸タイムライン</h3>
+            <h3 class="time-track-heading">⏱️ タイムライン</h3>
           </div>
           <div class="time-track-controls">
             <span class="zoom-label">ズーム:</span>
@@ -411,3 +410,4 @@
 
   global.TimeTrackTimeline = TimeTrackTimeline;
 })(typeof window !== 'undefined' ? window : global);
+

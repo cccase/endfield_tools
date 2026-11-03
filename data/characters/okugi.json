@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/character.schema.json",
-  "id": "char_okugi",
+  "id": "オクギ",
   "name": "オクギ",
   "icon": "image/okugi.png",
   "rarity": 6,

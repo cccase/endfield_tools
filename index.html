@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>アークナイツ：エンドフィールド ローテーション＆SPシミュレーター</title>
+  <title>アークナイツ：エンドフィールド スキル回し＆ダメージシミュレーター</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="drag-drop-touch.js"></script>
+  <script src="data/characters.js"></script>
   <script src="data/weapons.js"></script>
+  <script src="data/equipment.js"></script>
   <script src="damage_calculator.js"></script>
 </head>
 <body>
   <header>
-    <h1>アークナイツ：エンドフィールド ローテーション＆ダメージシミュレーター</h1>
+    <h1>アークナイツ：エンドフィールド スキル回し＆ダメージシミュレーター</h1>
     <nav class="app-nav">
       <button type="button" id="tab-btn-rotation" class="nav-tab-btn active" onclick="switchPage('rotation')">
-        <span class="nav-icon">🔄</span> ローテーション
+        <span class="nav-icon">🔄</span> スキル回し
       </button>
       <button type="button" id="tab-btn-damage" class="nav-tab-btn" onclick="switchPage('damage')">
         <span class="nav-icon">💥</span> ダメージ計算
@@ -24,7 +26,7 @@
   </header>
 
   <main>
-    <!-- ==================== 1. ローテーションページ ==================== -->
+    <!-- ==================== 1. スキル回しページ ==================== -->
     <div id="page-rotation" class="page-view active">
       <!-- キャラクター選択とパーティー編成 -->
       <section class="panel top-section">
@@ -54,7 +56,7 @@
       <!-- 利用可能なスキル・パネルパレット -->
       <section id="palette-panel" class="panel palette-panel" style="overflow-y: auto;">
         <div class="palette-header-wrap">
-          <h2>スキルパレット <span class="palette-subtitle">(ドラッグ＆ドロップでタイムラインへ)</span></h2>
+          <h2>スキルパレット <span class="palette-subtitle">(ドラッグ＆ドロップでスキル回しへ)</span></h2>
           <div class="palette-header-controls">
             <div class="skill-name-toggle-switch" title="スキル名の表示を「正式名称」と「略称（戦技1、必殺技など）」で切り替えます">
               <span class="toggle-label">スキル名表示:</span>
@@ -73,10 +75,10 @@
         </div>
       </section>
 
-      <!-- シーケンス型タイムライン -->
+      <!-- スキル回し (発動順) -->
       <section class="panel timeline-panel">
         <div class="timeline-header">
-          <h2>タイムライン (発動順)</h2>
+          <h2>スキル回し (発動順)</h2>
           <div class="controls">
             <button id="btn-save-timeline">保存</button>
             <button id="btn-export-url">URLをコピー</button>
@@ -90,13 +92,6 @@
             <!-- ここにブロックが並ぶ -->
             <div class="drop-indicator" id="timeline-drop-zone">ここにスキルをドロップ</div>
           </div>
-        </div>
-      </section>
-
-      <!-- フェーズ4：バフ・デバフ時間軸タイムライン（動画編集ソフト風） -->
-      <section class="panel time-track-panel">
-        <div id="time-track-container">
-          <!-- TimeTrackTimeline がここにマウントされます -->
         </div>
       </section>
 
@@ -125,10 +120,10 @@
 
     <!-- ==================== 2. ダメージ計算ページ ==================== -->
     <div id="page-damage" class="page-view">
-      <!-- ターゲット設定（案山子 / 練習用ダミー ＆ アーツ付着・クラッシュ） -->
+      <!-- ターゲット設定（案山子 / 練習用ダミー） -->
       <section class="panel enemy-panel">
         <div class="enemy-header">
-          <h2>🎯 ターゲット設定 (案山子 / アーツ付着・クラッシュ段階)</h2>
+          <h2>🎯 ターゲット設定 (案山子)</h2>
           <button type="button" class="enemy-reset-btn" onclick="resetEnemySettings()">初期値に戻す</button>
         </div>
         
@@ -173,62 +168,19 @@
             <input type="number" id="enemy-res-nature" value="0" min="-100" max="100" step="5" onchange="updateEnemySetting('natureRes', this.value)">
           </div>
         </div>
+      </section>
 
-        <div class="enemy-settings-section-title" style="margin-top:12px;">■ アーツ付着・状態異常・クラッシュ段階 (装備効果・反応トリガー)</div>
-        <div class="enemy-settings-grid">
-          <div class="enemy-field">
-            <label for="enemy-arts-attachment">アーツ付着状態:</label>
-            <select id="enemy-arts-attachment" onchange="updateEnemySetting('artsAttachment', this.value)">
-              <option value="none">付着なし</option>
-              <option value="heat">灼熱付着 (Heat)</option>
-              <option value="cryo">寒冷付着 (Cryo)</option>
-              <option value="electric">電磁付着 (Electric)</option>
-              <option value="nature">自然付着 (Nature)</option>
-            </select>
-          </div>
-          <div class="enemy-field">
-            <label for="enemy-attachment-stacks">付着段階 (スタック):</label>
-            <select id="enemy-attachment-stacks" onchange="updateEnemySetting('attachmentStacks', this.value)">
-              <option value="0">0 段階</option>
-              <option value="1">1 段階</option>
-              <option value="2">2 段階</option>
-              <option value="3">3 段階</option>
-              <option value="4">4 段階 (最大)</option>
-            </select>
-          </div>
-          <div class="enemy-field">
-            <label for="enemy-arts-anomaly">アーツ状態異常:</label>
-            <select id="enemy-arts-anomaly" onchange="updateEnemySetting('artsAnomaly', this.value)">
-              <option value="none">異常なし</option>
-              <option value="combustion">燃焼 (DoT / 火山セット灼熱+50%)</option>
-              <option value="corrosion">腐食 (全耐性-20% / 火山セット自然+50%)</option>
-              <option value="freeze">凍結 (砕氷物理+40%)</option>
-              <option value="shock">感電 (アーツ脆弱+20%)</option>
-            </select>
-          </div>
-          <div class="enemy-field">
-            <label for="enemy-crush-stacks" title="物理攻撃の蓄積段階。猛撃・破砕時に全消費">クラッシュ段階 (0〜4):</label>
-            <select id="enemy-crush-stacks" onchange="updateEnemySetting('crushStacks', this.value)">
-              <option value="0">0 段階</option>
-              <option value="1">1 段階 (+6% / 9%)</option>
-              <option value="2">2 段階 (+12% / 18%)</option>
-              <option value="3">3 段階 (+18% / 27%)</option>
-              <option value="4">4 段階 (最大 +24% / 36%)</option>
-            </select>
-          </div>
-          <div class="enemy-field" style="justify-content:center;">
-            <label title="異属性アーツ攻撃時に付着を消費して元素反応ボーナスを計算" style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:11px;">
-              <input type="checkbox" id="enemy-consume-attachment" onchange="updateEnemySetting('consumeAttachment', this.checked)">
-              アーツ付着を消費して反応
-            </label>
-          </div>
+      <!-- タイムライン（ダメージ計算用） -->
+      <section class="panel time-track-panel">
+        <div id="time-track-container">
+          <!-- TimeTrackTimeline がここにマウントされます -->
         </div>
       </section>
 
       <!-- ダメージ集計サマリー -->
       <section class="panel damage-summary-panel">
         <div class="damage-summary-header">
-          <h2>💥 タイムライン ダメージ集計サマリー</h2>
+          <h2>💥 ダメージ集計サマリー</h2>
           <div class="damage-display-mode-switch">
             <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
             <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
@@ -237,7 +189,7 @@
         </div>
         <div class="damage-metrics-grid">
           <div class="damage-card">
-            <div class="damage-card-label">タイムライン総ダメージ</div>
+            <div class="damage-card-label">総ダメージ</div>
             <div class="damage-card-value" id="total-timeline-damage">0</div>
           </div>
           <div class="damage-card">
@@ -271,7 +223,7 @@
         </div>
       </section>
 
-      <!-- タイムライン発動スキルの詳細内訳テーブル -->
+      <!-- スキル別ダメージ計算内訳テーブル -->
       <section class="panel damage-details-panel">
         <h2>📋 スキル別ダメージ計算内訳</h2>
         <div class="table-scroll-wrap">
