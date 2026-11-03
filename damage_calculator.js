@@ -621,11 +621,20 @@
           context.actionNote = (context.actionNote ? context.actionNote + ' ' : '') + '知形態(自然脆弱)';
         }
 
+        // Priority C: タイムライン上のバフ・デバフブロック重なりによるリアルタイム補正
+        if (typeof item.timelineExtraDamageUp === 'number' && item.timelineExtraDamageUp !== 0) {
+          context.extraDamageUp = (context.extraDamageUp || 0) + item.timelineExtraDamageUp;
+        }
+        if (item.timelineBuffNote) {
+          context.actionNote = (context.actionNote ? context.actionNote + ' / ' : '') + item.timelineBuffNote;
+        }
+
         // スキルレベル（メンバーの個別設定があれば参照、なければlv9）
         const skillLevel = (item.skillLevel) || (member.skillLevels && member.skillLevels[skill.type]) || 'lv9';
 
         // 一時的に enemy 設定を currentEnemy に合わせて計算
         const calcEnemy = Object.assign({}, currentEnemy, {
+          vulnerability: (currentEnemy.vulnerability || 0) + (typeof item.timelineExtraVuln === 'number' ? item.timelineExtraVuln : 0),
           consumeAttachment: context.consumeAttachment,
           consumeCrush: context.consumeCrush
         });

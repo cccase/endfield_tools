@@ -2177,15 +2177,38 @@ let timeTrackTimeline = null;
 function initTimeTrackTimeline() {
   const container = document.getElementById('time-track-container');
   if (container && typeof TimeTrackTimeline !== 'undefined') {
-    timeTrackTimeline = new TimeTrackTimeline('time-track-container', { pxPerSec: 28 });
-    autoSyncTimeTracks();
+    timeTrackTimeline = new TimeTrackTimeline('time-track-container', { pxPerSec: 30 });
+    autoSyncTimeTracks(true);
   }
 }
 
-window.autoSyncTimeTracks = function() {
+window.autoSyncTimeTracks = function(forceReset = false) {
   if (timeTrackTimeline) {
-    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
+    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames, forceReset);
+    updateSimulation({ fromTimeTrack: true });
   }
+};
+
+window.appendSkillFromTimeTrack = function(member, skill) {
+  if (!member || !skill) return;
+  if (!timelineCycles || timelineCycles.length === 0) {
+    timelineCycles = [[]];
+    cycleNames = ['サイクル 1'];
+  }
+  const lastCycle = timelineCycles[timelineCycles.length - 1];
+  lastCycle.push({
+    type: skill.type,
+    charId: member.id,
+    charName: member.name,
+    charIcon: member.icon,
+    skillId: skill.id,
+    skillData: skill
+  });
+  renderTimeline();
+};
+
+window.onTimeTrackEdited = function() {
+  updateSimulation({ fromTimeTrack: true });
 };
 
 async function initApp() {
@@ -4303,7 +4326,7 @@ function getCharacterStats(charId) {
   };
 }
 
-function updateSimulation() {
+function updateSimulation(opts = {}) {
   let totalSpSpent = 0;
   let totalSpRefunded = 0;
   let totalSpRecovered = 0;
@@ -4538,13 +4561,20 @@ function updateSimulation() {
     }
   });
 
-  // ===== スキル回し順序に基づく動的シミュレーション（アーツ付着・消費・クラッシュ） =====
+  // ===== タイムライン（動画編集型マルチトラック）同期 ＆ 動的ダメージシミュレーション =====
+  if (timeTrackTimeline && !timeTrackTimeline.activeDrag && (!opts || !opts.fromTimeTrack)) {
+    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
+  }
+
   let simResult = null;
   try {
     if (typeof DamageCalculator !== 'undefined' && DamageCalculator.simulateTimelineRotation) {
       const masterDataForSim = Object.assign({}, equipmentMaster, { weapons: getWeaponData().weapons });
+      const effectiveCycles = (timeTrackTimeline && typeof timeTrackTimeline.getEffectiveTimelineForDamage === 'function')
+        ? timeTrackTimeline.getEffectiveTimelineForDamage(timelineCycles, party)
+        : timelineCycles;
       simResult = DamageCalculator.simulateTimelineRotation(
-        timelineCycles,
+        effectiveCycles,
         party,
         targetEnemy,
         masterDataForSim,
@@ -4676,10 +4706,6 @@ function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRe
     `;
     container.appendChild(row);
   });
-
-  if (timeTrackTimeline && !timeTrackTimeline.activeDrag) {
-    timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
-  }
 }
 window.renderTimeline = renderTimeline;
 

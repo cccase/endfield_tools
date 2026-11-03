@@ -2410,5 +2410,244 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   font-weight: 700;
 }
 
+/* =========================================================
+   Priority C: 動画編集ソフト型（Premiere Pro風）マルチトラック・タイムラインUI
+   ========================================================= */
+
+.time-track-badge {
+  background: rgba(52, 152, 219, 0.2);
+  color: #5dade2;
+  border: 1px solid rgba(52, 152, 219, 0.45);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+.time-track-hint {
+  display: block;
+  font-size: 11px;
+  color: #95a5a6;
+  margin-top: 2px;
+}
+
+.manual-buff-adder {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 8px;
+}
+.manual-buff-select {
+  background: #171b21;
+  color: #eee;
+  border: 1px solid #3a424e;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+.btn-time-add-buff {
+  background: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-time-add-buff:hover {
+  background: #2ecc71;
+}
+
+/* クイッククリップ配置パレットバー */
+.time-clip-palette-bar {
+  background: #16191f;
+  border: 1px solid #2d333f;
+  border-radius: 7px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.clip-palette-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #aeb7c4;
+}
+.clip-palette-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.clip-palette-char-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #20252d;
+  border: 1px solid #333a47;
+  border-radius: 6px;
+  padding: 4px 7px;
+}
+.clip-palette-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.clip-palette-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #2b323d;
+  color: #fff;
+  border: 1px solid #434d5e;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+.clip-palette-btn:hover {
+  border-color: #f39c12;
+  transform: translateY(-1px);
+  background: #353e4c;
+}
+.clip-palette-btn.type-skill, .clip-palette-btn.type-skill2 {
+  border-left: 3px solid #3498db;
+}
+.clip-palette-btn.type-combo {
+  border-left: 3px solid #e67e22;
+}
+.clip-palette-btn.type-ult, .clip-palette-btn.type-ult2 {
+  border-left: 3px solid #e74c3c;
+}
+.clip-btn-type {
+  font-size: 10px;
+  color: #f39c12;
+  font-weight: 700;
+}
+.clip-btn-name {
+  font-weight: 600;
+}
+
+/* トラック種別バッジ (V1-V4 / A1-A5) */
+.track-code-badge {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  min-width: 22px;
+  text-align: center;
+}
+.track-code-badge.skill {
+  background: #2980b9;
+  color: #fff;
+}
+.track-code-badge.enemy {
+  background: #c0392b;
+  color: #fff;
+}
+.track-code-badge.buff {
+  background: #27ae60;
+  color: #fff;
+}
+
+.track-header-item.kind-skill {
+  background: rgba(41, 128, 185, 0.1);
+}
+.track-header-item.kind-enemy {
+  background: rgba(192, 57, 43, 0.12);
+  border-top: 2px solid #444;
+}
+.track-lane.kind-skill {
+  background: rgba(25, 35, 48, 0.45);
+}
+.track-lane.kind-enemy {
+  background: rgba(48, 25, 28, 0.35);
+  border-top: 2px solid #444;
+}
+.track-lane.drag-over {
+  background: rgba(243, 156, 18, 0.18) !important;
+  outline: 1px dashed #f39c12;
+}
+
+/* 映像クリップ風スキルブロック */
+.time-skill-clip {
+  position: absolute;
+  top: 5px;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top: 3px solid #f1c40f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  user-select: none;
+  z-index: 3;
+  box-sizing: border-box;
+  transition: filter 0.14s, border-color 0.14s;
+}
+.time-skill-clip:hover {
+  filter: brightness(1.15);
+  border-color: #fff;
+  z-index: 5;
+}
+.time-skill-clip.is-dragging {
+  cursor: grabbing;
+  opacity: 0.88;
+  z-index: 12;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.75);
+}
+.clip-body-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0 4px;
+}
+.clip-time-tag {
+  background: rgba(0, 0, 0, 0.55);
+  color: #f1c40f;
+  font-family: monospace;
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+.clip-title {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clip-delete-btn {
+  background: rgba(0, 0, 0, 0.45);
+  color: #ddd;
+  border: none;
+  border-radius: 3px;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  line-height: 14px;
+  padding: 0;
+  cursor: pointer;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.clip-delete-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+
 
 
