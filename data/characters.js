@@ -557,7 +557,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_50e5bc8fe5bf9ce_20",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
-        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -1078,7 +1078,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -1634,7 +1634,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -2198,10 +2198,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -2755,7 +2755,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -3319,10 +3319,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -3876,7 +3876,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e9aaa8e7a095e38_39",
         "arm": "gold_arms_e9aaa8e7a095e38_35",
         "acc1": "gold_accessories_e9aaa8e7a095e38_50",
-        "acc2": "gold_accessories_e9aaa8e7a095e38_51"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -4456,7 +4456,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
-        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -4995,7 +4995,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -5529,7 +5529,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e8bbbde9878fe8b_44",
         "arm": "gold_arms_e8bbbde9878fe8b_38",
         "acc1": "gold_accessories_e8bbbde9878fe8b_56",
-        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -6081,7 +6081,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_50e5bc8fe5bf9ce_20",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
-        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -6615,7 +6615,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -7159,10 +7159,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -7757,7 +7757,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -8321,10 +8321,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -8895,7 +8895,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
-        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -9479,7 +9479,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e5a594e6b5aae38_19",
         "arm": "gold_arms_e6b288e6b0b4e38_18",
         "acc1": "gold_accessories_e687b8e6b2b3e38_21",
-        "acc2": "gold_accessories_e6bf81e6b581e38_22"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -10039,7 +10039,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e8bbbde9878fe8b_44",
         "arm": "gold_arms_e8bbbde9878fe8b_38",
         "acc1": "gold_accessories_e8bbbde9878fe8b_56",
-        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -10629,10 +10629,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -11349,7 +11349,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e697a7e98b92e99_7",
         "arm": "gold_arms_e697a7e98b92e38_7",
         "acc1": "gold_accessories_e697a7e98b92e38_7",
-        "acc2": "gold_accessories_e697a7e98b92e38_8"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -11634,7 +11634,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
         "acc1": "gold_accessories_e38391e383abe38_46",
-        "acc2": "gold_accessories_e38391e383abe38_47"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -12373,7 +12373,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
-        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -12927,7 +12927,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
         "acc1": "gold_accessories_e38391e383abe38_46",
-        "acc2": "gold_accessories_e38391e383abe38_47"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -13520,7 +13520,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_50e5bc8fe5bf9ce_20",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
-        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -14132,7 +14132,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e382a4e38_32",
         "arm": "gold_arms_e38391e382a4e38_30",
         "acc1": "gold_accessories_e38391e382a4e38_40",
-        "acc2": "gold_accessories_e38391e382a4e38_41"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -14738,7 +14738,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e8bbbde9878fe8b_44",
         "arm": "gold_arms_e8bbbde9878fe8b_38",
         "acc1": "gold_accessories_e8bbbde9878fe8b_56",
-        "acc2": "gold_accessories_e8bbbde9878fe8b_57"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -15059,7 +15059,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e7949fe789a9e8a_45",
         "arm": "gold_arms_e7949fe789a9e8a_40",
         "acc1": "gold_accessories_e7949fe789a9e8a_60",
-        "acc2": "gold_accessories_e7949fe789a9e8a_61"
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -15518,7 +15518,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_50e5bc8fe5bf9ce_20",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
-        "acc2": "gold_accessories_50e5bc8fe5bf9ce_25"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -15990,7 +15990,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
         "acc1": "gold_accessories_e38391e383abe38_46",
-        "acc2": "gold_accessories_e38391e383abe38_47"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -16370,7 +16370,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
-        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -16724,7 +16724,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
-        "acc2": "gold_accessories_e781abe5b1b1e79_37"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -17055,10 +17055,10 @@ window.CHARACTER_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "armor_body_ruten",
-        "arm": "armor_arms_ruten",
-        "acc1": "armor_acc_ruten",
-        "acc2": "gold_accessories_e6b581e8bba2e38_16"
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
     {
@@ -17425,7 +17425,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_mie8ada6e58299e_25",
         "arm": "gold_arms_mie8ada6e58299e_22",
         "acc1": "gold_accessories_mie8ada6e58299e_30",
-        "acc2": "gold_accessories_mie8ada6e58299e_31"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -17809,7 +17809,7 @@ window.CHARACTER_DATA = {
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
         "acc1": "gold_accessories_e38391e383abe38_46",
-        "acc2": "gold_accessories_e38391e383abe38_47"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     }
   ]
