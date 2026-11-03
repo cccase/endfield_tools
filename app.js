@@ -554,9 +554,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "50式応龍セット",
       "recommendedArmor": {
         "armorSet": "set_oryu",
-        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "body": "gold_body_50e5bc8fe5bf9ce_21",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
-        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_28",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -1075,9 +1075,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "パイオニアセット",
       "recommendedArmor": {
         "armorSet": "set_pioneer",
-        "body": "gold_body_e38391e382a4e38_32",
+        "body": "gold_body_e38391e382a4e38_34",
         "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc1": "gold_accessories_e38391e382a4e38_43",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -1631,9 +1631,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "パイオニアセット",
       "recommendedArmor": {
         "armorSet": "set_pioneer",
-        "body": "gold_body_e38391e382a4e38_32",
+        "body": "gold_body_e38391e382a4e38_34",
         "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc1": "gold_accessories_e38391e382a4e38_43",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -2198,8 +2198,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "body": "gold_body_e6b581e8bba2e8b_14",
+        "arm": "gold_arms_e6b581e8bba2e38_13",
         "acc1": "gold_accessories_e6b581e8bba2e38_16",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
@@ -2752,9 +2752,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "パイオニアセット",
       "recommendedArmor": {
         "armorSet": "set_pioneer",
-        "body": "gold_body_e38391e382a4e38_32",
+        "body": "gold_body_e38391e382a4e38_34",
         "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "acc1": "gold_accessories_e38391e382a4e38_43",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -3319,8 +3319,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "body": "gold_body_e6b581e8bba2e8b_14",
+        "arm": "gold_arms_e6b581e8bba2e38_13",
         "acc1": "gold_accessories_e6b581e8bba2e38_16",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
@@ -3873,9 +3873,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "骨砕セット",
       "recommendedArmor": {
         "armorSet": "set_kotsusai",
-        "body": "gold_body_e9aaa8e7a095e38_39",
-        "arm": "gold_arms_e9aaa8e7a095e38_35",
-        "acc1": "gold_accessories_e9aaa8e7a095e38_50",
+        "body": "gold_body_e9aaa8e7a095e38_40",
+        "arm": "gold_arms_e9aaa8e7a095e38_36",
+        "acc1": "gold_accessories_e9aaa8e7a095e38_52",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -4455,7 +4455,7 @@ const DEFAULT_DATA = {
         "armorSet": "set_volcano",
         "body": "gold_body_e781abe5b1b1e79_30",
         "arm": "gold_arms_e781abe5b1b1e79_26",
-        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "acc1": "gold_accessories_e781abe5b1b1e79_37",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -4993,8 +4993,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_pioneer",
         "body": "gold_body_e38391e382a4e38_32",
-        "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "arm": "gold_arms_e38391e382a4e38_31",
+        "acc1": "gold_accessories_e38391e382a4e38_42",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -5527,8 +5527,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_chouiki",
         "body": "gold_body_e8bbbde9878fe8b_44",
-        "arm": "gold_arms_e8bbbde9878fe8b_38",
-        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "arm": "gold_arms_e8bbbde9878fe8b_39",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_58",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -6078,9 +6078,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "50式応龍セット",
       "recommendedArmor": {
         "armorSet": "set_oryu",
-        "body": "gold_body_50e5bc8fe5bf9ce_20",
+        "body": "gold_body_50e5bc8fe5bf9ce_21",
         "arm": "gold_arms_50e5bc8fe5bf9ce_19",
-        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_27",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -6613,8 +6613,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_pioneer",
         "body": "gold_body_e38391e382a4e38_32",
-        "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "arm": "gold_arms_e38391e382a4e38_31",
+        "acc1": "gold_accessories_e38391e382a4e38_42",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -7159,9 +7159,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
-        "acc1": "gold_accessories_e6b581e8bba2e38_16",
+        "body": "gold_body_e6b581e8bba2e69_15",
+        "arm": "gold_arms_e6b581e8bba2e4b_16",
+        "acc1": "gold_accessories_e6b581e8bba2e38_20",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -7754,9 +7754,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "パイオニアセット",
       "recommendedArmor": {
         "armorSet": "set_pioneer",
-        "body": "gold_body_e38391e382a4e38_32",
-        "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "body": "gold_body_e38391e382a4e38_36",
+        "arm": "gold_arms_e38391e382a4e38_32",
+        "acc1": "gold_accessories_e38391e382a4e38_44",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -8321,8 +8321,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "流転セット",
       "recommendedArmor": {
         "armorSet": "set_ruten",
-        "body": "gold_body_e6b581e8bba2e8b_13",
-        "arm": "gold_arms_e6b581e8bba2e38_12",
+        "body": "gold_body_e6b581e8bba2e8b_14",
+        "arm": "gold_arms_e6b581e8bba2e38_13",
         "acc1": "gold_accessories_e6b581e8bba2e38_16",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
@@ -8893,8 +8893,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_volcano",
         "body": "gold_body_e781abe5b1b1e79_30",
-        "arm": "gold_arms_e781abe5b1b1e79_26",
-        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "arm": "gold_arms_e781abe5b1b1e79_28",
+        "acc1": "gold_accessories_e781abe5b1b1e79_37",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -9477,7 +9477,7 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_mancho",
         "body": "gold_body_e5a594e6b5aae38_19",
-        "arm": "gold_arms_e6b288e6b0b4e38_18",
+        "arm": "gold_arms_e6ba80e6bdaee38_17",
         "acc1": "gold_accessories_e687b8e6b2b3e38_21",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
@@ -10037,8 +10037,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_chouiki",
         "body": "gold_body_e8bbbde9878fe8b_44",
-        "arm": "gold_arms_e8bbbde9878fe8b_38",
-        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "arm": "gold_arms_e8bbbde9878fe8b_39",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_59",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -10629,9 +10629,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "生物補助セット",
       "recommendedArmor": {
         "armorSet": "set_bio_support",
-        "body": "gold_body_e7949fe789a9e8a_45",
-        "arm": "gold_arms_e7949fe789a9e8a_40",
-        "acc1": "gold_accessories_e7949fe789a9e8a_60",
+        "body": "gold_body_e7949fe789a9e8a_46",
+        "arm": "gold_arms_e7949fe789a9e8a_41",
+        "acc1": "gold_accessories_e7949fe789a9e8a_64",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -11633,7 +11633,7 @@ const DEFAULT_DATA = {
         "armorSet": "set_pulse",
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
-        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc1": "gold_accessories_e38391e383abe38_47",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -12370,8 +12370,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "火山用セット",
       "recommendedArmor": {
         "armorSet": "set_volcano",
-        "body": "gold_body_e781abe5b1b1e79_30",
-        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "body": "gold_body_e781abe5b1b1e79_31",
+        "arm": "gold_arms_e781abe5b1b1e79_29",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
@@ -12926,7 +12926,7 @@ const DEFAULT_DATA = {
         "armorSet": "set_pulse",
         "body": "gold_body_e38391e383abe38_37",
         "arm": "gold_arms_e38391e383abe38_33",
-        "acc1": "gold_accessories_e38391e383abe38_46",
+        "acc1": "gold_accessories_e38391e383abe38_47",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -13517,8 +13517,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "50式応龍セット",
       "recommendedArmor": {
         "armorSet": "set_oryu",
-        "body": "gold_body_50e5bc8fe5bf9ce_20",
-        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
+        "body": "gold_body_50e5bc8fe5bf9ce_21",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_20",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
@@ -14130,8 +14130,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_pioneer",
         "body": "gold_body_e38391e382a4e38_32",
-        "arm": "gold_arms_e38391e382a4e38_30",
-        "acc1": "gold_accessories_e38391e382a4e38_40",
+        "arm": "gold_arms_e38391e382a4e38_31",
+        "acc1": "gold_accessories_e38391e382a4e38_42",
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
@@ -14736,8 +14736,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_chouiki",
         "body": "gold_body_e8bbbde9878fe8b_44",
-        "arm": "gold_arms_e8bbbde9878fe8b_38",
-        "acc1": "gold_accessories_e8bbbde9878fe8b_56",
+        "arm": "gold_arms_e8bbbde9878fe8b_39",
+        "acc1": "gold_accessories_e8bbbde9878fe8b_58",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -15515,9 +15515,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "50式応龍セット",
       "recommendedArmor": {
         "armorSet": "set_oryu",
-        "body": "gold_body_50e5bc8fe5bf9ce_20",
-        "arm": "gold_arms_50e5bc8fe5bf9ce_19",
-        "acc1": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "body": "gold_body_50e5bc8fe5bf9ce_24",
+        "arm": "gold_arms_50e5bc8fe5bf9ce_21",
+        "acc1": "gold_accessories_50e5bc8fe5bf9ce_29",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -15988,8 +15988,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_kotsusai",
         "body": "gold_body_e9aaa8e7a095e38_39",
-        "arm": "gold_arms_e9aaa8e7a095e38_35",
-        "acc1": "gold_accessories_e9aaa8e7a095e38_50",
+        "arm": "gold_arms_e9aaa8e7a095e38_36",
+        "acc1": "gold_accessories_e9aaa8e7a095e38_55",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -16368,8 +16368,8 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "set_volcano",
         "body": "gold_body_e781abe5b1b1e79_30",
-        "arm": "gold_arms_e781abe5b1b1e79_26",
-        "acc1": "gold_accessories_e781abe5b1b1e79_36",
+        "arm": "gold_arms_e781abe5b1b1e79_28",
+        "acc1": "gold_accessories_e781abe5b1b1e79_37",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -16721,8 +16721,8 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "火山用セット",
       "recommendedArmor": {
         "armorSet": "set_volcano",
-        "body": "gold_body_e781abe5b1b1e79_30",
-        "arm": "gold_arms_e781abe5b1b1e79_26",
+        "body": "gold_body_e781abe5b1b1e79_31",
+        "arm": "gold_arms_e781abe5b1b1e79_29",
         "acc1": "gold_accessories_e781abe5b1b1e79_36",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
@@ -17056,7 +17056,7 @@ const DEFAULT_DATA = {
       "recommendedArmor": {
         "armorSet": "none",
         "body": "gold_body_e69591e59bbde99_57",
-        "arm": "gold_arms_e69591e59bbde38_50",
+        "arm": "gold_arms_e6b8a1e6b7b5e38_46",
         "acc1": "gold_accessories_e69591e59bbde58_73",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
@@ -17424,7 +17424,7 @@ const DEFAULT_DATA = {
         "armorSet": "set_mi_security",
         "body": "gold_body_mie8ada6e58299e_25",
         "arm": "gold_arms_mie8ada6e58299e_22",
-        "acc1": "gold_accessories_mie8ada6e58299e_30",
+        "acc1": "gold_accessories_mie8ada6e58299e_31",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -17806,9 +17806,9 @@ const DEFAULT_DATA = {
       "recommendedArmorSetName": "パルス式セット",
       "recommendedArmor": {
         "armorSet": "set_pulse",
-        "body": "gold_body_e38391e383abe38_37",
-        "arm": "gold_arms_e38391e383abe38_33",
-        "acc1": "gold_accessories_e38391e383abe38_46",
+        "body": "gold_body_e38391e383abe38_38",
+        "arm": "gold_arms_e38391e383abe38_34",
+        "acc1": "gold_accessories_e38391e383abe38_49",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     }
@@ -18043,9 +18043,9 @@ const SET_DEFAULT_SLOTS = {
  * キャラクターの推奨防具（Wiki・ゲーム内仕様準拠）を取得して初期装備オブジェクトを生成
  */
 function getDefaultArmorForChar(p) {
-  if (p && p.recommendedArmor && p.recommendedArmor.armorSet && p.recommendedArmor.armorSet !== 'none') {
+  if (p && p.recommendedArmor && (p.recommendedArmor.body || p.recommendedArmor.armorSet)) {
     return {
-      armorSet: p.recommendedArmor.armorSet,
+      armorSet: p.recommendedArmor.armorSet || 'none',
       body: p.recommendedArmor.body || 'none',
       arm: p.recommendedArmor.arm || 'none',
       acc1: p.recommendedArmor.acc1 || 'none',
@@ -19106,6 +19106,8 @@ function formatArmorStatLabel(statObj) {
     electricDamageUp: '電磁ダメ',
     cryoDamageUp: '寒冷ダメ',
     natureDamageUp: '自然ダメ',
+    heatAndNatureDamageUp: '灼熱・自然ダメ',
+    cryoAndElectricDamageUp: '寒冷・電磁ダメ',
     skillDamageUp: '戦技ダメ',
     comboDamageUp: '連携ダメ',
     ultDamageUp: '必殺ダメ',
@@ -19115,12 +19117,18 @@ function formatArmorStatLabel(statObj) {
     damageReduction: '全ダメ軽減',
     mainStatPercent: 'メイン能力',
     subStatPercent: 'サブ能力',
-    healingEfficiency: '回復効率'
+    healingEfficiency: '回復効率',
+    ultEfficiency: '必殺効率'
   };
   const label = map[statObj.stat] || statObj.stat;
   const val = statObj.value;
-  if (typeof val === 'number' && val > 0 && val < 1) {
-    return `${label}+${Math.round(val * 1000) / 10}%`;
+  const isPercent = (typeof val === 'number' && val > 0 && val < 1) ||
+                    String(statObj.stat).toLowerCase().includes('efficiency') ||
+                    String(statObj.stat).toLowerCase().includes('percent') ||
+                    String(statObj.stat).toLowerCase().includes('rate');
+  if (isPercent) {
+    const pctVal = (typeof val === 'number' && val <= 1) ? Math.round(val * 1000) / 10 : val;
+    return `${label}+${pctVal}%`;
   }
   return `${label}+${val}`;
 }
@@ -19128,24 +19136,61 @@ function formatArmorStatLabel(statObj) {
 function getArmorItemSummaryText(item) {
   if (!item || item.id === 'none') return '未装着（クリックして防具を選択）';
   const d = item.detail;
-  const parts = [];
-  if (d) {
-    if (d.mainStat) {
-      const m = formatArmorStatLabel(d.mainStat);
-      if (m) parts.push(m);
-    }
-    if (Array.isArray(d.subStats)) {
-      d.subStats.forEach(s => {
-        const st = formatArmorStatLabel(s);
-        if (st) parts.push(st);
-      });
-    }
-    if (d.ultEfficiency && d.ultEfficiency > 0) {
-      parts.push(`必殺効率+${d.ultEfficiency}%`);
-    }
-  } else if (item.efficiency > 0) {
-    parts.push(`必殺効率+${item.efficiency}%`);
+  if (!d) {
+    if (item.efficiency > 0) return `必殺効率+${item.efficiency}%`;
+    return 'ステータス補正あり';
   }
+
+  // 防御力は非表示、基礎ステータス(筋力/敏捷/知性/意志)とそれ以外(特殊効果等)を分離
+  const BASE_STAT_KEYS = new Set(['strength', 'agility', 'intellect', 'will', 'willpower']);
+  const DEFENSE_KEYS = new Set(['defense', 'def', 'defPercent']);
+
+  const baseStats = [];
+  const otherStats = [];
+
+  // mainStat と subStats を集約
+  const allStatObjs = [];
+  if (d.mainStat) allStatObjs.push(d.mainStat);
+  if (Array.isArray(d.subStats)) {
+    d.subStats.forEach(s => allStatObjs.push(s));
+  }
+
+  allStatObjs.forEach(s => {
+    if (!s || !s.stat || DEFENSE_KEYS.has(s.stat)) return;
+    if (BASE_STAT_KEYS.has(s.stat)) {
+      baseStats.push(s);
+    } else {
+      otherStats.push(s);
+    }
+  });
+
+  // ultEfficiency が detail にプロパティとして存在する場合
+  if (d.ultEfficiency && d.ultEfficiency > 0) {
+    const alreadyHas = otherStats.some(x => x.stat === 'ultEfficiency');
+    if (!alreadyHas) {
+      otherStats.push({ stat: 'ultEfficiency', value: d.ultEfficiency });
+    }
+  }
+
+  // 1. 基礎ステータスを値の高い順(降順)にソートし、上位2つを取得
+  baseStats.sort((a, b) => (Number(b.value) || 0) - (Number(a.value) || 0));
+  const topBase = baseStats.slice(0, 2);
+
+  const parts = [];
+  topBase.forEach(s => {
+    const lbl = formatArmorStatLabel(s);
+    if (lbl) parts.push(lbl);
+  });
+
+  // 2. 3つ目に「残りのやつ」を1つ配置
+  if (otherStats.length > 0) {
+    const lbl = formatArmorStatLabel(otherStats[0]);
+    if (lbl) parts.push(lbl);
+  } else if (baseStats.length > 2) {
+    const lbl = formatArmorStatLabel(baseStats[2]);
+    if (lbl) parts.push(lbl);
+  }
+
   return parts.length > 0 ? parts.join(' / ') : 'ステータス補正あり';
 }
 

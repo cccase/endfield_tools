@@ -585,9 +585,9 @@
   "recommendedArmorSetName": "生物補助セット",
   "recommendedArmor": {
     "armorSet": "set_bio_support",
-    "body": "gold_body_e7949fe789a9e8a_45",
-    "arm": "gold_arms_e7949fe789a9e8a_40",
-    "acc1": "gold_accessories_e7949fe789a9e8a_60",
+    "body": "gold_body_e7949fe789a9e8a_46",
+    "arm": "gold_arms_e7949fe789a9e8a_41",
+    "acc1": "gold_accessories_e7949fe789a9e8a_64",
     "acc2": "gold_accessories_e7949fe789a9e8a_63"
   }
 }
