@@ -1,6781 +1,6424 @@
 window.EQUIPMENT_DATA = {
-    "armorSets":  [
-                      {
-                          "id":  "none",
-                          "name":  "なし (0%)",
-                          "efficiency":  0
-                      },
-                      {
-                          "id":  "set_tenken",
-                          "name":  "天険セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_tenken",
-                                         "name":  "天険",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "天険のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "アーツダメージ+16%自身が自然爆発 、寒冷爆発 を発動させるとき、20秒間アーツ強度+16この効果は最大3段階まで重ね掛け可能（持続時間は個別にカウントされ、0.1秒に1回まで発動可能）",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_syusei",
-                          "name":  "集成訓練セット (+15%)",
-                          "efficiency":  15,
-                          "detail":  {
-                                         "id":  "set_syusei",
-                                         "name":  "集成訓練",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "集成訓練のセット効果(2部位)",
-                                                                          "ultEfficiency":  5.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、与える全種類のダメージ+20%、受ける全種類のダメージ-10%、必殺チャージの回復効率+10%",
-                                                                            "ultEfficiency":  10.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_kyuho",
-                          "name":  "旧鋒セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_kyuho",
-                                         "name":  "旧鋒",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "旧鋒のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、攻撃力+8%自身が敵に猛撃 、破砕 を与えるとき、消費 する最大のクラッシュ の段階数に応じて、20秒間自身の物理ダメージ+[6%×消費した段階数]目標が物理脆弱 、ブレイク状態、または源石結晶 が付与されている場合、上記のボーナス効果が1.5倍になる（ボーナス効果は重ね掛け不可）",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_joryu",
-                          "name":  "壌流セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_joryu",
-                                         "name":  "壌流",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "壌流のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、攻撃力+10%自身が感電 または腐食 を消費するたびに、異常段階 に応じて同じ段階数の強化状態を獲得し、25秒間、1段階ごとに電磁ダメージと自然ダメージ+15%強化状態の段階数は最大3段階まで（持続時間は個別にカウントされる）",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_seiba",
-                          "name":  "清波セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_seiba",
-                                         "name":  "清波",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "清波のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、連携技CD短縮+15%自身が連携技を発動するとき、15秒間すべてのスキルダメージ+20%この効果は最大2段階まで重ね掛け可能（持続時間は個別にカウントされる）",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_ruten",
-                          "name":  "流転セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_ruten",
-                                         "name":  "流転",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "流転のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中HP+1000自身が増幅 、加護 、脆弱 、弱体化 を付与すると、15秒間編成中の他の味方の与えるダメージ+16%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_mancho",
-                          "name":  "満潮セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_mancho",
-                                         "name":  "満潮",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "満潮のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、すべてのスキルダメージ+20%自身が敵のアーツ付着 段階を2以上にすると、15秒間与えるアーツダメージ+35％この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_oryu",
-                          "name":  "50式応龍セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_oryu",
-                                         "name":  "50式応龍",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "50式応龍のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、攻撃力+15%任意のオペレーターが戦技 を発動するとき、自身は応龍の鋒を1段階獲得し、次の連携技 ダメージ+20%応龍の鋒は最大3段階まで重ね掛け可能",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_mi_security",
-                          "name":  "M.I.警備セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_mi_security",
-                                         "name":  "M.I.警備",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "M.I.警備のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、会心率+5%自身が会心ダメージを与えると、5秒間攻撃力+5%この効果は5回まで重ね掛け可能重ね掛け回数が最大回数に達した場合、追加で会心率+5%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_volcano",
-                          "name":  "火山用セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_volcano",
-                                         "name":  "火山用",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "火山用のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、アーツ強度+30自身が敵を燃焼 状態にすると、10秒間灼熱ダメージ+50%この効果は重ね掛け不可自身が敵を腐食状態にすると、10秒間自然ダメージ+50%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_pioneer",
-                          "name":  "パイオニアセット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_pioneer",
-                                         "name":  "パイオニア",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "パイオニアのセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、連携技のCD短縮+15%自身がスキルでSP を回復すると、15秒間チーム全員の与えるダメージ+16%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_pulse",
-                          "name":  "パルス式セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_pulse",
-                                         "name":  "パルス式",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "パルス式のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、アーツ強度+30自身が敵を感電状態にすると、10秒間電磁ダメージ+50%この効果は重ね掛け不可自身が敵を凍結 状態にすると、10秒間寒冷ダメージ+50%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_kotsusai",
-                          "name":  "骨砕セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_kotsusai",
-                                         "name":  "骨砕",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "骨砕のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、攻撃力+15%自身が連携技を発動するとき、骨砕の重圧を1段階獲得し、次の戦技ダメージ+30%骨砕の重圧は最大2回まで重ね掛け可能",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_chouiki",
-                          "name":  "軽量超域セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_chouiki",
-                                         "name":  "軽量超域",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "軽量超域のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、攻撃力+8％自身がクラッシュを付与すると、15秒間物理ダメージ+8%この効果は4回まで重ね掛け可能敵のクラッシュ段階が4になった場合、10秒間追加で物理ダメージ+16%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_bio_support",
-                          "name":  "生物補助セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_bio_support",
-                                         "name":  "生物補助",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "生物補助のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、回復効率+20%自身が味方を治療すると、10秒間その味方の受ける全種類のダメージ-15％回復量がその味方のHP上限を超えた場合、受ける全種類のダメージ-30%この効果は重ね掛け不可",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "set_kozantenken",
-                          "name":  "宏山点剣セット (+0%)",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "id":  "set_kozantenken",
-                                         "name":  "宏山点剣",
-                                         "effects":  {
-                                                         "twoPiece":  {
-                                                                          "description":  "宏山点剣のセット効果(2部位)",
-                                                                          "ultEfficiency":  0.0
-                                                                      },
-                                                         "threePiece":  {
-                                                                            "description":  "装備中、ブレイク効率UP+20％自身が物理異常 を与えると、追加で攻撃力250％分の物理ダメージとブレイク値 10を与えるこの効果は15秒に1回まで発動可能",
-                                                                            "ultEfficiency":  0.0
-                                                                        }
-                                                     }
-                                     }
-                      },
-                      {
-                          "id":  "other",
-                          "name":  "その他セット (0%)",
-                          "efficiency":  0
-                      }
-                  ],
-    "bodyArmor":  [
-                      {
-                          "id":  "none",
-                          "name":  "なし (0%)",
-                          "efficiency":  0,
-                          "icon":  null
-                      },
-                      {
-                          "id":  "armor_body_kyukoku",
-                          "name":  "救国の外装 (+16.7%)",
-                          "icon":  "image/armors/armor_body_kyukoku.png",
-                          "efficiency":  16.7,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_body_kyukoku",
-                                         "name":  "救国の外装",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "hp",
-                                                          "value":  2650
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.167
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.06
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  16.7,
-                                         "icon":  "image/armors/armor_body_kyukoku.png"
-                                     }
-                      },
-                      {
-                          "id":  "armor_body_ruten",
-                          "name":  "流転の胸当て (+16%)",
-                          "icon":  "image/armors/armor_body_ruten.png",
-                          "efficiency":  16,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_body_ruten",
-                                         "name":  "流転の胸当て",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "hp",
-                                                          "value":  2400
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.16
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.05
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  16,
-                                         "icon":  "image/armors/armor_body_ruten.png"
-                                     }
-                      },
-                      {
-                          "id":  "armor_body_tensai",
-                          "name":  "天災防護胴装 (+0%)",
-                          "icon":  "image/armors/armor_body_tensai.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_body_tensai",
-                                         "name":  "天災防護胴装",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_tensai",
-                                         "mainStat":  {
-                                                          "stat":  "hp",
-                                                          "value":  2400
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  40
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  50
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0,
-                                         "icon":  "image/armors/armor_body_tensai.png"
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_50e5bc8fe5bf9ce_20",
-                          "name":  "50式応龍重防具 (+0%)",
-                          "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_20.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_50e5bc8fe5bf9ce_20",
-                                         "name":  "50式応龍重防具",
-                                         "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_20.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.115
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_50e5bc8fe5bf9ce_21",
-                          "name":  "50式応龍重防具Ⅰ (+12.3%)",
-                          "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_21.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_50e5bc8fe5bf9ce_21",
-                                         "name":  "50式応龍重防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_21.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_50e5bc8fe5bf9ce_22",
-                          "name":  "50式応龍重防具Ⅱ (+0%)",
-                          "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_22.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_50e5bc8fe5bf9ce_22",
-                                         "name":  "50式応龍重防具Ⅱ",
-                                         "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_22.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_50e5bc8fe5bf9ce_23",
-                          "name":  "50式応龍軽防具 (+0%)",
-                          "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_23.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_50e5bc8fe5bf9ce_23",
-                                         "name":  "50式応龍軽防具",
-                                         "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_23.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "allSkillDamageUp",
-                                                              "value":  0.138
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_50e5bc8fe5bf9ce_24",
-                          "name":  "50式応龍ソフトアーマー (+0%)",
-                          "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_24.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_50e5bc8fe5bf9ce_24",
-                                         "name":  "50式応龍ソフトアーマー",
-                                         "icon":  "image/armors/gold_body_50e5bc8fe5bf9ce_24.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e382a4e38_32",
-                          "name":  "パイオニア防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e382a4e38_32.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e382a4e38_32",
-                                         "name":  "パイオニア防具",
-                                         "icon":  "image/armors/gold_body_e38391e382a4e38_32.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultDamageUp",
-                                                              "value":  0.259
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e382a4e38_33",
-                          "name":  "パイオニア防具Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e382a4e38_33.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e382a4e38_33",
-                                         "name":  "パイオニア防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_e38391e382a4e38_33.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e382a4e38_34",
-                          "name":  "パイオニア防具Ⅱ (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e382a4e38_34.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e382a4e38_34",
-                                         "name":  "パイオニア防具Ⅱ",
-                                         "icon":  "image/armors/gold_body_e38391e382a4e38_34.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e382a4e38_35",
-                          "name":  "パイオニア防具Ⅲ (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e382a4e38_35.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e382a4e38_35",
-                                         "name":  "パイオニア防具Ⅲ",
-                                         "icon":  "image/armors/gold_body_e38391e382a4e38_35.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e382a4e38_36",
-                          "name":  "パイオニア防護服 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e38391e382a4e38_36.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e382a4e38_36",
-                                         "name":  "パイオニア防護服",
-                                         "icon":  "image/armors/gold_body_e38391e382a4e38_36.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e383abe38_37",
-                          "name":  "パルス式妨害服 (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e383abe38_37.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e383abe38_37",
-                                         "name":  "パルス式妨害服",
-                                         "icon":  "image/armors/gold_body_e38391e383abe38_37.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e38391e383abe38_38",
-                          "name":  "パルス式軽防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e38391e383abe38_38.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e38391e383abe38_38",
-                                         "name":  "パルス式軽防具",
-                                         "icon":  "image/armors/gold_body_e38391e383abe38_38.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5a38ce6b581e8b_9",
-                          "name":  "壌流軽防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e5a38ce6b581e8b_9.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5a38ce6b581e8b_9",
-                                         "name":  "壌流軽防具",
-                                         "icon":  "image/armors/gold_body_e5a38ce6b581e8b_9.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_joryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5a4a9e999bae99_0",
-                          "name":  "天険防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e5a4a9e999bae99_0.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5a4a9e999bae99_0",
-                                         "name":  "天険防具",
-                                         "icon":  "image/armors/gold_body_e5a4a9e999bae99_0.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_tenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5a594e6b5aae38_19",
-                          "name":  "奔浪ヘビーアーマー (+0%)",
-                          "icon":  "image/armors/gold_body_e5a594e6b5aae38_19.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5a594e6b5aae38_19",
-                                         "name":  "奔浪ヘビーアーマー",
-                                         "icon":  "image/armors/gold_body_e5a594e6b5aae38_19.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5ae8fe5b1b1e78_48",
-                          "name":  "宏山点剣ヘビーアーマー (+0%)",
-                          "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_48.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5ae8fe5b1b1e78_48",
-                                         "name":  "宏山点剣ヘビーアーマー",
-                                         "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_48.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5ae8fe5b1b1e78_49",
-                          "name":  "宏山点剣ヘビーアーマーⅠ (+0%)",
-                          "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_49.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5ae8fe5b1b1e78_49",
-                                         "name":  "宏山点剣ヘビーアーマーⅠ",
-                                         "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_49.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.115
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5ae8fe5b1b1e78_50",
-                          "name":  "宏山点剣ライトアーマー (+12.3%)",
-                          "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_50.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5ae8fe5b1b1e78_50",
-                                         "name":  "宏山点剣ライトアーマー",
-                                         "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_50.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5ae8fe5b1b1e78_51",
-                          "name":  "宏山点剣繊維防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_51.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5ae8fe5b1b1e78_51",
-                                         "name":  "宏山点剣繊維防具",
-                                         "icon":  "image/armors/gold_body_e5ae8fe5b1b1e78_51.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.115
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5b9b2e6bdaee8b_17",
-                          "name":  "干潮軽防具 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e5b9b2e6bdaee8b_17.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5b9b2e6bdaee8b_17",
-                                         "name":  "干潮軽防具",
-                                         "icon":  "image/armors/gold_body_e5b9b2e6bdaee8b_17.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e5b9b2e6bdaee8b_18",
-                          "name":  "干潮軽防具Ⅰ (+12.3%)",
-                          "icon":  "image/armors/gold_body_e5b9b2e6bdaee8b_18.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e5b9b2e6bdaee8b_18",
-                                         "name":  "干潮軽防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_e5b9b2e6bdaee8b_18.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e69591e59bbde98_56",
-                          "name":  "救国重防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e69591e59bbde98_56.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e69591e59bbde98_56",
-                                         "name":  "救国重防具",
-                                         "icon":  "image/armors/gold_body_e69591e59bbde98_56.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "normalAttackDamageUp",
-                                                              "value":  0.14400000000000002
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e69591e59bbde99_57",
-                          "name":  "救国防具 (+12.9%)",
-                          "icon":  "image/armors/gold_body_e69591e59bbde99_57.png",
-                          "efficiency":  12.9,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e69591e59bbde99_57",
-                                         "name":  "救国防具",
-                                         "icon":  "image/armors/gold_body_e69591e59bbde99_57.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.9
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.9
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e697a7e98b92e99_7",
-                          "name":  "旧鋒防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e697a7e98b92e99_7.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e697a7e98b92e99_7",
-                                         "name":  "旧鋒防具",
-                                         "icon":  "image/armors/gold_body_e697a7e98b92e99_7.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kyuho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.115
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e697a7e98b92e99_8",
-                          "name":  "旧鋒防具Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_body_e697a7e98b92e99_8.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e697a7e98b92e99_8",
-                                         "name":  "旧鋒防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_e697a7e98b92e99_8.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kyuho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b581e8bba2e38_12",
-                          "name":  "流転マント (+0%)",
-                          "icon":  "image/armors/gold_body_e6b581e8bba2e38_12.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b581e8bba2e38_12",
-                                         "name":  "流転マント",
-                                         "icon":  "image/armors/gold_body_e6b581e8bba2e38_12.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b581e8bba2e69_15",
-                          "name":  "流転改造防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b581e8bba2e69_15.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b581e8bba2e69_15",
-                                         "name":  "流転改造防具",
-                                         "icon":  "image/armors/gold_body_e6b581e8bba2e69_15.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b581e8bba2e8b_13",
-                          "name":  "流転軽防具 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e6b581e8bba2e8b_13.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b581e8bba2e8b_13",
-                                         "name":  "流転軽防具",
-                                         "icon":  "image/armors/gold_body_e6b581e8bba2e8b_13.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  110.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b581e8bba2e8b_14",
-                          "name":  "流転軽防具Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_body_e6b581e8bba2e8b_14.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b581e8bba2e8b_14",
-                                         "name":  "流転軽防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_e6b581e8bba2e8b_14.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b581e8bba2e99_16",
-                          "name":  "流転防護服 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e6b581e8bba2e99_16.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b581e8bba2e99_16",
-                                         "name":  "流転防護服",
-                                         "icon":  "image/armors/gold_body_e6b581e8bba2e99_16.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b885e6b3a2e8b_11",
-                          "name":  "清波軽防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b885e6b3a2e8b_11.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b885e6b3a2e8b_11",
-                                         "name":  "清波軽防具",
-                                         "icon":  "image/armors/gold_body_e6b885e6b3a2e8b_11.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b885e6b3a2e98_10",
-                          "name":  "清波重防具 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e6b885e6b3a2e98_10.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b885e6b3a2e98_10",
-                                         "name":  "清波重防具",
-                                         "icon":  "image/armors/gold_body_e6b885e6b3a2e98_10.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b8a1e6b7b5e8b_53",
-                          "name":  "渡淵軽防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b8a1e6b7b5e8b_53.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b8a1e6b7b5e8b_53",
-                                         "name":  "渡淵軽防具",
-                                         "icon":  "image/armors/gold_body_e6b8a1e6b7b5e8b_53.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.10800000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b8a1e6b7b5e98_52",
-                          "name":  "渡淵重防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b8a1e6b7b5e98_52.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b8a1e6b7b5e98_52",
-                                         "name":  "渡淵重防具",
-                                         "icon":  "image/armors/gold_body_e6b8a1e6b7b5e98_52.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b8a1e6b7b5e98_54",
-                          "name":  "渡淵鋼製防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b8a1e6b7b5e98_54.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b8a1e6b7b5e98_54",
-                                         "name":  "渡淵鋼製防具",
-                                         "icon":  "image/armors/gold_body_e6b8a1e6b7b5e98_54.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.21600000000000003
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e6b8a1e6b7b5e99_55",
-                          "name":  "渡淵防護服 (+0%)",
-                          "icon":  "image/armors/gold_body_e6b8a1e6b7b5e99_55.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e6b8a1e6b7b5e99_55",
-                                         "name":  "渡淵防護服",
-                                         "icon":  "image/armors/gold_body_e6b8a1e6b7b5e99_55.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  115.0
-                                                          },
-                                                          {
-                                                              "stat":  "heatAndNatureDamageUp",
-                                                              "value":  0.12
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e781abe5b1b1e79_30",
-                          "name":  "火山用パワードスーツ (+0%)",
-                          "icon":  "image/armors/gold_body_e781abe5b1b1e79_30.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e781abe5b1b1e79_30",
-                                         "name":  "火山用パワードスーツ",
-                                         "icon":  "image/armors/gold_body_e781abe5b1b1e79_30.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e781abe5b1b1e79_31",
-                          "name":  "火山用補助スーツ (+0%)",
-                          "icon":  "image/armors/gold_body_e781abe5b1b1e79_31.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e781abe5b1b1e79_31",
-                                         "name":  "火山用補助スーツ",
-                                         "icon":  "image/armors/gold_body_e781abe5b1b1e79_31.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e7949fe789a9e8a_45",
-                          "name":  "生物補助重防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e7949fe789a9e8a_45.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e7949fe789a9e8a_45",
-                                         "name":  "生物補助重防具",
-                                         "icon":  "image/armors/gold_body_e7949fe789a9e8a_45.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e7949fe789a9e8a_46",
-                          "name":  "生物補助ベスト (+0%)",
-                          "icon":  "image/armors/gold_body_e7949fe789a9e8a_46.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e7949fe789a9e8a_46",
-                                         "name":  "生物補助ベスト",
-                                         "icon":  "image/armors/gold_body_e7949fe789a9e8a_46.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e7949fe789a9e8a_47",
-                          "name":  "生物補助ベストⅠ (+12.3%)",
-                          "icon":  "image/armors/gold_body_e7949fe789a9e8a_47.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e7949fe789a9e8a_47",
-                                         "name":  "生物補助ベストⅠ",
-                                         "icon":  "image/armors/gold_body_e7949fe789a9e8a_47.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e8bbbde9878fe8b_44",
-                          "name":  "軽量超域プレート (+0%)",
-                          "icon":  "image/armors/gold_body_e8bbbde9878fe8b_44.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e8bbbde9878fe8b_44",
-                                         "name":  "軽量超域プレート",
-                                         "icon":  "image/armors/gold_body_e8bbbde9878fe8b_44.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_chouiki",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_1",
-                          "name":  "集成訓練防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_1.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_1",
-                                         "name":  "集成訓練防具",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_1.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsDamageUp",
-                                                              "value":  0.09300000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_2",
-                          "name":  "集成訓練鋼製防具 (+10.5%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_2.png",
-                          "efficiency":  10.5,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_2",
-                                         "name":  "集成訓練鋼製防具",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_2.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  10.5
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  10.5
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_3",
-                          "name":  "集成訓練ベスト (+0%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_3.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_3",
-                                         "name":  "集成訓練ベスト",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_3.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.08900000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_4",
-                          "name":  "集成訓練強襲防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_4.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_4",
-                                         "name":  "集成訓練強襲防具",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_4.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  17.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_5",
-                          "name":  "集成訓練医療防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_5.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_5",
-                                         "name":  "集成訓練医療防具",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_5.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.08900000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e99b86e68890e8a_6",
-                          "name":  "集成訓練剣術防具 (+0%)",
-                          "icon":  "image/armors/gold_body_e99b86e68890e8a_6.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e99b86e68890e8a_6",
-                                         "name":  "集成訓練剣術防具",
-                                         "icon":  "image/armors/gold_body_e99b86e68890e8a_6.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  48.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  74.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  49.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.098
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e9aaa8e7a095e38_39",
-                          "name":  "骨砕の重防具 (+12.3%)",
-                          "icon":  "image/armors/gold_body_e9aaa8e7a095e38_39.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e9aaa8e7a095e38_39",
-                                         "name":  "骨砕の重防具",
-                                         "icon":  "image/armors/gold_body_e9aaa8e7a095e38_39.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e9aaa8e7a095e38_40",
-                          "name":  "骨砕の重防具Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_body_e9aaa8e7a095e38_40.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e9aaa8e7a095e38_40",
-                                         "name":  "骨砕の重防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_e9aaa8e7a095e38_40.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e9aaa8e7a095e38_41",
-                          "name":  "骨砕の重防具Ⅱ (+0%)",
-                          "icon":  "image/armors/gold_body_e9aaa8e7a095e38_41.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e9aaa8e7a095e38_41",
-                                         "name":  "骨砕の重防具Ⅱ",
-                                         "icon":  "image/armors/gold_body_e9aaa8e7a095e38_41.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e9aaa8e7a095e38_42",
-                          "name":  "骨砕のマント (+0%)",
-                          "icon":  "image/armors/gold_body_e9aaa8e7a095e38_42.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e9aaa8e7a095e38_42",
-                                         "name":  "骨砕のマント",
-                                         "icon":  "image/armors/gold_body_e9aaa8e7a095e38_42.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_e9aaa8e7a095e38_43",
-                          "name":  "骨砕のマントⅠ (+12.3%)",
-                          "icon":  "image/armors/gold_body_e9aaa8e7a095e38_43.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_e9aaa8e7a095e38_43",
-                                         "name":  "骨砕のマントⅠ",
-                                         "icon":  "image/armors/gold_body_e9aaa8e7a095e38_43.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_mie8ada6e58299e_25",
-                          "name":  "M.I.警備防具 (+0%)",
-                          "icon":  "image/armors/gold_body_mie8ada6e58299e_25.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_mie8ada6e58299e_25",
-                                         "name":  "M.I.警備防具",
-                                         "icon":  "image/armors/gold_body_mie8ada6e58299e_25.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  20.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_mie8ada6e58299e_26",
-                          "name":  "M.I.警備防具Ⅰ (+12.3%)",
-                          "icon":  "image/armors/gold_body_mie8ada6e58299e_26.png",
-                          "efficiency":  12.3,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_mie8ada6e58299e_26",
-                                         "name":  "M.I.警備防具Ⅰ",
-                                         "icon":  "image/armors/gold_body_mie8ada6e58299e_26.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  12.3
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  12.3
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_mie8ada6e58299e_27",
-                          "name":  "M.I.警備マント (+0%)",
-                          "icon":  "image/armors/gold_body_mie8ada6e58299e_27.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_mie8ada6e58299e_27",
-                                         "name":  "M.I.警備マント",
-                                         "icon":  "image/armors/gold_body_mie8ada6e58299e_27.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "normalAttackDamageUp",
-                                                              "value":  0.138
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_mie8ada6e58299e_28",
-                          "name":  "M.I.警備マントⅠ (+0%)",
-                          "icon":  "image/armors/gold_body_mie8ada6e58299e_28.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_mie8ada6e58299e_28",
-                                         "name":  "M.I.警備マントⅠ",
-                                         "icon":  "image/armors/gold_body_mie8ada6e58299e_28.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.052000000000000005
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_body_mie8ada6e58299e_29",
-                          "name":  "M.I.警備マントⅡ (+0%)",
-                          "icon":  "image/armors/gold_body_mie8ada6e58299e_29.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_body_mie8ada6e58299e_29",
-                                         "name":  "M.I.警備マントⅡ",
-                                         "icon":  "image/armors/gold_body_mie8ada6e58299e_29.png",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  56.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  58.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  87.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "armor_body_ruten",
-                          "name":  "流転の胸当て (+16%)",
-                          "icon":  null,
-                          "efficiency":  16,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_body_ruten",
-                                         "name":  "流転の胸当て",
-                                         "part":  "body",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "hp",
-                                                          "value":  2400
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.16
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.05
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  16.0
-                                     }
-                      }
-                  ],
-    "armArmor":  [
-                     {
-                         "id":  "none",
-                         "name":  "なし (0%)",
-                         "efficiency":  0,
-                         "icon":  null
-                     },
-                     {
-                         "id":  "armor_arms_kyukoku",
-                         "name":  "救国の小手 (+0%)",
-                         "icon":  "image/armors/armor_arms_kyukoku.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "armor_arms_kyukoku",
-                                        "name":  "救国の小手",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  210
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "atkFlat",
-                                                             "value":  80
-                                                         },
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  50
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0,
-                                        "icon":  "image/armors/armor_arms_kyukoku.png"
-                                    }
-                     },
-                     {
-                         "id":  "armor_arms_ruten",
-                         "name":  "流転の腕甲 (+26.7%)",
-                         "icon":  "image/armors/armor_arms_ruten.png",
-                         "efficiency":  26.7,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "armor_arms_ruten",
-                                        "name":  "流転の腕甲",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  180
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "atkFlat",
-                                                             "value":  65
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  45
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  26.7,
-                                        "icon":  "image/armors/armor_arms_ruten.png"
-                                    }
-                     },
-                     {
-                         "id":  "armor_arms_tensai",
-                         "name":  "天災防護腕甲 (+0%)",
-                         "icon":  "image/armors/armor_arms_tensai.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "armor_arms_tensai",
-                                        "name":  "天災防護腕甲",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_tensai",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  180
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  35
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  45
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0,
-                                        "icon":  "image/armors/armor_arms_tensai.png"
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_50e5bc8fe5bf9ce_19",
-                         "name":  "50式応龍プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_19.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_50e5bc8fe5bf9ce_19",
-                                        "name":  "50式応龍プロテクター",
-                                        "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_19.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_oryu",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "comboDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_50e5bc8fe5bf9ce_20",
-                         "name":  "50式応龍プロテクターⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_20.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_50e5bc8fe5bf9ce_20",
-                                        "name":  "50式応龍プロテクターⅠ",
-                                        "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_20.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_oryu",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "comboDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_50e5bc8fe5bf9ce_21",
-                         "name":  "50式応龍グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_21.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_50e5bc8fe5bf9ce_21",
-                                        "name":  "50式応龍グローブ",
-                                        "icon":  "image/armors/gold_arms_50e5bc8fe5bf9ce_21.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_oryu",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "comboDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e38391e382a4e38_30",
-                         "name":  "パイオニア耐蝕グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e38391e382a4e38_30.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e38391e382a4e38_30",
-                                        "name":  "パイオニア耐蝕グローブ",
-                                        "icon":  "image/armors/gold_arms_e38391e382a4e38_30.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_pioneer",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "skillDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e38391e382a4e38_31",
-                         "name":  "パイオニア繊維グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e38391e382a4e38_31.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e38391e382a4e38_31",
-                                        "name":  "パイオニア繊維グローブ",
-                                        "icon":  "image/armors/gold_arms_e38391e382a4e38_31.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_pioneer",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "allSkillDamageUp",
-                                                             "value":  0.23
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e38391e382a4e38_32",
-                         "name":  "パイオニア繊維グローブⅠ (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e38391e382a4e38_32.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e38391e382a4e38_32",
-                                        "name":  "パイオニア繊維グローブⅠ",
-                                        "icon":  "image/armors/gold_arms_e38391e382a4e38_32.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_pioneer",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e38391e383abe38_33",
-                         "name":  "パルス式グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e38391e383abe38_33.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e38391e383abe38_33",
-                                        "name":  "パルス式グローブ",
-                                        "icon":  "image/armors/gold_arms_e38391e383abe38_33.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_pulse",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e38391e383abe38_34",
-                         "name":  "パルス式プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e38391e383abe38_34.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e38391e383abe38_34",
-                                        "name":  "パルス式プロテクター",
-                                        "icon":  "image/armors/gold_arms_e38391e383abe38_34.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_pulse",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e5a38ce6b581e38_9",
-                         "name":  "壌流プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e5a38ce6b581e38_9.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e5a38ce6b581e38_9",
-                                        "name":  "壌流プロテクター",
-                                        "icon":  "image/armors/gold_arms_e5a38ce6b581e38_9.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_joryu",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e5a4a9e999bae38_0",
-                         "name":  "天険ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e5a4a9e999bae38_0.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e5a4a9e999bae38_0",
-                                        "name":  "天険ガントレット",
-                                        "icon":  "image/armors/gold_arms_e5a4a9e999bae38_0.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_tenken",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e5ae8fe5b1b1e78_43",
-                         "name":  "宏山点剣戦闘用グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_43.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e5ae8fe5b1b1e78_43",
-                                        "name":  "宏山点剣戦闘用グローブ",
-                                        "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_43.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kozantenken",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "physicalDamageUp",
-                                                             "value":  0.192
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e5ae8fe5b1b1e78_44",
-                         "name":  "宏山点剣ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_44.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e5ae8fe5b1b1e78_44",
-                                        "name":  "宏山点剣ガントレット",
-                                        "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_44.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kozantenken",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultDamageUp",
-                                                             "value":  0.431
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e5ae8fe5b1b1e78_45",
-                         "name":  "宏山点剣ガントレットⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_45.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e5ae8fe5b1b1e78_45",
-                                        "name":  "宏山点剣ガントレットⅠ",
-                                        "icon":  "image/armors/gold_arms_e5ae8fe5b1b1e78_45.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kozantenken",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e69591e59bbde38_50",
-                         "name":  "救国プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e69591e59bbde38_50.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e69591e59bbde38_50",
-                                        "name":  "救国プロテクター",
-                                        "icon":  "image/armors/gold_arms_e69591e59bbde38_50.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultDamageUp",
-                                                             "value":  0.45
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e69591e59bbde38_51",
-                         "name":  "救国グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e69591e59bbde38_51.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e69591e59bbde38_51",
-                                        "name":  "救国グローブ",
-                                        "icon":  "image/armors/gold_arms_e69591e59bbde38_51.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "allSkillDamageUp",
-                                                             "value":  0.24
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e697a7e98b92e38_7",
-                         "name":  "旧鋒ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e697a7e98b92e38_7.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e697a7e98b92e38_7",
-                                        "name":  "旧鋒ガントレット",
-                                        "icon":  "image/armors/gold_arms_e697a7e98b92e38_7.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kyuho",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e697a7e98b92e38_8",
-                         "name":  "旧鋒ガントレットⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_e697a7e98b92e38_8.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e697a7e98b92e38_8",
-                                        "name":  "旧鋒ガントレットⅠ",
-                                        "icon":  "image/armors/gold_arms_e697a7e98b92e38_8.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kyuho",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b288e6b0b4e38_18",
-                         "name":  "沈水グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b288e6b0b4e38_18.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b288e6b0b4e38_18",
-                                        "name":  "沈水グローブ",
-                                        "icon":  "image/armors/gold_arms_e6b288e6b0b4e38_18.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mancho",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "allSkillDamageUp",
-                                                             "value":  0.23
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b581e8bba2e38_12",
-                         "name":  "流転ガントレット (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e6b581e8bba2e38_12.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b581e8bba2e38_12",
-                                        "name":  "流転ガントレット",
-                                        "icon":  "image/armors/gold_arms_e6b581e8bba2e38_12.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b581e8bba2e38_13",
-                         "name":  "流転ガントレットⅠ (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e6b581e8bba2e38_13.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b581e8bba2e38_13",
-                                        "name":  "流転ガントレットⅠ",
-                                        "icon":  "image/armors/gold_arms_e6b581e8bba2e38_13.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b581e8bba2e38_14",
-                         "name":  "流転ハンドガード (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e6b581e8bba2e38_14.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b581e8bba2e38_14",
-                                        "name":  "流転ハンドガード",
-                                        "icon":  "image/armors/gold_arms_e6b581e8bba2e38_14.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b581e8bba2e38_15",
-                         "name":  "流転グローブ (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e6b581e8bba2e38_15.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b581e8bba2e38_15",
-                                        "name":  "流転グローブ",
-                                        "icon":  "image/armors/gold_arms_e6b581e8bba2e38_15.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b581e8bba2e4b_16",
-                         "name":  "流転伝導プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b581e8bba2e4b_16.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b581e8bba2e4b_16",
-                                        "name":  "流転伝導プロテクター",
-                                        "icon":  "image/armors/gold_arms_e6b581e8bba2e4b_16.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "comboDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b885e6b3a2e38_10",
-                         "name":  "清波ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b885e6b3a2e38_10.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b885e6b3a2e38_10",
-                                        "name":  "清波ガントレット",
-                                        "icon":  "image/armors/gold_arms_e6b885e6b3a2e38_10.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_seiba",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "allSkillDamageUp",
-                                                             "value":  0.23
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b885e6b3a2e38_11",
-                         "name":  "清波プロテクター (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e6b885e6b3a2e38_11.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b885e6b3a2e38_11",
-                                        "name":  "清波プロテクター",
-                                        "icon":  "image/armors/gold_arms_e6b885e6b3a2e38_11.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_seiba",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b8a1e6b7b5e38_46",
-                         "name":  "渡淵プロテクター (+21.4%)",
-                         "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_46.png",
-                         "efficiency":  21.4,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b8a1e6b7b5e38_46",
-                                        "name":  "渡淵プロテクター",
-                                        "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_46.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  21.4
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  21.4
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b8a1e6b7b5e38_47",
-                         "name":  "渡淵グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_47.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b8a1e6b7b5e38_47",
-                                        "name":  "渡淵グローブ",
-                                        "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_47.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "skillDamageUp",
-                                                             "value":  0.36
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b8a1e6b7b5e38_48",
-                         "name":  "渡淵ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_48.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b8a1e6b7b5e38_48",
-                                        "name":  "渡淵ガントレット",
-                                        "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_48.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "normalAttackDamageUp",
-                                                             "value":  0.24
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6b8a1e6b7b5e38_49",
-                         "name":  "渡淵ハンドガード (+0%)",
-                         "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_49.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6b8a1e6b7b5e38_49",
-                                        "name":  "渡淵ハンドガード",
-                                        "icon":  "image/armors/gold_arms_e6b8a1e6b7b5e38_49.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  null,
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  86.0
-                                                         },
-                                                         {
-                                                             "stat":  "cryoAndElectricDamageUp",
-                                                             "value":  0.2
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e6ba80e6bdaee38_17",
-                         "name":  "満潮ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e6ba80e6bdaee38_17.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e6ba80e6bdaee38_17",
-                                        "name":  "満潮ガントレット",
-                                        "icon":  "image/armors/gold_arms_e6ba80e6bdaee38_17.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mancho",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e781abe5b1b1e79_26",
-                         "name":  "火山用ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e781abe5b1b1e79_26.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e781abe5b1b1e79_26",
-                                        "name":  "火山用ガントレット",
-                                        "icon":  "image/armors/gold_arms_e781abe5b1b1e79_26.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_volcano",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e781abe5b1b1e79_27",
-                         "name":  "火山用ガントレットⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_e781abe5b1b1e79_27.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e781abe5b1b1e79_27",
-                                        "name":  "火山用ガントレットⅠ",
-                                        "icon":  "image/armors/gold_arms_e781abe5b1b1e79_27.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_volcano",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e781abe5b1b1e79_28",
-                         "name":  "火山用グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e781abe5b1b1e79_28.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e781abe5b1b1e79_28",
-                                        "name":  "火山用グローブ",
-                                        "icon":  "image/armors/gold_arms_e781abe5b1b1e79_28.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_volcano",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e781abe5b1b1e79_29",
-                         "name":  "火山用プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e781abe5b1b1e79_29.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e781abe5b1b1e79_29",
-                                        "name":  "火山用プロテクター",
-                                        "icon":  "image/armors/gold_arms_e781abe5b1b1e79_29.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_volcano",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e7949fe789a9e8a_40",
-                         "name":  "生物補助グローブ (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e7949fe789a9e8a_40.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e7949fe789a9e8a_40",
-                                        "name":  "生物補助グローブ",
-                                        "icon":  "image/armors/gold_arms_e7949fe789a9e8a_40.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_bio_support",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e7949fe789a9e8a_41",
-                         "name":  "生物補助手袋 (+0%)",
-                         "icon":  "image/armors/gold_arms_e7949fe789a9e8a_41.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e7949fe789a9e8a_41",
-                                        "name":  "生物補助手袋",
-                                        "icon":  "image/armors/gold_arms_e7949fe789a9e8a_41.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_bio_support",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "healingEfficiency",
-                                                             "value":  0.17300000000000001
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e7949fe789a9e8a_42",
-                         "name":  "生物補助手袋Ⅰ (+20.5%)",
-                         "icon":  "image/armors/gold_arms_e7949fe789a9e8a_42.png",
-                         "efficiency":  20.5,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e7949fe789a9e8a_42",
-                                        "name":  "生物補助手袋Ⅰ",
-                                        "icon":  "image/armors/gold_arms_e7949fe789a9e8a_42.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_bio_support",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  20.5
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  20.5
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e8bbbde9878fe8b_38",
-                         "name":  "軽量超域ガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e8bbbde9878fe8b_38.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e8bbbde9878fe8b_38",
-                                        "name":  "軽量超域ガントレット",
-                                        "icon":  "image/armors/gold_arms_e8bbbde9878fe8b_38.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_chouiki",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  34.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e8bbbde9878fe8b_39",
-                         "name":  "軽量超域プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e8bbbde9878fe8b_39.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e8bbbde9878fe8b_39",
-                                        "name":  "軽量超域プロテクター",
-                                        "icon":  "image/armors/gold_arms_e8bbbde9878fe8b_39.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_chouiki",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "allSkillDamageUp",
-                                                             "value":  0.23
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_1",
-                         "name":  "集成訓練グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_1.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_1",
-                                        "name":  "集成訓練グローブ",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_1.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsDamageUp",
-                                                             "value":  0.155
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_2",
-                         "name":  "集成訓練プロテクター (+17.6%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_2.png",
-                         "efficiency":  17.6,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_2",
-                                        "name":  "集成訓練プロテクター",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_2.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultEfficiency",
-                                                             "value":  17.6
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  17.6
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_3",
-                         "name":  "集成訓練サポーター (+0%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_3.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_3",
-                                        "name":  "集成訓練サポーター",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_3.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "subStatPercent",
-                                                             "value":  0.14800000000000002
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_4",
-                         "name":  "集成訓練強襲プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_4.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_4",
-                                        "name":  "集成訓練強襲プロテクター",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_4.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "artsIntensity",
-                                                             "value":  29.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_5",
-                         "name":  "集成訓練医療プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_5.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_5",
-                                        "name":  "集成訓練医療プロテクター",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_5.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "healingEfficiency",
-                                                             "value":  0.14800000000000002
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e99b86e68890e8a_6",
-                         "name":  "集成訓練剣術プロテクター (+0%)",
-                         "icon":  "image/armors/gold_arms_e99b86e68890e8a_6.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e99b86e68890e8a_6",
-                                        "name":  "集成訓練剣術プロテクター",
-                                        "icon":  "image/armors/gold_arms_e99b86e68890e8a_6.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_syusei",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  36.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  55.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  37.0
-                                                         },
-                                                         {
-                                                             "stat":  "physicalDamageUp",
-                                                             "value":  0.16399999999999998
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e9aaa8e7a095e38_35",
-                         "name":  "骨砕のグローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_35.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e9aaa8e7a095e38_35",
-                                        "name":  "骨砕のグローブ",
-                                        "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_35.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kotsusai",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e9aaa8e7a095e38_36",
-                         "name":  "骨砕のグローブⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_36.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e9aaa8e7a095e38_36",
-                                        "name":  "骨砕のグローブⅠ",
-                                        "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_36.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kotsusai",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_e9aaa8e7a095e38_37",
-                         "name":  "骨砕のガントレット (+0%)",
-                         "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_37.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_e9aaa8e7a095e38_37",
-                                        "name":  "骨砕のガントレット",
-                                        "icon":  "image/armors/gold_arms_e9aaa8e7a095e38_37.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_kotsusai",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  65.0
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_mie8ada6e58299e_22",
-                         "name":  "M.I.警備グローブ (+0%)",
-                         "icon":  "image/armors/gold_arms_mie8ada6e58299e_22.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_mie8ada6e58299e_22",
-                                        "name":  "M.I.警備グローブ",
-                                        "icon":  "image/armors/gold_arms_mie8ada6e58299e_22.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mi_security",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "strength",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "skillDamageUp",
-                                                             "value":  0.345
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_mie8ada6e58299e_23",
-                         "name":  "M.I.警備グローブⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_mie8ada6e58299e_23.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_mie8ada6e58299e_23",
-                                        "name":  "M.I.警備グローブⅠ",
-                                        "icon":  "image/armors/gold_arms_mie8ada6e58299e_23.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mi_security",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "ultDamageUp",
-                                                             "value":  0.431
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_mie8ada6e58299e_24",
-                         "name":  "M.I.警備ブレスレット (+0%)",
-                         "icon":  "image/armors/gold_arms_mie8ada6e58299e_24.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_mie8ada6e58299e_24",
-                                        "name":  "M.I.警備ブレスレット",
-                                        "icon":  "image/armors/gold_arms_mie8ada6e58299e_24.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mi_security",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "normalAttackDamageUp",
-                                                             "value":  0.23
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "gold_arms_mie8ada6e58299e_25",
-                         "name":  "M.I.警備ブレスレットⅠ (+0%)",
-                         "icon":  "image/armors/gold_arms_mie8ada6e58299e_25.png",
-                         "efficiency":  0,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "gold_arms_mie8ada6e58299e_25",
-                                        "name":  "M.I.警備ブレスレットⅠ",
-                                        "icon":  "image/armors/gold_arms_mie8ada6e58299e_25.png",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_mi_security",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  42.0
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "intellect",
-                                                             "value":  65.0
-                                                         },
-                                                         {
-                                                             "stat":  "willpower",
-                                                             "value":  43.0
-                                                         },
-                                                         {
-                                                             "stat":  "critRate",
-                                                             "value":  0.086
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  0.0
-                                    }
-                     },
-                     {
-                         "id":  "armor_arms_ruten",
-                         "name":  "流転の腕甲 (+26.7%)",
-                         "icon":  null,
-                         "efficiency":  26.7,
-                         "detail":  {
-                                        "$schema":  "../../../schemas/armor.schema.json",
-                                        "id":  "armor_arms_ruten",
-                                        "name":  "流転の腕甲",
-                                        "part":  "arms",
-                                        "rarity":  6,
-                                        "setId":  "set_ruten",
-                                        "mainStat":  {
-                                                         "stat":  "defense",
-                                                         "value":  180
-                                                     },
-                                        "subStats":  [
-                                                         {
-                                                             "stat":  "atkFlat",
-                                                             "value":  65
-                                                         },
-                                                         {
-                                                             "stat":  "agility",
-                                                             "value":  45
-                                                         }
-                                                     ],
-                                        "ultEfficiency":  26.7
-                                    }
-                     }
-                 ],
-    "accessory":  [
-                      {
-                          "id":  "none",
-                          "name":  "なし (0%)",
-                          "efficiency":  0,
-                          "icon":  null
-                      },
-                      {
-                          "id":  "armor_acc_kyukoku",
-                          "name":  "救国印章 (+33.4%)",
-                          "icon":  "image/armors/armor_acc_kyukoku.png",
-                          "efficiency":  33.4,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_acc_kyukoku",
-                                         "name":  "救国印章",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "critDamage",
-                                                          "value":  0.35
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.12
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.08
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  33.4,
-                                         "icon":  "image/armors/armor_acc_kyukoku.png"
-                                     }
-                      },
-                      {
-                          "id":  "armor_acc_ruten",
-                          "name":  "流転の指輪 (+32%)",
-                          "icon":  "image/armors/armor_acc_ruten.png",
-                          "efficiency":  32,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_acc_ruten",
-                                         "name":  "流転の指輪",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "critRate",
-                                                          "value":  0.12
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "critDamage",
-                                                              "value":  0.24
-                                                          },
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.10
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  32,
-                                         "icon":  "image/armors/armor_acc_ruten.png"
-                                     }
-                      },
-                      {
-                          "id":  "armor_acc_tensai",
-                          "name":  "天災防護アミュレット (+0%)",
-                          "icon":  "image/armors/armor_acc_tensai.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_acc_tensai",
-                                         "name":  "天災防護アミュレット",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_tensai",
-                                         "mainStat":  {
-                                                          "stat":  "artsIntensity",
-                                                          "value":  50
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "allDamageUp",
-                                                              "value":  0.12
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  60
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0,
-                                         "icon":  "image/armors/armor_acc_tensai.png"
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_24",
-                          "name":  "50式応龍短剣 (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_24.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_24",
-                                         "name":  "50式応龍短剣",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_24.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_25",
-                          "name":  "50式応龍短剣Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_25.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_25",
-                                         "name":  "50式応龍短剣Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_25.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "allSkillDamageUp",
-                                                              "value":  0.276
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_26",
-                          "name":  "50式応龍レーダー (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_26.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_26",
-                                         "name":  "50式応龍レーダー",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_26.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_27",
-                          "name":  "50式応龍レーダーⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_27.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_27",
-                                         "name":  "50式応龍レーダーⅠ",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_27.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultDamageUp",
-                                                              "value":  0.518
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_28",
-                          "name":  "50式応龍レーダーⅡ (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_28.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_28",
-                                         "name":  "50式応龍レーダーⅡ",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_28.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_50e5bc8fe5bf9ce_29",
-                          "name":  "50式応龍ビーコン (+0%)",
-                          "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_29.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_50e5bc8fe5bf9ce_29",
-                                         "name":  "50式応龍ビーコン",
-                                         "icon":  "image/armors/gold_accessories_50e5bc8fe5bf9ce_29.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_oryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_40",
-                          "name":  "パイオニア通信機 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_40.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_40",
-                                         "name":  "パイオニア通信機",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_40.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_41",
-                          "name":  "パイオニア通信機Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_41.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_41",
-                                         "name":  "パイオニア通信機Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_41.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_42",
-                          "name":  "パイオニア分析装置 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_42.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_42",
-                                         "name":  "パイオニア分析装置",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_42.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultDamageUp",
-                                                              "value":  0.518
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_43",
-                          "name":  "パイオニアガス供給強化装置 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_43.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_43",
-                                         "name":  "パイオニアガス供給強化装置",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_43.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_44",
-                          "name":  "パイオニアガス供給強化装置Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_44.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_44",
-                                         "name":  "パイオニアガス供給強化装置Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_44.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e382a4e38_45",
-                          "name":  "パイオニアガス供給装置 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e382a4e38_45.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e382a4e38_45",
-                                         "name":  "パイオニアガス供給装置",
-                                         "icon":  "image/armors/gold_accessories_e38391e382a4e38_45.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pioneer",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e383abe38_46",
-                          "name":  "パルス式校正器 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e383abe38_46.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e383abe38_46",
-                                         "name":  "パルス式校正器",
-                                         "icon":  "image/armors/gold_accessories_e38391e383abe38_46.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e383abe38_47",
-                          "name":  "パルス式探針 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e383abe38_47.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e383abe38_47",
-                                         "name":  "パルス式探針",
-                                         "icon":  "image/armors/gold_accessories_e38391e383abe38_47.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e383abe38_48",
-                          "name":  "パルス式侵入装置 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e38391e383abe38_48.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e383abe38_48",
-                                         "name":  "パルス式侵入装置",
-                                         "icon":  "image/armors/gold_accessories_e38391e383abe38_48.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultDamageUp",
-                                                              "value":  0.518
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e38391e383abe38_49",
-                          "name":  "パルス式装甲板 (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e38391e383abe38_49.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e38391e383abe38_49",
-                                         "name":  "パルス式装甲板",
-                                         "icon":  "image/armors/gold_accessories_e38391e383abe38_49.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_pulse",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5a38ce6b581e6a_9",
-                          "name":  "壌流棍棒 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5a38ce6b581e6a_9.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5a38ce6b581e6a_9",
-                                         "name":  "壌流棍棒",
-                                         "icon":  "image/armors/gold_accessories_e5a38ce6b581e6a_9.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_joryu",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5a4a9e999bae98_0",
-                          "name":  "天険通信機 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5a4a9e999bae98_0.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5a4a9e999bae98_0",
-                                         "name":  "天険通信機",
-                                         "icon":  "image/armors/gold_accessories_e5a4a9e999bae98_0.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_tenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5ae8fe5b1b1e78_65",
-                          "name":  "宏山点剣火石 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_65.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5ae8fe5b1b1e78_65",
-                                         "name":  "宏山点剣火石",
-                                         "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_65.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5ae8fe5b1b1e78_66",
-                          "name":  "宏山点剣短剣 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_66.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5ae8fe5b1b1e78_66",
-                                         "name":  "宏山点剣短剣",
-                                         "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_66.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultDamageUp",
-                                                              "value":  0.518
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5ae8fe5b1b1e78_67",
-                          "name":  "宏山点剣定位ビーコン (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_67.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5ae8fe5b1b1e78_67",
-                                         "name":  "宏山点剣定位ビーコン",
-                                         "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_67.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e5ae8fe5b1b1e78_68",
-                          "name":  "宏山点剣小型フィルター (+0%)",
-                          "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_68.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e5ae8fe5b1b1e78_68",
-                                         "name":  "宏山点剣小型フィルター",
-                                         "icon":  "image/armors/gold_accessories_e5ae8fe5b1b1e78_68.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kozantenken",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e687b8e6b2b3e38_21",
-                          "name":  "懸河ガス供給装置 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e687b8e6b2b3e38_21.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e687b8e6b2b3e38_21",
-                                         "name":  "懸河ガス供給装置",
-                                         "icon":  "image/armors/gold_accessories_e687b8e6b2b3e38_21.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e69591e59bbde58_73",
-                          "name":  "救国印章 (+25.7%)",
-                          "icon":  "image/armors/gold_accessories_e69591e59bbde58_73.png",
-                          "efficiency":  25.7,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e69591e59bbde58_73",
-                                         "name":  "救国印章",
-                                         "icon":  "image/armors/gold_accessories_e69591e59bbde58_73.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  25.7
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  25.7
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e69591e59bbde58_74",
-                          "name":  "救国印章Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e69591e59bbde58_74.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e69591e59bbde58_74",
-                                         "name":  "救国印章Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e69591e59bbde58_74.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.10800000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e69591e59bbde8a_71",
-                          "name":  "救国識別札 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e69591e59bbde8a_71.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e69591e59bbde8a_71",
-                                         "name":  "救国識別札",
-                                         "icon":  "image/armors/gold_accessories_e69591e59bbde8a_71.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "damageReduction",
-                                                              "value":  0.17800000000000002
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e69591e59bbde8a_72",
-                          "name":  "救国識別札Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e69591e59bbde8a_72.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e69591e59bbde8a_72",
-                                         "name":  "救国識別札Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e69591e59bbde8a_72.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.43200000000000005
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e697a7e98b92e38_7",
-                          "name":  "旧鋒ナイフ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e697a7e98b92e38_7.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e697a7e98b92e38_7",
-                                         "name":  "旧鋒ナイフ",
-                                         "icon":  "image/armors/gold_accessories_e697a7e98b92e38_7.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kyuho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e697a7e98b92e38_8",
-                          "name":  "旧鋒ナイフⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e697a7e98b92e38_8.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e697a7e98b92e38_8",
-                                         "name":  "旧鋒ナイフⅠ",
-                                         "icon":  "image/armors/gold_accessories_e697a7e98b92e38_8.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kyuho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e38_16",
-                          "name":  "流転ロボットアーム (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e38_16.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e38_16",
-                                         "name":  "流転ロボットアーム",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e38_16.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e38_20",
-                          "name":  "流転レンジファインダー (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e38_20.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e38_20",
-                                         "name":  "流転レンジファインダー",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e38_20.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e89_14",
-                          "name":  "流転蓄電装置 (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e89_14.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e89_14",
-                                         "name":  "流転蓄電装置",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e89_14.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e89_15",
-                          "name":  "流転蓄電装置Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e89_15.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e89_15",
-                                         "name":  "流転蓄電装置Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e89_15.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e8a_17",
-                          "name":  "流転補強板 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e8a_17.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e8a_17",
-                                         "name":  "流転補強板",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e8a_17.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e8a_18",
-                          "name":  "流転補強板Ⅰ (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e8a_18.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e8a_18",
-                                         "name":  "流転補強板Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e8a_18.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b581e8bba2e98_19",
-                          "name":  "流転重量プレート (+24.6%)",
-                          "icon":  "image/armors/gold_accessories_e6b581e8bba2e98_19.png",
-                          "efficiency":  24.6,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b581e8bba2e98_19",
-                                         "name":  "流転重量プレート",
-                                         "icon":  "image/armors/gold_accessories_e6b581e8bba2e98_19.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  24.6
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  24.6
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b885e6b3a2e68_11",
-                          "name":  "清波探知器具 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b885e6b3a2e68_11.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b885e6b3a2e68_11",
-                                         "name":  "清波探知器具",
-                                         "icon":  "image/armors/gold_accessories_e6b885e6b3a2e68_11.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b885e6b3a2e68_12",
-                          "name":  "清波探知器具Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b885e6b3a2e68_12.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b885e6b3a2e68_12",
-                                         "name":  "清波探知器具Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e6b885e6b3a2e68_12.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b885e6b3a2e6b_13",
-                          "name":  "清波水筒 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b885e6b3a2e6b_13.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b885e6b3a2e6b_13",
-                                         "name":  "清波水筒",
-                                         "icon":  "image/armors/gold_accessories_e6b885e6b3a2e6b_13.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b885e6b3a2e7a_10",
-                          "name":  "清波竹製短剣 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b885e6b3a2e7a_10.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b885e6b3a2e7a_10",
-                                         "name":  "清波竹製短剣",
-                                         "icon":  "image/armors/gold_accessories_e6b885e6b3a2e7a_10.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_seiba",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b8a1e6b7b5e79_70",
-                          "name":  "渡淵白刃 (+25.7%)",
-                          "icon":  "image/armors/gold_accessories_e6b8a1e6b7b5e79_70.png",
-                          "efficiency":  25.7,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b8a1e6b7b5e79_70",
-                                         "name":  "渡淵白刃",
-                                         "icon":  "image/armors/gold_accessories_e6b8a1e6b7b5e79_70.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  25.7
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  25.7
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6b8a1e6b7b5e8a_69",
-                          "name":  "渡淵装甲版 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6b8a1e6b7b5e8a_69.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6b8a1e6b7b5e8a_69",
-                                         "name":  "渡淵装甲版",
-                                         "icon":  "image/armors/gold_accessories_e6b8a1e6b7b5e8a_69.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  null,
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  43.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.21600000000000003
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6bf81e6b581e38_22",
-                          "name":  "濁流ホットカッター (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6bf81e6b581e38_22.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6bf81e6b581e38_22",
-                                         "name":  "濁流ホットカッター",
-                                         "icon":  "image/armors/gold_accessories_e6bf81e6b581e38_22.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "normalAttackDamageUp",
-                                                              "value":  0.276
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e6bf81e6b581e38_23",
-                          "name":  "濁流ホットカッターⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e6bf81e6b581e38_23.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e6bf81e6b581e38_23",
-                                         "name":  "濁流ホットカッターⅠ",
-                                         "icon":  "image/armors/gold_accessories_e6bf81e6b581e38_23.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mancho",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e781abe5b1b1e79_36",
-                          "name":  "火山用温度測定器 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_36.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e781abe5b1b1e79_36",
-                                         "name":  "火山用温度測定器",
-                                         "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_36.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e781abe5b1b1e79_37",
-                          "name":  "火山用パワーバッテリー (+0%)",
-                          "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_37.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e781abe5b1b1e79_37",
-                                         "name":  "火山用パワーバッテリー",
-                                         "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_37.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e781abe5b1b1e79_38",
-                          "name":  "火山用モバイルバッテリー (+0%)",
-                          "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_38.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e781abe5b1b1e79_38",
-                                         "name":  "火山用モバイルバッテリー",
-                                         "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_38.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e781abe5b1b1e79_39",
-                          "name":  "火山用遮熱板 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_39.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e781abe5b1b1e79_39",
-                                         "name":  "火山用遮熱板",
-                                         "icon":  "image/armors/gold_accessories_e781abe5b1b1e79_39.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_volcano",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "allSkillDamageUp",
-                                                              "value":  0.276
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e7949fe789a9e8a_60",
-                          "name":  "生物補助コンタクタ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_60.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e7949fe789a9e8a_60",
-                                         "name":  "生物補助コンタクタ",
-                                         "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_60.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "damageReduction",
-                                                              "value":  0.172
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e7949fe789a9e8a_61",
-                          "name":  "生物補助コンタクタⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_61.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e7949fe789a9e8a_61",
-                                         "name":  "生物補助コンタクタⅠ",
-                                         "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_61.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "hpPercent",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e7949fe789a9e8a_62",
-                          "name":  "生物補助コンタクタⅡ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_62.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e7949fe789a9e8a_62",
-                                         "name":  "生物補助コンタクタⅡ",
-                                         "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_62.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "hpPercent",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e7949fe789a9e8a_63",
-                          "name":  "生物補助プレート (+0%)",
-                          "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_63.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e7949fe789a9e8a_63",
-                                         "name":  "生物補助プレート",
-                                         "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_63.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "mainStatPercent",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e7949fe789a9e8a_64",
-                          "name":  "生物補助修理針 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_64.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e7949fe789a9e8a_64",
-                                         "name":  "生物補助修理針",
-                                         "icon":  "image/armors/gold_accessories_e7949fe789a9e8a_64.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_bio_support",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  41.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.207
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e8bbbde9878fe8b_56",
-                          "name":  "軽量超域分析バンド (+0%)",
-                          "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_56.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e8bbbde9878fe8b_56",
-                                         "name":  "軽量超域分析バンド",
-                                         "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_56.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_chouiki",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e8bbbde9878fe8b_57",
-                          "name":  "軽量超域安定器 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_57.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e8bbbde9878fe8b_57",
-                                         "name":  "軽量超域安定器",
-                                         "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_57.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_chouiki",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  41.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e8bbbde9878fe8b_58",
-                          "name":  "軽量超域安定器Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_58.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e8bbbde9878fe8b_58",
-                                         "name":  "軽量超域安定器Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_58.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_chouiki",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.23
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e8bbbde9878fe8b_59",
-                          "name":  "軽量超域腕時計 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_59.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e8bbbde9878fe8b_59",
-                                         "name":  "軽量超域腕時計",
-                                         "icon":  "image/armors/gold_accessories_e8bbbde9878fe8b_59.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_chouiki",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_1",
-                          "name":  "集成訓練多機能ナイフ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_1.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_1",
-                                         "name":  "集成訓練多機能ナイフ",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_1.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsDamageUp",
-                                                              "value":  0.18600000000000003
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_2",
-                          "name":  "集成訓練火種石 (+21.1%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_2.png",
-                          "efficiency":  21.1,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_2",
-                                         "name":  "集成訓練火種石",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_2.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "ultEfficiency",
-                                                              "value":  21.1
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  21.1
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_3",
-                          "name":  "集成訓練ライト (+0%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_3.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_3",
-                                         "name":  "集成訓練ライト",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_3.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "subStatPercent",
-                                                              "value":  0.177
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_4",
-                          "name":  "集成訓練強襲ナイフ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_4.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_4",
-                                         "name":  "集成訓練強襲ナイフ",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_4.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "artsIntensity",
-                                                              "value":  35.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_5",
-                          "name":  "集成訓練電力プラグ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_5.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_5",
-                                         "name":  "集成訓練電力プラグ",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_5.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "healingEfficiency",
-                                                              "value":  0.177
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e99b86e68890e8a_6",
-                          "name":  "集成訓練剣術チェーンソー (+0%)",
-                          "icon":  "image/armors/gold_accessories_e99b86e68890e8a_6.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e99b86e68890e8a_6",
-                                         "name":  "集成訓練剣術チェーンソー",
-                                         "icon":  "image/armors/gold_accessories_e99b86e68890e8a_6.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_syusei",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  18.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  27.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  18.0
-                                                          },
-                                                          {
-                                                              "stat":  "physicalDamageUp",
-                                                              "value":  0.19699999999999998
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_50",
-                          "name":  "骨砕のマスク (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_50.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_50",
-                                         "name":  "骨砕のマスク",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_50.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_51",
-                          "name":  "骨砕のマスクⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_51.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_51",
-                                         "name":  "骨砕のマスクⅠ",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_51.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_52",
-                          "name":  "骨砕のマスクⅡ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_52.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_52",
-                                         "name":  "骨砕のマスクⅡ",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_52.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_53",
-                          "name":  "骨砕の小像 (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_53.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_53",
-                                         "name":  "骨砕の小像",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_53.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_54",
-                          "name":  "骨砕の小像Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_54.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_54",
-                                         "name":  "骨砕の小像Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_54.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "comboDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_e9aaa8e7a095e38_55",
-                          "name":  "骨砕の小像Ⅱ (+0%)",
-                          "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_55.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_e9aaa8e7a095e38_55",
-                                         "name":  "骨砕の小像Ⅱ",
-                                         "icon":  "image/armors/gold_accessories_e9aaa8e7a095e38_55.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_kotsusai",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_30",
-                          "name":  "M.I.警備アームバンド (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_30.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_30",
-                                         "name":  "M.I.警備アームバンド",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_30.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  21.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_31",
-                          "name":  "M.I.警備照準器 (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_31.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_31",
-                                         "name":  "M.I.警備照準器",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_31.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "strength",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_32",
-                          "name":  "M.I.警備照準器Ⅰ (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_32.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_32",
-                                         "name":  "M.I.警備照準器Ⅰ",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_32.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_33",
-                          "name":  "M.I.警備マルチツール (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_33.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_33",
-                                         "name":  "M.I.警備マルチツール",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_33.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "critRate",
-                                                              "value":  0.10400000000000001
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_34",
-                          "name":  "M.I.警備ナイフ (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_34.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_34",
-                                         "name":  "M.I.警備ナイフ",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_34.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "intellect",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "gold_accessories_mie8ada6e58299e_35",
-                          "name":  "M.I.警備ナイフⅠ (+0%)",
-                          "icon":  "image/armors/gold_accessories_mie8ada6e58299e_35.png",
-                          "efficiency":  0,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "gold_accessories_mie8ada6e58299e_35",
-                                         "name":  "M.I.警備ナイフⅠ",
-                                         "icon":  "image/armors/gold_accessories_mie8ada6e58299e_35.png",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_mi_security",
-                                         "mainStat":  {
-                                                          "stat":  "defense",
-                                                          "value":  21.0
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "agility",
-                                                              "value":  21.0
-                                                          },
-                                                          {
-                                                              "stat":  "willpower",
-                                                              "value":  32.0
-                                                          },
-                                                          {
-                                                              "stat":  "skillDamageUp",
-                                                              "value":  0.414
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  0.0
-                                     }
-                      },
-                      {
-                          "id":  "armor_acc_ruten",
-                          "name":  "流転の指輪 (+32%)",
-                          "icon":  null,
-                          "efficiency":  32,
-                          "detail":  {
-                                         "$schema":  "../../../schemas/armor.schema.json",
-                                         "id":  "armor_acc_ruten",
-                                         "name":  "流転の指輪",
-                                         "part":  "accessories",
-                                         "rarity":  6,
-                                         "setId":  "set_ruten",
-                                         "mainStat":  {
-                                                          "stat":  "critRate",
-                                                          "value":  0.12
-                                                      },
-                                         "subStats":  [
-                                                          {
-                                                              "stat":  "critDamage",
-                                                              "value":  0.24
-                                                          },
-                                                          {
-                                                              "stat":  "atkPercent",
-                                                              "value":  0.10
-                                                          }
-                                                      ],
-                                         "ultEfficiency":  32.0
-                                     }
-                      }
-                  ]
+  "armorSets": [
+    {
+      "id": "none",
+      "name": "なし (0%)",
+      "efficiency": 0
+    },
+    {
+      "id": "set_tenken",
+      "name": "天険セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_tenken",
+        "name": "天険",
+        "effects": {
+          "twoPiece": {
+            "description": "天険のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "アーツダメージ+16%自身が自然爆発 、寒冷爆発 を発動させるとき、20秒間アーツ強度+16この効果は最大3段階まで重ね掛け可能（持続時間は個別にカウントされ、0.1秒に1回まで発動可能）",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_syusei",
+      "name": "集成訓練セット (+15%)",
+      "efficiency": 15,
+      "detail": {
+        "id": "set_syusei",
+        "name": "集成訓練",
+        "effects": {
+          "twoPiece": {
+            "description": "集成訓練のセット効果(2部位)",
+            "ultEfficiency": 5.0
+          },
+          "threePiece": {
+            "description": "装備中、与える全種類のダメージ+20%、受ける全種類のダメージ-10%、必殺チャージの回復効率+10%",
+            "ultEfficiency": 10.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_kyuho",
+      "name": "旧鋒セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_kyuho",
+        "name": "旧鋒",
+        "effects": {
+          "twoPiece": {
+            "description": "旧鋒のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、攻撃力+8%自身が敵に猛撃 、破砕 を与えるとき、消費 する最大のクラッシュ の段階数に応じて、20秒間自身の物理ダメージ+[6%×消費した段階数]目標が物理脆弱 、ブレイク状態、または源石結晶 が付与されている場合、上記のボーナス効果が1.5倍になる（ボーナス効果は重ね掛け不可）",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_joryu",
+      "name": "壌流セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_joryu",
+        "name": "壌流",
+        "effects": {
+          "twoPiece": {
+            "description": "壌流のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、攻撃力+10%自身が感電 または腐食 を消費するたびに、異常段階 に応じて同じ段階数の強化状態を獲得し、25秒間、1段階ごとに電磁ダメージと自然ダメージ+15%強化状態の段階数は最大3段階まで（持続時間は個別にカウントされる）",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_seiba",
+      "name": "清波セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_seiba",
+        "name": "清波",
+        "effects": {
+          "twoPiece": {
+            "description": "清波のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、連携技CD短縮+15%自身が連携技を発動するとき、15秒間すべてのスキルダメージ+20%この効果は最大2段階まで重ね掛け可能（持続時間は個別にカウントされる）",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_ruten",
+      "name": "流転セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_ruten",
+        "name": "流転",
+        "effects": {
+          "twoPiece": {
+            "description": "流転のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中HP+1000自身が増幅 、加護 、脆弱 、弱体化 を付与すると、15秒間編成中の他の味方の与えるダメージ+16%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_mancho",
+      "name": "満潮セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_mancho",
+        "name": "満潮",
+        "effects": {
+          "twoPiece": {
+            "description": "満潮のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、すべてのスキルダメージ+20%自身が敵のアーツ付着 段階を2以上にすると、15秒間与えるアーツダメージ+35％この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_oryu",
+      "name": "50式応龍セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_oryu",
+        "name": "50式応龍",
+        "effects": {
+          "twoPiece": {
+            "description": "50式応龍のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、攻撃力+15%任意のオペレーターが戦技 を発動するとき、自身は応龍の鋒を1段階獲得し、次の連携技 ダメージ+20%応龍の鋒は最大3段階まで重ね掛け可能",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_mi_security",
+      "name": "M.I.警備セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_mi_security",
+        "name": "M.I.警備",
+        "effects": {
+          "twoPiece": {
+            "description": "M.I.警備のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、会心率+5%自身が会心ダメージを与えると、5秒間攻撃力+5%この効果は5回まで重ね掛け可能重ね掛け回数が最大回数に達した場合、追加で会心率+5%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_volcano",
+      "name": "火山用セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_volcano",
+        "name": "火山用",
+        "effects": {
+          "twoPiece": {
+            "description": "火山用のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、アーツ強度+30自身が敵を燃焼 状態にすると、10秒間灼熱ダメージ+50%この効果は重ね掛け不可自身が敵を腐食状態にすると、10秒間自然ダメージ+50%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_pioneer",
+      "name": "パイオニアセット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_pioneer",
+        "name": "パイオニア",
+        "effects": {
+          "twoPiece": {
+            "description": "パイオニアのセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、連携技のCD短縮+15%自身がスキルでSP を回復すると、15秒間チーム全員の与えるダメージ+16%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_pulse",
+      "name": "パルス式セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_pulse",
+        "name": "パルス式",
+        "effects": {
+          "twoPiece": {
+            "description": "パルス式のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、アーツ強度+30自身が敵を感電状態にすると、10秒間電磁ダメージ+50%この効果は重ね掛け不可自身が敵を凍結 状態にすると、10秒間寒冷ダメージ+50%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_kotsusai",
+      "name": "骨砕セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_kotsusai",
+        "name": "骨砕",
+        "effects": {
+          "twoPiece": {
+            "description": "骨砕のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、攻撃力+15%自身が連携技を発動するとき、骨砕の重圧を1段階獲得し、次の戦技ダメージ+30%骨砕の重圧は最大2回まで重ね掛け可能",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_chouiki",
+      "name": "軽量超域セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_chouiki",
+        "name": "軽量超域",
+        "effects": {
+          "twoPiece": {
+            "description": "軽量超域のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、攻撃力+8％自身がクラッシュを付与すると、15秒間物理ダメージ+8%この効果は4回まで重ね掛け可能敵のクラッシュ段階が4になった場合、10秒間追加で物理ダメージ+16%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_bio_support",
+      "name": "生物補助セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_bio_support",
+        "name": "生物補助",
+        "effects": {
+          "twoPiece": {
+            "description": "生物補助のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、回復効率+20%自身が味方を治療すると、10秒間その味方の受ける全種類のダメージ-15％回復量がその味方のHP上限を超えた場合、受ける全種類のダメージ-30%この効果は重ね掛け不可",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "set_kozantenken",
+      "name": "宏山点剣セット (+0%)",
+      "efficiency": 0,
+      "detail": {
+        "id": "set_kozantenken",
+        "name": "宏山点剣",
+        "effects": {
+          "twoPiece": {
+            "description": "宏山点剣のセット効果(2部位)",
+            "ultEfficiency": 0.0
+          },
+          "threePiece": {
+            "description": "装備中、ブレイク効率UP+20％自身が物理異常 を与えると、追加で攻撃力250％分の物理ダメージとブレイク値 10を与えるこの効果は15秒に1回まで発動可能",
+            "ultEfficiency": 0.0
+          }
+        }
+      }
+    },
+    {
+      "id": "other",
+      "name": "その他セット (0%)",
+      "efficiency": 0
+    }
+  ],
+  "bodyArmor": [
+    {
+      "id": "none",
+      "name": "なし (0%)",
+      "efficiency": 0,
+      "icon": null
+    },
+    {
+      "id": "gold_body_50e5bc8fe5bf9ce_20",
+      "name": "50式応龍重防具 (+0%)",
+      "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_20.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_50e5bc8fe5bf9ce_20",
+        "name": "50式応龍重防具",
+        "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_20.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.115
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_50e5bc8fe5bf9ce_21",
+      "name": "50式応龍重防具Ⅰ (+12.3%)",
+      "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_21.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_50e5bc8fe5bf9ce_21",
+        "name": "50式応龍重防具Ⅰ",
+        "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_21.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_50e5bc8fe5bf9ce_22",
+      "name": "50式応龍重防具Ⅱ (+0%)",
+      "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_22.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_50e5bc8fe5bf9ce_22",
+        "name": "50式応龍重防具Ⅱ",
+        "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_22.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_50e5bc8fe5bf9ce_23",
+      "name": "50式応龍軽防具 (+0%)",
+      "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_23.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_50e5bc8fe5bf9ce_23",
+        "name": "50式応龍軽防具",
+        "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_23.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.138
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_50e5bc8fe5bf9ce_24",
+      "name": "50式応龍ソフトアーマー (+0%)",
+      "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_24.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_50e5bc8fe5bf9ce_24",
+        "name": "50式応龍ソフトアーマー",
+        "icon": "image/armors/gold_body_50e5bc8fe5bf9ce_24.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e382a4e38_32",
+      "name": "パイオニア防具 (+0%)",
+      "icon": "image/armors/gold_body_e38391e382a4e38_32.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e382a4e38_32",
+        "name": "パイオニア防具",
+        "icon": "image/armors/gold_body_e38391e382a4e38_32.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.259
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e382a4e38_33",
+      "name": "パイオニア防具Ⅰ (+0%)",
+      "icon": "image/armors/gold_body_e38391e382a4e38_33.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e382a4e38_33",
+        "name": "パイオニア防具Ⅰ",
+        "icon": "image/armors/gold_body_e38391e382a4e38_33.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e382a4e38_34",
+      "name": "パイオニア防具Ⅱ (+0%)",
+      "icon": "image/armors/gold_body_e38391e382a4e38_34.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e382a4e38_34",
+        "name": "パイオニア防具Ⅱ",
+        "icon": "image/armors/gold_body_e38391e382a4e38_34.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e382a4e38_35",
+      "name": "パイオニア防具Ⅲ (+0%)",
+      "icon": "image/armors/gold_body_e38391e382a4e38_35.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e382a4e38_35",
+        "name": "パイオニア防具Ⅲ",
+        "icon": "image/armors/gold_body_e38391e382a4e38_35.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e382a4e38_36",
+      "name": "パイオニア防護服 (+12.3%)",
+      "icon": "image/armors/gold_body_e38391e382a4e38_36.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e382a4e38_36",
+        "name": "パイオニア防護服",
+        "icon": "image/armors/gold_body_e38391e382a4e38_36.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e38391e383abe38_37",
+      "name": "パルス式妨害服 (+0%)",
+      "icon": "image/armors/gold_body_e38391e383abe38_37.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e383abe38_37",
+        "name": "パルス式妨害服",
+        "icon": "image/armors/gold_body_e38391e383abe38_37.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e38391e383abe38_38",
+      "name": "パルス式軽防具 (+0%)",
+      "icon": "image/armors/gold_body_e38391e383abe38_38.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e38391e383abe38_38",
+        "name": "パルス式軽防具",
+        "icon": "image/armors/gold_body_e38391e383abe38_38.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5a38ce6b581e8b_9",
+      "name": "壌流軽防具 (+0%)",
+      "icon": "image/armors/gold_body_e5a38ce6b581e8b_9.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5a38ce6b581e8b_9",
+        "name": "壌流軽防具",
+        "icon": "image/armors/gold_body_e5a38ce6b581e8b_9.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_joryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5a4a9e999bae99_0",
+      "name": "天険防具 (+0%)",
+      "icon": "image/armors/gold_body_e5a4a9e999bae99_0.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5a4a9e999bae99_0",
+        "name": "天険防具",
+        "icon": "image/armors/gold_body_e5a4a9e999bae99_0.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_tenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5a594e6b5aae38_19",
+      "name": "奔浪ヘビーアーマー (+0%)",
+      "icon": "image/armors/gold_body_e5a594e6b5aae38_19.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5a594e6b5aae38_19",
+        "name": "奔浪ヘビーアーマー",
+        "icon": "image/armors/gold_body_e5a594e6b5aae38_19.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5ae8fe5b1b1e78_48",
+      "name": "宏山点剣ヘビーアーマー (+0%)",
+      "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_48.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5ae8fe5b1b1e78_48",
+        "name": "宏山点剣ヘビーアーマー",
+        "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_48.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5ae8fe5b1b1e78_49",
+      "name": "宏山点剣ヘビーアーマーⅠ (+0%)",
+      "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_49.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5ae8fe5b1b1e78_49",
+        "name": "宏山点剣ヘビーアーマーⅠ",
+        "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_49.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.115
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5ae8fe5b1b1e78_50",
+      "name": "宏山点剣ライトアーマー (+12.3%)",
+      "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_50.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5ae8fe5b1b1e78_50",
+        "name": "宏山点剣ライトアーマー",
+        "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_50.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e5ae8fe5b1b1e78_51",
+      "name": "宏山点剣繊維防具 (+0%)",
+      "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_51.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5ae8fe5b1b1e78_51",
+        "name": "宏山点剣繊維防具",
+        "icon": "image/armors/gold_body_e5ae8fe5b1b1e78_51.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.115
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e5b9b2e6bdaee8b_17",
+      "name": "干潮軽防具 (+12.3%)",
+      "icon": "image/armors/gold_body_e5b9b2e6bdaee8b_17.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5b9b2e6bdaee8b_17",
+        "name": "干潮軽防具",
+        "icon": "image/armors/gold_body_e5b9b2e6bdaee8b_17.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e5b9b2e6bdaee8b_18",
+      "name": "干潮軽防具Ⅰ (+12.3%)",
+      "icon": "image/armors/gold_body_e5b9b2e6bdaee8b_18.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e5b9b2e6bdaee8b_18",
+        "name": "干潮軽防具Ⅰ",
+        "icon": "image/armors/gold_body_e5b9b2e6bdaee8b_18.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e69591e59bbde98_56",
+      "name": "救国重防具 (+0%)",
+      "icon": "image/armors/gold_body_e69591e59bbde98_56.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e69591e59bbde98_56",
+        "name": "救国重防具",
+        "icon": "image/armors/gold_body_e69591e59bbde98_56.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 115.0
+          },
+          {
+            "stat": "normalAttackDamageUp",
+            "value": 0.14400000000000002
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e69591e59bbde99_57",
+      "name": "救国防具 (+12.9%)",
+      "icon": "image/armors/gold_body_e69591e59bbde99_57.png",
+      "efficiency": 12.9,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e69591e59bbde99_57",
+        "name": "救国防具",
+        "icon": "image/armors/gold_body_e69591e59bbde99_57.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 115.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.9
+          }
+        ],
+        "ultEfficiency": 12.9
+      }
+    },
+    {
+      "id": "gold_body_e697a7e98b92e99_7",
+      "name": "旧鋒防具 (+0%)",
+      "icon": "image/armors/gold_body_e697a7e98b92e99_7.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e697a7e98b92e99_7",
+        "name": "旧鋒防具",
+        "icon": "image/armors/gold_body_e697a7e98b92e99_7.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.115
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e697a7e98b92e99_8",
+      "name": "旧鋒防具Ⅰ (+0%)",
+      "icon": "image/armors/gold_body_e697a7e98b92e99_8.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e697a7e98b92e99_8",
+        "name": "旧鋒防具Ⅰ",
+        "icon": "image/armors/gold_body_e697a7e98b92e99_8.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b581e8bba2e38_12",
+      "name": "流転マント (+0%)",
+      "icon": "image/armors/gold_body_e6b581e8bba2e38_12.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b581e8bba2e38_12",
+        "name": "流転マント",
+        "icon": "image/armors/gold_body_e6b581e8bba2e38_12.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b581e8bba2e69_15",
+      "name": "流転改造防具 (+0%)",
+      "icon": "image/armors/gold_body_e6b581e8bba2e69_15.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b581e8bba2e69_15",
+        "name": "流転改造防具",
+        "icon": "image/armors/gold_body_e6b581e8bba2e69_15.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b581e8bba2e8b_13",
+      "name": "流転軽防具 (+12.3%)",
+      "icon": "image/armors/gold_body_e6b581e8bba2e8b_13.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b581e8bba2e8b_13",
+        "name": "流転軽防具",
+        "icon": "image/armors/gold_body_e6b581e8bba2e8b_13.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 110.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e6b581e8bba2e8b_14",
+      "name": "流転軽防具Ⅰ (+0%)",
+      "icon": "image/armors/gold_body_e6b581e8bba2e8b_14.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b581e8bba2e8b_14",
+        "name": "流転軽防具Ⅰ",
+        "icon": "image/armors/gold_body_e6b581e8bba2e8b_14.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b581e8bba2e99_16",
+      "name": "流転防護服 (+12.3%)",
+      "icon": "image/armors/gold_body_e6b581e8bba2e99_16.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b581e8bba2e99_16",
+        "name": "流転防護服",
+        "icon": "image/armors/gold_body_e6b581e8bba2e99_16.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e6b885e6b3a2e8b_11",
+      "name": "清波軽防具 (+0%)",
+      "icon": "image/armors/gold_body_e6b885e6b3a2e8b_11.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b885e6b3a2e8b_11",
+        "name": "清波軽防具",
+        "icon": "image/armors/gold_body_e6b885e6b3a2e8b_11.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b885e6b3a2e98_10",
+      "name": "清波重防具 (+12.3%)",
+      "icon": "image/armors/gold_body_e6b885e6b3a2e98_10.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b885e6b3a2e98_10",
+        "name": "清波重防具",
+        "icon": "image/armors/gold_body_e6b885e6b3a2e98_10.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e6b8a1e6b7b5e8b_53",
+      "name": "渡淵軽防具 (+0%)",
+      "icon": "image/armors/gold_body_e6b8a1e6b7b5e8b_53.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b8a1e6b7b5e8b_53",
+        "name": "渡淵軽防具",
+        "icon": "image/armors/gold_body_e6b8a1e6b7b5e8b_53.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 115.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.10800000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b8a1e6b7b5e98_52",
+      "name": "渡淵重防具 (+0%)",
+      "icon": "image/armors/gold_body_e6b8a1e6b7b5e98_52.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b8a1e6b7b5e98_52",
+        "name": "渡淵重防具",
+        "icon": "image/armors/gold_body_e6b8a1e6b7b5e98_52.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 115.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b8a1e6b7b5e98_54",
+      "name": "渡淵鋼製防具 (+0%)",
+      "icon": "image/armors/gold_body_e6b8a1e6b7b5e98_54.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b8a1e6b7b5e98_54",
+        "name": "渡淵鋼製防具",
+        "icon": "image/armors/gold_body_e6b8a1e6b7b5e98_54.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 115.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.21600000000000003
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e6b8a1e6b7b5e99_55",
+      "name": "渡淵防護服 (+0%)",
+      "icon": "image/armors/gold_body_e6b8a1e6b7b5e99_55.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e6b8a1e6b7b5e99_55",
+        "name": "渡淵防護服",
+        "icon": "image/armors/gold_body_e6b8a1e6b7b5e99_55.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 115.0
+          },
+          {
+            "stat": "heatAndNatureDamageUp",
+            "value": 0.12
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e781abe5b1b1e79_30",
+      "name": "火山用パワードスーツ (+0%)",
+      "icon": "image/armors/gold_body_e781abe5b1b1e79_30.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e781abe5b1b1e79_30",
+        "name": "火山用パワードスーツ",
+        "icon": "image/armors/gold_body_e781abe5b1b1e79_30.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "agility",
+            "value": 58.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e781abe5b1b1e79_31",
+      "name": "火山用補助スーツ (+0%)",
+      "icon": "image/armors/gold_body_e781abe5b1b1e79_31.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e781abe5b1b1e79_31",
+        "name": "火山用補助スーツ",
+        "icon": "image/armors/gold_body_e781abe5b1b1e79_31.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e7949fe789a9e8a_45",
+      "name": "生物補助重防具 (+0%)",
+      "icon": "image/armors/gold_body_e7949fe789a9e8a_45.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e7949fe789a9e8a_45",
+        "name": "生物補助重防具",
+        "icon": "image/armors/gold_body_e7949fe789a9e8a_45.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e7949fe789a9e8a_46",
+      "name": "生物補助ベスト (+0%)",
+      "icon": "image/armors/gold_body_e7949fe789a9e8a_46.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e7949fe789a9e8a_46",
+        "name": "生物補助ベスト",
+        "icon": "image/armors/gold_body_e7949fe789a9e8a_46.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e7949fe789a9e8a_47",
+      "name": "生物補助ベストⅠ (+12.3%)",
+      "icon": "image/armors/gold_body_e7949fe789a9e8a_47.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e7949fe789a9e8a_47",
+        "name": "生物補助ベストⅠ",
+        "icon": "image/armors/gold_body_e7949fe789a9e8a_47.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e8bbbde9878fe8b_44",
+      "name": "軽量超域プレート (+0%)",
+      "icon": "image/armors/gold_body_e8bbbde9878fe8b_44.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e8bbbde9878fe8b_44",
+        "name": "軽量超域プレート",
+        "icon": "image/armors/gold_body_e8bbbde9878fe8b_44.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_1",
+      "name": "集成訓練防具 (+0%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_1.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_1",
+        "name": "集成訓練防具",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_1.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 74.0
+          },
+          {
+            "stat": "agility",
+            "value": 49.0
+          },
+          {
+            "stat": "artsDamageUp",
+            "value": 0.09300000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_2",
+      "name": "集成訓練鋼製防具 (+10.5%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_2.png",
+      "efficiency": 10.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_2",
+        "name": "集成訓練鋼製防具",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_2.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 74.0
+          },
+          {
+            "stat": "agility",
+            "value": 49.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 10.5
+          }
+        ],
+        "ultEfficiency": 10.5
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_3",
+      "name": "集成訓練ベスト (+0%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_3.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_3",
+        "name": "集成訓練ベスト",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_3.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 49.0
+          },
+          {
+            "stat": "agility",
+            "value": 74.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.08900000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_4",
+      "name": "集成訓練強襲防具 (+0%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_4.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_4",
+        "name": "集成訓練強襲防具",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_4.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 74.0
+          },
+          {
+            "stat": "agility",
+            "value": 49.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 17.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_5",
+      "name": "集成訓練医療防具 (+0%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_5.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_5",
+        "name": "集成訓練医療防具",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_5.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 74.0
+          },
+          {
+            "stat": "agility",
+            "value": 49.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.08900000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e99b86e68890e8a_6",
+      "name": "集成訓練剣術防具 (+0%)",
+      "icon": "image/armors/gold_body_e99b86e68890e8a_6.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e99b86e68890e8a_6",
+        "name": "集成訓練剣術防具",
+        "icon": "image/armors/gold_body_e99b86e68890e8a_6.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 48.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 74.0
+          },
+          {
+            "stat": "agility",
+            "value": 49.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.098
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e9aaa8e7a095e38_39",
+      "name": "骨砕の重防具 (+12.3%)",
+      "icon": "image/armors/gold_body_e9aaa8e7a095e38_39.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e9aaa8e7a095e38_39",
+        "name": "骨砕の重防具",
+        "icon": "image/armors/gold_body_e9aaa8e7a095e38_39.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_e9aaa8e7a095e38_40",
+      "name": "骨砕の重防具Ⅰ (+0%)",
+      "icon": "image/armors/gold_body_e9aaa8e7a095e38_40.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e9aaa8e7a095e38_40",
+        "name": "骨砕の重防具Ⅰ",
+        "icon": "image/armors/gold_body_e9aaa8e7a095e38_40.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e9aaa8e7a095e38_41",
+      "name": "骨砕の重防具Ⅱ (+0%)",
+      "icon": "image/armors/gold_body_e9aaa8e7a095e38_41.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e9aaa8e7a095e38_41",
+        "name": "骨砕の重防具Ⅱ",
+        "icon": "image/armors/gold_body_e9aaa8e7a095e38_41.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e9aaa8e7a095e38_42",
+      "name": "骨砕のマント (+0%)",
+      "icon": "image/armors/gold_body_e9aaa8e7a095e38_42.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e9aaa8e7a095e38_42",
+        "name": "骨砕のマント",
+        "icon": "image/armors/gold_body_e9aaa8e7a095e38_42.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_e9aaa8e7a095e38_43",
+      "name": "骨砕のマントⅠ (+12.3%)",
+      "icon": "image/armors/gold_body_e9aaa8e7a095e38_43.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_e9aaa8e7a095e38_43",
+        "name": "骨砕のマントⅠ",
+        "icon": "image/armors/gold_body_e9aaa8e7a095e38_43.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_mie8ada6e58299e_25",
+      "name": "M.I.警備防具 (+0%)",
+      "icon": "image/armors/gold_body_mie8ada6e58299e_25.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_mie8ada6e58299e_25",
+        "name": "M.I.警備防具",
+        "icon": "image/armors/gold_body_mie8ada6e58299e_25.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 58.0
+          },
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 20.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_mie8ada6e58299e_26",
+      "name": "M.I.警備防具Ⅰ (+12.3%)",
+      "icon": "image/armors/gold_body_mie8ada6e58299e_26.png",
+      "efficiency": 12.3,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_mie8ada6e58299e_26",
+        "name": "M.I.警備防具Ⅰ",
+        "icon": "image/armors/gold_body_mie8ada6e58299e_26.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 87.0
+          },
+          {
+            "stat": "intellect",
+            "value": 58.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 12.3
+          }
+        ],
+        "ultEfficiency": 12.3
+      }
+    },
+    {
+      "id": "gold_body_mie8ada6e58299e_27",
+      "name": "M.I.警備マント (+0%)",
+      "icon": "image/armors/gold_body_mie8ada6e58299e_27.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_mie8ada6e58299e_27",
+        "name": "M.I.警備マント",
+        "icon": "image/armors/gold_body_mie8ada6e58299e_27.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "normalAttackDamageUp",
+            "value": 0.138
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_mie8ada6e58299e_28",
+      "name": "M.I.警備マントⅠ (+0%)",
+      "icon": "image/armors/gold_body_mie8ada6e58299e_28.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_mie8ada6e58299e_28",
+        "name": "M.I.警備マントⅠ",
+        "icon": "image/armors/gold_body_mie8ada6e58299e_28.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 87.0
+          },
+          {
+            "stat": "willpower",
+            "value": 58.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.052000000000000005
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_body_mie8ada6e58299e_29",
+      "name": "M.I.警備マントⅡ (+0%)",
+      "icon": "image/armors/gold_body_mie8ada6e58299e_29.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_body_mie8ada6e58299e_29",
+        "name": "M.I.警備マントⅡ",
+        "icon": "image/armors/gold_body_mie8ada6e58299e_29.png",
+        "part": "body",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 56.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 58.0
+          },
+          {
+            "stat": "willpower",
+            "value": 87.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    }
+  ],
+  "armArmor": [
+    {
+      "id": "none",
+      "name": "なし (0%)",
+      "efficiency": 0,
+      "icon": null
+    },
+    {
+      "id": "gold_arms_50e5bc8fe5bf9ce_19",
+      "name": "50式応龍プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_19.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_50e5bc8fe5bf9ce_19",
+        "name": "50式応龍プロテクター",
+        "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_19.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_50e5bc8fe5bf9ce_20",
+      "name": "50式応龍プロテクターⅠ (+0%)",
+      "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_20.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_50e5bc8fe5bf9ce_20",
+        "name": "50式応龍プロテクターⅠ",
+        "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_20.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_50e5bc8fe5bf9ce_21",
+      "name": "50式応龍グローブ (+0%)",
+      "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_21.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_50e5bc8fe5bf9ce_21",
+        "name": "50式応龍グローブ",
+        "icon": "image/armors/gold_arms_50e5bc8fe5bf9ce_21.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e38391e382a4e38_30",
+      "name": "パイオニア耐蝕グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e38391e382a4e38_30.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e38391e382a4e38_30",
+        "name": "パイオニア耐蝕グローブ",
+        "icon": "image/armors/gold_arms_e38391e382a4e38_30.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e38391e382a4e38_31",
+      "name": "パイオニア繊維グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e38391e382a4e38_31.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e38391e382a4e38_31",
+        "name": "パイオニア繊維グローブ",
+        "icon": "image/armors/gold_arms_e38391e382a4e38_31.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e38391e382a4e38_32",
+      "name": "パイオニア繊維グローブⅠ (+20.5%)",
+      "icon": "image/armors/gold_arms_e38391e382a4e38_32.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e38391e382a4e38_32",
+        "name": "パイオニア繊維グローブⅠ",
+        "icon": "image/armors/gold_arms_e38391e382a4e38_32.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e38391e383abe38_33",
+      "name": "パルス式グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e38391e383abe38_33.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e38391e383abe38_33",
+        "name": "パルス式グローブ",
+        "icon": "image/armors/gold_arms_e38391e383abe38_33.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e38391e383abe38_34",
+      "name": "パルス式プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e38391e383abe38_34.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e38391e383abe38_34",
+        "name": "パルス式プロテクター",
+        "icon": "image/armors/gold_arms_e38391e383abe38_34.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e5a38ce6b581e38_9",
+      "name": "壌流プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e5a38ce6b581e38_9.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e5a38ce6b581e38_9",
+        "name": "壌流プロテクター",
+        "icon": "image/armors/gold_arms_e5a38ce6b581e38_9.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_joryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e5a4a9e999bae38_0",
+      "name": "天険ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e5a4a9e999bae38_0.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e5a4a9e999bae38_0",
+        "name": "天険ガントレット",
+        "icon": "image/armors/gold_arms_e5a4a9e999bae38_0.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_tenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e5ae8fe5b1b1e78_43",
+      "name": "宏山点剣戦闘用グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_43.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e5ae8fe5b1b1e78_43",
+        "name": "宏山点剣戦闘用グローブ",
+        "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_43.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.192
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e5ae8fe5b1b1e78_44",
+      "name": "宏山点剣ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_44.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e5ae8fe5b1b1e78_44",
+        "name": "宏山点剣ガントレット",
+        "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_44.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.431
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e5ae8fe5b1b1e78_45",
+      "name": "宏山点剣ガントレットⅠ (+0%)",
+      "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_45.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e5ae8fe5b1b1e78_45",
+        "name": "宏山点剣ガントレットⅠ",
+        "icon": "image/armors/gold_arms_e5ae8fe5b1b1e78_45.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e69591e59bbde38_50",
+      "name": "救国プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e69591e59bbde38_50.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e69591e59bbde38_50",
+        "name": "救国プロテクター",
+        "icon": "image/armors/gold_arms_e69591e59bbde38_50.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 86.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.45
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e69591e59bbde38_51",
+      "name": "救国グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e69591e59bbde38_51.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e69591e59bbde38_51",
+        "name": "救国グローブ",
+        "icon": "image/armors/gold_arms_e69591e59bbde38_51.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 86.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.24
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e697a7e98b92e38_7",
+      "name": "旧鋒ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e697a7e98b92e38_7.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e697a7e98b92e38_7",
+        "name": "旧鋒ガントレット",
+        "icon": "image/armors/gold_arms_e697a7e98b92e38_7.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e697a7e98b92e38_8",
+      "name": "旧鋒ガントレットⅠ (+0%)",
+      "icon": "image/armors/gold_arms_e697a7e98b92e38_8.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e697a7e98b92e38_8",
+        "name": "旧鋒ガントレットⅠ",
+        "icon": "image/armors/gold_arms_e697a7e98b92e38_8.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b288e6b0b4e38_18",
+      "name": "沈水グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e6b288e6b0b4e38_18.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b288e6b0b4e38_18",
+        "name": "沈水グローブ",
+        "icon": "image/armors/gold_arms_e6b288e6b0b4e38_18.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b581e8bba2e38_12",
+      "name": "流転ガントレット (+20.5%)",
+      "icon": "image/armors/gold_arms_e6b581e8bba2e38_12.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b581e8bba2e38_12",
+        "name": "流転ガントレット",
+        "icon": "image/armors/gold_arms_e6b581e8bba2e38_12.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e6b581e8bba2e38_13",
+      "name": "流転ガントレットⅠ (+20.5%)",
+      "icon": "image/armors/gold_arms_e6b581e8bba2e38_13.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b581e8bba2e38_13",
+        "name": "流転ガントレットⅠ",
+        "icon": "image/armors/gold_arms_e6b581e8bba2e38_13.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e6b581e8bba2e38_14",
+      "name": "流転ハンドガード (+20.5%)",
+      "icon": "image/armors/gold_arms_e6b581e8bba2e38_14.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b581e8bba2e38_14",
+        "name": "流転ハンドガード",
+        "icon": "image/armors/gold_arms_e6b581e8bba2e38_14.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e6b581e8bba2e38_15",
+      "name": "流転グローブ (+20.5%)",
+      "icon": "image/armors/gold_arms_e6b581e8bba2e38_15.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b581e8bba2e38_15",
+        "name": "流転グローブ",
+        "icon": "image/armors/gold_arms_e6b581e8bba2e38_15.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e6b581e8bba2e4b_16",
+      "name": "流転伝導プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e6b581e8bba2e4b_16.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b581e8bba2e4b_16",
+        "name": "流転伝導プロテクター",
+        "icon": "image/armors/gold_arms_e6b581e8bba2e4b_16.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b885e6b3a2e38_10",
+      "name": "清波ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e6b885e6b3a2e38_10.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b885e6b3a2e38_10",
+        "name": "清波ガントレット",
+        "icon": "image/armors/gold_arms_e6b885e6b3a2e38_10.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b885e6b3a2e38_11",
+      "name": "清波プロテクター (+20.5%)",
+      "icon": "image/armors/gold_arms_e6b885e6b3a2e38_11.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b885e6b3a2e38_11",
+        "name": "清波プロテクター",
+        "icon": "image/armors/gold_arms_e6b885e6b3a2e38_11.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e6b8a1e6b7b5e38_46",
+      "name": "渡淵プロテクター (+21.4%)",
+      "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_46.png",
+      "efficiency": 21.4,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b8a1e6b7b5e38_46",
+        "name": "渡淵プロテクター",
+        "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_46.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 86.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 21.4
+          }
+        ],
+        "ultEfficiency": 21.4
+      }
+    },
+    {
+      "id": "gold_arms_e6b8a1e6b7b5e38_47",
+      "name": "渡淵グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_47.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b8a1e6b7b5e38_47",
+        "name": "渡淵グローブ",
+        "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_47.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 86.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.36
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b8a1e6b7b5e38_48",
+      "name": "渡淵ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_48.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b8a1e6b7b5e38_48",
+        "name": "渡淵ガントレット",
+        "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_48.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 86.0
+          },
+          {
+            "stat": "normalAttackDamageUp",
+            "value": 0.24
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6b8a1e6b7b5e38_49",
+      "name": "渡淵ハンドガード (+0%)",
+      "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_49.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6b8a1e6b7b5e38_49",
+        "name": "渡淵ハンドガード",
+        "icon": "image/armors/gold_arms_e6b8a1e6b7b5e38_49.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 86.0
+          },
+          {
+            "stat": "cryoAndElectricDamageUp",
+            "value": 0.2
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e6ba80e6bdaee38_17",
+      "name": "満潮ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e6ba80e6bdaee38_17.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e6ba80e6bdaee38_17",
+        "name": "満潮ガントレット",
+        "icon": "image/armors/gold_arms_e6ba80e6bdaee38_17.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e781abe5b1b1e79_26",
+      "name": "火山用ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e781abe5b1b1e79_26.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e781abe5b1b1e79_26",
+        "name": "火山用ガントレット",
+        "icon": "image/armors/gold_arms_e781abe5b1b1e79_26.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e781abe5b1b1e79_27",
+      "name": "火山用ガントレットⅠ (+0%)",
+      "icon": "image/armors/gold_arms_e781abe5b1b1e79_27.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e781abe5b1b1e79_27",
+        "name": "火山用ガントレットⅠ",
+        "icon": "image/armors/gold_arms_e781abe5b1b1e79_27.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e781abe5b1b1e79_28",
+      "name": "火山用グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e781abe5b1b1e79_28.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e781abe5b1b1e79_28",
+        "name": "火山用グローブ",
+        "icon": "image/armors/gold_arms_e781abe5b1b1e79_28.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e781abe5b1b1e79_29",
+      "name": "火山用プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e781abe5b1b1e79_29.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e781abe5b1b1e79_29",
+        "name": "火山用プロテクター",
+        "icon": "image/armors/gold_arms_e781abe5b1b1e79_29.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e7949fe789a9e8a_40",
+      "name": "生物補助グローブ (+20.5%)",
+      "icon": "image/armors/gold_arms_e7949fe789a9e8a_40.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e7949fe789a9e8a_40",
+        "name": "生物補助グローブ",
+        "icon": "image/armors/gold_arms_e7949fe789a9e8a_40.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e7949fe789a9e8a_41",
+      "name": "生物補助手袋 (+0%)",
+      "icon": "image/armors/gold_arms_e7949fe789a9e8a_41.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e7949fe789a9e8a_41",
+        "name": "生物補助手袋",
+        "icon": "image/armors/gold_arms_e7949fe789a9e8a_41.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.17300000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e7949fe789a9e8a_42",
+      "name": "生物補助手袋Ⅰ (+20.5%)",
+      "icon": "image/armors/gold_arms_e7949fe789a9e8a_42.png",
+      "efficiency": 20.5,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e7949fe789a9e8a_42",
+        "name": "生物補助手袋Ⅰ",
+        "icon": "image/armors/gold_arms_e7949fe789a9e8a_42.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 20.5
+          }
+        ],
+        "ultEfficiency": 20.5
+      }
+    },
+    {
+      "id": "gold_arms_e8bbbde9878fe8b_38",
+      "name": "軽量超域ガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e8bbbde9878fe8b_38.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e8bbbde9878fe8b_38",
+        "name": "軽量超域ガントレット",
+        "icon": "image/armors/gold_arms_e8bbbde9878fe8b_38.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 34.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e8bbbde9878fe8b_39",
+      "name": "軽量超域プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e8bbbde9878fe8b_39.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e8bbbde9878fe8b_39",
+        "name": "軽量超域プロテクター",
+        "icon": "image/armors/gold_arms_e8bbbde9878fe8b_39.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_1",
+      "name": "集成訓練グローブ (+0%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_1.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_1",
+        "name": "集成訓練グローブ",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_1.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 55.0
+          },
+          {
+            "stat": "agility",
+            "value": 37.0
+          },
+          {
+            "stat": "artsDamageUp",
+            "value": 0.155
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_2",
+      "name": "集成訓練プロテクター (+17.6%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_2.png",
+      "efficiency": 17.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_2",
+        "name": "集成訓練プロテクター",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_2.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 55.0
+          },
+          {
+            "stat": "agility",
+            "value": 37.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 17.6
+          }
+        ],
+        "ultEfficiency": 17.6
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_3",
+      "name": "集成訓練サポーター (+0%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_3.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_3",
+        "name": "集成訓練サポーター",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_3.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 37.0
+          },
+          {
+            "stat": "agility",
+            "value": 55.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.14800000000000002
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_4",
+      "name": "集成訓練強襲プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_4.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_4",
+        "name": "集成訓練強襲プロテクター",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_4.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 55.0
+          },
+          {
+            "stat": "agility",
+            "value": 37.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 29.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_5",
+      "name": "集成訓練医療プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_5.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_5",
+        "name": "集成訓練医療プロテクター",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_5.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 55.0
+          },
+          {
+            "stat": "agility",
+            "value": 37.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.14800000000000002
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e99b86e68890e8a_6",
+      "name": "集成訓練剣術プロテクター (+0%)",
+      "icon": "image/armors/gold_arms_e99b86e68890e8a_6.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e99b86e68890e8a_6",
+        "name": "集成訓練剣術プロテクター",
+        "icon": "image/armors/gold_arms_e99b86e68890e8a_6.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 36.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 55.0
+          },
+          {
+            "stat": "agility",
+            "value": 37.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.16399999999999998
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e9aaa8e7a095e38_35",
+      "name": "骨砕のグローブ (+0%)",
+      "icon": "image/armors/gold_arms_e9aaa8e7a095e38_35.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e9aaa8e7a095e38_35",
+        "name": "骨砕のグローブ",
+        "icon": "image/armors/gold_arms_e9aaa8e7a095e38_35.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 65.0
+          },
+          {
+            "stat": "agility",
+            "value": 43.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e9aaa8e7a095e38_36",
+      "name": "骨砕のグローブⅠ (+0%)",
+      "icon": "image/armors/gold_arms_e9aaa8e7a095e38_36.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e9aaa8e7a095e38_36",
+        "name": "骨砕のグローブⅠ",
+        "icon": "image/armors/gold_arms_e9aaa8e7a095e38_36.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_e9aaa8e7a095e38_37",
+      "name": "骨砕のガントレット (+0%)",
+      "icon": "image/armors/gold_arms_e9aaa8e7a095e38_37.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_e9aaa8e7a095e38_37",
+        "name": "骨砕のガントレット",
+        "icon": "image/armors/gold_arms_e9aaa8e7a095e38_37.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "willpower",
+            "value": 65.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_mie8ada6e58299e_22",
+      "name": "M.I.警備グローブ (+0%)",
+      "icon": "image/armors/gold_arms_mie8ada6e58299e_22.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_mie8ada6e58299e_22",
+        "name": "M.I.警備グローブ",
+        "icon": "image/armors/gold_arms_mie8ada6e58299e_22.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.345
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_mie8ada6e58299e_23",
+      "name": "M.I.警備グローブⅠ (+0%)",
+      "icon": "image/armors/gold_arms_mie8ada6e58299e_23.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_mie8ada6e58299e_23",
+        "name": "M.I.警備グローブⅠ",
+        "icon": "image/armors/gold_arms_mie8ada6e58299e_23.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 65.0
+          },
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.431
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_mie8ada6e58299e_24",
+      "name": "M.I.警備ブレスレット (+0%)",
+      "icon": "image/armors/gold_arms_mie8ada6e58299e_24.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_mie8ada6e58299e_24",
+        "name": "M.I.警備ブレスレット",
+        "icon": "image/armors/gold_arms_mie8ada6e58299e_24.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "normalAttackDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_arms_mie8ada6e58299e_25",
+      "name": "M.I.警備ブレスレットⅠ (+0%)",
+      "icon": "image/armors/gold_arms_mie8ada6e58299e_25.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_arms_mie8ada6e58299e_25",
+        "name": "M.I.警備ブレスレットⅠ",
+        "icon": "image/armors/gold_arms_mie8ada6e58299e_25.png",
+        "part": "arms",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 42.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 65.0
+          },
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.086
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    }
+  ],
+  "accessory": [
+    {
+      "id": "none",
+      "name": "なし (0%)",
+      "efficiency": 0,
+      "icon": null
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_24",
+      "name": "50式応龍短剣 (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_24.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_24",
+        "name": "50式応龍短剣",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_24.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_25",
+      "name": "50式応龍短剣Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_25.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_25",
+        "name": "50式応龍短剣Ⅰ",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_25.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.276
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_26",
+      "name": "50式応龍レーダー (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_26.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_26",
+        "name": "50式応龍レーダー",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_26.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_27",
+      "name": "50式応龍レーダーⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_27.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_27",
+        "name": "50式応龍レーダーⅠ",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_27.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.518
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_28",
+      "name": "50式応龍レーダーⅡ (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_28.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_28",
+        "name": "50式応龍レーダーⅡ",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_28.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_50e5bc8fe5bf9ce_29",
+      "name": "50式応龍ビーコン (+0%)",
+      "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_29.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_50e5bc8fe5bf9ce_29",
+        "name": "50式応龍ビーコン",
+        "icon": "image/armors/gold_accessories_50e5bc8fe5bf9ce_29.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_oryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_40",
+      "name": "パイオニア通信機 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_40.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_40",
+        "name": "パイオニア通信機",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_40.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_41",
+      "name": "パイオニア通信機Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_41.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_41",
+        "name": "パイオニア通信機Ⅰ",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_41.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "intellect",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_42",
+      "name": "パイオニア分析装置 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_42.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_42",
+        "name": "パイオニア分析装置",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_42.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 41.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.518
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_43",
+      "name": "パイオニアガス供給強化装置 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_43.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_43",
+        "name": "パイオニアガス供給強化装置",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_43.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_44",
+      "name": "パイオニアガス供給強化装置Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_44.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_44",
+        "name": "パイオニアガス供給強化装置Ⅰ",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_44.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e382a4e38_45",
+      "name": "パイオニアガス供給装置 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e382a4e38_45.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e382a4e38_45",
+        "name": "パイオニアガス供給装置",
+        "icon": "image/armors/gold_accessories_e38391e382a4e38_45.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pioneer",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 41.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e383abe38_46",
+      "name": "パルス式校正器 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e383abe38_46.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e383abe38_46",
+        "name": "パルス式校正器",
+        "icon": "image/armors/gold_accessories_e38391e383abe38_46.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 41.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e383abe38_47",
+      "name": "パルス式探針 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e383abe38_47.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e383abe38_47",
+        "name": "パルス式探針",
+        "icon": "image/armors/gold_accessories_e38391e383abe38_47.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e383abe38_48",
+      "name": "パルス式侵入装置 (+0%)",
+      "icon": "image/armors/gold_accessories_e38391e383abe38_48.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e383abe38_48",
+        "name": "パルス式侵入装置",
+        "icon": "image/armors/gold_accessories_e38391e383abe38_48.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 41.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.518
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e38391e383abe38_49",
+      "name": "パルス式装甲板 (+24.6%)",
+      "icon": "image/armors/gold_accessories_e38391e383abe38_49.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e38391e383abe38_49",
+        "name": "パルス式装甲板",
+        "icon": "image/armors/gold_accessories_e38391e383abe38_49.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_pulse",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e5a38ce6b581e6a_9",
+      "name": "壌流棍棒 (+0%)",
+      "icon": "image/armors/gold_accessories_e5a38ce6b581e6a_9.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5a38ce6b581e6a_9",
+        "name": "壌流棍棒",
+        "icon": "image/armors/gold_accessories_e5a38ce6b581e6a_9.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_joryu",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e5a4a9e999bae98_0",
+      "name": "天険通信機 (+0%)",
+      "icon": "image/armors/gold_accessories_e5a4a9e999bae98_0.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5a4a9e999bae98_0",
+        "name": "天険通信機",
+        "icon": "image/armors/gold_accessories_e5a4a9e999bae98_0.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_tenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e5ae8fe5b1b1e78_65",
+      "name": "宏山点剣火石 (+0%)",
+      "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_65.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5ae8fe5b1b1e78_65",
+        "name": "宏山点剣火石",
+        "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_65.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e5ae8fe5b1b1e78_66",
+      "name": "宏山点剣短剣 (+0%)",
+      "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_66.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5ae8fe5b1b1e78_66",
+        "name": "宏山点剣短剣",
+        "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_66.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "ultDamageUp",
+            "value": 0.518
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e5ae8fe5b1b1e78_67",
+      "name": "宏山点剣定位ビーコン (+0%)",
+      "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_67.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5ae8fe5b1b1e78_67",
+        "name": "宏山点剣定位ビーコン",
+        "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_67.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 41.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e5ae8fe5b1b1e78_68",
+      "name": "宏山点剣小型フィルター (+0%)",
+      "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_68.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e5ae8fe5b1b1e78_68",
+        "name": "宏山点剣小型フィルター",
+        "icon": "image/armors/gold_accessories_e5ae8fe5b1b1e78_68.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kozantenken",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e687b8e6b2b3e38_21",
+      "name": "懸河ガス供給装置 (+0%)",
+      "icon": "image/armors/gold_accessories_e687b8e6b2b3e38_21.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e687b8e6b2b3e38_21",
+        "name": "懸河ガス供給装置",
+        "icon": "image/armors/gold_accessories_e687b8e6b2b3e38_21.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e69591e59bbde58_73",
+      "name": "救国印章 (+25.7%)",
+      "icon": "image/armors/gold_accessories_e69591e59bbde58_73.png",
+      "efficiency": 25.7,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e69591e59bbde58_73",
+        "name": "救国印章",
+        "icon": "image/armors/gold_accessories_e69591e59bbde58_73.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 43.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 25.7
+          }
+        ],
+        "ultEfficiency": 25.7
+      }
+    },
+    {
+      "id": "gold_accessories_e69591e59bbde58_74",
+      "name": "救国印章Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e69591e59bbde58_74.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e69591e59bbde58_74",
+        "name": "救国印章Ⅰ",
+        "icon": "image/armors/gold_accessories_e69591e59bbde58_74.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 43.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.10800000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e69591e59bbde8a_71",
+      "name": "救国識別札 (+0%)",
+      "icon": "image/armors/gold_accessories_e69591e59bbde8a_71.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e69591e59bbde8a_71",
+        "name": "救国識別札",
+        "icon": "image/armors/gold_accessories_e69591e59bbde8a_71.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 43.0
+          },
+          {
+            "stat": "damageReduction",
+            "value": 0.17800000000000002
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e69591e59bbde8a_72",
+      "name": "救国識別札Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e69591e59bbde8a_72.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e69591e59bbde8a_72",
+        "name": "救国識別札Ⅰ",
+        "icon": "image/armors/gold_accessories_e69591e59bbde8a_72.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.43200000000000005
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e697a7e98b92e38_7",
+      "name": "旧鋒ナイフ (+0%)",
+      "icon": "image/armors/gold_accessories_e697a7e98b92e38_7.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e697a7e98b92e38_7",
+        "name": "旧鋒ナイフ",
+        "icon": "image/armors/gold_accessories_e697a7e98b92e38_7.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e697a7e98b92e38_8",
+      "name": "旧鋒ナイフⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_e697a7e98b92e38_8.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e697a7e98b92e38_8",
+        "name": "旧鋒ナイフⅠ",
+        "icon": "image/armors/gold_accessories_e697a7e98b92e38_8.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kyuho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e38_16",
+      "name": "流転ロボットアーム (+24.6%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e38_16.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e38_16",
+        "name": "流転ロボットアーム",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e38_16.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e38_20",
+      "name": "流転レンジファインダー (+24.6%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e38_20.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e38_20",
+        "name": "流転レンジファインダー",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e38_20.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e89_14",
+      "name": "流転蓄電装置 (+24.6%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e89_14.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e89_14",
+        "name": "流転蓄電装置",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e89_14.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e89_15",
+      "name": "流転蓄電装置Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e89_15.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e89_15",
+        "name": "流転蓄電装置Ⅰ",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e89_15.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e8a_17",
+      "name": "流転補強板 (+0%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e8a_17.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e8a_17",
+        "name": "流転補強板",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e8a_17.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 41.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e8a_18",
+      "name": "流転補強板Ⅰ (+24.6%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e8a_18.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e8a_18",
+        "name": "流転補強板Ⅰ",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e8a_18.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e6b581e8bba2e98_19",
+      "name": "流転重量プレート (+24.6%)",
+      "icon": "image/armors/gold_accessories_e6b581e8bba2e98_19.png",
+      "efficiency": 24.6,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b581e8bba2e98_19",
+        "name": "流転重量プレート",
+        "icon": "image/armors/gold_accessories_e6b581e8bba2e98_19.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_ruten",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 24.6
+          }
+        ],
+        "ultEfficiency": 24.6
+      }
+    },
+    {
+      "id": "gold_accessories_e6b885e6b3a2e68_11",
+      "name": "清波探知器具 (+0%)",
+      "icon": "image/armors/gold_accessories_e6b885e6b3a2e68_11.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b885e6b3a2e68_11",
+        "name": "清波探知器具",
+        "icon": "image/armors/gold_accessories_e6b885e6b3a2e68_11.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b885e6b3a2e68_12",
+      "name": "清波探知器具Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e6b885e6b3a2e68_12.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b885e6b3a2e68_12",
+        "name": "清波探知器具Ⅰ",
+        "icon": "image/armors/gold_accessories_e6b885e6b3a2e68_12.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b885e6b3a2e6b_13",
+      "name": "清波水筒 (+0%)",
+      "icon": "image/armors/gold_accessories_e6b885e6b3a2e6b_13.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b885e6b3a2e6b_13",
+        "name": "清波水筒",
+        "icon": "image/armors/gold_accessories_e6b885e6b3a2e6b_13.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b885e6b3a2e7a_10",
+      "name": "清波竹製短剣 (+0%)",
+      "icon": "image/armors/gold_accessories_e6b885e6b3a2e7a_10.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b885e6b3a2e7a_10",
+        "name": "清波竹製短剣",
+        "icon": "image/armors/gold_accessories_e6b885e6b3a2e7a_10.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_seiba",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "agility",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6b8a1e6b7b5e79_70",
+      "name": "渡淵白刃 (+25.7%)",
+      "icon": "image/armors/gold_accessories_e6b8a1e6b7b5e79_70.png",
+      "efficiency": 25.7,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b8a1e6b7b5e79_70",
+        "name": "渡淵白刃",
+        "icon": "image/armors/gold_accessories_e6b8a1e6b7b5e79_70.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 25.7
+          }
+        ],
+        "ultEfficiency": 25.7
+      }
+    },
+    {
+      "id": "gold_accessories_e6b8a1e6b7b5e8a_69",
+      "name": "渡淵装甲版 (+0%)",
+      "icon": "image/armors/gold_accessories_e6b8a1e6b7b5e8a_69.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6b8a1e6b7b5e8a_69",
+        "name": "渡淵装甲版",
+        "icon": "image/armors/gold_accessories_e6b8a1e6b7b5e8a_69.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": null,
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 43.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.21600000000000003
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6bf81e6b581e38_22",
+      "name": "濁流ホットカッター (+0%)",
+      "icon": "image/armors/gold_accessories_e6bf81e6b581e38_22.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6bf81e6b581e38_22",
+        "name": "濁流ホットカッター",
+        "icon": "image/armors/gold_accessories_e6bf81e6b581e38_22.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "normalAttackDamageUp",
+            "value": 0.276
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e6bf81e6b581e38_23",
+      "name": "濁流ホットカッターⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_e6bf81e6b581e38_23.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e6bf81e6b581e38_23",
+        "name": "濁流ホットカッターⅠ",
+        "icon": "image/armors/gold_accessories_e6bf81e6b581e38_23.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mancho",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e781abe5b1b1e79_36",
+      "name": "火山用温度測定器 (+0%)",
+      "icon": "image/armors/gold_accessories_e781abe5b1b1e79_36.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e781abe5b1b1e79_36",
+        "name": "火山用温度測定器",
+        "icon": "image/armors/gold_accessories_e781abe5b1b1e79_36.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 41.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e781abe5b1b1e79_37",
+      "name": "火山用パワーバッテリー (+0%)",
+      "icon": "image/armors/gold_accessories_e781abe5b1b1e79_37.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e781abe5b1b1e79_37",
+        "name": "火山用パワーバッテリー",
+        "icon": "image/armors/gold_accessories_e781abe5b1b1e79_37.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e781abe5b1b1e79_38",
+      "name": "火山用モバイルバッテリー (+0%)",
+      "icon": "image/armors/gold_accessories_e781abe5b1b1e79_38.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e781abe5b1b1e79_38",
+        "name": "火山用モバイルバッテリー",
+        "icon": "image/armors/gold_accessories_e781abe5b1b1e79_38.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e781abe5b1b1e79_39",
+      "name": "火山用遮熱板 (+0%)",
+      "icon": "image/armors/gold_accessories_e781abe5b1b1e79_39.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e781abe5b1b1e79_39",
+        "name": "火山用遮熱板",
+        "icon": "image/armors/gold_accessories_e781abe5b1b1e79_39.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_volcano",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "allSkillDamageUp",
+            "value": 0.276
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e7949fe789a9e8a_60",
+      "name": "生物補助コンタクタ (+0%)",
+      "icon": "image/armors/gold_accessories_e7949fe789a9e8a_60.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e7949fe789a9e8a_60",
+        "name": "生物補助コンタクタ",
+        "icon": "image/armors/gold_accessories_e7949fe789a9e8a_60.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "damageReduction",
+            "value": 0.172
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e7949fe789a9e8a_61",
+      "name": "生物補助コンタクタⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_e7949fe789a9e8a_61.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e7949fe789a9e8a_61",
+        "name": "生物補助コンタクタⅠ",
+        "icon": "image/armors/gold_accessories_e7949fe789a9e8a_61.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "hpPercent",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e7949fe789a9e8a_62",
+      "name": "生物補助コンタクタⅡ (+0%)",
+      "icon": "image/armors/gold_accessories_e7949fe789a9e8a_62.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e7949fe789a9e8a_62",
+        "name": "生物補助コンタクタⅡ",
+        "icon": "image/armors/gold_accessories_e7949fe789a9e8a_62.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 41.0
+          },
+          {
+            "stat": "hpPercent",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e7949fe789a9e8a_63",
+      "name": "生物補助プレート (+0%)",
+      "icon": "image/armors/gold_accessories_e7949fe789a9e8a_63.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e7949fe789a9e8a_63",
+        "name": "生物補助プレート",
+        "icon": "image/armors/gold_accessories_e7949fe789a9e8a_63.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "mainStatPercent",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e7949fe789a9e8a_64",
+      "name": "生物補助修理針 (+0%)",
+      "icon": "image/armors/gold_accessories_e7949fe789a9e8a_64.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e7949fe789a9e8a_64",
+        "name": "生物補助修理針",
+        "icon": "image/armors/gold_accessories_e7949fe789a9e8a_64.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_bio_support",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "willpower",
+            "value": 41.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.207
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e8bbbde9878fe8b_56",
+      "name": "軽量超域分析バンド (+0%)",
+      "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_56.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e8bbbde9878fe8b_56",
+        "name": "軽量超域分析バンド",
+        "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_56.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e8bbbde9878fe8b_57",
+      "name": "軽量超域安定器 (+0%)",
+      "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_57.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e8bbbde9878fe8b_57",
+        "name": "軽量超域安定器",
+        "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_57.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 41.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e8bbbde9878fe8b_58",
+      "name": "軽量超域安定器Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_58.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e8bbbde9878fe8b_58",
+        "name": "軽量超域安定器Ⅰ",
+        "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_58.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.23
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e8bbbde9878fe8b_59",
+      "name": "軽量超域腕時計 (+0%)",
+      "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_59.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e8bbbde9878fe8b_59",
+        "name": "軽量超域腕時計",
+        "icon": "image/armors/gold_accessories_e8bbbde9878fe8b_59.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_chouiki",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_1",
+      "name": "集成訓練多機能ナイフ (+0%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_1.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_1",
+        "name": "集成訓練多機能ナイフ",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_1.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 27.0
+          },
+          {
+            "stat": "agility",
+            "value": 18.0
+          },
+          {
+            "stat": "artsDamageUp",
+            "value": 0.18600000000000003
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_2",
+      "name": "集成訓練火種石 (+21.1%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_2.png",
+      "efficiency": 21.1,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_2",
+        "name": "集成訓練火種石",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_2.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 27.0
+          },
+          {
+            "stat": "agility",
+            "value": 18.0
+          },
+          {
+            "stat": "ultEfficiency",
+            "value": 21.1
+          }
+        ],
+        "ultEfficiency": 21.1
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_3",
+      "name": "集成訓練ライト (+0%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_3.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_3",
+        "name": "集成訓練ライト",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_3.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 18.0
+          },
+          {
+            "stat": "agility",
+            "value": 27.0
+          },
+          {
+            "stat": "subStatPercent",
+            "value": 0.177
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_4",
+      "name": "集成訓練強襲ナイフ (+0%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_4.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_4",
+        "name": "集成訓練強襲ナイフ",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_4.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 27.0
+          },
+          {
+            "stat": "agility",
+            "value": 18.0
+          },
+          {
+            "stat": "artsIntensity",
+            "value": 35.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_5",
+      "name": "集成訓練電力プラグ (+0%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_5.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_5",
+        "name": "集成訓練電力プラグ",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_5.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 27.0
+          },
+          {
+            "stat": "agility",
+            "value": 18.0
+          },
+          {
+            "stat": "healingEfficiency",
+            "value": 0.177
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e99b86e68890e8a_6",
+      "name": "集成訓練剣術チェーンソー (+0%)",
+      "icon": "image/armors/gold_accessories_e99b86e68890e8a_6.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e99b86e68890e8a_6",
+        "name": "集成訓練剣術チェーンソー",
+        "icon": "image/armors/gold_accessories_e99b86e68890e8a_6.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_syusei",
+        "mainStat": {
+          "stat": "defense",
+          "value": 18.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 27.0
+          },
+          {
+            "stat": "agility",
+            "value": 18.0
+          },
+          {
+            "stat": "physicalDamageUp",
+            "value": 0.19699999999999998
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_50",
+      "name": "骨砕のマスク (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_50.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_50",
+        "name": "骨砕のマスク",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_50.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_51",
+      "name": "骨砕のマスクⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_51.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_51",
+        "name": "骨砕のマスクⅠ",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_51.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_52",
+      "name": "骨砕のマスクⅡ (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_52.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_52",
+        "name": "骨砕のマスクⅡ",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_52.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_53",
+      "name": "骨砕の小像 (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_53.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_53",
+        "name": "骨砕の小像",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_53.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_54",
+      "name": "骨砕の小像Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_54.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_54",
+        "name": "骨砕の小像Ⅰ",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_54.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "comboDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_e9aaa8e7a095e38_55",
+      "name": "骨砕の小像Ⅱ (+0%)",
+      "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_55.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_e9aaa8e7a095e38_55",
+        "name": "骨砕の小像Ⅱ",
+        "icon": "image/armors/gold_accessories_e9aaa8e7a095e38_55.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_kotsusai",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_30",
+      "name": "M.I.警備アームバンド (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_30.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_30",
+        "name": "M.I.警備アームバンド",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_30.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 32.0
+          },
+          {
+            "stat": "willpower",
+            "value": 21.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_31",
+      "name": "M.I.警備照準器 (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_31.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_31",
+        "name": "M.I.警備照準器",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_31.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "strength",
+            "value": 21.0
+          },
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_32",
+      "name": "M.I.警備照準器Ⅰ (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_32.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_32",
+        "name": "M.I.警備照準器Ⅰ",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_32.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 32.0
+          },
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_33",
+      "name": "M.I.警備マルチツール (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_33.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_33",
+        "name": "M.I.警備マルチツール",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_33.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "intellect",
+            "value": 32.0
+          },
+          {
+            "stat": "critRate",
+            "value": 0.10400000000000001
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_34",
+      "name": "M.I.警備ナイフ (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_34.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_34",
+        "name": "M.I.警備ナイフ",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_34.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "intellect",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    },
+    {
+      "id": "gold_accessories_mie8ada6e58299e_35",
+      "name": "M.I.警備ナイフⅠ (+0%)",
+      "icon": "image/armors/gold_accessories_mie8ada6e58299e_35.png",
+      "efficiency": 0,
+      "detail": {
+        "$schema": "../../../schemas/armor.schema.json",
+        "id": "gold_accessories_mie8ada6e58299e_35",
+        "name": "M.I.警備ナイフⅠ",
+        "icon": "image/armors/gold_accessories_mie8ada6e58299e_35.png",
+        "part": "accessories",
+        "rarity": 6,
+        "setId": "set_mi_security",
+        "mainStat": {
+          "stat": "defense",
+          "value": 21.0
+        },
+        "subStats": [
+          {
+            "stat": "agility",
+            "value": 21.0
+          },
+          {
+            "stat": "willpower",
+            "value": 32.0
+          },
+          {
+            "stat": "skillDamageUp",
+            "value": 0.414
+          }
+        ],
+        "ultEfficiency": 0.0
+      }
+    }
+  ]
 };
