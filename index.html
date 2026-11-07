@@ -271,7 +271,7 @@
               <option value="寒冷">寒冷</option>
               <option value="自然">自然</option>
             </select>
-            <select id="wiki-class-filter" class="wiki-filter-select" onchange="filterWikiRoster()">
+            <select id="wiki-elem-filter" class="wiki-filter-select" onchange="filterWikiRoster()">
               <option value="all">全職分</option>
               <option value="前衛">前衛</option>
               <option value="先鋒">先鋒</option>
@@ -282,6 +282,85 @@
             </select>
           </div>
         </div>
+
+        <!-- ダメージ計算式＆計算グループ仕様解説アコーディオン -->
+        <details class="wiki-formula-accordion">
+          <summary class="wiki-formula-summary">
+            <span style="display:inline-flex; align-items:center; gap:8px;">
+              <span style="font-size:16px;">📐</span>
+              <strong>【公式・Wikiru検証準拠】ダメージ計算式 ＆ 計算グループ（同枠加算・別枠乗算）仕様ガイド</strong>
+            </span>
+            <span class="wiki-formula-toggle-badge">タップで開閉 ▼</span>
+          </summary>
+          <div class="wiki-formula-body">
+            <div class="wiki-formula-main-box">
+              <div class="wiki-formula-title">💥 最終ダメージ計算式（全10因数乗算パイプライン）</div>
+              <div class="wiki-formula-code">
+                ダメージ ＝ <strong>【参照スケール】</strong> × <strong>【ダメージ倍率補正】</strong> × (1 + Σ<strong>【ダメージUP補正】</strong>) × (1 + Σ<strong>【増幅補正】</strong>) × <strong>【会心補正】</strong> × <strong>【リンク補正】</strong> × <strong>【耐性補正】</strong> × <strong>【防御補正】</strong> × (1 + Σ<strong>【被ダメージ補正】</strong>) × (1 + Σ<strong>【脆弱補正】</strong>) × <strong>【ブレイク補正】</strong> × 弱体化補正
+              </div>
+            </div>
+
+            <div class="wiki-formula-grid">
+              <div class="wiki-formula-col">
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">① 【参照スケール】攻撃力枠</div>
+                  <div class="wiki-formula-card-desc">
+                    最終攻撃力 ＝ { (キャラ基礎攻撃力 + 武器基礎攻撃力) × (1 + Σ攻撃力%) + 固定値付加 } × (1 + メイン能力×0.5% + サブ能力×0.2%)<br>
+                    <span class="wiki-highlight-text">★重要: 装備・素質だけでなく、戦闘中の全体・単体バフによる攻撃力UPもこの「Σ攻撃力%」に同枠加算されます。</span>
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">② 【ダメージ倍率補正】スキル基礎倍率枠</div>
+                  <div class="wiki-formula-card-desc">
+                    各スキルのモーション倍率%（Lv9〜特化3）。潜在等の「ダメージ倍率が1.x倍にアップ」は乗算。「追加で攻撃力X%分のダメージを与える」は独立ヒットとして計算されます。
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">③ 【ダメージUP補正】与ダメUP（同枠加算）</div>
+                  <div class="wiki-formula-card-desc">
+                    <strong>物理/属性ダメージUP、戦技/連携/必殺/全スキルダメージUP、与ダメバフはすべて同枠加算！</strong><br>
+                    <span class="wiki-highlight-text">★厳密フィルタ: スキル発動時、その攻撃の「属性（物理/寒冷等）」および「種類（戦技/連携等）」に合致するバフのみを自動判定して加算します。</span>
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">④ 【増幅補正】増幅（別枠乗算・同枠加算）</div>
+                  <div class="wiki-formula-card-desc">
+                    ダメージUPとは別枠で乗算される強力なバフ枠。属性増幅（寒冷・灼熱等）とアーツ増幅（ザイヒ戦技、生物補助等）同士は加算で重ね掛けされます。
+                  </div>
+                </div>
+              </div>
+
+              <div class="wiki-formula-col">
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">⑤ 【被ダメージ補正】敵被ダメUP（同枠加算）</div>
+                  <div class="wiki-formula-card-desc">
+                    敵の受けるダメージ+X%、<strong>破砕</strong>（物理被ダメUP）、<strong>感電</strong>（アーツ被ダメUP）はすべてこの被ダメ枠内で同枠加算されます。
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">⑥ 【脆弱補正】敵脆弱枠（別枠乗算）</div>
+                  <div class="wiki-formula-card-desc">
+                    物理脆弱・アーツ脆弱。被ダメージUPとは独立した別枠として乗算されます（脆弱同士は同枠加算）。
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">⑦ 【耐性補正】＆【防御補正】</div>
+                  <div class="wiki-formula-card-desc">
+                    耐性補正 ＝ 1 - (敵耐性値 - 耐性ダウン - 耐性無視) / 100。<strong>腐食</strong>による全耐性ダウンがここで減算されます。<br>
+                    防御補正 ＝ 100 / (100 + 敵防御力)（一般に約0.5）。
+                  </div>
+                </div>
+                <div class="wiki-formula-card">
+                  <div class="wiki-formula-card-title">⑧ 【会心補正】＆【ブレイク補正】</div>
+                  <div class="wiki-formula-card-desc">
+                    会心補正 ＝ 1 + 会心ダメージ（期待値: 1 + 会心率 × 会心ダメ）。基礎値は会心率5%・会心ダメ50%。<br>
+                    ブレイク補正 ＝ 敵ブレイク時 1.3倍（非ブレイク時 1.0倍）。
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
 
         <div class="wiki-layout">
           <aside id="wiki-char-list" class="wiki-sidebar">

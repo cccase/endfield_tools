@@ -42,6 +42,7 @@
           <div class="time-track-controls">
             <div class="manual-buff-adder">
               <select id="select-manual-buff" class="manual-buff-select" title="任意のバフ・デバフブロックを手動追加">
+                <option value="atk15">⚔️ チーム攻撃力+15% (15s)</option>
                 <option value="dmg20">🔊 与ダメージ+20% (10s)</option>
                 <option value="dmg30">🔊 与ダメージ+30% (15s)</option>
                 <option value="volcano">🔥 火山・パルス効果+50% (10s)</option>
@@ -782,12 +783,13 @@
 
     addManualBuffBlock(presetKey) {
       const presets = {
-        dmg20: { name: '手動バフ: 与ダメ+20%', duration: 10, bonusType: 'teamDamageUp', bonusValue: 0.20, valueText: '与ダメージ+20%', color: 'linear-gradient(135deg, #f39c12, #d68910)', isEnemy: false },
-        dmg30: { name: '手動バフ: 与ダメ+30%', duration: 15, bonusType: 'teamDamageUp', bonusValue: 0.30, valueText: '与ダメージ+30%', color: 'linear-gradient(135deg, #e67e22, #d35400)', isEnemy: false },
-        volcano: { name: '火山/パルス効果 (+50%)', duration: 10, bonusType: 'teamDamageUp', bonusValue: 0.50, valueText: '属性ダメージ+50%', color: 'linear-gradient(135deg, #e74c3c, #c0392b)', isEnemy: false },
-        kyuho: { name: '旧鋒セット (+24%)', duration: 20, bonusType: 'teamDamageUp', bonusValue: 0.24, valueText: '物理ダメージ+24%', color: 'linear-gradient(135deg, #7f8c8d, #34495e)', isEnemy: false },
-        vuln15: { name: '脆弱デバフ (被ダメ+15%)', duration: 12, bonusType: 'vuln', bonusValue: 15, valueText: '敵被ダメージ+15%', color: 'linear-gradient(135deg, #9b59b6, #8e44ad)', isEnemy: true },
-        vuln20: { name: '感電/腐食異常 (+20%)', duration: 10, bonusType: 'vuln', bonusValue: 20, valueText: '敵被ダメージ+20%', color: 'linear-gradient(135deg, #2ecc71, #27ae60)', isEnemy: true }
+        atk15: { name: '全体バフ: 攻撃力+15%', duration: 15, calcGroup: 'atk_pct', bonusType: 'teamAtkPct', bonusValue: 0.15, valueText: 'チーム攻撃力+15%', color: 'linear-gradient(135deg, #e74c3c, #c0392b)', isEnemy: false },
+        dmg20: { name: '手動バフ: 与ダメ+20%', duration: 10, calcGroup: 'damage_up', bonusType: 'teamDamageUp', bonusValue: 0.20, valueText: '与ダメージ+20%', color: 'linear-gradient(135deg, #f39c12, #d68910)', isEnemy: false },
+        dmg30: { name: '手動バフ: 与ダメ+30%', duration: 15, calcGroup: 'damage_up', bonusType: 'teamDamageUp', bonusValue: 0.30, valueText: '与ダメージ+30%', color: 'linear-gradient(135deg, #e67e22, #d35400)', isEnemy: false },
+        volcano: { name: '火山/パルス効果 (+50%)', duration: 10, calcGroup: 'damage_up', bonusType: 'teamDamageUp', bonusValue: 0.50, valueText: '属性ダメージ+50%', color: 'linear-gradient(135deg, #e74c3c, #c0392b)', isEnemy: false },
+        kyuho: { name: '旧鋒セット (+24%)', duration: 20, calcGroup: 'damage_up', bonusType: 'teamDamageUp', targetElement: '物理', bonusValue: 0.24, valueText: '物理ダメージ+24%', color: 'linear-gradient(135deg, #7f8c8d, #34495e)', isEnemy: false },
+        vuln15: { name: '脆弱デバフ (被ダメ+15%)', duration: 12, calcGroup: 'vulnerability', bonusType: 'vuln', bonusValue: 15, valueText: '敵被ダメージ+15%', color: 'linear-gradient(135deg, #9b59b6, #8e44ad)', isEnemy: true },
+        vuln20: { name: '感電/腐食異常 (+20%)', duration: 10, calcGroup: 'vulnerability', bonusType: 'vuln', bonusValue: 20, valueText: '敵被ダメージ+20%', color: 'linear-gradient(135deg, #2ecc71, #27ae60)', isEnemy: true }
       };
       const pr = presets[presetKey] || presets.dmg20;
       // 敵なら案山子トラック、味方全体バフなら新設の「全体バフトラック」へ！
@@ -802,6 +804,9 @@
         startTime: 0.5,
         duration: pr.duration,
         color: pr.color,
+        calcGroup: pr.calcGroup,
+        targetElement: pr.targetElement || 'all',
+        targetSkillType: pr.targetSkillType || 'all',
         bonusType: pr.bonusType,
         bonusValue: pr.bonusValue,
         valueText: pr.valueText,
@@ -888,6 +893,10 @@
 
       const enrichedCycle = sortedClips.map(clip => {
         const t = clip.startTime + 0.05; // 発動直後の判定時刻
+        const clipChar = (party || []).find(p => p.id === clip.charId || p.name === clip.charName);
+        const clipSkill = (clipChar && clipChar.skills) ? clipChar.skills.find(s => s.id === clip.skillId || s.type === clip.skillType) : null;
+        const clipElem = (clipSkill && clipSkill.damageType) ? clipSkill.damageType : (clipChar ? clipChar.element : '物理');
+
         let extraAtkPct = 0;
         let extraDamageUp = 0;
         let extraAmp = 0;
@@ -921,8 +930,30 @@
                 extraAtkPct += val;
                 activeNotes.push(`⚔️攻+${Math.round(val * 100)}%`);
               } else if (grp === 'damage_up') {
-                extraDamageUp += val;
-                activeNotes.push(`🔊ダメ+${Math.round(val * 100)}%`);
+                // 属性・攻撃種別の適合判定（属性・攻撃種別が指定されている場合はクリップと一致するかチェック）
+                let match = true;
+                const bText = `${blk.name || ''} ${blk.valueText || ''}`;
+                
+                // 属性判定: バフが特定属性専用の場合
+                const targetElem = blk.targetElement || (bText.includes('物理ダメージ') ? '物理' : (bText.includes('灼熱ダメージ') ? '灼熱' : (bText.includes('寒冷ダメージ') ? '寒冷' : (bText.includes('電磁ダメージ') ? '電磁' : (bText.includes('自然ダメージ') ? '自然' : 'all')))));
+                if (targetElem !== 'all' && targetElem !== clipElem) {
+                  match = false;
+                }
+                
+                // 攻撃種別判定: バフが特定スキル種別専用の場合
+                const targetSkType = blk.targetSkillType || (bText.includes('連携技') ? 'combo' : (bText.includes('戦技') ? 'skill' : (bText.includes('必殺') ? 'ult' : (bText.includes('通常攻撃') ? 'normal' : 'all'))));
+                if (targetSkType !== 'all') {
+                  const sType = clip.skillType;
+                  const isSkillMatch = (targetSkType === 'skill' && (sType === 'skill' || sType === 'skill2' || sType === 'skill3'));
+                  if (targetSkType !== sType && !isSkillMatch) {
+                    match = false;
+                  }
+                }
+
+                if (match) {
+                  extraDamageUp += val;
+                  activeNotes.push(`🔊ダメ+${Math.round(val * 100)}%`);
+                }
               } else if (grp === 'amp') {
                 extraAmp += val;
                 activeNotes.push(`⚡増幅+${Math.round(val * 100)}%`);

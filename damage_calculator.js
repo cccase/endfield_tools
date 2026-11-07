@@ -50,6 +50,7 @@
       electric: 0.0,
       cryo: 0.0,
       nature: 0.0,
+      normal: 0.0,
       skill: 0.0,
       combo: 0.0,
       ult: 0.0,
@@ -263,6 +264,8 @@
       bonusSum += (bonuses.combo || 0.0);
     } else if (skillType === 'ult') {
       bonusSum += (bonuses.ult || 0.0);
+    } else if (skillType === 'normal') {
+      bonusSum += (bonuses.normal || 0.0);
     }
 
     // === アーツ付着・状態異常・クラッシュ消費によるボーナス ===
@@ -424,7 +427,19 @@
         vulnMult: Math.round(vulnMult * 1000) / 1000,
         breakMult: breakMult,
         critRatePercent: Math.round(critRate * 1000) / 10,
-        critDamagePercent: Math.round(critDamage * 1000) / 10
+        critDamagePercent: Math.round(critDamage * 1000) / 10,
+        groupLabels: {
+          referenceScale: '① 参照スケール（攻撃力）',
+          skillMultiplier: '② ダメージ倍率補正',
+          damageUp: '③ ダメージUP補正',
+          amplification: '④ 増幅補正',
+          takenDamage: '⑤ 被ダメージ補正',
+          vulnerability: '⑥ 脆弱補正',
+          resistance: '⑦ 耐性補正',
+          defense: '⑧ 防御補正',
+          critical: '⑨ 会心補正',
+          break: '⑩ ブレイク補正'
+        }
       }
     };
   }
