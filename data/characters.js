@@ -1,4 +1,4 @@
-﻿window.CHARACTER_DATA = {
+window.CHARACTER_DATA = {
   "defaultParty": [
     "スー",
     "リーノ",
@@ -28,7 +28,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -3085,7 +3085,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -4332,7 +4332,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 20,
@@ -5577,7 +5577,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -6789,7 +6789,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -8654,7 +8654,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 202.9,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -9284,7 +9284,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -9918,7 +9918,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -11204,7 +11204,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 142.7,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -11848,9 +11848,9 @@
       "recommendedArmorSetName": "生物補助セット",
       "recommendedArmor": {
         "armorSet": "set_bio_support",
-        "body": "gold_body_e7949fe789a9e8a_45",
-        "arm": "gold_arms_e7949fe789a9e8a_40",
-        "acc1": "gold_accessories_e7949fe789a9e8a_60",
+        "body": "gold_body_e6b581e8bba2e8b_13",
+        "arm": "gold_arms_e7949fe789a9e8a_41",
+        "acc1": "gold_accessories_e7949fe789a9e8a_63",
         "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
@@ -11876,7 +11876,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 50,
       "baseRecoverSP": 0,
@@ -12983,7 +12983,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 146.4,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 1,
       "baseRefundSP": 30,
       "baseRecoverSP": 0,
@@ -13806,7 +13806,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -15733,7 +15733,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -16765,7 +16765,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 133.4,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -17283,7 +17283,7 @@
         "body": "gold_body_50e5bc8fe5bf9ce_24",
         "arm": "gold_arms_50e5bc8fe5bf9ce_21",
         "acc1": "gold_accessories_50e5bc8fe5bf9ce_29",
-        "acc2": "gold_accessories_e69591e59bbde58_73"
+        "acc2": "gold_accessories_e7949fe789a9e8a_63"
       }
     },
     {
@@ -17308,7 +17308,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 1,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -18307,7 +18307,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 100,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 0,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
@@ -18724,7 +18724,7 @@
         "critRate": 0.05,
         "critDamage": 0.5
       },
-      "defaultEfficiency": 144.6,
+      "defaultEfficiency": 100.0,
       "defaultPotential": 4,
       "baseRefundSP": 0,
       "baseRecoverSP": 0,
