@@ -1,4 +1,4 @@
-window.EQUIPMENT_DATA = {
+﻿window.EQUIPMENT_DATA = {
   "armorSets": [
     {
       "id": "none",
@@ -21,8 +21,58 @@ window.EQUIPMENT_DATA = {
             "description": "アーツダメージ+16%自身が自然爆発 、寒冷爆発 を発動させるとき、20秒間アーツ強度+16この効果は最大3段階まで重ね掛け可能（持続時間は個別にカウントされ、0.1秒に1回まで発動可能）",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_tenken_arts",
+            "name": "天険 アーツダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.16,
+            "tags": [
+              "src:armor_set",
+              "elem:arts",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_tenken_intensity",
+            "name": "天険 爆発時アーツ強度UP",
+            "calcGroup": "reference_scale",
+            "value": 16.0,
+            "scalingFormula": "16.0 * explosionStacks",
+            "tags": [
+              "src:armor_set",
+              "stat:intensity",
+              "cond:explosion"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_tenken_arts",
+          "name": "天険 アーツダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.16,
+          "tags": [
+            "src:armor_set",
+            "elem:arts",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_tenken_intensity",
+          "name": "天険 爆発時アーツ強度UP",
+          "calcGroup": "reference_scale",
+          "value": 16.0,
+          "scalingFormula": "16.0 * explosionStacks",
+          "tags": [
+            "src:armor_set",
+            "stat:intensity",
+            "cond:explosion"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_syusei",
@@ -40,8 +90,34 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、与える全種類のダメージ+20%、受ける全種類のダメージ-10%、必殺チャージの回復効率+10%",
             "ultEfficiency": 10.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_syusei_all_dmg",
+            "name": "集成訓練 全ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.2,
+            "tags": [
+              "src:armor_set",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_syusei_all_dmg",
+          "name": "集成訓練 全ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.2,
+          "tags": [
+            "src:armor_set",
+            "action:all",
+            "cond:always"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_kyuho",
@@ -59,8 +135,58 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、攻撃力+8%自身が敵に猛撃 、破砕 を与えるとき、消費 する最大のクラッシュ の段階数に応じて、20秒間自身の物理ダメージ+[6%×消費した段階数]目標が物理脆弱 、ブレイク状態、または源石結晶 が付与されている場合、上記のボーナス効果が1.5倍になる（ボーナス効果は重ね掛け不可）",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_kyuho_atk",
+            "name": "旧鋒 攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.08,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_kyuho_phys_bonus",
+            "name": "旧鋒 クラッシュ消費物理ダメUP",
+            "calcGroup": "damage_up",
+            "value": 0.06,
+            "scalingFormula": "0.06 * crushStacks * (isBrokenOrVuln ? 1.5 : 1.0)",
+            "tags": [
+              "src:armor_set",
+              "elem:physical",
+              "cond:crush_consumed"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_kyuho_atk",
+          "name": "旧鋒 攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.08,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_kyuho_phys_bonus",
+          "name": "旧鋒 クラッシュ消費物理ダメUP",
+          "calcGroup": "damage_up",
+          "value": 0.06,
+          "scalingFormula": "0.06 * crushStacks * (isBrokenOrVuln ? 1.5 : 1.0)",
+          "tags": [
+            "src:armor_set",
+            "elem:physical",
+            "cond:crush_consumed"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_joryu",
@@ -78,8 +204,60 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、攻撃力+10%自身が感電 または腐食 を消費するたびに、異常段階 に応じて同じ段階数の強化状態を獲得し、25秒間、1段階ごとに電磁ダメージと自然ダメージ+15%強化状態の段階数は最大3段階まで（持続時間は個別にカウントされる）",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_joryu_atk",
+            "name": "壌流 攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.1,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_joryu_elem_buff",
+            "name": "壌流 電磁・自然ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.15,
+            "scalingFormula": "0.15 * anomalyStacks",
+            "tags": [
+              "src:armor_set",
+              "elem:electric",
+              "elem:nature",
+              "cond:anomaly_consumed"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_joryu_atk",
+          "name": "壌流 攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.1,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_joryu_elem_buff",
+          "name": "壌流 電磁・自然ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.15,
+          "scalingFormula": "0.15 * anomalyStacks",
+          "tags": [
+            "src:armor_set",
+            "elem:electric",
+            "elem:nature",
+            "cond:anomaly_consumed"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_seiba",
@@ -97,8 +275,36 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、連携技CD短縮+15%自身が連携技を発動するとき、15秒間すべてのスキルダメージ+20%この効果は最大2段階まで重ね掛け可能（持続時間は個別にカウントされる）",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_seiba_skill",
+            "name": "清波 連携技発動時全スキルダメUP",
+            "calcGroup": "damage_up",
+            "value": 0.2,
+            "scalingFormula": "0.20 * comboTriggerStacks",
+            "tags": [
+              "src:armor_set",
+              "action:all",
+              "cond:combo_trigger"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_seiba_skill",
+          "name": "清波 連携技発動時全スキルダメUP",
+          "calcGroup": "damage_up",
+          "value": 0.2,
+          "scalingFormula": "0.20 * comboTriggerStacks",
+          "tags": [
+            "src:armor_set",
+            "action:all",
+            "cond:combo_trigger"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_ruten",
@@ -135,8 +341,56 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、すべてのスキルダメージ+20%自身が敵のアーツ付着 段階を2以上にすると、15秒間与えるアーツダメージ+35％この効果は重ね掛け不可",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_mancho_skill",
+            "name": "満潮 全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.2,
+            "tags": [
+              "src:armor_set",
+              "action:all",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_mancho_arts",
+            "name": "満潮 アーツ付着2段階以上与ダメUP",
+            "calcGroup": "damage_up",
+            "value": 0.35,
+            "tags": [
+              "src:armor_set",
+              "elem:arts",
+              "cond:attachment_gte_2"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_mancho_skill",
+          "name": "満潮 全スキルダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.2,
+          "tags": [
+            "src:armor_set",
+            "action:all",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_mancho_arts",
+          "name": "満潮 アーツ付着2段階以上与ダメUP",
+          "calcGroup": "damage_up",
+          "value": 0.35,
+          "tags": [
+            "src:armor_set",
+            "elem:arts",
+            "cond:attachment_gte_2"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_oryu",
@@ -154,8 +408,58 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、攻撃力+15%任意のオペレーターが戦技 を発動するとき、自身は応龍の鋒を1段階獲得し、次の連携技 ダメージ+20%応龍の鋒は最大3段階まで重ね掛け可能",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_oryu_atk",
+            "name": "50式応龍 攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.15,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_oryu_blade",
+            "name": "50式応龍 連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.2,
+            "scalingFormula": "0.20 * oryuStacks",
+            "tags": [
+              "src:armor_set",
+              "action:combo",
+              "cond:oryu_blade"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_oryu_atk",
+          "name": "50式応龍 攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.15,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_oryu_blade",
+          "name": "50式応龍 連携技ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.2,
+          "scalingFormula": "0.20 * oryuStacks",
+          "tags": [
+            "src:armor_set",
+            "action:combo",
+            "cond:oryu_blade"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_mi_security",
@@ -173,8 +477,58 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、会心率+5%自身が会心ダメージを与えると、5秒間攻撃力+5%この効果は5回まで重ね掛け可能重ね掛け回数が最大回数に達した場合、追加で会心率+5%この効果は重ね掛け不可",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_mi_crit",
+            "name": "M.I.警備 会心率UP",
+            "calcGroup": "critical",
+            "value": 0.05,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_mi_atk",
+            "name": "M.I.警備 会心時攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.05,
+            "scalingFormula": "0.05 * critHitStacks",
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:crit_hit"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_mi_crit",
+          "name": "M.I.警備 会心率UP",
+          "calcGroup": "critical",
+          "value": 0.05,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_mi_atk",
+          "name": "M.I.警備 会心時攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.05,
+          "scalingFormula": "0.05 * critHitStacks",
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:crit_hit"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_volcano",
@@ -192,8 +546,80 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、アーツ強度+30自身が敵を燃焼 状態にすると、10秒間灼熱ダメージ+50%この効果は重ね掛け不可自身が敵を腐食状態にすると、10秒間自然ダメージ+50%この効果は重ね掛け不可",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_volcano_intensity",
+            "name": "火山用 アーツ強度UP",
+            "calcGroup": "reference_scale",
+            "value": 30.0,
+            "tags": [
+              "src:armor_set",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_volcano_heat",
+            "name": "火山用 燃焼時灼熱ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.5,
+            "tags": [
+              "src:armor_set",
+              "elem:heat",
+              "cond:combustion"
+            ]
+          },
+          {
+            "id": "set_volcano_nature",
+            "name": "火山用 腐食時自然ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.5,
+            "tags": [
+              "src:armor_set",
+              "elem:nature",
+              "cond:corrosion"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_volcano_intensity",
+          "name": "火山用 アーツ強度UP",
+          "calcGroup": "reference_scale",
+          "value": 30.0,
+          "tags": [
+            "src:armor_set",
+            "stat:intensity",
+            "type:flat",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_volcano_heat",
+          "name": "火山用 燃焼時灼熱ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.5,
+          "tags": [
+            "src:armor_set",
+            "elem:heat",
+            "cond:combustion"
+          ]
+        },
+        {
+          "id": "set_volcano_nature",
+          "name": "火山用 腐食時自然ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.5,
+          "tags": [
+            "src:armor_set",
+            "elem:nature",
+            "cond:corrosion"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_pioneer",
@@ -230,8 +656,80 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、アーツ強度+30自身が敵を感電状態にすると、10秒間電磁ダメージ+50%この効果は重ね掛け不可自身が敵を凍結 状態にすると、10秒間寒冷ダメージ+50%この効果は重ね掛け不可",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_pulse_intensity",
+            "name": "パルス式 アーツ強度UP",
+            "calcGroup": "reference_scale",
+            "value": 30.0,
+            "tags": [
+              "src:armor_set",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_pulse_electric",
+            "name": "パルス式 感電時電磁ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.5,
+            "tags": [
+              "src:armor_set",
+              "elem:electric",
+              "cond:shock"
+            ]
+          },
+          {
+            "id": "set_pulse_cryo",
+            "name": "パルス式 凍結時寒冷ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.5,
+            "tags": [
+              "src:armor_set",
+              "elem:cryo",
+              "cond:freeze"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_pulse_intensity",
+          "name": "パルス式 アーツ強度UP",
+          "calcGroup": "reference_scale",
+          "value": 30.0,
+          "tags": [
+            "src:armor_set",
+            "stat:intensity",
+            "type:flat",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_pulse_electric",
+          "name": "パルス式 感電時電磁ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.5,
+          "tags": [
+            "src:armor_set",
+            "elem:electric",
+            "cond:shock"
+          ]
+        },
+        {
+          "id": "set_pulse_cryo",
+          "name": "パルス式 凍結時寒冷ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.5,
+          "tags": [
+            "src:armor_set",
+            "elem:cryo",
+            "cond:freeze"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_kotsusai",
@@ -249,8 +747,58 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、攻撃力+15%自身が連携技を発動するとき、骨砕の重圧を1段階獲得し、次の戦技ダメージ+30%骨砕の重圧は最大2回まで重ね掛け可能",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_kotsusai_atk",
+            "name": "骨砕 攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.15,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_kotsusai_skill",
+            "name": "骨砕 重圧時戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.3,
+            "scalingFormula": "0.30 * bonePressureStacks",
+            "tags": [
+              "src:armor_set",
+              "action:skill",
+              "cond:bone_pressure"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_kotsusai_atk",
+          "name": "骨砕 攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.15,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_kotsusai_skill",
+          "name": "骨砕 重圧時戦技ダメージUP",
+          "calcGroup": "damage_up",
+          "value": 0.3,
+          "scalingFormula": "0.30 * bonePressureStacks",
+          "tags": [
+            "src:armor_set",
+            "action:skill",
+            "cond:bone_pressure"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_chouiki",
@@ -268,8 +816,58 @@ window.EQUIPMENT_DATA = {
             "description": "装備中、攻撃力+8％自身がクラッシュを付与すると、15秒間物理ダメージ+8%この効果は4回まで重ね掛け可能敵のクラッシュ段階が4になった場合、10秒間追加で物理ダメージ+16%この効果は重ね掛け不可",
             "ultEfficiency": 0.0
           }
+        },
+        "modifiers": [
+          {
+            "id": "set_chouiki_atk",
+            "name": "軽量超域 攻撃力UP",
+            "calcGroup": "reference_scale",
+            "value": 0.08,
+            "tags": [
+              "src:armor_set",
+              "type:percent",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "set_chouiki_crush",
+            "name": "軽量超域 クラッシュ付与時物理ダメUP",
+            "calcGroup": "damage_up",
+            "value": 0.08,
+            "scalingFormula": "0.08 * crushStacks + (crushStacks >= 4 ? 0.16 : 0)",
+            "tags": [
+              "src:armor_set",
+              "elem:physical",
+              "cond:crush"
+            ]
+          }
+        ]
+      },
+      "modifiers": [
+        {
+          "id": "set_chouiki_atk",
+          "name": "軽量超域 攻撃力UP",
+          "calcGroup": "reference_scale",
+          "value": 0.08,
+          "tags": [
+            "src:armor_set",
+            "type:percent",
+            "cond:always"
+          ]
+        },
+        {
+          "id": "set_chouiki_crush",
+          "name": "軽量超域 クラッシュ付与時物理ダメUP",
+          "calcGroup": "damage_up",
+          "value": 0.08,
+          "scalingFormula": "0.08 * crushStacks + (crushStacks >= 4 ? 0.16 : 0)",
+          "tags": [
+            "src:armor_set",
+            "elem:physical",
+            "cond:crush"
+          ]
         }
-      }
+      ]
     },
     {
       "id": "set_bio_support",
@@ -353,7 +951,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.115
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_20_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_20_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_20_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.115,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -387,7 +1022,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_21_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_21_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_21_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -421,7 +1092,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_22_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_22_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_22_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -455,7 +1163,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.138
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_23_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_23_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_23_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.138,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -489,7 +1234,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_24_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_24_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_50e5bc8fe5bf9ce_24_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -523,7 +1305,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.259
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e382a4e38_32_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_32_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_32_sub_3",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.259,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -557,7 +1376,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e382a4e38_33_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_33_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_33_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -591,7 +1447,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e382a4e38_34_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_34_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_34_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -625,7 +1518,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e382a4e38_35_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_35_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_35_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -659,7 +1588,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e382a4e38_36_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_36_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e382a4e38_36_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -693,7 +1658,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e383abe38_37_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e383abe38_37_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e383abe38_37_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -723,7 +1726,33 @@ window.EQUIPMENT_DATA = {
             "value": 87.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e38391e383abe38_38_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e38391e383abe38_38_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -753,7 +1782,33 @@ window.EQUIPMENT_DATA = {
             "value": 87.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5a38ce6b581e8b_9_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5a38ce6b581e8b_9_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -787,7 +1842,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5a4a9e999bae99_0_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5a4a9e999bae99_0_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5a4a9e999bae99_0_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -817,7 +1910,33 @@ window.EQUIPMENT_DATA = {
             "value": 58.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5a594e6b5aae38_19_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5a594e6b5aae38_19_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -851,7 +1970,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_48_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_48_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_48_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -885,7 +2042,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.115
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_49_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_49_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_49_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.115,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -919,7 +2113,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_50_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_50_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_50_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -953,7 +2183,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.115
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_51_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_51_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5ae8fe5b1b1e78_51_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.115,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -987,7 +2254,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_17_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_17_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_17_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1021,7 +2324,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_18_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_18_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e5b9b2e6bdaee8b_18_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1051,7 +2390,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.14400000000000002
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e69591e59bbde98_56_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e69591e59bbde98_56_sub_2",
+            "name": "normalAttackDamageUp",
+            "calcGroup": "damage_up",
+            "value": 0.14400000000000002,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1081,7 +2444,31 @@ window.EQUIPMENT_DATA = {
             "value": 12.9
           }
         ],
-        "ultEfficiency": 12.9
+        "ultEfficiency": 12.9,
+        "modifiers": [
+          {
+            "id": "gold_body_e69591e59bbde99_57_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e69591e59bbde99_57_sub_2",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.9,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1115,7 +2502,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.115
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e697a7e98b92e99_7_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e697a7e98b92e99_7_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e697a7e98b92e99_7_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.115,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1149,7 +2573,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e697a7e98b92e99_8_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e697a7e98b92e99_8_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e697a7e98b92e99_8_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1183,7 +2645,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b581e8bba2e38_12_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e38_12_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e38_12_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1217,7 +2717,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b581e8bba2e69_15_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e69_15_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e69_15_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1247,7 +2784,31 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b581e8bba2e8b_13_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 110.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e8b_13_sub_2",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1281,7 +2842,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b581e8bba2e8b_14_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e8b_14_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e8b_14_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1315,7 +2912,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b581e8bba2e99_16_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e99_16_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b581e8bba2e99_16_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1349,7 +2982,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b885e6b3a2e8b_11_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b885e6b3a2e8b_11_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b885e6b3a2e8b_11_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1383,7 +3054,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b885e6b3a2e98_10_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b885e6b3a2e98_10_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b885e6b3a2e98_10_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1413,7 +3120,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.10800000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b8a1e6b7b5e8b_53_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b8a1e6b7b5e8b_53_sub_2",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.10800000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1443,7 +3174,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b8a1e6b7b5e98_52_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b8a1e6b7b5e98_52_sub_2",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1473,7 +3230,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.21600000000000003
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b8a1e6b7b5e98_54_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b8a1e6b7b5e98_54_sub_2",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.21600000000000003,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1503,7 +3285,33 @@ window.EQUIPMENT_DATA = {
             "value": 0.12
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e6b8a1e6b7b5e99_55_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 115.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e6b8a1e6b7b5e99_55_sub_2",
+            "name": "灼熱&自然ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.12,
+            "tags": [
+              "src:armor",
+              "elem:heat",
+              "elem:nature",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1533,7 +3341,33 @@ window.EQUIPMENT_DATA = {
             "value": 58.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e781abe5b1b1e79_30_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e781abe5b1b1e79_30_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1563,7 +3397,33 @@ window.EQUIPMENT_DATA = {
             "value": 58.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e781abe5b1b1e79_31_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e781abe5b1b1e79_31_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1597,7 +3457,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e7949fe789a9e8a_45_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_45_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_45_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1631,7 +3527,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e7949fe789a9e8a_46_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_46_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_46_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1665,7 +3597,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e7949fe789a9e8a_47_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_47_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e7949fe789a9e8a_47_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1695,7 +3663,33 @@ window.EQUIPMENT_DATA = {
             "value": 58.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e8bbbde9878fe8b_44_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e8bbbde9878fe8b_44_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1729,7 +3723,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.09300000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_1_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_1_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_1_sub_3",
+            "name": "アーツダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.09300000000000001,
+            "tags": [
+              "src:armor",
+              "elem:arts",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1763,7 +3794,43 @@ window.EQUIPMENT_DATA = {
             "value": 10.5
           }
         ],
-        "ultEfficiency": 10.5
+        "ultEfficiency": 10.5,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_2_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_2_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_2_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 10.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1797,7 +3864,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.08900000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_3_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_3_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_3_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.08900000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1831,7 +3934,45 @@ window.EQUIPMENT_DATA = {
             "value": 17.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_4_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_4_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_4_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 17.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1865,7 +4006,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.08900000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_5_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_5_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_5_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.08900000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1899,7 +4076,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.098
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e99b86e68890e8a_6_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 74.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_6_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 49.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e99b86e68890e8a_6_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.098,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1933,7 +4147,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e9aaa8e7a095e38_39_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_39_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_39_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1967,7 +4217,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e9aaa8e7a095e38_40_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_40_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_40_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -1997,7 +4284,33 @@ window.EQUIPMENT_DATA = {
             "value": 87.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e9aaa8e7a095e38_41_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_41_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2031,7 +4344,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_e9aaa8e7a095e38_42_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_42_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_42_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2065,7 +4415,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_e9aaa8e7a095e38_43_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_43_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_e9aaa8e7a095e38_43_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2099,7 +4485,45 @@ window.EQUIPMENT_DATA = {
             "value": 20.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_mie8ada6e58299e_25_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_25_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_25_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 20.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2133,7 +4557,43 @@ window.EQUIPMENT_DATA = {
             "value": 12.3
           }
         ],
-        "ultEfficiency": 12.3
+        "ultEfficiency": 12.3,
+        "modifiers": [
+          {
+            "id": "gold_body_mie8ada6e58299e_26_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_26_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_26_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 12.3,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2167,7 +4627,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.138
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_mie8ada6e58299e_27_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_27_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_27_sub_3",
+            "name": "normalAttackDamageUp",
+            "calcGroup": "damage_up",
+            "value": 0.138,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2201,7 +4697,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.052000000000000005
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_mie8ada6e58299e_28_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_28_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_28_sub_3",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.052000000000000005,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2235,7 +4768,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_body_mie8ada6e58299e_29_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 58.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_29_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 87.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_body_mie8ada6e58299e_29_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -2277,7 +4847,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_19_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_19_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_19_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2311,7 +4918,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_20_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_20_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_20_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2345,7 +4989,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_21_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_21_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_50e5bc8fe5bf9ce_21_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2379,7 +5060,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e38391e382a4e38_30_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_30_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_30_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2413,7 +5131,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e38391e382a4e38_31_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_31_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_31_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2447,7 +5202,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e38391e382a4e38_32_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_32_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e382a4e38_32_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2477,7 +5268,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e38391e383abe38_33_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e383abe38_33_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2507,7 +5324,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e38391e383abe38_34_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e38391e383abe38_34_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2537,7 +5380,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e5a38ce6b581e38_9_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5a38ce6b581e38_9_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2571,7 +5440,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e5a4a9e999bae38_0_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5a4a9e999bae38_0_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5a4a9e999bae38_0_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2605,7 +5512,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.192
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_43_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_43_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_43_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.192,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2639,7 +5583,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.431
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_44_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_44_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_44_sub_3",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.431,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2673,7 +5654,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_45_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_45_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e5ae8fe5b1b1e78_45_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2703,7 +5722,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.45
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e69591e59bbde38_50_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e69591e59bbde38_50_sub_2",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.45,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2733,7 +5777,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.24
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e69591e59bbde38_51_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e69591e59bbde38_51_sub_2",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.24,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2767,7 +5836,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e697a7e98b92e38_7_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e697a7e98b92e38_7_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e697a7e98b92e38_7_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2801,7 +5908,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e697a7e98b92e38_8_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e697a7e98b92e38_8_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e697a7e98b92e38_8_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2835,7 +5980,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b288e6b0b4e38_18_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b288e6b0b4e38_18_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b288e6b0b4e38_18_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2869,7 +6051,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b581e8bba2e38_12_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_12_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_12_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2903,7 +6121,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b581e8bba2e38_13_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_13_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_13_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2937,7 +6191,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b581e8bba2e38_14_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_14_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_14_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -2971,7 +6261,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b581e8bba2e38_15_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_15_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e38_15_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3005,7 +6331,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b581e8bba2e4b_16_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e4b_16_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b581e8bba2e4b_16_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3039,7 +6402,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_10_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_10_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_10_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3073,7 +6473,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_11_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_11_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b885e6b3a2e38_11_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3103,7 +6539,31 @@ window.EQUIPMENT_DATA = {
             "value": 21.4
           }
         ],
-        "ultEfficiency": 21.4
+        "ultEfficiency": 21.4,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_46_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_46_sub_2",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 21.4,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3133,7 +6593,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.36
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_47_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_47_sub_2",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.36,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3163,7 +6648,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.24
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_48_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_48_sub_2",
+            "name": "normalAttackDamageUp",
+            "calcGroup": "damage_up",
+            "value": 0.24,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3193,7 +6702,33 @@ window.EQUIPMENT_DATA = {
             "value": 0.2
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_49_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 86.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6b8a1e6b7b5e38_49_sub_2",
+            "name": "寒冷&電磁ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.2,
+            "tags": [
+              "src:armor",
+              "elem:cryo",
+              "elem:electric",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3223,7 +6758,33 @@ window.EQUIPMENT_DATA = {
             "value": 43.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e6ba80e6bdaee38_17_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e6ba80e6bdaee38_17_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3253,7 +6814,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e781abe5b1b1e79_26_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e781abe5b1b1e79_26_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3283,7 +6870,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e781abe5b1b1e79_27_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e781abe5b1b1e79_27_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3317,7 +6930,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e781abe5b1b1e79_28_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e781abe5b1b1e79_28_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e781abe5b1b1e79_28_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3347,7 +6998,33 @@ window.EQUIPMENT_DATA = {
             "value": 43.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e781abe5b1b1e79_29_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e781abe5b1b1e79_29_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3381,7 +7058,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e7949fe789a9e8a_40_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_40_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_40_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3415,7 +7128,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.17300000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e7949fe789a9e8a_41_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_41_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_41_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.17300000000000001,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3449,7 +7198,43 @@ window.EQUIPMENT_DATA = {
             "value": 20.5
           }
         ],
-        "ultEfficiency": 20.5
+        "ultEfficiency": 20.5,
+        "modifiers": [
+          {
+            "id": "gold_arms_e7949fe789a9e8a_42_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_42_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e7949fe789a9e8a_42_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 20.5,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3483,7 +7268,45 @@ window.EQUIPMENT_DATA = {
             "value": 34.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_38_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_38_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_38_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 34.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3517,7 +7340,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_39_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_39_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e8bbbde9878fe8b_39_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3551,7 +7411,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.155
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_1_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_1_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_1_sub_3",
+            "name": "アーツダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.155,
+            "tags": [
+              "src:armor",
+              "elem:arts",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3585,7 +7482,43 @@ window.EQUIPMENT_DATA = {
             "value": 17.6
           }
         ],
-        "ultEfficiency": 17.6
+        "ultEfficiency": 17.6,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_2_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_2_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_2_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 17.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3619,7 +7552,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.14800000000000002
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_3_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_3_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_3_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.14800000000000002,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3653,7 +7622,45 @@ window.EQUIPMENT_DATA = {
             "value": 29.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_4_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_4_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_4_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 29.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3687,7 +7694,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.14800000000000002
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_5_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_5_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_5_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.14800000000000002,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3721,7 +7764,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.16399999999999998
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e99b86e68890e8a_6_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 55.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_6_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 37.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e99b86e68890e8a_6_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.16399999999999998,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3751,7 +7831,33 @@ window.EQUIPMENT_DATA = {
             "value": 43.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_35_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_35_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3781,7 +7887,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_36_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_36_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3811,7 +7943,33 @@ window.EQUIPMENT_DATA = {
             "value": 65.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_37_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_e9aaa8e7a095e38_37_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3845,7 +8003,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.345
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_mie8ada6e58299e_22_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_22_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_22_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.345,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3879,7 +8074,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.431
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_mie8ada6e58299e_23_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_23_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_23_sub_3",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.431,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3913,7 +8145,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_mie8ada6e58299e_24_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_24_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_24_sub_3",
+            "name": "normalAttackDamageUp",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3947,7 +8215,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.086
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_arms_mie8ada6e58299e_25_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 65.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_25_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_arms_mie8ada6e58299e_25_sub_3",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.086,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     }
   ],
@@ -3989,7 +8294,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_24_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_24_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_24_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4023,7 +8365,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.276
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_25_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_25_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_25_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.276,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4057,7 +8436,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_26_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_26_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_26_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4091,7 +8507,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.518
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_27_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_27_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_27_sub_3",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.518,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4125,7 +8578,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_28_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_28_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_28_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4159,7 +8649,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_29_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_29_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_50e5bc8fe5bf9ce_29_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4193,7 +8720,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_40_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_40_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_40_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4223,7 +8787,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_41_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_41_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4253,7 +8843,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.518
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_42_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_42_sub_2",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.518,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4287,7 +8902,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_43_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_43_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_43_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4321,7 +8972,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_44_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_44_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_44_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4351,7 +9038,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e382a4e38_45_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e382a4e38_45_sub_2",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4381,7 +9093,33 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e383abe38_46_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_46_sub_2",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4415,7 +9153,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e383abe38_47_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_47_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_47_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4445,7 +9221,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.518
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e383abe38_48_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_48_sub_2",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.518,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4479,7 +9280,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e38391e383abe38_49_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_49_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e38391e383abe38_49_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4513,7 +9350,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5a38ce6b581e6a_9_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5a38ce6b581e6a_9_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5a38ce6b581e6a_9_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4547,7 +9421,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5a4a9e999bae98_0_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5a4a9e999bae98_0_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5a4a9e999bae98_0_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4581,7 +9493,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_65_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_65_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_65_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4615,7 +9564,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.518
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_66_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_66_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_66_sub_3",
+            "name": "必殺技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.518,
+            "tags": [
+              "src:armor",
+              "action:ult",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4645,7 +9631,33 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_67_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_67_sub_2",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4679,7 +9691,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_68_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_68_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e5ae8fe5b1b1e78_68_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4709,7 +9758,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e687b8e6b2b3e38_21_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e687b8e6b2b3e38_21_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4739,7 +9814,31 @@ window.EQUIPMENT_DATA = {
             "value": 25.7
           }
         ],
-        "ultEfficiency": 25.7
+        "ultEfficiency": 25.7,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e69591e59bbde58_73_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e69591e59bbde58_73_sub_2",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 25.7,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4769,7 +9868,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.10800000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e69591e59bbde58_74_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e69591e59bbde58_74_sub_2",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.10800000000000001,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4799,7 +9923,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.17800000000000002
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e69591e59bbde8a_71_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e69591e59bbde8a_71_sub_2",
+            "name": "damageReduction",
+            "calcGroup": "reference_scale",
+            "value": 0.17800000000000002,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4829,7 +9977,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.43200000000000005
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e69591e59bbde8a_72_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e69591e59bbde8a_72_sub_2",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.43200000000000005,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4863,7 +10036,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e697a7e98b92e38_7_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e697a7e98b92e38_7_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e697a7e98b92e38_7_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4897,7 +10107,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e697a7e98b92e38_8_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e697a7e98b92e38_8_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e697a7e98b92e38_8_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4931,7 +10178,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_16_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_16_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_16_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4965,7 +10248,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_20_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_20_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e38_20_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4999,7 +10318,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_14_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_14_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_14_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5033,7 +10388,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_15_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_15_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e89_15_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5063,7 +10454,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e8a_17_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e8a_17_sub_2",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5097,7 +10512,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e8a_18_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e8a_18_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e8a_18_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5131,7 +10582,43 @@ window.EQUIPMENT_DATA = {
             "value": 24.6
           }
         ],
-        "ultEfficiency": 24.6
+        "ultEfficiency": 24.6,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b581e8bba2e98_19_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e98_19_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b581e8bba2e98_19_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 24.6,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5165,7 +10652,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_11_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_11_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_11_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5199,7 +10723,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_12_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_12_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e68_12_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5233,7 +10794,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b885e6b3a2e6b_13_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e6b_13_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e6b_13_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5263,7 +10862,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b885e6b3a2e7a_10_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b885e6b3a2e7a_10_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5293,7 +10918,31 @@ window.EQUIPMENT_DATA = {
             "value": 25.7
           }
         ],
-        "ultEfficiency": 25.7
+        "ultEfficiency": 25.7,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b8a1e6b7b5e79_70_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b8a1e6b7b5e79_70_sub_2",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 25.7,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5323,7 +10972,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.21600000000000003
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6b8a1e6b7b5e8a_69_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 43.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6b8a1e6b7b5e8a_69_sub_2",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.21600000000000003,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5357,7 +11030,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.276
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6bf81e6b581e38_22_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6bf81e6b581e38_22_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6bf81e6b581e38_22_sub_3",
+            "name": "normalAttackDamageUp",
+            "calcGroup": "damage_up",
+            "value": 0.276,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5387,7 +11096,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e6bf81e6b581e38_23_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e6bf81e6b581e38_23_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5417,7 +11152,32 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_36_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_36_sub_2",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5451,7 +11211,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_37_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_37_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_37_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5485,7 +11283,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_38_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_38_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_38_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5519,7 +11355,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.276
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_39_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_39_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e781abe5b1b1e79_39_sub_3",
+            "name": "全スキルダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.276,
+            "tags": [
+              "src:armor",
+              "action:all",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5553,7 +11426,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.172
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_60_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_60_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_60_sub_3",
+            "name": "damageReduction",
+            "calcGroup": "reference_scale",
+            "value": 0.172,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5587,7 +11496,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_61_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_61_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_61_sub_3",
+            "name": "hpPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5617,7 +11562,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_62_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_62_sub_2",
+            "name": "hpPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5651,7 +11620,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_63_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_63_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_63_sub_3",
+            "name": "mainStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5681,7 +11686,31 @@ window.EQUIPMENT_DATA = {
             "value": 0.207
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_64_sub_1",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e7949fe789a9e8a_64_sub_2",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.207,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5715,7 +11744,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_56_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_56_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_56_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5749,7 +11815,45 @@ window.EQUIPMENT_DATA = {
             "value": 41.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_57_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_57_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_57_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 41.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5783,7 +11887,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.23
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_58_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_58_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_58_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.23,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5817,7 +11958,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_59_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_59_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e8bbbde9878fe8b_59_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5851,7 +12029,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.18600000000000003
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_1_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_1_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_1_sub_3",
+            "name": "アーツダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.18600000000000003,
+            "tags": [
+              "src:armor",
+              "elem:arts",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5885,7 +12100,43 @@ window.EQUIPMENT_DATA = {
             "value": 21.1
           }
         ],
-        "ultEfficiency": 21.1
+        "ultEfficiency": 21.1,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_2_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_2_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_2_sub_3",
+            "name": "ultEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 21.1,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5919,7 +12170,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.177
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_3_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_3_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_3_sub_3",
+            "name": "subStatPercent",
+            "calcGroup": "reference_scale",
+            "value": 0.177,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5953,7 +12240,45 @@ window.EQUIPMENT_DATA = {
             "value": 35.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_4_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_4_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_4_sub_3",
+            "name": "アーツ強度",
+            "calcGroup": "reference_scale",
+            "value": 35.0,
+            "tags": [
+              "src:armor",
+              "stat:intensity",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5987,7 +12312,43 @@ window.EQUIPMENT_DATA = {
             "value": 0.177
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_5_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_5_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_5_sub_3",
+            "name": "healingEfficiency",
+            "calcGroup": "reference_scale",
+            "value": 0.177,
+            "tags": [
+              "src:armor",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6021,7 +12382,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.19699999999999998
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e99b86e68890e8a_6_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 27.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_6_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 18.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e99b86e68890e8a_6_sub_3",
+            "name": "物理ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.19699999999999998,
+            "tags": [
+              "src:armor",
+              "elem:physical",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6051,7 +12449,33 @@ window.EQUIPMENT_DATA = {
             "value": 32.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_50_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_50_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6085,7 +12509,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_51_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_51_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_51_sub_3",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6119,7 +12580,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_52_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_52_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_52_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6153,7 +12651,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_53_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_53_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_53_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6187,7 +12722,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_54_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_54_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_54_sub_3",
+            "name": "連携技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:combo",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6221,7 +12793,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_55_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_55_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_e9aaa8e7a095e38_55_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6251,7 +12860,33 @@ window.EQUIPMENT_DATA = {
             "value": 21.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_30_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_30_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6285,7 +12920,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_31_sub_1",
+            "name": "筋力",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:str",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_31_sub_2",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_31_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6319,7 +12991,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_32_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_32_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_32_sub_3",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6353,7 +13062,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.10400000000000001
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_33_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_33_sub_2",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_33_sub_3",
+            "name": "会心率",
+            "calcGroup": "critical",
+            "value": 0.10400000000000001,
+            "tags": [
+              "src:armor",
+              "type:percent",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6383,7 +13129,33 @@ window.EQUIPMENT_DATA = {
             "value": 32.0
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_34_sub_1",
+            "name": "知性",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:int",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_34_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          }
+        ]
       }
     },
     {
@@ -6417,7 +13189,44 @@ window.EQUIPMENT_DATA = {
             "value": 0.414
           }
         ],
-        "ultEfficiency": 0.0
+        "ultEfficiency": 0.0,
+        "modifiers": [
+          {
+            "id": "gold_accessories_mie8ada6e58299e_35_sub_1",
+            "name": "敏捷",
+            "calcGroup": "reference_scale",
+            "value": 21.0,
+            "tags": [
+              "src:armor",
+              "stat:agi",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_35_sub_2",
+            "name": "意志",
+            "calcGroup": "reference_scale",
+            "value": 32.0,
+            "tags": [
+              "src:armor",
+              "stat:wil",
+              "type:flat",
+              "cond:always"
+            ]
+          },
+          {
+            "id": "gold_accessories_mie8ada6e58299e_35_sub_3",
+            "name": "戦技ダメージUP",
+            "calcGroup": "damage_up",
+            "value": 0.414,
+            "tags": [
+              "src:armor",
+              "action:skill",
+              "cond:always"
+            ]
+          }
+        ]
       }
     }
   ]

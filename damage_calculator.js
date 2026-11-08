@@ -24,6 +24,155 @@
     consumeCrush: false        // 猛撃・破砕によるクラッシュ段階消費
   };
 
+
+  /**
+   * =========================================================================
+   * タグマッチャー (Tag Matcher) & 計算グループ集約器 (Group Aggregator)
+   * 設計書 docs/damage_calculation_system_design.md 準拠
+   * =========================================================================
+   */
+
+  /**
+   * 単一タグの条件判定
+   */
+  function matchTag(tag, context) {
+    if (!tag || !context) return false;
+    if (tag === 'cond:always') return true;
+
+    // 属性ディメンション
+    if (tag.startsWith('elem:')) {
+      const elem = tag.slice(5);
+      if (elem === 'all') return true;
+      if (elem === 'arts') {
+        return ['灼熱', '寒冷', '電磁', '自然'].includes(context.damageType);
+      }
+      const elemMap = {
+        'physical': '物理',
+        'heat': '灼熱',
+        'cryo': '寒冷',
+        'electric': '電磁',
+        'nature': '自然'
+      };
+      return elemMap[elem] === context.damageType;
+    }
+
+    // 攻撃種別ディメンション
+    if (tag.startsWith('action:')) {
+      const act = tag.slice(7);
+      if (act === 'all') return true;
+      return act === context.actionType;
+    }
+
+    // 発動条件ディメンション
+    if (tag.startsWith('cond:')) {
+      const cond = tag.slice(5);
+      if (cond === 'broken') return !!context.isBroken;
+      if (cond === 'combustion') return context.artsAnomaly === 'combustion' || context.artsAttachment === 'heat';
+      if (cond === 'freeze') return context.artsAnomaly === 'freeze';
+      if (cond === 'shock') return context.artsAnomaly === 'shock';
+      if (cond === 'corrosion') return context.artsAnomaly === 'corrosion';
+      if (cond === 'crush_consumed') return !!context.consumeCrush;
+      if (cond === 'anomaly_consumed') return !!context.consumeAttachment;
+      if (cond === 'crit_hit') return !!context.isCrit;
+      if (cond === 'attachment_gte_2') return (context.attachmentStacks || 0) >= 2;
+      if (cond === 'trigger') return true;
+      return false;
+    }
+
+    // メタデータタグ（判定には影響しない）
+    if (tag.startsWith('src:') || tag.startsWith('type:') || tag.startsWith('stat:')) {
+      return true;
+    }
+
+    return true;
+  }
+
+  /**
+   * モディファイアの全タグ照合 (AND条件)
+   */
+  function matchModifier(modifier, context) {
+    if (!modifier) return false;
+    if (!modifier.tags || modifier.tags.length === 0) return true;
+    return modifier.tags.every(tag => matchTag(tag, context));
+  }
+
+  /**
+   * マッチしたモディファイアを10大計算グループごとに集約
+   */
+  function aggregateCalculationGroups(modifiers, context) {
+    const groups = {
+      reference_scale: 0,
+      skill_multiplier: 0,
+      damage_up: 0,
+      amplification: 0,
+      taken_damage_up: 0,
+      vulnerability: 0,
+      resistance: 0,
+      defense: 0,
+      critical_rate: 0,
+      critical_damage: 0,
+      break: 0
+    };
+    const activeModifiers = [];
+
+    (modifiers || []).forEach(mod => {
+      if (!matchModifier(mod, context)) return;
+
+      let val = mod.value || 0;
+      if (mod.valuesByRank && context.rankKey && mod.valuesByRank[context.rankKey] !== undefined) {
+        val = mod.valuesByRank[context.rankKey];
+      }
+
+      // 動的スケーリング評価
+      if (mod.scalingFormula && context) {
+        if (mod.id && mod.id.includes('kyuho')) {
+          const cStacks = Math.min(4, Math.max(1, context.crushStacks || 1));
+          const brokenMult = (context.isBroken || context.vulnerability > 0) ? 1.5 : 1.0;
+          val = 0.06 * cStacks * brokenMult;
+        } else if (mod.id && mod.id.includes('joryu')) {
+          const aStacks = Math.min(4, Math.max(1, context.anomalyStacks || 1));
+          val = 0.15 * aStacks;
+        } else if (mod.id && mod.id.includes('smash')) {
+          const cStacks = Math.min(4, Math.max(1, context.crushStacks || 1));
+          val = 1.50 * (1 + cStacks);
+        } else if (mod.id && mod.id.includes('crystal')) {
+          val = 4.80;
+        }
+      }
+
+      activeModifiers.push({
+        id: mod.id,
+        name: mod.name,
+        calcGroup: mod.calcGroup,
+        value: val,
+        tags: mod.tags
+      });
+
+      const grp = mod.calcGroup;
+      if (grp === 'skill_multiplier') {
+        groups.skill_multiplier += val;
+      } else if (grp === 'damage_up') {
+        groups.damage_up += val;
+      } else if (grp === 'amplification') {
+        groups.amplification += val;
+      } else if (grp === 'taken_damage_up') {
+        groups.taken_damage_up += val;
+      } else if (grp === 'vulnerability') {
+        groups.vulnerability += val;
+      } else if (grp === 'critical') {
+        if (mod.tags && (mod.tags.includes('stat:crit_damage') || (mod.name && mod.name.includes('ダメージ')))) {
+          groups.critical_damage += val;
+        } else {
+          groups.critical_rate += val;
+        }
+      } else if (grp === 'reference_scale') {
+        groups.reference_scale += val;
+      }
+    });
+
+    return { groups, activeModifiers };
+  }
+
   /**
    * キャラクターの総合ステータス（基礎＋武器＋防具＋セット効果＋能力値倍率）を算出
    */
@@ -802,7 +951,10 @@
     getSkillMultiplier,
     calculateSkillDamage,
     simulateTimelineRotation,
-    formatDamage
+    formatDamage,
+    matchTag,
+    matchModifier,
+    aggregateCalculationGroups
   };
 
   if (typeof module !== 'undefined' && module.exports) {

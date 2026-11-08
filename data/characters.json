@@ -292,10 +292,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 2.8,
+            "lv10_spec1": 3.0333,
+            "lv11_spec2": 3.2667,
+            "lv12_spec3": 3.5
           },
           "hitCount": 3,
           "buffs": [
@@ -343,7 +343,28 @@
           "damageTypeDetail": "物理",
           "rawText": "アーツを発動して前方の一定範囲内の敵を攻撃する。物理ダメージと猛撃を与える。",
           "attachText": "なし",
-          "anomalyText": "猛撃(クラッシュ全段階消費) / 源石結晶消費トリガー"
+          "anomalyText": "猛撃(クラッシュ全段階消費) / 源石結晶消費トリガー",
+          "modifiers": [
+            {
+              "id": "mod_管理人_skill_base",
+              "name": "構成配列 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.8,
+              "valuesByRank": {
+                "r1": 1.56,
+                "r9": 2.8,
+                "spec1": 3.0333,
+                "spec2": 3.2667,
+                "spec3": 3.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_admin",
@@ -352,10 +373,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.8,
+            "lv10_spec1": 0.8667,
+            "lv11_spec2": 0.9333,
+            "lv12_spec3": 1.0
           },
           "hitCount": 1,
           "buffs": [
@@ -417,7 +438,44 @@
           "rawText": "チーム内の他のオペレーターの連携技でダメージを与えたときに発動可能。物理ダメージを与え、源石結晶を付与して一定時間封印する。物理異常を与えるかクラッシュを付与すると、源石結晶が消費され、追加の物理ダメージを与える。",
           "attachText": "なし",
           "anomalyText": "源石結晶付与(封印) → 物理異常またはクラッシュ付与時に源石結晶消費＆結晶粉砕追加物理ダメ",
-          "special": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー）"
+          "special": "【源石結晶ギミック】敵を封印し、物理異常またはクラッシュ付与時に結晶を消費して追加物理ダメージ(178%→320%→400%)を発生させる（素質1・2・潜在1・3や武器『大願』の参照トリガー）",
+          "modifiers": [
+            {
+              "id": "mod_管理人_combo_base",
+              "name": "封印配列 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.8,
+              "valuesByRank": {
+                "r1": 0.45,
+                "r9": 0.8,
+                "spec1": 0.8667,
+                "spec2": 0.9333,
+                "spec3": 1.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_管理人_combo_additional",
+              "name": "封印配列 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r9": 3.2,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:trigger"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_admin",
@@ -426,10 +484,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 6.4,
+            "lv10_spec1": 6.9333,
+            "lv11_spec2": 7.4667,
+            "lv12_spec3": 8.0
           },
           "hitCount": 5,
           "buffs": [
@@ -477,7 +535,44 @@
           "damageTypeDetail": "物理",
           "rawText": "アーツを発動して地面を攻撃し、前方の扇形範囲内の敵に高い物理ダメージを与える。敵に源石結晶がある場合、源石結晶が消費され、追加でもう1回物理ダメージを与える。",
           "attachText": "なし",
-          "anomalyText": "源石結晶消費(敵に源石結晶がある場合、消費して追加物理ダメ)"
+          "anomalyText": "源石結晶消費(敵に源石結晶がある場合、消費して追加物理ダメ)",
+          "modifiers": [
+            {
+              "id": "mod_管理人_ult_base",
+              "name": "攻撃配列 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 6.4,
+              "valuesByRank": {
+                "r1": 3.56,
+                "r9": 6.4,
+                "spec1": 6.9333,
+                "spec2": 7.4667,
+                "spec3": 8.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_管理人_ult_additional",
+              "name": "攻撃配列 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 4.8,
+              "valuesByRank": {
+                "r9": 4.8,
+                "spec3": 6.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:trigger"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "大願",
@@ -846,10 +941,10 @@
           "shortName": "戦技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 3.42,
-            "lv10_spec1": 3.75,
-            "lv11_spec2": 4.13,
-            "lv12_spec3": 4.56
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 3,
           "buffs": [
@@ -897,7 +992,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "前方に斬りかかり、灼熱ダメージを与え、灼熱付着を付与する",
           "attachText": "灼熱付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アケクリ_skill_base",
+              "name": "ほとばしる情熱 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_akekuri",
@@ -906,10 +1022,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.66,
-            "lv10_spec1": 2.9,
-            "lv11_spec2": 3.18,
-            "lv12_spec3": 3.52
+            "lv9": 1.44,
+            "lv10_spec1": 1.56,
+            "lv11_spec2": 1.68,
+            "lv12_spec3": 1.8
           },
           "hitCount": 1,
           "buffs": [
@@ -956,7 +1072,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵がブレイク状態になるかブレイク点に到達したときに発動可能。往復移動の突撃で物理ダメージを2回与え、SPを一定量回復する。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アケクリ_combo_base",
+              "name": "突撃一閃 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.44,
+              "valuesByRank": {
+                "r1": 0.8,
+                "r9": 1.44,
+                "spec1": 1.56,
+                "spec2": 1.68,
+                "spec3": 1.8
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_akekuri",
@@ -1368,9 +1505,9 @@
           "damageType": "物理",
           "multipliers": {
             "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv10_spec1": 3.9,
+            "lv11_spec2": 4.2,
+            "lv12_spec3": 4.5
           },
           "hitCount": 3,
           "buffs": [
@@ -1418,7 +1555,28 @@
           "damageTypeDetail": "物理",
           "rawText": "引っ掛けた氷で前方の敵を叩き付け、物理ダメージを与える。寒冷付着状態の敵に命中すると、敵の寒冷付着をすべて消費して強制的に凍結状態にする。消費した段階数に応じてSPを回復する。",
           "attachText": "なし",
-          "anomalyText": "寒冷付着全段階消費 → 強制凍結付与"
+          "anomalyText": "寒冷付着全段階消費 → 強制凍結付与",
+          "modifiers": [
+            {
+              "id": "mod_アレッシュ_skill_base",
+              "name": "型破りのルアー 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.6,
+              "valuesByRank": {
+                "r1": 2.0,
+                "r9": 3.6,
+                "spec1": 3.9,
+                "spec2": 4.2,
+                "spec3": 4.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_alesh",
@@ -1427,10 +1585,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 1,
           "buffs": [
@@ -1492,7 +1650,28 @@
           "rawText": "近くの目標のアーツ異常または源石結晶が消費されたときに発動可能。物理ダメージを与え、SPを一定量回復する。一定確率で珍鱗を釣り上げ、ダメージが大幅にアップし、SPをさらに回復する。",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【確率分岐(珍鱗)】基礎10%＋素質2(知性10につき+0.5%、上限+30%)の確率で珍鱗を釣り上げ、倍率強化＆SP追加+10（3凸で全体攻撃力+15%発動）"
+          "special": "【確率分岐(珍鱗)】基礎10%＋素質2(知性10につき+0.5%、上限+30%)の確率で珍鱗を釣り上げ、倍率強化＆SP追加+10（3凸で全体攻撃力+15%発動）",
+          "modifiers": [
+            {
+              "id": "mod_アレッシュ_combo_base",
+              "name": "穴釣り戦術 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_alesh",
@@ -1501,10 +1680,10 @@
           "shortName": "必殺技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 7.84,
+            "lv10_spec1": 8.4933,
+            "lv11_spec2": 9.1467,
+            "lv12_spec3": 9.8
           },
           "hitCount": 5,
           "buffs": [
@@ -1552,7 +1731,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "超巨大鱗獣を釣り上げ、前方の敵に投げ付ける。広範囲の寒冷ダメージを与え、寒冷付着を付与し、SPを一定量回復する。倒した敵1体につき、SPを追加で回復する。",
           "attachText": "寒冷付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アレッシュ_ult_base",
+              "name": "大物、ヒット！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 7.84,
+              "valuesByRank": {
+                "r1": 4.36,
+                "r9": 7.84,
+                "spec1": 8.4933,
+                "spec2": 9.1467,
+                "spec3": 9.8
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "フィンチェイサー3.0",
@@ -1923,10 +2123,10 @@
           "shortName": "戦技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 3.42,
-            "lv10_spec1": 3.75,
-            "lv11_spec2": 4.13,
-            "lv12_spec3": 4.56
+            "lv9": 1.6,
+            "lv10_spec1": 1.7333,
+            "lv11_spec2": 1.8667,
+            "lv12_spec3": 2.0
           },
           "hitCount": 3,
           "buffs": [
@@ -1987,7 +2187,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "敵を長時間フォーカスし、電磁ダメージを与える。フォーカス中の敵は電磁脆弱および灼熱脆弱状態になる。敵は最大1体までフォーカスできる。（※アーツ付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アンタル_skill_base",
+              "name": "指定研究対象 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.6,
+              "valuesByRank": {
+                "r1": 0.89,
+                "r9": 1.6,
+                "spec1": 1.7333,
+                "spec2": 1.8667,
+                "spec3": 2.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_antal",
@@ -1996,10 +2217,10 @@
           "shortName": "連携技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 2.66,
-            "lv10_spec1": 2.9,
-            "lv11_spec2": 3.18,
-            "lv12_spec3": 3.52
+            "lv9": 2.72,
+            "lv10_spec1": 2.9467,
+            "lv11_spec2": 3.1733,
+            "lv12_spec3": 3.4
           },
           "hitCount": 1,
           "buffs": [
@@ -2061,7 +2282,28 @@
           "rawText": "フォーカス中の敵が物理異常またはアーツ付着状態になったときに発動可能。敵にエネルギー爆発を1回引き起こし、電磁ダメージを与える。さらに、物理異常またはアーツ付着を再度付与する。",
           "attachText": "条件付き再付与(トリガーとなったアーツ付着を再度1段階付与)",
           "anomalyText": "条件付き再付与(トリガーとなった物理異常を再度付与)",
-          "special": "【特殊付着/異常コピー】固有で電磁付着を持つのではなく、トリガーとなった直前の「物理異常」または「任意属性のアーツ付着」と同じものを再度付与する"
+          "special": "【特殊付着/異常コピー】固有で電磁付着を持つのではなく、トリガーとなった直前の「物理異常」または「任意属性のアーツ付着」と同じものを再度付与する",
+          "modifiers": [
+            {
+              "id": "mod_アンタル_combo_base",
+              "name": "磁気嵐実験場 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.72,
+              "valuesByRank": {
+                "r1": 1.51,
+                "r9": 2.72,
+                "spec1": 2.9467,
+                "spec2": 3.1733,
+                "spec3": 3.4
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_antal",
@@ -2490,10 +2732,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 0.81,
+            "lv10_spec1": 0.8767,
+            "lv11_spec2": 0.9433,
+            "lv12_spec3": 1.01
           },
           "hitCount": 3,
           "buffs": [
@@ -2541,7 +2783,28 @@
           "damageTypeDetail": "物理(1・2段) / 電磁(感電消費追撃)",
           "rawText": "敵の近くに瞬間移動して2回斬撃を放ち、わずかな物理ダメージを与える。敵が感電状態の場合、感電状態を消費して追加でもう1回攻撃し、電磁ダメージを与え、SPを一定量回復する。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "感電状態の消費(敵が感電中の場合、感電を消費して追加電磁ダメ＆SP回復 ※電磁付着は付与しない)"
+          "anomalyText": "感電状態の消費(敵が感電中の場合、感電を消費して追加電磁ダメ＆SP回復 ※電磁付着は付与しない)",
+          "modifiers": [
+            {
+              "id": "mod_アークライト_skill_base",
+              "name": "疾風迅雷 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.81,
+              "valuesByRank": {
+                "r1": 0.45,
+                "r9": 0.81,
+                "spec1": 0.8767,
+                "spec2": 0.9433,
+                "spec3": 1.01
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_arclight",
@@ -2551,9 +2814,9 @@
           "damageType": "物理",
           "multipliers": {
             "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv10_spec1": 3.0333,
+            "lv11_spec2": 3.2667,
+            "lv12_spec3": 3.5
           },
           "hitCount": 1,
           "buffs": [
@@ -2600,7 +2863,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵が感電状態になるか感電状態が消費されると発動可能。複数回斬撃を放ち、物理ダメージを与え、SPを一定量回復する。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アークライト_combo_base",
+              "name": "雷鳴 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.8,
+              "valuesByRank": {
+                "r1": 1.55,
+                "r9": 2.8,
+                "spec1": 3.0333,
+                "spec2": 3.2667,
+                "spec3": 3.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_arclight",
@@ -2609,10 +2893,10 @@
           "shortName": "必殺技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 2.8,
+            "lv10_spec1": 3.0333,
+            "lv11_spec2": 3.2667,
+            "lv12_spec3": 3.5
           },
           "hitCount": 5,
           "buffs": [
@@ -2675,7 +2959,28 @@
           "rawText": "前方に向かって突進し、軌道上の敵に電磁ダメージを与え、電磁付着を付与する。一定時間後、残っている電光を爆発させ、再度電磁ダメージを与える。敵が電磁付着状態の場合、電磁付着状態を消費して、敵を強制的に感電状態にする。",
           "attachText": "電磁付着(1段階・1段目突進時)",
           "anomalyText": "2段目爆発時、敵が電磁付着状態なら電磁付着を消費して強制感電付与",
-          "special": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造"
+          "special": "【自己付着→即消費感電】1段目で電磁付着を付与し、直後の2段目爆発でその電磁付着を消費して強制感電にする2段構造",
+          "modifiers": [
+            {
+              "id": "mod_アークライト_ult_base",
+              "name": "轟雷裂電 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.8,
+              "valuesByRank": {
+                "r1": 1.56,
+                "r9": 2.8,
+                "spec1": 3.0333,
+                "spec2": 3.2667,
+                "spec3": 3.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "十二問",
@@ -3044,10 +3349,10 @@
           "shortName": "戦技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 3,
           "buffs": [
@@ -3108,7 +3413,28 @@
           "damageTypeDetail": "自然",
           "rawText": "ドリーさんに乗って敵に突進し、自然ダメージを与える。腐食状態の敵に命中した場合、腐食状態を消費し、物理脆弱とアーツ脆弱を付与する。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "腐食状態の消費(腐食中の敵に命中時、腐食を消費して物理脆弱＆アーツ脆弱を付与)"
+          "anomalyText": "腐食状態の消費(腐食中の敵に命中時、腐食を消費して物理脆弱＆アーツ脆弱を付与)",
+          "modifiers": [
+            {
+              "id": "mod_アルデリア_skill_base",
+              "name": "ドリーラッシュ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_ardelia",
@@ -3117,10 +3443,10 @@
           "shortName": "連携技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.8,
+            "lv10_spec1": 0.8667,
+            "lv11_spec2": 0.9333,
+            "lv12_spec3": 1.0
           },
           "hitCount": 1,
           "buffs": [
@@ -3180,7 +3506,28 @@
           "damageTypeDetail": "自然",
           "rawText": "操作中のオペレーターがクラッシュまたはアーツ付着状態でない敵に重攻撃を与えると発動可能。火山雲は敵を追尾し爆発し、強制的に短時間(7秒)腐食状態にする。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "強制腐食付与(7秒間、5凸で11秒間 ※付着を介さず直接腐食にする)"
+          "anomalyText": "強制腐食付与(7秒間、5凸で11秒間 ※付着を介さず直接腐食にする)",
+          "modifiers": [
+            {
+              "id": "mod_アルデリア_combo_base",
+              "name": "イラプション・コラム 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.8,
+              "valuesByRank": {
+                "r1": 0.45,
+                "r9": 0.8,
+                "spec1": 0.8667,
+                "spec2": 0.9333,
+                "spec3": 1.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_ardelia",
@@ -3189,10 +3536,10 @@
           "shortName": "必殺技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 1.32,
+            "lv10_spec1": 1.43,
+            "lv11_spec2": 1.54,
+            "lv12_spec3": 1.65
           },
           "hitCount": 5,
           "buffs": [
@@ -3240,7 +3587,28 @@
           "damageTypeDetail": "自然",
           "rawText": "移動できる状態で持続的にアーツを放ち、周囲にドリーさんの分身を放つ。同じ敵は0.3秒に1回まで自然ダメージを受ける。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アルデリア_ult_base",
+              "name": "もふもふパーティー 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.32,
+              "valuesByRank": {
+                "r1": 0.73,
+                "r9": 1.32,
+                "spec1": 1.43,
+                "spec2": 1.54,
+                "spec3": 1.65
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "蒼星の囁き",
@@ -3611,10 +3979,10 @@
           "shortName": "戦技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 3,
           "buffs": [
@@ -3677,7 +4045,28 @@
           "rawText": "周囲の敵にわずかな電磁ダメージを与え、すべての雷槍、強雷槍を回収する。回収時に雷槍が敵を貫通すると電磁ダメージを与え、強雷槍はより高い電磁ダメージを与え、電磁付着を付与する。",
           "attachText": "条件付き電磁付着(1段階・必殺技で設置した「強雷槍」を回収貫通した時のみ付与。通常旋風・連携雷槍回収には付着なし！)",
           "anomalyText": "なし",
-          "special": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する"
+          "special": "【槍回収ギミック】戦技単体や雷槍(連携技設置)回収時は電磁ダメのみで電磁付着なし。必殺技で設置した「強雷槍」を戦技で回収して敵を貫通した時のみ電磁付着を付与する",
+          "modifiers": [
+            {
+              "id": "mod_アイビーエナ_skill_base",
+              "name": "雷槍・逆襲 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_avywenna",
@@ -3686,10 +4075,10 @@
           "shortName": "連携技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 3.04,
+            "lv10_spec1": 3.2933,
+            "lv11_spec2": 3.5467,
+            "lv12_spec3": 3.8
           },
           "hitCount": 1,
           "buffs": [
@@ -3736,7 +4125,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "電磁付着または感電状態の敵に重攻撃を与えると発動可能。敵に3本の雷槍を投げ、範囲内の敵に1回電磁ダメージを与える。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アイビーエナ_combo_base",
+              "name": "雷槍・閃撃 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.04,
+              "valuesByRank": {
+                "r1": 1.69,
+                "r9": 3.04,
+                "spec1": 3.2933,
+                "spec2": 3.5467,
+                "spec3": 3.8
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_avywenna",
@@ -3745,9 +4155,9 @@
           "shortName": "必殺技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
+            "lv9": 7.6,
+            "lv10_spec1": 8.2333,
+            "lv11_spec2": 8.8667,
             "lv12_spec3": 9.5
           },
           "hitCount": 5,
@@ -3796,7 +4206,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "目標エリアに強雷槍を投げ、周囲の敵に高い電磁ダメージを与える。（※設置時点では電磁付着なし、戦技回収時に付着）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_アイビーエナ_ult_base",
+              "name": "雷槍・決震 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 7.6,
+              "valuesByRank": {
+                "r1": 4.22,
+                "r9": 7.6,
+                "spec1": 8.2333,
+                "spec2": 8.8667,
+                "spec3": 9.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "求心の槍",
@@ -4165,10 +4596,10 @@
           "shortName": "戦技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.6,
+            "lv10_spec1": 1.7333,
+            "lv11_spec2": 1.8667,
+            "lv12_spec3": 2.0
           },
           "hitCount": 3,
           "buffs": [
@@ -4229,7 +4660,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "燃える血の翼を召喚して敵へ飛ばし、灼熱ダメージを与え、灼熱付着を付与する。その後45秒間包囲し、弱体化と灼熱脆弱を付与する。連携技命中時に追加爆発ダメージ。",
           "attachText": "灼熱付着(1段階・召喚時および包囲敵撃破転移時)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_カミーユ_skill_base",
+              "name": "影祓う 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.6,
+              "valuesByRank": {
+                "r1": 0.89,
+                "r9": 1.6,
+                "spec1": 1.7333,
+                "spec2": 1.8667,
+                "spec3": 2.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_camille",
@@ -4238,10 +4690,10 @@
           "shortName": "連携技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 1,
           "buffs": [
@@ -4303,7 +4755,28 @@
           "rawText": "敵の灼熱付着が消費または吸収されると発動可能。高速で駆け抜けて灼熱ダメージを与え、SPを一定量回復する。（※連携技・追及ともに灼熱付着なし）",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【必殺派生「追及」】必殺技発動後15秒間、次の戦技がSP消費0の「追及」に変化し、戦技ではなく『連携技ダメージ』として扱われる（連携技ダメUPが乗り、戦技ダメUP・リンクは乗らない）"
+          "special": "【必殺派生「追及」】必殺技発動後15秒間、次の戦技がSP消費0の「追及」に変化し、戦技ではなく『連携技ダメージ』として扱われる（連携技ダメUPが乗り、戦技ダメUP・リンクは乗らない）",
+          "modifiers": [
+            {
+              "id": "mod_カミーユ_combo_base",
+              "name": "心抉る棘（および必殺派生「追及」） 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_camille",
@@ -4312,10 +4785,10 @@
           "shortName": "必殺技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 4.8,
+            "lv10_spec1": 5.2,
+            "lv11_spec2": 5.6,
+            "lv12_spec3": 6.0
           },
           "hitCount": 5,
           "buffs": [
@@ -4363,7 +4836,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "命中した目標に灼熱ダメージを与え、灼熱付着を付与し、同時にSPを一定量回復する。発動後15秒間、次の戦技が追及(連携技扱い・SP消費なし)に替わる。",
           "attachText": "灼熱付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_カミーユ_ult_base",
+              "name": "降り注ぐ深紅 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 4.8,
+              "valuesByRank": {
+                "r1": 2.67,
+                "r9": 4.8,
+                "spec1": 5.2,
+                "spec2": 5.6,
+                "spec3": 6.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "カーマインヴェール",
@@ -4745,10 +5239,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.42,
-            "lv10_spec1": 3.75,
-            "lv11_spec2": 4.13,
-            "lv12_spec3": 4.56
+            "lv9": 3.2,
+            "lv10_spec1": 3.4667,
+            "lv11_spec2": 3.7333,
+            "lv12_spec3": 4.0
           },
           "hitCount": 3,
           "buffs": [
@@ -4796,7 +5290,28 @@
           "damageTypeDetail": "物理",
           "rawText": "盾を構えて敵の攻撃をブロックし、自身と周囲のオペレーターに加護(90%)を与え、即座にSPが30返還される。攻撃を受けると反撃し、物理ダメージを与え、クラッシュ段階を1増加させる。",
           "attachText": "なし",
-          "anomalyText": "クラッシュ付与(+1段階・被攻撃反撃時)"
+          "anomalyText": "クラッシュ付与(+1段階・被攻撃反撃時)",
+          "modifiers": [
+            {
+              "id": "mod_キャッチャー_skill_base",
+              "name": "強制ブロック 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r1": 1.78,
+                "r9": 3.2,
+                "spec1": 3.4667,
+                "spec2": 3.7333,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_catcher",
@@ -4805,10 +5320,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.66,
-            "lv10_spec1": 2.9,
-            "lv11_spec2": 3.18,
-            "lv12_spec3": 3.52
+            "lv9": 0.44,
+            "lv10_spec1": 0.4767,
+            "lv11_spec2": 0.5133,
+            "lv12_spec3": 0.55
           },
           "hitCount": 1,
           "buffs": [
@@ -4855,7 +5370,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵に物理ダメージを与える。同時に、自身と味方オペレーター1人（操作中のオペレーターを優先）にシールドを付与する。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_キャッチャー_combo_base",
+              "name": "即時制圧 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.44,
+              "valuesByRank": {
+                "r1": 0.25,
+                "r9": 0.44,
+                "spec1": 0.4767,
+                "spec2": 0.5133,
+                "spec3": 0.55
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_catcher",
@@ -4864,10 +5400,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 6.84,
-            "lv10_spec1": 7.46,
-            "lv11_spec2": 8.17,
-            "lv12_spec3": 9.02
+            "lv9": 1.6,
+            "lv10_spec1": 1.7333,
+            "lv11_spec2": 1.8667,
+            "lv12_spec3": 2.0
           },
           "hitCount": 5,
           "buffs": [
@@ -4915,7 +5451,28 @@
           "damageTypeDetail": "物理",
           "rawText": "前方へ斬撃を2回放ち、敵に物理ダメージを与え、弱体化を付与する。さらに地面を叩き付け、高い物理ダメージと転倒効果を与える。",
           "attachText": "なし",
-          "anomalyText": "転倒付与(クラッシュ+1段階・3段目叩き付け時)"
+          "anomalyText": "転倒付与(クラッシュ+1段階・3段目叩き付け時)",
+          "modifiers": [
+            {
+              "id": "mod_キャッチャー_ult_base",
+              "name": "教科書通り 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.6,
+              "valuesByRank": {
+                "r1": 0.89,
+                "r9": 1.6,
+                "spec1": 1.7333,
+                "spec2": 1.8667,
+                "spec3": 2.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "O.B.J.重責",
@@ -5284,10 +5841,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 3.04,
+            "lv10_spec1": 3.2933,
+            "lv11_spec2": 3.5467,
+            "lv12_spec3": 3.8
           },
           "hitCount": 3,
           "buffs": [
@@ -5335,7 +5892,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵を下から突き上げて攻撃し、物理ダメージと浮遊効果を与える。",
           "attachText": "なし",
-          "anomalyText": "浮遊付与(クラッシュ+1段階、浮遊時間: R1=1秒→R9=2秒→特化III=2.5秒)"
+          "anomalyText": "浮遊付与(クラッシュ+1段階、浮遊時間: R1=1秒→R9=2秒→特化III=2.5秒)",
+          "modifiers": [
+            {
+              "id": "mod_チェン・センユー_skill_base",
+              "name": "蒼穹返し 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.04,
+              "valuesByRank": {
+                "r1": 1.69,
+                "r9": 3.04,
+                "spec1": 3.2933,
+                "spec2": 3.5467,
+                "spec3": 3.8
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_chen",
@@ -5344,10 +5922,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 2.16,
+            "lv10_spec1": 2.34,
+            "lv11_spec2": 2.52,
+            "lv12_spec3": 2.7
           },
           "hitCount": 1,
           "buffs": [
@@ -5394,7 +5972,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵がクラッシュ状態になったときに発動可能。進路上のすべての敵に物理ダメージと浮遊効果を与える。",
           "attachText": "なし",
-          "anomalyText": "浮遊付与(クラッシュ+1段階)"
+          "anomalyText": "浮遊付与(クラッシュ+1段階)",
+          "modifiers": [
+            {
+              "id": "mod_チェン・センユー_combo_base",
+              "name": "天河昇 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.16,
+              "valuesByRank": {
+                "r1": 1.2,
+                "r9": 2.16,
+                "spec1": 2.34,
+                "spec2": 2.52,
+                "spec3": 2.7
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_chen",
@@ -5403,10 +6002,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 0.65,
+            "lv10_spec1": 0.7033,
+            "lv11_spec2": 0.7567,
+            "lv12_spec3": 0.81
           },
           "hitCount": 5,
           "buffs": [
@@ -5454,7 +6053,28 @@
           "damageTypeDetail": "物理",
           "rawText": "7段の斬撃を繰り出し、毎回物理ダメージを与える。最後の斬撃はより高いダメージになる。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_チェン・センユー_ult_base",
+              "name": "凍風斬り 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.65,
+              "valuesByRank": {
+                "r1": 0.36,
+                "r9": 0.65,
+                "spec1": 0.7033,
+                "spec2": 0.7567,
+                "spec3": 0.81
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "仰止",
@@ -5818,10 +6438,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 3,
           "buffs": [
@@ -5869,7 +6489,28 @@
           "damageTypeDetail": "物理",
           "rawText": "鍋を振り上げて攻撃する。敵に物理ダメージと浮遊効果を与える。",
           "attachText": "なし",
-          "anomalyText": "浮遊付与(クラッシュ+1段階、浮遊1.8秒)"
+          "anomalyText": "浮遊付与(クラッシュ+1段階、浮遊1.8秒)",
+          "modifiers": [
+            {
+              "id": "mod_ダパン_skill_base",
+              "name": "鍋振り！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_dapan",
@@ -5878,10 +6519,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 5.2,
+            "lv10_spec1": 5.6333,
+            "lv11_spec2": 6.0667,
+            "lv12_spec3": 6.5
           },
           "hitCount": 1,
           "buffs": [
@@ -5941,7 +6582,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵のクラッシュ段階が4になったときに発動可能。鍋を振り回して敵に高い物理ダメージと猛撃を与える。この猛撃のダメージは追加でアップする。",
           "attachText": "なし",
-          "anomalyText": "猛撃付与(クラッシュ4段階消費)"
+          "anomalyText": "猛撃付与(クラッシュ4段階消費)",
+          "modifiers": [
+            {
+              "id": "mod_ダパン_combo_base",
+              "name": "調味料！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 5.2,
+              "valuesByRank": {
+                "r1": 2.89,
+                "r9": 5.2,
+                "spec1": 5.6333,
+                "spec2": 6.0667,
+                "spec3": 6.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_dapan",
@@ -5950,10 +6612,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 0.4,
+            "lv10_spec1": 0.4333,
+            "lv11_spec2": 0.4667,
+            "lv12_spec3": 0.5
           },
           "hitCount": 5,
           "buffs": [
@@ -6001,7 +6663,28 @@
           "damageTypeDetail": "物理",
           "rawText": "前方範囲内の敵を強制的に浮遊させる。その後6段の連続斬撃を放ち、最後にすべての敵を叩き落とし、強制的に転倒させ、高い物理ダメージを与える。",
           "attachText": "なし",
-          "anomalyText": "強制浮遊 → 空中6段斬撃 → 強制転倒(計クラッシュ+2段階)"
+          "anomalyText": "強制浮遊 → 空中6段斬撃 → 強制転倒(計クラッシュ+2段階)",
+          "modifiers": [
+            {
+              "id": "mod_ダパン_ult_base",
+              "name": "具材投入！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.4,
+              "valuesByRank": {
+                "r1": 0.22,
+                "r9": 0.4,
+                "spec1": 0.4333,
+                "spec2": 0.4667,
+                "spec3": 0.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "千古恒常",
@@ -6370,10 +7053,10 @@
           "shortName": "戦技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 3.12,
+            "lv10_spec1": 3.38,
+            "lv11_spec2": 3.64,
+            "lv12_spec3": 3.9
           },
           "hitCount": 3,
           "buffs": [
@@ -6421,7 +7104,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "跳び上がって前方の地面に重い打撃を放ち、扇形範囲内の敵に灼熱ダメージと転倒効果を付与する。（※灼熱付着なし）",
           "attachText": "なし",
-          "anomalyText": "転倒付与(クラッシュ+1段階 ※灼熱ダメだが灼熱付着は一切なし！)"
+          "anomalyText": "転倒付与(クラッシュ+1段階 ※灼熱ダメだが灼熱付着は一切なし！)",
+          "modifiers": [
+            {
+              "id": "mod_エンバー_skill_base",
+              "name": "出征 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.12,
+              "valuesByRank": {
+                "r1": 1.73,
+                "r9": 3.12,
+                "spec1": 3.38,
+                "spec2": 3.64,
+                "spec3": 3.9
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_ember",
@@ -6430,10 +7134,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 1.84,
+            "lv10_spec1": 1.9933,
+            "lv11_spec2": 2.1467,
+            "lv12_spec3": 2.3
           },
           "hitCount": 1,
           "buffs": [
@@ -6480,7 +7184,28 @@
           "damageTypeDetail": "物理",
           "rawText": "操作中のオペレーターが攻撃を受けると発動可能。物理ダメージと転倒効果を与え、操作中のオペレーターのHPを回復する。",
           "attachText": "なし",
-          "anomalyText": "転倒付与(クラッシュ+1段階)"
+          "anomalyText": "転倒付与(クラッシュ+1段階)",
+          "modifiers": [
+            {
+              "id": "mod_エンバー_combo_base",
+              "name": "前線支援 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.84,
+              "valuesByRank": {
+                "r1": 1.02,
+                "r9": 1.84,
+                "spec1": 1.9933,
+                "spec2": 2.1467,
+                "spec3": 2.3
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_ember",
@@ -6489,10 +7214,10 @@
           "shortName": "必殺技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 5.2,
+            "lv10_spec1": 5.6333,
+            "lv11_spec2": 6.0667,
+            "lv12_spec3": 6.5
           },
           "hitCount": 5,
           "buffs": [
@@ -6540,7 +7265,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "地面を強く叩き付け、周囲の敵に灼熱ダメージを与える。同時に、チーム全員はエンバーの最大HPに基づくシールドを獲得する。（※灼熱付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_エンバー_ult_base",
+              "name": "誓約の炎 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 5.2,
+              "valuesByRank": {
+                "r1": 2.89,
+                "r9": 5.2,
+                "spec1": 5.6333,
+                "spec2": 6.0667,
+                "spec3": 6.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "大雷斑",
@@ -6904,10 +7650,10 @@
           "shortName": "戦技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 3.42,
-            "lv10_spec1": 3.75,
-            "lv11_spec2": 4.13,
-            "lv12_spec3": 4.56
+            "lv9": 2.8,
+            "lv10_spec1": 3.0333,
+            "lv11_spec2": 3.2667,
+            "lv12_spec3": 3.5
           },
           "hitCount": 3,
           "buffs": [
@@ -6955,7 +7701,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "前方に槍を突き出し、氷の音波を放つ。直線上の敵に寒冷ダメージを与え、寒冷付着を付与する。",
           "attachText": "寒冷付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_エステーラ_skill_base",
+              "name": "オノマトペ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.8,
+              "valuesByRank": {
+                "r1": 1.56,
+                "r9": 2.8,
+                "spec1": 3.0333,
+                "spec2": 3.2667,
+                "spec3": 3.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_estella",
@@ -6964,10 +7731,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.66,
-            "lv10_spec1": 2.9,
-            "lv11_spec2": 3.18,
-            "lv12_spec3": 3.52
+            "lv9": 2.88,
+            "lv10_spec1": 3.12,
+            "lv11_spec2": 3.36,
+            "lv12_spec3": 3.6
           },
           "hitCount": 1,
           "buffs": [
@@ -7027,7 +7794,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵が凍結状態になったときに発動可能。一定範囲内の敵に物理ダメージを与え、強制的に浮遊させる。凍結状態の敵に命中した場合、追加でダメージを与え、物理脆弱を付与する。",
           "attachText": "なし",
-          "anomalyText": "強制浮遊(クラッシュ+1段階) → 凍結中の敵には粉砕(凍結消費)＆物理脆弱付与"
+          "anomalyText": "強制浮遊(クラッシュ+1段階) → 凍結中の敵には粉砕(凍結消費)＆物理脆弱付与",
+          "modifiers": [
+            {
+              "id": "mod_エステーラ_combo_base",
+              "name": "ディストーション 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.88,
+              "valuesByRank": {
+                "r1": 1.6,
+                "r9": 2.88,
+                "spec1": 3.12,
+                "spec2": 3.36,
+                "spec3": 3.6
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_estella",
@@ -7036,10 +7824,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 6.84,
-            "lv10_spec1": 7.46,
-            "lv11_spec2": 8.17,
-            "lv12_spec3": 9.02
+            "lv9": 8.8,
+            "lv10_spec1": 9.5333,
+            "lv11_spec2": 10.2667,
+            "lv12_spec3": 11.0
           },
           "hitCount": 5,
           "buffs": [
@@ -7087,7 +7875,28 @@
           "damageTypeDetail": "物理",
           "rawText": "全力で槍の柄を地面に叩きつけ、周囲の敵に物理ダメージを与える。物理脆弱状態の敵を強制的に浮遊させる。",
           "attachText": "なし",
-          "anomalyText": "物理脆弱状態の敵にのみ強制浮遊付与(クラッシュ+1段階)"
+          "anomalyText": "物理脆弱状態の敵にのみ強制浮遊付与(クラッシュ+1段階)",
+          "modifiers": [
+            {
+              "id": "mod_エステーラ_ult_base",
+              "name": "トレモロ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 8.8,
+              "valuesByRank": {
+                "r1": 4.89,
+                "r9": 8.8,
+                "spec1": 9.5333,
+                "spec2": 10.2667,
+                "spec3": 11.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "O.B.J.鋭矛",
@@ -7451,10 +8260,10 @@
           "shortName": "戦技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 3.42,
-            "lv10_spec1": 3.75,
-            "lv11_spec2": 4.13,
-            "lv12_spec3": 4.56
+            "lv9": 3.36,
+            "lv10_spec1": 3.64,
+            "lv11_spec2": 3.92,
+            "lv12_spec3": 4.2
           },
           "hitCount": 3,
           "buffs": [
@@ -7502,7 +8311,28 @@
           "damageTypeDetail": "自然",
           "rawText": "お手製爆弾を蹴って敵に貼り付け、スロー(30%)を付与する。そのあと爆発し、範囲内の敵に自然ダメージを与え、自然付着を付与する。",
           "attachText": "自然付着(1段階・爆発時)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_フローライト_skill_base",
+              "name": "ちょっとイタズラ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.36,
+              "valuesByRank": {
+                "r1": 1.87,
+                "r9": 3.36,
+                "spec1": 3.64,
+                "spec2": 3.92,
+                "spec3": 4.2
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_fluorite",
@@ -7511,10 +8341,10 @@
           "shortName": "連携技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 2.66,
-            "lv10_spec1": 2.9,
-            "lv11_spec2": 3.18,
-            "lv12_spec3": 3.52
+            "lv9": 3.04,
+            "lv10_spec1": 3.2933,
+            "lv11_spec2": 3.5467,
+            "lv12_spec3": 3.8
           },
           "hitCount": 1,
           "buffs": [
@@ -7576,7 +8406,28 @@
           "rawText": "敵の寒冷付着または自然付着の付着段階が2以上になったときに発動可能。敵に自然ダメージを与え、対応属性のアーツ付着を付与する。",
           "attachText": "条件付き付着(1段階・敵に付いている寒冷付着または自然付着と同じ属性を追加付与)",
           "anomalyText": "なし",
-          "special": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める）"
+          "special": "【対応属性付着コピー】ダメージ自体は自然属性だが、付与するアーツ付着は敵の2段階以上の付着属性（寒冷付着なら寒冷付着、自然付着なら自然付着）になる（異属性アーツ異常は起こさず段階を+1進める）",
+          "modifiers": [
+            {
+              "id": "mod_フローライト_combo_base",
+              "name": "特別サービス 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.04,
+              "valuesByRank": {
+                "r1": 1.69,
+                "r9": 3.04,
+                "spec1": 3.2933,
+                "spec2": 3.5467,
+                "spec3": 3.8
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_fluorite",
@@ -7585,10 +8436,10 @@
           "shortName": "必殺技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 6.84,
-            "lv10_spec1": 7.46,
-            "lv11_spec2": 8.17,
-            "lv12_spec3": 9.02
+            "lv9": 2.0,
+            "lv10_spec1": 2.1667,
+            "lv11_spec2": 2.3333,
+            "lv12_spec3": 2.5
           },
           "hitCount": 5,
           "buffs": [
@@ -7664,7 +8515,28 @@
           "rawText": "自然ダメージを4段与える。お手製爆弾が付いている場合即座に起爆し爆発ダメージ+30%。最後の1段が2段階以上の寒冷付着または自然付着状態の敵に命中した場合、対応属性のアーツ付着をもう一度付与する。",
           "attachText": "条件付き付着(1段階・最終4段目が2段階以上の寒冷/自然付着の敵に命中時、対応属性の付着を追加付与)",
           "anomalyText": "なし",
-          "special": "【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆"
+          "special": "【対応属性付着コピー＆爆弾即時起爆】最終段命中時に敵が2段階以上の寒冷付着または自然付着なら、その属性の付着を+1段階付与。お手製爆弾があれば即時強化起爆",
+          "modifiers": [
+            {
+              "id": "mod_フローライト_ult_base",
+              "name": "つまんない茶番 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.0,
+              "valuesByRank": {
+                "r1": 1.11,
+                "r9": 2.0,
+                "spec1": 2.1667,
+                "spec2": 2.3333,
+                "spec3": 2.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "O.B.J.迅速",
@@ -8046,10 +8918,10 @@
           "shortName": "戦技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.75,
+            "lv10_spec1": 1.8967,
+            "lv11_spec2": 2.0433,
+            "lv12_spec3": 2.19
           },
           "hitCount": 3,
           "buffs": [
@@ -8097,7 +8969,28 @@
           "damageTypeDetail": "自然",
           "rawText": "引力特異点は周囲の敵を引き寄せ、自然ダメージを与える。終了時に爆発し、範囲内の敵に自然ダメージを与えて自然付着を付与する。",
           "attachText": "自然付着(1段階・終了爆発時)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ギルベルタ_skill_base",
+              "name": "秘杖・引力モード 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.75,
+              "valuesByRank": {
+                "r1": 0.97,
+                "r9": 1.75,
+                "spec1": 1.8967,
+                "spec2": 2.0433,
+                "spec3": 2.19
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_gilberta",
@@ -8106,10 +8999,10 @@
           "shortName": "連携技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 2.52,
+            "lv10_spec1": 2.73,
+            "lv11_spec2": 2.94,
+            "lv12_spec3": 3.15
           },
           "hitCount": 1,
           "buffs": [
@@ -8156,7 +9049,28 @@
           "damageTypeDetail": "自然",
           "rawText": "敵がアーツ異常状態になったときに発動可能。重力で目標および周囲の敵を引き寄せ、自然ダメージを与え、強制的に浮遊させる。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "強制浮遊付与(クラッシュ+1段階 ※自然ダメだが自然付着なし！)"
+          "anomalyText": "強制浮遊付与(クラッシュ+1段階 ※自然ダメだが自然付着なし！)",
+          "modifiers": [
+            {
+              "id": "mod_ギルベルタ_combo_base",
+              "name": "秘杖・マトリックス転移 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.52,
+              "valuesByRank": {
+                "r1": 1.4,
+                "r9": 2.52,
+                "spec1": 2.73,
+                "spec2": 2.94,
+                "spec3": 3.15
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_gilberta",
@@ -8165,10 +9079,10 @@
           "shortName": "必殺技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 6.0,
+            "lv10_spec1": 6.5,
+            "lv11_spec2": 7.0,
+            "lv12_spec3": 7.5
           },
           "hitCount": 5,
           "buffs": [
@@ -8244,7 +9158,28 @@
           "rawText": "範囲内の敵に自然ダメージを1回与えて自然付着を付与する。範囲内の敵はスロー(80%)とアーツ脆弱状態になり、クラッシュ段階に応じてアーツ脆弱が追加UP。浮遊状態は終了まで維持される。",
           "attachText": "自然付着(1段階)",
           "anomalyText": "範囲内の浮遊状態の敵は重力場終了まで浮遊状態維持",
-          "special": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される"
+          "special": "【クラッシュ段階連動アーツ脆弱＆浮遊維持】敵の現在クラッシュ段階に応じてアーツ脆弱が強化され、浮遊中の敵は5秒間浮遊が強制維持される",
+          "modifiers": [
+            {
+              "id": "mod_ギルベルタ_ult_base",
+              "name": "秘杖・重力場 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 6.0,
+              "valuesByRank": {
+                "r1": 3.33,
+                "r9": 6.0,
+                "spec1": 6.5,
+                "spec2": 7.0,
+                "spec3": 7.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "使命必達",
@@ -8613,10 +9548,10 @@
           "shortName": "戦技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.12,
+            "lv10_spec1": 1.2133,
+            "lv11_spec2": 1.3067,
+            "lv12_spec3": 1.4
           },
           "hitCount": 3,
           "buffs": [
@@ -8679,7 +9614,28 @@
           "rawText": "灼熱ダメージを与え、命中時劫火+1。劫火4段階時はすべて消費して追加攻撃を行い、灼熱ダメージを与え、強制的に短時間燃焼状態にし、必殺チャージを100回復する。（※灼熱付着なし）",
           "attachText": "なし",
           "anomalyText": "劫火4段階消費時、強制燃焼付与(5秒間 ※灼熱付着は付与しない！)",
-          "special": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化"
+          "special": "【劫火4段階消費＆必殺中変化】戦技自体は灼熱付着を持たず、劫火4段階消費時に強制燃焼(5秒)を付与し必殺チャージを100回復する。必殺技持続中は倍率が専用テーブルに変化",
+          "modifiers": [
+            {
+              "id": "mod_レーヴァテイン_skill_base",
+              "name": "焼滅 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.12,
+              "valuesByRank": {
+                "r1": 0.62,
+                "r9": 1.12,
+                "spec1": 1.2133,
+                "spec2": 1.3067,
+                "spec3": 1.4
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_laevatain",
@@ -8688,10 +9644,10 @@
           "shortName": "連携技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 4.32,
+            "lv10_spec1": 4.68,
+            "lv11_spec2": 5.04,
+            "lv12_spec3": 5.4
           },
           "hitCount": 1,
           "buffs": [
@@ -8738,7 +9694,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "敵が燃焼または腐食状態になったときに発動可能。灼熱ダメージを与え、劫火を1回獲得し、命中敵数に応じて必殺チャージ(25/30/35)を回復する。（※灼熱付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_レーヴァテイン_combo_base",
+              "name": "烈火 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 4.32,
+              "valuesByRank": {
+                "r1": 2.4,
+                "r9": 4.32,
+                "spec1": 4.68,
+                "spec2": 5.04,
+                "spec3": 5.4
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_laevatain",
@@ -8747,10 +9724,10 @@
           "shortName": "必殺技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 1.17,
+            "lv10_spec1": 1.2667,
+            "lv11_spec2": 1.3633,
+            "lv12_spec3": 1.46
           },
           "hitCount": 5,
           "buffs": [
@@ -8800,7 +9777,28 @@
           "rawText": "烈火の魔剣を召喚し、自身が操作中のオペレーターへと切り替わる。15秒間通常攻撃が強化され灼熱ダメージを与える。さらに、通常攻撃の3段目は敵に灼熱付着を付与する。",
           "attachText": "灼熱付着(1段階・強化通常攻撃の3段目のみ付与)",
           "anomalyText": "なし",
-          "special": "【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する"
+          "special": "【強化通常攻撃モード】15秒間通常攻撃が4段の魔剣協同攻撃に置き換わり、その3段目のみ灼熱付着(1段階)を付与する",
+          "modifiers": [
+            {
+              "id": "mod_レーヴァテイン_ult_base",
+              "name": "ラグナロク 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.17,
+              "valuesByRank": {
+                "r1": 0.65,
+                "r9": 1.17,
+                "spec1": 1.2667,
+                "spec2": 1.3633,
+                "spec3": 1.46
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "フレイムフォージ",
@@ -9184,10 +10182,10 @@
           "shortName": "戦技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 3,
           "buffs": [
@@ -9250,7 +10248,28 @@
           "rawText": "操作中のオペレーターの武器に低温注入を行い、SPが30返還される。15秒内、操作中のオペレーターの次の重攻撃はラストライトの幻影を生成し、寒冷ダメージを与え、寒冷付着を付与する。",
           "attachText": "寒冷付着(1段階・低温注入を受けた操作キャラの次の重攻撃時の幻影追撃で付与)",
           "anomalyText": "なし",
-          "special": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える"
+          "special": "【低温注入(重攻撃連動追撃)】戦技ボタンを押した瞬間ではなく、バフを受けた操作中オペレーターが15秒以内に次の重攻撃を当てた瞬間にラストライトの幻影が追撃し、寒冷ダメ＋寒冷付着(1段階)を与える",
+          "modifiers": [
+            {
+              "id": "mod_ラストライト_skill_base",
+              "name": "セシュカの秘伝 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_lastrite",
@@ -9259,10 +10278,10 @@
           "shortName": "連携技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 1.28,
+            "lv10_spec1": 1.3867,
+            "lv11_spec2": 1.4933,
+            "lv12_spec3": 1.6
           },
           "hitCount": 1,
           "buffs": [
@@ -9309,7 +10328,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "敵の寒冷付着状態が3段階以上になったときに発動可能。敵の寒冷付着をすべて消費し、消費した寒冷付着段階に応じて寒冷ダメージを与え、必殺チャージを回復する。",
           "attachText": "なし",
-          "anomalyText": "敵の寒冷付着を全段階消費(3段階または4段階消費)"
+          "anomalyText": "敵の寒冷付着を全段階消費(3段階または4段階消費)",
+          "modifiers": [
+            {
+              "id": "mod_ラストライト_combo_base",
+              "name": "冬喰 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.28,
+              "valuesByRank": {
+                "r1": 0.71,
+                "r9": 1.28,
+                "spec1": 1.3867,
+                "spec2": 1.4933,
+                "spec3": 1.6
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_lastrite",
@@ -9318,10 +10358,10 @@
           "shortName": "必殺技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 3.2,
+            "lv10_spec1": 3.4667,
+            "lv11_spec2": 3.7333,
+            "lv12_spec3": 4.0
           },
           "hitCount": 5,
           "buffs": [
@@ -9384,7 +10424,28 @@
           "rawText": "前方に斬撃を3回放ち、高い寒冷ダメージを与える（寒冷付着なし）。ラストライトの必殺チャージは、自身の戦技および連携技でのみ回復可能。",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る）"
+          "special": "【必殺チャージ獲得制限】ラストライトの必殺チャージはチーム共通のSP消費等では回復せず、自身の戦技(16)および連携技(40+15×段階)でのみ回復可能（チャージ回復効率UPは乗る）",
+          "modifiers": [
+            {
+              "id": "mod_ラストライト_ult_base",
+              "name": "終の別れ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r1": 1.78,
+                "r9": 3.2,
+                "spec1": 3.4667,
+                "spec2": 3.7333,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "クラヴェンガー",
@@ -9768,10 +10829,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 0.69,
+            "lv10_spec1": 0.7467,
+            "lv11_spec2": 0.8033,
+            "lv12_spec3": 0.86
           },
           "hitCount": 3,
           "buffs": [
@@ -9832,7 +10893,28 @@
           "damageTypeDetail": "物理",
           "rawText": "物理ダメージを2回与え、その後重い打撃で物理ダメージと転倒効果を与える。最後の一撃を受けた敵がクラッシュ状態でない場合、追加で物理脆弱を付与する。",
           "attachText": "なし",
-          "anomalyText": "3段目で転倒付与(クラッシュ+1段階)"
+          "anomalyText": "3段目で転倒付与(クラッシュ+1段階)",
+          "modifiers": [
+            {
+              "id": "mod_リーフォン_skill_base",
+              "name": "浄化身 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.69,
+              "valuesByRank": {
+                "r1": 0.38,
+                "r9": 0.69,
+                "spec1": 0.7467,
+                "spec2": 0.8033,
+                "spec3": 0.86
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_lifeng",
@@ -9841,10 +10923,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.84,
+            "lv10_spec1": 0.91,
+            "lv11_spec2": 0.98,
+            "lv12_spec3": 1.05
           },
           "hitCount": 1,
           "buffs": [
@@ -9904,7 +10986,28 @@
           "damageTypeDetail": "物理",
           "rawText": "物理脆弱または破砕状態の敵が、操作中のオペレーターの重攻撃を受けると発動可能。物理ダメージを与え、リンク状態を獲得する。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_リーフォン_combo_base",
+              "name": "忿怒形 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.84,
+              "valuesByRank": {
+                "r1": 0.47,
+                "r9": 0.84,
+                "spec1": 0.91,
+                "spec2": 0.98,
+                "spec3": 1.05
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_lifeng",
@@ -9913,10 +11016,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 3.2,
+            "lv10_spec1": 3.4667,
+            "lv11_spec2": 3.7333,
+            "lv12_spec3": 4.0
           },
           "hitCount": 5,
           "buffs": [
@@ -9964,7 +11067,44 @@
           "damageTypeDetail": "物理",
           "rawText": "広範囲の敵に物理ダメージと転倒効果を与え中心に引き寄せ、一定時間後再度高い物理ダメージと転倒効果を与える。必殺技発動時にリンク状態を消費した場合、追加で高い物理ダメージを与える。",
           "attachText": "なし",
-          "anomalyText": "1段目・2段目それぞれで転倒付与(計クラッシュ+2段階) / リンク消費時に追加物理ダメ"
+          "anomalyText": "1段目・2段目それぞれで転倒付与(計クラッシュ+2段階) / リンク消費時に追加物理ダメ",
+          "modifiers": [
+            {
+              "id": "mod_リーフォン_ult_base",
+              "name": "不動心 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r1": 1.78,
+                "r9": 3.2,
+                "spec1": 3.4667,
+                "spec2": 3.7333,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_リーフォン_ult_additional",
+              "name": "不動心 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 4.8,
+              "valuesByRank": {
+                "r9": 4.8,
+                "spec3": 6.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:trigger"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "負山",
@@ -10328,10 +11468,10 @@
           "shortName": "戦技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.92,
+            "lv10_spec1": 2.08,
+            "lv11_spec2": 2.24,
+            "lv12_spec3": 2.4
           },
           "hitCount": 3,
           "buffs": [
@@ -10407,7 +11547,44 @@
           "rawText": "敵に電磁ダメージを与え、その後ライブモード(60秒)に入る。持続期間中、チーム全員の攻撃力をアップし、範囲内のオペレーターを治療し続ける。（※電磁付着なし）",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）"
+          "special": "【SP25モード切替戦技】通常のSP100ではなくSP25で60秒間のライブモードを展開し、再使用時はSP0でモード停止する（※電磁付着なし）",
+          "modifiers": [
+            {
+              "id": "mod_リーノ_skill_base",
+              "name": "キラキラフォーカス 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.92,
+              "valuesByRank": {
+                "r1": 1.07,
+                "r9": 1.92,
+                "spec1": 2.08,
+                "spec2": 2.24,
+                "spec3": 2.4
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_リーノ_skill_additional",
+              "name": "キラキラフォーカス 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 0.96,
+              "valuesByRank": {
+                "r9": 0.96,
+                "spec3": 1.2
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:trigger"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_lino",
@@ -10416,10 +11593,10 @@
           "shortName": "連携技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 2.88,
+            "lv10_spec1": 3.12,
+            "lv11_spec2": 3.36,
+            "lv12_spec3": 3.6
           },
           "hitCount": 1,
           "buffs": [
@@ -10466,7 +11643,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "ライブモード期間中、敵がアーツ異常を受けるかアーツ異常が消費されたときに発動可能。敵に電磁ダメージを与え、操作オペレーターを治療し、必殺チャージを20回復する。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_リーノ_combo_base",
+              "name": "ときめきメロディー 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.88,
+              "valuesByRank": {
+                "r1": 1.6,
+                "r9": 2.88,
+                "spec1": 3.12,
+                "spec2": 3.36,
+                "spec3": 3.6
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_lino",
@@ -10475,10 +11673,10 @@
           "shortName": "必殺技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 5,
           "buffs": [
@@ -10552,7 +11750,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "チーム全員を治療しパフォーマンスモード(15秒)に入る。クライマックス最高潮で広範囲の敵に電磁ダメージを与え、強制的に感電状態にする。持続中、チーム全員の攻撃力+10%、意志に応じて電磁増幅と自然増幅を付与する。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)"
+          "anomalyText": "クライマックス最高潮で強制感電付与(※電磁付着は付与しない！)",
+          "modifiers": [
+            {
+              "id": "mod_リーノ_ult_base",
+              "name": "綺羅星コンチェルト 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "プリズムナイトデビュー",
@@ -10921,10 +12140,10 @@
           "shortName": "戦技1",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 3,
           "buffs": [
@@ -10987,7 +12206,28 @@
           "rawText": "断雲(SP100→50返還)→追形(SP50・猛撃付与、最大クラッシュ消費3以上で開天へ)→開天(SP50・戦技ダメージではなく猛撃ダメージと見なされる)。",
           "attachText": "なし",
           "anomalyText": "2段目「追形」で猛撃付与(クラッシュ全消費) → 消費クラッシュ3段階以上で3段目「開天」(猛撃ダメ扱い)解放",
-          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）"
+          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）",
+          "modifiers": [
+            {
+              "id": "mod_ミ・フ_skill_base",
+              "name": "清波三芸（断雲 → 追形 → 開天） 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "skill2_mifu",
@@ -10996,10 +12236,10 @@
           "shortName": "戦技2",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.1,
-            "lv10_spec1": 2.31,
-            "lv11_spec2": 2.57,
-            "lv12_spec3": 2.89
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 1,
           "buffs": [
@@ -11062,7 +12302,28 @@
           "rawText": "断雲(SP100→50返還)→追形(SP50・猛撃付与、最大クラッシュ消費3以上で開天へ)→開天(SP50・戦技ダメージではなく猛撃ダメージと見なされる)。",
           "attachText": "なし",
           "anomalyText": "2段目「追形」で猛撃付与(クラッシュ全消費) → 消費クラッシュ3段階以上で3段目「開天」(猛撃ダメ扱い)解放",
-          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）"
+          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）",
+          "modifiers": [
+            {
+              "id": "mod_ミ・フ_skill_base",
+              "name": "清波三芸（断雲 → 追形 → 開天） 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "skill3_mifu",
@@ -11071,10 +12332,10 @@
           "shortName": "戦技3",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.1,
-            "lv10_spec1": 2.31,
-            "lv11_spec2": 2.57,
-            "lv12_spec3": 2.89
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 1,
           "buffs": [
@@ -11137,7 +12398,28 @@
           "rawText": "断雲(SP100→50返還)→追形(SP50・猛撃付与、最大クラッシュ消費3以上で開天へ)→開天(SP50・戦技ダメージではなく猛撃ダメージと見なされる)。",
           "attachText": "なし",
           "anomalyText": "2段目「追形」で猛撃付与(クラッシュ全消費) → 消費クラッシュ3段階以上で3段目「開天」(猛撃ダメ扱い)解放",
-          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）"
+          "special": "【3段変化戦技＆猛撃ダメージ見なし】1段目『断雲』(実質SP50)、2段目『追形』(SP50・連携/必殺後も直接移行可・猛撃付与)、3段目『開天』(SP50・クラッシュ3以上消費時)。『開天』は戦技ダメージではなく『猛撃ダメージ』と見なされる（戦技ダメUP・リンク非適用、猛撃参照効果が乗る）",
+          "modifiers": [
+            {
+              "id": "mod_ミ・フ_skill_base",
+              "name": "清波三芸（断雲 → 追形 → 開天） 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_mifu",
@@ -11146,10 +12428,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 2.0,
+            "lv10_spec1": 2.1667,
+            "lv11_spec2": 2.3333,
+            "lv12_spec3": 2.5
           },
           "hitCount": 1,
           "buffs": [
@@ -11209,7 +12491,28 @@
           "damageTypeDetail": "物理",
           "rawText": "敵のクラッシュ段階が3になった時に発動可能。物理ダメージを与え、16秒間5%の物理脆弱を付与する。発動後、一定時間戦技が追形に替わる。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ミ・フ_combo_base",
+              "name": "拳に悔い無し 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.0,
+              "valuesByRank": {
+                "r1": 1.11,
+                "r9": 2.0,
+                "spec1": 2.1667,
+                "spec2": 2.3333,
+                "spec3": 2.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_mifu",
@@ -11218,10 +12521,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 5.6,
+            "lv10_spec1": 6.0667,
+            "lv11_spec2": 6.5333,
+            "lv12_spec3": 7.0
           },
           "hitCount": 5,
           "buffs": [
@@ -11269,7 +12572,28 @@
           "damageTypeDetail": "物理",
           "rawText": "目の前の目標を強制的に浮遊させ、その後地面に叩きつけて物理ダメージを与える。発動後、一定時間戦技が追形に替わる。",
           "attachText": "なし",
-          "anomalyText": "強制浮遊付与(クラッシュ+1段階)"
+          "anomalyText": "強制浮遊付与(クラッシュ+1段階)",
+          "modifiers": [
+            {
+              "id": "mod_ミ・フ_ult_base",
+              "name": "心絶やす 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 5.6,
+              "valuesByRank": {
+                "r1": 3.11,
+                "r9": 5.6,
+                "spec1": 6.0667,
+                "spec2": 6.5333,
+                "spec3": 7.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "赤纓",
@@ -11940,10 +13264,10 @@
             "description": "牢獄中の敵命中時、連携(知)の早期起爆・SP返還・追加ダメを誘発"
           },
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 3,
           "buffs": [
@@ -11994,7 +13318,28 @@
           "rawText": "砕玉領域を展開し、範囲内の敵に自然ダメージを与え、さらに自然付着を付与する。陣訣・知：与えるダメージがさらに高くなる(222%→400%→500%)。",
           "attachText": "自然付着(1段階)",
           "anomalyText": "牢獄中の敵命中時、連携(知)の早期起爆・SP返還・追加ダメを誘発",
-          "special": "【陣訣・知/意のスキル形態分岐】ステータス画面の知性≧意志で高倍率の陣訣・知になる"
+          "special": "【陣訣・知/意のスキル形態分岐】ステータス画面の知性≧意志で高倍率の陣訣・知になる",
+          "modifiers": [
+            {
+              "id": "mod_オクギ_skill_base",
+              "name": "砕玉領域【陣訣・知(知性≧意志)】 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_okugi",
@@ -12015,10 +13360,10 @@
             "description": "クラッシュ効果はありません"
           },
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.64,
+            "lv10_spec1": 0.6933,
+            "lv11_spec2": 0.7467,
+            "lv12_spec3": 0.8
           },
           "hitCount": 1,
           "buffs": [
@@ -12081,7 +13426,28 @@
           "rawText": "陣訣・知：自然脆弱と寒冷脆弱(4%)を付与し牢獄状態(4秒)にする。自身の戦技が牢獄状態の敵に命中したときSP返還(28→30)、爆発ダメージを与え再度脆弱付与し追加ダメージ(222%→500%)を与える。（※陣訣・知は連携での付着なし）",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【陣訣・知の連携挙動】陣訣・知では連携技にアーツ付着効果はなく、自身の戦技命中による牢獄早期起爆＋SP返還(28〜30)＋高倍率追撃(222%〜500%)に特化する"
+          "special": "【陣訣・知の連携挙動】陣訣・知では連携技にアーツ付着効果はなく、自身の戦技命中による牢獄早期起爆＋SP返還(28〜30)＋高倍率追撃(222%〜500%)に特化する",
+          "modifiers": [
+            {
+              "id": "mod_オクギ_combo_base",
+              "name": "応龍四式【陣訣・知(知性≧意志)】 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.64,
+              "valuesByRank": {
+                "r1": 0.35,
+                "r9": 0.64,
+                "spec1": 0.6933,
+                "spec2": 0.7467,
+                "spec3": 0.8
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_okugi",
@@ -12102,10 +13468,10 @@
             "description": "生成時に強制腐食付与(15秒間 ※アーツ付着は付与しない)"
           },
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 1.44,
+            "lv10_spec1": 1.56,
+            "lv11_spec2": 1.68,
+            "lv12_spec3": 1.8
           },
           "hitCount": 5,
           "buffs": [
@@ -12169,7 +13535,28 @@
           "rawText": "陣訣・知：破晦陣を生成する際、範囲内の敵を強制的に腐食状態(15秒)にする。集中攻撃2回後に破晦訣明(640%→1152%→1440%)を発動可能。",
           "attachText": "なし",
           "anomalyText": "生成時に強制腐食付与(15秒間 ※アーツ付着は付与しない)",
-          "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される"
+          "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される",
+          "modifiers": [
+            {
+              "id": "mod_オクギ_ult_base",
+              "name": "破晦【陣訣・知(知性≧意志)】 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.44,
+              "valuesByRank": {
+                "r1": 0.8,
+                "r9": 1.44,
+                "spec1": 1.56,
+                "spec2": 1.68,
+                "spec3": 1.8
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult2_okugi",
@@ -12190,10 +13577,10 @@
             "description": "生成時に強制腐食付与(15秒間 ※アーツ付着は付与しない)"
           },
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 1.44,
+            "lv10_spec1": 1.56,
+            "lv11_spec2": 1.68,
+            "lv12_spec3": 1.8
           },
           "hitCount": 5,
           "buffs": [
@@ -12257,7 +13644,28 @@
           "rawText": "陣訣・知：破晦陣を生成する際、範囲内の敵を強制的に腐食状態(15秒)にする。集中攻撃2回後に破晦訣明(640%→1152%→1440%)を発動可能。",
           "attachText": "なし",
           "anomalyText": "生成時に強制腐食付与(15秒間 ※アーツ付着は付与しない)",
-          "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される"
+          "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される",
+          "modifiers": [
+            {
+              "id": "mod_オクギ_ult_base",
+              "name": "破晦【陣訣・知(知性≧意志)】 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.44,
+              "valuesByRank": {
+                "r1": 0.8,
+                "r9": 1.44,
+                "spec1": 1.56,
+                "spec2": 1.68,
+                "spec3": 1.8
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "四二式・粛陣",
@@ -12662,10 +14070,10 @@
           "shortName": "戦技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 3.2,
+            "lv10_spec1": 3.4667,
+            "lv11_spec2": 3.7333,
+            "lv12_spec3": 4.0
           },
           "hitCount": 3,
           "buffs": [
@@ -12713,7 +14121,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "放出した電磁エネルギーを空中から落とし、一定範囲内の敵に電磁ダメージを与え、電磁付着を付与する。",
           "attachText": "電磁付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ペリカ_skill_base",
+              "name": "協約ω：雷撃 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r1": 1.78,
+                "r9": 3.2,
+                "spec1": 3.4667,
+                "spec2": 3.7333,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_perlica",
@@ -12722,10 +14151,10 @@
           "shortName": "連携技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 1.44,
+            "lv10_spec1": 1.56,
+            "lv11_spec2": 1.68,
+            "lv12_spec3": 1.8
           },
           "hitCount": 1,
           "buffs": [
@@ -12785,7 +14214,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "操作中のオペレーターが敵に重攻撃を与えると発動可能。電磁ダメージを与え、強制的に短時間(5秒)感電状態にする。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "強制感電付与(5秒間 ※電磁付着ではなく直接感電状態にする)"
+          "anomalyText": "強制感電付与(5秒間 ※電磁付着ではなく直接感電状態にする)",
+          "modifiers": [
+            {
+              "id": "mod_ペリカ_combo_base",
+              "name": "即時協約：閃光鎖 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.44,
+              "valuesByRank": {
+                "r1": 0.8,
+                "r9": 1.44,
+                "spec1": 1.56,
+                "spec2": 1.68,
+                "spec3": 1.8
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_perlica",
@@ -12794,10 +14244,10 @@
           "shortName": "必殺技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 8.0,
+            "lv10_spec1": 8.6667,
+            "lv11_spec2": 9.3333,
+            "lv12_spec3": 10.0
           },
           "hitCount": 5,
           "buffs": [
@@ -12845,7 +14295,28 @@
           "damageTypeDetail": "電磁",
           "rawText": "巨大な軌道浮遊物を転送し、範囲内の敵に高い電磁ダメージを与える。（※電磁付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ペリカ_ult_base",
+              "name": "協約ε：70.41κ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 8.0,
+              "valuesByRank": {
+                "r1": 4.45,
+                "r9": 8.0,
+                "spec1": 8.6667,
+                "spec2": 9.3333,
+                "spec3": 10.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "荒野迷走",
@@ -13216,10 +14687,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.54,
+            "lv10_spec1": 1.6667,
+            "lv11_spec2": 1.7933,
+            "lv12_spec3": 1.92
           },
           "hitCount": 3,
           "buffs": [
@@ -13280,7 +14751,28 @@
           "damageTypeDetail": "物理",
           "rawText": "前方範囲の敵に斬撃を2段放ち、物理ダメージと破砕を与える。同時に、消費したクラッシュ段階に応じてSPを回復する。",
           "attachText": "なし",
-          "anomalyText": "破砕付与(クラッシュ全段階消費＆物理被ダメUPデバフ)"
+          "anomalyText": "破砕付与(クラッシュ全段階消費＆物理被ダメUPデバフ)",
+          "modifiers": [
+            {
+              "id": "mod_ポグラニチニク_skill_base",
+              "name": "戦線粉砕 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.54,
+              "valuesByRank": {
+                "r1": 0.86,
+                "r9": 1.54,
+                "spec1": 1.6667,
+                "spec2": 1.7933,
+                "spec3": 1.92
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_pogranichnik",
@@ -13289,10 +14781,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.76,
+            "lv10_spec1": 0.8233,
+            "lv11_spec2": 0.8867,
+            "lv12_spec3": 0.95
           },
           "hitCount": 1,
           "buffs": [
@@ -13339,7 +14831,28 @@
           "damageTypeDetail": "物理",
           "rawText": "猛撃または破砕によってクラッシュ段階が消費されると発動可能。消費した最大クラッシュ段階と同じ回数斬撃を放ち(最大3段、4消費時は3段目強化)、SPを回復する。",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ポグラニチニク_combo_base",
+              "name": "満月迎撃 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.76,
+              "valuesByRank": {
+                "r1": 0.42,
+                "r9": 0.76,
+                "spec1": 0.8233,
+                "spec2": 0.8867,
+                "spec3": 0.95
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_pogranichnik",
@@ -13348,10 +14861,10 @@
           "shortName": "必殺技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 5,
           "buffs": [
@@ -13414,7 +14927,28 @@
           "rawText": "進軍で物理ダメージを与え鉄誓を5回分獲得する。敵が物理異常またはポグラニチニクの連携技ダメージを受けると鉄誓を1回消費して撹乱(最後の一回は勝決)を発動し物理ダメージとSP回復を行う。",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【鉄誓5スタック連動追撃】物理異常または自身の連携技1ヒットごとに鉄誓を消費して盾兵追撃＆SP回復が発生し、任意のオペレーターによる誘発時に素質2の単体バフが付与される"
+          "special": "【鉄誓5スタック連動追撃】物理異常または自身の連携技1ヒットごとに鉄誓を消費して盾兵追撃＆SP回復が発生し、任意のオペレーターによる誘発時に素質2の単体バフが付与される",
+          "modifiers": [
+            {
+              "id": "mod_ポグラニチニク_ult_base",
+              "name": "盾兵旗隊、進め 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "不知帰",
@@ -13809,10 +15343,10 @@
           "shortName": "戦技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 3.2,
+            "lv10_spec1": 3.4667,
+            "lv11_spec2": 3.7333,
+            "lv12_spec3": 4.0
           },
           "hitCount": 3,
           "buffs": [
@@ -13875,7 +15409,28 @@
           "rawText": "盾を構えている間加護(90%)を与えSP20返還(初ブロック成功時さらにSP20返還)。発動後、戦技が「お友だちから離れろ～！」に替わり、頭突きして自然ダメージを与え、自然付着を付与する。",
           "attachText": "自然付着(1段階・派生戦技「お友だちから離れろ～！」発動時)",
           "anomalyText": "なし",
-          "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える"
+          "special": "【物理キャラによる派生自然付着】物理属性オペレーターだが、戦技発動後に変化する派生戦技『お友だちから離れろ～！』で自然ダメージと自然付着(1段階)を与える",
+          "modifiers": [
+            {
+              "id": "mod_プチエナ_skill_base",
+              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.2,
+              "valuesByRank": {
+                "r1": 1.78,
+                "r9": 3.2,
+                "spec1": 3.4667,
+                "spec2": 3.7333,
+                "spec3": 4.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_purrchena",
@@ -13884,10 +15439,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 1,
           "buffs": [
@@ -13949,7 +15504,28 @@
           "rawText": "範囲内のオペレーターを治療し、爆弾・手作りアイテム・おいし～お菓子のいずれか1つがランダムで出現する。",
           "attachText": "なし",
           "anomalyText": "なし",
-          "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する"
+          "special": "【ランダム3分岐連携】爆弾・手作りアイテム・お菓子のいずれか1つがランダムで出現する",
+          "modifiers": [
+            {
+              "id": "mod_プチエナ_combo_base",
+              "name": "お菓子or“プレゼント” 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_purrchena",
@@ -14421,10 +15997,10 @@
           "shortName": "戦技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.54,
+            "lv10_spec1": 1.6667,
+            "lv11_spec2": 1.7933,
+            "lv12_spec3": 1.92
           },
           "hitCount": 3,
           "buffs": [
@@ -14472,7 +16048,28 @@
           "damageTypeDetail": "物理(1段目) / 灼熱(2段目・狼の至宝)",
           "rawText": "目標に突進し、物理ダメージと浮遊効果を与える。クラッシュ状態の目標に命中した場合、追加で狼の至宝を放ち、灼熱ダメージを与える。（※灼熱付着なし）",
           "attachText": "なし",
-          "anomalyText": "1段目で浮遊付与(クラッシュ+1段階) → クラッシュ状態の目標には2段目「狼の至宝」(灼熱ダメ・素質1トリガー)追撃"
+          "anomalyText": "1段目で浮遊付与(クラッシュ+1段階) → クラッシュ状態の目標には2段目「狼の至宝」(灼熱ダメ・素質1トリガー)追撃",
+          "modifiers": [
+            {
+              "id": "mod_ロッシ_skill_base",
+              "name": "真紅の影 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.54,
+              "valuesByRank": {
+                "r1": 0.85,
+                "r9": 1.54,
+                "spec1": 1.6667,
+                "spec2": 1.7933,
+                "spec3": 1.92
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_rossi",
@@ -14481,10 +16078,10 @@
           "shortName": "連携技",
           "damageType": "物理",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 1,
           "buffs": [
@@ -14559,7 +16156,28 @@
           "rawText": "敵がクラッシュかつアーツ付着状態の時に発動可能、連続で2回発動できる。2回目は全てのアーツ付着を消費し物理ダメージと浮遊を与え、15秒間自身の会心率と会心ダメージがアップ。完璧連携時は追加でクラッシュ1段階付与。",
           "attachText": "なし",
           "anomalyText": "2回目で敵のすべてのアーツ付着を全消費 ＋ 浮遊付与(クラッシュ+1) ＋ 完璧連携時はクラッシュさらに+1段階",
-          "special": "【2連続発動連携＆完璧連携ボーナス】1回のトリガーで連携技を連続2回発動でき、2回目で全アーツ付着を消費して浮遊と自己会心バフを獲得。2回目を『完璧連携(ジャスト入力)』で発動すると追加でクラッシュ+1段階を付与する"
+          "special": "【2連続発動連携＆完璧連携ボーナス】1回のトリガーで連携技を連続2回発動でき、2回目で全アーツ付着を消費して浮遊と自己会心バフを獲得。2回目を『完璧連携(ジャスト入力)』で発動すると追加でクラッシュ+1段階を付与する",
+          "modifiers": [
+            {
+              "id": "mod_ロッシ_combo_base",
+              "name": "刹那の影 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:physical",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_rossi",
@@ -14568,10 +16186,10 @@
           "shortName": "必殺技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 4.75,
+            "lv10_spec1": 5.1667,
+            "lv11_spec2": 5.5833,
+            "lv12_spec3": 6.0
           },
           "hitCount": 5,
           "buffs": [
@@ -14632,7 +16250,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "短時間で目標に灼熱ダメージを複数回与えたあと、ナイフによる斬撃を2段繰り出し、高い灼熱ダメージを与え、灼熱付着を付与する（必殺技固有会心ダメージ+60%）。",
           "attachText": "灼熱付着(1段階・最終斬撃時)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ロッシ_ult_base",
+              "name": "\"鋭爪\"奇襲 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 4.75,
+              "valuesByRank": {
+                "r1": 2.75,
+                "r9": 4.75,
+                "spec1": 5.1667,
+                "spec2": 5.5833,
+                "spec3": 6.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "狼緋",
@@ -14828,9 +16467,9 @@
           "damageType": "寒冷",
           "multipliers": {
             "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv10_spec1": 3.9,
+            "lv11_spec2": 4.2,
+            "lv12_spec3": 4.5
           },
           "hitCount": 3,
           "buffs": [
@@ -14878,7 +16517,28 @@
           "damageTypeDetail": "寒冷(反撃発動時のみ)",
           "rawText": "防御の構えをとり即時SP30を返還し、自身と周囲の味方に90%の加護を付与する。構え中に攻撃を受けると反撃を行い、寒冷ダメージを与え寒冷付着(1段階)を付与する。",
           "attachText": "寒冷付着(1段階 / 被弾反撃成功時のみ)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_スノーシャイン_skill_base",
+              "name": "限界防御 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.6,
+              "valuesByRank": {
+                "r1": 2.0,
+                "r9": 3.6,
+                "spec1": 3.9,
+                "spec2": 4.2,
+                "spec3": 4.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_snowshine",
@@ -14933,10 +16593,10 @@
           "shortName": "必殺技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 3.6,
+            "lv10_spec1": 3.9,
+            "lv11_spec2": 4.2,
+            "lv12_spec3": 4.5
           },
           "hitCount": 5,
           "buffs": [
@@ -14984,7 +16644,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "前方に盾を投げつけ寒冷ダメージを与え、5秒間持続する氷雪地帯を生成して0.5秒ごとに寒冷ダメージを与える。氷雪地帯に一定時間滞在した敵を強制的に凍結状態にする。（※寒冷付着は付与しない）",
           "attachText": "なし",
-          "anomalyText": "氷雪地帯内に一定時間滞在した敵に強制凍結付与(※寒冷付着は付与しない！)"
+          "anomalyText": "氷雪地帯内に一定時間滞在した敵に強制凍結付与(※寒冷付着は付与しない！)",
+          "modifiers": [
+            {
+              "id": "mod_スノーシャイン_ult_base",
+              "name": "凍てつく寒霜 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.6,
+              "valuesByRank": {
+                "r1": 2.0,
+                "r9": 3.6,
+                "spec1": 3.9,
+                "spec2": 4.2,
+                "spec3": 4.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "最期の声",
@@ -15167,10 +16848,10 @@
             "description": "行動停止1秒(1凸で1.5秒)付与"
           },
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 0.8,
+            "lv10_spec1": 0.8667,
+            "lv11_spec2": 0.9333,
+            "lv12_spec3": 1.0
           },
           "hitCount": 3,
           "buffs": [
@@ -15221,7 +16902,28 @@
           "rawText": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
           "attachText": "01位置キャラが灼熱属性なら灼熱付着(1段階)、それ以外の全属性なら寒冷付着(1段階)",
           "anomalyText": "行動停止1秒(1凸で1.5秒)付与",
-          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。"
+          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
+          "modifiers": [
+            {
+              "id": "mod_スー_skill_base",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.8,
+              "valuesByRank": {
+                "r1": 0.44,
+                "r9": 0.8,
+                "spec1": 0.8667,
+                "spec2": 0.9333,
+                "spec3": 1.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "skill2_su",
@@ -15242,10 +16944,10 @@
             "description": "行動停止1秒(1凸で1.5秒)付与"
           },
           "multipliers": {
-            "lv9": 2.1,
-            "lv10_spec1": 2.31,
-            "lv11_spec2": 2.57,
-            "lv12_spec3": 2.89
+            "lv9": 0.8,
+            "lv10_spec1": 0.8667,
+            "lv11_spec2": 0.9333,
+            "lv12_spec3": 1.0
           },
           "hitCount": 1,
           "buffs": [
@@ -15296,7 +16998,28 @@
           "rawText": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
           "attachText": "01位置キャラが灼熱属性なら灼熱付着(1段階)、それ以外の全属性なら寒冷付着(1段階)",
           "anomalyText": "行動停止1秒(1凸で1.5秒)付与",
-          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。"
+          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
+          "modifiers": [
+            {
+              "id": "mod_スー_skill_base",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.8,
+              "valuesByRank": {
+                "r1": 0.44,
+                "r9": 0.8,
+                "spec1": 0.8667,
+                "spec2": 0.9333,
+                "spec3": 1.0
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_su",
@@ -15317,10 +17040,10 @@
             "description": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)"
           },
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 6.0,
+            "lv10_spec1": 6.5,
+            "lv11_spec2": 7.0,
+            "lv12_spec3": 7.5
           },
           "hitCount": 1,
           "buffs": [
@@ -15355,7 +17078,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "敵の寒冷付着または灼熱付着が消費または吸収されたときに発動可能。敵に寒冷ダメージを与え、消費・吸収された段階数に応じて追加ダメージを与える。（※寒冷付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)"
+          "anomalyText": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)",
+          "modifiers": [
+            {
+              "id": "mod_スー_combo_base",
+              "name": "胸中に成竹在り 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 6.0,
+              "valuesByRank": {
+                "r1": 3.33,
+                "r9": 6.0,
+                "spec1": 6.5,
+                "spec2": 7.0,
+                "spec3": 7.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_su",
@@ -15376,10 +17120,10 @@
             "description": "クラッシュ効果はありません"
           },
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 4.0,
+            "lv10_spec1": 4.3333,
+            "lv11_spec2": 4.6667,
+            "lv12_spec3": 5.0
           },
           "hitCount": 5,
           "buffs": [
@@ -15428,7 +17172,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "敵に寒冷ダメージを与え、12秒間チーム全員に寒冷増幅と灼熱増幅(20%→36%)を付与する。（※寒冷付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_スー_ult_base",
+              "name": "白けさせるでない！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 4.0,
+              "valuesByRank": {
+                "r1": 2.22,
+                "r9": 4.0,
+                "spec1": 4.3333,
+                "spec2": 4.6667,
+                "spec3": 5.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "玉中身",
@@ -15607,10 +17372,10 @@
           "shortName": "戦技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 1.44,
+            "lv10_spec1": 1.56,
+            "lv11_spec2": 1.68,
+            "lv12_spec3": 1.8
           },
           "hitCount": 3,
           "buffs": [
@@ -15686,7 +17451,28 @@
           "rawText": "寒冷ダメージを与え水竜巻を1つ発生させ、さらに周囲の湍水(最大2)を消費して同数の水竜巻を発生(1つにつきSP20返還)。水竜巻は寒冷付着(1段階のみ・重複不可)と寒冷ダメージを与え、2つ以上でアーツ脆弱(5%/10%)を付与する。",
           "attachText": "寒冷付着(1段階 / 水竜巻が複数発生しても付着は重複せず1段階のみ)",
           "anomalyText": "なし",
-          "special": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加）"
+          "special": "【水竜巻の付着非重複ルール】湍水を消費して水竜巻を2〜3個同時に発生させても、寒冷付着は重複せず合計「1段階」のみ付与される（ダメージとアーツ脆弱段階は水竜巻数に応じて増加）",
+          "modifiers": [
+            {
+              "id": "mod_タンタン_skill_base",
+              "name": "波が来るぜ！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.44,
+              "valuesByRank": {
+                "r1": 0.8,
+                "r9": 1.44,
+                "spec1": 1.56,
+                "spec2": 1.68,
+                "spec3": 1.8
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_tangtang",
@@ -15695,10 +17481,10 @@
           "shortName": "連携技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 1.92,
+            "lv10_spec1": 2.08,
+            "lv11_spec2": 2.24,
+            "lv12_spec3": 2.4
           },
           "hitCount": 1,
           "buffs": [
@@ -15745,7 +17531,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "敵が寒冷付着またはアーツ爆発のダメージを受けたときに発動可能。敵に寒冷ダメージを与え、戦場に「湍水」を1つ生成する。（※連携技自体は寒冷付着を付与しない！）",
           "attachText": "なし",
-          "anomalyText": "なし(フィールドに「湍水」1カ所生成)"
+          "anomalyText": "なし(フィールドに「湍水」1カ所生成)",
+          "modifiers": [
+            {
+              "id": "mod_タンタン_combo_base",
+              "name": "川よ、俺様に従え！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.92,
+              "valuesByRank": {
+                "r1": 1.07,
+                "r9": 1.92,
+                "spec1": 2.08,
+                "spec2": 2.24,
+                "spec3": 2.4
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_tangtang",
@@ -15754,10 +17561,10 @@
           "shortName": "必殺技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 5,
           "buffs": [
@@ -15820,7 +17627,28 @@
           "rawText": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
           "attachText": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)",
           "anomalyText": "範囲内の敵に行動停止付与",
-          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する",
+          "modifiers": [
+            {
+              "id": "mod_タンタン_ult_base",
+              "name": "大親分が見てっぞ！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_cancel_tangtang",
@@ -15829,10 +17657,10 @@
           "shortName": "必殺キャンセル",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 0,
-            "lv10_spec1": 0,
-            "lv11_spec2": 0,
-            "lv12_spec3": 0
+            "lv9": 2.56,
+            "lv10_spec1": 2.7733,
+            "lv11_spec2": 2.9867,
+            "lv12_spec3": 3.2
           },
           "hitCount": 1,
           "buffs": [
@@ -15895,7 +17723,28 @@
           "rawText": "4秒間古の紋様を展開し敵に行動停止と持続寒冷ダメージを与え、終了時に大波で寒冷ダメージを与える。範囲内で操作オペレーターが落下攻撃を行うと早期終了して大波の威力とブレイク値が大幅強化される。（※必殺技自体には寒冷付着なし）",
           "attachText": "なし(※必殺自体は付着なし。落下攻撃早期終了時に素質2で発生する水竜巻が寒冷付着1段階を付与)",
           "anomalyText": "範囲内の敵に行動停止付与",
-          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する"
+          "special": "【落下攻撃連動早期起爆】古の紋様(4秒)展開中に操作キャラが落下攻撃を行うと早期終了し、終結大波が400%→700%に強化され、さらに素質2により戦技と同仕様の水竜巻が発生する",
+          "modifiers": [
+            {
+              "id": "mod_タンタン_ult_base",
+              "name": "大親分が見てっぞ！ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.56,
+              "valuesByRank": {
+                "r1": 1.42,
+                "r9": 2.56,
+                "spec1": 2.7733,
+                "spec2": 2.9867,
+                "spec3": 3.2
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "落草",
@@ -16079,10 +17928,10 @@
           "shortName": "戦技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 0.4,
+            "lv10_spec1": 0.4333,
+            "lv11_spec2": 0.4667,
+            "lv12_spec3": 0.5
           },
           "hitCount": 3,
           "buffs": [
@@ -16145,7 +17994,28 @@
           "rawText": "ジャンプ射撃後、浮遊状態に入り最大5回の空中通常攻撃を行う。自然付着状態の敵に命中すると自然付着を1段階消費し啓示+1と必殺チャージ+12を獲得。猟矢を1本消費した強化射撃は命中時に強制的に自然爆発を1回与え、自然付着を消費していた場合は自然爆発ダメージが1.1倍→1.3倍にアップ。（※自然付着は付与しない）",
           "attachText": "なし",
           "anomalyText": "命中毎に自然付着を1段階消費 / 「強化射撃」命中時に強制的に自然爆発を1回発動！",
-          "special": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。"
+          "special": "【自然付着消費＆強制自然爆発】自身は自然付着を付与せず、味方が付与した自然付着を空中射撃毎に1段階消費して啓示+1＆必殺チャージ+12を得る。猟矢消費(または操作中5段目)の「強化射撃」は4段階蓄積を待たずに強制的に自然爆発を発生させ、付着消費時はその自然爆発ダメージを1.3倍(5凸で×1.1倍)に乗算強化する。",
+          "modifiers": [
+            {
+              "id": "mod_ティフォロス_skill_base",
+              "name": "風裂く一矢 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.4,
+              "valuesByRank": {
+                "r1": 0.22,
+                "r9": 0.4,
+                "spec1": 0.4333,
+                "spec2": 0.4667,
+                "spec3": 0.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_typhoeus",
@@ -16154,10 +18024,10 @@
           "shortName": "連携技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 1.6,
+            "lv10_spec1": 1.7333,
+            "lv11_spec2": 1.8667,
+            "lv12_spec3": 2.0
           },
           "hitCount": 1,
           "buffs": [
@@ -16217,7 +18087,28 @@
           "damageTypeDetail": "自然",
           "rawText": "啓示が最大(8)のときに発動可能。すべての啓示を猟矢に変換(2につき1本)し空中攻撃回数をリセット。自然ダメージを与え矢陣を展開し、範囲内の敵にスロー60%と受ける自然爆発ダメージ+6%→+10%を付与する。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "スロー60%付与"
+          "anomalyText": "スロー60%付与",
+          "modifiers": [
+            {
+              "id": "mod_ティフォロス_combo_base",
+              "name": "荒れ狂うトゲ 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.6,
+              "valuesByRank": {
+                "r1": 0.89,
+                "r9": 1.6,
+                "spec1": 1.7333,
+                "spec2": 1.8667,
+                "spec3": 2.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_typhoeus",
@@ -16226,10 +18117,10 @@
           "shortName": "必殺技",
           "damageType": "自然",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 2.4,
+            "lv10_spec1": 2.6,
+            "lv11_spec2": 2.8,
+            "lv12_spec3": 3.0
           },
           "hitCount": 5,
           "buffs": [
@@ -16277,7 +18168,28 @@
           "damageTypeDetail": "自然",
           "rawText": "自然ダメージを与え、猟矢を2本獲得して浮遊状態に入り空中攻撃回数をリセットする。その後5回の空中通常攻撃命中時に矢の雨による追撃が発生する。（※自然付着なし）",
           "attachText": "なし",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ティフォロス_ult_base",
+              "name": "氷山の呼び声 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.4,
+              "valuesByRank": {
+                "r1": 1.33,
+                "r9": 2.4,
+                "spec1": 2.6,
+                "spec2": 2.8,
+                "spec3": 3.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:nature",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "寒夜の影",
@@ -16459,10 +18371,10 @@
           "shortName": "戦技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 3.6,
-            "lv10_spec1": 3.95,
-            "lv11_spec2": 4.35,
-            "lv12_spec3": 4.8
+            "lv9": 1.84,
+            "lv10_spec1": 1.9933,
+            "lv11_spec2": 2.1467,
+            "lv12_spec3": 2.3
           },
           "hitCount": 3,
           "buffs": [
@@ -16525,7 +18437,28 @@
           "rawText": "連射で灼熱ダメージを与え最終撃で灼熱付着(1段階)を付与する。目標が燃焼または感電状態の場合、灼熱付着を付与する代わりにその異常状態を消費して強力な追加射撃(378%→850%)を行う。",
           "attachText": "灼熱付着(1段階 / ※敵が燃焼または感電状態でない場合のみ付与！)",
           "anomalyText": "敵が燃焼または感電状態の場合、灼熱付着を付与せずその異常状態を消費して高倍率追加射撃を発動",
-          "special": "【状態条件による付着/異常消費排他分岐】目標が燃焼・感電でない時は「灼熱付着(1段階)」を付与するが、燃焼または感電状態の時は「灼熱付着を付与せず」そのアーツ異常を消費して850%(特化III)の追加射撃を行う。"
+          "special": "【状態条件による付着/異常消費排他分岐】目標が燃焼・感電でない時は「灼熱付着(1段階)」を付与するが、燃焼または感電状態の時は「灼熱付着を付与せず」そのアーツ異常を消費して850%(特化III)の追加射撃を行う。",
+          "modifiers": [
+            {
+              "id": "mod_ウルフガード_skill_base",
+              "name": "灼熱の弾痕 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.84,
+              "valuesByRank": {
+                "r1": 1.02,
+                "r9": 1.84,
+                "spec1": 1.9933,
+                "spec2": 2.1467,
+                "spec3": 2.3
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_wulfgard",
@@ -16534,10 +18467,10 @@
           "shortName": "連携技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 1.08,
+            "lv10_spec1": 1.17,
+            "lv11_spec2": 1.26,
+            "lv12_spec3": 1.35
           },
           "hitCount": 1,
           "buffs": [
@@ -16584,7 +18517,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "敵がアーツ付着状態になったときに発動可能。手榴弾を投擲して灼熱ダメージを与え、灼熱付着(1段階)を付与する。",
           "attachText": "灼熱付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ウルフガード_combo_base",
+              "name": "フラググレネード・β 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.08,
+              "valuesByRank": {
+                "r1": 0.6,
+                "r9": 1.08,
+                "spec1": 1.17,
+                "spec2": 1.26,
+                "spec3": 1.35
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_wulfgard",
@@ -16593,10 +18547,10 @@
           "shortName": "必殺技",
           "damageType": "灼熱",
           "multipliers": {
-            "lv9": 7.2,
-            "lv10_spec1": 7.85,
-            "lv11_spec2": 8.6,
-            "lv12_spec3": 9.5
+            "lv9": 2.9,
+            "lv10_spec1": 3.1333,
+            "lv11_spec2": 3.3667,
+            "lv12_spec3": 3.6
           },
           "hitCount": 5,
           "buffs": [
@@ -16644,7 +18598,28 @@
           "damageTypeDetail": "灼熱",
           "rawText": "周囲に弾幕を放ち5回の灼熱ダメージを与え、目標を強制的に燃焼状態にする。（※灼熱付着は付与しない）",
           "attachText": "なし",
-          "anomalyText": "強制的に燃焼状態を付与(※灼熱付着は付与しない！)"
+          "anomalyText": "強制的に燃焼状態を付与(※灼熱付着は付与しない！)",
+          "modifiers": [
+            {
+              "id": "mod_ウルフガード_ult_base",
+              "name": "狼の怒り 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.9,
+              "valuesByRank": {
+                "r1": 1.6,
+                "r9": 2.9,
+                "spec1": 3.1333,
+                "spec2": 3.3667,
+                "spec3": 3.6
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:heat",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "合理的決別",
@@ -16873,10 +18848,10 @@
           "shortName": "連携技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 2.8,
-            "lv10_spec1": 3.05,
-            "lv11_spec2": 3.35,
-            "lv12_spec3": 3.7
+            "lv9": 3.6,
+            "lv10_spec1": 3.9,
+            "lv11_spec2": 4.2,
+            "lv12_spec3": 4.5
           },
           "hitCount": 1,
           "buffs": [
@@ -16923,7 +18898,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "サポートクリスタルの回復回数が0になったときに発動可能。敵にクリスタルを投げつけ寒冷ダメージを与え、寒冷付着(1段階)を付与する。",
           "attachText": "寒冷付着(1段階)",
-          "anomalyText": "なし"
+          "anomalyText": "なし",
+          "modifiers": [
+            {
+              "id": "mod_ザイヒ_combo_base",
+              "name": "ストレステスト 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 3.6,
+              "valuesByRank": {
+                "r1": 2.0,
+                "r9": 3.6,
+                "spec1": 3.9,
+                "spec2": 4.2,
+                "spec3": 4.5
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_xaihi",
@@ -17147,10 +19143,10 @@
           "shortName": "戦技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 2.0,
+            "lv10_spec1": 2.1667,
+            "lv11_spec2": 2.3333,
+            "lv12_spec3": 2.5
           },
           "hitCount": 3,
           "buffs": [
@@ -17213,7 +19209,44 @@
           "rawText": "冷気爆弾を放ち寒冷ダメージを与える。命中した敵が寒冷付着または自然付着状態の場合、その付着をすべて消費して強制的に凍結状態にし、消費段階数に応じた追加寒冷ダメージを与え必殺チャージ(10+30×消費段階)を回復する。（※寒冷付着は付与しない）",
           "attachText": "なし",
           "anomalyText": "寒冷付着または自然付着状態の敵に命中時、アーツ付着を全消費して強制的に凍結状態にする！",
-          "special": "【寒冷/自然付着全消費→強制凍結＆超高速必殺チャージ】自身は寒冷付着を持たず、味方が付与した寒冷付着または自然付着を全段階消費して強制凍結に変換し、消費段階×30＋10の必殺チャージを獲得する。"
+          "special": "【寒冷/自然付着全消費→強制凍結＆超高速必殺チャージ】自身は寒冷付着を持たず、味方が付与した寒冷付着または自然付着を全段階消費して強制凍結に変換し、消費段階×30＋10の必殺チャージを獲得する。",
+          "modifiers": [
+            {
+              "id": "mod_イヴォンヌ_skill_base",
+              "name": "ひえひえビーム・β型 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.0,
+              "valuesByRank": {
+                "r1": 1.11,
+                "r9": 2.0,
+                "spec1": 2.1667,
+                "spec2": 2.3333,
+                "spec3": 2.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_イヴォンヌ_skill_additional",
+              "name": "ひえひえビーム・β型 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r9": 1.2,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:cryo",
+                "cond:trigger"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_yvonne",
@@ -17222,10 +19255,10 @@
           "shortName": "連携技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 0.8,
+            "lv10_spec1": 0.8667,
+            "lv11_spec2": 0.9333,
+            "lv12_spec3": 1.0
           },
           "hitCount": 1,
           "buffs": [
@@ -17272,7 +19305,28 @@
           "damageTypeDetail": "寒冷",
           "rawText": "凍結状態の敵に操作オペレーターが重攻撃を行ったときに発動可能。アイスちゃんを設置して敵を牽引しつつ4回寒冷ダメージを与え、3秒後に自爆して寒冷ダメージを与え強制的に凍結状態にする。（※寒冷付着は付与しない）",
           "attachText": "なし",
-          "anomalyText": "牽引＋3秒後の自爆で強制的に凍結状態を付与(※寒冷付着は付与しない！)"
+          "anomalyText": "牽引＋3秒後の自爆で強制的に凍結状態を付与(※寒冷付着は付与しない！)",
+          "modifiers": [
+            {
+              "id": "mod_イヴォンヌ_combo_base",
+              "name": "アイスちゃん・υ37 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.8,
+              "valuesByRank": {
+                "r1": 0.45,
+                "r9": 0.8,
+                "spec1": 0.8667,
+                "spec2": 0.9333,
+                "spec3": 1.0
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:cryo",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_yvonne",
@@ -17281,10 +19335,10 @@
           "shortName": "必殺技",
           "damageType": "寒冷",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 0.16,
+            "lv10_spec1": 0.1733,
+            "lv11_spec2": 0.1867,
+            "lv12_spec3": 0.2
           },
           "hitCount": 5,
           "buffs": [
@@ -17345,7 +19399,44 @@
           "damageTypeDetail": "寒冷",
           "rawText": "7秒間イヴォンヌが操作オペレーターとなり通常攻撃が高速連射に変化する。攻撃するたび会心率+3%(最大10層=+30%)、最大層で会心ダメージ+60%。終了前に重攻撃(300%)を放ち、敵が凍結状態なら凍結を消費して追加寒冷ダメージ(600%)を与える。（※寒冷付着なし）",
           "attachText": "なし",
-          "anomalyText": "終了前の最終強攻撃命中時、敵が凍結状態なら凍結を消費して高倍率追加寒冷ダメージ！"
+          "anomalyText": "終了前の最終強攻撃命中時、敵が凍結状態なら凍結を消費して高倍率追加寒冷ダメージ！",
+          "modifiers": [
+            {
+              "id": "mod_イヴォンヌ_ult_base",
+              "name": "アイスシューター 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.16,
+              "valuesByRank": {
+                "r1": 0.08900000000000001,
+                "r9": 0.16,
+                "spec1": 0.1733,
+                "spec2": 0.1867,
+                "spec3": 0.2
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:always"
+              ]
+            },
+            {
+              "id": "mod_イヴォンヌ_ult_additional",
+              "name": "アイスシューター 条件追加ダメージ",
+              "calcGroup": "skill_multiplier",
+              "value": 4.8,
+              "valuesByRank": {
+                "r9": 4.8,
+                "spec3": 6.0
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:cryo",
+                "cond:trigger"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "芸術の独裁者",
@@ -17514,10 +19605,10 @@
           "shortName": "戦技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 3.78,
-            "lv10_spec1": 4.15,
-            "lv11_spec2": 4.57,
-            "lv12_spec3": 5.04
+            "lv9": 0.36,
+            "lv10_spec1": 0.39,
+            "lv11_spec2": 0.42,
+            "lv12_spec3": 0.45
           },
           "hitCount": 3,
           "buffs": [
@@ -17580,7 +19671,28 @@
           "rawText": "目標の感電状態を消費し[消費段階+1]本の蒼雷剣を生成(1回最大3本・上限9本・持続36秒)。付近の全蒼雷剣が順に雷撃を放ち(1本毎必殺チャージ+6)、最後の雷撃は6倍のダメージを与える。必殺技「理の境」期間中のみ最後の雷撃命中時に電磁付着(1段階)を付与する。",
           "attachText": "通常時はなし / ※必殺技「理の境」持続中のみ最後の雷撃命中時に電磁付着(1段階)を付与！",
           "anomalyText": "目標の感電状態を消費(※理の境中の初回戦技は感電・SPを消費せず蒼雷剣3本生成)",
-          "special": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。"
+          "special": "【蒼雷剣ストック＆必殺中限定付着】①通常時は感電を消費するだけで電磁付着は付与しないが、必殺技「理の境」中のみ最後の雷撃で「電磁付着(1段階)」を付与する。②戦場の蒼雷剣(上限9本)すべてが順次雷撃を放ち、最後の1本の雷撃倍率が6倍になる。",
+          "modifiers": [
+            {
+              "id": "mod_ゾアン・ファンイ_skill_base",
+              "name": "驚雷訣 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 0.36,
+              "valuesByRank": {
+                "r1": 0.2,
+                "r9": 0.36,
+                "spec1": 0.39,
+                "spec2": 0.42,
+                "spec3": 0.45
+              },
+              "tags": [
+                "src:character",
+                "action:skill",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "combo_zhuang",
@@ -17589,10 +19701,10 @@
           "shortName": "連携技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 2.94,
-            "lv10_spec1": 3.2,
-            "lv11_spec2": 3.52,
-            "lv12_spec3": 3.88
+            "lv9": 2.88,
+            "lv10_spec1": 3.12,
+            "lv11_spec2": 3.36,
+            "lv12_spec3": 3.6
           },
           "hitCount": 1,
           "buffs": [
@@ -17654,7 +19766,28 @@
           "rawText": "電磁付着状態の敵に重攻撃または終撃を行ったときに発動可能。敵に電磁ダメージを与え、電磁付着を消費して強制的に感電状態にする(すでに感電状態なら異常段階+1)。消費1段階ごとに必殺チャージを追加で10回復。（※電磁付着は付与しない）",
           "attachText": "なし",
           "anomalyText": "電磁付着を全消費して強制的に感電状態にする(すでに感電中なら感電異常段階+1)！",
-          "special": "【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。"
+          "special": "【電磁付着消費→強制感電＆感電段階加算】電磁付着を消費して強制感電にし、対象がすでに感電状態だった場合は感電の異常段階を+1引き上げる。",
+          "modifiers": [
+            {
+              "id": "mod_ゾアン・ファンイ_combo_base",
+              "name": "一息万変 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 2.88,
+              "valuesByRank": {
+                "r1": 1.6,
+                "r9": 2.88,
+                "spec1": 3.12,
+                "spec2": 3.36,
+                "spec3": 3.6
+              },
+              "tags": [
+                "src:character",
+                "action:combo",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         },
         {
           "id": "ult_zhuang",
@@ -17663,10 +19796,10 @@
           "shortName": "必殺技",
           "damageType": "電磁",
           "multipliers": {
-            "lv9": 7.56,
-            "lv10_spec1": 8.24,
-            "lv11_spec2": 9.03,
-            "lv12_spec3": 9.98
+            "lv9": 1.2,
+            "lv10_spec1": 1.3,
+            "lv11_spec2": 1.4,
+            "lv12_spec3": 1.5
           },
           "hitCount": 5,
           "buffs": [
@@ -17729,7 +19862,28 @@
           "rawText": "25秒間「理の境」に入る。通常攻撃・戦技・連携技が強化され、戦技の最後の雷撃が電磁付着を付与するようになり、連携技のCD回復速度が4倍になる。さらに期間中最初の戦技はSPと感電を消費せず蒼雷剣を3本生成する。",
           "attachText": "期間中の戦技「驚雷訣」最終雷撃に電磁付着(1段階)効果を付与(必殺発動自体には付着なし)",
           "anomalyText": "なし",
-          "special": "【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。"
+          "special": "【理の境モード(25秒)】①通常攻撃3段強化、②戦技倍率強化＆最終雷撃に電磁付着追加、③連携倍率強化＆CD4倍速回復、④期間中初回戦技がSP0・感電非消費・蒼雷剣3本確定生成になる複合強化状態。",
+          "modifiers": [
+            {
+              "id": "mod_ゾアン・ファンイ_ult_base",
+              "name": "風来轟轟 基礎倍率",
+              "calcGroup": "skill_multiplier",
+              "value": 1.2,
+              "valuesByRank": {
+                "r1": 0.67,
+                "r9": 1.2,
+                "spec1": 1.3,
+                "spec2": 1.4,
+                "spec3": 1.5
+              },
+              "tags": [
+                "src:character",
+                "action:ult",
+                "elem:electric",
+                "cond:always"
+              ]
+            }
+          ]
         }
       ],
       "motifWeapon": "孤舟",

@@ -1,122 +1,380 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Damage Calculation Parameter to Calculation Group Mapping",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "source": "https://arknights-endfield.wikiru.jp/?%E3%83%80%E3%83%A1%E3%83%BC%E3%82%B8%E8%A8%88%E7%AE%97%E5%BC%8F",
   "calculationGroups": [
     {
       "id": "reference_scale",
-      "name": "参照スケール（攻撃力）",
+      "name": "① 参照スケール（攻撃力）",
       "type": "scaling",
       "formula": "((charBaseAtk + weaponBaseAtk) * (1 + sum(atkPercent)) + flatAtk) * (1 + mainStat * 0.005 + subStat * 0.002)",
       "additiveWithinGroup": true,
-      "description": "基礎攻撃力に攻撃力%の総和を乗算し、能力値付加を乗算した最終攻撃力"
+      "description": "基礎攻撃力に攻撃力%の総和を乗算し、固定値を加算後、能力値付加(メイン*0.5% + サブ*0.2%)を乗算した最終攻撃力"
     },
     {
       "id": "skill_multiplier",
-      "name": "ダメージ倍率補正",
+      "name": "② ダメージ倍率補正",
       "type": "multiplier",
-      "formula": "skillMultiplierPercent",
-      "additiveWithinGroup": false,
-      "description": "スキルのモーション倍率%"
+      "formula": "baseSkillMultiplier + sum(additionalMultipliers)",
+      "additiveWithinGroup": true,
+      "description": "スキルの基礎モーション倍率に、猛撃・クラッシュ消費・追撃等の追加倍率を加算した合計倍率"
     },
     {
       "id": "damage_up",
-      "name": "ダメージUP補正",
+      "name": "③ ダメージUP補正",
       "type": "additive_modifier",
       "formula": "1 + sum(damageUpRates)",
       "additiveWithinGroup": true,
-      "description": "属性ダメージUP、スキル種別ダメージUP、全スキルダメージUP、与ダメバフをすべて同枠加算"
+      "description": "属性ダメージUP、スキル種別(通常/戦技/連携/必殺)ダメージUP、全ダメージUP、セット効果与ダメバフを同枠加算"
     },
     {
       "id": "amplification",
-      "name": "増幅補正",
+      "name": "④ 増幅補正",
       "type": "additive_modifier",
       "formula": "1 + sum(ampRates)",
       "additiveWithinGroup": true,
-      "description": "属性増幅およびアーツ増幅を同枠加算"
+      "description": "属性増幅(電磁増幅/灼熱増幅等)およびアーツ増幅を同枠加算（他枠と独立乗算）"
     },
     {
       "id": "taken_damage_up",
-      "name": "被ダメージ補正",
+      "name": "⑤ 被ダメージ補正",
       "type": "additive_modifier",
       "formula": "1 + sum(takenDamageUpRates)",
       "additiveWithinGroup": true,
-      "description": "敵の受けるダメージUP、破砕(物理被ダメUP)、感電(アーツ被ダメUP)を同枠加算"
+      "description": "敵の受けるダメージUP、破砕(物理被ダメUP)、感電(アーツ被ダメUP)を同枠加算（他枠と独立乗算）"
     },
     {
       "id": "vulnerability",
-      "name": "脆弱補正",
+      "name": "⑥ 脆弱補正",
       "type": "additive_modifier",
       "formula": "1 + sum(vulnRates)",
       "additiveWithinGroup": true,
-      "description": "物理脆弱、アーツ脆弱を同枠加算"
+      "description": "物理脆弱、アーツ脆弱、クラッシュ段階脆弱を同枠加算（他枠と独立乗算）"
     },
     {
       "id": "resistance",
-      "name": "耐性補正",
+      "name": "⑦ 耐性補正",
       "type": "mitigation",
       "formula": "1 - (baseRes - resShred - resIgnore) / 100",
       "additiveWithinGroup": true,
-      "description": "敵耐性から腐食による耐性ダウン等を減算した耐性減衰"
+      "description": "敵の各属性耐性%から腐食による全耐性ダウン・耐性無視を減算した耐性減衰率"
     },
     {
       "id": "defense",
-      "name": "防御補正",
+      "name": "⑧ 防御補正",
       "type": "mitigation",
       "formula": "100 / (100 + enemyDefense)",
       "additiveWithinGroup": false,
-      "description": "敵防御力による減衰"
+      "description": "敵防御力による減衰率: 100 / (100 + 防御力)"
     },
     {
       "id": "critical",
-      "name": "会心補正",
+      "name": "⑨ 会心補正",
       "type": "expected_multiplier",
-      "formula": "1 + critRate * critDamage",
+      "formula": "isCrit ? (1 + critDamage) : (1 + critRate * critDamage)",
       "additiveWithinGroup": true,
-      "description": "会心率と会心ダメージによる期待値または発生時倍率"
+      "description": "会心率と会心ダメージによる期待値倍率(1 + 会心率*会心ダメ)または会心発生時倍率(1 + 会心ダメ)"
     },
     {
       "id": "break",
-      "name": "ブレイク補正",
+      "name": "⑩ ブレイク補正",
       "type": "multiplier",
-      "formula": "isBroken ? 1.3 : 1.0",
+      "formula": "isBroken ? (breakMultiplier + breakDmgBonus) : 1.0",
       "additiveWithinGroup": false,
-      "description": "敵ブレイク時の1.3倍補正"
+      "description": "敵ブレイク時の1.5倍補正およびブレイク時追加ボーナス"
     }
   ],
+  "tagTaxonomy": {
+    "elem": {
+      "name": "属性ディメンション",
+      "values": [
+        "physical",
+        "heat",
+        "cryo",
+        "electric",
+        "nature",
+        "arts",
+        "all"
+      ]
+    },
+    "action": {
+      "name": "攻撃種別ディメンション",
+      "values": [
+        "normal",
+        "skill",
+        "combo",
+        "ult",
+        "all"
+      ]
+    },
+    "cond": {
+      "name": "発動条件ディメンション",
+      "values": [
+        "always",
+        "broken",
+        "combustion",
+        "corrosion",
+        "freeze",
+        "shock",
+        "crush_consumed",
+        "anomaly_consumed",
+        "burst"
+      ]
+    },
+    "src": {
+      "name": "出所ディメンション",
+      "values": [
+        "character",
+        "weapon",
+        "armor",
+        "armor_set",
+        "food",
+        "reaction",
+        "timeline"
+      ]
+    },
+    "type": {
+      "name": "スケール型ディメンション",
+      "values": [
+        "flat",
+        "percent",
+        "multiplier"
+      ]
+    }
+  },
   "parameterMappings": [
-    { "category": "armor", "parameterName": "防具の基礎能力値", "calcGroupId": "reference_scale", "target": "ability_stats" },
-    { "category": "armor", "parameterName": "防具の攻撃力%", "calcGroupId": "reference_scale", "target": "atk_percent" },
-    { "category": "armor", "parameterName": "防具のダメージUP効果", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "armor", "parameterName": "防具の会心率", "calcGroupId": "critical", "target": "crit_rate" },
-    { "category": "armor", "parameterName": "防具のセット効果（与ダメ）", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "armor", "parameterName": "防具のセット効果（増幅）", "calcGroupId": "amplification", "target": "amp" },
-    { "category": "armor", "parameterName": "防具のセット効果（攻撃力）", "calcGroupId": "reference_scale", "target": "atk_percent" },
-    { "category": "weapon", "parameterName": "武器の基礎攻撃力", "calcGroupId": "reference_scale", "target": "base_atk" },
-    { "category": "weapon", "parameterName": "武器のスキル1（能力値）", "calcGroupId": "reference_scale", "target": "ability_stats" },
-    { "category": "weapon", "parameterName": "武器のスキル2（属性ダメージ）", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "weapon", "parameterName": "武器のスキル3（攻撃力%）", "calcGroupId": "reference_scale", "target": "atk_percent" },
-    { "category": "weapon", "parameterName": "武器のスキル3（ダメージUP）", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "weapon", "parameterName": "武器のスキル3（被ダメージUP）", "calcGroupId": "taken_damage_up", "target": "taken_damage_up" },
-    { "category": "character", "parameterName": "オペレーターの基礎攻撃力", "calcGroupId": "reference_scale", "target": "base_atk" },
-    { "category": "character", "parameterName": "オペレーターの基礎能力値", "calcGroupId": "reference_scale", "target": "ability_stats" },
-    { "category": "character", "parameterName": "オペレーターの主・副能力設定", "calcGroupId": "reference_scale", "target": "ability_mult" },
-    { "category": "character", "parameterName": "スキルのダメージ倍率", "calcGroupId": "skill_multiplier", "target": "skill_multiplier" },
-    { "category": "character", "parameterName": "素質効果（ダメージUP）", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "character", "parameterName": "素質効果（被ダメージUP）", "calcGroupId": "taken_damage_up", "target": "taken_damage_up" },
-    { "category": "timeline", "parameterName": "全体攻撃力バフ", "calcGroupId": "reference_scale", "target": "atk_percent" },
-    { "category": "timeline", "parameterName": "単体攻撃力バフ / 自己攻撃力バフ", "calcGroupId": "reference_scale", "target": "atk_percent" },
-    { "category": "timeline", "parameterName": "全体増幅バフ", "calcGroupId": "amplification", "target": "amp" },
-    { "category": "timeline", "parameterName": "全体ダメージUPバフ", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "timeline", "parameterName": "単体ダメージUPバフ", "calcGroupId": "damage_up", "target": "damage_up" },
-    { "category": "timeline", "parameterName": "敵被ダメージUPデバフ", "calcGroupId": "taken_damage_up", "target": "taken_damage_up" },
-    { "category": "timeline", "parameterName": "敵脆弱デバフ", "calcGroupId": "vulnerability", "target": "vuln" },
-    { "category": "timeline", "parameterName": "破砕（クラッシュ消費）", "calcGroupId": "taken_damage_up", "target": "taken_damage_up" },
-    { "category": "timeline", "parameterName": "感電（アーツ異常）", "calcGroupId": "taken_damage_up", "target": "taken_damage_up" },
-    { "category": "timeline", "parameterName": "腐食（アーツ異常）", "calcGroupId": "resistance", "target": "res_shred" },
-    { "category": "enemy", "parameterName": "敵の基礎防御力", "calcGroupId": "defense", "target": "defense" },
-    { "category": "enemy", "parameterName": "敵の基礎耐性値", "calcGroupId": "resistance", "target": "res" },
-    { "category": "enemy", "parameterName": "敵のブレイク状態", "calcGroupId": "break", "target": "break" }
+    {
+      "parameterName": "防具の基礎能力値 (筋力/敏捷/知性/意志)",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.mainStat / stats.subStat",
+      "defaultTags": [
+        "src:armor",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具の攻撃力%",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.atkPercent",
+      "defaultTags": [
+        "src:armor",
+        "type:percent",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具の固定攻撃力",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.flatAtk",
+      "defaultTags": [
+        "src:armor",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具のダメージUP効果",
+      "calculationGroupId": "damage_up",
+      "targetField": "damageBonuses",
+      "defaultTags": [
+        "src:armor",
+        "type:percent",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具の会心率",
+      "calculationGroupId": "critical",
+      "targetField": "stats.critRate",
+      "defaultTags": [
+        "src:armor",
+        "type:percent",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具の会心ダメージ",
+      "calculationGroupId": "critical",
+      "targetField": "stats.critDamage",
+      "defaultTags": [
+        "src:armor",
+        "type:percent",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "防具のセット効果（与ダメ）",
+      "calculationGroupId": "damage_up",
+      "targetField": "damageBonuses.all / elem",
+      "defaultTags": [
+        "src:armor_set",
+        "type:percent"
+      ]
+    },
+    {
+      "parameterName": "防具のセット効果（増幅）",
+      "calculationGroupId": "amplification",
+      "targetField": "ampBonuses",
+      "defaultTags": [
+        "src:armor_set",
+        "type:percent"
+      ]
+    },
+    {
+      "parameterName": "防具のセット効果（攻撃力%）",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.atkPercent",
+      "defaultTags": [
+        "src:armor_set",
+        "type:percent"
+      ]
+    },
+    {
+      "parameterName": "武器の基礎攻撃力",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.baseAtk",
+      "defaultTags": [
+        "src:weapon",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "武器のスキル1（メイン能力値）",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.mainStat",
+      "defaultTags": [
+        "src:weapon",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "武器のスキル2（攻撃力%）",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.atkPercent",
+      "defaultTags": [
+        "src:weapon",
+        "type:percent",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "武器のスキル3（属性ダメージUP）",
+      "calculationGroupId": "damage_up",
+      "targetField": "damageBonuses.elem",
+      "defaultTags": [
+        "src:weapon",
+        "type:percent"
+      ]
+    },
+    {
+      "parameterName": "武器のスキル3（被ダメージUP）",
+      "calculationGroupId": "taken_damage_up",
+      "targetField": "enemy.takenDamageUp",
+      "defaultTags": [
+        "src:weapon",
+        "type:percent"
+      ]
+    },
+    {
+      "parameterName": "オペレーターの基礎攻撃力",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.baseAtk",
+      "defaultTags": [
+        "src:character",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "オペレーターの基礎能力値",
+      "calculationGroupId": "reference_scale",
+      "targetField": "stats.mainStat / stats.subStat",
+      "defaultTags": [
+        "src:character",
+        "type:flat",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "スキルの基礎モーション倍率",
+      "calculationGroupId": "skill_multiplier",
+      "targetField": "skill.multipliers",
+      "defaultTags": [
+        "src:character",
+        "type:multiplier",
+        "cond:always"
+      ]
+    },
+    {
+      "parameterName": "猛撃・破砕時のクラッシュ消費追加倍率",
+      "calculationGroupId": "skill_multiplier",
+      "targetField": "skill.additionalMultiplier",
+      "defaultTags": [
+        "src:character",
+        "type:multiplier",
+        "cond:crush_consumed"
+      ]
+    },
+    {
+      "parameterName": "源石結晶消費追加ダメージ",
+      "calculationGroupId": "skill_multiplier",
+      "targetField": "skill.additionalMultiplier",
+      "defaultTags": [
+        "src:character",
+        "type:multiplier",
+        "cond:crystal_consumed"
+      ]
+    },
+    {
+      "parameterName": "凍結中の砕氷(Shatter)追加ダメージ",
+      "calculationGroupId": "damage_up",
+      "targetField": "damageBonuses.physical",
+      "defaultTags": [
+        "src:reaction",
+        "type:percent",
+        "cond:freeze"
+      ]
+    },
+    {
+      "parameterName": "アーツ異常消費ボーナス (燃焼/凍結/感電/腐食)",
+      "calculationGroupId": "damage_up",
+      "targetField": "damageBonuses.elem",
+      "defaultTags": [
+        "src:reaction",
+        "type:percent",
+        "cond:anomaly_consumed"
+      ]
+    },
+    {
+      "parameterName": "腐食による敵全属性耐性ダウン",
+      "calculationGroupId": "resistance",
+      "targetField": "enemy.resShred",
+      "defaultTags": [
+        "src:reaction",
+        "cond:corrosion"
+      ]
+    },
+    {
+      "parameterName": "感電による敵アーツ被ダメージUP",
+      "calculationGroupId": "taken_damage_up",
+      "targetField": "enemy.takenDamageUp",
+      "defaultTags": [
+        "src:reaction",
+        "cond:shock"
+      ]
+    },
+    {
+      "parameterName": "ブレイク状態倍率",
+      "calculationGroupId": "break",
+      "targetField": "enemy.breakMultiplier",
+      "defaultTags": [
+        "src:reaction",
+        "cond:broken"
+      ]
+    }
   ]
 }
