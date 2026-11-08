@@ -301,7 +301,7 @@
           "buffs": [
             {
               "id": "buff_admin_skill_multiplier",
-              "name": "構成配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "構成配列",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -314,7 +314,7 @@
             },
             {
               "id": "buff_admin_skill_aux",
-              "name": "構成配列 [【補助・耐久・リソース枠】]",
+              "name": "構成配列",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -382,7 +382,7 @@
           "buffs": [
             {
               "id": "buff_admin_combo_multiplier",
-              "name": "封印配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "封印配列",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -395,7 +395,7 @@
             },
             {
               "id": "buff_admin_combo_aux",
-              "name": "封印配列 [【補助・耐久・リソース枠】]",
+              "name": "封印配列",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -408,7 +408,7 @@
             },
             {
               "id": "buff_admin_combo_special",
-              "name": "封印配列 [【特殊枠（例外処理）】]",
+              "name": "封印配列",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -493,7 +493,7 @@
           "buffs": [
             {
               "id": "buff_admin_ult_multiplier",
-              "name": "攻撃配列 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "攻撃配列",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -506,7 +506,7 @@
             },
             {
               "id": "buff_admin_ult_aux",
-              "name": "攻撃配列 [【補助・耐久・リソース枠】]",
+              "name": "攻撃配列",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -602,7 +602,7 @@
           "buffs": [
             {
               "id": "buff_admin_talent1_atk_pct",
-              "name": "根源瓦解 [【枠1】攻撃力%枠]",
+              "name": "根源瓦解",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -626,7 +626,7 @@
           "buffs": [
             {
               "id": "buff_admin_talent2_taken_damage_up",
-              "name": "空間静止 [【枠10】敵被ダメージUP枠]",
+              "name": "空間静止",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -950,7 +950,7 @@
           "buffs": [
             {
               "id": "buff_akekuri_skill_multiplier",
-              "name": "ほとばしる情熱 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ほとばしる情熱",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -963,7 +963,7 @@
             },
             {
               "id": "buff_akekuri_skill_aux",
-              "name": "ほとばしる情熱 [【補助・耐久・リソース枠】]",
+              "name": "ほとばしる情熱",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -1031,7 +1031,7 @@
           "buffs": [
             {
               "id": "buff_akekuri_combo_multiplier",
-              "name": "突撃一閃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "突撃一閃",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1044,7 +1044,7 @@
             },
             {
               "id": "buff_akekuri_combo_aux",
-              "name": "突撃一閃 [【補助・耐久・リソース枠】]",
+              "name": "突撃一閃",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1111,7 +1111,7 @@
           "buffs": [
             {
               "id": "buff_akekuri_ult_aux",
-              "name": "全員、集合！ [【補助・耐久・リソース枠】]",
+              "name": "全員、集合！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1170,7 +1170,7 @@
           "buffs": [
             {
               "id": "buff_akekuri_talent1_aux",
-              "name": "勝利の喝采 [【補助・耐久・リソース枠】]",
+              "name": "勝利の喝采",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1194,7 +1194,7 @@
           "buffs": [
             {
               "id": "buff_akekuri_talent2_link",
-              "name": "集中タイム [【枠8】リンク補正枠]",
+              "name": "集中タイム",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1513,7 +1513,7 @@
           "buffs": [
             {
               "id": "buff_alesh_skill_multiplier",
-              "name": "型破りのルアー [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "型破りのルアー",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1526,7 +1526,7 @@
             },
             {
               "id": "buff_alesh_skill_aux",
-              "name": "型破りのルアー [【補助・耐久・リソース枠】]",
+              "name": "型破りのルアー",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1594,7 +1594,7 @@
           "buffs": [
             {
               "id": "buff_alesh_combo_multiplier",
-              "name": "穴釣り戦術 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "穴釣り戦術",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1607,7 +1607,7 @@
             },
             {
               "id": "buff_alesh_combo_aux",
-              "name": "穴釣り戦術 [【補助・耐久・リソース枠】]",
+              "name": "穴釣り戦術",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1620,7 +1620,7 @@
             },
             {
               "id": "buff_alesh_combo_special",
-              "name": "穴釣り戦術 [【特殊枠（例外処理）】]",
+              "name": "穴釣り戦術",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -1689,7 +1689,7 @@
           "buffs": [
             {
               "id": "buff_alesh_ult_multiplier",
-              "name": "大物、ヒット！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "大物、ヒット！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1702,7 +1702,7 @@
             },
             {
               "id": "buff_alesh_ult_aux",
-              "name": "大物、ヒット！ [【補助・耐久・リソース枠】]",
+              "name": "大物、ヒット！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -1782,7 +1782,7 @@
           "buffs": [
             {
               "id": "buff_alesh_talent1_aux",
-              "name": "急速冷凍 [【補助・耐久・リソース枠】]",
+              "name": "急速冷凍",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -1806,7 +1806,7 @@
           "buffs": [
             {
               "id": "buff_alesh_talent2_special",
-              "name": "釣りの達人 [【特殊枠（例外処理）】]",
+              "name": "釣りの達人",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -2132,7 +2132,7 @@
           "buffs": [
             {
               "id": "buff_antal_skill_multiplier",
-              "name": "指定研究対象 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "指定研究対象",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -2145,7 +2145,7 @@
             },
             {
               "id": "buff_antal_skill_vulnerability",
-              "name": "指定研究対象 [【枠11】敵脆弱枠]",
+              "name": "指定研究対象",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -2158,7 +2158,7 @@
             },
             {
               "id": "buff_antal_skill_aux",
-              "name": "指定研究対象 [【補助・耐久・リソース枠】]",
+              "name": "指定研究対象",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -2226,7 +2226,7 @@
           "buffs": [
             {
               "id": "buff_antal_combo_multiplier",
-              "name": "磁気嵐実験場 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "磁気嵐実験場",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -2239,7 +2239,7 @@
             },
             {
               "id": "buff_antal_combo_aux",
-              "name": "磁気嵐実験場 [【補助・耐久・リソース枠】]",
+              "name": "磁気嵐実験場",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -2252,7 +2252,7 @@
             },
             {
               "id": "buff_antal_combo_special",
-              "name": "磁気嵐実験場 [【特殊枠（例外処理）】]",
+              "name": "磁気嵐実験場",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -2321,7 +2321,7 @@
           "buffs": [
             {
               "id": "buff_antal_ult_amp",
-              "name": "リミッター、解除 [【枠5】増幅枠]",
+              "name": "リミッター、解除",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2334,7 +2334,7 @@
             },
             {
               "id": "buff_antal_ult_aux",
-              "name": "リミッター、解除 [【補助・耐久・リソース枠】]",
+              "name": "リミッター、解除",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2393,7 +2393,7 @@
           "buffs": [
             {
               "id": "buff_antal_talent1_aux",
-              "name": "アドリブ [【補助・耐久・リソース枠】]",
+              "name": "アドリブ",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -2417,7 +2417,7 @@
           "buffs": [
             {
               "id": "buff_antal_talent2_aux",
-              "name": "無意識 [【補助・耐久・リソース枠】]",
+              "name": "無意識",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -2741,7 +2741,7 @@
           "buffs": [
             {
               "id": "buff_arclight_skill_multiplier",
-              "name": "疾風迅雷 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "疾風迅雷",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2754,7 +2754,7 @@
             },
             {
               "id": "buff_arclight_skill_aux",
-              "name": "疾風迅雷 [【補助・耐久・リソース枠】]",
+              "name": "疾風迅雷",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2822,7 +2822,7 @@
           "buffs": [
             {
               "id": "buff_arclight_combo_multiplier",
-              "name": "雷鳴 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "雷鳴",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2835,7 +2835,7 @@
             },
             {
               "id": "buff_arclight_combo_aux",
-              "name": "雷鳴 [【補助・耐久・リソース枠】]",
+              "name": "雷鳴",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -2902,7 +2902,7 @@
           "buffs": [
             {
               "id": "buff_arclight_ult_multiplier",
-              "name": "轟雷裂電 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "轟雷裂電",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -2915,7 +2915,7 @@
             },
             {
               "id": "buff_arclight_ult_aux",
-              "name": "轟雷裂電 [【補助・耐久・リソース枠】]",
+              "name": "轟雷裂電",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -2928,7 +2928,7 @@
             },
             {
               "id": "buff_arclight_ult_special",
-              "name": "轟雷裂電 [【特殊枠（例外処理）】]",
+              "name": "轟雷裂電",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -3010,7 +3010,7 @@
           "buffs": [
             {
               "id": "buff_arclight_talent1_damage_up",
-              "name": "荒野の吟遊者 [【枠4】ダメージUP枠]",
+              "name": "荒野の吟遊者",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -3034,7 +3034,7 @@
           "buffs": [
             {
               "id": "buff_arclight_talent2_aux",
-              "name": "衆生智慧 [【補助・耐久・リソース枠】]",
+              "name": "衆生智慧",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -3358,7 +3358,7 @@
           "buffs": [
             {
               "id": "buff_ardelia_skill_multiplier",
-              "name": "ドリーラッシュ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ドリーラッシュ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3371,7 +3371,7 @@
             },
             {
               "id": "buff_ardelia_skill_vulnerability",
-              "name": "ドリーラッシュ [【枠11】敵脆弱枠]",
+              "name": "ドリーラッシュ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3384,7 +3384,7 @@
             },
             {
               "id": "buff_ardelia_skill_aux",
-              "name": "ドリーラッシュ [【補助・耐久・リソース枠】]",
+              "name": "ドリーラッシュ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3452,7 +3452,7 @@
           "buffs": [
             {
               "id": "buff_ardelia_combo_multiplier",
-              "name": "イラプション・コラム [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "イラプション・コラム",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3465,7 +3465,7 @@
             },
             {
               "id": "buff_ardelia_combo_res_down",
-              "name": "イラプション・コラム [【枠9】敵耐性ダウン・耐性無視枠]",
+              "name": "イラプション・コラム",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3478,7 +3478,7 @@
             },
             {
               "id": "buff_ardelia_combo_aux",
-              "name": "イラプション・コラム [【補助・耐久・リソース枠】]",
+              "name": "イラプション・コラム",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3545,7 +3545,7 @@
           "buffs": [
             {
               "id": "buff_ardelia_ult_multiplier",
-              "name": "もふもふパーティー [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "もふもふパーティー",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -3558,7 +3558,7 @@
             },
             {
               "id": "buff_ardelia_ult_aux",
-              "name": "もふもふパーティー [【補助・耐久・リソース枠】]",
+              "name": "もふもふパーティー",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -3638,7 +3638,7 @@
           "buffs": [
             {
               "id": "buff_ardelia_talent1_aux",
-              "name": "友の面影 [【補助・耐久・リソース枠】]",
+              "name": "友の面影",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -3662,7 +3662,7 @@
           "buffs": [
             {
               "id": "buff_ardelia_talent2_special",
-              "name": "山頂サーフィン [【特殊枠（例外処理）】]",
+              "name": "山頂サーフィン",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3988,7 +3988,7 @@
           "buffs": [
             {
               "id": "buff_avywenna_skill_multiplier",
-              "name": "雷槍・逆襲 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "雷槍・逆襲",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4001,7 +4001,7 @@
             },
             {
               "id": "buff_avywenna_skill_aux",
-              "name": "雷槍・逆襲 [【補助・耐久・リソース枠】]",
+              "name": "雷槍・逆襲",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4014,7 +4014,7 @@
             },
             {
               "id": "buff_avywenna_skill_special",
-              "name": "雷槍・逆襲 [【特殊枠（例外処理）】]",
+              "name": "雷槍・逆襲",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -4084,7 +4084,7 @@
           "buffs": [
             {
               "id": "buff_avywenna_combo_multiplier",
-              "name": "雷槍・閃撃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "雷槍・閃撃",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4097,7 +4097,7 @@
             },
             {
               "id": "buff_avywenna_combo_aux",
-              "name": "雷槍・閃撃 [【補助・耐久・リソース枠】]",
+              "name": "雷槍・閃撃",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4164,7 +4164,7 @@
           "buffs": [
             {
               "id": "buff_avywenna_ult_multiplier",
-              "name": "雷槍・決震 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "雷槍・決震",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4177,7 +4177,7 @@
             },
             {
               "id": "buff_avywenna_ult_aux",
-              "name": "雷槍・決震 [【補助・耐久・リソース枠】]",
+              "name": "雷槍・決震",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -4257,7 +4257,7 @@
           "buffs": [
             {
               "id": "buff_avywenna_talent1_aux",
-              "name": "配達の効率化 [【補助・耐久・リソース枠】]",
+              "name": "配達の効率化",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -4281,7 +4281,7 @@
           "buffs": [
             {
               "id": "buff_avywenna_talent2_vulnerability",
-              "name": "婉曲手段 [【枠11】敵脆弱枠]",
+              "name": "婉曲手段",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -4605,7 +4605,7 @@
           "buffs": [
             {
               "id": "buff_camille_skill_multiplier",
-              "name": "影祓う [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "影祓う",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -4618,7 +4618,7 @@
             },
             {
               "id": "buff_camille_skill_vulnerability",
-              "name": "影祓う [【枠11】敵脆弱枠]",
+              "name": "影祓う",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -4631,7 +4631,7 @@
             },
             {
               "id": "buff_camille_skill_aux",
-              "name": "影祓う [【補助・耐久・リソース枠】]",
+              "name": "影祓う",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -4699,7 +4699,7 @@
           "buffs": [
             {
               "id": "buff_camille_combo_multiplier",
-              "name": "心抉る棘（および必殺派生「追及」） [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "心抉る棘（および必殺派生「追及」）",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4712,7 +4712,7 @@
             },
             {
               "id": "buff_camille_combo_aux",
-              "name": "心抉る棘（および必殺派生「追及」） [【補助・耐久・リソース枠】]",
+              "name": "心抉る棘（および必殺派生「追及」）",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4725,7 +4725,7 @@
             },
             {
               "id": "buff_camille_combo_special",
-              "name": "心抉る棘（および必殺派生「追及」） [【特殊枠（例外処理）】]",
+              "name": "心抉る棘（および必殺派生「追及」）",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -4794,7 +4794,7 @@
           "buffs": [
             {
               "id": "buff_camille_ult_multiplier",
-              "name": "降り注ぐ深紅 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "降り注ぐ深紅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4807,7 +4807,7 @@
             },
             {
               "id": "buff_camille_ult_aux",
-              "name": "降り注ぐ深紅 [【補助・耐久・リソース枠】]",
+              "name": "降り注ぐ深紅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4887,7 +4887,7 @@
           "buffs": [
             {
               "id": "buff_camille_talent1_link",
-              "name": "罪追人 [【枠8】リンク補正枠]",
+              "name": "罪追人",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4900,7 +4900,7 @@
             },
             {
               "id": "buff_camille_talent1_aux",
-              "name": "罪追人 [【補助・耐久・リソース枠】]",
+              "name": "罪追人",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -4924,7 +4924,7 @@
           "buffs": [
             {
               "id": "buff_camille_talent2_damage_up",
-              "name": "血の蘇生 [【枠4】ダメージUP枠]",
+              "name": "血の蘇生",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -5248,7 +5248,7 @@
           "buffs": [
             {
               "id": "buff_catcher_skill_multiplier",
-              "name": "強制ブロック [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "強制ブロック",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -5261,7 +5261,7 @@
             },
             {
               "id": "buff_catcher_skill_aux",
-              "name": "強制ブロック [【補助・耐久・リソース枠】]",
+              "name": "強制ブロック",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -5329,7 +5329,7 @@
           "buffs": [
             {
               "id": "buff_catcher_combo_multiplier",
-              "name": "即時制圧 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "即時制圧",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -5342,7 +5342,7 @@
             },
             {
               "id": "buff_catcher_combo_aux",
-              "name": "即時制圧 [【補助・耐久・リソース枠】]",
+              "name": "即時制圧",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -5409,7 +5409,7 @@
           "buffs": [
             {
               "id": "buff_catcher_ult_multiplier",
-              "name": "教科書通り [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "教科書通り",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -5422,7 +5422,7 @@
             },
             {
               "id": "buff_catcher_ult_aux",
-              "name": "教科書通り [【補助・耐久・リソース枠】]",
+              "name": "教科書通り",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -5502,7 +5502,7 @@
           "buffs": [
             {
               "id": "buff_catcher_talent1_aux",
-              "name": "不屈の防壁 [【補助・耐久・リソース枠】]",
+              "name": "不屈の防壁",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -5526,7 +5526,7 @@
           "buffs": [
             {
               "id": "buff_catcher_talent2_multiplier",
-              "name": "俯瞰思考 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "俯瞰思考",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -5850,7 +5850,7 @@
           "buffs": [
             {
               "id": "buff_chen_skill_multiplier",
-              "name": "蒼穹返し [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "蒼穹返し",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -5863,7 +5863,7 @@
             },
             {
               "id": "buff_chen_skill_aux",
-              "name": "蒼穹返し [【補助・耐久・リソース枠】]",
+              "name": "蒼穹返し",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -5931,7 +5931,7 @@
           "buffs": [
             {
               "id": "buff_chen_combo_multiplier",
-              "name": "天河昇 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "天河昇",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -5944,7 +5944,7 @@
             },
             {
               "id": "buff_chen_combo_aux",
-              "name": "天河昇 [【補助・耐久・リソース枠】]",
+              "name": "天河昇",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6011,7 +6011,7 @@
           "buffs": [
             {
               "id": "buff_chen_ult_multiplier",
-              "name": "凍風斬り [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "凍風斬り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6024,7 +6024,7 @@
             },
             {
               "id": "buff_chen_ult_aux",
-              "name": "凍風斬り [【補助・耐久・リソース枠】]",
+              "name": "凍風斬り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6104,7 +6104,7 @@
           "buffs": [
             {
               "id": "buff_chen_talent1_atk_pct",
-              "name": "斬鋒 [【枠1】攻撃力%枠]",
+              "name": "斬鋒",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -6128,7 +6128,7 @@
           "buffs": [
             {
               "id": "buff_chen_talent2_aux",
-              "name": "破勢 [【補助・耐久・リソース枠】]",
+              "name": "破勢",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6447,7 +6447,7 @@
           "buffs": [
             {
               "id": "buff_dapan_skill_multiplier",
-              "name": "鍋振り！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "鍋振り！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6460,7 +6460,7 @@
             },
             {
               "id": "buff_dapan_skill_aux",
-              "name": "鍋振り！ [【補助・耐久・リソース枠】]",
+              "name": "鍋振り！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6528,7 +6528,7 @@
           "buffs": [
             {
               "id": "buff_dapan_combo_multiplier",
-              "name": "調味料！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "調味料！",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -6541,7 +6541,7 @@
             },
             {
               "id": "buff_dapan_combo_damage_up",
-              "name": "調味料！ [【枠4】ダメージUP枠]",
+              "name": "調味料！",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -6554,7 +6554,7 @@
             },
             {
               "id": "buff_dapan_combo_aux",
-              "name": "調味料！ [【補助・耐久・リソース枠】]",
+              "name": "調味料！",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -6621,7 +6621,7 @@
           "buffs": [
             {
               "id": "buff_dapan_ult_multiplier",
-              "name": "具材投入！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "具材投入！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6634,7 +6634,7 @@
             },
             {
               "id": "buff_dapan_ult_aux",
-              "name": "具材投入！ [【補助・耐久・リソース枠】]",
+              "name": "具材投入！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -6714,7 +6714,7 @@
           "buffs": [
             {
               "id": "buff_dapan_talent1_damage_up",
-              "name": "とろみづけ [【枠4】ダメージUP枠]",
+              "name": "とろみづけ",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -6738,7 +6738,7 @@
           "buffs": [
             {
               "id": "buff_dapan_talent2_aux",
-              "name": "味見 [【補助・耐久・リソース枠】]",
+              "name": "味見",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -7062,7 +7062,7 @@
           "buffs": [
             {
               "id": "buff_ember_skill_multiplier",
-              "name": "出征 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "出征",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7075,7 +7075,7 @@
             },
             {
               "id": "buff_ember_skill_aux",
-              "name": "出征 [【補助・耐久・リソース枠】]",
+              "name": "出征",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7143,7 +7143,7 @@
           "buffs": [
             {
               "id": "buff_ember_combo_multiplier",
-              "name": "前線支援 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "前線支援",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -7156,7 +7156,7 @@
             },
             {
               "id": "buff_ember_combo_aux",
-              "name": "前線支援 [【補助・耐久・リソース枠】]",
+              "name": "前線支援",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -7223,7 +7223,7 @@
           "buffs": [
             {
               "id": "buff_ember_ult_multiplier",
-              "name": "誓約の炎 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "誓約の炎",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -7236,7 +7236,7 @@
             },
             {
               "id": "buff_ember_ult_aux",
-              "name": "誓約の炎 [【補助・耐久・リソース枠】]",
+              "name": "誓約の炎",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -7316,7 +7316,7 @@
           "buffs": [
             {
               "id": "buff_ember_talent1_aux",
-              "name": "突陣の意志 [【補助・耐久・リソース枠】]",
+              "name": "突陣の意志",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -7340,7 +7340,7 @@
           "buffs": [
             {
               "id": "buff_ember_talent2_atk_pct",
-              "name": "鉄で鉄を貫く [【枠1】攻撃力%枠]",
+              "name": "鉄で鉄を貫く",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -7659,7 +7659,7 @@
           "buffs": [
             {
               "id": "buff_estella_skill_multiplier",
-              "name": "オノマトペ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "オノマトペ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7672,7 +7672,7 @@
             },
             {
               "id": "buff_estella_skill_aux",
-              "name": "オノマトペ [【補助・耐久・リソース枠】]",
+              "name": "オノマトペ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7740,7 +7740,7 @@
           "buffs": [
             {
               "id": "buff_estella_combo_multiplier",
-              "name": "ディストーション [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ディストーション",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -7753,7 +7753,7 @@
             },
             {
               "id": "buff_estella_combo_vulnerability",
-              "name": "ディストーション [【枠11】敵脆弱枠]",
+              "name": "ディストーション",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -7766,7 +7766,7 @@
             },
             {
               "id": "buff_estella_combo_aux",
-              "name": "ディストーション [【補助・耐久・リソース枠】]",
+              "name": "ディストーション",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -7833,7 +7833,7 @@
           "buffs": [
             {
               "id": "buff_estella_ult_multiplier",
-              "name": "トレモロ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "トレモロ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7846,7 +7846,7 @@
             },
             {
               "id": "buff_estella_ult_aux",
-              "name": "トレモロ [【補助・耐久・リソース枠】]",
+              "name": "トレモロ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -7926,7 +7926,7 @@
           "buffs": [
             {
               "id": "buff_estella_talent1_aux",
-              "name": "類は友を呼ぶ [【補助・耐久・リソース枠】]",
+              "name": "類は友を呼ぶ",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -7950,7 +7950,7 @@
           "buffs": [
             {
               "id": "buff_estella_talent2_aux",
-              "name": "惰性 [【補助・耐久・リソース枠】]",
+              "name": "惰性",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8269,7 +8269,7 @@
           "buffs": [
             {
               "id": "buff_fluorite_skill_multiplier",
-              "name": "ちょっとイタズラ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ちょっとイタズラ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -8282,7 +8282,7 @@
             },
             {
               "id": "buff_fluorite_skill_aux",
-              "name": "ちょっとイタズラ [【補助・耐久・リソース枠】]",
+              "name": "ちょっとイタズラ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -8350,7 +8350,7 @@
           "buffs": [
             {
               "id": "buff_fluorite_combo_multiplier",
-              "name": "特別サービス [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "特別サービス",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -8363,7 +8363,7 @@
             },
             {
               "id": "buff_fluorite_combo_aux",
-              "name": "特別サービス [【補助・耐久・リソース枠】]",
+              "name": "特別サービス",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -8376,7 +8376,7 @@
             },
             {
               "id": "buff_fluorite_combo_special",
-              "name": "特別サービス [【特殊枠（例外処理）】]",
+              "name": "特別サービス",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -8445,7 +8445,7 @@
           "buffs": [
             {
               "id": "buff_fluorite_ult_multiplier",
-              "name": "つまんない茶番 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "つまんない茶番",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8458,7 +8458,7 @@
             },
             {
               "id": "buff_fluorite_ult_damage_up",
-              "name": "つまんない茶番 [【枠4】ダメージUP枠]",
+              "name": "つまんない茶番",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8471,7 +8471,7 @@
             },
             {
               "id": "buff_fluorite_ult_aux",
-              "name": "つまんない茶番 [【補助・耐久・リソース枠】]",
+              "name": "つまんない茶番",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8484,7 +8484,7 @@
             },
             {
               "id": "buff_fluorite_ult_special",
-              "name": "つまんない茶番 [【特殊枠（例外処理）】]",
+              "name": "つまんない茶番",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -8566,7 +8566,7 @@
           "buffs": [
             {
               "id": "buff_fluorite_talent1_damage_up",
-              "name": "泣きっ面に石 [【枠4】ダメージUP枠]",
+              "name": "泣きっ面に石",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8590,7 +8590,7 @@
           "buffs": [
             {
               "id": "buff_fluorite_talent2_atk_pct",
-              "name": "予測不可能 [【枠1】攻撃力%枠]",
+              "name": "予測不可能",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8603,7 +8603,7 @@
             },
             {
               "id": "buff_fluorite_talent2_aux",
-              "name": "予測不可能 [【補助・耐久・リソース枠】]",
+              "name": "予測不可能",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -8927,7 +8927,7 @@
           "buffs": [
             {
               "id": "buff_gilberta_skill_multiplier",
-              "name": "秘杖・引力モード [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "秘杖・引力モード",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -8940,7 +8940,7 @@
             },
             {
               "id": "buff_gilberta_skill_aux",
-              "name": "秘杖・引力モード [【補助・耐久・リソース枠】]",
+              "name": "秘杖・引力モード",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -9008,7 +9008,7 @@
           "buffs": [
             {
               "id": "buff_gilberta_combo_multiplier",
-              "name": "秘杖・マトリックス転移 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "秘杖・マトリックス転移",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -9021,7 +9021,7 @@
             },
             {
               "id": "buff_gilberta_combo_aux",
-              "name": "秘杖・マトリックス転移 [【補助・耐久・リソース枠】]",
+              "name": "秘杖・マトリックス転移",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -9088,7 +9088,7 @@
           "buffs": [
             {
               "id": "buff_gilberta_ult_multiplier",
-              "name": "秘杖・重力場 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "秘杖・重力場",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -9101,7 +9101,7 @@
             },
             {
               "id": "buff_gilberta_ult_vulnerability",
-              "name": "秘杖・重力場 [【枠11】敵脆弱枠]",
+              "name": "秘杖・重力場",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -9114,7 +9114,7 @@
             },
             {
               "id": "buff_gilberta_ult_aux",
-              "name": "秘杖・重力場 [【補助・耐久・リソース枠】]",
+              "name": "秘杖・重力場",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -9127,7 +9127,7 @@
             },
             {
               "id": "buff_gilberta_ult_special",
-              "name": "秘杖・重力場 [【特殊枠（例外処理）】]",
+              "name": "秘杖・重力場",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -9209,7 +9209,7 @@
           "buffs": [
             {
               "id": "buff_gilberta_talent1_aux",
-              "name": "トランスポーターの歌声 [【補助・耐久・リソース枠】]",
+              "name": "トランスポーターの歌声",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -9233,7 +9233,7 @@
           "buffs": [
             {
               "id": "buff_gilberta_talent2_aux",
-              "name": "遅れてきた返信 [【補助・耐久・リソース枠】]",
+              "name": "遅れてきた返信",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -9557,7 +9557,7 @@
           "buffs": [
             {
               "id": "buff_laevatain_skill_multiplier",
-              "name": "焼滅 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "焼滅",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9570,7 +9570,7 @@
             },
             {
               "id": "buff_laevatain_skill_aux",
-              "name": "焼滅 [【補助・耐久・リソース枠】]",
+              "name": "焼滅",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9583,7 +9583,7 @@
             },
             {
               "id": "buff_laevatain_skill_special",
-              "name": "焼滅 [【特殊枠（例外処理）】]",
+              "name": "焼滅",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -9653,7 +9653,7 @@
           "buffs": [
             {
               "id": "buff_laevatain_combo_multiplier",
-              "name": "烈火 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "烈火",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9666,7 +9666,7 @@
             },
             {
               "id": "buff_laevatain_combo_aux",
-              "name": "烈火 [【補助・耐久・リソース枠】]",
+              "name": "烈火",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9733,7 +9733,7 @@
           "buffs": [
             {
               "id": "buff_laevatain_ult_multiplier",
-              "name": "ラグナロク [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ラグナロク",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9746,7 +9746,7 @@
             },
             {
               "id": "buff_laevatain_ult_special",
-              "name": "ラグナロク [【特殊枠（例外処理）】]",
+              "name": "ラグナロク",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -9828,7 +9828,7 @@
           "buffs": [
             {
               "id": "buff_laevatain_talent1_res_down",
-              "name": "灼熱の心 [【枠9】敵耐性ダウン・耐性無視枠]",
+              "name": "灼熱の心",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9841,7 +9841,7 @@
             },
             {
               "id": "buff_laevatain_talent1_special",
-              "name": "灼熱の心 [【特殊枠（例外処理）】]",
+              "name": "灼熱の心",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -9867,7 +9867,7 @@
           "buffs": [
             {
               "id": "buff_laevatain_talent2_aux",
-              "name": "再燃 [【補助・耐久・リソース枠】]",
+              "name": "再燃",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10191,7 +10191,7 @@
           "buffs": [
             {
               "id": "buff_lastrite_skill_multiplier",
-              "name": "セシュカの秘伝 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "セシュカの秘伝",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -10204,7 +10204,7 @@
             },
             {
               "id": "buff_lastrite_skill_aux",
-              "name": "セシュカの秘伝 [【補助・耐久・リソース枠】]",
+              "name": "セシュカの秘伝",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -10217,7 +10217,7 @@
             },
             {
               "id": "buff_lastrite_skill_special",
-              "name": "セシュカの秘伝 [【特殊枠（例外処理）】]",
+              "name": "セシュカの秘伝",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "special",
@@ -10287,7 +10287,7 @@
           "buffs": [
             {
               "id": "buff_lastrite_combo_multiplier",
-              "name": "冬喰 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "冬喰",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10300,7 +10300,7 @@
             },
             {
               "id": "buff_lastrite_combo_aux",
-              "name": "冬喰 [【補助・耐久・リソース枠】]",
+              "name": "冬喰",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10367,7 +10367,7 @@
           "buffs": [
             {
               "id": "buff_lastrite_ult_multiplier",
-              "name": "終の別れ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "終の別れ",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10380,7 +10380,7 @@
             },
             {
               "id": "buff_lastrite_ult_aux",
-              "name": "終の別れ [【補助・耐久・リソース枠】]",
+              "name": "終の別れ",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10393,7 +10393,7 @@
             },
             {
               "id": "buff_lastrite_ult_special",
-              "name": "終の別れ [【特殊枠（例外処理）】]",
+              "name": "終の別れ",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -10475,7 +10475,7 @@
           "buffs": [
             {
               "id": "buff_lastrite_talent1_vulnerability",
-              "name": "低体温症 [【枠11】敵脆弱枠]",
+              "name": "低体温症",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10499,7 +10499,7 @@
           "buffs": [
             {
               "id": "buff_lastrite_talent2_vulnerability",
-              "name": "低温脆性 [【枠11】敵脆弱枠]",
+              "name": "低温脆性",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -10512,7 +10512,7 @@
             },
             {
               "id": "buff_lastrite_talent2_special",
-              "name": "低温脆性 [【特殊枠（例外処理）】]",
+              "name": "低温脆性",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -10838,7 +10838,7 @@
           "buffs": [
             {
               "id": "buff_lifeng_skill_multiplier",
-              "name": "浄化身 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "浄化身",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10851,7 +10851,7 @@
             },
             {
               "id": "buff_lifeng_skill_vulnerability",
-              "name": "浄化身 [【枠11】敵脆弱枠]",
+              "name": "浄化身",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10864,7 +10864,7 @@
             },
             {
               "id": "buff_lifeng_skill_aux",
-              "name": "浄化身 [【補助・耐久・リソース枠】]",
+              "name": "浄化身",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10932,7 +10932,7 @@
           "buffs": [
             {
               "id": "buff_lifeng_combo_multiplier",
-              "name": "忿怒形 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "忿怒形",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -10945,7 +10945,7 @@
             },
             {
               "id": "buff_lifeng_combo_link",
-              "name": "忿怒形 [【枠8】リンク補正枠]",
+              "name": "忿怒形",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -10958,7 +10958,7 @@
             },
             {
               "id": "buff_lifeng_combo_aux",
-              "name": "忿怒形 [【補助・耐久・リソース枠】]",
+              "name": "忿怒形",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11025,7 +11025,7 @@
           "buffs": [
             {
               "id": "buff_lifeng_ult_multiplier",
-              "name": "不動心 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "不動心",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -11038,7 +11038,7 @@
             },
             {
               "id": "buff_lifeng_ult_aux",
-              "name": "不動心 [【補助・耐久・リソース枠】]",
+              "name": "不動心",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -11134,12 +11134,12 @@
           "buffs": [
             {
               "id": "buff_lifeng_talent1_stat",
-              "name": "円頓 [【枠2】能力値枠]",
+              "name": "円頓",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
               "calcGroup": "stat",
-              "calcGroupLabel": "【枠2】能力値枠",
+              "calcGroupLabel": "【能力値補正】",
               "value": 0,
               "duration": 0.0,
               "description": "【能力値付加枠に加算】知性1および意志1につき能力値付加+0.10%(昇進1)→+0.15%(昇進2) ※攻撃力%枠ではなくメイン0.5%・サブ0.2%と同じ能力値付加枠に加算される重要仕様",
@@ -11158,7 +11158,7 @@
           "buffs": [
             {
               "id": "buff_lifeng_talent2_multiplier",
-              "name": "伏魔 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "伏魔",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -11477,7 +11477,7 @@
           "buffs": [
             {
               "id": "buff_lino_skill_atk_pct",
-              "name": "キラキラフォーカス [【枠1】攻撃力%枠]",
+              "name": "キラキラフォーカス",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11490,7 +11490,7 @@
             },
             {
               "id": "buff_lino_skill_multiplier",
-              "name": "キラキラフォーカス [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "キラキラフォーカス",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11503,7 +11503,7 @@
             },
             {
               "id": "buff_lino_skill_aux",
-              "name": "キラキラフォーカス [【補助・耐久・リソース枠】]",
+              "name": "キラキラフォーカス",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -11516,7 +11516,7 @@
             },
             {
               "id": "buff_lino_skill_special",
-              "name": "キラキラフォーカス [【特殊枠（例外処理）】]",
+              "name": "キラキラフォーカス",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -11602,7 +11602,7 @@
           "buffs": [
             {
               "id": "buff_lino_combo_multiplier",
-              "name": "ときめきメロディー [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ときめきメロディー",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -11615,7 +11615,7 @@
             },
             {
               "id": "buff_lino_combo_aux",
-              "name": "ときめきメロディー [【補助・耐久・リソース枠】]",
+              "name": "ときめきメロディー",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -11682,7 +11682,7 @@
           "buffs": [
             {
               "id": "buff_lino_ult_atk_pct",
-              "name": "綺羅星コンチェルト [【枠1】攻撃力%枠]",
+              "name": "綺羅星コンチェルト",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11695,7 +11695,7 @@
             },
             {
               "id": "buff_lino_ult_multiplier",
-              "name": "綺羅星コンチェルト [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "綺羅星コンチェルト",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11708,7 +11708,7 @@
             },
             {
               "id": "buff_lino_ult_amp",
-              "name": "綺羅星コンチェルト [【枠5】増幅枠]",
+              "name": "綺羅星コンチェルト",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11721,7 +11721,7 @@
             },
             {
               "id": "buff_lino_ult_aux",
-              "name": "綺羅星コンチェルト [【補助・耐久・リソース枠】]",
+              "name": "綺羅星コンチェルト",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -11801,7 +11801,7 @@
           "buffs": [
             {
               "id": "buff_lino_talent1_aux",
-              "name": "アイドルゾーン [【補助・耐久・リソース枠】]",
+              "name": "アイドルゾーン",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11825,7 +11825,7 @@
           "buffs": [
             {
               "id": "buff_lino_talent2_aux",
-              "name": "一等星の応援 [【補助・耐久・リソース枠】]",
+              "name": "一等星の応援",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -12149,7 +12149,7 @@
           "buffs": [
             {
               "id": "buff_mifu_skill_multiplier",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12162,7 +12162,7 @@
             },
             {
               "id": "buff_mifu_skill_aux",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【補助・耐久・リソース枠】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12175,7 +12175,7 @@
             },
             {
               "id": "buff_mifu_skill_special",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【特殊枠（例外処理）】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -12245,7 +12245,7 @@
           "buffs": [
             {
               "id": "buff_mifu_skill_multiplier",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12258,7 +12258,7 @@
             },
             {
               "id": "buff_mifu_skill_aux",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【補助・耐久・リソース枠】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12271,7 +12271,7 @@
             },
             {
               "id": "buff_mifu_skill_special",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【特殊枠（例外処理）】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -12341,7 +12341,7 @@
           "buffs": [
             {
               "id": "buff_mifu_skill_multiplier",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12354,7 +12354,7 @@
             },
             {
               "id": "buff_mifu_skill_aux",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【補助・耐久・リソース枠】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12367,7 +12367,7 @@
             },
             {
               "id": "buff_mifu_skill_special",
-              "name": "清波三芸（断雲 → 追形 → 開天） [【特殊枠（例外処理）】]",
+              "name": "清波三芸（断雲 → 追形 → 開天）",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -12437,7 +12437,7 @@
           "buffs": [
             {
               "id": "buff_mifu_combo_multiplier",
-              "name": "拳に悔い無し [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "拳に悔い無し",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12450,7 +12450,7 @@
             },
             {
               "id": "buff_mifu_combo_vulnerability",
-              "name": "拳に悔い無し [【枠11】敵脆弱枠]",
+              "name": "拳に悔い無し",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12463,7 +12463,7 @@
             },
             {
               "id": "buff_mifu_combo_aux",
-              "name": "拳に悔い無し [【補助・耐久・リソース枠】]",
+              "name": "拳に悔い無し",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12530,7 +12530,7 @@
           "buffs": [
             {
               "id": "buff_mifu_ult_multiplier",
-              "name": "心絶やす [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "心絶やす",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12543,7 +12543,7 @@
             },
             {
               "id": "buff_mifu_ult_aux",
-              "name": "心絶やす [【補助・耐久・リソース枠】]",
+              "name": "心絶やす",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -12623,7 +12623,7 @@
           "buffs": [
             {
               "id": "buff_mifu_talent1_multiplier",
-              "name": "冷酷無比 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "冷酷無比",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -12647,7 +12647,7 @@
           "buffs": [
             {
               "id": "buff_mifu_talent2_aux",
-              "name": "怒りを封ず [【補助・耐久・リソース枠】]",
+              "name": "怒りを封ず",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -12720,7 +12720,7 @@
           "buffs": [
             {
               "id": "buff_minho_skill_taken_damage_up",
-              "name": "鎮影 ／ 派生「奔雷」 [【枠10】敵被ダメージUP枠]",
+              "name": "鎮影 ／ 派生「奔雷」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12733,7 +12733,7 @@
             },
             {
               "id": "buff_minho_skill_special",
-              "name": "鎮影 ／ 派生「奔雷」 [【特殊枠（例外処理）】]",
+              "name": "鎮影 ／ 派生「奔雷」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12782,7 +12782,7 @@
           "buffs": [
             {
               "id": "buff_minho_combo_special",
-              "name": "星霜 [【特殊枠（例外処理）】]",
+              "name": "星霜",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -12830,7 +12830,7 @@
           "buffs": [
             {
               "id": "buff_minho_ult_special",
-              "name": "破天 [【特殊枠（例外処理）】]",
+              "name": "破天",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -12891,7 +12891,7 @@
           "buffs": [
             {
               "id": "buff_minho_talent1_taken_damage_up",
-              "name": "天奔る稲妻 [【枠10】敵被ダメージUP枠]",
+              "name": "天奔る稲妻",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12904,7 +12904,7 @@
             },
             {
               "id": "buff_minho_talent1_special",
-              "name": "天奔る稲妻 [【特殊枠（例外処理）】]",
+              "name": "天奔る稲妻",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -12930,7 +12930,7 @@
           "buffs": [
             {
               "id": "buff_minho_talent2_special",
-              "name": "（Wiki未記載） [【特殊枠（例外処理）】]",
+              "name": "（Wiki未記載）",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -13273,7 +13273,7 @@
           "buffs": [
             {
               "id": "buff_okugi_skill_multiplier",
-              "name": "砕玉領域【陣訣・知(知性≧意志)】 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "砕玉領域【陣訣・知(知性≧意志)】",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -13286,7 +13286,7 @@
             },
             {
               "id": "buff_okugi_skill_aux",
-              "name": "砕玉領域【陣訣・知(知性≧意志)】 [【補助・耐久・リソース枠】]",
+              "name": "砕玉領域【陣訣・知(知性≧意志)】",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -13299,7 +13299,7 @@
             },
             {
               "id": "buff_okugi_skill_special",
-              "name": "砕玉領域【陣訣・知(知性≧意志)】 [【特殊枠（例外処理）】]",
+              "name": "砕玉領域【陣訣・知(知性≧意志)】",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -13369,7 +13369,7 @@
           "buffs": [
             {
               "id": "buff_okugi_combo_multiplier",
-              "name": "応龍四式【陣訣・知(知性≧意志)】 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "応龍四式【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13382,7 +13382,7 @@
             },
             {
               "id": "buff_okugi_combo_vulnerability",
-              "name": "応龍四式【陣訣・知(知性≧意志)】 [【枠11】敵脆弱枠]",
+              "name": "応龍四式【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13395,7 +13395,7 @@
             },
             {
               "id": "buff_okugi_combo_aux",
-              "name": "応龍四式【陣訣・知(知性≧意志)】 [【補助・耐久・リソース枠】]",
+              "name": "応龍四式【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13408,7 +13408,7 @@
             },
             {
               "id": "buff_okugi_combo_special",
-              "name": "応龍四式【陣訣・知(知性≧意志)】 [【特殊枠（例外処理）】]",
+              "name": "応龍四式【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13477,7 +13477,7 @@
           "buffs": [
             {
               "id": "buff_okugi_ult_multiplier",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13490,7 +13490,7 @@
             },
             {
               "id": "buff_okugi_ult_res_down",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【枠9】敵耐性ダウン・耐性無視枠]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13503,7 +13503,7 @@
             },
             {
               "id": "buff_okugi_ult_aux",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【補助・耐久・リソース枠】]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13516,7 +13516,7 @@
             },
             {
               "id": "buff_okugi_ult_special",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【特殊枠（例外処理）】]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13586,7 +13586,7 @@
           "buffs": [
             {
               "id": "buff_okugi_ult_multiplier",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13599,7 +13599,7 @@
             },
             {
               "id": "buff_okugi_ult_res_down",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【枠9】敵耐性ダウン・耐性無視枠]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13612,7 +13612,7 @@
             },
             {
               "id": "buff_okugi_ult_aux",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【補助・耐久・リソース枠】]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13625,7 +13625,7 @@
             },
             {
               "id": "buff_okugi_ult_special",
-              "name": "破晦【陣訣・知(知性≧意志)】 [【特殊枠（例外処理）】]",
+              "name": "破晦【陣訣・知(知性≧意志)】",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13695,7 +13695,7 @@
           "buffs": [
             {
               "id": "buff_okugi_talent1_amp",
-              "name": "画策 [【枠5】増幅枠]",
+              "name": "画策",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -13708,7 +13708,7 @@
             },
             {
               "id": "buff_okugi_talent1_vulnerability",
-              "name": "画策 [【枠11】敵脆弱枠]",
+              "name": "画策",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -13721,7 +13721,7 @@
             },
             {
               "id": "buff_okugi_talent1_special",
-              "name": "画策 [【特殊枠（例外処理）】]",
+              "name": "画策",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -13747,7 +13747,7 @@
           "buffs": [
             {
               "id": "buff_okugi_talent2_res_down",
-              "name": "研ぎ澄ます [【枠9】敵耐性ダウン・耐性無視枠]",
+              "name": "研ぎ澄ます",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13760,7 +13760,7 @@
             },
             {
               "id": "buff_okugi_talent2_aux",
-              "name": "研ぎ澄ます [【補助・耐久・リソース枠】]",
+              "name": "研ぎ澄ます",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14079,7 +14079,7 @@
           "buffs": [
             {
               "id": "buff_perlica_skill_multiplier",
-              "name": "協約ω：雷撃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "協約ω：雷撃",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -14092,7 +14092,7 @@
             },
             {
               "id": "buff_perlica_skill_aux",
-              "name": "協約ω：雷撃 [【補助・耐久・リソース枠】]",
+              "name": "協約ω：雷撃",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -14160,7 +14160,7 @@
           "buffs": [
             {
               "id": "buff_perlica_combo_multiplier",
-              "name": "即時協約：閃光鎖 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "即時協約：閃光鎖",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14173,7 +14173,7 @@
             },
             {
               "id": "buff_perlica_combo_taken_damage_up",
-              "name": "即時協約：閃光鎖 [【枠10】敵被ダメージUP枠]",
+              "name": "即時協約：閃光鎖",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14186,7 +14186,7 @@
             },
             {
               "id": "buff_perlica_combo_aux",
-              "name": "即時協約：閃光鎖 [【補助・耐久・リソース枠】]",
+              "name": "即時協約：閃光鎖",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14253,7 +14253,7 @@
           "buffs": [
             {
               "id": "buff_perlica_ult_multiplier",
-              "name": "協約ε：70.41κ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "協約ε：70.41κ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -14266,7 +14266,7 @@
             },
             {
               "id": "buff_perlica_ult_aux",
-              "name": "協約ε：70.41κ [【補助・耐久・リソース枠】]",
+              "name": "協約ε：70.41κ",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -14346,7 +14346,7 @@
           "buffs": [
             {
               "id": "buff_perlica_talent1_damage_up",
-              "name": "殲滅協約 [【枠4】ダメージUP枠]",
+              "name": "殲滅協約",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -14370,7 +14370,7 @@
           "buffs": [
             {
               "id": "buff_perlica_talent2_special",
-              "name": "循環協約 [【特殊枠（例外処理）】]",
+              "name": "循環協約",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14696,7 +14696,7 @@
           "buffs": [
             {
               "id": "buff_pogranichnik_skill_multiplier",
-              "name": "戦線粉砕 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "戦線粉砕",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14709,7 +14709,7 @@
             },
             {
               "id": "buff_pogranichnik_skill_taken_damage_up",
-              "name": "戦線粉砕 [【枠10】敵被ダメージUP枠]",
+              "name": "戦線粉砕",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14722,7 +14722,7 @@
             },
             {
               "id": "buff_pogranichnik_skill_aux",
-              "name": "戦線粉砕 [【補助・耐久・リソース枠】]",
+              "name": "戦線粉砕",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14790,7 +14790,7 @@
           "buffs": [
             {
               "id": "buff_pogranichnik_combo_multiplier",
-              "name": "満月迎撃 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "満月迎撃",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14803,7 +14803,7 @@
             },
             {
               "id": "buff_pogranichnik_combo_aux",
-              "name": "満月迎撃 [【補助・耐久・リソース枠】]",
+              "name": "満月迎撃",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14870,7 +14870,7 @@
           "buffs": [
             {
               "id": "buff_pogranichnik_ult_multiplier",
-              "name": "盾兵旗隊、進め [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "盾兵旗隊、進め",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14883,7 +14883,7 @@
             },
             {
               "id": "buff_pogranichnik_ult_aux",
-              "name": "盾兵旗隊、進め [【補助・耐久・リソース枠】]",
+              "name": "盾兵旗隊、進め",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -14896,7 +14896,7 @@
             },
             {
               "id": "buff_pogranichnik_ult_special",
-              "name": "盾兵旗隊、進め [【特殊枠（例外処理）】]",
+              "name": "盾兵旗隊、進め",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -14978,7 +14978,7 @@
           "buffs": [
             {
               "id": "buff_pogranichnik_talent1_atk_pct",
-              "name": "生ける旗印 [【枠1】攻撃力%枠]",
+              "name": "生ける旗印",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -14991,7 +14991,7 @@
             },
             {
               "id": "buff_pogranichnik_talent1_arts_intensity",
-              "name": "生ける旗印 [【枠7】アーツ強度枠]",
+              "name": "生ける旗印",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -15015,7 +15015,7 @@
           "buffs": [
             {
               "id": "buff_pogranichnik_talent2_atk_pct",
-              "name": "戦術指導 [【枠1】攻撃力%枠]",
+              "name": "戦術指導",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -15028,7 +15028,7 @@
             },
             {
               "id": "buff_pogranichnik_talent2_arts_intensity",
-              "name": "戦術指導 [【枠7】アーツ強度枠]",
+              "name": "戦術指導",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -15352,7 +15352,7 @@
           "buffs": [
             {
               "id": "buff_purrchena_skill_multiplier",
-              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -15365,7 +15365,7 @@
             },
             {
               "id": "buff_purrchena_skill_aux",
-              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【補助・耐久・リソース枠】]",
+              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -15378,7 +15378,7 @@
             },
             {
               "id": "buff_purrchena_skill_special",
-              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」 [【特殊枠（例外処理）】]",
+              "name": "寝てませんよ！ → 派生「お友だちから離れろ～！」",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -15448,7 +15448,7 @@
           "buffs": [
             {
               "id": "buff_purrchena_combo_multiplier",
-              "name": "お菓子or“プレゼント” [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "お菓子or“プレゼント”",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -15461,7 +15461,7 @@
             },
             {
               "id": "buff_purrchena_combo_aux",
-              "name": "お菓子or“プレゼント” [【補助・耐久・リソース枠】]",
+              "name": "お菓子or“プレゼント”",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -15474,7 +15474,7 @@
             },
             {
               "id": "buff_purrchena_combo_special",
-              "name": "お菓子or“プレゼント” [【特殊枠（例外処理）】]",
+              "name": "お菓子or“プレゼント”",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "special",
@@ -15543,7 +15543,7 @@
           "buffs": [
             {
               "id": "buff_purrchena_ult_multiplier",
-              "name": "悪いことは許しませ～ん！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "悪いことは許しませ～ん！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -15556,7 +15556,7 @@
             },
             {
               "id": "buff_purrchena_ult_vulnerability",
-              "name": "悪いことは許しませ～ん！ [【枠11】敵脆弱枠]",
+              "name": "悪いことは許しませ～ん！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -15569,7 +15569,7 @@
             },
             {
               "id": "buff_purrchena_ult_aux",
-              "name": "悪いことは許しませ～ん！ [【補助・耐久・リソース枠】]",
+              "name": "悪いことは許しませ～ん！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -15582,7 +15582,7 @@
             },
             {
               "id": "buff_purrchena_ult_special",
-              "name": "悪いことは許しませ～ん！ [【特殊枠（例外処理）】]",
+              "name": "悪いことは許しませ～ん！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -15643,7 +15643,7 @@
           "buffs": [
             {
               "id": "buff_purrchena_talent1_aux",
-              "name": "謝っても遅いのですっ！ [【補助・耐久・リソース枠】]",
+              "name": "謝っても遅いのですっ！",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -15656,7 +15656,7 @@
             },
             {
               "id": "buff_purrchena_talent1_special",
-              "name": "謝っても遅いのですっ！ [【特殊枠（例外処理）】]",
+              "name": "謝っても遅いのですっ！",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -15682,7 +15682,7 @@
           "buffs": [
             {
               "id": "buff_purrchena_talent2_aux",
-              "name": "アンバサダーの務め [【補助・耐久・リソース枠】]",
+              "name": "アンバサダーの務め",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -16006,7 +16006,7 @@
           "buffs": [
             {
               "id": "buff_rossi_skill_multiplier",
-              "name": "真紅の影 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "真紅の影",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -16019,7 +16019,7 @@
             },
             {
               "id": "buff_rossi_skill_aux",
-              "name": "真紅の影 [【補助・耐久・リソース枠】]",
+              "name": "真紅の影",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -16087,7 +16087,7 @@
           "buffs": [
             {
               "id": "buff_rossi_combo_multiplier",
-              "name": "刹那の影 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "刹那の影",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16100,7 +16100,7 @@
             },
             {
               "id": "buff_rossi_combo_crit",
-              "name": "刹那の影 [【枠6】会心枠]",
+              "name": "刹那の影",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16113,7 +16113,7 @@
             },
             {
               "id": "buff_rossi_combo_aux",
-              "name": "刹那の影 [【補助・耐久・リソース枠】]",
+              "name": "刹那の影",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16126,7 +16126,7 @@
             },
             {
               "id": "buff_rossi_combo_special",
-              "name": "刹那の影 [【特殊枠（例外処理）】]",
+              "name": "刹那の影",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -16195,7 +16195,7 @@
           "buffs": [
             {
               "id": "buff_rossi_ult_multiplier",
-              "name": "\"鋭爪\"奇襲 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "\"鋭爪\"奇襲",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16208,7 +16208,7 @@
             },
             {
               "id": "buff_rossi_ult_crit",
-              "name": "\"鋭爪\"奇襲 [【枠6】会心枠]",
+              "name": "\"鋭爪\"奇襲",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16221,7 +16221,7 @@
             },
             {
               "id": "buff_rossi_ult_aux",
-              "name": "\"鋭爪\"奇襲 [【補助・耐久・リソース枠】]",
+              "name": "\"鋭爪\"奇襲",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16301,7 +16301,7 @@
           "buffs": [
             {
               "id": "buff_rossi_talent1_multiplier",
-              "name": "爪痕 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "爪痕",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16314,7 +16314,7 @@
             },
             {
               "id": "buff_rossi_talent1_taken_damage_up",
-              "name": "爪痕 [【枠10】敵被ダメージUP枠]",
+              "name": "爪痕",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16338,7 +16338,7 @@
           "buffs": [
             {
               "id": "buff_rossi_talent2_multiplier",
-              "name": "ざわめく血 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ざわめく血",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16351,7 +16351,7 @@
             },
             {
               "id": "buff_rossi_talent2_aux",
-              "name": "ざわめく血 [【補助・耐久・リソース枠】]",
+              "name": "ざわめく血",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16475,7 +16475,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_skill_multiplier",
-              "name": "限界防御 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "限界防御",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -16488,7 +16488,7 @@
             },
             {
               "id": "buff_snowshine_skill_aux",
-              "name": "限界防御 [【補助・耐久・リソース枠】]",
+              "name": "限界防御",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -16556,7 +16556,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_combo_aux",
-              "name": "極地救援 [【補助・耐久・リソース枠】]",
+              "name": "極地救援",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -16602,7 +16602,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_ult_multiplier",
-              "name": "凍てつく寒霜 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "凍てつく寒霜",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16615,7 +16615,7 @@
             },
             {
               "id": "buff_snowshine_ult_aux",
-              "name": "凍てつく寒霜 [【補助・耐久・リソース枠】]",
+              "name": "凍てつく寒霜",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16695,7 +16695,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_talent1_aux",
-              "name": "極地生存 [【補助・耐久・リソース枠】]",
+              "name": "極地生存",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -16719,7 +16719,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_talent2_aux",
-              "name": "救援専門家 [【補助・耐久・リソース枠】]",
+              "name": "救援専門家",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16857,7 +16857,7 @@
           "buffs": [
             {
               "id": "buff_su_skill_multiplier",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16870,7 +16870,7 @@
             },
             {
               "id": "buff_su_skill_aux",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【補助・耐久・リソース枠】]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16883,7 +16883,7 @@
             },
             {
               "id": "buff_su_skill_special",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【特殊枠（例外処理）】]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16953,7 +16953,7 @@
           "buffs": [
             {
               "id": "buff_su_skill_multiplier",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16966,7 +16966,7 @@
             },
             {
               "id": "buff_su_skill_aux",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【補助・耐久・リソース枠】]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16979,7 +16979,7 @@
             },
             {
               "id": "buff_su_skill_special",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 [【特殊枠（例外処理）】]",
+              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17049,7 +17049,7 @@
           "buffs": [
             {
               "id": "buff_su_combo_multiplier",
-              "name": "胸中に成竹在り [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "胸中に成竹在り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -17062,7 +17062,7 @@
             },
             {
               "id": "buff_su_combo_aux",
-              "name": "胸中に成竹在り [【補助・耐久・リソース枠】]",
+              "name": "胸中に成竹在り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -17129,7 +17129,7 @@
           "buffs": [
             {
               "id": "buff_su_ult_multiplier",
-              "name": "白けさせるでない！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "白けさせるでない！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17142,7 +17142,7 @@
             },
             {
               "id": "buff_su_ult_amp",
-              "name": "白けさせるでない！ [【枠5】増幅枠]",
+              "name": "白けさせるでない！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17155,7 +17155,7 @@
             },
             {
               "id": "buff_su_ult_aux",
-              "name": "白けさせるでない！ [【補助・耐久・リソース枠】]",
+              "name": "白けさせるでない！",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17223,7 +17223,7 @@
           "buffs": [
             {
               "id": "buff_su_talent1_aux",
-              "name": "代理人の気遣い [【補助・耐久・リソース枠】]",
+              "name": "代理人の気遣い",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -17236,7 +17236,7 @@
             },
             {
               "id": "buff_su_talent1_special",
-              "name": "代理人の気遣い [【特殊枠（例外処理）】]",
+              "name": "代理人の気遣い",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "special",
@@ -17262,7 +17262,7 @@
           "buffs": [
             {
               "id": "buff_su_talent2_aux",
-              "name": "丹青褪せず [【補助・耐久・リソース枠】]",
+              "name": "丹青褪せず",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17381,7 +17381,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_skill_multiplier",
-              "name": "波が来るぜ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "波が来るぜ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17394,7 +17394,7 @@
             },
             {
               "id": "buff_tangtang_skill_vulnerability",
-              "name": "波が来るぜ！ [【枠11】敵脆弱枠]",
+              "name": "波が来るぜ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17407,7 +17407,7 @@
             },
             {
               "id": "buff_tangtang_skill_aux",
-              "name": "波が来るぜ！ [【補助・耐久・リソース枠】]",
+              "name": "波が来るぜ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17420,7 +17420,7 @@
             },
             {
               "id": "buff_tangtang_skill_special",
-              "name": "波が来るぜ！ [【特殊枠（例外処理）】]",
+              "name": "波が来るぜ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17490,7 +17490,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_combo_multiplier",
-              "name": "川よ、俺様に従え！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "川よ、俺様に従え！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -17503,7 +17503,7 @@
             },
             {
               "id": "buff_tangtang_combo_aux",
-              "name": "川よ、俺様に従え！ [【補助・耐久・リソース枠】]",
+              "name": "川よ、俺様に従え！",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -17570,7 +17570,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_ult_multiplier",
-              "name": "大親分が見てっぞ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17583,7 +17583,7 @@
             },
             {
               "id": "buff_tangtang_ult_aux",
-              "name": "大親分が見てっぞ！ [【補助・耐久・リソース枠】]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17596,7 +17596,7 @@
             },
             {
               "id": "buff_tangtang_ult_special",
-              "name": "大親分が見てっぞ！ [【特殊枠（例外処理）】]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17666,7 +17666,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_ult_multiplier",
-              "name": "大親分が見てっぞ！ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17679,7 +17679,7 @@
             },
             {
               "id": "buff_tangtang_ult_aux",
-              "name": "大親分が見てっぞ！ [【補助・耐久・リソース枠】]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17692,7 +17692,7 @@
             },
             {
               "id": "buff_tangtang_ult_special",
-              "name": "大親分が見てっぞ！ [【特殊枠（例外処理）】]",
+              "name": "大親分が見てっぞ！",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -17774,7 +17774,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_talent1_aux",
-              "name": "肝胆相照らす [【補助・耐久・リソース枠】]",
+              "name": "肝胆相照らす",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17798,7 +17798,7 @@
           "buffs": [
             {
               "id": "buff_tangtang_talent2_damage_up",
-              "name": "嵐を呼ぶ娘 [【枠4】ダメージUP枠]",
+              "name": "嵐を呼ぶ娘",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -17811,7 +17811,7 @@
             },
             {
               "id": "buff_tangtang_talent2_special",
-              "name": "嵐を呼ぶ娘 [【特殊枠（例外処理）】]",
+              "name": "嵐を呼ぶ娘",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -17937,7 +17937,7 @@
           "buffs": [
             {
               "id": "buff_typhoeus_skill_multiplier",
-              "name": "風裂く一矢 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "風裂く一矢",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -17950,7 +17950,7 @@
             },
             {
               "id": "buff_typhoeus_skill_aux",
-              "name": "風裂く一矢 [【補助・耐久・リソース枠】]",
+              "name": "風裂く一矢",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -17963,7 +17963,7 @@
             },
             {
               "id": "buff_typhoeus_skill_special",
-              "name": "風裂く一矢 [【特殊枠（例外処理）】]",
+              "name": "風裂く一矢",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -18033,7 +18033,7 @@
           "buffs": [
             {
               "id": "buff_typhoeus_combo_multiplier",
-              "name": "荒れ狂うトゲ [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "荒れ狂うトゲ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -18046,7 +18046,7 @@
             },
             {
               "id": "buff_typhoeus_combo_taken_damage_up",
-              "name": "荒れ狂うトゲ [【枠10】敵被ダメージUP枠]",
+              "name": "荒れ狂うトゲ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -18059,7 +18059,7 @@
             },
             {
               "id": "buff_typhoeus_combo_aux",
-              "name": "荒れ狂うトゲ [【補助・耐久・リソース枠】]",
+              "name": "荒れ狂うトゲ",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -18126,7 +18126,7 @@
           "buffs": [
             {
               "id": "buff_typhoeus_ult_multiplier",
-              "name": "氷山の呼び声 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "氷山の呼び声",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18139,7 +18139,7 @@
             },
             {
               "id": "buff_typhoeus_ult_aux",
-              "name": "氷山の呼び声 [【補助・耐久・リソース枠】]",
+              "name": "氷山の呼び声",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18219,7 +18219,7 @@
           "buffs": [
             {
               "id": "buff_typhoeus_talent1_multiplier",
-              "name": "獲物のチェック [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "獲物のチェック",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18232,7 +18232,7 @@
             },
             {
               "id": "buff_typhoeus_talent1_aux",
-              "name": "獲物のチェック [【補助・耐久・リソース枠】]",
+              "name": "獲物のチェック",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18256,7 +18256,7 @@
           "buffs": [
             {
               "id": "buff_typhoeus_talent2_aux",
-              "name": "狩人の集中力 [【補助・耐久・リソース枠】]",
+              "name": "狩人の集中力",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18380,7 +18380,7 @@
           "buffs": [
             {
               "id": "buff_wulfgard_skill_multiplier",
-              "name": "灼熱の弾痕 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "灼熱の弾痕",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18393,7 +18393,7 @@
             },
             {
               "id": "buff_wulfgard_skill_aux",
-              "name": "灼熱の弾痕 [【補助・耐久・リソース枠】]",
+              "name": "灼熱の弾痕",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18406,7 +18406,7 @@
             },
             {
               "id": "buff_wulfgard_skill_special",
-              "name": "灼熱の弾痕 [【特殊枠（例外処理）】]",
+              "name": "灼熱の弾痕",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -18476,7 +18476,7 @@
           "buffs": [
             {
               "id": "buff_wulfgard_combo_multiplier",
-              "name": "フラググレネード・β [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "フラググレネード・β",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18489,7 +18489,7 @@
             },
             {
               "id": "buff_wulfgard_combo_aux",
-              "name": "フラググレネード・β [【補助・耐久・リソース枠】]",
+              "name": "フラググレネード・β",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18556,7 +18556,7 @@
           "buffs": [
             {
               "id": "buff_wulfgard_ult_multiplier",
-              "name": "狼の怒り [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "狼の怒り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18569,7 +18569,7 @@
             },
             {
               "id": "buff_wulfgard_ult_aux",
-              "name": "狼の怒り [【補助・耐久・リソース枠】]",
+              "name": "狼の怒り",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18649,7 +18649,7 @@
           "buffs": [
             {
               "id": "buff_wulfgard_talent1_damage_up",
-              "name": "灼熱の牙 [【枠4】ダメージUP枠]",
+              "name": "灼熱の牙",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -18673,7 +18673,7 @@
           "buffs": [
             {
               "id": "buff_wulfgard_talent2_aux",
-              "name": "節制規則 [【補助・耐久・リソース枠】]",
+              "name": "節制規則",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -18797,7 +18797,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_skill_amp",
-              "name": "DDoS [【枠5】増幅枠]",
+              "name": "DDoS",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -18810,7 +18810,7 @@
             },
             {
               "id": "buff_xaihi_skill_aux",
-              "name": "DDoS [【補助・耐久・リソース枠】]",
+              "name": "DDoS",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -18857,7 +18857,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_combo_multiplier",
-              "name": "ストレステスト [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ストレステスト",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18870,7 +18870,7 @@
             },
             {
               "id": "buff_xaihi_combo_aux",
-              "name": "ストレステスト [【補助・耐久・リソース枠】]",
+              "name": "ストレステスト",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -18937,7 +18937,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_ult_amp",
-              "name": "スタックオーバーフロー [【枠5】増幅枠]",
+              "name": "スタックオーバーフロー",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -18950,7 +18950,7 @@
             },
             {
               "id": "buff_xaihi_ult_aux",
-              "name": "スタックオーバーフロー [【補助・耐久・リソース枠】]",
+              "name": "スタックオーバーフロー",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -19009,7 +19009,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_talent1_taken_damage_up",
-              "name": "エグゼキュートプロセス [【枠10】敵被ダメージUP枠]",
+              "name": "エグゼキュートプロセス",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -19033,7 +19033,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_talent2_aux",
-              "name": "フリーズプロトコル [【補助・耐久・リソース枠】]",
+              "name": "フリーズプロトコル",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -19152,7 +19152,7 @@
           "buffs": [
             {
               "id": "buff_yvonne_skill_multiplier",
-              "name": "ひえひえビーム・β型 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "ひえひえビーム・β型",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19165,7 +19165,7 @@
             },
             {
               "id": "buff_yvonne_skill_aux",
-              "name": "ひえひえビーム・β型 [【補助・耐久・リソース枠】]",
+              "name": "ひえひえビーム・β型",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19178,7 +19178,7 @@
             },
             {
               "id": "buff_yvonne_skill_special",
-              "name": "ひえひえビーム・β型 [【特殊枠（例外処理）】]",
+              "name": "ひえひえビーム・β型",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -19264,7 +19264,7 @@
           "buffs": [
             {
               "id": "buff_yvonne_combo_multiplier",
-              "name": "アイスちゃん・υ37 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "アイスちゃん・υ37",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -19277,7 +19277,7 @@
             },
             {
               "id": "buff_yvonne_combo_aux",
-              "name": "アイスちゃん・υ37 [【補助・耐久・リソース枠】]",
+              "name": "アイスちゃん・υ37",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -19344,7 +19344,7 @@
           "buffs": [
             {
               "id": "buff_yvonne_ult_multiplier",
-              "name": "アイスシューター [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "アイスシューター",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19357,7 +19357,7 @@
             },
             {
               "id": "buff_yvonne_ult_crit",
-              "name": "アイスシューター [【枠6】会心枠]",
+              "name": "アイスシューター",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19370,7 +19370,7 @@
             },
             {
               "id": "buff_yvonne_ult_aux",
-              "name": "アイスシューター [【補助・耐久・リソース枠】]",
+              "name": "アイスシューター",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19466,7 +19466,7 @@
           "buffs": [
             {
               "id": "buff_yvonne_talent1_damage_up",
-              "name": "ハイテクバースト [【枠4】ダメージUP枠]",
+              "name": "ハイテクバースト",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19490,7 +19490,7 @@
           "buffs": [
             {
               "id": "buff_yvonne_talent2_crit",
-              "name": "氷点 [【枠6】会心枠]",
+              "name": "氷点",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19614,7 +19614,7 @@
           "buffs": [
             {
               "id": "buff_zhuang_skill_multiplier",
-              "name": "驚雷訣 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "驚雷訣",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19627,7 +19627,7 @@
             },
             {
               "id": "buff_zhuang_skill_aux",
-              "name": "驚雷訣 [【補助・耐久・リソース枠】]",
+              "name": "驚雷訣",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19640,7 +19640,7 @@
             },
             {
               "id": "buff_zhuang_skill_special",
-              "name": "驚雷訣 [【特殊枠（例外処理）】]",
+              "name": "驚雷訣",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -19710,7 +19710,7 @@
           "buffs": [
             {
               "id": "buff_zhuang_combo_multiplier",
-              "name": "一息万変 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "一息万変",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -19723,7 +19723,7 @@
             },
             {
               "id": "buff_zhuang_combo_aux",
-              "name": "一息万変 [【補助・耐久・リソース枠】]",
+              "name": "一息万変",
               "target": "none",
               "targetLabel": "なし",
               "category": "buff",
@@ -19736,7 +19736,7 @@
             },
             {
               "id": "buff_zhuang_combo_special",
-              "name": "一息万変 [【特殊枠（例外処理）】]",
+              "name": "一息万変",
               "target": "none",
               "targetLabel": "なし",
               "category": "special",
@@ -19805,7 +19805,7 @@
           "buffs": [
             {
               "id": "buff_zhuang_ult_multiplier",
-              "name": "風来轟轟 [【枠3】基礎倍率・乗算・追加倍率枠]",
+              "name": "風来轟轟",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19818,7 +19818,7 @@
             },
             {
               "id": "buff_zhuang_ult_aux",
-              "name": "風来轟轟 [【補助・耐久・リソース枠】]",
+              "name": "風来轟轟",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19831,7 +19831,7 @@
             },
             {
               "id": "buff_zhuang_ult_special",
-              "name": "風来轟轟 [【特殊枠（例外処理）】]",
+              "name": "風来轟轟",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "special",
@@ -19913,7 +19913,7 @@
           "buffs": [
             {
               "id": "buff_zhuang_talent1_amp",
-              "name": "天地造化 [【枠5】増幅枠]",
+              "name": "天地造化",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -19937,7 +19937,7 @@
           "buffs": [
             {
               "id": "buff_zhuang_talent2_aux",
-              "name": "承天之佑 [【補助・耐久・リソース枠】]",
+              "name": "承天之佑",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
