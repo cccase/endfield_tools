@@ -22282,33 +22282,40 @@ function renderWikiCharacterDetail(charId) {
 
     let buffsHtml = '';
     const actualBuffs = (sk.buffs || []).filter(b => {
-      // 基礎倍率(multiplier)、補助スペック(aux)、特殊メモ(special)はバフ・デバフではないため除外
+      // 基礎倍率(multiplier)、補助スペック(aux/crush)、特殊メモ(special)はバフ・デバフ一覧から除外（基礎倍率表やメカニクス欄に表示）
+      const effType = b.effectType || (['multiplier', 'aux', 'special'].includes(b.calcGroup) ? b.calcGroup : (b.category === 'debuff' ? 'debuff' : 'buff'));
+      if (['multiplier', 'aux', 'special', 'crush'].includes(effType)) return false;
       if (['multiplier', 'aux', 'special'].includes(b.calcGroup)) return false;
-      if (b.category === 'special') return false;
+      if (b.category === 'special' || b.category === 'none') return false;
       return true;
     });
 
     if (actualBuffs.length > 0) {
       buffsHtml = `
         <div class="wiki-buffs-list">
-          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果（効果別分類）:</div>
+          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ・回復効果（効果別分類）:</div>
           <div class="wiki-buffs-grid">
             ${actualBuffs.map(b => {
-              let tgtInfo;
-              if (b.calcGroup === 'heal' || (b.targetLabel && b.targetLabel.includes('回復'))) {
-                tgtInfo = (b.target === 'single' || b.target === 'self')
-                  ? { label: '💚 単体回復', class: 'target-heal-single' }
-                  : { label: '💚 全体回復', class: 'target-heal-team' };
-              } else if (b.category === 'debuff' || b.target === 'enemy') {
-                tgtInfo = { label: '👾 敵デバフ', class: 'target-enemy' };
+              // 1. 対象カテゴリ (Target Category: 自己 / 全体 / 単体 / 敵)
+              let targetCategory = { label: '👤 自己', class: 'target-self' };
+              if (b.target === 'enemy' || b.category === 'debuff' || ['res_down', 'vulnerability', 'taken_damage_up'].includes(b.calcGroup)) {
+                targetCategory = { label: '👾 敵', class: 'target-enemy' };
               } else if (b.target === 'team' || b.target === 'party') {
-                tgtInfo = { label: '👥 全体バフ', class: 'target-team' };
-              } else if (b.target === 'single') {
-                tgtInfo = { label: '🎯 単体バフ', class: 'target-single' };
+                targetCategory = { label: '👥 全体', class: 'target-team' };
+              } else if (b.target === 'single' || b.target === 'others') {
+                targetCategory = { label: '🎯 単体', class: 'target-single' };
               } else if (b.target === 'self') {
-                tgtInfo = { label: '👤 自己バフ', class: 'target-self' };
+                targetCategory = { label: '👤 自己', class: 'target-self' };
+              }
+
+              // 2. 効果種別 (Effect Type: バフ / デバフ / 回復)
+              let effectTypeBadge = { label: 'バフ', class: 'eff-type-buff' };
+              if (b.effectType === 'heal' || b.calcGroup === 'heal' || (b.name && b.name.includes('回復')) || (b.description && b.description.includes('HP回復'))) {
+                effectTypeBadge = { label: '回復', class: 'eff-type-heal' };
+              } else if (b.effectType === 'debuff' || b.category === 'debuff' || targetCategory.class === 'target-enemy') {
+                effectTypeBadge = { label: 'デバフ', class: 'eff-type-debuff' };
               } else {
-                tgtInfo = targetLabelMap[b.target] || { label: b.targetLabel || '効果', class: 'target-self' };
+                effectTypeBadge = { label: 'バフ', class: 'eff-type-buff' };
               }
 
               const durText = b.duration ? `(${b.duration}秒)` : '';
@@ -22319,9 +22326,10 @@ function renderWikiCharacterDetail(charId) {
               }
 
               return `
-                <div class="wiki-buff-item ${tgtInfo.class}">
+                <div class="wiki-buff-item ${targetCategory.class}">
                   <div class="wiki-buff-top">
-                    <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
+                    <span class="wiki-buff-target-badge ${targetCategory.class}">${targetCategory.label}</span>
+                    <span class="wiki-buff-type-badge ${effectTypeBadge.class}">${effectTypeBadge.label}</span>
                     ${groupBadge}
                     <strong class="wiki-buff-name">${displayName}</strong>
                     <span class="wiki-buff-dur">${durText}</span>

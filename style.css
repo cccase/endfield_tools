@@ -2501,6 +2501,33 @@ h1, h2 { color: var(--accent); margin-top: 0; }
   color: #1abc9c;
   border: 1px solid rgba(26, 188, 156, 0.4);
 }
+.wiki-buff-target-badge.target-enemy {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.wiki-buff-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.wiki-buff-type-badge.eff-type-buff {
+  background: rgba(46, 204, 113, 0.18);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.45);
+}
+.wiki-buff-type-badge.eff-type-debuff {
+  background: rgba(155, 89, 182, 0.18);
+  color: #d29bfe;
+  border: 1px solid rgba(155, 89, 182, 0.45);
+}
+.wiki-buff-type-badge.eff-type-heal {
+  background: rgba(26, 188, 156, 0.18);
+  color: #1abc9c;
+  border: 1px solid rgba(26, 188, 156, 0.45);
+}
 .wiki-buff-item.target-others {
   border-left: 3px solid #1abc9c;
 }
