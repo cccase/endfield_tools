@@ -2145,7 +2145,7 @@
             },
             {
               "id": "buff_antal_skill_vulnerability",
-              "name": "指定研究対象",
+              "name": "電磁・灼熱脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -2321,7 +2321,7 @@
           "buffs": [
             {
               "id": "buff_antal_ult_amp",
-              "name": "リミッター、解除",
+              "name": "チーム電磁・灼熱増幅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -3371,7 +3371,7 @@
             },
             {
               "id": "buff_ardelia_skill_vulnerability",
-              "name": "ドリーラッシュ",
+              "name": "物理脆弱 & アーツ脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -3465,7 +3465,7 @@
             },
             {
               "id": "buff_ardelia_combo_res_down",
-              "name": "イラプション・コラム",
+              "name": "強制腐食（全属性耐性低下）",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -4618,7 +4618,7 @@
             },
             {
               "id": "buff_camille_skill_vulnerability",
-              "name": "影祓う",
+              "name": "包囲灼熱脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -6541,7 +6541,7 @@
             },
             {
               "id": "buff_dapan_combo_damage_up",
-              "name": "調味料！",
+              "name": "猛撃ダメージ追加UP",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -7156,7 +7156,7 @@
             },
             {
               "id": "buff_ember_combo_aux",
-              "name": "前線支援",
+              "name": "操作キャラHP回復",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -7753,7 +7753,7 @@
             },
             {
               "id": "buff_estella_combo_vulnerability",
-              "name": "ディストーション",
+              "name": "凍結物理脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -8458,7 +8458,7 @@
             },
             {
               "id": "buff_fluorite_ult_damage_up",
-              "name": "つまんない茶番",
+              "name": "お手製爆弾即時起爆ダメージUP",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -9101,7 +9101,7 @@
             },
             {
               "id": "buff_gilberta_ult_vulnerability",
-              "name": "秘杖・重力場",
+              "name": "クラッシュ連動アーツ脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10851,7 +10851,7 @@
             },
             {
               "id": "buff_lifeng_skill_vulnerability",
-              "name": "浄化身",
+              "name": "物理脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -10945,7 +10945,7 @@
             },
             {
               "id": "buff_lifeng_combo_link",
-              "name": "忿怒形",
+              "name": "リンク状態（スキル威力UP）",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11477,7 +11477,7 @@
           "buffs": [
             {
               "id": "buff_lino_skill_atk_pct",
-              "name": "キラキラフォーカス",
+              "name": "ライブモード中チーム攻撃力UP",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11503,7 +11503,7 @@
             },
             {
               "id": "buff_lino_skill_aux",
-              "name": "キラキラフォーカス",
+              "name": "3秒毎範囲HP回復",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -11615,7 +11615,7 @@
             },
             {
               "id": "buff_lino_combo_aux",
-              "name": "ときめきメロディー",
+              "name": "操作キャラHP回復 & 必殺チャージ+20",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -11682,7 +11682,7 @@
           "buffs": [
             {
               "id": "buff_lino_ult_atk_pct",
-              "name": "綺羅星コンチェルト",
+              "name": "チーム攻撃力+10%",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11708,7 +11708,7 @@
             },
             {
               "id": "buff_lino_ult_amp",
-              "name": "綺羅星コンチェルト",
+              "name": "意志連動 電磁・自然増幅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -11721,7 +11721,7 @@
             },
             {
               "id": "buff_lino_ult_aux",
-              "name": "綺羅星コンチェルト",
+              "name": "全体HP回復",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -12450,7 +12450,7 @@
             },
             {
               "id": "buff_mifu_combo_vulnerability",
-              "name": "拳に悔い無し",
+              "name": "敵物理脆弱5%",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13382,7 +13382,7 @@
             },
             {
               "id": "buff_okugi_combo_vulnerability",
-              "name": "応龍四式【陣訣・知(知性≧意志)】",
+              "name": "自然脆弱 & 寒冷脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13490,7 +13490,7 @@
             },
             {
               "id": "buff_okugi_ult_res_down",
-              "name": "破晦【陣訣・知(知性≧意志)】",
+              "name": "強制腐食（全属性耐性低下）",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13527,6 +13527,31 @@
               "description": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される",
               "condition": "必殺チャージ消費100 / CD20秒 / 破晦陣持続20秒 / 重攻撃・終撃に連動して集中攻撃2回後、2段目「破晦訣明」解放",
               "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される"
+            },
+            {
+              "id": "buff_okugi_ult_amp",
+              "name": "自身アーツ増幅+24%（陣訣・知）",
+              "target": "self",
+              "targetLabel": "自分へのバフ（自己バフ）",
+              "category": "buff",
+              "calcGroup": "amp",
+              "calcGroupLabel": "【増幅補正】アーツ増幅",
+              "value": 24,
+              "duration": 20.0,
+              "description": "必殺技期間中、自身にアーツ増幅+24%(陣訣・知・素質1連動)",
+              "condition": "知性≧意志の時（陣訣・知）"
+            },
+            {
+              "id": "buff_okugi_ult_vulnerability",
+              "name": "自然・寒冷脆弱付与（陣訣・意）",
+              "target": "enemy",
+              "targetLabel": "敵デバフ",
+              "category": "debuff",
+              "calcGroup": "vulnerability",
+              "calcGroupLabel": "【脆弱補正】敵脆弱",
+              "duration": 10.0,
+              "description": "必殺技1段目・2段目命中時、敵に10秒間[意志×0.02%]の自然脆弱 & 寒冷脆弱(最大12.8%)付与（陣訣・意・素質1連動）",
+              "condition": "意志＞知性の時（陣訣・意）"
             }
           ],
           "epCost": 100,
@@ -13599,7 +13624,7 @@
             },
             {
               "id": "buff_okugi_ult_res_down",
-              "name": "破晦【陣訣・知(知性≧意志)】",
+              "name": "強制腐食（全属性耐性低下）",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -13636,6 +13661,31 @@
               "description": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される",
               "condition": "必殺チャージ消費100 / CD20秒 / 破晦陣持続20秒 / 重攻撃・終撃に連動して集中攻撃2回後、2段目「破晦訣明」解放",
               "special": "【陣訣・知の強制腐食＆超高倍率フィニッシュ】陣訣・知では強制腐食(15秒)を付与し、2段目『破晦訣明』が特化IIIで1440%の超高倍率となり、素質1で自身にアーツ増幅24%が付与される"
+            },
+            {
+              "id": "buff_okugi_ult_amp",
+              "name": "自身アーツ増幅+24%（陣訣・知）",
+              "target": "self",
+              "targetLabel": "自分へのバフ（自己バフ）",
+              "category": "buff",
+              "calcGroup": "amp",
+              "calcGroupLabel": "【増幅補正】アーツ増幅",
+              "value": 24,
+              "duration": 20.0,
+              "description": "必殺技期間中、自身にアーツ増幅+24%(陣訣・知・素質1連動)",
+              "condition": "知性≧意志の時（陣訣・知）"
+            },
+            {
+              "id": "buff_okugi_ult_vulnerability",
+              "name": "自然・寒冷脆弱付与（陣訣・意）",
+              "target": "enemy",
+              "targetLabel": "敵デバフ",
+              "category": "debuff",
+              "calcGroup": "vulnerability",
+              "calcGroupLabel": "【脆弱補正】敵脆弱",
+              "duration": 10.0,
+              "description": "必殺技1段目・2段目命中時、敵に10秒間[意志×0.02%]の自然脆弱 & 寒冷脆弱(最大12.8%)付与（陣訣・意・素質1連動）",
+              "condition": "意志＞知性の時（陣訣・意）"
             }
           ],
           "epCost": 0,
@@ -13708,10 +13758,10 @@
             },
             {
               "id": "buff_okugi_talent1_vulnerability",
-              "name": "画策",
-              "target": "self",
-              "targetLabel": "自分へのバフ（自己バフ）",
-              "category": "buff",
+              "name": "自然・寒冷脆弱付与",
+              "target": "enemy",
+              "targetLabel": "敵デバフ",
+              "category": "debuff",
               "calcGroup": "vulnerability",
               "calcGroupLabel": "【脆弱補正】敵脆弱",
               "value": 0,
@@ -14173,7 +14223,7 @@
             },
             {
               "id": "buff_perlica_combo_taken_damage_up",
-              "name": "即時協約：閃光鎖",
+              "name": "強制感電（被アーツダメUP）",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -14709,7 +14759,7 @@
             },
             {
               "id": "buff_pogranichnik_skill_taken_damage_up",
-              "name": "戦線粉砕",
+              "name": "破砕・敵物理被ダメージUP",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -15461,7 +15511,7 @@
             },
             {
               "id": "buff_purrchena_combo_aux",
-              "name": "お菓子or“プレゼント”",
+              "name": "範囲HP回復（お菓子追加回復）",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -15556,7 +15606,7 @@
             },
             {
               "id": "buff_purrchena_ult_vulnerability",
-              "name": "悪いことは許しませ～ん！",
+              "name": "スペシャルギフト・アーツ脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -16100,7 +16150,7 @@
             },
             {
               "id": "buff_rossi_combo_crit",
-              "name": "刹那の影",
+              "name": "2回目発動時 会心率・会心ダメUP",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16208,7 +16258,7 @@
             },
             {
               "id": "buff_rossi_ult_crit",
-              "name": "\"鋭爪\"奇襲",
+              "name": "必殺会心ダメージ+60%",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",
@@ -16556,7 +16606,7 @@
           "buffs": [
             {
               "id": "buff_snowshine_combo_aux",
-              "name": "極地救援",
+              "name": "周囲味方即時＆持続HP回復",
               "target": "team",
               "targetLabel": "全体回復",
               "category": "buff",
@@ -17142,7 +17192,7 @@
             },
             {
               "id": "buff_su_ult_amp",
-              "name": "白けさせるでない！",
+              "name": "チーム寒冷・灼熱増幅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -17394,7 +17444,7 @@
             },
             {
               "id": "buff_tangtang_skill_vulnerability",
-              "name": "波が来るぜ！",
+              "name": "水竜巻アーツ脆弱",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -18046,7 +18096,7 @@
             },
             {
               "id": "buff_typhoeus_combo_taken_damage_up",
-              "name": "荒れ狂うトゲ",
+              "name": "矢陣エリア 敵自然爆発被ダメUP",
               "target": "enemy",
               "targetLabel": "敵デバフ",
               "category": "debuff",
@@ -18797,7 +18847,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_skill_amp",
-              "name": "DDoS",
+              "name": "HP満タン単体アーツ増幅",
               "target": "single",
               "targetLabel": "単体バフ",
               "category": "buff",
@@ -18810,7 +18860,7 @@
             },
             {
               "id": "buff_xaihi_skill_aux",
-              "name": "DDoS",
+              "name": "重攻撃時HP回復",
               "target": "single",
               "targetLabel": "単体回復",
               "category": "buff",
@@ -18937,7 +18987,7 @@
           "buffs": [
             {
               "id": "buff_xaihi_ult_amp",
-              "name": "スタックオーバーフロー",
+              "name": "知性連動 チーム寒冷・自然増幅",
               "target": "team",
               "targetLabel": "全体バフ",
               "category": "buff",
@@ -19357,7 +19407,7 @@
             },
             {
               "id": "buff_yvonne_ult_crit",
-              "name": "アイスシューター",
+              "name": "スタック式会心率＆会心ダメUP",
               "target": "self",
               "targetLabel": "自分へのバフ（自己バフ）",
               "category": "buff",

@@ -22281,33 +22281,49 @@ function renderWikiCharacterDetail(charId) {
     if (sk.epGain !== undefined) costBadges.push(`<span class="wiki-cost-pill epgain">獲得EP: +${sk.epGain}</span>`);
 
     let buffsHtml = '';
-    if (sk.buffs && sk.buffs.length > 0) {
+    const actualBuffs = (sk.buffs || []).filter(b => {
+      // 基礎倍率(multiplier)、補助スペック(aux)、特殊メモ(special)はバフ・デバフではないため除外
+      if (['multiplier', 'aux', 'special'].includes(b.calcGroup)) return false;
+      if (b.category === 'special') return false;
+      return true;
+    });
+
+    if (actualBuffs.length > 0) {
       buffsHtml = `
         <div class="wiki-buffs-list">
-          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果（計算グループ分類）:</div>
+          <div class="wiki-buffs-header">✨ 紐づくバフ・デバフ効果（効果別分類）:</div>
           <div class="wiki-buffs-grid">
-            ${sk.buffs.map(b => {
-              let tgtInfo = targetLabelMap[b.target];
-              if (!tgtInfo) {
-                if (b.targetLabel && b.targetLabel.includes('全体回復')) {
-                  tgtInfo = { label: '💚 全体回復', class: 'target-heal-team' };
-                } else if (b.targetLabel && b.targetLabel.includes('単体回復')) {
-                  tgtInfo = { label: '💚 単体回復', class: 'target-heal-single' };
-                } else if (b.targetLabel && b.targetLabel.includes('自己回復')) {
-                  tgtInfo = { label: '💚 自己回復', class: 'target-heal-self' };
-                } else {
-                  tgtInfo = { label: b.targetLabel || b.target || '効果', class: 'target-self' };
-                }
+            ${actualBuffs.map(b => {
+              let tgtInfo;
+              if (b.calcGroup === 'heal' || (b.targetLabel && b.targetLabel.includes('回復'))) {
+                tgtInfo = (b.target === 'single' || b.target === 'self')
+                  ? { label: '💚 単体回復', class: 'target-heal-single' }
+                  : { label: '💚 全体回復', class: 'target-heal-team' };
+              } else if (b.category === 'debuff' || b.target === 'enemy') {
+                tgtInfo = { label: '👾 敵デバフ', class: 'target-enemy' };
+              } else if (b.target === 'team' || b.target === 'party') {
+                tgtInfo = { label: '👥 全体バフ', class: 'target-team' };
+              } else if (b.target === 'single') {
+                tgtInfo = { label: '🎯 単体バフ', class: 'target-single' };
+              } else if (b.target === 'self') {
+                tgtInfo = { label: '👤 自己バフ', class: 'target-self' };
+              } else {
+                tgtInfo = targetLabelMap[b.target] || { label: b.targetLabel || '効果', class: 'target-self' };
               }
+
               const durText = b.duration ? `(${b.duration}秒)` : '';
               const groupBadge = b.calcGroupLabel ? `<span class="wiki-buff-calc-badge">${b.calcGroupLabel}</span>` : '';
-              const cleanBuffName = (b.name || '').replace(/\s*\[【.*?】.*?\]/g, '').replace(/【枠\d+】.*$/g, '').trim();
+              let displayName = (b.name || '').replace(/\s*\[【.*?】.*?\]/g, '').replace(/【枠\d+】.*$/g, '').trim();
+              if (displayName === sk.name && b.calcGroupLabel) {
+                displayName = b.calcGroupLabel.replace(/[【】]/g, '');
+              }
+
               return `
                 <div class="wiki-buff-item ${tgtInfo.class}">
                   <div class="wiki-buff-top">
                     <span class="wiki-buff-target-badge ${tgtInfo.class}">${tgtInfo.label}</span>
                     ${groupBadge}
-                    <strong class="wiki-buff-name">${cleanBuffName}</strong>
+                    <strong class="wiki-buff-name">${displayName}</strong>
                     <span class="wiki-buff-dur">${durText}</span>
                   </div>
                   <div class="wiki-buff-desc">${b.description || ''}</div>
