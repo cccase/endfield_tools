@@ -16743,548 +16743,655 @@ const DEFAULT_DATA = {
         "acc2": "gold_accessories_e69591e59bbde58_73"
       }
     },
-    {
-      "$schema": "../../schemas/character.schema.json",
-      "id": "char_su",
-      "name": "スー",
-      "icon": "image/su.png",
-      "rarity": 6,
-      "element": "寒冷",
-      "weaponType": "大剣",
-      "class": "補助",
-      "mainStat": "知性",
-      "subStat": "意志",
-      "baseStats": {
-        "hp": 6800,
-        "atk": 920,
-        "strength": 120,
-        "agility": 110,
-        "intellect": 285,
-        "willpower": 185,
-        "artsIntensity": 80,
-        "critRate": 0.05,
-        "critDamage": 0.5
-      },
-      "defaultEfficiency": 133.4,
-      "defaultPotential": 0,
-      "baseRefundSP": 0,
-      "baseRecoverSP": 0,
-      "potentials": [
         {
-          "level": 1,
-          "type": "potential_1",
-          "name": "潜在1段階",
-          "description": "行動停止+50%・筆意記録率+7%・爆発半径+40%",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "potential",
-          "calcGroupLabel": "潜在能力",
-          "special": "1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
-        },
-        {
-          "level": 2,
-          "type": "potential_2",
-          "name": "潜在2段階",
-          "description": "連携時10秒攻撃力+[8%+3%×段階]",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "potential",
-          "calcGroupLabel": "潜在能力"
-        },
-        {
-          "level": 3,
-          "type": "potential_3",
-          "name": "潜在3段階",
-          "description": "必殺ダメ1.2倍・増幅1.2倍",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "potential",
-          "calcGroupLabel": "潜在能力"
-        },
-        {
-          "level": 4,
-          "type": "potential_4",
-          "name": "潜在4段階",
-          "description": "必殺消費-15%",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "potential",
-          "calcGroupLabel": "潜在能力"
-        },
-        {
-          "level": 5,
-          "type": "potential_5",
-          "name": "潜在5段階",
-          "description": "連携CD-2秒・連携ダメ1.15倍・段階+1見なし",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "potential",
-          "calcGroupLabel": "潜在能力",
-          "special": "1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
-        }
-      ],
-      "specialMechanic": {
-        "title": "スー 固有メカニクス・特殊仕様",
-        "type": "custom",
-        "description": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。 ／ 【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する ／ 1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
-      },
-      "skills": [
-        {
-          "id": "skill1_su",
-          "type": "skill",
-          "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-          "shortName": "戦技1",
-          "damageType": "寒冷",
-          "infliction": {
-            "type": "copy_slot1",
-            "stacks": 1,
-            "label": "🎨 01位置属性模倣付着 (+1段階)",
-            "description": "編成一番左(01位置)のオペレーターの属性が灼熱なら灼熱付着、それ以外なら寒冷付着を付与"
+          "$schema": "../../schemas/character.schema.json",
+          "id": "char_su",
+          "name": "スー",
+          "icon": "image/su.png",
+          "rarity": 6,
+          "element": "寒冷",
+          "weaponType": "大剣",
+          "class": "補助",
+          "mainStat": "知性",
+          "subStat": "意志",
+          "baseStats": {
+                "hp": 6800,
+                "atk": 920,
+                "strength": 120,
+                "agility": 110,
+                "intellect": 285,
+                "willpower": 185,
+                "artsIntensity": 80,
+                "critRate": 0.05,
+                "critDamage": 0.5
           },
-          "crush": {
-            "type": "none",
-            "stacks": 0,
-            "label": "行動停止1秒(1凸で1.5秒)付与",
-            "description": "行動停止1秒(1凸で1.5秒)付与"
-          },
-          "multipliers": {
-            "lv9": 0.8,
-            "lv10_spec1": 0.8667,
-            "lv11_spec2": 0.9333,
-            "lv12_spec3": 1.0
-          },
-          "hitCount": 3,
-          "buffs": [
-            {
-              "id": "buff_su_skill_multiplier",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "multiplier",
-              "calcGroupLabel": "【ダメージ倍率補正】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "戦技寒冷ダメ倍率: R1=44% → R9=80% → 特化III=100%",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化"
-            },
-            {
-              "id": "buff_su_skill_aux",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "ブレイク値5＋筆意爆発ブレイク値5 / 行動停止1秒(1凸+50%=1.5秒)",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化"
-            },
-            {
-              "id": "buff_su_skill_special",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "special",
-              "calcGroupLabel": "【特殊処理（保留）】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化",
-              "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。"
-            }
+          "defaultEfficiency": 100.0,
+          "defaultPotential": 0,
+          "baseRefundSP": 0,
+          "baseRecoverSP": 0,
+          "potentials": [
+                {
+                      "level": 1,
+                      "type": "potential_1",
+                      "name": "潜在1段階",
+                      "description": "行動停止+50%・筆意記録率+7%・爆発半径+40%",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "potential",
+                      "calcGroupLabel": "潜在能力",
+                      "special": "1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
+                },
+                {
+                      "level": 2,
+                      "type": "potential_2",
+                      "name": "潜在2段階",
+                      "description": "連携時10秒攻撃力+[8%+3%×段階]",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "potential",
+                      "calcGroupLabel": "潜在能力"
+                },
+                {
+                      "level": 3,
+                      "type": "potential_3",
+                      "name": "潜在3段階",
+                      "description": "必殺ダメ1.2倍・増幅1.2倍",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "potential",
+                      "calcGroupLabel": "潜在能力"
+                },
+                {
+                      "level": 4,
+                      "type": "potential_4",
+                      "name": "潜在4段階",
+                      "description": "必殺消費-15%",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "potential",
+                      "calcGroupLabel": "潜在能力"
+                },
+                {
+                      "level": 5,
+                      "type": "potential_5",
+                      "name": "潜在5段階",
+                      "description": "連携CD-2秒・連携ダメ1.15倍・段階+1見なし",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "potential",
+                      "calcGroupLabel": "潜在能力",
+                      "special": "1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
+                }
           ],
-          "spCost": 100,
-          "description": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
-          "damageTypeDetail": "寒冷＋固定ダメージ(筆意爆発)",
-          "rawText": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
-          "attachText": "01位置キャラが灼熱属性なら灼熱付着(1段階)、それ以外の全属性なら寒冷付着(1段階)",
-          "anomalyText": "行動停止1秒(1凸で1.5秒)付与",
-          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
-          "modifiers": [
-            {
-              "id": "mod_スー_skill_base",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 基礎倍率",
-              "calcGroup": "skill_multiplier",
-              "value": 0.8,
-              "valuesByRank": {
-                "r1": 0.44,
-                "r9": 0.8,
-                "spec1": 0.8667,
-                "spec2": 0.9333,
-                "spec3": 1.0
-              },
-              "tags": [
-                "src:character",
-                "action:skill",
-                "elem:cryo",
-                "cond:always"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "skill2_su",
-          "type": "skill2",
-          "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-          "shortName": "戦技2",
-          "damageType": "寒冷",
-          "infliction": {
-            "type": "copy_slot1",
-            "stacks": 1,
-            "label": "🎨 01位置属性模倣付着 (+1段階)",
-            "description": "編成一番左(01位置)のオペレーターの属性が灼熱なら灼熱付着、それ以外なら寒冷付着を付与"
+          "specialMechanic": {
+                "title": "スー 固有メカニクス・特殊仕様",
+                "type": "custom",
+                "description": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。 ／ 【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する ／ 1凸: 戦技「筆意」のダメージ記録率+7%加算(特化IIIで13%→20%) / 5凸: 連携技の付着消費段階数+1見なし"
           },
-          "crush": {
-            "type": "none",
-            "stacks": 0,
-            "label": "行動停止1秒(1凸で1.5秒)付与",
-            "description": "行動停止1秒(1凸で1.5秒)付与"
-          },
-          "multipliers": {
-            "lv9": 0.8,
-            "lv10_spec1": 0.8667,
-            "lv11_spec2": 0.9333,
-            "lv12_spec3": 1.0
-          },
-          "hitCount": 1,
-          "buffs": [
-            {
-              "id": "buff_su_skill_multiplier",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "multiplier",
-              "calcGroupLabel": "【ダメージ倍率補正】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "戦技寒冷ダメ倍率: R1=44% → R9=80% → 特化III=100%",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化"
-            },
-            {
-              "id": "buff_su_skill_aux",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "ブレイク値5＋筆意爆発ブレイク値5 / 行動停止1秒(1凸+50%=1.5秒)",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化"
-            },
-            {
-              "id": "buff_su_skill_special",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」",
-              "target": "enemy",
-              "targetLabel": "敵デバフ",
-              "category": "debuff",
-              "calcGroup": "special",
-              "calcGroupLabel": "【特殊処理（保留）】",
-              "value": 0,
-              "duration": 20.0,
-              "description": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
-              "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」(SP消費)→「収筆」(SP0早期起爆)へ段階変化",
-              "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。"
-            }
+          "skills": [
+                {
+                      "id": "skill1_su",
+                      "type": "skill",
+                      "name": "山河を映して",
+                      "shortName": "戦技1",
+                      "damageType": "寒冷",
+                      "damageTypeDetail": "寒冷",
+                      "infliction": {
+                            "type": "copy_slot1",
+                            "stacks": 1,
+                            "label": "🎨 01位置属性模倣付着 (+1段階)",
+                            "description": "編成一番左(01位置)のオペレーターの属性が灼熱なら灼熱付着、それ以外なら寒冷付着を付与"
+                      },
+                      "crush": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "行動停止1秒(1凸で1.5秒)付与",
+                            "description": "行動停止1秒(1凸で1.5秒)付与"
+                      },
+                      "multipliers": {
+                            "lv9": 0.8,
+                            "lv10_spec1": 0.8667,
+                            "lv11_spec2": 0.9333,
+                            "lv12_spec3": 1.0
+                      },
+                      "hitCount": 3,
+                      "buffs": [
+                            {
+                                  "id": "buff_su_skill1_multiplier",
+                                  "name": "スキル基礎ダメージ倍率",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "multiplier",
+                                  "calcGroupLabel": "【ダメージ倍率補正】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "戦技寒冷ダメ倍率: R1=44% → R9=80% → 特化III=100%",
+                                  "condition": "SP消費100 / 「筆意」持続20秒 / 発動後戦技が「墨継」へ変化",
+                                  "effectType": "multiplier"
+                            },
+                            {
+                                  "id": "buff_su_skill1_aux",
+                                  "name": "ブレイク・リソース仕様",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "ブレイク値5 / 行動停止1秒(1凸+50%=1.5秒)",
+                                  "condition": "SP消費100 / 「筆意」持続20秒",
+                                  "effectType": "crush"
+                            },
+                            {
+                                  "id": "buff_su_skill1_special",
+                                  "name": "特殊仕様・筆意",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "special",
+                                  "calcGroup": "special",
+                                  "calcGroupLabel": "【特殊処理（保留）】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "【筆意】敵を20秒間「筆意」状態にし、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を蓄積・記録。発動後、戦技が「墨継」に変化。",
+                                  "condition": "SP消費100 / 「筆意」持続20秒",
+                                  "special": "【筆意】敵を20秒間「筆意」状態にし、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を蓄積・記録。発動後、戦技が「墨継」に変化。",
+                                  "effectType": "special"
+                            }
+                      ],
+                      "spCost": 100,
+                      "description": "敵に寒冷ダメージと1秒(1凸で1.5秒)の行動停止を与え、編成01位置オペレーターの属性を模倣して付着（灼熱なら灼熱付着、それ以外なら寒冷付着）を付与する。20秒間敵を「筆意」状態にし、期間中に受けたダメージの8%〜13%(1凸で最大20%)を蓄積・記録する。発動後、戦技が「墨継」に変化。",
+                      "rawText": "敵に寒冷ダメージと1秒(1凸で1.5秒)の行動停止を与え、編成01位置オペレーターの属性を模倣して付着（灼熱なら灼熱付着、それ以外なら寒冷付着）を付与する。20秒間敵を「筆意」状態にし、期間中に受けたダメージの8%〜13%(1凸で最大20%)を蓄積・記録する。発動後、戦技が「墨継」に変化。",
+                      "attachText": "01位置属性模倣（灼熱または寒冷付着+1）",
+                      "anomalyText": "行動停止1秒(1凸で1.5秒)",
+                      "modifiers": [
+                            {
+                                  "id": "mod_スー_skill1_base",
+                                  "name": "山河を映して 基礎倍率",
+                                  "calcGroup": "skill_multiplier",
+                                  "value": 0.8,
+                                  "valuesByRank": {
+                                        "r1": 0.44,
+                                        "r9": 0.8,
+                                        "spec1": 0.8667,
+                                        "spec2": 0.9333,
+                                        "spec3": 1.0
+                                  },
+                                  "tags": [
+                                        "src:character",
+                                        "action:skill",
+                                        "elem:cryo",
+                                        "cond:always"
+                                  ]
+                            }
+                      ]
+                },
+                {
+                      "id": "skill2_su",
+                      "type": "skill2",
+                      "name": "墨継",
+                      "shortName": "戦技2",
+                      "damageType": "寒冷",
+                      "damageTypeDetail": "寒冷",
+                      "infliction": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "付着なし",
+                            "description": "アーツ付着効果はありません"
+                      },
+                      "crush": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "ブレイク値5",
+                            "description": "ブレイク値5"
+                      },
+                      "multipliers": {
+                            "lv9": 0.9,
+                            "lv10_spec1": 0.9667,
+                            "lv11_spec2": 1.0333,
+                            "lv12_spec3": 1.1
+                      },
+                      "hitCount": 3,
+                      "buffs": [
+                            {
+                                  "id": "buff_su_skill2_multiplier",
+                                  "name": "スキル基礎ダメージ倍率",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "multiplier",
+                                  "calcGroupLabel": "【ダメージ倍率補正】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "戦技寒冷ダメ倍率: R1=50% → R9=90% → 特化III=110%",
+                                  "condition": "SP消費100 / 「墨魂」抽出・伝達 / 発動後戦技が「収筆」へ変化",
+                                  "effectType": "multiplier"
+                            },
+                            {
+                                  "id": "buff_su_skill2_aux",
+                                  "name": "ブレイク・リソース仕様",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "ブレイク値5",
+                                  "condition": "SP消費100",
+                                  "effectType": "crush"
+                            },
+                            {
+                                  "id": "buff_su_skill2_special",
+                                  "name": "特殊仕様・墨魂抽出",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "special",
+                                  "calcGroup": "special",
+                                  "calcGroupLabel": "【特殊処理（保留）】",
+                                  "value": 0,
+                                  "duration": 20.0,
+                                  "description": "【墨魂抽出】筆意状態の敵から「墨魂」を抽出・召喚。墨魂が受けた全ダメージ・デバフ効果は本体へ100%伝達(撃破時別敵転移)。発動後、戦技が「収筆」に変化。",
+                                  "condition": "SP消費100 / 筆意状態の敵",
+                                  "special": "【墨魂抽出】筆意状態の敵から「墨魂」を抽出・召喚。墨魂が受けた全ダメージ・デバフ効果は本体へ100%伝達(撃破時別敵転移)。発動後、戦技が「収筆」に変化。",
+                                  "effectType": "special"
+                            }
+                      ],
+                      "spCost": 100,
+                      "description": "敵に寒冷ダメージを与え、筆意状態の敵から「墨魂」を抽出・召喚する。墨魂が受けた全ダメージおよび状態異常・デバフ効果は本体へ100%伝達される（墨魂撃破時は周囲の敵へ転移）。発動後、戦技が「収筆」に変化。",
+                      "rawText": "敵に寒冷ダメージを与え、筆意状態の敵から「墨魂」を抽出・召喚する。墨魂が受けた全ダメージおよび状態異常・デバフ効果は本体へ100%伝達される（墨魂撃破時は周囲の敵へ転移）。発動後、戦技が「収筆」に変化。",
+                      "attachText": "なし",
+                      "anomalyText": "なし",
+                      "modifiers": [
+                            {
+                                  "id": "mod_スー_skill2_base",
+                                  "name": "墨継 基礎倍率",
+                                  "calcGroup": "skill_multiplier",
+                                  "value": 0.9,
+                                  "valuesByRank": {
+                                        "r1": 0.5,
+                                        "r9": 0.9,
+                                        "spec1": 0.9667,
+                                        "spec2": 1.0333,
+                                        "spec3": 1.1
+                                  },
+                                  "tags": [
+                                        "src:character",
+                                        "action:skill2",
+                                        "elem:cryo",
+                                        "cond:always"
+                                  ]
+                            }
+                      ]
+                },
+                {
+                      "id": "skill3_su",
+                      "type": "skill3",
+                      "name": "収筆",
+                      "shortName": "戦技3",
+                      "damageType": "寒冷",
+                      "damageTypeDetail": "寒冷＋固定ダメージ(筆意爆発)",
+                      "infliction": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "付着なし",
+                            "description": "アーツ付着効果はありません"
+                      },
+                      "crush": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "ブレイク値5",
+                            "description": "ブレイク値5"
+                      },
+                      "multipliers": {
+                            "lv9": 0.7,
+                            "lv10_spec1": 0.7667,
+                            "lv11_spec2": 0.8333,
+                            "lv12_spec3": 0.9
+                      },
+                      "hitCount": 1,
+                      "buffs": [
+                            {
+                                  "id": "buff_su_skill3_multiplier",
+                                  "name": "スキル基礎ダメージ倍率",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "multiplier",
+                                  "calcGroupLabel": "【ダメージ倍率補正】",
+                                  "value": 0,
+                                  "duration": 0.0,
+                                  "description": "寒冷ダメ倍率: R1=40% → R9=70% → 特化III=90%",
+                                  "condition": "SP消費0 / 筆意早期起爆 / 初期状態へリセット",
+                                  "effectType": "multiplier"
+                            },
+                            {
+                                  "id": "buff_su_skill3_aux",
+                                  "name": "ブレイク・リソース仕様",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 0.0,
+                                  "description": "ブレイク値5 / 筆意蓄積固定ダメージ解放",
+                                  "condition": "SP消費0",
+                                  "effectType": "crush"
+                            },
+                            {
+                                  "id": "buff_su_skill3_special",
+                                  "name": "特殊仕様・収筆",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "special",
+                                  "calcGroup": "special",
+                                  "calcGroupLabel": "【特殊処理（保留）】",
+                                  "value": 0,
+                                  "duration": 0.0,
+                                  "description": "【収筆・早期起爆】SP消費0で発動。墨魂を早期消失させ、敵の筆意蓄積ダメージ相当の広範囲固定ダメージを即時解放。戦技が「山河を映して」にリセット。",
+                                  "condition": "SP消費0 / 墨魂召喚中",
+                                  "special": "【収筆・早期起爆】SP消費0で発動。墨魂を早期消失させ、敵の筆意蓄積ダメージ相当の広範囲固定ダメージを即時解放。戦技が「山河を映して」にリセット。",
+                                  "effectType": "special"
+                            }
+                      ],
+                      "spCost": 0,
+                      "description": "SP消費なしで発動可能。召喚中の墨魂を即座に消失させ、敵の「筆意」を即時起爆する。蓄積されたダメージに応じた広範囲固定ダメージを与え、ブレイク値5を付与する。戦技が初期状態（山河を映して）にリセット。",
+                      "rawText": "SP消費なしで発動可能。召喚中の墨魂を即座に消失させ、敵の「筆意」を即時起爆する。蓄積されたダメージに応じた広範囲固定ダメージを与え、ブレイク値5を付与する。戦技が初期状態（山河を映して）にリセット。",
+                      "attachText": "なし",
+                      "anomalyText": "なし",
+                      "modifiers": [
+                            {
+                                  "id": "mod_スー_skill3_base",
+                                  "name": "収筆 基礎倍率",
+                                  "calcGroup": "skill_multiplier",
+                                  "value": 0.7,
+                                  "valuesByRank": {
+                                        "r1": 0.4,
+                                        "r9": 0.7,
+                                        "spec1": 0.7667,
+                                        "spec2": 0.8333,
+                                        "spec3": 0.9
+                                  },
+                                  "tags": [
+                                        "src:character",
+                                        "action:skill3",
+                                        "elem:cryo",
+                                        "cond:always"
+                                  ]
+                            }
+                      ]
+                },
+                {
+                      "id": "combo_su",
+                      "type": "combo",
+                      "name": "胸中に成竹在り",
+                      "shortName": "連携技",
+                      "damageType": "寒冷",
+                      "infliction": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "付着なし",
+                            "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+                      },
+                      "crush": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)",
+                            "description": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)"
+                      },
+                      "multipliers": {
+                            "lv9": 6.0,
+                            "lv10_spec1": 6.5,
+                            "lv11_spec2": 7.0,
+                            "lv12_spec3": 7.5
+                      },
+                      "hitCount": 1,
+                      "buffs": [
+                            {
+                                  "id": "buff_su_combo_multiplier",
+                                  "name": "スキル基礎ダメージ倍率",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "multiplier",
+                                  "calcGroupLabel": "【ダメージ倍率補正】",
+                                  "value": 0,
+                                  "duration": 16.0,
+                                  "description": "基礎寒冷ダメ: R1=333%→R9=600%→特化III=750% ＋ 消費/吸収された付着1段階毎に追加倍率: R1=+44%→R9=+80%→特化III=+100%(5凸で全体1.15倍＆段階+1見なし)",
+                                  "condition": "敵の寒冷付着または灼熱付着が消費または吸収された時発動可 / CD: R1=16秒→R9=16秒→特化III=15秒(5凸-2秒)",
+                                  "effectType": "multiplier"
+                            },
+                            {
+                                  "id": "buff_su_combo_aux",
+                                  "name": "ブレイク・リソース仕様",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 16.0,
+                                  "description": "ブレイク値10 / 必殺チャージ+10回復",
+                                  "condition": "敵の寒冷付着または灼熱付着が消費または吸収された時発動可 / CD: R1=16秒→R9=16秒→特化III=15秒(5凸-2秒)",
+                                  "effectType": "crush"
+                            }
+                      ],
+                      "description": "敵の寒冷付着または灼熱付着が消費または吸収されたときに発動可能。敵に寒冷ダメージを与え、消費・吸収された段階数に応じて追加ダメージを与える。（※寒冷付着なし）",
+                      "damageTypeDetail": "寒冷",
+                      "rawText": "敵の寒冷付着または灼熱付着が消費または吸収されたときに発動可能。敵に寒冷ダメージを与え、消費・吸収された段階数に応じて追加ダメージを与える。（※寒冷付着なし）",
+                      "attachText": "なし",
+                      "anomalyText": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)",
+                      "modifiers": [
+                            {
+                                  "id": "mod_スー_combo_base",
+                                  "name": "胸中に成竹在り 基礎倍率",
+                                  "calcGroup": "skill_multiplier",
+                                  "value": 6.0,
+                                  "valuesByRank": {
+                                        "r1": 3.33,
+                                        "r9": 6.0,
+                                        "spec1": 6.5,
+                                        "spec2": 7.0,
+                                        "spec3": 7.5
+                                  },
+                                  "tags": [
+                                        "src:character",
+                                        "action:combo",
+                                        "elem:cryo",
+                                        "cond:always"
+                                  ]
+                            }
+                      ]
+                },
+                {
+                      "id": "ult_su",
+                      "type": "ult",
+                      "name": "白けさせるでない！",
+                      "shortName": "必殺技",
+                      "damageType": "寒冷",
+                      "infliction": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "付着なし",
+                            "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+                      },
+                      "crush": {
+                            "type": "none",
+                            "stacks": 0,
+                            "label": "なし",
+                            "description": "クラッシュ効果はありません"
+                      },
+                      "multipliers": {
+                            "lv9": 4.0,
+                            "lv10_spec1": 4.3333,
+                            "lv11_spec2": 4.6667,
+                            "lv12_spec3": 5.0
+                      },
+                      "hitCount": 5,
+                      "buffs": [
+                            {
+                                  "id": "buff_su_ult_multiplier",
+                                  "name": "スキル基礎ダメージ倍率",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "multiplier",
+                                  "calcGroupLabel": "【ダメージ倍率補正】",
+                                  "value": 0,
+                                  "duration": 30.0,
+                                  "description": "寒冷ダメ倍率: R1=222% → R9=400% → 特化III=500%(3凸で1.2倍=600%)",
+                                  "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒",
+                                  "effectType": "multiplier"
+                            },
+                            {
+                                  "id": "buff_su_ult_amp",
+                                  "name": "チーム寒冷・灼熱増幅",
+                                  "target": "team",
+                                  "targetLabel": "全体バフ",
+                                  "category": "buff",
+                                  "calcGroup": "amp",
+                                  "calcGroupLabel": "【増幅補正】増幅",
+                                  "value": 36,
+                                  "duration": 12.0,
+                                  "description": "チーム全員に12秒間 寒冷増幅 & 灼熱増幅: R1=+20% → R9=+30% → 特化III=+36%(3凸で1.2倍=+43.2%)",
+                                  "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒",
+                                  "effectType": "buff"
+                            },
+                            {
+                                  "id": "buff_su_ult_aux",
+                                  "name": "ブレイク・リソース仕様",
+                                  "target": "none",
+                                  "targetLabel": "なし",
+                                  "category": "none",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 30.0,
+                                  "description": "ブレイク値20 / 素質1連動で編成01位置オペレーターの連携技残りCD短縮",
+                                  "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒",
+                                  "effectType": "crush"
+                            }
+                      ],
+                      "epCost": 80,
+                      "description": "敵に寒冷ダメージを与え、12秒間チーム全員に寒冷増幅と灼熱増幅(20%→36%)を付与する。（※寒冷付着なし）",
+                      "damageTypeDetail": "寒冷",
+                      "rawText": "敵に寒冷ダメージを与え、12秒間チーム全員に寒冷増幅と灼熱増幅(20%→36%)を付与する。（※寒冷付着なし）",
+                      "attachText": "なし",
+                      "anomalyText": "なし",
+                      "modifiers": [
+                            {
+                                  "id": "mod_スー_ult_base",
+                                  "name": "白けさせるでない！ 基礎倍率",
+                                  "calcGroup": "skill_multiplier",
+                                  "value": 4.0,
+                                  "valuesByRank": {
+                                        "r1": 2.22,
+                                        "r9": 4.0,
+                                        "spec1": 4.3333,
+                                        "spec2": 4.6667,
+                                        "spec3": 5.0
+                                  },
+                                  "tags": [
+                                        "src:character",
+                                        "action:ult",
+                                        "elem:cryo",
+                                        "cond:always"
+                                  ]
+                            }
+                      ]
+                }
           ],
-          "spCost": 15,
-          "description": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
-          "damageTypeDetail": "寒冷＋固定ダメージ(筆意爆発)",
-          "rawText": "敵に寒冷ダメージと1秒の行動停止を与え、編成01位置オペレーターが灼熱なら灼熱付着、それ以外なら寒冷付着を付与し、20秒間「筆意」で被ダメージの8%→13%を記録して終了時範囲固定ダメージを与える。発動後戦技が「墨継」(墨魂抽出・ダメージ効果伝達)→「収筆」(SP0早期爆発)に変化。",
-          "attachText": "01位置キャラが灼熱属性なら灼熱付着(1段階)、それ以外の全属性なら寒冷付着(1段階)",
-          "anomalyText": "行動停止1秒(1凸で1.5秒)付与",
-          "special": "【超重要例外枠：スー戦技3大特殊挙動】①編成一番左(01位置)のオペレーターの属性を参照し、灼熱属性なら「灼熱付着(1段階)」、それ以外の属性(物理・電磁・寒冷・自然)なら「寒冷付着(1段階)」を付与する動的付着変化。②目標に「筆意」(20秒)を付与し、期間中に受けたダメージのR1=8%→R9=10%→特化III=13%(1凸で+7%加算=最大20%)を記録、終了時に記録値相当の広範囲「固定ダメージ」を与える(通常の計算枠に乗らない)。③派生戦技「墨継」で墨魂を抽出し墨魂が受けた全ダメージ・効果を本体へ伝達(撃破時別敵転移)、「収筆」(SP0)で墨魂を早期消失させ筆意爆発を即時発動。",
-          "modifiers": [
-            {
-              "id": "mod_スー_skill_base",
-              "name": "山河を映して → 派生「墨継」 → 派生「収筆」 基礎倍率",
-              "calcGroup": "skill_multiplier",
-              "value": 0.8,
-              "valuesByRank": {
-                "r1": 0.44,
-                "r9": 0.8,
-                "spec1": 0.8667,
-                "spec2": 0.9333,
-                "spec3": 1.0
-              },
-              "tags": [
-                "src:character",
-                "action:skill",
-                "elem:cryo",
-                "cond:always"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "combo_su",
-          "type": "combo",
-          "name": "胸中に成竹在り",
-          "shortName": "連携技",
-          "damageType": "寒冷",
-          "infliction": {
-            "type": "none",
-            "stacks": 0,
-            "label": "付着なし",
-            "description": "アーツ付着効果はありません（※属性ダメージのみ）"
-          },
-          "crush": {
-            "type": "none",
-            "stacks": 0,
-            "label": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)",
-            "description": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)"
-          },
-          "multipliers": {
-            "lv9": 6.0,
-            "lv10_spec1": 6.5,
-            "lv11_spec2": 7.0,
-            "lv12_spec3": 7.5
-          },
-          "hitCount": 1,
-          "buffs": [
-            {
-              "id": "buff_su_combo_multiplier",
-              "name": "胸中に成竹在り",
-              "target": "none",
-              "targetLabel": "なし",
-              "category": "buff",
-              "calcGroup": "multiplier",
-              "calcGroupLabel": "【ダメージ倍率補正】",
-              "value": 0,
-              "duration": 16.0,
-              "description": "基礎寒冷ダメ: R1=333%→R9=600%→特化III=750% ＋ 消費/吸収された付着1段階毎に追加倍率: R1=+44%→R9=+80%→特化III=+100%(5凸で全体1.15倍＆段階+1見なし)",
-              "condition": "敵の寒冷付着または灼熱付着が消費または吸収された時発動可 / CD: R1=16秒→R9=16秒→特化III=15秒(5凸-2秒)"
-            },
-            {
-              "id": "buff_su_combo_aux",
-              "name": "胸中に成竹在り",
-              "target": "none",
-              "targetLabel": "なし",
-              "category": "buff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 16.0,
-              "description": "ブレイク値10 / 必殺チャージ+10回復",
-              "condition": "敵の寒冷付着または灼熱付着が消費または吸収された時発動可 / CD: R1=16秒→R9=16秒→特化III=15秒(5凸-2秒)"
-            }
+          "motifWeapon": "玉中身",
+          "recommendedWeapons": [
+                "玉中身",
+                "破砕君主"
           ],
-          "description": "敵の寒冷付着または灼熱付着が消費または吸収されたときに発動可能。敵に寒冷ダメージを与え、消費・吸収された段階数に応じて追加ダメージを与える。（※寒冷付着なし）",
-          "damageTypeDetail": "寒冷",
-          "rawText": "敵の寒冷付着または灼熱付着が消費または吸収されたときに発動可能。敵に寒冷ダメージを与え、消費・吸収された段階数に応じて追加ダメージを与える。（※寒冷付着なし）",
-          "attachText": "なし",
-          "anomalyText": "なし(寒冷/灼熱付着が消費または吸収された時トリガー)",
-          "modifiers": [
-            {
-              "id": "mod_スー_combo_base",
-              "name": "胸中に成竹在り 基礎倍率",
-              "calcGroup": "skill_multiplier",
-              "value": 6.0,
-              "valuesByRank": {
-                "r1": 3.33,
-                "r9": 6.0,
-                "spec1": 6.5,
-                "spec2": 7.0,
-                "spec3": 7.5
-              },
-              "tags": [
-                "src:character",
-                "action:combo",
-                "elem:cryo",
-                "cond:always"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "ult_su",
-          "type": "ult",
-          "name": "白けさせるでない！",
-          "shortName": "必殺技",
-          "damageType": "寒冷",
-          "infliction": {
-            "type": "none",
-            "stacks": 0,
-            "label": "付着なし",
-            "description": "アーツ付着効果はありません（※属性ダメージのみ）"
+          "normalAttack": {
+                "name": "卒意",
+                "damageType": "寒冷",
+                "damageTypeDetail": "寒冷",
+                "attach": "なし",
+                "multipliers": "通常1〜5段: R1[20%/32%/29%/24%/64%]→R9[36%/58%/53%/43%/115%]→特化III[45%/72%/66%/54%/144%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
+                "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
+                "description": "最大5段の攻撃で、敵に寒冷ダメージを与える。（※寒冷付着なし）",
+                "raw": "最大5段の攻撃で、敵に寒冷ダメージを与える。（※寒冷付着なし）"
           },
-          "crush": {
-            "type": "none",
-            "stacks": 0,
-            "label": "なし",
-            "description": "クラッシュ効果はありません"
-          },
-          "multipliers": {
-            "lv9": 4.0,
-            "lv10_spec1": 4.3333,
-            "lv11_spec2": 4.6667,
-            "lv12_spec3": 5.0
-          },
-          "hitCount": 5,
-          "buffs": [
-            {
-              "id": "buff_su_ult_multiplier",
-              "name": "白けさせるでない！",
-              "target": "team",
-              "targetLabel": "全体バフ",
-              "category": "buff",
-              "calcGroup": "multiplier",
-              "calcGroupLabel": "【ダメージ倍率補正】",
-              "value": 0,
-              "duration": 30.0,
-              "description": "寒冷ダメ倍率: R1=222% → R9=400% → 特化III=500%(3凸で1.2倍=600%)",
-              "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒"
-            },
-            {
-              "id": "buff_su_ult_amp",
-              "name": "白けさせるでない！",
-              "target": "team",
-              "targetLabel": "全体バフ",
-              "category": "buff",
-              "calcGroup": "amp",
-              "calcGroupLabel": "【増幅補正】増幅",
-              "value": 36,
-              "duration": 12.0,
-              "description": "チーム全員に12秒間 寒冷増幅 & 灼熱増幅: R1=+20% → R9=+30% → 特化III=+36%(3凸で1.2倍=+43.2%)",
-              "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒"
-            },
-            {
-              "id": "buff_su_ult_aux",
-              "name": "白けさせるでない！",
-              "target": "team",
-              "targetLabel": "全体バフ",
-              "category": "buff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 30.0,
-              "description": "ブレイク値20 / 素質1連動で編成01位置オペレーターの連携技残りCD短縮",
-              "condition": "必殺チャージ消費80(4凸68) / CD30秒 / 増幅持続12秒"
-            }
+          "talents": [
+                {
+                      "id": "talent_su_1",
+                      "name": "代理人の気遣い",
+                      "description": "必殺技発動時、チームの一番左(01位置)にいるオペレーターの連携技の残りクールタイム-10秒→-20秒",
+                      "target": "single",
+                      "targetLabel": "単体バフ",
+                      "calcGroup": "special",
+                      "calcGroupLabel": "素質効果",
+                      "buffs": [
+                            {
+                                  "id": "buff_su_talent1_aux",
+                                  "name": "代理人の気遣い",
+                                  "target": "single",
+                                  "targetLabel": "単体バフ",
+                                  "category": "buff",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 0.0,
+                                  "description": "編成01位置オペレーターの連携技残りCD短縮: -10秒(昇進1) → -20秒(昇進2)",
+                                  "condition": "必殺技「白けさせるでない！」発動時(対象：編成一番左＝01位置のオペレーター)"
+                            },
+                            {
+                                  "id": "buff_su_talent1_special",
+                                  "name": "代理人の気遣い",
+                                  "target": "single",
+                                  "targetLabel": "単体バフ",
+                                  "category": "special",
+                                  "calcGroup": "special",
+                                  "calcGroupLabel": "【特殊処理（保留）】",
+                                  "value": 0,
+                                  "duration": 0.0,
+                                  "description": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する",
+                                  "condition": "必殺技「白けさせるでない！」発動時(対象：編成一番左＝01位置のオペレーター)",
+                                  "special": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する"
+                            }
+                      ],
+                      "special": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する"
+                },
+                {
+                      "id": "talent_su_2",
+                      "name": "丹青褪せず",
+                      "description": "墨魂が消失したとき、5秒間味方に+15%→+30%の移動加速を付与する。",
+                      "target": "team",
+                      "targetLabel": "全体バフ",
+                      "calcGroup": "talent",
+                      "calcGroupLabel": "素質効果",
+                      "buffs": [
+                            {
+                                  "id": "buff_su_talent2_aux",
+                                  "name": "丹青褪せず",
+                                  "target": "team",
+                                  "targetLabel": "全体バフ",
+                                  "category": "buff",
+                                  "calcGroup": "aux",
+                                  "calcGroupLabel": "【補助・耐久・リソース】",
+                                  "value": 0,
+                                  "duration": 5.0,
+                                  "description": "味方に移動速度アップ(加速)付与: +15%(昇進1) → +30%(昇進2)",
+                                  "condition": "墨魂が消失した時 / 持続5秒"
+                            }
+                      ]
+                }
           ],
-          "epCost": 80,
-          "description": "敵に寒冷ダメージを与え、12秒間チーム全員に寒冷増幅と灼熱増幅(20%→36%)を付与する。（※寒冷付着なし）",
-          "damageTypeDetail": "寒冷",
-          "rawText": "敵に寒冷ダメージを与え、12秒間チーム全員に寒冷増幅と灼熱増幅(20%→36%)を付与する。（※寒冷付着なし）",
-          "attachText": "なし",
-          "anomalyText": "なし",
-          "modifiers": [
-            {
-              "id": "mod_スー_ult_base",
-              "name": "白けさせるでない！ 基礎倍率",
-              "calcGroup": "skill_multiplier",
-              "value": 4.0,
-              "valuesByRank": {
-                "r1": 2.22,
-                "r9": 4.0,
-                "spec1": 4.3333,
-                "spec2": 4.6667,
-                "spec3": 5.0
-              },
-              "tags": [
-                "src:character",
-                "action:ult",
-                "elem:cryo",
-                "cond:always"
-              ]
-            }
-          ]
-        }
-      ],
-      "motifWeapon": "玉中身",
-      "recommendedWeapons": [
-        "玉中身",
-        "破砕君主"
-      ],
-      "normalAttack": {
-        "name": "卒意",
-        "damageType": "寒冷",
-        "damageTypeDetail": "寒冷",
-        "attach": "なし",
-        "multipliers": "通常1〜5段: R1[20%/32%/29%/24%/64%]→R9[36%/58%/53%/43%/115%]→特化III[45%/72%/66%/54%/144%] / 終撃: 400%→720%→900% / 落下: 80%→144%→180%",
-        "breakValue": "重攻撃ブレイク18 / 終撃時SP回復",
-        "description": "最大5段の攻撃で、敵に寒冷ダメージを与える。（※寒冷付着なし）",
-        "raw": "最大5段の攻撃で、敵に寒冷ダメージを与える。（※寒冷付着なし）"
-      },
-      "talents": [
-        {
-          "id": "talent_su_1",
-          "name": "代理人の気遣い",
-          "description": "必殺技発動時、チームの一番左(01位置)にいるオペレーターの連携技の残りクールタイム-10秒→-20秒",
-          "target": "single",
-          "targetLabel": "単体バフ",
-          "calcGroup": "special",
-          "calcGroupLabel": "素質効果",
-          "buffs": [
-            {
-              "id": "buff_su_talent1_aux",
-              "name": "代理人の気遣い",
-              "target": "single",
-              "targetLabel": "単体バフ",
-              "category": "buff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 0.0,
-              "description": "編成01位置オペレーターの連携技残りCD短縮: -10秒(昇進1) → -20秒(昇進2)",
-              "condition": "必殺技「白けさせるでない！」発動時(対象：編成一番左＝01位置のオペレーター)"
-            },
-            {
-              "id": "buff_su_talent1_special",
-              "name": "代理人の気遣い",
-              "target": "single",
-              "targetLabel": "単体バフ",
-              "category": "special",
-              "calcGroup": "special",
-              "calcGroupLabel": "【特殊処理（保留）】",
-              "value": 0,
-              "duration": 0.0,
-              "description": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する",
-              "condition": "必殺技「白けさせるでない！」発動時(対象：編成一番左＝01位置のオペレーター)",
-              "special": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する"
-            }
-          ],
-          "special": "【編成位置参照CD短縮】編成01位置(一番左)のオペレーターの連携技残りクールタイムを直接-10秒→-20秒短縮する"
-        },
-        {
-          "id": "talent_su_2",
-          "name": "丹青褪せず",
-          "description": "墨魂が消失したとき、5秒間味方に+15%→+30%の移動加速を付与する。",
-          "target": "team",
-          "targetLabel": "全体バフ",
-          "calcGroup": "talent",
-          "calcGroupLabel": "素質効果",
-          "buffs": [
-            {
-              "id": "buff_su_talent2_aux",
-              "name": "丹青褪せず",
-              "target": "team",
-              "targetLabel": "全体バフ",
-              "category": "buff",
-              "calcGroup": "aux",
-              "calcGroupLabel": "【補助・耐久・リソース】",
-              "value": 0,
-              "duration": 5.0,
-              "description": "味方に移動速度アップ(加速)付与: +15%(昇進1) → +30%(昇進2)",
-              "condition": "墨魂が消失した時 / 持続5秒"
-            }
-          ]
-        }
-      ],
-      "recommendedArmorSet": "set_oryu",
-      "recommendedArmorSetName": "50式応龍セット",
-      "recommendedArmor": {
-        "armorSet": "set_oryu",
-        "body": "gold_body_50e5bc8fe5bf9ce_24",
-        "arm": "gold_arms_50e5bc8fe5bf9ce_21",
-        "acc1": "gold_accessories_50e5bc8fe5bf9ce_29",
-        "acc2": "gold_accessories_e69591e59bbde58_73"
-      }
+          "recommendedArmorSet": "set_oryu",
+          "recommendedArmorSetName": "50式応龍セット",
+          "recommendedArmor": {
+                "armorSet": "set_oryu",
+                "body": "gold_body_50e5bc8fe5bf9ce_24",
+                "arm": "gold_arms_50e5bc8fe5bf9ce_21",
+                "acc1": "gold_accessories_50e5bc8fe5bf9ce_29",
+                "acc2": "gold_accessories_e7949fe789a9e8a_63"
+          }
     },
     {
       "$schema": "../../schemas/character.schema.json",
@@ -20583,9 +20690,7 @@ let skillNameDisplayMode = localStorage.getItem('skillNameDisplayMode') || 'form
 
 function getSkillDisplayName(skill) {
   if (!skill) return '';
-  if (skillNameDisplayMode === 'short') {
-    return skill.shortName || skill.name || '';
-  }
+  // スキル回し・パレットでは正式名称を表示（タイムライン側で省略表示切替が可能）
   return skill.name || skill.shortName || '';
 }
 
@@ -22519,7 +22624,7 @@ function renderPalette() {
     // 1. 戦技1列
     const skill1Cell = document.createElement('div');
     skill1Cell.className = 'palette-cell';
-    const s1 = p.skills.find(s => s.id === 'skill1_su' || s.id === 'skill1_mifu' || (s.type === 'skill' && s.id !== 'skill2_su' && s.id !== 'skill2_mifu' && s.id !== 'skill3_mifu'));
+    const s1 = p.skills.find(s => s.id === 'skill1_su' || s.id === 'skill1_mifu' || (s.type === 'skill' && s.id !== 'skill2_su' && s.id !== 'skill2_mifu' && s.id !== 'skill3_mifu' && s.id !== 'skill3_su'));
     if (s1) {
       const el = createDraggableBlock({
         type: 'skill',
@@ -22557,7 +22662,7 @@ function renderPalette() {
     // 2.5 戦技3列（ミ・フの開天など）
     const skill3Cell = document.createElement('div');
     skill3Cell.className = 'palette-cell';
-    const s3 = p.skills.find(s => s.type === 'skill3' || s.id === 'skill3_mifu');
+    const s3 = p.skills.find(s => s.type === 'skill3' || s.id === 'skill3_mifu' || s.id === 'skill3_su');
     if (s3) {
       const el = createDraggableBlock({
         type: 'skill',
@@ -23101,7 +23206,7 @@ function updateSimulation(opts = {}) {
   let totalSpRecovered = 0;
   let currentRefundSpPool = 0;
   let totalSkillCasts = 0;
-  let suSkill1CastCount = 0;
+  let suSkillPhase = 0; // 0: 戦技1待ち, 1: 戦技2待ち, 2: 戦技3待ち
 
   let totalTimelineDamage = 0;
   let maxSingleDamage = 0;
@@ -23194,15 +23299,20 @@ function updateSimulation(opts = {}) {
       } else if (step.type === 'skill' || step.type === 'skill2' || step.type === 'skill3' || step.type === 'skill_2') {
         const s = step.skillData || {};
 
-        // スーの戦技1・戦技2の発動順序チェック
-        if ((s.id === 'skill1_su' || s.shortName === '戦技1' || s.name === '戦技1') && step.charId === 'char_su') {
-          suSkill1CastCount++;
-        }
-        if ((s.id === 'skill2_su' || s.shortName === '戦技2' || s.name === '戦技2') && step.charId === 'char_su') {
-          if (suSkill1CastCount <= 0) {
-            epState[step.charId].warnings.push('戦技2は戦技1の後に発動可能');
-          } else {
-            suSkill1CastCount--;
+        // スーの戦技1・戦技2・戦技3の発動順序チェック（山河を映して → 墨継 → 収筆）
+        if (step.charId === 'char_su') {
+          if (s.id === 'skill1_su' || s.shortName === '戦技1' || s.name === '山河を映して') {
+            suSkillPhase = 1;
+          } else if (s.id === 'skill2_su' || s.shortName === '戦技2' || s.name === '墨継') {
+            if (suSkillPhase < 1) {
+              epState[step.charId].warnings.push('戦技2「墨継」は戦技1「山河を映して」の後に発動可能');
+            }
+            suSkillPhase = 2;
+          } else if (s.id === 'skill3_su' || s.shortName === '戦技3' || s.name === '収筆') {
+            if (suSkillPhase < 2) {
+              epState[step.charId].warnings.push('戦技3「収筆」は戦技2「墨継」の後に発動可能');
+            }
+            suSkillPhase = 0; // 収筆で初期状態（戦技1）にリセット
           }
         }
 
