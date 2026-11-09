@@ -20577,9 +20577,6 @@ function renderDamageDetailsTable(stepList) {
 // ===== スキル名表示モード（正式名称 / 略称） =====
 let skillNameDisplayMode = localStorage.getItem('skillNameDisplayMode') || 'formal';
 
-// ===== タイムライン上のスキル名表示モード（通常 / 戦技等省略） =====
-let timelineSkillNameMode = localStorage.getItem('timelineSkillNameMode') || 'default';
-
 function getSkillDisplayName(skill) {
   if (!skill) return '';
   if (skillNameDisplayMode === 'short') {
@@ -20592,15 +20589,7 @@ window.setSkillNameMode = function(mode) {
   skillNameDisplayMode = (mode === 'short') ? 'short' : 'formal';
   localStorage.setItem('skillNameDisplayMode', skillNameDisplayMode);
   updateSkillNameToggleButtons();
-  updateTimelineSkillNameToggleButtons();
   renderPalette();
-  renderTimeline();
-};
-
-window.setTimelineSkillNameMode = function(mode) {
-  timelineSkillNameMode = (mode === 'typeOnly') ? 'typeOnly' : 'default';
-  localStorage.setItem('timelineSkillNameMode', timelineSkillNameMode);
-  updateTimelineSkillNameToggleButtons();
   renderTimeline();
 };
 
@@ -20610,15 +20599,6 @@ function updateSkillNameToggleButtons() {
   if (formalBtn && shortBtn) {
     formalBtn.classList.toggle('active', skillNameDisplayMode === 'formal');
     shortBtn.classList.toggle('active', skillNameDisplayMode === 'short');
-  }
-}
-
-function updateTimelineSkillNameToggleButtons() {
-  const defaultBtn = document.getElementById('btn-tl-name-default');
-  const typeBtn = document.getElementById('btn-tl-name-type');
-  if (defaultBtn && typeBtn) {
-    defaultBtn.classList.toggle('active', timelineSkillNameMode === 'default');
-    typeBtn.classList.toggle('active', timelineSkillNameMode === 'typeOnly');
   }
 }
 
@@ -20715,7 +20695,6 @@ async function initApp() {
     renderWikiPage();
   }
   updateSkillNameToggleButtons();
-  updateTimelineSkillNameToggleButtons();
   if (typeof resetEnemySettings === 'function') {
     resetEnemySettings();
   }
@@ -22989,29 +22968,7 @@ function renderTimeline() {
           if (item.skillData.type === 'ult') block.classList.add('bg-ult');
           if (item.skillData.type === 'ult2') block.classList.add('bg-ult2');
           if (item.skillData.type === 'ult_cancel') block.classList.add('bg-ult-cancel');
-          if (timelineSkillNameMode === 'typeOnly') {
-            const typeMap = {
-              skill: '戦技',
-              skill2: '戦技2',
-              skill3: '戦技3',
-              combo: '連携技',
-              ult: '必殺技',
-              ult2: '必殺技2',
-              ult_cancel: '必殺ｷｬﾝｾﾙ',
-              normal: '通常'
-            };
-            if (sId === 'skill1') {
-              text = '戦技';
-            } else if (sId === 'skill2') {
-              text = '戦技2';
-            } else if (sId === 'skill3') {
-              text = '戦技3';
-            } else {
-              text = typeMap[sType] || typeMap[item.skillData.type] || item.skillData.shortName || 'スキル';
-            }
-          } else {
-            text = getSkillDisplayName(item.skillData);
-          }
+          text = getSkillDisplayName(item.skillData);
           block.innerHTML = `<img src="${item.icon}"> <span>${text}</span>`;
         }
 

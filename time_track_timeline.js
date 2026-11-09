@@ -22,6 +22,7 @@
       this.activeDrag = null;
       this.userModified = false;
       this._idCounter = 0;
+      this.skillNameMode = localStorage.getItem('timeTrackSkillNameMode') || 'default';
 
       this.initDom();
     }
@@ -40,6 +41,13 @@
             <span class="time-track-hint">上段(Vトラック)にスキルクリップを配置すると、下段(Aトラック)に連動バフ・付着が自動仮配置されます。左右ドラッグで移動・端ドラッグで伸縮できます。</span>
           </div>
           <div class="time-track-controls">
+            <div class="skill-name-toggle-switch time-track-name-toggle" title="タイムライン上のスキルクリップ名表示を「通常」と「戦技等の種別省略」で切り替えます">
+              <span class="toggle-label">スキル名:</span>
+              <div class="toggle-btn-group">
+                <button type="button" class="toggle-mode-btn ${this.skillNameMode === 'default' ? 'active' : ''}" id="btn-timetrack-name-default">通常</button>
+                <button type="button" class="toggle-mode-btn ${this.skillNameMode === 'typeOnly' ? 'active' : ''}" id="btn-timetrack-name-type">戦技等省略</button>
+              </div>
+            </div>
             <div class="manual-buff-adder">
               <select id="select-manual-buff" class="manual-buff-select" title="任意のバフ・デバフブロックを手動追加">
                 <option value="atk15">⚔️ チーム攻撃力+15% (15s)</option>
@@ -81,6 +89,15 @@
         </div>
       `;
 
+      const btnNameDefault = this.container.querySelector('#btn-timetrack-name-default');
+      const btnNameType = this.container.querySelector('#btn-timetrack-name-type');
+      if (btnNameDefault) {
+        btnNameDefault.addEventListener('click', () => this.setSkillNameMode('default'));
+      }
+      if (btnNameType) {
+        btnNameType.addEventListener('click', () => this.setSkillNameMode('typeOnly'));
+      }
+
       const btnIn = this.container.querySelector('#btn-zoom-in');
       const btnOut = this.container.querySelector('#btn-zoom-out');
       const btnSync = this.container.querySelector('#btn-time-auto-sync');
@@ -108,6 +125,40 @@
       }
 
       this.initDragHandlers();
+    }
+
+    setSkillNameMode(mode) {
+      this.skillNameMode = (mode === 'typeOnly') ? 'typeOnly' : 'default';
+      try {
+        localStorage.setItem('timeTrackSkillNameMode', this.skillNameMode);
+      } catch (e) {}
+      const btnDefault = this.container ? this.container.querySelector('#btn-timetrack-name-default') : null;
+      const btnType = this.container ? this.container.querySelector('#btn-timetrack-name-type') : null;
+      if (btnDefault && btnType) {
+        btnDefault.classList.toggle('active', this.skillNameMode === 'default');
+        btnType.classList.toggle('active', this.skillNameMode === 'typeOnly');
+      }
+      this.render();
+    }
+
+    getClipDisplayName(clip) {
+      if (this.skillNameMode === 'typeOnly') {
+        const typeMap = {
+          skill: '戦技',
+          skill1: '戦技',
+          skill2: '戦技2',
+          skill3: '戦技3',
+          combo: '連携技',
+          ult: '必殺技',
+          ult2: '必殺技2',
+          ult_cancel: '必殺ｷｬﾝｾﾙ',
+          normal: '通常'
+        };
+        const sType = clip.skillType || '';
+        const sId = clip.skillId || '';
+        return typeMap[sId] || typeMap[sType] || clip.shortName || clip.name || 'スキル';
+      }
+      return clip.name || clip.shortName || 'スキル';
     }
 
     setZoom(newPxPerSec) {
@@ -1044,7 +1095,13 @@
                     data-skill-id="${s.id}"
                     title="${p.name}: ${s.name} をタイムラインに配置（ドラッグで任意の秒数へドロップ可能）">
                     <span class="clip-btn-type">${s.shortName || s.type}</span>
-                    <span class="clip-btn-name">${s.name}</span>
+                    <span class="clip-btn-name">${(() => {
+                      if (this.skillNameMode === 'typeOnly') {
+                        const typeMap = { skill: '戦技', skill1: '戦技', skill2: '戦技2', skill3: '戦技3', combo: '連携技', ult: '必殺技', ult2: '必殺技2', ult_cancel: '必殺ｷｬﾝｾﾙ', normal: '通常' };
+                        return typeMap[s.id] || typeMap[s.type] || s.shortName || s.name;
+                      }
+                      return s.name;
+                    })()}</span>
                   </button>
                 `).join('')}
               </div>
@@ -1179,7 +1236,7 @@
               <div class="block-drag-handle left" data-handle="left"></div>
               <div class="clip-body-content">
                 <span class="clip-time-tag">${clip.startTime.toFixed(1)}s</span>
-                <span class="clip-title">${clip.name}</span>
+                <span class="clip-title">${this.getClipDisplayName(clip)}</span>
               </div>
               <button type="button" class="clip-delete-btn" title="このスキルクリップを削除">×</button>
               <div class="block-drag-handle right" data-handle="right"></div>
