@@ -20690,7 +20690,9 @@ let skillNameDisplayMode = localStorage.getItem('skillNameDisplayMode') || 'form
 
 function getSkillDisplayName(skill) {
   if (!skill) return '';
-  // スキル回し・パレットでは正式名称を表示（タイムライン側で省略表示切替が可能）
+  if (skillNameDisplayMode === 'short') {
+    return skill.shortName || skill.name || '';
+  }
   return skill.name || skill.shortName || '';
 }
 
