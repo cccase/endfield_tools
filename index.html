@@ -184,10 +184,13 @@
       <section class="panel damage-summary-panel">
         <div class="damage-summary-header">
           <h2>💥 ダメージ集計サマリー</h2>
-          <div class="damage-display-mode-switch">
-            <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
-            <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
-            <button type="button" class="dmg-mode-btn" id="btn-dmg-noncrit" onclick="setDamageMode('nonCrit')">非会心</button>
+          <div class="damage-summary-controls" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn-execute-damage-calc" id="btn-calc-damage" onclick="executeDamageCalculation()">⚡ ダメージ計算を実行</button>
+            <div class="damage-display-mode-switch">
+              <button type="button" class="dmg-mode-btn active" id="btn-dmg-expected" onclick="setDamageMode('expected')">期待値</button>
+              <button type="button" class="dmg-mode-btn" id="btn-dmg-crit" onclick="setDamageMode('crit')">会心時</button>
+              <button type="button" class="dmg-mode-btn" id="btn-dmg-noncrit" onclick="setDamageMode('nonCrit')">非会心</button>
+            </div>
           </div>
         </div>
         <div class="damage-metrics-grid">

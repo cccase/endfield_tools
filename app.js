@@ -20401,7 +20401,11 @@ window.setDamageMode = function(mode) {
     const btn = document.getElementById(`btn-dmg-${m}`);
     if (btn) btn.classList.toggle('active', m.toLowerCase() === mode.toLowerCase());
   });
-  updateSimulation();
+  if (cachedSimResult) {
+    renderDamageResults(cachedSimResult);
+  } else {
+    executeDamageCalculation();
+  }
 };
 
 function getMemberComputedStats(member) {
@@ -20660,7 +20664,7 @@ function initTimeTrackTimeline() {
 window.autoSyncTimeTracks = function(forceReset = false) {
   if (timeTrackTimeline) {
     timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames, forceReset);
-    updateSimulation({ fromTimeTrack: true });
+    markDamageCalculationNeeded();
   }
 };
 
@@ -20680,10 +20684,12 @@ window.appendSkillFromTimeTrack = function(member, skill) {
     skillData: skill
   });
   renderTimeline();
+  markDamageCalculationNeeded();
 };
 
 window.onTimeTrackEdited = function() {
-  updateSimulation({ fromTimeTrack: true });
+  // リアルタイム計算は行わず、計算ボタンの未計算フラグを立てる
+  markDamageCalculationNeeded();
 };
 
 async function initApp() {
@@ -20699,6 +20705,7 @@ async function initApp() {
     resetEnemySettings();
   }
   initTimeTrackTimeline();
+  updateSimulation({ immediateCalc: true });
 
   // ソートボタンのイベントリスナー
   document.querySelectorAll('.roster-sort-controls .sort-btn').forEach(btn => {
@@ -23323,10 +23330,54 @@ function updateSimulation(opts = {}) {
     }
   });
 
-  // ===== タイムライン（動画編集型マルチトラック）同期 ＆ 動的ダメージシミュレーション =====
+  // ===== タイムライン（動画編集型マルチトラック）同期 =====
   if (timeTrackTimeline && !timeTrackTimeline.activeDrag && (!opts || !opts.fromTimeTrack)) {
     timeTrackTimeline.syncFromSequence(timelineCycles, party, cycleNames);
   }
+
+  // 軽量ステータス更新
+  renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, null);
+
+  // ダメージ計算の実行要否判定（即時指定がある場合のみ計算、それ以外はボタンの未計算フラグを立てる）
+  if (opts && opts.immediateCalc) {
+    executeDamageCalculation();
+  } else {
+    markDamageCalculationNeeded();
+  }
+}
+
+// ===== ダメージ計算シミュレーション（手動実行型） =====
+let cachedSimResult = null;
+let isDamageCalcNeeded = false;
+
+function markDamageCalculationNeeded() {
+  isDamageCalcNeeded = true;
+  document.querySelectorAll('.btn-execute-damage-calc').forEach(btn => {
+    btn.classList.add('needs-calc');
+    btn.classList.remove('calc-completed');
+    btn.innerHTML = '⚡ ダメージ計算を実行 <span class="calc-badge-warn">未計算</span>';
+  });
+}
+
+window.markDamageCalculationNeeded = markDamageCalculationNeeded;
+
+function executeDamageCalculation() {
+  isDamageCalcNeeded = false;
+  const buttons = document.querySelectorAll('.btn-execute-damage-calc');
+  buttons.forEach(btn => {
+    btn.classList.remove('needs-calc');
+    btn.classList.add('calc-completed');
+    btn.innerHTML = '計算完了 ✓';
+  });
+
+  setTimeout(() => {
+    buttons.forEach(btn => {
+      if (!isDamageCalcNeeded) {
+        btn.classList.remove('calc-completed');
+        btn.innerHTML = '⚡ ダメージ計算を実行';
+      }
+    });
+  }, 1800);
 
   let simResult = null;
   try {
@@ -23347,6 +23398,13 @@ function updateSimulation(opts = {}) {
     console.error("ダメージ計算シミュレーション中にエラーが発生しました:", err);
   }
 
+  cachedSimResult = simResult;
+  renderDamageResults(cachedSimResult);
+}
+
+window.executeDamageCalculation = executeDamageCalculation;
+
+function renderDamageResults(simResult) {
   let finalTimelineDamage = 0;
   let finalMaxSingleDamage = 0;
   let finalMaxDamageSkillName = '-';
@@ -23380,17 +23438,24 @@ function updateSimulation(opts = {}) {
     renderDamageDonutChart(charSummaryList, finalTimelineDamage);
     renderDamageDetailsTable(simResult.stepResults);
   } else {
-    charSummaryList = Object.values(charDamageMap);
-    renderDamageDonutChart(charSummaryList, totalTimelineDamage);
+    renderDamageDonutChart([], 0);
     renderDamageDetailsTable([]);
   }
 
-  renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, {
-    totalTimelineDamage: finalTimelineDamage,
-    maxSingleDamage: finalMaxSingleDamage,
-    maxDamageSkillName: finalMaxDamageSkillName,
-    totalDamageCasts: finalDamageCasts
-  });
+  // サマリー指標（総ダメージ、最大単発、発動回数）を更新
+  if (typeof DamageCalculator !== 'undefined') {
+    const totalDmgEl = document.getElementById('total-timeline-damage');
+    if (totalDmgEl) totalDmgEl.textContent = DamageCalculator.formatDamage(finalTimelineDamage);
+
+    const maxDmgEl = document.getElementById('max-single-damage');
+    if (maxDmgEl) maxDmgEl.textContent = DamageCalculator.formatDamage(finalMaxSingleDamage);
+
+    const maxDmgSkillEl = document.getElementById('max-damage-skill');
+    if (maxDmgSkillEl) maxDmgSkillEl.textContent = finalMaxDamageSkillName;
+
+    const totalCastsEl = document.getElementById('total-damage-casts');
+    if (totalCastsEl) totalCastsEl.textContent = `${finalDamageCasts} 回`;
+  }
 }
 
 function renderStatus(totalSpSpent, totalSpRefunded, totalSpRecovered, currentRefundSpPool, epState, totalSkillCasts, dmgSummary) {

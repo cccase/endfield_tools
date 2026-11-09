@@ -41,6 +41,7 @@
             <span class="time-track-hint">上段(Vトラック)にスキルクリップを配置すると、下段(Aトラック)に連動バフ・付着が自動仮配置されます。左右ドラッグで移動・端ドラッグで伸縮できます。</span>
           </div>
           <div class="time-track-controls">
+            <button type="button" class="btn-execute-damage-calc" id="btn-timetrack-execute-calc" title="現在のタイムライン配置に基づいてダメージ計算を実行">⚡ ダメージ計算を実行</button>
             <div class="skill-name-toggle-switch time-track-name-toggle" title="タイムライン上のスキルクリップ名表示を「通常」と「戦技等の種別省略」で切り替えます">
               <span class="toggle-label">スキル名:</span>
               <div class="toggle-btn-group">
@@ -88,6 +89,15 @@
           </div>
         </div>
       `;
+
+      const btnExecCalc = this.container.querySelector('#btn-timetrack-execute-calc');
+      if (btnExecCalc) {
+        btnExecCalc.addEventListener('click', () => {
+          if (typeof global.executeDamageCalculation === 'function') {
+            global.executeDamageCalculation();
+          }
+        });
+      }
 
       const btnNameDefault = this.container.querySelector('#btn-timetrack-name-default');
       const btnNameType = this.container.querySelector('#btn-timetrack-name-type');
